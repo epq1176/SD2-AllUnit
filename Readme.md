@@ -1,3 +1,4 @@
+SD2 All Unit Mod
 - A single division contains all units of one side(including units that exist only in general mode)
 - Supply trucks heal all units
 - More resupply
