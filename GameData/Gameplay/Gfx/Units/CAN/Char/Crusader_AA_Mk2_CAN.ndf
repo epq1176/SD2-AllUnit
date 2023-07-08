@@ -1,0 +1,22 @@
+export ModelFile_Crusader_AA_Mk2_CAN is 'GameData:Assets\3D\Units\CAN\Char\Crusader_AA_Mk2\Crusader_AA_Mk2.Ase2NdfBin'
+
+export Modele_Crusader_AA_Mk2_CAN is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Crusader_AA_Mk2_CAN
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Crusader_AA_Mk2_CAN_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CAN\Char\Crusader_AA_Mk2_MID\Crusader_AA_Mk2_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Crusader_AA_Mk2_CAN_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CAN\Char\LODS\Crusader_AA_Mk2_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

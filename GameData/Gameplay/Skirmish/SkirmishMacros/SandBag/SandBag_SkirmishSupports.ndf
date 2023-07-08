@@ -1,0 +1,265 @@
+// Missions
+//-------------------------------------------------------------------------
+export SandBag_Support_AntiTank_A is TMacroActionDescriptor_Support_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    TagDeContre = "Anti_Char_Mobile"
+
+    PoolModelList = [
+        ~/SandBag_Pool_Support_AntiTank_A,
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Support_AntiTank_B is TMacroActionDescriptor_Support_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    TagDeContre = "Anti_Char_Mobile"
+
+    PoolModelList = [
+        ~/SandBag_Pool_Support_AntiTank_B,
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Support_AntiTank_C is TMacroActionDescriptor_Support_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    TagDeContre = "Anti_Char_Mobile"
+
+    PoolModelList = [
+        ~/SandBag_Pool_Support_AntiTank_C,
+    ]
+)
+//-------------------------------------------------------------------------
+// AT POUR LES MISSIONS DE DEFENSE
+//-------------------------------------------------------------------------
+export SandBag_Support_AntiTank_A_Defense is TMacroActionDescriptor_Support_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    TagDeContre = "Anti_Char_Mobile"
+
+    PoolModelList = [
+        ~/SandBag_Pool_Support_AntiTank_A_Defense,
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Support_AntiTank_B_Defense is TMacroActionDescriptor_Support_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    TagDeContre = "Anti_Char_Mobile"
+
+    PoolModelList = [
+        ~/SandBag_Pool_Support_AntiTank_B_Defense,
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Support_AntiTank_C_Defense is TMacroActionDescriptor_Support_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    TagDeContre = "Anti_Char_Mobile"
+
+    PoolModelList = [
+        ~/SandBag_Pool_Support_AntiTank_C_Defense,
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Support_AntiInfanterie is TMacroActionDescriptor_Support_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    TagDeContre = "Anti_Infanterie_Mobile" // Pas de tags corrects pour permettre d'autoriser ça, tant pis c'est pas hyper important
+
+    PoolModelList = [
+        ~/SandBag_Pool_Support_AntiInfanterie,
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Support_Transports is TMacroActionDescriptor_Support_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    TagDeContre = "AllUnits"
+
+    PoolModelList = [
+        ~/SandBag_Pool_Support_Transports,
+    ]
+)
+//-------------------------------------------------------------------------
+
+// Pool Models
+//-------------------------------------------------------------------------
+export SandBag_Pool_Support_AntiTank_A is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{fdc50f4f-f1df-11e6-8950-4ccc6a0550f6}
+            Required = true
+            Nb = 1
+            TagsPriority = [
+                "ChasseurDeChar_Standard",
+                "Canon_AT_Standard",
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Pool_Support_AntiTank_B is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{fdc50f50-f1df-11e6-9705-4ccc6a0550f6}
+            Required = true
+            Nb = 1
+            TagsPriority = [
+                "ChasseurDeChar_Standard",
+                "Canon_AT_Standard",
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Pool_Support_AntiTank_C is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{fdc50f51-f1df-11e6-91c2-4ccc6a0550f6}
+            Required = true
+            Nb = 1
+            TagsPriority = [
+                "ChasseurDeChar_Standard",
+                "Canon_AT_Standard",,
+            ]
+        ),
+    ]
+)
+// Pool Models
+//-------------------------------------------------------------------------
+export SandBag_Pool_Support_AntiTank_A_Defense is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{fdc50f52-f1df-11e6-8d27-4ccc6a0550f6}
+            Required = true
+            Nb = 1
+            TagsPriority = [
+                "Canon_AT_Standard",
+                "Anti_Char_Mobile" // Il faut un truc par pitié
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Pool_Support_AntiTank_B_Defense is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{fdc50f53-f1df-11e6-a7f0-4ccc6a0550f6}
+            Required = true
+            Nb = 1
+            TagsPriority = [
+                "Canon_AT_Standard",
+                "Anti_Char_Mobile" // Il faut un truc par pitié
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Pool_Support_AntiTank_C_Defense is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{fdc50f54-f1df-11e6-99d6-4ccc6a0550f6}
+            Required = true
+            Nb = 1
+            TagsPriority = [
+                "Canon_AT_Standard",
+                "Anti_Char_Mobile" // Il faut un truc par pitié
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Pool_Support_AntiInfanterie is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{fdc50f55-f1df-11e6-8b6e-4ccc6a0550f6}
+            Required = true
+            Nb = 1
+            TagsPriority = [
+                "Vehicule_Appui",
+                "Canon_AA_Porte",
+                "Anti_Infanterie_Mobile"
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Pool_Support_Transports is TPoolModel
+(
+    Budget = 1
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{fdc50f56-f1df-11e6-9fad-4ccc6a0550f6}
+            Required = true
+            Nb = 1
+            TagsPriority = [
+                "Vehicule_Transport_Arme"
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+
+//Settings
+//-------------------------------------------------------------------------
+// pour l'AT les missions support changent au cours de la partie mais pas le setting
+export SandBag_Renfort_AT is TSupportSetting
+(
+    TagDeContre = "Anti_Char_Mobile"
+    TagAContrer = "Char"
+    VerifierEnnemiesDansLesZonesVoisines = true
+    Ratio = 0.01 // Un seul AT en gros
+    NecessaireAuLancement = false // La mission ne lancera sont attaque que si le ratio est respecté au point de regroupement
+)
+//-------------------------------------------------------------------------
+export SandBag_Renfort_AntiInfanterie is TSupportSetting
+(
+    TagDeContre = "Anti_Infanterie_Mobile"
+    TagAContrer = "Infanterie_Standard"
+    Ratio = 0.2
+    NecessaireAuLancement = false // La mission ne lancera sont attaque que si le ratio est respecté au point de regroupement
+)
+//-------------------------------------------------------------------------
+export SandBag_Renfort_TransportsAbandonnes is TSupportSetting
+(
+    TagDeContre = "AllUnits"
+    TagAContrer = "AllUnits"
+    Ratio = 0.8 // on veut utiliser le plus de transports possible
+    NecessaireAuLancement = false // La mission ne lancera sont attaque que si le ratio est respecté au point de regroupement
+)
+//-------------------------------------------------------------------------
+// POUR LES MISSIONS DE DEFENSE
+//-------------------------------------------------------------------------
+export SandBag_Renfort_AT_Defense is TSupportSetting
+(
+    TagDeContre = "Anti_Char_Mobile"
+    TagAContrer = "Char"
+    VerifierEnnemiesDansLesZonesVoisines = true
+    Ratio = 0.01 // On en veut juste un en gros
+    NecessaireAuLancement = false // La mission ne lancera sont attaque que si le ratio est respecté au point de regroupement
+)
+//-------------------------------------------------------------------------

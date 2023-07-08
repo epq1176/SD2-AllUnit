@@ -1,0 +1,277 @@
+//-------------------------------------------------------------------------
+//----------------------------- MISC ---------------------------------
+//-------------------------------------------------------------------------
+export SandBag_BTDef_MinimumResourceForLaunch_Stage_1 is 200
+export SandBag_BTDef_MinimumResourceForLaunch_Economic is 500
+
+//-------------------------------------------------------------------------
+//------------------------------ SUPPLY -----------------------------------
+//-------------------------------------------------------------------------
+
+// Missions
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Supply_Skirmish is TMacroActionDescriptor_Supply_Specific
+(
+    GenerationType = TGenerationType_BasedOnNumberOfCorridors
+
+    MinimumAmmoRatio = 0.3
+    SupplyAllies = false
+    IgnoreSafePath = false
+
+    PoolModelList = [
+        ~/SandBag_BTDef_Pool_Supply_Skirmish,
+    ]
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Generation,
+            TGenerationSettingHolder(NumberOfCorridorsPerMission = 4 ConsiderOnlySameDescriptor = true)
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Supply_Skirmish_Allied is TMacroActionDescriptor_Supply_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    MinimumAmmoRatio = 0.2
+    SupplyAllies = true
+    IgnoreSafePath = false
+    DisableReinforcement = true
+
+    PoolModelList = [
+        ~/SandBag_BTDef_Pool_Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+
+// Pool Models
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Pool_Supply_Skirmish is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{b6df92c0-6a89-11e9-b43b-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        TagsPriority = [
+            "Vehicule_Logistique",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------
+//------------------------------- RECO ------------------------------------
+//-------------------------------------------------------------------------
+
+// Missions
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Reco is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    GenerationType = TGenerationType_BasedOnNumberOfCorridors
+
+    IgnoreSafePath = false //on n'esquive pas la menace sur le chemin
+    DisableReinforcement = false
+
+    IgnoreVisionForDefensePosition = false
+    IgnoreEnemyDirectionForDefensePosition = true
+    IgnoreDefensePositionSafety = false
+
+    PoolModelList = [
+        ~/SandBag_BTDef_Pool_Reco_Skirmish,
+    ]
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Generation,
+            TGenerationSettingHolder(NumberOfCorridorsPerMission = 4 ConsiderOnlySameDescriptor = true)
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_BTDef_AirReco is TMacroActionDescriptor_AirReco_Specific
+(
+    GenerationType = TGenerationType_FixedSizeByAlliance
+    NumberOfMacro = 1
+
+    PriorityCorridors = []
+    MaxAirplaneCountOnBattlefield = 1
+    TicksBetweenTwoLaunch = 60
+    TicksBetweenTwoMissions = 60
+
+    PoolModelList = [
+        ~/SandBag_BTDef_Pool_AirReco_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+
+// Pool Models
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Pool_Reco_Skirmish is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{b6df92c1-6a89-11e9-9d92-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = false // On veut le moins cher
+        PriceComparisonMethod = EPriceComparatorType/Cheapest
+        TagsPriority = [
+            "Infanterie_Reco",
+            "Vehicule_Reco",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Pool_AirReco_Skirmish is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{b6df92c2-6a89-11e9-a296-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        PriceComparisonMethod = EPriceComparatorType/Random
+        TagsPriority = [
+            "Avion_Reco",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------
+//--------------------------- SUPERCOMMANDER ------------------------------
+//-------------------------------------------------------------------------
+
+export SandBag_BTDef_SuperCommander is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    IgnoreSafePath = true
+    DisableReinforcement = true
+    IgnoreVisionForDefensePosition = true
+    IgnoreEnemyDirectionForDefensePosition = true
+    IgnoreDefensePositionSafety = false
+    PrioritizeCorridorsForTaggedPoolModels = true
+
+    LaunchASAP_RatioMin = 0.01
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [~/SandBag_BTDef_Pool_SuperCommander]
+
+    TaggedPoolModelList =
+    (
+        [
+            (["AttackMain"], [~/SandBag_BTDef_Pool_SuperCommander]),
+        ]
+    )
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/SandBag_BTDef_BasicAirstrikeSupport)
+        ),
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0)
+        ),
+        (
+            ESettingType/Support,
+            TSupportSettingHolder(SettingList = [SandBag_BTDef_Renfort_AT])
+        ),
+        (
+            ESettingType/AvoidCorridorTags,
+            TAvoidCorridorTagsSettingHolder(AvoidedCorridorTags = ["Filler"])
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+private template SandBag_BTDef_Template_Static_SuperCommander
+[
+    OrderedZoneWeightList = [],
+    DefensePointScoringFeatureValue = MAP[],
+]
+is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    IgnoreSafePath = true //on n'esquive pas la menace sur le chemin
+    DisableReinforcement = true
+    IgnoreVisionForDefensePosition = false
+    IgnoreEnemyDirectionForDefensePosition = false
+    IgnoreDefensePositionSafety = false
+    PrioritizeCorridorsForTaggedPoolModels = true
+    OrderedZoneWeightList = <OrderedZoneWeightList>
+    DefensePointScoringFeatureValue = <DefensePointScoringFeatureValue>
+
+    LaunchASAP_RatioMin = 0.01
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [~/SandBag_BTDef_Pool_SuperCommander]
+
+    TaggedPoolModelList =
+    (
+        [
+            (["AttackMain"], [~/SandBag_BTDef_Pool_SuperCommander]),
+        ]
+    )
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/SandBag_BTDef_BasicAirstrikeSupport)
+        ),
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0)
+        ),
+        (
+            ESettingType/Support,
+            TSupportSettingHolder(SettingList = [SandBag_BTDef_Renfort_AT])
+        ),
+        (
+            ESettingType/AvoidCorridorTags,
+            TAvoidCorridorTagsSettingHolder(AvoidedCorridorTags = ["Filler"])
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Static_SuperCommander_FrontLane is SandBag_BTDef_Template_Static_SuperCommander
+(
+    OrderedZoneWeightList = [1]
+    DefensePointScoringFeatureValue = ~/SandBag_WeightDefensePointScoringFeatureMap
+)
+
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Static_SuperCommander_BackLane is SandBag_BTDef_Template_Static_SuperCommander
+(
+    OrderedZoneWeightList = [2]
+    DefensePointScoringFeatureValue = ~/SandBag_WeightDefensePointScoringFeatureMap
+)
+
+//-------------------------------------------------------------------------
+
+// Pool Models
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Pool_SuperCommander is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{b6df92c3-6a89-11e9-95f2-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = false
+        PriceComparisonMethod = EPriceComparatorType/Random
+        TagsPriority = [
+            "Char_SuperCMD",
+            "Vehicule_SuperCMD",
+            "Infanterie_SuperCMD",
+        ]
+    ),
+    ]
+)

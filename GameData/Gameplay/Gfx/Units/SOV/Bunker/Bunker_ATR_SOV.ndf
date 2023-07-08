@@ -1,0 +1,17 @@
+export Gfx_Bunker_ATR_SOV is TDepictionTemplate //arme
+(
+    RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+    Selector = CommonBunkerDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_ATR_placeholder_SOV ),
+        DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_ATR_placeholder_SOV_MID ),
+        DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_ATR_placeholder_SOV_LOW ),
+        DepictionDescriptor_LOD_None()
+    ]
+
+    SubDepictions = []
+    Operators = Operators_ATR_placeholder_SOV
+    Actions = Weapons_ATR_placeholder_SOV
+)
+
+export ModelFile_Bunker_ATR_SOV is ~/ModelFile_ATR_placeholder_SOV

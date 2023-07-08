@@ -1,0 +1,53 @@
+export ZoneEffect_Default is TAreaEffect( MeshMaterial=$/M3D/Shader/Material_AreaFill_Deploiement )
+
+private deploiementZoneManagerDescriptor is TDeploiementZoneManagerDescriptor
+(
+    AreaManagerProxy = $/M3D/Scene/CommandZoneManagerProxy
+    AreaDefaultEffect = ZoneEffect_Default
+
+    CommandPointFeedbackDescriptor = TGfxDescriptorRuseChrono // TMP. On reprend la même techno que pour l'affichage des chronos de carte de ruse sur les zones.
+    (
+        RuseChronoLabelDescriptor = $/GFX/Everything/RuseChronoLabelDescriptor
+    )
+)
+
+private commandementZoneManagerDescriptor is TCommandementZoneManagerDescriptor
+(
+    AreaManagerProxy = $/M3D/Scene/CommandZoneManagerProxy
+    AreaDefaultEffect = ZoneEffect_Default
+    AreaBlockedZoneEffect = TAreaEffect( MeshMaterial=$/M3D/Shader/Material_AreaFill_zonebloquee )
+
+    CommandPointFeedbackDescriptor = TGfxDescriptorRuseChrono // TMP. On reprend la même techno que pour l'affichage des chronos de carte de ruse sur les zones.
+    (
+        RuseChronoLabelDescriptor = $/GFX/Everything/RuseChronoLabelDescriptor
+    )
+)
+
+private strategicZoneManagerDescriptor is TStrategicZoneManagerDescriptor
+(
+    AreaManagerProxy = $/M3D/Scene/LevelDesignZoneManagerProxy
+    AreaDefaultEffect = ZoneEffect_Default
+)
+
+private zoneManagerForIAStratDescriptor is TZoneManagerForIAStratDescriptor
+(
+    AreaManagerProxy = $/M3D/Scene/IAStratZoneManagerProxy
+    AreaDefaultEffect = ZoneEffect_Default
+)
+
+private scriptZoneManagerDescriptor is TScriptZoneManagerDescriptor
+(
+    AreaManagerProxy = $/M3D/Scene/ScriptZoneManagerProxy
+    AreaDefaultEffect = ZoneEffect_Default
+
+    CommandPointFeedbackDescriptor = TGfxDescriptorRuseChrono // TMP. On reprend la même techno que pour l'affichage des chronos de carte de ruse sur les zones.
+    (
+        RuseChronoLabelDescriptor = $/GFX/Everything/RuseChronoLabelDescriptor
+    )
+)
+
+private strategicZoneManagerForIAStratDescriptor is TStrategicIAZoneManagerDescriptor
+(
+    AreaManagerProxy = $/M3D/Scene/IAStratZoneManagerProxy
+    AreaDefaultEffect = ZoneEffect_Default
+)

@@ -1,0 +1,22 @@
+export ModelFile_KV_2_GER is 'GameData:Assets\3D\Units\GER\Char\KV_2_GER\KV_2_GER.Ase2NdfBin'
+
+Modele_KV_2_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_KV_2_GER
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_KV_2_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\KV_2_GER_MID\KV_2_GER_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_KV_2_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\KV_2_GER_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

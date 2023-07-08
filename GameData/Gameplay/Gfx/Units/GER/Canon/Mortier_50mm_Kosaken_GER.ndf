@@ -1,0 +1,22 @@
+export ModelFile_Mortier_50mm_Kosaken_GER is 'GameData:Assets\3D\Units\GER\Canon\GrW_36\GrW_36.Ase2NdfBin'
+
+Modele_Mortier_50mm_Kosaken_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Mortier_50mm_Kosaken_GER
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Mortier_50mm_Kosaken_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\GrW_36_MID\GrW_36_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Mortier_50mm_Kosaken_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\LODS\GrW_36_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

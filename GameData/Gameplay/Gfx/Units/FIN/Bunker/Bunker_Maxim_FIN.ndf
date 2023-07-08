@@ -1,0 +1,17 @@
+export Gfx_Bunker_Maxim_FIN is TDepictionTemplate //arme
+(
+    RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+    Selector = CommonBunkerDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_MG_Maxim_SOV ),
+        DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_MG_Maxim_SOV_MID ),
+        DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_MG_Maxim_SOV_LOW ),
+        DepictionDescriptor_LOD_None()
+    ]
+
+    SubDepictions = []
+    Operators = Operators_HMG_Maxim_FIN
+    Actions = Weapons_HMG_Maxim_FIN
+)
+
+export ModelFile_Bunker_Maxim_FIN is ~/ModelFile_MG_Maxim_SOV

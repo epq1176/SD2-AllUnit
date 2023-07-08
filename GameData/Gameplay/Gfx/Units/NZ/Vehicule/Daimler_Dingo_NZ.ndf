@@ -1,0 +1,22 @@
+export ModelFile_Daimler_Dingo_NZ is 'GameData:Assets\3D\Units\NZ\Vehicule\Dingo\Dingo_NZ.Ase2NdfBin'
+
+Modele_Daimler_Dingo_NZ is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Daimler_Dingo_NZ
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Daimler_Dingo_NZ_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\NZ\Vehicule\Dingo_MID\Dingo_NZ_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Daimler_Dingo_NZ_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\NZ\Vehicule\LODS\Dingo_NZ_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

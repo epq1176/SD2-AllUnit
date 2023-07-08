@@ -1,0 +1,22 @@
+export ModelFile_Citroen_DCA_FR is 'GameData:Assets\3D\Units\FR\Vehicule\Citroen_DCA_FFI\Citroen_DCA_FFI.Ase2NdfBin'
+
+Modele_Citroen_DCA_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Citroen_DCA_FR
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Citroen_DCA_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Vehicule\Citroen_DCA_FFI_MID\Citroen_DCA_FFI_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Citroen_DCA_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Vehicule\LODS\Citroen_DCA_FFI_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

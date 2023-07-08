@@ -1,0 +1,22 @@
+export ModelFile_ISU_152_FIN is 'GameData:Assets\3D\Units\FIN\Char\ISU_152_FIN\ISU_152_FIN.Ase2NdfBin'
+
+Modele_ISU_152_FIN is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_ISU_152_FIN
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_ISU_152_FIN_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Char\ISU_152_FIN_MID\ISU_152_FIN_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_ISU_152_FIN_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Char\LODS\ISU_152_FIN_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

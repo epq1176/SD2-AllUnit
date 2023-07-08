@@ -1,0 +1,22 @@
+export ModelFile_R35_ROU_Camo1 is 'GameData:Assets\3D\Units\ROU\Char\Beutepanzer_35R_ROU_Camo1\Beutepanzer_35R_ROU_Camo1.Ase2NdfBin'
+
+Modele_R35_ROU_Camo1 is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_R35_ROU_Camo1
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_R35_ROU_Camo1_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Char\Beutepanzer_35R_ROU_Camo1_MID\Beutepanzer_35R_ROU_Camo1_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_R35_ROU_Camo1_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Char\LODS\Beutepanzer_35R_ROU_Camo1_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

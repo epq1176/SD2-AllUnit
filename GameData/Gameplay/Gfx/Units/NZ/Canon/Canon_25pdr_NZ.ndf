@@ -1,0 +1,24 @@
+export ModelFile_Canon_25pdr_NZ is 'GameData:Assets\3D\Units\UK\Canon\25_pdr_QF\25_pdr_QF.Ase2NdfBin'
+
+
+Modele_Canon_25pdr_NZ is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Canon_25pdr_NZ
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Canon_25pdr_NZ_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Canon\25_pdr_QF_MID\25_pdr_QF_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Canon_25pdr_NZ_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Canon\LODS\25_pdr_QF_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+

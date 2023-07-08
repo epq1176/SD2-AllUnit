@@ -1,0 +1,1025 @@
+template TabularLine
+[
+    LineNumber : string,
+    TextToken : string,
+    TextColor : string,
+    HintTitleToken : string     = '',
+    HintBodyToken  : string     = "",
+    HintExtendedToken : string  = '',
+    HasBorder : boolean = true
+    //"StAP_HD"
+]
+is BUCKListDescriptor
+(
+    ElementName = 'TabularLine' + <LineNumber>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 30.0]
+    )
+
+    HidePointerEvents = true
+
+    InterItemMargin = TRTTILength( Pixel = 1 )
+    HasBorder = <HasBorder>
+    BorderLineColorToken = 'SD2_LigneBleuGris'
+    BorderThicknessToken = '1'
+    BordersToDraw = ~/TBorderSide/Bottom
+
+    Axis = ~/ListAxis/Horizontal
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0.0, 30.0]
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                HasBackground = true
+                BackgroundBlockColorToken = 'SD2_BleuGris'
+
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ElementName = 'TabularForceLeft' + <LineNumber>
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Center
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                        )
+
+                        TextPadding = TRTTILength4(Magnifiable = [4.0, 0.0, 4.0, 0.0])
+
+                        TextStyle = 'Default'
+                        TypefaceToken = 'Main'
+
+                        TextToken = <TextToken>
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                        TextSize = '22'
+                        TextColor = <TextColor>
+
+                        Hint = BUCKSpecificHintableArea
+                        (
+                            ElementName = "TabularForceLeftHint" + <LineNumber>
+
+                            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                            HintTitleToken      = <HintTitleToken>
+                            HintBodyToken       = <HintBodyToken>
+                            HintExtendedToken   = <HintExtendedToken>
+                        )
+                    )
+                ]
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0.0, 30.0]
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                HasBackground = true
+                BackgroundBlockColorToken = 'SD2_Blanc184'
+                ElementName = 'TabularLeftContainer' + <LineNumber>
+
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ElementName = 'TabularLeft' + <LineNumber>
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Center
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                        )
+
+                        TextPadding = TRTTILength4(Magnifiable = [4.0, 0.0, 4.0, 0.0])
+
+                        TextStyle = 'Default'
+                        TypefaceToken = 'Main'
+
+                        TextToken = <TextToken>
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                        TextSize = '22'
+                        TextColor = <TextColor>
+
+                        Hint = BUCKSpecificHintableArea
+                        (
+                            ElementName = "TabularLeftHint" + <LineNumber>
+
+                            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                            HintTitleToken      = <HintTitleToken>
+                            HintBodyToken       = <HintBodyToken>
+                            HintExtendedToken   = <HintExtendedToken>
+                        )
+                    )
+                ]
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0.0, 30.0]
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                HasBackground = true
+                BackgroundBlockColorToken = 'SD2_Blanc184'
+                ElementName = 'TabularRightContainer' + <LineNumber>
+
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ElementName = 'TabularRight' + <LineNumber>
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [0.0, 30.0]
+                            RelativeWidthHeight = [1.0, 0.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Center
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                        )
+
+                        TextPadding = TRTTILength4(Magnifiable = [4.0, 0.0, 4.0, 0.0])
+
+                        TextStyle = 'Default'
+                        TypefaceToken = 'Main'
+
+                        TextToken = <TextToken>
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                        TextSize = '22'
+                        TextColor = <TextColor>
+
+                        Hint = BUCKSpecificHintableArea
+                        (
+                            ElementName = "TabularRightHint" + <LineNumber>
+                            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                            HintTitleToken      = <HintTitleToken>
+                            HintBodyToken       = <HintBodyToken>
+                            HintExtendedToken   = <HintExtendedToken>
+                        )
+                    )
+                ]
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0.0, 30.0]
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                HasBackground = true
+                BackgroundBlockColorToken = 'SD2_BleuGris'
+
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ElementName = 'TabularForceRight' + <LineNumber>
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Center
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                        )
+
+                        TextPadding = TRTTILength4(Magnifiable = [4.0, 0.0, 4.0, 0.0])
+
+                        TextStyle = 'Default'
+                        TypefaceToken = 'Main'
+
+                        TextToken = <TextToken>
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                        TextSize = '22'
+                        TextColor = <TextColor>
+
+                        Hint = BUCKSpecificHintableArea
+                        (
+                            ElementName = "TabularForceRightHint" + <LineNumber>
+
+                            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                            HintTitleToken      = <HintTitleToken>
+                            HintBodyToken       = <HintBodyToken>
+                            HintExtendedToken   = <HintExtendedToken>
+                        )
+                    )
+                ]
+            )
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private template SubCategoryForSummary
+[
+    TextToken : string,
+] is BUCKTextDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+    )
+
+    TextStyle = "Default"
+    TypefaceToken = 'Main'
+
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    TextToken = <TextToken>
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TextSize = 'SD2_Moyen'
+    TextColor = 'SD2_Blanc184'
+)
+
+//-------------------------------------------------------------------------------------
+ListAutoresolveResultat is BUCKListDescriptor
+(
+    UniqueName = 'ListAutoresolveResultat'
+    ElementName = 'ListAutoresolveResultat'
+    SpotlightComponent = SpotlightDescriptor()
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    HidePointerEvents = true
+
+    Axis = ~/ListAxis/Vertical
+    HasBackground = true
+    BackgroundBlockColorToken = 'SD2_BleuGris'
+
+    InterItemMargin = TRTTILength( Magnifiable = 1 )
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/TitreAvantages
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/AffichageTitre
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/AffichageCalcul
+        ),
+    ]
+    BackgroundComponents =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1,0]
+                MagnifiableWidthHeight = [0.0, 10.0]
+                AlignementToAnchor = [0.0, 0.0]
+                AlignementToFather = [0.0, 0.0]
+            )
+            TextureToken = 'CommonTexture_Ombre_VerticalTileTexture'
+            Rotation = 180
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+BUCKSpecificStrategicAutoResolveSummaryMainComponentDescriptor is BUCKListDescriptor
+(
+    ElementName = 'CalculResultatBataille'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+        AlignementToFather = [0.5, 0.0]
+    )
+
+    HidePointerEvents = true
+
+    HasBackground = false
+    BackgroundBlockColorToken = 'SD2_BleuGris'
+
+    Axis = ~/ListAxis/Vertical
+
+    Elements =
+    [
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ListAutoresolveResultat
+        ),
+
+        // affichage de la barre de force
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = TitreBalanceOfPower
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ElementName = "ForceValuePanel"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0.0, 45.0]
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+                HasBackground = true
+                BackgroundBlockColorToken = 'SD2_BleuGris_phaseB'
+                Components =
+                [
+                    ForceValue
+                ]
+            )
+
+        ),
+        // affichage des pourcentages
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ElementName = "LossPercentageValuePanel"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0.0, 45.0]
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+                HasBackground = true
+                BackgroundBlockColorToken = 'SD2_BleuGris_phaseB'
+                Components =
+                [
+                    LossPercentageValue
+                ]
+            )
+
+        ),
+    ]
+
+
+)
+private TitreBalanceOfPower is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1,0]
+        MagnifiableWidthHeight = [0,20]
+    )
+    HasBackground = true
+    BackgroundBlockColorToken = 'SD2_BleuGris_phaseB'
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1,0]
+                MagnifiableWidthHeight = [0.0, 10.0]
+                AlignementToAnchor = [0.0, 0.0]
+                AlignementToFather = [0.0, 0.0]
+            )
+            TextureToken = 'CommonTexture_Ombre_VerticalTileTexture'
+            Rotation = 180
+        ),
+        BUCKTextDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1,1]
+            )
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+            )
+
+            TextStyle = "Default"
+            TypefaceToken = 'Main'
+            TextToken = 'autoResu'
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+            TextSize = 'SD2_Moyen'
+            TextColor = 'SD2_Blanc184'
+
+        ),
+    ]
+)
+
+
+
+private TitreAvantages is BUCKTextDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0,25]
+    )
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+    )
+
+    TextStyle = "Default"
+
+    HorizontalFitStyle = ~/FitStyle/FitToParent
+
+    TypefaceToken = 'Main'
+    TextToken = 'AutoCal'
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TextSize = 'SD2_Moyen'
+    TextColor = 'SD2_Blanc184'
+
+    HasBackground = false
+    BackgroundBlockColorToken = 'SD2_Noir80'
+
+    Hint = BUCKSpecificHintableArea
+    (
+        DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+        HintBodyToken = 'auto_simb'
+        HintExtendedToken = 'auto_sime'
+    )
+
+)
+//-------------------------------------------------------------------------------------
+private AffichageResultat is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKTextDescriptor
+    (
+        ElementName = "Consequence"
+
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1.0, 0.0]
+            MagnifiableWidthHeight = [0.0, 30.0]
+        )
+
+        ParagraphStyle = TParagraphStyleRTTI
+        (
+            Alignment = UIText_Center
+            VerticalAlignment = UIText_VerticalCenter
+        )
+
+        TextStyle = "Default"
+
+        HorizontalFitStyle = ~/FitStyle/UserDefined
+        VerticalFitStyle = ~/FitStyle/UserDefined
+
+        BigLineAction   = ~/BigLineAction/BalancedMultiline
+
+        UniformDrawer   = $/UserInterface/UIUniformDrawer
+        TypefaceToken = 'Main'
+
+        TextToken = ''
+        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+        TextSize = '24'
+        TextColor = 'SD2_BleuVariable'
+
+        Hint = BUCKSpecificHintableArea
+        (
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = 'auto_const'
+            HintBodyToken = 'auto_consb'
+            HintExtendedToken = 'auto_conse'
+        )
+
+    )
+)
+//-------------------------------------------------------------------------------------
+private AffichageTitre is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 25.0]
+    )
+
+    HasBackground = false
+    BackgroundBlockColorToken = 'SD2_Blanc184'
+
+    Axis = ~/ListAxis/Horizontal
+    Elements =
+    [
+        // Force Armée 1
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "AffichageTitreForcePlayer"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToFather = [0.5, 0.5]
+                    AlignementToAnchor = [0.5, 0.5]
+                )
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Center
+                    VerticalAlignment = UIText_VerticalCenter
+                )
+
+                TextStyle = "Default"
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                BigLineAction   = ~/BigLineAction/BalancedMultiline
+
+                UniformDrawer   = $/UserInterface/UIUniformDrawer
+                TypefaceToken = 'Main'
+
+                TextToken = 'Auto_AttF'
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextSize = 'SD2_Moyen'
+                TextColor = 'SD2_Blanc184'
+            )
+        ),
+        // Armée 1
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "AffichageTitrePlayer"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToFather = [0.5, 0.5]
+                    AlignementToAnchor = [0.5, 0.5]
+                )
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Center
+                    VerticalAlignment = UIText_VerticalCenter
+                )
+
+                TextStyle = "Default"
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                BigLineAction   = ~/BigLineAction/BalancedMultiline
+
+                UniformDrawer   = $/UserInterface/UIUniformDrawer
+                TypefaceToken = 'Main'
+
+                TextToken = 'Auto_Att'
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextSize = 'SD2_Moyen'
+                TextColor = 'SD2_Blanc184'
+            )
+        ),
+        // Armée 2
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "AffichageTitreOther"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToFather = [0.5, 0.5]
+                    AlignementToAnchor = [0.5, 0.5]
+                )
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Center
+                    VerticalAlignment = UIText_VerticalCenter
+                )
+
+                TextStyle = "Default"
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                BigLineAction   = ~/BigLineAction/BalancedMultiline
+
+                UniformDrawer   = $/UserInterface/UIUniformDrawer
+                TypefaceToken = 'Main'
+
+                TextToken = 'Auto_Def'
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextSize = 'SD2_Moyen'
+                TextColor = 'SD2_Blanc184'
+            )
+        ),
+        // Force Armée 2
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "AffichageTitreForceOther"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToFather = [0.5, 0.5]
+                    AlignementToAnchor = [0.5, 0.5]
+                )
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Center
+                    VerticalAlignment = UIText_VerticalCenter
+                )
+
+                TextStyle = "Default"
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                BigLineAction   = ~/BigLineAction/BalancedMultiline
+
+                UniformDrawer   = $/UserInterface/UIUniformDrawer
+                TypefaceToken = 'Main'
+
+                TextToken = 'Auto_DefF'
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextSize = 'SD2_Moyen'
+                TextColor = 'SD2_Blanc184'
+            )
+        ),
+    ]
+)
+
+private ForceValue is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        MagnifiableWidthHeight = [-80.0, -20.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+
+    Components =
+    [
+        BUCKPolygonDescriptor
+        (
+            ElementName = 'ForceValueLeftContainer'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.5, 1.0]
+                AlignementToAnchor = [0.0, 0.5]
+                AlignementToFather = [0.0, 0.5]
+            )
+
+            PolygonShape = PolygonShapeManual
+            (
+                Corners =
+                [
+                    [0.0, 0.0],
+                    [1.0, 1.0],
+                    [0.0, 1.0],
+                ]
+            )
+
+            Color0 = "SD2_Blanc184"
+            Color1 = "SD2_Blanc184"
+        ),
+        BUCKPolygonDescriptor
+        (
+            ElementName = 'ForceValueRightContainer'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.5, 1.0]
+                AlignementToAnchor = [1.0, 0.5]
+                AlignementToFather = [1.0, 0.5]
+            )
+
+            PolygonShape = PolygonShapeManual
+            (
+                Corners =
+                [
+                    [1.0, 0.0],
+                    [1.0, 1.0],
+                    [0.0, 1.0],
+                ]
+            )
+
+            Color0 = "SD2_Blanc184"
+            Color1 = "SD2_Blanc184"
+        ),
+
+        BUCKRackDescriptor
+        (
+            ElementName = 'RackSumInfluence'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [0.0, 20.0]
+                AlignementToFather = [0.5, 0.0]
+                AlignementToAnchor = [0.5, 0.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+
+            BladeDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [27.0, 25.0]
+                )
+
+                HasBorder = true
+                BorderLineColorToken = 'SD2_LigneBleuGris'
+                BorderThicknessToken = '1'
+                BordersToDraw = ~/TBorderSide/Right | ~/TBorderSide/Left
+
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ElementName = 'SumInfluence'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Center
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                        )
+
+                        TextPadding = TRTTILength4(Magnifiable = [1.0, 1.0, 1.0, 0.0])
+
+                        TextStyle = 'ActionPoint'
+                        TypefaceToken = 'Main'
+                        BigLineAction = ~/BigLineAction/ResizeFont
+                        TextToken = ''
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                        TextSize = '22'
+                        TextColor = 'SD2_BlancPur'
+                        HasBackground = true
+                        BackgroundBlockColorToken = 'SD2_BleuGris_phaseB'
+
+                        Hint = BUCKSpecificHintableArea
+                        (
+                            ElementName = "SumInfluenceHint"
+
+                            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                            HintTitleToken = 'auto_pert'
+                            HintBodyToken = 'auto_inf'
+                            HintExtendedToken = 'ops_ratiob'
+                        )
+                    )
+                ]
+            )
+        ),
+    ]
+)
+private LossPercentageValue is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 40.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    FirstMargin  = TRTTILength (Magnifiable = 65.0)
+    LastMargin  = TRTTILength (Magnifiable = 65.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "LeftLossPercentage"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [75.0, 0.0]
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = ~/UIText_Left
+                    VerticalAlignment = ~/UIText_Bottom
+                )
+
+                TextPadding = TRTTILength4(Magnifiable = [4.0, 0.0, 4.0, 0.0])
+
+                TextStyle = 'Default'
+                TypefaceToken = 'Main'
+
+                TextToken = "ARS_1VAL"
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextSize = '16'
+                TextColor = 'SD2_BleuVariable'
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = ~/UIText_Center
+                    VerticalAlignment = ~/UIText_Up
+                )
+
+                TextStyle = 'Default'
+                TypefaceToken = 'Main'
+
+                TextToken = "ARS_LOSS"
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextSize = 'SD2_Moyen'
+                TextColor = 'SD2_Blanc184'
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "RightLossPercentage"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [75.0, 0.0]
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = ~/UIText_Right
+                    VerticalAlignment = ~/UIText_Bottom
+                )
+
+                TextPadding = TRTTILength4(Magnifiable = [4.0, 0.0, 4.0, 0.0])
+
+                TextStyle = 'Default'
+                TypefaceToken = 'Main'
+
+                TextToken = "ARS_1VAL"
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextSize = '16'
+                TextColor = 'SD2_BleuVariable'
+            )
+
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+private AffichageCalcul is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+
+    FirstMargin  = TRTTILength (Magnifiable = 5.0)
+    //LastMargin  = TRTTILength (Magnifiable = 5.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = TabularLine
+            (
+
+                LineNumber ="0"
+                TextToken = "PSELT_N0"
+                TextColor = 'SD2_BleuVariable'
+                HintTitleToken      = 'auto_melt'
+                HintExtendedToken   = 'auto_mele'
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = TabularLine
+            (
+                LineNumber = "1"
+                TextToken = "PSELT_N1"
+                TextColor = 'SD2_BleuVariable'
+                HintTitleToken      = 'auto_armt'
+                HintExtendedToken   = 'auto_arme'
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = TabularLine
+            (
+                LineNumber = "2"
+                TextToken = "PSELT_N2"
+                TextColor = 'SD2_BleuVariable'
+                HintTitleToken      = 'auto_artt'
+                HintExtendedToken   = 'auto_arte'
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = TabularLine
+            (
+                LineNumber = "4"
+                TextToken = "PSELT_N4"
+                TextColor = 'SD2_BleuVariable'
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = TabularLine
+            (
+                LineNumber = "DefenseBonus"
+                TextToken = "PSELT_ND"
+                TextColor = 'SD2_BleuVariable'
+                HintTitleToken      = 'auto_deft'
+                HintBodyToken       = 'auto_defb'
+                HintExtendedToken   = ''
+                HasBorder = false
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0, 5.0]
+                )
+            )
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+AutoresolveUnitSelectionButtonManager is TBUCKRadioButtonManager()
+
+//-------------------------------------------------------------------------------------
+
+UISpecificStrategicAutoResolveSummaryViewDescriptor is TUISpecificStrategicAutoResolveSummaryViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificStrategicAutoResolveSummaryMainComponentDescriptor
+    MainComponentContainerUniqueName = "SpecificStrategicAutoResolveSummaryContainer" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    UnitViewDescriptor = UISpecificSelectionPanelPawnUnitViewDescriptor
+    (
+        RadioButtonManager = ~/AutoresolveUnitSelectionButtonManager
+    )
+
+    TextTokenForceAttacker = 'Auto_AttF'
+    TextTokenAttacker = 'Auto_Att'
+    TextTokenDefender = 'Auto_Def'
+    TextTokenForceDefender = 'Auto_DefF'
+    TextTokenHintDefenseBonus = ''
+)

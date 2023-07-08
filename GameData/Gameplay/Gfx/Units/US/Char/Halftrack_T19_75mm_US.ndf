@@ -1,0 +1,22 @@
+export ModelFile_Halftrack_T19_75mm_US is 'GameData:Assets\3D\Units\USA\Vehicule\T30_HMC\T30_HMC.Ase2NdfBin'
+
+Modele_Halftrack_T19_75mm_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Halftrack_T19_75mm_US
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Halftrack_T19_75mm_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Vehicule\T30_HMC_MID\T30_HMC_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Halftrack_T19_75mm_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Vehicule\LODS\T30_HMC_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

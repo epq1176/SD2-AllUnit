@@ -1,0 +1,22 @@
+export ModelFile_Vidal_G1200_Tempo_CO_FIN is 'GameData:Assets\3D\Units\FIN\Vehicule\Vidal_G1200_Tempo_CO_FIN\Vidal_G1200_Tempo_CO_FIN.Ase2NdfBin'
+
+Modele_Vidal_G1200_Tempo_CO_FIN is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Vidal_G1200_Tempo_CO_FIN
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Vidal_G1200_Tempo_CO_FIN_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Vehicule\Vidal_G1200_Tempo_CO_FIN_MID\Vidal_G1200_Tempo_CO_FIN_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Vidal_G1200_Tempo_CO_FIN_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Vehicule\LODS\Vidal_G1200_Tempo_CO_FIN_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

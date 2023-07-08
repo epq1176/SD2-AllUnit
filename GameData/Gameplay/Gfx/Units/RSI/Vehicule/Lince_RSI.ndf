@@ -1,0 +1,22 @@
+export ModelFile_Lince_RSI is 'GameData:Assets\3D\Units\RSI\Vehicule\Lince_RSI\Lince_RSI.Ase2NdfBin'
+
+Modele_Lince_RSI is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Lince_RSI
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Lince_RSI_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\RSI\Vehicule\Lince_RSI_MID\Lince_RSI_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Lince_RSI_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\RSI\Vehicule\LODS\Lince_RSI_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

@@ -1,0 +1,23 @@
+export ModelFile_DMA_Supply is 'GameData:Assets\3D\Units\FR\Vehicule\DMA_Supply\DMA_Supply.Ase2NdfBin'
+
+Modele_DMA_Supply is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_DMA_Supply
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_DMA_Supply_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Vehicule\DMA_Supply_MID\DMA_Supply_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_DMA_Supply_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Vehicule\LODS\DMA_Supply_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+

@@ -1,0 +1,397 @@
+
+private AutoMatchConfirmButton is ConfirmButton
+(
+    TextToken = 'AB_LAUNCH'
+    ElementName = 'AutoMatchConfirmButton'
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+)
+
+private AutoMatchBackButton is CancelButton
+(
+    TextToken = 'NV_LEAVE'
+    ElementName = 'AutoMatchBackButton'
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+)
+
+private AutoMatchButtonManager is TBUCKRadioButtonManager()
+
+template AllianceButton
+[
+    ElementName : string,
+    TextToken : string,
+    //ColorToken : string,
+    ComponentFrame : TUIFramePropertyRTTI,
+] is BUCKButtonDescriptor
+(
+    ElementName = <ElementName> + "Button"
+    ComponentFrame = <ComponentFrame>
+
+    FitStyle = ~/ContainerFitStyle/FitToContent
+
+    IsTogglable = true
+    CannotDeselect = true
+    RadioButtonManager = ~/AutoMatchButtonManager
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = <ElementName> + "Text"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                AlignementToAnchor = [1.0, 0.5]
+                AlignementToFather = [1.0, 0.5]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+            )
+
+            BigLineAction = ~/BigLineAction/CutByDots
+
+            HorizontalFitStyle = ~/FitStyle/FitToContent
+            VerticalFitStyle = ~/FitStyle/FitToContent
+
+            TextStyle = "Default"
+            TypefaceToken = "Main"
+
+            TextToken = <TextToken>
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+            TextColor = "ButtonHUD"
+            TextSize = "16"
+
+            HasUnderline = true
+            UnderlineColor = "SD2_testLigne"
+            UnderlineThickness = "PanelScore/SoulignageRevenusJoueur"
+        )
+    ]
+)
+
+BUCKSpecificOutGameAutoMatchMainComponentDescriptor is SpecificModaleWindowFrame
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [848.0, 0.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+
+    ContentRelativeWidthHeight = [1.0, 0.0]
+    ContentMagnifiableWidthHeight = [0.0, 200.0]
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/AutoMatchConfirmButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/AutoMatchBackButton ),
+    ]
+
+    ContentComponents =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                AlignementToAnchor = [0.5, 0.5]
+                AlignementToFather = [0.5, 0.5]
+            )
+
+            Axis = ~/ListAxis/Vertical
+
+            FirstMargin = TRTTILength(Magnifiable = 20.0)
+            InterItemMargin = TRTTILength( Magnifiable = 20.0)
+            LastMargin = TRTTILength( Magnifiable = 20.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ElementName = "AllienceComponent"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToAnchor = [0.5, 0.0]
+                            AlignementToFather = [0.5, 0.0]
+                        )
+
+                        Axis = ~/ListAxis/Horizontal
+
+                        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                        FirstMargin = TRTTILength(Magnifiable = 20.0)
+                        InterItemMargin = TRTTILength( Magnifiable = 20.0)
+                        LastMargin = TRTTILength( Magnifiable = 20.0)
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ExtendWeight = 1.0
+                                ComponentDescriptor = AllianceButton
+                                (
+                                    ElementName = "Allies"
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        AlignementToAnchor = [1.0, 0.5]
+                                        AlignementToFather = [1.0, 0.5]
+                                    )
+                                    TextToken = "NATO"
+                                )
+                            ),
+                            BUCKListElementDescriptor
+                            (
+                                ExtendWeight = 1.0
+                                ComponentDescriptor = AllianceButton
+                                (
+                                    ElementName = "Axis"
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        AlignementToAnchor = [0.0, 0.5]
+                                        AlignementToFather = [0.0, 0.5]
+                                    )
+                                    TextToken = "PACT"
+                                )
+                            ),
+                        ]
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ElementName = "RankComponent"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [0.0, 30.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                            AlignementToFather = [0.5, 0.0]
+                        )
+
+                        Axis = ~/ListAxis/Horizontal
+
+                        FirstMargin = TRTTILength(Magnifiable = 20.0)
+                        InterItemMargin = TRTTILength( Magnifiable = 20.0)
+                        LastMargin = TRTTILength( Magnifiable = 20.0)
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ExtendWeight = 1.0
+                                ComponentDescriptor = BUCKTextDescriptor
+                                (
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        AlignementToAnchor = [1.0, 0.5]
+                                        AlignementToFather = [1.0, 0.5]
+                                    )
+
+                                    ParagraphStyle = TParagraphStyleRTTI
+                                    (
+                                        Alignment = UIText_Center
+                                        VerticalAlignment = UIText_VerticalCenter
+                                    )
+
+                                    BigLineAction = ~/BigLineAction/CutByDots
+
+                                    HorizontalFitStyle = ~/FitStyle/FitToContent
+                                    VerticalFitStyle = ~/FitStyle/FitToContent
+
+                                    TextStyle = "Default"
+                                    TypefaceToken = "Main"
+
+                                    TextToken = "Auto_Rck"
+                                    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                                    TextColor = "ButtonHUD/Text"
+                                    TextSize = "16"
+                                )
+                            ),
+                            BUCKListElementDescriptor
+                            (
+                                ExtendWeight = 1.0
+                                ComponentDescriptor = BUCKSpecificRankDescriptor
+                                (
+                                    ElementName = "RankTexture"
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        MagnifiableWidthHeight = [100.0, 30.0]
+                                        AlignementToAnchor = [0.0, 0.5]
+                                        AlignementToFather = [0.0, 0.5]
+                                    )
+                                )
+                            ),
+                        ]
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [0.0, 30.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                            AlignementToFather = [0.5, 0.0]
+                        )
+
+                        Axis = ~/ListAxis/Horizontal
+
+                        FirstMargin = TRTTILength(Magnifiable = 20.0)
+                        InterItemMargin = TRTTILength( Magnifiable = 20.0)
+                        LastMargin = TRTTILength( Magnifiable = 20.0)
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ExtendWeight = 1.0
+                                ComponentDescriptor = BUCKTextDescriptor
+                                (
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        AlignementToAnchor = [1.0, 0.5]
+                                        AlignementToFather = [1.0, 0.5]
+                                    )
+
+                                    ParagraphStyle = TParagraphStyleRTTI
+                                    (
+                                        Alignment = UIText_Center
+                                        VerticalAlignment = UIText_VerticalCenter
+                                    )
+
+                                    HorizontalFitStyle = ~/FitStyle/FitToContent
+                                    VerticalFitStyle = ~/FitStyle/FitToContent
+
+                                    BigLineAction = ~/BigLineAction/CutByDots
+
+                                    TextStyle = "Default"
+                                    TypefaceToken = "Main"
+
+                                    TextToken = "Auto_Dck"
+                                    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                                    TextColor = "ButtonHUD/Text"
+                                    TextSize = "16"
+                                )
+                            ),
+                            BUCKListElementDescriptor
+                            (
+                                ExtendWeight = 1.0
+                                ComponentDescriptor = BUCKSpecificDropdownDescriptor
+                                (
+                                    ElementName = "DeckListDropdown"
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        MagnifiableWidthHeight = [350.0, 30.0]
+                                        AlignementToAnchor = [0.0, 0.5]
+                                        AlignementToFather = [0.0, 0.5]
+                                    )
+                                )
+                            ),
+                        ]
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [0.0, 30.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                            AlignementToFather = [0.5, 0.0]
+                        )
+
+                        Axis = ~/ListAxis/Horizontal
+
+                        FirstMargin = TRTTILength(Magnifiable = 20.0)
+                        InterItemMargin = TRTTILength( Magnifiable = 20.0)
+                        LastMargin = TRTTILength( Magnifiable = 20.0)
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ExtendWeight = 1.0
+                                ComponentDescriptor = BUCKTextDescriptor
+                                (
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        AlignementToAnchor = [1.0, 0.5]
+                                        AlignementToFather = [1.0, 0.5]
+                                    )
+
+                                    ParagraphStyle = TParagraphStyleRTTI
+                                    (
+                                        Alignment = UIText_Center
+                                        VerticalAlignment = UIText_VerticalCenter
+                                    )
+
+                                    HorizontalFitStyle = ~/FitStyle/FitToContent
+                                    VerticalFitStyle = ~/FitStyle/FitToContent
+
+                                    BigLineAction = ~/BigLineAction/CutByDots
+
+                                    TextStyle = "Default"
+                                    TypefaceToken = "Main"
+
+                                    TextToken = "Auto_Eco"
+                                    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                                    TextColor = "ButtonHUD/Text"
+                                    TextSize = "16"
+                                )
+                            ),
+                            BUCKListElementDescriptor
+                            (
+                                ExtendWeight = 1.0
+                                ComponentDescriptor = BUCKTextDescriptor
+                                (
+                                    ElementName = "PlayerEconomy"
+
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        AlignementToFather = [0.0, 0.5]
+                                        AlignementToAnchor = [0.0, 0.5]
+                                    )
+
+                                    HorizontalFitStyle = ~/FitStyle/FitToContent
+                                    VerticalFitStyle = ~/FitStyle/FitToContent
+
+                                    ParagraphStyle = ~/CenteredParagraphStyle
+
+                                    TextStyle = "Default"
+
+                                    TextColor       = "Lobby/PlayerLine"
+                                    TextSize        = "Lobby/PlayerLine"
+                                    TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+                                    TextToken       = "LB_INCFRMT"
+
+                                    TypefaceToken   = "Main"
+                                    UniformDrawer   = $/UserInterface/UIUniformDrawer
+                                )
+                            ),
+                        ]
+                    )
+                ),
+            ]
+        )
+    ]
+)
+
+
+UISpecificOutGameAutoMatchViewDescriptor is TUISpecificOutGameAutoMatchViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificOutGameAutoMatchMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    RankedToken = 'T_RANKED'
+    QuickPlayToken = 'MP_UNRANKD'
+)

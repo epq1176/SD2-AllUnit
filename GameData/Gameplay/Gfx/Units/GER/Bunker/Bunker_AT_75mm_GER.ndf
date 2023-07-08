@@ -1,0 +1,17 @@
+export Gfx_Bunker_AT_75mm_GER is TDepictionTemplate //arme
+(
+    RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+    Selector = CommonBunkerDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_PaK_40_75mm ),
+        DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_PaK_40_75mm_MID ),
+        DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_PaK_40_75mm_LOW ),
+        DepictionDescriptor_LOD_None()
+    ]
+
+    SubDepictions = []
+    Operators = Operators_PaK_40_75mm
+    Actions = Weapons_PaK_40_75mm
+)
+
+export ModelFile_Bunker_AT_75mm_GER is ~/ModelFile_PaK_40_75mm

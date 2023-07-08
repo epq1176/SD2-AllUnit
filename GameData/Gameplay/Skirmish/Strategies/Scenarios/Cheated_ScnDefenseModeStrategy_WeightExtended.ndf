@@ -1,0 +1,368 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export Cheated_ScnDefenseModeStrategy_WeightExtended is TIAGeneralStrategy
+(
+    StrategyName = "IAScnDef"
+    FirstGenerator = Cheated_ScnDef_Mod_Choose_Strategy_WeightExtended
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    IgnorePlayersForCorridorRepartition = true
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    ShouldUseTaggedCorridorsForTouchDown = true
+
+    TransitionList =
+    [
+        Cheated_ScnDef_Mod_Transition_StartToPhaseC_WeightExtended,
+        Cheated_ScnDef_Mod_Transition_StartToPhaseB_WeightExtended,
+        Cheated_ScnDef_Mod_Transition_StartToPhaseA_WeightExtended,
+        Cheated_ScnDef_Mod_Transition_StartToDeploiment_WeightExtended,
+        Cheated_ScnDef_Mod_Transition_DeployToPhaseA_WeightExtended,
+        Cheated_ScnDef_Mod_Transition_PhaseB_WeightExtended,
+        Cheated_ScnDef_Mod_Transition_PhaseC_WeightExtended,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_Condition_CommandPhase_WeightExtended is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_Condition_PhaseB_WeightExtended is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_B'
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_Condition_PhaseC_WeightExtended is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_C'
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_Condition_True_WeightExtended is TSequenceCondition_True
+(
+
+)
+
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_Transition_StartToPhaseC_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_ScnDef_Mod_Choose_Strategy_WeightExtended
+    Condition = Cheated_ScnDef_Mod_Condition_PhaseC_WeightExtended
+    Destination = Cheated_ScnDef_Mod_PhaseC_1_WeightExtended
+)
+export Cheated_ScnDef_Mod_Transition_StartToPhaseB_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_ScnDef_Mod_Choose_Strategy_WeightExtended
+    Condition = Cheated_ScnDef_Mod_Condition_PhaseB_WeightExtended
+    Destination = Cheated_ScnDef_Mod_PhaseB_1_WeightExtended
+)
+export Cheated_ScnDef_Mod_Transition_StartToPhaseA_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_ScnDef_Mod_Choose_Strategy_WeightExtended
+    Condition = Cheated_ScnDef_Mod_Condition_CommandPhase_WeightExtended
+    Destination = Cheated_ScnDef_Mod_PhaseA_1_WeightExtended
+)
+export Cheated_ScnDef_Mod_Transition_StartToDeploiment_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_ScnDef_Mod_Choose_Strategy_WeightExtended
+    Condition = Cheated_ScnDef_Mod_Condition_True_WeightExtended
+    Destination = Cheated_ScnDef_Mod_PhaseDeploiement_1_WeightExtended
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_Transition_DeployToPhaseA_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_ScnDef_Mod_PhaseDeploiement_1_WeightExtended
+    Condition = Cheated_ScnDef_Mod_Condition_CommandPhase_WeightExtended
+    Destination = Cheated_ScnDef_Mod_PhaseA_1_WeightExtended
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_Transition_PhaseB_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_ScnDef_Mod_PhaseA_1_WeightExtended
+    Condition = Cheated_ScnDef_Mod_Condition_PhaseB_WeightExtended
+    Destination = Cheated_ScnDef_Mod_PhaseB_1_WeightExtended
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_Transition_PhaseC_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_ScnDef_Mod_PhaseB_1_WeightExtended
+    Condition = Cheated_ScnDef_Mod_Condition_PhaseC_WeightExtended
+    Destination = Cheated_ScnDef_Mod_PhaseC_1_WeightExtended
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_Choose_Strategy_WeightExtended is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_Scn_Support_AntiTank,
+        ~/Cheated_Scn_Support_Transports,
+
+        ~/Cheated_Scn_Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_PhaseDeploiement_1_WeightExtended is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_Scn_Support_AntiTank,
+        ~/Cheated_Scn_Support_Transports,
+        ~/Cheated_Scn_Supply_Skirmish,
+
+
+        ~/Cheated_ScnDef_Defense_Static_Adaptive_WeightExtended,
+        ~/Cheated_ScnDef_Defense_Static_Adaptive_WeightExtended,
+
+        ~/Cheated_ScnDef_Defense_Static_AA_WeightExtended,
+        ~/Cheated_ScnDef_Static_SuperCommander_WeightExtended,
+
+        ~/Cheated_ScnDef_Artillery_TriggerHappy_WeightExtended,
+
+        ~/Cheated_ScnDef_Defense_Static_Adaptive_WeightExtended,
+        ~/Cheated_ScnDef_Defense_Static_Adaptive_WeightExtended,
+
+        ~/Cheated_ScnDef_Defense_Static_Tank_WeightExtended,    // Mission avec un char lourd en static
+
+        ~/Cheated_ScnDef_Defense_Static_Adaptive_WeightExtended,
+        ~/Cheated_ScnDef_Defense_Static_Adaptive_WeightExtended,
+
+    ] + ~/Cheated_ScnDef_Defenses_Airstrike_Arti_Shuffle_WeightExtended
+
+    +   ~/Cheated_ScnDef_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_A_WeightExtended
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_PhaseA_1_WeightExtended is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_Scn_Support_AntiTank,
+        ~/Cheated_Scn_Support_Transports,
+
+        ~/Cheated_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/Cheated_Scn_Maintain_AirStrike,
+        ~/Cheated_ScnDef_Maintain_Artillery,
+        ~/Cheated_ScnAtk_Maintain_CorridorDefenses,
+        ~/Cheated_ScnAtk_Maintain_DynamicDefenses,
+
+
+        ~/Cheated_ScnDef_Defense_Static_Adaptive_WeightExtended,
+        ~/Cheated_ScnDef_Defense_Static_Adaptive_WeightExtended,
+
+        ~/Cheated_Scn_Airstrike_Assault,
+
+        ~/Cheated_ScnDef_Artillery_TriggerHappy_WeightExtended,
+
+        ~/Cheated_ScnDef_Defense_Static_Adaptive_WeightExtended,
+        ~/Cheated_ScnDef_Defense_Static_Adaptive_WeightExtended,
+
+    ] + ~/Cheated_ScnDef_Defenses_Airstrike_Arti_Shuffle_WeightExtended
+
+    +   ~/Cheated_ScnDef_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_A_WeightExtended
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_PhaseB_1_WeightExtended is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 2
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_Scn_Support_AntiTank,
+        ~/Cheated_Scn_Support_Transports,
+
+        ~/Cheated_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/Cheated_Scn_Maintain_AirStrike,
+        ~/Cheated_ScnDef_Maintain_Artillery,
+        ~/Cheated_ScnAtk_Maintain_CorridorDefenses,
+        ~/Cheated_ScnAtk_Maintain_DynamicDefenses,
+
+
+        ~/Cheated_ScnDef_ZoneAttack_Main_WeightExtended,
+        ~/Cheated_ScnDef_Artillery_Support_WeightExtended,
+
+        ~/Cheated_ScnDef_Defense_Static_Adaptive_WeightExtended,
+        ~/Cheated_ScnDef_Defense_Static_Adaptive_WeightExtended,
+
+        ~/Cheated_ScnDef_Artillery_Expensive_WeightExtended,
+
+        ~/Cheated_Scn_Airstrike_Offense,
+
+        ~/Cheated_ScnDef_Defense_Static_Adaptive_WeightExtended,
+        ~/Cheated_ScnDef_Defense_Static_Adaptive_WeightExtended,
+
+    ] + ~/Cheated_ScnDef_Defenses_Airstrike_Arti_Shuffle_WeightExtended
+
+    +   ~/Cheated_ScnDef_Scaling_B_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_B_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_B_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_B_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_B_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_B_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_B_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_B_WeightExtended
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_PhaseC_1_WeightExtended is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 1
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_Scn_Support_AntiTank,
+        ~/Cheated_Scn_Support_Transports,
+
+        ~/Cheated_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/Cheated_Scn_Maintain_AirStrike,
+        ~/Cheated_ScnDef_Maintain_Artillery,
+        ~/Cheated_ScnAtk_Maintain_CorridorDefenses,
+        ~/Cheated_ScnAtk_Maintain_DynamicDefenses,
+
+
+        ~/Cheated_ScnDef_ZoneAttack_Main_WeightExtended,
+        ~/Cheated_ScnDef_Artillery_Support_WeightExtended,
+
+        ~/Cheated_ScnDef_ZoneAttack_Adaptive_WeightExtended,
+
+        ~/Cheated_Scn_Airstrike_Assault,
+        ~/Cheated_ScnDef_Artillery_TriggerHappy_WeightExtended,
+
+        ~/Cheated_ScnDef_Defense_Static_Adaptive_WeightExtended,
+        ~/Cheated_ScnAtk_Attack_MBT_Support,
+        ~/Cheated_ScnDef_ZoneAttack_Adaptive_WeightExtended,
+
+        ~/Cheated_Scn_Supply_Skirmish_Allied,
+
+    ] + ~/Cheated_ScnDef_Defenses_Airstrike_Arti_Shuffle_WeightExtended
+
+    +   ~/Cheated_ScnDef_Scaling_C_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_C_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_C_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_C_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_C_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_C_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_C_WeightExtended
+    +   ~/Cheated_ScnDef_Scaling_C_WeightExtended
+)
+
+Cheated_ScnDef_Defenses_Airstrike_Arti_Shuffle_WeightExtended is
+[
+    ~/Cheated_Scn_Airstrike_Defense,
+    ~/Cheated_ScnDef_Artillery_Expensive_WeightExtended,
+    ~/Cheated_ScnDef_Defense_Static_Adaptive_WeightExtended,
+    ~/Cheated_Scn_Airstrike_Assault,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_WeightExtended,
+    ~/Cheated_ScnDef_Defense_Static_AA_WeightExtended,
+    ~/Cheated_Scn_Airstrike_Offense,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_1for4Corridors_WeightExtended,
+    ~/Cheated_ScnDef_Defense_Static_Adaptive_WeightExtended,
+    ~/Cheated_Scn_Maintain_AirStrike,
+    ~/Cheated_ScnDef_Maintain_Artillery,
+]
+
+Cheated_ScnDef_Scaling_A_WeightExtended is
+[
+    ~/Cheated_ScnDef_ZoneAttack_Main_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Artillery_Expensive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Defense_Static_Adaptive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_ZoneAttack_Adaptive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Defense_Static_Adaptive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_Autogen_WeightExtended,
+
+    ~/Cheated_ScnDef_Defense_Static_Adaptive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Artillery_Expensive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Defense_Static_Adaptive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Defense_Static_Adaptive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_ZoneAttack_Adaptive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_Autogen_WeightExtended,
+]
+
+Cheated_ScnDef_Scaling_B_WeightExtended is
+[
+    ~/Cheated_ScnDef_ZoneAttack_Main_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Artillery_Expensive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_ZoneAttack_Adaptive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Defense_Static_Adaptive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Defense_Static_Adaptive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_Autogen_WeightExtended,
+
+    ~/Cheated_ScnDef_Defense_Static_Adaptive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Artillery_Expensive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_ZoneAttack_Adaptive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Defense_Static_Adaptive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_ZoneAttack_Adaptive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_Autogen_WeightExtended,
+]
+
+Cheated_ScnDef_Scaling_C_WeightExtended is
+[
+    ~/Cheated_ScnDef_ZoneAttack_Main_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Artillery_Expensive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_ZoneAttack_Adaptive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_ZoneAttack_Adaptive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Defense_Static_Adaptive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_Autogen_WeightExtended,
+
+    ~/Cheated_ScnDef_ZoneAttack_Main_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Artillery_Expensive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_ZoneAttack_Adaptive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Defense_Static_Adaptive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_ZoneAttack_Adaptive_Autogen_WeightExtended,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_Autogen_WeightExtended,
+]

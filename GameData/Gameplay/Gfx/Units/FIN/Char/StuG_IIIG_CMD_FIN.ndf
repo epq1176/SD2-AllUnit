@@ -1,0 +1,21 @@
+export ModelFile_StuG_IIIG_CMD_FIN is 'GameData:Assets\3D\Units\FIN\Char\StuG_IIIG_CMD_FIN\StuG_IIIG_CMD_FIN.Ase2NdfBin'
+Modele_StuG_IIIG_CMD_FIN is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_StuG_IIIG_CMD_FIN
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_StuG_IIIG_CMD_FIN_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Char\StuG_IIIG_CMD_FIN_MID\StuG_IIIG_CMD_FIN_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_StuG_IIIG_CMD_FIN_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Char\LODS\StuG_IIIG_CMD_FIN_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

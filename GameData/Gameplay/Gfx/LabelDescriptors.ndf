@@ -1,0 +1,558 @@
+
+// export pour les statistics
+export LabelManager is TLabelManager
+(
+    SceneForCallbacks = $/M3D/Scene/JustAfterShadingScene
+    Camera = $/M3D/Camera/CameraPrincipale
+    SortLabelsMode = 1 // 1 = SortAlongZ - 2 = SortAlongHorizontalDistance (cf. LabelManager.h)
+)
+
+export LabelTranslateForArea is TLabelTransformPostTranslateForArea
+(
+    Translation = [0,0,0]
+)
+
+
+//------------------------------------------------------------------------------
+//---- FeedbackDescriptors -----------------------------------------------------
+
+FeedbackLabelReferentiel is TModernWarfareLabelTransformation
+(
+    Camera = $/M3D/Camera/CameraPrincipale
+    ScalePerAltitudeConstReso = 1.5 // pas touche! - voir sebastien
+    Scene2D = $/M3D/Scene/Scene_2D_Interface
+    ConstnessFactor = 0.5
+    PostTranslate = [0,0,1000]
+)
+
+
+{old code FeedbackLabelReferentiel is TLabelTransformationComposition
+(
+    Transformations = [
+        TLabelTransformFaceCam
+        (
+            Camera = $/M3D/Camera/CameraPrincipale
+        ),
+        TLabelTransformFakePerspective
+        (
+            ScalePerAltitudeConstReso = 1.5 // pas touche! - voir sebastien
+            Camera = $/M3D/Camera/CameraPrincipale
+            Scene2D = $/M3D/Scene/Scene_2D_Interface
+            ConstnessFactor = 0.6
+        ),
+        TLabelTransformPostTranslate
+        (
+            Translation = [0,0,1000]
+        ),
+    ]
+)}
+
+
+//------------------------------------------------------------------------------
+DebugFeedbackDescriptor is TFeedbackLabelDescriptor
+(
+    UI3DLayer = $/UserInterface/UI3DLayer_General
+    LabelReferentiel = ~/FeedbackLabelReferentiel
+
+    TextTypeface = $/M3D/Typefaces/Typeface3D_Bold
+
+    TextStyle = TTextStyleRTTI
+    (
+        ColorBottom    = [128, 128, 128, 255]
+        ColorUp        = [128, 128, 128, 255]
+        ColorStroke    = [  0,   0,   0, 255]
+        Stroke         = true
+        FontSize       = 14
+        AllowSmallFont = true
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment         = UIText_Left
+        VerticalAlignment = UIText_FirstBaseLine
+        InterLine         = 0
+        LineWidth         = 0
+    )
+
+    TotalTime = 5.0
+    FadeInTime = 0.0
+    FadeOutTime = 1.5
+    InitialOffset = 10.0
+    FinalOffset = 200.0
+
+    UseInputColor = true
+)
+//------------------------------------------------------------------------------
+MoneyFeedbackDescriptor is TFeedbackLabelDescriptor
+(
+    UI3DLayer = $/UserInterface/UI3DLayer_General
+    LabelReferentiel = ~/FeedbackLabelReferentiel
+
+    TextTypeface = $/M3D/Typefaces/Typeface3D_Bold
+
+    TextStyle = TTextStyleRTTI
+    (
+        ColorBottom = [255, 255,   0, 255]
+        ColorUp     = [255, 128,   0, 255]
+        ColorStroke = [  0,   0,   0, 255]
+        Stroke      = true
+        FontSize    = 18
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment         = UIText_Center
+        VerticalAlignment = UIText_FirstBaseLine
+        InterLine         = 0
+        LineWidth         = 0
+    )
+
+    TotalTime = 3.0
+    FadeInTime = 0.0
+    FadeOutTime = 1.5
+    InitialOffset = 10.0
+    FinalOffset = 50.0
+)
+//------------------------------------------------------------------------------
+AmbushFeedbackDescriptor is TFeedbackLabelDescriptor
+(
+    UI3DLayer = $/UserInterface/UI3DLayer_General
+    LabelReferentiel = ~/FeedbackLabelReferentiel
+
+    TextTypeface = $/M3D/Typefaces/Typeface3D_Bold
+
+    TextStyle = TTextStyleRTTI
+    (
+        FontSize    = 18
+        ColorUp     = [255, 216, 0, 255]
+        ColorBottom = [255, 216, 0, 255]
+        ColorStroke = [  0,   0,   0, 255]
+        Stroke      = true
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment         = UIText_Center
+        VerticalAlignment = UIText_FirstBaseLine
+        InterLine         = 0
+        LineWidth         = 0
+    )
+
+    TotalTime = 2.5
+    FadeInTime = 0.0
+    FadeOutTime = 0.0
+    InitialOffset = 0.0
+    FinalOffset = 100.0
+
+    UseInputColor = false
+)
+//------------------------------------------------------------------------------
+DecoyFeedbackDescriptor is TFeedbackLabelDescriptor
+(
+    UI3DLayer = $/UserInterface/UI3DLayer_General
+    LabelReferentiel = ~/FeedbackLabelReferentiel
+
+    TextTypeface = $/M3D/Typefaces/Typeface3D_Bold
+
+    TextStyle = TTextStyleRTTI
+    (
+        FontSize    = 18
+        ColorBottom = [255, 255, 255, 255]
+        ColorUp     = [255, 255, 255, 255]
+        ColorStroke = [  0,   0,   0, 255]
+        Stroke      = false
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment         = UIText_Center
+        VerticalAlignment = UIText_FirstBaseLine
+        InterLine         = 0
+        LineWidth         = 0
+    )
+
+    TotalTime = 3.5
+    FadeInTime = 0.5
+    FadeOutTime = 1.0
+    InitialOffset = 0.0
+    FinalOffset = 80.0
+)
+//------------------------------------------------------------------------------
+GainXPLevelFeedbackDescriptor is TFeedbackLabelDescriptor
+(
+    UI3DLayer = $/UserInterface/UI3DLayer_General
+    LabelReferentiel = ~/FeedbackLabelReferentiel
+
+    TextTypeface = $/M3D/Typefaces/Typeface3D_Bold
+
+    TextStyle = TTextStyleRTTI
+    (
+        FontSize    = 16
+        ColorUp     = [96, 96, 96, 255]
+        ColorBottom = [160, 160, 160, 255]
+        ColorStroke = [  0,   0,   0, 128]
+        Stroke      = true
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment         = UIText_Center
+        VerticalAlignment = UIText_FirstBaseLine
+        InterLine         = 0
+        LineWidth         = 0
+    )
+
+    TotalTime = 2.5
+    FadeInTime = 0.0
+    FadeOutTime = 0.0
+    InitialOffset = 0.0
+    FinalOffset = 100.0
+
+    UseInputColor = true
+)
+//------------------------------------------------------------------------------
+GainActionPointsFeedbackDescriptor is TFeedbackLabelDescriptor
+(
+    UI3DLayer = $/UserInterface/UI3DLayer_General
+    LabelReferentiel = ~/FeedbackLabelReferentiel
+
+    TextTypeface = $/M3D/Typefaces/Typeface3D_Bold
+
+    TextStyle = TTextStyleRTTI
+    (
+        FontSize    = 16
+        ColorUp     = [0, 255, 0, 255]
+        ColorBottom = [128, 255, 128, 255]
+        ColorStroke = [  0,   0,   0, 128]
+        Stroke      = false
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment         = UIText_Center
+        VerticalAlignment = UIText_FirstBaseLine
+        InterLine         = 0
+        LineWidth         = 0
+    )
+
+    TotalTime = 2.5
+    FadeInTime = 0.0
+    FadeOutTime = 0.0
+    InitialOffset = 0.0
+    FinalOffset = 100.0
+)
+//------------------------------------------------------------------------------
+LoseActionPointsFeedbackDescriptor is TFeedbackLabelDescriptor
+(
+    UI3DLayer = $/UserInterface/UI3DLayer_General
+    LabelReferentiel = ~/FeedbackLabelReferentiel
+
+    TextTypeface = $/M3D/Typefaces/Typeface3D_Bold
+
+    TextStyle = TTextStyleRTTI
+    (
+        FontSize    = 16
+        ColorUp     = [255, 0, 0, 0]
+        ColorBottom = [255, 128, 128, 0]
+        ColorStroke = [  0,   0,   0, 0]
+        Stroke      = false
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment         = UIText_Center
+        VerticalAlignment = UIText_FirstBaseLine
+        InterLine         = 0
+        LineWidth         = 0
+    )
+
+    TotalTime = 2.5
+    FadeInTime = 0.0
+    FadeOutTime = 0.0
+    InitialOffset = 0.0
+    FinalOffset = 100.0
+)
+//------------------------------------------------------------------------------
+DeathFeedbackDescriptor is TFeedbackLabelDescriptor
+(
+    UI3DLayer = $/UserInterface/UI3DLayer_General
+    LabelReferentiel = ~/FeedbackLabelReferentiel
+
+    TextTypeface = $/M3D/Typefaces/Typeface3D_Bold
+
+    TextStyle = TTextStyleRTTI
+    (
+        FontSize    = 16
+        ColorUp     = [255, 0, 0, 255]
+        ColorBottom = [255, 128, 128, 255]
+        ColorStroke = [  0,   0,   0, 128]
+        Stroke      = true
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment         = UIText_Center
+        VerticalAlignment = UIText_FirstBaseLine
+        InterLine         = 0
+        LineWidth         = 0
+    )
+
+    TotalTime = 2.5
+    FadeInTime = 0.0
+    FadeOutTime = 0.0
+    InitialOffset = 0.0
+    FinalOffset = 100.0
+)
+//------------------------------------------------------------------------------
+InterceptionFeedbackDescriptor is TFeedbackLabelDescriptor
+(
+    UI3DLayer = $/UserInterface/UI3DLayer_General
+    LabelReferentiel = ~/FeedbackLabelReferentiel
+
+    TextTypeface = $/M3D/Typefaces/Typeface3D_Bold
+
+    TextStyle = TTextStyleRTTI
+    (
+        FontSize    = 16
+        ColorUp     = [255, 0, 0, 255]
+        ColorBottom = [255, 128, 128, 255]
+        ColorStroke = [  0,   0,   0, 128]
+        Stroke      = true
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment         = UIText_Center
+        VerticalAlignment = UIText_FirstBaseLine
+        InterLine         = 0
+        LineWidth         = 0
+    )
+
+    TotalTime = 2.5
+    FadeInTime = 0.0
+    FadeOutTime = 0.0
+    InitialOffset = 0.0
+    FinalOffset = 100.0
+)
+//------------------------------------------------------------------------------
+OrderCancelledFeedbackDescriptor is TFeedbackLabelDescriptor
+(
+    UI3DLayer = $/UserInterface/UI3DLayer_General
+    LabelReferentiel = ~/FeedbackLabelReferentiel
+
+    TextTypeface = $/M3D/Typefaces/Typeface3D_Bold
+
+    TextStyle = TTextStyleRTTI
+    (
+        FontSize    = 16
+        ColorUp     = [255, 0, 0, 255]
+        ColorBottom = [255, 128, 128, 255]
+        ColorStroke = [  0,   0,   0, 128]
+        Stroke      = true
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment         = UIText_Center
+        VerticalAlignment = UIText_FirstBaseLine
+        InterLine         = 0
+        LineWidth         = 0
+    )
+
+    TotalTime = 2.5
+    FadeInTime = 0.0
+    FadeOutTime = 0.0
+    InitialOffset = 0.0
+    FinalOffset = 100.0
+)
+//------------------------------------------------------------------------------
+MeleeLossFeedbackDescriptor is TFeedbackLabelDescriptor
+(
+    UI3DLayer = $/UserInterface/UI3DLayer_General
+    LabelReferentiel = ~/FeedbackLabelReferentiel
+
+    TextTypeface = $/M3D/Typefaces/Typeface3D_Bold
+
+    TextFormatScript = TTextFormatScriptRTTI
+        (
+            Commands = MAP
+            [
+                (
+                    "assault",
+                    TTFSCommand_UISymbol
+                    (
+                        TextureToken = "UseStrategic_SelectionPanel_Assault"
+                        BBMin=[0, -1, 0]
+                        BBMax=[1.5, 0.5, 0]
+                        ShaderDescriptor = $/M3D/Shader/MaterialInterface2D_Blend
+                    )
+                ),
+                (
+                    "default", // BLANC PUR
+                    TTFSCommand_StyleChangeRTTI
+                    (
+                        Style = TTextStyleRTTI
+                        (
+                            FontSize    = 20
+                            ColorBottom = [255, 255, 255, 255]
+                            ColorUp     = [255, 255, 255, 255]
+                            ColorStroke = [  0,   0,   0, 255]
+                            Stroke = false
+                            AllowSmallFont = true
+                        )
+                    )
+                ),
+            ]
+        )
+
+
+    TextStyle = TTextStyleRTTI
+    (
+        FontSize    = 20
+        ColorUp     = [200,195,177,255]
+        ColorBottom = [200,195,177,255]
+        ColorStroke = [  0,   0,   0, 128]
+        Stroke      = true
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment         = UIText_Center
+        VerticalAlignment = UIText_FirstBaseLine
+        InterLine         = 0
+        LineWidth         = 0
+    )
+
+    TotalTime = 2.5
+    FadeInTime = 0.0
+    FadeOutTime = 0.0
+    InitialOffset = 0.0
+    FinalOffset = 100.0
+)
+//------------------------------------------------------------------------------
+ArmoredLossFeedbackDescriptor is TFeedbackLabelDescriptor
+(
+    UI3DLayer = $/UserInterface/UI3DLayer_General
+    LabelReferentiel = ~/FeedbackLabelReferentiel
+
+    TextTypeface = $/M3D/Typefaces/Typeface3D_Bold
+    TextFormatScript = TTextFormatScriptRTTI
+    (
+        Commands = MAP
+        [
+            (
+                "armored",
+                    TTFSCommand_UISymbol
+                    (
+                        TextureToken = "UseStrategic_SelectionPanel_Armored"
+                        BBMin=[0, -1, 0]
+                        BBMax=[1.5, 0.5, 0]
+                        ShaderDescriptor = $/M3D/Shader/MaterialInterface2D_Blend
+                    )
+            ),
+            (
+                "default", // BLANC PUR
+                TTFSCommand_StyleChangeRTTI
+                (
+                    Style = TTextStyleRTTI
+                    (
+                        FontSize    = 16
+                        ColorBottom = [255, 255, 255, 255]
+                        ColorUp     = [255, 255, 255, 255]
+                        ColorStroke = [  0,   0,   0, 255]
+                        Stroke = false
+                        AllowSmallFont = true
+                    )
+                )
+            ),
+        ]
+    )
+    TextStyle = TTextStyleRTTI
+    (
+        FontSize    = 20
+        ColorUp     = [216,151,60,255]
+        ColorBottom = [216,151,60,255]
+        ColorStroke = [  0,   0,   0, 128]
+        Stroke      = true
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment         = UIText_Center
+        VerticalAlignment = UIText_FirstBaseLine
+        InterLine         = 0
+        LineWidth         = 0
+    )
+
+    TotalTime = 2.5
+    FadeInTime = 0.0
+    FadeOutTime = 0.0
+    InitialOffset = 0.0
+    FinalOffset = 100.0
+)
+//------------------------------------------------------------------------------
+SupportFeedbackDescriptor is TFeedbackLabelDescriptor
+(
+    UI3DLayer = $/UserInterface/UI3DLayer_General
+    LabelReferentiel = ~/FeedbackLabelReferentiel
+
+    TextTypeface = $/M3D/Typefaces/Typeface3D_Bold
+    TextFormatScript = TTextFormatScriptRTTI
+    (
+        Commands = MAP
+        [
+            (
+                "artillery",
+                TTFSCommand_UISymbol
+                (
+                    TextureToken = "UseStrategic_SelectionPanel_Artillery"
+                    BBMin=[0, -1, 0]
+                    BBMax=[1.5, 0.5, 0]
+                    ShaderDescriptor = $/M3D/Shader/MaterialInterface2D_Blend
+                )
+            ),
+            (
+                "default", // BLANC PUR
+                TTFSCommand_StyleChangeRTTI
+                (
+                    Style = TTextStyleRTTI
+                    (
+                        FontSize    = 16
+                        ColorBottom = [255, 255, 255, 255]
+                        ColorUp     = [255, 255, 255, 255]
+                        ColorStroke = [  0,   0,   0, 255]
+                        Stroke = false
+                        AllowSmallFont = true
+                    )
+                )
+            ),
+        ]
+    )
+    TextStyle = TTextStyleRTTI
+    (
+        FontSize    = 20
+        ColorUp     = [56,77,72,255]
+        ColorBottom = [56,77,72,255]
+        ColorStroke = [  0,   0,   0, 128]
+        Stroke      = true
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment         = UIText_Center
+        VerticalAlignment = UIText_FirstBaseLine
+        InterLine         = 0
+        LineWidth         = 0
+    )
+
+    TotalTime = 2.5
+    FadeInTime = 0.0
+    FadeOutTime = 0.0
+    InitialOffset = 0.0
+    FinalOffset = 100.0
+)
+//------------------------------------------------------------------------------
+LabelConstantes is TBaseClass
+(
+    VerticalTextOrientation is -9.
+)

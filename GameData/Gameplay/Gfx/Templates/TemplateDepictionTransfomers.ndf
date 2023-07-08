@@ -1,0 +1,187 @@
+//------------------------------------------------------------------------------
+//******************************************************************************
+//------------------------------------------------------------------------------
+// Conversion depiction Tactique -> SteelMan
+template StrategicDepictionTransformer
+[
+    Scale : float
+
+] is TDepictionTransformer
+(
+    TransformationSteps =
+    [
+        TCopyDepictionAlternativesTransformationStep(),
+        TCopyAndScaleSelectorTransformationStep(Scale = <Scale>),
+        TReplaceRenderStyleProviderDescriptorTransformationStep(RenderStyleProviderDescriptor = ~/StrategicRenderStyleProvider),
+        TRemoveSubDepictionsTransformationStep
+        (
+            SubDepictionsToKeep =
+            [
+                // Les depictions des canons sont composées d'une boite vide avec le canon et les servants comme sous-dépictions.
+                // Dans ce cas précis, on doit donc garder la sous-dépiction du canon (c'est la seule chose qui nous intéresse).
+                "Canon_AT"
+            ]
+        )
+    ]
+)
+//------------------------------------------------------------------------------
+//******************************************************************************
+//------------------------------------------------------------------------------
+private StrategicInfantryAnimationFileName is 'Fusilier_Steelman.Ase2NdfBin'
+private StrategicInfantryRunAnimationFileName is 'Fusilier_Run.Ase2NdfBin'
+
+private InfantryStaticAnimationTree is DepictionAnimationTreeNode
+(
+    IAStates = InfanterieStateAll
+    IAOldStates = InfanterieStateAll
+    DefaultAnimationStates = InfanterieStateStand
+    UsedSlots = InfantryAnimationAllSlots
+    Animations = []
+    Childs =
+    [
+    template_DepictionAnimationTreeNode
+    (
+        IAStates = InfanterieStateStand
+        Animation = TDepictionAnimation
+        (
+            Animations =
+            [
+                TemplateAnimationTop   ( Animation = StrategicInfantryAnimationFileName Loop = true),
+                TemplateAnimationBottom( Animation = StrategicInfantryAnimationFileName Loop = true)
+            ]
+        )
+    ),
+    template_DepictionAnimationTreeNode
+    (
+        IAStates = InfanterieStateRun
+        Animation = Fusilier_Run
+    )
+    ]
+)
+
+private StrategicInfantrySkeletalAnimationOperatorDesc is TCosmeticSkeletalAnimationOperatorDesc
+(
+    OperatorId = 'biped'
+    TorsoBone = 'Bip01 Spine'
+    Camera = $/M3D/Camera/CameraPrincipale
+    AnimationTree = InfantryStaticAnimationTree
+    AnimationTransitionsManager = nil
+    CameraDistanceOptimization = true
+)
+
+private StrategicInfantryWeaponDepictionSelector is TLodSelector
+(
+    HighMidLimit = High_Range
+    MidLowLimit = Mid_Range * 3.0
+    LowNoneLimit = Low_Range * 7.0
+    HighKey = 'high'
+    MidKey = 'mid'
+    LowKey = 'low'
+    NoneKey = 'none'
+    Camera = $/M3D/Camera/CameraPrincipale
+    CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+    OptionalLimit = $/GraphicOption/ModelQuality/Value
+)
+
+
+// Conversion depiction Tactique -> SteelMan pour les infanteries.
+template StrategicInfantryDepictionTransformer
+[
+    Scale : float,
+    WeaponSubDepiction
+
+] is TDepictionTransformer
+(
+    TransformationSteps =
+    [
+        TCopyDepictionAlternativesTransformationStep(),
+        TCopyAndScaleSelectorTransformationStep(Scale = <Scale>),
+        TReplaceRenderStyleProviderDescriptorTransformationStep(RenderStyleProviderDescriptor = ~/StrategicInfantryRenderStyleProvider),
+        TAddOperatorsTransformationStep(Operators = [ StrategicInfantrySkeletalAnimationOperatorDesc ]),
+        TAddSubDepictionsTransformationStep // Dois absolument être le dernier de la liste !
+        (
+            SubDepictions = [ <WeaponSubDepiction> ]
+            DepictionSelectorToUse = StrategicInfantryWeaponDepictionSelector
+        )
+    ]
+)
+//------------------------------------------------------------------------------
+//******************************************************************************
+//------------------------------------------------------------------------------
+private MeshModele_Socle is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\Common\Strategic\Socle.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+private MeshModele_Tige is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\Common\Strategic\Tige.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+private SocleDepictionForAerialPawn is TDepictionTemplate
+(
+    RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+    Selector = SocleDepictionSelectorWithScale
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High       ( MeshDescriptor = MeshModele_Socle ),
+        DepictionDescriptor_LOD_Mid        ( MeshDescriptor = MeshModele_Socle ),
+        DepictionDescriptor_LOD_Low        ( MeshDescriptor = MeshModele_Socle ),
+        DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = MeshModele_Socle ),
+        DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = MeshModele_Socle ),
+        DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = MeshModele_Socle ),
+    ]
+)
+
+private AerialPawnDepiction is TDepictionTemplate
+(
+    RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+    Selector = SocleDepictionSelectorWithScale
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High       ( MeshDescriptor = MeshModele_Tige ),
+        DepictionDescriptor_LOD_Mid        ( MeshDescriptor = MeshModele_Tige ),
+        DepictionDescriptor_LOD_Low        ( MeshDescriptor = MeshModele_Tige ),
+        DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = MeshModele_Tige ),
+        DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = MeshModele_Tige ),
+        DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = MeshModele_Tige ),
+    ]
+
+    NodeNamesForSelection = ["Socle", "Avion"]
+    SubDepictions = [
+        TSubDepiction(
+            Anchor = "Socle"
+            Depiction = ~/SocleDepictionForAerialPawn
+        ),
+        TSubDepiction(
+            Anchor = "Avion"
+            Depiction = ~/SocleDepictionForAerialPawn // (Vivien 21/03/2019) Je met le socle parce qu'on ne peut pas laisser nil, mais c'est cette dépiction qu'on va remplacer de toutes façons.
+        )
+    ]
+)
+
+// Conversion depiction Tactique -> SteelMan pour les avions et hélicos
+template StrategicAerialDepictionTransformer
+[
+    Scale : float
+
+] is TDepictionTransformer
+(
+    TransformationSteps =
+    [
+        TCopyDepictionAlternativesTransformationStep(),
+        TCopyAndScaleSelectorTransformationStep(Scale = <Scale>),
+        TReplaceRenderStyleProviderDescriptorTransformationStep(RenderStyleProviderDescriptor = ~/StrategicRenderStyleProvider),
+        TRemoveSubDepictionsTransformationStep(),
+        TUseAsSubDepictionTransformationStep // Dois absolument être le dernier de la liste !
+        (
+            DepictionTemplate = AerialPawnDepiction
+            SubDepictionAnchorToFill = "Avion"
+        )
+    ]
+)
+//------------------------------------------------------------------------------
+//******************************************************************************
+//------------------------------------------------------------------------------

@@ -1,0 +1,22 @@
+export ModelFile_DCA_85mm_M1939_SOV is 'GameData:Assets\3D\Units\SOV\Canon\DCA_85mm_M1944_SOV\DCA_85mm_M1939_SOV.Ase2NdfBin'
+
+Modele_DCA_85mm_M1939_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_DCA_85mm_M1939_SOV
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_DCA_85mm_M1939_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Canon\DCA_85mm_M1944_SOV_MID\DCA_85mm_M1939_SOV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_DCA_85mm_M1939_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Canon\LODS\DCA_85mm_M1939_SOV_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

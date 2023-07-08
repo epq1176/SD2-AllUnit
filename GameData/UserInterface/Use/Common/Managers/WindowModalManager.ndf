@@ -1,0 +1,527 @@
+// Index :
+// • BaseModal (template)
+// • TemporalModal
+// • ConfirmModal
+// • CancelModal
+// • ConfirmCancelModal
+// • ConfirmStandardCancelModal
+// • ModalBlurEffect
+// • ModalManager
+
+//---------------------------------------------------------------------------------
+
+ModalsButtonsWidthHeight is DefaultButtonDims
+
+wargame2MessageManager is TUISpecificDeskPseudoModalMessageManager
+(
+    Resources = ~/OutGameResourceSpecific
+)
+
+//---------------------------------------------------------------------------------
+// ModalWindowFrame
+//---------------------------------------------------------------------------------
+
+template ModalWindowFrame
+[
+    UniqueName : string = '',
+    ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 0.0] AlignementToAnchor = [0.5, 0.5] AlignementToFather = [0.5, 0.5] ),
+
+    TitleElementName = "ScreenName",
+    TitleToken : string = 'UNDEFINED',
+
+    HasBackground : bool = true,
+
+    ContentExtendWeight : float = 0.0,
+    ContentRelativeWidthHeight : float2 = [0.0, 0.0],
+    ContentMagnifiableWidthHeight : float2 = [0.0, 0.0],
+    ContentComponents : LIST<TBUCKContainerDescriptor> = [],
+
+    ButtonList : LIST<TBUCKListElementDescriptor> = [],
+    AdditionalComponents = [],
+]
+is BUCKListDescriptor
+(
+    UniqueName = <UniqueName>
+    ElementName = <UniqueName>
+    ComponentFrame = <ComponentFrame>
+
+    FirstMargin = TRTTILength( Magnifiable = 15.0 )
+    InterItemMargin = TRTTILength( Magnifiable = 15.0 )
+    LastMargin = TRTTILength( Magnifiable = 15.0 )
+    BackgroundComponents = <AdditionalComponents>
+
+    HasBackground = <HasBackground>
+    BackgroundBlockColorToken = "Black80"
+
+    Axis = ~/ListAxis/Vertical
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKSpecificOutGameScreenTitle
+            (
+                ElementName = <TitleElementName>
+                TextToken = <TitleToken>
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = <ContentExtendWeight>
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ElementName = 'Content'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = <ContentRelativeWidthHeight>
+                    MagnifiableWidthHeight = <ContentMagnifiableWidthHeight>
+                    AlignementToFather  = [0.5, 0.0]
+                    AlignementToAnchor  = [0.5, 0.0]
+                )
+
+                Components = <ContentComponents>
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ElementName = 'ButtonList'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToFather  = [0.5, 0.0]
+                    AlignementToAnchor  = [0.5, 0.0]
+                )
+
+                Axis = ~/ListAxis/Horizontal
+                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestBetweenFatherAndChildren
+                InterItemMargin = TRTTILength(Magnifiable = 20.0)
+
+                Elements = <ButtonList>
+            )
+        ),
+    ]
+)
+
+//---------------------------------------------------------------------------------
+// BaseModal
+//---------------------------------------------------------------------------------
+
+template BaseModal
+[
+    MagnifiableWidthHeight : float2,
+    Components : LIST<TBUCKContainerDescriptor> = [],
+    ButtonList : LIST<TBUCKContainerDescriptor> = [],
+    ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 0.0] AlignementToAnchor = [0.5, 0.5] AlignementToFather = [0.5, 0.5] ),
+]
+is ModalWindowFrame
+(
+    ContentMagnifiableWidthHeight = <MagnifiableWidthHeight>
+    ComponentFrame = <ComponentFrame>
+    ContentComponents = <Components>
+    ButtonList = <ButtonList>
+
+    TitleToken = ''
+)
+
+//---------------------------------------------------------------------------------
+// TemporalModal
+//---------------------------------------------------------------------------------
+
+TemporalModal is BaseModal
+(
+    MagnifiableWidthHeight = [500.0, 128.0]
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [500.0, 0.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+                MagnifiableOffset = [0.0, -20.0]
+                AlignementToAnchor = [0.5, 0.5]
+                AlignementToFather = [0.5, 0.5]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            InterItemMargin = TRTTILength( Magnifiable = 5.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKContainerDescriptor(ComponentFrame = TUIFramePropertyRTTI())
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = AnimatedWaitingComponent
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [45.0, 45.0]
+                            AlignementToAnchor = [0.0, 0.5]
+                            AlignementToFather = [0.0, 0.5]
+                        )
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "ModalContent"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToAnchor = [0.0, 0.5]
+                            AlignementToFather = [0.0, 0.5]
+                        )
+
+                        ParagraphStyle = ~/paragraphStyleTextCenter
+                        TextStyle = "Default"
+
+                        TextToken = "M_SAVING"
+                        TextColor = "WaitingModale"
+                        TextSize = "WaitingModale"
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                        TypefaceToken = "MainOutgame"
+                        UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKContainerDescriptor(ComponentFrame = TUIFramePropertyRTTI())
+                )
+            ]
+        )
+    ]
+)
+
+//---------------------------------------------------------------------------------
+// ConfirmModal
+//---------------------------------------------------------------------------------
+
+ConfirmModal is BaseModal
+(
+    MagnifiableWidthHeight = [848.0, 280.0]
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = "ModalContent"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                MagnifiableWidthHeight = [-76.0, 45.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            ParagraphStyle = ~/paragraphStyleTextCenter
+            TextStyle = "Default"
+
+            TextColor = "StandardTextInModal"
+            TextSize = "StandardTextInModal"
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+            TypefaceToken = "MainOutgame"
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+        ),
+    ]
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StandardButton
+            (
+                ElementName = "ConfirmButton"
+                TextToken = "BTN_CONFIR"
+                ButtonMagnifiableWidthHeight = ModalsButtonsWidthHeight
+                ButtonAlignementToFather = [0.0, 0.5]
+                ButtonAlignementToAnchor = [0.0, 0.5]
+            )
+        ),
+    ]
+)
+
+//---------------------------------------------------------------------------------
+// CancelModal
+//---------------------------------------------------------------------------------
+
+CancelModal is BaseModal
+(
+    MagnifiableWidthHeight = [848.0, 280.0]
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = "ModalContent"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                MagnifiableWidthHeight = [-76.0, 45.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            ParagraphStyle = ~/paragraphStyleTextCenter
+            TextStyle = "Default"
+
+            TextColor = "StandardTextInModal"
+            TextSize = "StandardTextInModal"
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+            TypefaceToken = "MainOutgame"
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+        ),
+    ]
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = CancelButton
+            (
+                ElementName = "CancelButton"
+                TextToken = "BTN_CANCEL"
+                ButtonMagnifiableWidthHeight = ModalsButtonsWidthHeight
+                ButtonAlignementToFather = [0.0, 0.5]
+                ButtonAlignementToAnchor = [0.0, 0.5]
+            )
+        ),
+    ]
+)
+
+//---------------------------------------------------------------------------------
+// ConfirmCancelModal
+//---------------------------------------------------------------------------------
+
+ConfirmCancelModal is BaseModal
+(
+    MagnifiableWidthHeight = [848.0, 280.0]
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = "ModalContent"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                MagnifiableWidthHeight = [-76.0, 45.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            ParagraphStyle = ~/paragraphStyleTextCenter
+            TextStyle = "Default"
+            BigLineAction = ~/BigLineAction/BalancedMultiline
+
+            TextColor = "StandardTextInModal"
+            TextSize = "StandardTextInModal"
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+            TypefaceToken = "MainOutgame"
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+        ),
+    ]
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ConfirmButton
+            (
+                ElementName = "ConfirmButton"
+                TextToken = "BTN_CONFIR"
+                ButtonMagnifiableWidthHeight = ~/ModalsButtonsWidthHeight
+                ButtonAlignementToFather = [0.0, 0.5]
+                ButtonAlignementToAnchor = [0.0, 0.5]
+                OverrideTextElementName = true
+                TextElementName = "ConfirmButtonTextElement"
+                HintableAreaElementName = "ConfirmButtonHintableArea"
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = CancelButton
+            (
+                ElementName = "CancelButton"
+                TextToken = "BTN_CANCEL"
+                ButtonMagnifiableWidthHeight = ~/ModalsButtonsWidthHeight
+                ButtonAlignementToFather = [0.0, 0.5]
+                ButtonAlignementToAnchor = [0.0, 0.5]
+                OverrideTextElementName = true
+                TextElementName = "CancelButtonTextElement"
+            )
+        ),
+    ]
+)
+
+//---------------------------------------------------------------------------------
+// ConfirmStandardCancelModal
+//---------------------------------------------------------------------------------
+
+ConfirmStandardCancelModal is BaseModal
+(
+    MagnifiableWidthHeight = [848.0, 280.0]
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = "ModalContent"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                MagnifiableWidthHeight = [-76.0, 45.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            ParagraphStyle = ~/paragraphStyleTextCenter
+            TextStyle = "Default"
+
+            TextColor = "StandardTextInModal"
+            TextSize = "StandardTextInModal"
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+            TypefaceToken = "MainOutgame"
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+        ),
+    ]
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ConfirmButton
+            (
+                ElementName = "ConfirmButton"
+                TextToken = "BTN_CONFIR"
+                ButtonMagnifiableWidthHeight = ModalsButtonsWidthHeight
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StandardButton
+            (
+                ElementName = "StandardButton"
+                ButtonMagnifiableWidthHeight = ModalsButtonsWidthHeight
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = CancelButton
+            (
+                ElementName = "CancelButton"
+                TextToken = "BTN_CANCEL"
+                ButtonMagnifiableWidthHeight = ModalsButtonsWidthHeight
+            )
+        ),
+    ]
+)
+
+//---------------------------------------------------------------------------------
+// ModalBlurEffect
+//---------------------------------------------------------------------------------
+
+private ModalBlurEffect is TModalLayerEffect
+(
+    LayerStatus = $/M3D/Scene/ActiveBlurForModalWindow
+    LayerFactor = $/M3D/Scene/BlurForModalWindowFactor
+    Anim = TUIAnimFactorRTTI
+    (
+        AnimDuration = 0.2
+    )
+)
+
+//---------------------------------------------------------------------------------
+// ModalManager
+//---------------------------------------------------------------------------------
+
+ModalManager is TModalManager
+(
+    Layers = MAP [
+        (~/ModalPriority/Low,       TModalLayerProperties
+                                    (
+                                        ForegroundLayer = $/UserInterface/UILayer_2DInterfaceAboveBlur_OutGame
+                                        BackgroundLayer = $/UserInterface/UILayer_2DInterfaceBlur_OutGame
+                                        LayerEffects =
+                                        [
+                                            ~/ModalBlurEffect,
+                                        ]
+                                    )
+        ),
+        (~/ModalPriority/Normal,    TModalLayerProperties
+                                    (
+                                        ForegroundLayer = $/UserInterface/UILayer_InterfaceModal_EventBlocker
+                                        BackgroundLayer = $/UserInterface/UILayer_InterfaceModal_Background
+                                        LayerEffects =
+                                        [
+                                            ~/ModalBlurEffect,
+                                            TModalLayerEffect
+                                            (
+                                                LayerStatus = $/M3D/Scene/ActiveDarknessBetweenActionAndModal
+                                                LayerFactor = $/M3D/Scene/DarknessBetweenActionAndModalFactor
+                                                Anim = TUIAnimFactorRTTI
+                                                (
+                                                    ParamsAnim = [ 0.4 ]
+                                                    AnimDuration = 0.2
+                                                    Modificator = ~/AnimModificator/InvMaxed
+                                                )
+                                            )
+                                        ]
+                                    )
+        ),
+    ]
+
+    TemporalModal = ~/TemporalModal
+    ConfirmModal = ~/ConfirmModal
+    CancelModal = ~/CancelModal
+    ConfirmCancelModal = ~/ConfirmCancelModal
+    ConfirmStandardCancelModal = ~/ConfirmStandardCancelModal
+)

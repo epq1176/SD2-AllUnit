@@ -1,0 +1,22 @@
+export ModelFile_Opel_Blitz_Flak is 'GameData:Assets\3D\Units\GER\Vehicule\Opel_Blitz_Flak_38\Opel_Blitz_Flak_38.Ase2NdfBin'
+
+Modele_Opel_Blitz_Flak is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Opel_Blitz_Flak
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Opel_Blitz_Flak_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\Opel_Blitz_Flak_38_MID\Opel_Blitz_Flak_38_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Opel_Blitz_Flak_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\LODS\Opel_Blitz_Flak_38_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

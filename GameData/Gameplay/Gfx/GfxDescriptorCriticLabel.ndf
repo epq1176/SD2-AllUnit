@@ -1,0 +1,76 @@
+
+
+CriticLabelReferentiel is TModernWarfareLabelTransformation
+    (
+        Camera = $/M3D/Camera/CameraPrincipale
+        ScalePerAltitudeConstReso = 1.5 // pas touche! - voir sebastien
+        Scene2D = $/M3D/Scene/Scene_2D_Interface
+        ConstnessFactor = 0.5
+        PreTranslate = [0,-50,0]
+        PostTranslate = [0,0,800]
+    )
+{TLabelTransformationComposition
+(
+    Transformations = [
+        TLabelTransformFaceCam
+        (
+            Camera = $/M3D/Camera/CameraPrincipale
+        ),
+        TLabelTransformFakePerspective
+        (
+            ScalePerAltitudeConstReso = 1.5 // pas touche! - voir sebastien
+            Camera = $/M3D/Camera/CameraPrincipale
+            Scene2D = $/M3D/Scene/Scene_2D_Interface
+            ConstnessFactor = 0.5
+        ),
+        TLabelTransformPostTranslate (
+            Translation = [0,0,800]
+        ),
+        TLabelTransformPreTranslate (
+            Translation = [0,-50,0]
+        ),
+    ]
+)
+}
+
+export GfxDescriptorCriticLabel is TGfxDescriptorDebugLabel
+(
+    GFxInstanceDirectRenderHandler = ~/directRenderHandler_default
+
+    VisibilityRange = $/GFX/Visibility/AllRanges/Zoom34
+
+    DebugLabelDescriptor = TDebugLabelDescriptor
+    (
+        UI3DLayer = $/UserInterface/UI3DLayer_General
+        TextureDrawer = $/UserInterface/UITextureDrawer_ColorMultiply
+
+        LabelReferentiel = ~/CriticLabelReferentiel
+
+        Typeface = $/M3D/Typefaces/Typeface3D_Default
+        TextStyle = TTextStyleRTTI
+        (
+            Bold = false
+            Italic = false
+            SubOrSuperScript = 0
+            FontSize = 19
+            Offset = [0,0]
+            ColorBottom = [255,  0,  0,255]
+            ColorUp     = [255,  0,  0,255]
+            ColorStroke = [  0,  0,  0,255]
+            Stroke = false
+        )
+        ParagraphStyle = TParagraphStyleRTTI
+        (
+            Alignment         = UIText_Left
+            VerticalAlignment = UIText_VerticalCenter // UIText_FirstBaseLine
+            InterLine         = 0
+            //LineWidth         = 230 //  121 - 14 = 107    + 126 = 233
+            //MaxLine           = 1
+            //BigWordAction = 3 // BigWordLetRun (cf .cpp)
+        )
+        Margins = [5,3]
+
+        DefaultColor = [ 128, 128, 128, 128 ]
+        DefaultLineColor = [ 255, 255, 255, 255 ]
+    )
+)

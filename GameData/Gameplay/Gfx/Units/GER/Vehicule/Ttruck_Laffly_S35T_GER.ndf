@@ -1,0 +1,22 @@
+export ModelFile_Ttruck_Laffly_S35T_GER is 'GameData:Assets\3D\Units\GER\Vehicule\Truck_Laffly_S35T_GER\Truck_Laffly_S35T_GER.Ase2NdfBin'
+
+Modele_Ttruck_Laffly_S35T_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Ttruck_Laffly_S35T_GER
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Ttruck_Laffly_S35T_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\Truck_Laffly_S35T_GER_MID\Truck_Laffly_S35T_GER_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Ttruck_Laffly_S35T_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\LODS\Truck_Laffly_S35T_GER_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

@@ -1,0 +1,23 @@
+export ModelFile_Truck_WC52_US is 'GameData:Assets\3D\Units\USA\Vehicule\WC52_DCA\WC52_DCA.Ase2NdfBin'
+
+Modele_Truck_WC52_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Truck_WC52_US
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Truck_WC52_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Vehicule\WC52_DCA_MID\WC52_DCA_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Truck_WC52_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Vehicule\LODS\WC52_DCA_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+

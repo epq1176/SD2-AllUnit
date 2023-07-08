@@ -1,0 +1,22 @@
+export ModelFile_T80_SOV is 'GameData:Assets\3D\Units\SOV\Char\T80_SOV\T80_SOV.Ase2NdfBin'
+
+Modele_T80_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_T80_SOV
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_T80_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\T80_SOV_MID\T80_SOV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_T80_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\LODS\T80_SOV_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

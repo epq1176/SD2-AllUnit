@@ -1,0 +1,65 @@
+#ifdef EUG_PC
+#ifndef EUG_POSIX
+#define HAS_MULTITOUCH_SUPPORT
+#endif
+#endif
+
+SelectionResources is TSelectionHandlerInGameResources
+(
+    RenderToolbox               = ~/SelectionRenderToolBox
+    WorldForStereo              = $/M3D/Scene/DefaultWorld
+    DrawingParameters           = $/M3D/Input/SelectionHandlerDrawingParameters
+
+    UserInputLayer                            = $/M3D/Input/UserInputLayerHandler/InputLayer_SelectionInGame
+    UserInputLayer_SquareSelection            = $/M3D/Input/UserInputLayerHandler/InputLayer_SquareSelection
+
+    Camera                                    = $/M3D/Camera/CameraPrincipale
+    World                                     = $/M3D/Scene/DefaultWorld
+    MessageDrawer                             = $/M3D/Scene/SelectionHandlerMessageOnScreenDrawer
+
+    MouseSelectionHandlerInGame               = ~/MouseSelectionHandlerInGame
+#ifdef HAS_MULTITOUCH_SUPPORT
+    TouchScreenSelectionHandlerInGame         = ~/TouchScreenSelectionHandlerInGame
+#endif
+
+    DebugSelection                            = false // Debug de sélection (affichage des BBox des unites)
+
+    SceneReferenceForSelection                = $/M3D/Scene/Scene_2D_Interface
+
+    UpdateDynamicValuesCommandName            = CommandName/OptionsProfileSelection
+    UseStickySelection                        = MAP
+    [
+        (
+            'Tactic',
+            $/GameplayOption/StickySelectionValue
+        ),
+        (
+            'Strategic',
+            $/GameplayOption/StickySelectionStrategicValue
+        ),
+    ]
+#ifdef EUG_PC
+    // For Mac
+    ClearSelectionCommand = InGameKeyCommands/ClearSelection
+    ClearSelectionKeyEventHandler = TKeyboardKeyEventHandler
+    (
+        ActivateAtStart = false
+        UserInputLayer = $/M3D/Input/UserInputLayerHandler/InputLayer_ClearSelection
+        AllowedOption = $/VersionOption/AllowFinalKeys
+        Name = 'Clear Selection'
+        KeyboardKeyEvents =
+        [
+            TKeyExecuteNamedEvent
+            (
+                KeyMapping = TKeyMapping
+                (
+                    KeyAsString = "ESCAPE"
+                )
+                EventsName = [ InGameKeyCommands/ClearSelection ]
+            ),
+        ]
+    )
+#endif
+    KeyboardPresetUpdater = $/KeyboardPreset/KeyboardPresetUpdater
+    SquareSelectionActive = true
+)

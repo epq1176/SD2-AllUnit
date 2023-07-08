@@ -1,0 +1,73 @@
+
+DebugModuleDescriptor is TDebugModuleDescriptor
+(
+)
+
+NilDescriptorIfGhost is TModuleSelectorFilter
+(
+    Condition  = TModuleSelectorCondition_ParamEquals_Integer(ParamId=~/Parameter_ModuleCreationSelectionFilter  ParamValue=~/ModuleCreationFilter_Ghost)
+    Descriptor = nil
+)
+
+NilDescriptorIfCadavre is TModuleSelectorFilter
+(
+    Condition  = TModuleSelectorCondition_ParamEquals_Integer(ParamId=~/Parameter_ModuleCreationSelectionFilter  ParamValue=~/ModuleCreationFilter_Cadavre)
+    Descriptor = nil
+)
+
+NilDescriptorIfGhostOrCadavre is TModuleSelectorFilter
+(
+    Condition  = TModuleSelectorCondition_OR(
+        A=TModuleSelectorCondition_ParamEquals_Integer(ParamId=~/Parameter_ModuleCreationSelectionFilter  ParamValue=~/ModuleCreationFilter_Cadavre)
+        B=TModuleSelectorCondition_ParamEquals_Integer(ParamId=~/Parameter_ModuleCreationSelectionFilter  ParamValue=~/ModuleCreationFilter_Ghost)
+    )
+
+    Descriptor = nil
+)
+
+NilDescriptorIfCadavreOrGhostNotForProd is TModuleSelectorFilter
+(
+    Condition  = TModuleSelectorCondition_OR(
+        A=TModuleSelectorCondition_AND(
+            A=TModuleSelectorCondition_ParamEquals_Integer(ParamId=~/Parameter_ModuleCreationSelectionFilter  ParamValue=~/ModuleCreationFilter_Ghost)
+            B=TModuleSelectorCondition_ParamEquals_Boolean(ParamId=~/Parameter_IsForProduction ParamValue=False))
+        B=TModuleSelectorCondition_ParamEquals_Integer(ParamId=~/Parameter_ModuleCreationSelectionFilter  ParamValue=~/ModuleCreationFilter_Cadavre)
+    )
+
+    Descriptor = nil
+)
+
+LinkTeamModuleDescriptor is TLinkTeamModuleDescriptor
+(
+)
+
+InfluenceDataModuleSelector is TModuleSelector
+(
+     Default = TInfluenceDataModuleDescriptor
+     (
+     )
+     Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+)
+
+EffectApplierModuleSelector is TModuleSelector
+(
+    Default        = TEffectApplierModuleDescriptor
+    (
+    )
+    Selection      = [ ~/NilDescriptorIfGhost ]
+)
+
+OrderDisplayModuleSelector is TModuleSelector
+(
+    Default            = TOrderDisplayModuleDescriptor
+        (
+        )
+    Selection          = [ ~/NilDescriptorIfCadavre]
+)
+
+PackSignauxModuleSelector is TModuleSelector
+(
+    Default        = TPackSignauxModuleDescriptor
+    (
+    )
+)

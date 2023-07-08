@@ -1,0 +1,120 @@
+template TemplateMeshDescriptor_HMG_Vickers_SA [ ModelFile ] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+
+ModelFile_Boites_Vickers_SA_Gun is 'GameData:Assets\3D\Units\UK\Canon\Vickers_Gun\Boites_Vickers_Gun.Ase2NdfBin'
+
+Gfx_HMG_Vickers_SA_1 is TDepictionTemplate //servant gauche
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_HMG_Vickers_SA( ModelFile = ModelFile_Rifles_SA)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_HMG_Vickers_SA( ModelFile = ModelFile_Rifles_SA)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_HMG_Vickers_SA( ModelFile = ModelFile_Rifles_SA)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_HMG_Vickers_SA( ModelFile = ModelFile_Rifles_SA)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_ServantMG_Gauche
+)
+
+Gfx_HMG_Vickers_SA_2 is TDepictionTemplate //servant droite
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_HMG_Vickers_SA( ModelFile = ModelFile_Rifles_SA_Secondary)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_HMG_Vickers_SA( ModelFile = ModelFile_Rifles_SA_Secondary)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_HMG_Vickers_SA( ModelFile = ModelFile_Rifles_SA_Secondary)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_HMG_Vickers_SA( ModelFile = ModelFile_Rifles_SA_Secondary)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_ServantMG_Droite
+)
+
+//Arme
+// HMG_Vickers_UK_Anim_Tree is DepictionAnimationTreeNode
+// (
+//     IAStates = AnimationStateAll
+//     IAOldStates = AnimationStateAll
+//     DefaultAnimationStates = AnimationStateEngineStopping
+//     Animations =
+//     (
+//         [TemplateAnimation(Animation= 'Vickers_Gun_Idle' + '.Ase2NdfBin' Loop=false EventAnimation=false AnimationPath = AnimationPath_HMG_Vickers_SA Mask = AnimationMask_All())]
+//     )
+
+//     Childs =
+//     [
+//         TAnimNode(IAStates = AnimationStateInstantFire                                                                  Anim = 'Vickers_Gun_Fire'       Loop = false EventAnimation = true AnimationPath = AnimationPath_HMG_Vickers_SA Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStopping | AnimationStateEngineStopTurning                             Anim = 'Vickers_Gun_Deploy'     Loop = false AnimationPath = AnimationPath_HMG_Vickers_SA Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStarting | AnimationStateEngineStartTurning                            Anim = 'Vickers_Gun_Fold'       Loop = false AnimationPath = AnimationPath_HMG_Vickers_SA Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateLeft                                           Anim = 'Vickers_Gun_Turn_Left'  Loop = true  AnimationPath = AnimationPath_HMG_Vickers_SA Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateRight                                          Anim = 'Vickers_Gun_Turn_Right' Loop = true  AnimationPath = AnimationPath_HMG_Vickers_SA Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateMoving | AnimationStateEngineRunning                                         Anim = 'Vickers_Gun_Move'       Loop = true  AnimationPath = AnimationPath_HMG_Vickers_SA Mask = AnimationMask_All()
+//             Childs = [
+//                 TAnimNode(IAStates = AnimationStateBack                                                                 Anim = 'Vickers_Gun_Move_Back'  Loop = true  AnimationPath = AnimationPath_HMG_Vickers_SA Mask = AnimationMask_All()),
+//         ]),
+//     ]
+// )
+
+// DepictionOperator_SkeletalAnimation_HMG_Vickers_SA is [Template_DepictionOperator_SkeletalAnimation_With_Tree_TEST(AnimationTree = HMG_Vickers_UK_Anim_Tree)]
+
+Gfx_HMG_Vickers_SA_Weapon is TDepictionTemplate //arme
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = CommonDepictionSelector
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_HMG_Vickers_SA ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_HMG_Vickers_SA_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_HMG_Vickers_SA_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_HMG_Vickers_SA ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_HMG_Vickers_SA_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_HMG_Vickers_SA_LOW ),
+        ]
+
+        SubDepictions = []
+        Operators = //DepictionOperator_SkeletalAnimation_MMG_M1919_Rangers_US +
+            DepictionOperatorNode_ResetUnit +
+            DepictionOperator_Carriable_MMG +
+            DepictionOperator_TurretAim_MMG +
+            DepictionOperator_TurretRecoil_MMG
+        Actions = Weapons_HMG_Vickers_SA
+    )
+
+SubDepiction_Servant_1_HMG_Vickers_SA is TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_HMG_Vickers_SA_1 )
+SubDepiction_Servant_2_HMG_Vickers_SA is TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_HMG_Vickers_SA_2 )
+SubDepiction_Canon_AT_HMG_Vickers_SA is TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_HMG_Vickers_SA_Weapon )
+
+Gfx_HMG_Vickers_SA is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate //les boites
+    (
+        OverrideMeshBoundingBoxMin = [-500,-500,0]
+        OverrideMeshBoundingBoxMax = [ 500, 500,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_HMG_Vickers_SA( ModelFile = ModelFile_Boites_Vickers_Gun) ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_HMG_Vickers_SA( ModelFile = ModelFile_Boites_Vickers_Gun) ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_HMG_Vickers_SA( ModelFile = ModelFile_Boites_Vickers_Gun) ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_HMG_Vickers_SA( ModelFile = ModelFile_Boites_Vickers_Gun) ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_HMG_Vickers_SA( ModelFile = ModelFile_Boites_Vickers_Gun) ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_HMG_Vickers_SA( ModelFile = ModelFile_Boites_Vickers_Gun) ),
+        ]
+        NodeNamesForSelection = [ 'Canon_AT', 'servant_G' , 'servant_D']
+        SubDepictions = [SubDepiction_Servant_1_HMG_Vickers_SA,
+                        SubDepiction_Servant_2_HMG_Vickers_SA,
+                        SubDepiction_Canon_AT_HMG_Vickers_SA]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+    )
+)

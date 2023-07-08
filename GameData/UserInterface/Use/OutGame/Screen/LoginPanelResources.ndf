@@ -1,0 +1,1531 @@
+private LoginModalFirstConnexionButtonDescriptor is StandardButton
+(
+    ElementName = "CreateButton"
+    TextToken = 'CP_FIRSTCO'
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    //FocusMapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private LoginModalChangePasswordButtonDescriptor is StandardButton
+(
+    ElementName = "ChangePasswordButton"
+    TextToken = 'CP_CHGPASS'
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    //FocusMapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private LoginModalLoginLostButtonDescriptor is StandardButton
+(
+    ElementName = "LoginLostButton"
+    TextToken = 'CP_LOGFRGT'
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    //FocusMapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private LoginModalPasswordLostButtonDescriptor is StandardButton
+(
+    ElementName = "PasswordLostButton"
+    TextToken = 'CP_FORGOT'
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    // FocusMapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private LoginModalLinkButtonDescriptor is ConfirmButton
+(
+    ElementName = "LinkButton"
+    TextToken = 'BTN_LINK'
+
+    //FocusMapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private LoginModalConnectButtonDescriptor is ConfirmButton
+(
+    ElementName = "ConnectButton"
+    TextToken = 'BTN_CONNEC'
+
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private LoginModalSendMailButtonDescriptor is ConfirmButton
+(
+    ElementName = "SendMailButton"
+    TextToken = 'BTN_smail'
+
+    //FocusMapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private LoginModalForgotPasswordSendMailButtonDescriptor is StandardButton
+(
+    ElementName = "SendMailButton"
+    TextToken = 'BTN_smail'
+
+    //FocusMapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private LoginModalButtonListDescriptor is BUCKListDescriptor
+(
+    InterItemMargin = TRTTILength(Magnifiable = 20.0)
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestBetweenFatherAndChildren
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private LoginModalChangeButtonDescriptor is ConfirmButton
+(
+    ElementName = "ChangeButton"
+    TextToken = 'BTN_CHANGE'
+
+    //FocusMapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private LoginModalConfirmButtonDescriptor is ConfirmButton
+(
+    ElementName = "ConfirmButton"
+    TextToken = 'BTN_CONFIR'
+
+    //FocusMapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private LoginModalYesButtonDescriptor is ConfirmButton
+(
+    ElementName = "YesButton"
+
+    ButtonMagnifiableWidthHeight = [148.0, 33.0]
+
+    TextToken = 'Val_YesMaj'
+
+    //FocusMapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private LoginModalRecoverButtonDescriptor is ConfirmButton
+(
+    ElementName = "RecoverButton"
+
+    TextToken = 'RL_Recov'
+
+    //FocusMapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private CreateAccountModalCreateButtonDescriptor is ConfirmButton
+(
+    ElementName = "CreateButton"
+
+    TextToken = 'CP_FIRSTCO'
+
+    //FocusMapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private MigrateWargamingAccountModalButtonDescriptor is ConfirmButton
+(
+    ElementName = "MigrateButton"
+
+    TextToken = 'CP_MIGRATE'
+
+    //FocusMapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private LoginModalCancelButtonDescriptor is CancelButton
+(
+    ElementName = "CancelButton"
+    TextToken = 'BTN_CANCEL'
+
+    //FocusMapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private LoginModalNoButtonDescriptor is CancelButton
+(
+    ElementName = "NoButton"
+
+    ButtonMagnifiableWidthHeight = [148.0, 33.0]
+
+    TextToken = 'Val_NoMaj'
+
+    //FocusMapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private LoginModalWindowFrame is SpecificModaleWindowFrame
+(
+    UniqueName = "LoginModal"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [850.0, 0.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+
+    ContentRelativeWidthHeight = [1.0, 0.0]
+    ContentMagnifiableWidthHeight = [0.0, 300.0]
+    TitleToken = 'T_CONNECT'
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/LoginModalConnectButtonDescriptor),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/LoginModalLinkButtonDescriptor),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/LoginModalFirstConnexionButtonDescriptor),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/LoginModalCancelButtonDescriptor),
+    ]
+    AdditionalComponents =
+        [
+            OmbrePanel
+        ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private ChangePasswordModalWindowFrame is SpecificModaleWindowFrame
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [1317.0, 0.0]
+        AlignementToFather = [0.5, 0.5]
+        AlignementToAnchor = [0.5, 0.5]
+    )
+
+    ContentRelativeWidthHeight = [1.0, 0.0]
+    ContentMagnifiableWidthHeight = [0.0, 230.0] // +183
+    TitleToken = 'T_CHGPASS'
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/LoginModalChangeButtonDescriptor ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/LoginModalCancelButtonDescriptor ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private RecoverLoginModalWindowFrame is SpecificModaleWindowFrame
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [850.0, 0.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+
+    ContentRelativeWidthHeight = [1.0, 0.0]
+    ContentMagnifiableWidthHeight = [0.0, 80.0]
+    TitleToken = 'T_CHGLOGIN'
+
+    ButtonList = [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/LoginModalRecoverButtonDescriptor ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/LoginModalCancelButtonDescriptor ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private ForgotPasswordModalWindowFrame is SpecificModaleWindowFrame
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [1000.0, 0.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+
+    ContentRelativeWidthHeight = [1.0, 0.0]
+    ContentMagnifiableWidthHeight = [0.0, 300.0]
+    TitleToken = 'T_FPASSWD'
+
+    ButtonList = [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/LoginModalRecoverButtonDescriptor ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/LoginModalCancelButtonDescriptor ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private CreateAccountModalWindowFrame is SpecificModaleWindowFrame
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [1000.0, 0.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+
+    ContentRelativeWidthHeight = [1.0, 0.0]
+    ContentFitStyle = ~/ContainerFitStyle/FitToContentVertically
+    TitleToken = 'T_CrAcc'
+
+    ButtonList = [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/CreateAccountModalCreateButtonDescriptor ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/LoginModalCancelButtonDescriptor ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private MigrateWargamingAccountModalWindowFrame is SpecificModaleWindowFrame
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [1000.0, 0.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+
+    ContentRelativeWidthHeight = [1.0, 0.0]
+    ContentFitStyle = ~/ContainerFitStyle/FitToContentVertically
+    TitleToken = 'TMIGWARGA'
+
+    ButtonList = [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/MigrateWargamingAccountModalButtonDescriptor ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/LoginModalCancelButtonDescriptor ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private ConnectingModalDescriptor is SpecificModaleWindowFrame
+(
+    ContentMagnifiableWidthHeight = [650.0, 60.0]
+    TitleToken = 'LOGIN_CON'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [650.0, 0.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+
+    ContentComponents =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI()
+
+            Axis = ~/ListAxis/Horizontal
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+            InterItemMargin = TRTTILength( Magnifiable = 5.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKContainerDescriptor(ComponentFrame = TUIFramePropertyRTTI())
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = AnimatedWaitingComponent
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [45.0, 45.0]
+                            AlignementToFather = [0.0, 0.5]
+                            AlignementToAnchor = [0.0, 0.5]
+                        )
+                    )
+                ),
+
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            AlignementToFather = [0.0, 0.5]
+                            AlignementToAnchor = [0.0, 0.5]
+                        )
+
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                        ParagraphStyle = ~/paragraphStyleTextCenter
+                        TextStyle = "Default"
+
+                        TextColor       = "SD2_Blanc184"
+                        TextSize        = "LoginModale/Default"
+                        TextToken       = "LOGIN_WAI"
+                        TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+                        TypefaceToken   = "MainOutgame"
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKContainerDescriptor(ComponentFrame = TUIFramePropertyRTTI())
+                ),
+            ]
+        )
+    ]
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = CancelButton
+            (
+                ElementName = "CancelButton"
+                TextToken = 'BTN_CANCEL'
+
+                Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+
+                HintTitleToken = ""
+                HintBodyToken = ""
+                HintDico = ~/LocalisationConstantes/dico_interface_outgame
+            )
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+template AccountQuestionModalDescriptor
+[
+    TextToken : string
+]
+is WindowFrame
+(
+    ContentMagnifiableWidthHeight = [850.0, 328.0]
+    TitleToken = 'T_ACCASK'
+
+    ContentComponents =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            Components =
+            [
+                BUCKTextDescriptor(
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                        AlignementToFather = [0.5, 0.5]
+                        AlignementToAnchor = [0.5, 0.5]
+                    )
+
+                    ParagraphStyle = ~/paragraphStyleTextCenter
+                    TextStyle = "Default"
+
+                    TextColor       = "LoginModale/Default"
+                    TextSize        = "LoginModale/Default"
+                    TextToken       = <TextToken>
+                    TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+                    TypefaceToken   = "MainOutgame"
+                    UniformDrawer   = $/UserInterface/UIUniformDrawer
+                ),
+            ]
+        )
+    ]
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ConfirmButton
+            (
+                ElementName = "YesButton"
+                TextToken = "Val_YesMaj"
+
+                Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+
+                HintTitleToken = ""
+                HintBodyToken = ""
+                HintDico = ~/LocalisationConstantes/dico_interface_outgame
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = CancelButton
+            (
+                ElementName = "NoButton"
+                TextToken = "Val_NoMaj"
+
+                Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+
+                HintTitleToken = ""
+                HintBodyToken = ""
+                HintDico = ~/LocalisationConstantes/dico_interface_outgame
+            )
+        ),
+    ]
+)
+
+private AccountQuestionEugenModalDescriptor is AccountQuestionModalDescriptor
+(
+    TextToken = "Ask_AccEug"
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private LoginOneLineWithEditableText_Border is 0.0
+private LoginOneLineWithEditableText_LeftAdditionalBorder is 0.0
+private LoginOneLineWithEditableText_TextWidth is 180.0
+private LoginOneLineWithEditableText_EditableTextWidth is 380.0
+
+private LoginOneLineWithEditableText_Height is 33.0
+private LoginOneLineWithEditableText_ComponentsHeight is LoginOneLineWithEditableText_Height - 2 * LoginOneLineWithEditableText_Border
+
+template TLoginOneLineWithEditableText
+[
+    TextToken : string,
+    EditableTextElementName : string,
+    EditableTextFlags : int = 0,
+    TextWidth : float = LoginOneLineWithEditableText_TextWidth,
+    EditableTextWidth : float = LoginOneLineWithEditableText_EditableTextWidth,
+]
+is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [LoginOneLineWithEditableText_LeftAdditionalBorder + <TextWidth> + 2 * LoginOneLineWithEditableText_Border + <EditableTextWidth>, LoginOneLineWithEditableText_Height]
+        RelativeWidthHeight = [0.0, 0.0]
+    )
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [<TextWidth>, LoginOneLineWithEditableText_ComponentsHeight]
+                MagnifiableOffset = [LoginOneLineWithEditableText_Border + LoginOneLineWithEditableText_LeftAdditionalBorder, 0.0]
+                AlignementToFather = [0.0, 0.5]
+                AlignementToAnchor = [0.0, 0.5]
+            )
+
+            ParagraphStyle = ~/paragraphStyleTextLeftAlign
+            TextStyle = "Default"
+
+            TextColor       = "StandardTextInModal"
+            TextSize        = "StandardTextInModal"
+            TextToken       = <TextToken>
+            TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+            TypefaceToken   = "Stylized"
+            UniformDrawer   = $/UserInterface/UIUniformDrawer
+        ),
+
+        BUCKSpecificEditableTextInputFieldDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI(
+                MagnifiableWidthHeight = [<EditableTextWidth>, LoginOneLineWithEditableText_ComponentsHeight]
+                MagnifiableOffset = [LoginOneLineWithEditableText_Border + LoginOneLineWithEditableText_LeftAdditionalBorder + <TextWidth>, 0.0]
+                AlignementToFather = [0.0, 0.5]
+                AlignementToAnchor = [0.0, 0.5]
+            )
+
+            ElementName = <EditableTextElementName>
+            MaxChars = 128
+            Flags = <EditableTextFlags>
+            DontMaskEventOnValidate = true
+        ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private LinkAccountSpaceBetweenButton is 9.0
+
+private LinkAccountEugenModalDescriptor is SpecificModaleWindowFrame
+(
+    ContentMagnifiableWidthHeight = [1067.0, 350.0]
+    TitleToken = 'T_LINKACC'
+
+    ContentComponents =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            Components =
+            [
+                //Editable texts (login & password & cd key)
+                BUCKListDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 0.0]
+                    )
+
+                    Axis = ~/ListAxis/Vertical
+                    InterItemMargin = TRTTILength( Magnifiable = 9.0 )
+
+                    Elements =
+                    [
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = CreateAccountLine
+                            (
+                                ElementName = "LoginElement"
+                                TitleToken = "login"
+                                ComponentDescriptor = BUCKEditableTextDescriptor
+                                (
+                                    ElementName = "LoginEditable"
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [1.0, 0.0]
+                                        MagnifiableWidthHeight = [0.0, DefaultButtonDims[1]]
+                                    )
+
+                                    ClippingContainerFrameProperty = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [1.0, 1.0]
+                                        MagnifiableWidthHeight = [-6.0, -6.0]
+                                        AlignementToFather = [0.5, 0.5]
+                                        AlignementToAnchor = [0.5, 0.5]
+                                    )
+
+                                    HasBackground = true
+                                    BackgroundBlockColorToken = "Gray80"
+
+                                    Flags = ~/EditableTextFlag/H_LEFT | ~/EditableTextFlag/V_TOP | ~/EditableTextFlag/ONE_LINE
+
+                                    TextSizeToken = "14"
+                                    TypefaceToken = "Main"
+                                    TextColorToken = "Glacier"
+                                    SelectionColorToken = "DeckOverview/CaseGrisee/EditableText/Selected"
+
+                                    MaxChars = 50
+
+                                    SelectTextOnFocus = true
+                                )
+                            )
+                        ),
+
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = CreateAccountLine
+                            (
+                                ElementName = "PasswordElement"
+                                TitleToken = "password"
+                                ComponentDescriptor = BUCKEditableTextDescriptor
+                                (
+                                    ElementName = "PasswordEditable"
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [1.0, 0.0]
+                                        MagnifiableWidthHeight = [0.0, DefaultButtonDims[1]]
+                                    )
+
+                                    ClippingContainerFrameProperty = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [1.0, 1.0]
+                                        MagnifiableWidthHeight = [-6.0, -6.0]
+                                        AlignementToFather = [0.5, 0.5]
+                                        AlignementToAnchor = [0.5, 0.5]
+                                    )
+
+                                    HasBackground = true
+                                    BackgroundBlockColorToken = "Gray80"
+
+                                    Flags = ~/EditableTextFlag/H_LEFT | ~/EditableTextFlag/V_TOP | ~/EditableTextFlag/ONE_LINE | ~/EditableTextFlag/PASSWORD
+
+                                    TextSizeToken = "14"
+                                    TypefaceToken = "Main"
+                                    TextColorToken = "Glacier"
+                                    SelectionColorToken = "DeckOverview/CaseGrisee/EditableText/Selected"
+
+                                    MaxChars = 50
+
+                                    SelectTextOnFocus = true
+                                )
+                            )
+                        ),
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = CreateAccountLine
+                            (
+                                ElementName = "CDKeyElement"
+                                TitleToken = "cdkey"
+                                ComponentDescriptor = BUCKEditableTextDescriptor
+                                (
+                                    ElementName = "CDKeyEditable"
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [1.0, 0.0]
+                                        MagnifiableWidthHeight = [0.0, DefaultButtonDims[1]]
+                                    )
+
+                                    ClippingContainerFrameProperty = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [1.0, 1.0]
+                                        MagnifiableWidthHeight = [-6.0, -6.0]
+                                        AlignementToFather = [0.5, 0.5]
+                                        AlignementToAnchor = [0.5, 0.5]
+                                    )
+
+                                    HasBackground = true
+                                    BackgroundBlockColorToken = "Gray80"
+
+                                    Flags = ~/EditableTextFlag/H_LEFT | ~/EditableTextFlag/V_TOP | ~/EditableTextFlag/ONE_LINE
+
+                                    TextSizeToken = "14"
+                                    TypefaceToken = "Main"
+                                    TextColorToken = "Glacier"
+                                    SelectionColorToken = "DeckOverview/CaseGrisee/EditableText/Selected"
+
+                                    MaxChars = 50
+
+                                    SelectTextOnFocus = true
+                                )
+                            )
+                        ),
+
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKContainerDescriptor
+                            (
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [200.0, 60.0]
+                                )
+
+                                Components =
+                                [
+                                    AnimatedWaitingComponent
+                                    (
+                                        ComponentFrame = TUIFramePropertyRTTI
+                                        (
+                                            MagnifiableWidthHeight = [45.0, 45.0]
+                                            MagnifiableOffset = [50.0, 0.0]
+                                        )
+                                    ),
+
+                                    BUCKTextDescriptor
+                                    (
+                                        ElementName = "ErrorText"
+
+                                        ComponentFrame = TUIFramePropertyRTTI
+                                        (
+                                            RelativeWidthHeight = [0.0, 1.0]
+                                            MagnifiableWidthHeight = [300.0, 0.0]
+                                            MagnifiableOffset = [100.0, 0.0]
+                                        )
+
+                                        ParagraphStyle = ~/paragraphStyleTextCenter
+                                        TextStyle = "Default"
+
+                                        TextColor       = "FeedbackTextInModal"
+                                        TextSize        = "FeedbackTextInModal"
+                                        TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+                                        BigLineAction = ~/BigLineAction/MultiLine
+
+                                        TypefaceToken   = "MainOutgame"
+                                        UniformDrawer   = $/UserInterface/UIUniformDrawer
+                                    ),
+                                ]
+                            )
+                        )
+                    ]
+                ),
+
+                // Buttons login lost, password lost, ...
+                StandardButton
+                (
+                    ElementName = "ChangePasswordButton"
+
+                    ButtonAlignementToFather = [1.0, 0.0]
+                    ButtonAlignementToAnchor = [1.0, 0.0]
+
+                    TextToken = 'CP_CHGPASS'
+
+                    HintTitleToken = ""
+                    HintBodyToken = ""
+                    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+                ),
+
+                StandardButton
+                (
+                    ElementName = "LoginLostButton"
+
+                    ButtonAlignementToFather = [1.0, 0.0]
+                    ButtonAlignementToAnchor = [1.0, 0.0]
+                    ButtonMagnifiableOffset = [0.0, LinkAccountSpaceBetweenButton + DefaultButtonDims[1]]
+
+                    TextToken = 'CP_LOGFRGT'
+
+                    HintTitleToken = ""
+                    HintBodyToken = ""
+                    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+                ),
+
+                StandardButton
+                (
+                    ElementName = "PasswordLostButton"
+
+                    ButtonAlignementToFather = [1.0, 0.0]
+                    ButtonAlignementToAnchor = [1.0, 0.0]
+                    ButtonMagnifiableOffset = [0.0, 2 * (LinkAccountSpaceBetweenButton + DefaultButtonDims[1])]
+
+                    TextToken = 'CP_FORGOT'
+
+                    HintTitleToken = ""
+                    HintBodyToken = ""
+                    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+                ),
+            ]
+        )
+    ]
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor =
+            ConfirmButton
+            (
+                ElementName = "LinkButton"
+                TextToken = 'BTN_LINK'
+
+                Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+
+                HintTitleToken = ""
+                HintBodyToken = ""
+                HintDico = ~/LocalisationConstantes/dico_interface_outgame
+            )
+        ),
+
+        BUCKListElementDescriptor( ComponentDescriptor =
+            CancelButton
+            (
+                ElementName = "CancelButton"
+                TextToken = 'BTN_CANCEL'
+
+                Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+
+                HintTitleToken = ""
+                HintBodyToken = ""
+                HintDico = ~/LocalisationConstantes/dico_interface_outgame
+            )
+        ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private CreateAccountBirthDateTitleWidth is 260.0
+private CreateAccountBirthDateLineMargin is 4.0
+private CreateAccountBirthDateLineLeftAdditionalBorder is 4.0
+private CreateAccountBirthDateInterItemMargin is 10.0
+private CreateAccountBirthDateDayComponentWidth is 100.0
+private CreateAccountBirthDateMonthComponentWidth is 180.0
+private CreateAccountBirthDateYearComponentWidth is 100.0
+private CreateAccountBirthDateLineHeight is LoginOneLineWithEditableText_Height //On va essayer de garder la même hauteur
+
+private CreateAccountBirthDateLine is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, CreateAccountBirthDateLineHeight]
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [CreateAccountBirthDateTitleWidth, CreateAccountBirthDateLineHeight]
+                MagnifiableOffset = [CreateAccountBirthDateLineMargin + CreateAccountBirthDateLineLeftAdditionalBorder, 0.0]
+                AlignementToFather = [0.0, 0.5]
+                AlignementToAnchor = [0.0, 0.5]
+            )
+
+            ParagraphStyle = ~/paragraphStyleTextLeftAlign
+            TextStyle = "Default"
+
+            TextColor       = "StandardTextInModal"
+            TextSize        = "StandardTextInModal"
+            TextToken       = "Birthdate"
+            TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+            TypefaceToken   = "Stylized"
+            UniformDrawer   = $/UserInterface/UIUniformDrawer
+        ),
+
+        //day
+        BUCKContainerDescriptor
+        (
+            ElementName = 'BirthDateDayContainer'
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [CreateAccountBirthDateDayComponentWidth, 0.0]
+                RelativeWidthHeight = [0.0, 1.0]
+                AlignementToFather = [0.0, 0.0]
+                AlignementToAnchor = [0.0, 0.0]
+
+                MagnifiableOffset = [CreateAccountBirthDateLineMargin + CreateAccountBirthDateLineLeftAdditionalBorder + CreateAccountBirthDateTitleWidth, 0.0]
+            )
+        ),
+
+        //month
+        BUCKContainerDescriptor
+        (
+            ElementName = 'BirthDateMonthContainer'
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+                MagnifiableWidthHeight = [CreateAccountBirthDateMonthComponentWidth, 0.0]
+                MagnifiableOffset = [CreateAccountBirthDateLineMargin + CreateAccountBirthDateLineLeftAdditionalBorder + CreateAccountBirthDateTitleWidth + CreateAccountBirthDateDayComponentWidth + CreateAccountBirthDateInterItemMargin, 0.0]
+            )
+        ),
+
+        //year
+        BUCKContainerDescriptor
+        (
+            ElementName = 'BirthDateYearContainer'
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+                MagnifiableWidthHeight = [CreateAccountBirthDateYearComponentWidth, 0.0]
+                MagnifiableOffset = [CreateAccountBirthDateLineMargin + CreateAccountBirthDateLineLeftAdditionalBorder + CreateAccountBirthDateTitleWidth + CreateAccountBirthDateDayComponentWidth + CreateAccountBirthDateMonthComponentWidth + 2 * CreateAccountBirthDateInterItemMargin, 0.0]
+            )
+        ),
+    ]
+)
+
+private CreateAccountToSTopOffset is 4.0
+private CreateAccountToSTextHeight is 20.0
+
+private CreateAccountTermOfService is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 64.0]
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    Components =
+    [
+        BUCKSpecificCheckBoxDescriptor
+        (
+            ElementName = "CheckboxAcceptToS"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = DefaultCheckBoxDims
+                MagnifiableOffset = [0.0, CreateAccountToSTopOffset]
+            )
+
+            IsFocusable = true
+            FocusMapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+        ),
+
+        BUCKTextDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                MagnifiableWidthHeight = [-1 * (DefaultCheckBoxDims[0] + 10.0), CreateAccountToSTextHeight]
+                MagnifiableOffset = [DefaultCheckBoxDims[0] + 10.0, CreateAccountToSTopOffset]
+            )
+
+            ParagraphStyle = ~/paragraphStyleTextLeftAlign
+            TextStyle = "Default"
+
+            TextColor       = "CreateAccountModale/TermOfService"
+            TextSize        = "CreateAccountModale/TermOfService"
+            TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+            TextToken       = "TosApprov"
+
+            TypefaceToken   = "MainOutgame"
+            UniformDrawer   = $/UserInterface/UIUniformDrawer
+        ),
+
+        //Url ToS
+        BUCKListDescriptor
+        (
+            Axis = ~/ListAxis/Horizontal
+            InterItemMargin = TRTTILength( Magnifiable = 10.0 )
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [0.0,0.0]
+                RelativeWidthHeight = [.0, 0.0]
+                MagnifiableOffset = [DefaultCheckBoxDims[0] + 10.0, CreateAccountToSTopOffset + CreateAccountToSTextHeight]
+                AlignementToFather = [0.0, 0.0]
+                AlignementToAnchor = [0.0, 0.0]
+            )
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = TURLButton
+                    (
+                        ElementName = "TosUseButton"
+                        TextToken = "TosUse"
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [200.0, 0.0]
+                            RelativeWidthHeight = [0.0, 1.0]
+                        )
+
+                        ParagraphStyle = ~/paragraphStyleTextLeftAlign
+                        TextStyle = "Default"
+
+                        TextColor = "StandardTextInModal"
+                        TextSize = "StandardTextInModal"
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextToken = "ExternLink"
+
+                        BigLineAction = ~/BigLineAction/MultiLine
+
+                        TypefaceToken   = "MainOutgame"
+                        UniformDrawer   = $/UserInterface/UIUniformDrawer
+                    )
+                ),
+            ]
+        ),
+
+        //Url ToS Privacy
+        BUCKListDescriptor
+        (
+            Axis = ~/ListAxis/Horizontal
+            InterItemMargin = TRTTILength( Magnifiable = 10.0 )
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [0.0,0.0]
+                RelativeWidthHeight = [.0, 0.0]
+                MagnifiableOffset = [DefaultCheckBoxDims[0] + 10.0, CreateAccountToSTopOffset + 2 * CreateAccountToSTextHeight + 4.0]
+                AlignementToFather = [0.0, 0.0]
+                AlignementToAnchor = [0.0, 0.0]
+            )
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = TURLButton
+                    (
+                        ElementName = "TosPrivPolicyButton"
+                        TextToken = "TosPrivPol"
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [200.0, 0.0]
+                            RelativeWidthHeight = [0.0, 1.0]
+                        )
+
+                        ParagraphStyle = ~/paragraphStyleTextLeftAlign
+                        TextStyle = "Default"
+
+                        TextColor = "StandardTextInModal"
+                        TextSize = "StandardTextInModal"
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextToken = "ExternLink"
+
+                        BigLineAction = ~/BigLineAction/MultiLine
+
+                        TypefaceToken   = "MainOutgame"
+                        UniformDrawer   = $/UserInterface/UIUniformDrawer
+                    )
+                ),
+            ]
+        ),
+    ]
+)
+
+private CreateAccountEditableTextWidth is 484.0
+
+private CreateAccountModalDescriptor is WindowFrame
+(
+    ContentMagnifiableWidthHeight = [966.0, 678.0]
+    TitleToken = 'T_CrAcc'
+
+    ContentComponents =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            Components =
+            [
+                //Editable texts (login & password)
+                BUCKListDescriptor
+                (
+                    Axis = ~/ListAxis/Vertical
+                    InterItemMargin = TRTTILength( Magnifiable = 8.0 )
+
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableWidthHeight = [0.0,0.0]
+                        RelativeWidthHeight = [1.0, 0.0]
+                        AlignementToFather = [0.0, 0.0]
+                        AlignementToAnchor = [0.0, 0.0]
+                    )
+
+                    Elements =
+                    [
+                        //email
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = TLoginOneLineWithEditableText
+                            (
+                                TextToken = 'email'
+                                EditableTextElementName = 'EmailEditable'
+                                TextWidth = 260.0
+                                EditableTextWidth = CreateAccountEditableTextWidth
+                            )
+                        ),
+
+                        //confirm email
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = TLoginOneLineWithEditableText
+                            (
+                                TextToken = 'confemail'
+                                EditableTextElementName = 'ConfEmailEditable'
+                                TextWidth = 260.0
+                                EditableTextWidth = CreateAccountEditableTextWidth
+                            )
+                        ),
+
+                        //password
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = TLoginOneLineWithEditableText
+                            (
+                                TextToken = 'password'
+                                EditableTextElementName = 'PasswordEditable'
+                                EditableTextFlags = EditableTextFlag/PASSWORD
+                                TextWidth = 260.0
+                                EditableTextWidth = CreateAccountEditableTextWidth
+                            )
+                        ),
+
+                        //confirm password
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = TLoginOneLineWithEditableText
+                            (
+                                TextToken = 'cnewpass'
+                                EditableTextElementName = 'ConfPasswordEditable'
+                                EditableTextFlags = EditableTextFlag/PASSWORD
+                                TextWidth = 260.0
+                                EditableTextWidth = CreateAccountEditableTextWidth
+                            )
+                        ),
+
+                        //birthdate
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = ~/CreateAccountBirthDateLine
+                        ),
+
+                        //Terms of service
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = ~/CreateAccountTermOfService
+                        ),
+
+                        //Anim and error message
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKContainerDescriptor
+                            (
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [0.0, 50.0]
+                                    RelativeWidthHeight = [1.0, 0.0]
+                                )
+
+                                Components =
+                                [
+                                    AnimatedWaitingComponent
+                                    (
+                                        ComponentFrame = TUIFramePropertyRTTI
+                                        (
+                                            MagnifiableWidthHeight = [45.0, 45.0]
+                                            MagnifiableOffset = [50.0, 0.0]
+                                            AlignementToFather = [0.0, 0.5]
+                                            AlignementToAnchor = [0.0, 0.5]
+                                        )
+                                    ),
+
+                                    BUCKTextDescriptor
+                                    (
+                                        ElementName = "ErrorText"
+
+                                        ComponentFrame = TUIFramePropertyRTTI
+                                        (
+                                            RelativeWidthHeight = [1.0, 1.0]
+                                            MagnifiableWidthHeight = [0.0, 0.0]
+                                            AlignementToFather = [0.5, 0.5]
+                                            AlignementToAnchor = [0.5, 0.5]
+                                        )
+
+                                        ParagraphStyle = ~/paragraphStyleTextCenter
+                                        TextStyle = "Default"
+
+                                        TextColor       = "FeedbackTextInModal"
+                                        TextSize        = "FeedbackTextInModal"
+                                        TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+                                        BigLineAction = ~/BigLineAction/MultiLine
+
+                                        TypefaceToken   = "MainOutgame"
+                                        UniformDrawer   = $/UserInterface/UIUniformDrawer
+                                    ),
+                                ]
+                            )
+                        )
+                    ]
+                ),
+            ]
+        )
+    ]
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor =
+            ConfirmButton
+            (
+                ElementName = "CreateButton"
+                TextToken = 'BTN_CREATE'
+
+                Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+
+                HintTitleToken = ""
+                HintBodyToken = ""
+                HintDico = ~/LocalisationConstantes/dico_interface_outgame
+            )
+        ),
+
+        BUCKListElementDescriptor( ComponentDescriptor =
+            CancelButton
+            (
+                ElementName = "CancelButton"
+                TextToken = 'BTN_CANCEL'
+
+                Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+
+                HintTitleToken = ""
+                HintBodyToken = ""
+                HintDico = ~/LocalisationConstantes/dico_interface_outgame
+            )
+        ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private ErrorConnectionModalDescriptor is WindowFrame
+(
+    ContentMagnifiableWidthHeight = [800.0, 400.0]
+    TitleToken = 'CONERROR'
+
+    ContentComponents =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            Components =
+            [
+                BUCKTextDescriptor
+                (
+                    ElementName = "ErrorText"
+
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                        MagnifiableWidthHeight = [0.0, 0.0]
+                        AlignementToFather = [0.5, 0.5]
+                        AlignementToAnchor = [0.5, 0.5]
+                    )
+
+                    ParagraphStyle = ~/paragraphStyleTextCenter
+                    TextStyle = "Default"
+
+                    TextColor       = "StandardTextInModal"
+                    TextSize        = "StandardTextInModal"
+                    TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+                    BigLineAction = ~/BigLineAction/MultiLine
+
+                    TypefaceToken   = "MainOutgame"
+                    UniformDrawer   = $/UserInterface/UIUniformDrawer
+                ),
+            ]
+        )
+    ]
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ConfirmButton
+            (
+                ElementName = "RetryButton"
+                TextToken = 'BTN_RETRY'
+
+                Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+
+                HintTitleToken = ""
+                HintBodyToken = ""
+                HintDico = ~/LocalisationConstantes/dico_interface_outgame
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = CancelButton
+            (
+                ElementName = "CancelButton"
+                TextToken = 'BTN_CANCEL'
+
+                Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+
+                HintTitleToken = ""
+                HintBodyToken = ""
+                HintDico = ~/LocalisationConstantes/dico_interface_outgame
+            )
+        ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private LoginEditableTextDescriptor is BUCKEditableTextInputFieldDescriptor
+(
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private PasswordEditableTextDescriptor is BUCKEditableTextInputFieldDescriptor
+(
+    Flags = EditableTextFlag/ONE_LINE + EditableTextFlag/PASSWORD
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private EmailEditableTextDescriptor is BUCKEditableTextInputFieldDescriptor
+(
+    MaxChars = 254
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private CodeEditableTextDescriptor is BUCKEditableTextInputFieldDescriptor
+(
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private RememberPasswordDropDownDescriptor is BUCKSpecificDropdownDescriptor
+(
+    ElementName = "RememberPasswordDropDown"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [100,25]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+    IsForModale = true
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private LoginErrorText is BUCKTextDescriptor
+(
+    TextStyle = "Default"
+    TypefaceToken = 'Main'
+    TextColor = 'RightTextInModal'
+    TextSize = 'RightTextInModal'
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+    BigLineAction = ~/BigLineAction/MultiLine
+    VerticalFitStyle = ~/FitStyle/FitToParent
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = ~/UIText_Left
+        VerticalAlignment = ~/UIText_VerticalCenter
+        Balanced = true
+        BigWordAction = ~/BigWordAction/BigWordNewLine
+    )
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private LoginSimpleText is BUCKTextDescriptor
+(
+    TextStyle = "Default"
+    TypefaceToken = 'Main'
+    TextColor = 'StandardTextInModal'
+    TextSize = 'StandardTextInModal'
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+    BigLineAction = ~/BigLineAction/MultiLine
+    VerticalFitStyle = ~/FitStyle/FitToParent
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = ~/UIText_Left
+        VerticalAlignment = ~/UIText_VerticalCenter
+        Balanced = true
+        BigWordAction = ~/BigWordAction/BigWordNewLine
+    )
+
+    Hint = BUCKSpecificHintableArea
+    (
+        ElementName = 'SimpleTextHint'
+    )
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+LoginResource is TUISpecificOutGameLoginResource
+(
+    Login = $/GameplayOption/ConnectLogin
+    Password = $/GameplayOption/ConnectPassword
+    SavePassword = $/GameplayOption/SavePassword
+
+    ErrorText = ~/LoginErrorText
+    SimpleText = ~/LoginSimpleText
+
+    LoginEditableText = ~/LoginEditableTextDescriptor
+    PasswordEditableText = ~/PasswordEditableTextDescriptor
+    EmailEditableText = ~/EmailEditableTextDescriptor
+    CodeEditableText = ~/CodeEditableTextDescriptor
+    RememberPasswordDropDown = ~/RememberPasswordDropDownDescriptor
+
+    LoginModalConnecting = ~/ConnectingModalDescriptor
+    AccountQuestionEugenModalDescriptor = ~/AccountQuestionEugenModalDescriptor
+    LinkAccountEugenModalDescriptor = ~/LinkAccountEugenModalDescriptor
+    ErrorConnectionModalDescriptor = ~/ErrorConnectionModalDescriptor
+
+    RecoverLoginPanelContent = ~/UISpecificOutGameRecoverLoginViewDescriptor
+    RecoverPasswordPanelContent = ~/UISpecificOutGameRecoverPasswordViewDescriptor
+    CreateAccountPanelContent = ~/UISpecificOutGameCreateAccountViewDescriptor
+    MigrateWargamingAccountPanelContent = ~/UISpecificOutGameMigrateWargamingAccountViewDescriptor
+
+    LoginPanelContent = ~/UISpecificOutGameLoginModaleViewDescriptor
+    LoginModalFirstConnexionButton = ~/LoginModalFirstConnexionButtonDescriptor
+    LoginModalChangePasswordButton = ~/LoginModalChangePasswordButtonDescriptor
+    LoginModalLoginLostButton = ~/LoginModalLoginLostButtonDescriptor
+    LoginModalPasswordLostButton = ~/LoginModalPasswordLostButtonDescriptor
+    LoginModalLinkButton = ~/LoginModalLinkButtonDescriptor
+    LoginModalConnectButton = ~/LoginModalConnectButtonDescriptor
+    LoginModalSendMailButton = ~/LoginModalSendMailButtonDescriptor
+    LoginModalForgotPasswordSendMailButton = ~/LoginModalForgotPasswordSendMailButtonDescriptor
+    LoginModalButtonList = ~/LoginModalButtonListDescriptor
+    LoginModalChangeButton = ~/LoginModalChangeButtonDescriptor
+    LoginModalConfirmButton = ~/LoginModalConfirmButtonDescriptor
+    LoginModalYesButton = ~/LoginModalYesButtonDescriptor
+    LoginModalCancelButton = ~/LoginModalCancelButtonDescriptor
+    LoginModalNoButton = ~/LoginModalNoButtonDescriptor
+
+    LoginModalDescriptor = ~/LoginModalWindowFrame
+    ChangePasswordModalDescriptor = ~/ChangePasswordModalWindowFrame
+    RecoverLoginModalDescriptor = ~/RecoverLoginModalWindowFrame
+    ForgotPasswordModalDescriptor = ~/ForgotPasswordModalWindowFrame
+    CreateAccountModalDescriptor = ~/CreateAccountModalWindowFrame
+    MigrateWargamingAccountModalDescriptor = ~/MigrateWargamingAccountModalWindowFrame
+)

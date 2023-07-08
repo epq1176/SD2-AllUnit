@@ -1,0 +1,22 @@
+export ModelFile_Jeep_BRZ is 'GameData:Assets\3D\Units\BRZ\Vehicule\Jeep_BRZ\Jeep_BRZ.Ase2NdfBin'
+
+Modele_Jeep_BRZ is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Jeep_BRZ
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Jeep_BRZ_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\BRZ\Vehicule\Jeep_BRZ_MID\Jeep_BRZ_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Jeep_BRZ_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\BRZ\Vehicule\LODS\Jeep_BRZ_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

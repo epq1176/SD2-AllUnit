@@ -1,0 +1,22 @@
+export ModelFile_Truck_GMC_Bofors_FR is 'GameData:Assets\3D\Units\FR\Vehicule\GMC_wBofors\GMC_wBofors.Ase2NdfBin'
+
+Modele_Truck_GMC_Bofors_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Truck_GMC_Bofors_FR
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Truck_GMC_Bofors_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Vehicule\GMC_wBofors_MID\GMC_wBofors_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Truck_GMC_Bofors_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Vehicule\LODS\GMC_wBofors_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

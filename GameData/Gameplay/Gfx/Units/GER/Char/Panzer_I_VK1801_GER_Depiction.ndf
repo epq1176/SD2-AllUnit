@@ -1,0 +1,24 @@
+Gfx_Panzer_I_VK1801_GER is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Panzer_I_VK1801_GER ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Panzer_I_VK1801_GER_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret3( MeshDescriptor = Modele_Panzer_I_VK1801_GER_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Panzer_I_VK1801_GER ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Panzer_I_VK1801_GER_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret3( MeshDescriptor = Modele_Panzer_I_VK1801_GER_LOW ),
+        ]
+
+        Operators = Operators_Panzer_I_VK1801_GER
+                  + DepictionOperator_Chassis_MediumTank
+                  + DepictionOperator_Propulsion_ContinuousTrack_MediumTank
+
+        Actions = Weapons_Panzer_I_VK1801_GER
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+    )
+)

@@ -1,0 +1,27 @@
+export Gfx_Truck_GAZ_AAA_Maxim_AWP is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Truck_GAZ_AAA_Maxim_AWP ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Truck_GAZ_AAA_Maxim_AWP_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_Truck_GAZ_AAA_Maxim_AWP_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Truck_GAZ_AAA_Maxim_AWP ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Truck_GAZ_AAA_Maxim_AWP_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_Truck_GAZ_AAA_Maxim_AWP_LOW ),
+        ]
+
+        Operators = Operators_Truck_GAZ_AAA_Maxim_AWP
+                  + DepictionOperator_Chassis_MediumTank
+                  + DepictionOperator_Propulsion_6Wheels_Generic_MediumVehicleSound
+
+        Actions = Weapons_Truck_GAZ_AAA_Maxim_AWP
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Wheeled
+
+        SubDepictions = DepictionSubDepiction_Driver_AWP
+                        + DepictionSubDepiction_TireurDebout_AWP
+    )
+)

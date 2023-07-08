@@ -1,0 +1,22 @@
+export ModelFile_Panther_A is 'GameData:Assets\3D\Units\GER\Char\Panther_A\Panther_A.Ase2NdfBin'
+
+Modele_Panther_A is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Panther_A
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panther_A_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\Panther_A_MID\Panther_A_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panther_A_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\Panther_A_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

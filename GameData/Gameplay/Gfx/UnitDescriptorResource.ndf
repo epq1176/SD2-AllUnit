@@ -1,0 +1,334 @@
+
+// Définition des types d'armes :
+// ATGM            : TacticalCursorType == GroundMissile
+// SAM             : TacticalCursorType == AirMissile
+// Canon           : TacticalCursorType == Canon
+// Autocannon      : TacticalCursorType == FastCanon
+// Artillery       : ProjectileType == Artillerie
+// Grenade         : ProjectileType == ArtillerieAnimated
+// Bullet          : ArmeType == Balle, BalleAA, BalleDCA
+// LAW             : TacticalCursorType == UnguidedMissile + IsAP
+// Rocket          : TacticalCursorType == UnguidedMissile + IsHE
+//
+//(GrenadeLauncher : TypeArme == "Gren_L" => considéré comme Autocannon)
+//(Flamethrower    : TypeArme == "Flame" => considéré comme Artillery)
+
+// ------------------------------------------------------------------------------------------------------------------------
+
+// /!\ ATTENTION : le range est celui de l'ODS (en metreRTS)
+AccuracyEvaluator is TFunctionDeclaration
+(
+    Params = [ parAmmoType is TAlias(ExpectedType = 'estring'),
+               parHitProbability is TAlias(ExpectedType = 'float'),
+               parRange is TAlias(ExpectedType = 'float'),
+               parDispersionAngle is TAlias(ExpectedType = 'float') ]
+
+    // D'après les specs :
+    // Artillery : ARRONDI.SUP(([portee_maximum en metres RTS]/[angle_dispersion])/100000) de l'arme.        (Note : l'arrondi au supérieur est fait en cpp)
+    // Le reste  : PourcentageTirDirect * 20
+    Accuracy is ifte[parAmmoType == "Artillery", parRange div (parDispersionAngle * 100000),
+                                                 parHitProbability * 20]
+
+    Code = Accuracy
+)
+
+// Ne pas toucher
+AccuracyEvaluation is AccuracyEvaluator[ TGetFromContext_String(Name = 'parAmmoType' Variability = $/Variability/Fx),
+                                         TGetFromContext_Float(Name = 'parHitProbability' Variability = $/Variability/Fx),
+                                         TGetFromContext_Float(Name = 'parRange' Variability = $/Variability/Fx),
+                                         TGetFromContext_Float(Name = 'parDispersionAngle' Variability = $/Variability/Fx) ]
+
+// ------------------------------------------------------------------------------------------------------------------------
+
+// /!\ ATTENTION : le range est celui de l'ODS, c'est à dire avant multiplicateur de GDConstantes => MultiplicateurMetreRTSVersDistanceFeedbackTactique
+RangeIndexColorEvaluator is TFunctionDeclaration
+(
+    Params = [ parAmmoType is TAlias(ExpectedType = 'estring'),
+               parRange is TAlias(ExpectedType = 'float') ]
+
+    // /!\ Les index doivent être dans le range de TFSKeysForColorLadder définis dans Slayer\Data\WarGame\UserInterface\InGame\UIInGameManager.ndf et \Slayer\Data\WarGame\UserInterface\Use\OutGame\UIOutgame_Params.ndf
+    IndexColor is ifte[parAmmoType == "ATGM",                                ifte[parRange >= 0.0 & parRange < 6500.0, 0,
+                                                                             ifte[parRange < 7000.0, 1,
+                                                                             ifte[parRange < 7500.0, 2,
+                                                                             ifte[parRange < 8000.0, 3, 4]]]],
+
+                  ifte[parAmmoType == "SAM",                                 ifte[parRange >= 0.0 & parRange < 7000.0, 0,
+                                                                             ifte[parRange < 8000.0, 1,
+                                                                             ifte[parRange < 9000.0, 2,
+                                                                             ifte[parRange < 10000.0, 3, 4]]]],
+
+                  ifte[parAmmoType == "Canon" | parAmmoType == "Autocannon", ifte[parRange >= 0.0 & parRange < 4000.0, 0,
+                                                                             ifte[parRange < 4500.0, 1,
+                                                                             ifte[parRange < 5000.0, 2,
+                                                                             ifte[parRange < 5500.0, 3, 4]]]],
+
+                  ifte[parAmmoType == "Artillery",                           ifte[parRange >= 0.0 & parRange < 30000.0, 0,
+                                                                             ifte[parRange < 80000.0, 1,
+                                                                             ifte[parRange < 100000.0, 2,
+                                                                             ifte[parRange < 120000.0, 3, 4]]]],
+
+                  ifte[parAmmoType == "Grenade",                             ifte[parRange >= 0.0 & parRange < 500.0, 0,
+                                                                             ifte[parRange < 700.0, 1,
+                                                                             ifte[parRange < 900.0, 2,
+                                                                             ifte[parRange < 1200.0, 3, 4]]]],
+
+                  ifte[parAmmoType == "Bullet",                              ifte[parRange >= 0.0 & parRange < 1000.0, 0,
+                                                                             ifte[parRange < 2000.0, 1,
+                                                                             ifte[parRange < 3000.0, 2,
+                                                                             ifte[parRange < 5000.0, 3, 4]]]],
+
+                  ifte[parAmmoType == "LAW",                                 ifte[parRange >= 0.0 & parRange < 1000.0, 0,
+                                                                             ifte[parRange < 1500.0, 1,
+                                                                             ifte[parRange < 2000.0, 2,
+                                                                             ifte[parRange < 2500.0, 3, 4]]]],
+
+                  ifte[parAmmoType == "Rocket",                              ifte[parRange >= 0.0 & parRange < 1000.0, 0,
+                                                                             ifte[parRange < 2000.0, 1,
+                                                                             ifte[parRange < 3000.0, 2,
+                                                                             ifte[parRange < 4000.0, 3, 4]]]], 0]]]]]]]]
+
+    Code = IndexColor
+)
+
+// Ne pas toucher
+RangeIndexColorEvaluation is RangeIndexColorEvaluator[ TGetFromContext_String(Name = 'parAmmoType' Variability = $/Variability/Fx),
+                                                       TGetFromContext_Float(Name = 'parRange' Variability = $/Variability/Fx) ]
+
+// ------------------------------------------------------------------------------------------------------------------------
+
+AmmoCapacityIndexColorEvaluator is TFunctionDeclaration
+(
+    Params = [ parAmmoType is TAlias(ExpectedType = 'estring'),
+               parCapacity is TAlias(ExpectedType = 'int') ]
+
+    // /!\ Les index doivent être dans le range de TFSKeysForColorLadder définis dans Slayer\Data\WarGame\UserInterface\InGame\UIInGameManager.ndf et \Slayer\Data\WarGame\UserInterface\OutGame\UIOutgame_Params.ndf
+    IndexColor is ifte[parAmmoType == "ATGM" | parAmmoType == "SAM", ifte[parCapacity >= 0 & parCapacity < 2, 0,
+                                                                     ifte[parCapacity < 4, 1,
+                                                                     ifte[parCapacity < 6, 2,
+                                                                     ifte[parCapacity < 8, 3, 4]]]],
+
+                  ifte[parAmmoType == "Canon",                       ifte[parCapacity >= 0 & parCapacity < 10, 0,
+                                                                     ifte[parCapacity < 20, 1,
+                                                                     ifte[parCapacity < 30, 2,
+                                                                     ifte[parCapacity < 40, 3, 4]]]],
+
+                  ifte[parAmmoType == "Autocannon",                  ifte[parCapacity >= 0 & parCapacity < 500, 0,
+                                                                     ifte[parCapacity < 1000, 1,
+                                                                     ifte[parCapacity < 2000, 2,
+                                                                     ifte[parCapacity < 3000, 3, 4]]]],
+
+                  ifte[parAmmoType == "Artillery",                   ifte[parCapacity >= 0 & parCapacity < 10, 0,
+                                                                     ifte[parCapacity < 20, 1,
+                                                                     ifte[parCapacity < 30, 2,
+                                                                     ifte[parCapacity < 40, 3, 4]]]],
+
+                  ifte[parAmmoType == "Grenade",                     ifte[parCapacity >= 0 & parCapacity < 3, 0,
+                                                                     ifte[parCapacity < 4, 1,
+                                                                     ifte[parCapacity < 5, 2,
+                                                                     ifte[parCapacity < 6, 3, 4]]]],
+
+                  ifte[parAmmoType == "Bullet",                      ifte[parCapacity >= 0 & parCapacity < 500, 0,
+                                                                     ifte[parCapacity < 1000, 1,
+                                                                     ifte[parCapacity < 1500, 2,
+                                                                     ifte[parCapacity < 2000, 3, 4]]]],
+
+                  ifte[parAmmoType == "LAW",                         ifte[parCapacity >= 0 & parCapacity < 3, 0,
+                                                                     ifte[parCapacity < 4, 1,
+                                                                     ifte[parCapacity < 5, 2,
+                                                                     ifte[parCapacity < 6, 3, 4]]]],
+
+                  ifte[parAmmoType == "Rocket",                      ifte[parCapacity >= 0 & parCapacity < 3, 0,
+                                                                     ifte[parCapacity < 4, 1,
+                                                                     ifte[parCapacity < 5, 2,
+                                                                     ifte[parCapacity < 6, 3, 4]]]], 0]]]]]]]]
+
+    Code = IndexColor
+)
+
+// Ne pas toucher
+AmmoCapacityIndexColorEvaluation is AmmoCapacityIndexColorEvaluator[ TGetFromContext_String(Name = 'parAmmoType' Variability = $/Variability/Fx),
+                                                                     TGetFromContext_I32(Name = 'parCapacity' Variability = $/Variability/Fx) ]
+
+// ------------------------------------------------------------------------------------------------------------------------
+
+SpeedEvaluator is TFunctionDeclaration
+(
+    Params = [ parSpeed is TAlias(ExpectedType = 'float'),
+               parSpeedFakeFactor is TAlias(ExpectedType = 'float') ]
+
+    // D'après les specs :
+    // Vraie formule : ((parSpeed div Metre) * 3.6) div parSpeedFakeFactor
+    Speed is (parSpeed div Metre) div parSpeedFakeFactor // /!\ Calcul selon Panzer : on prend la vitesse en m/s divisé par le facteur et on dit que ce sont des km/h...
+
+    Code = Speed
+)
+
+// Ne pas toucher
+SpeedEvaluation is SpeedEvaluator[ TGetFromContext_Float(Name = 'parSpeed' Variability = $/Variability/Fx),
+                                   TGetFromContext_Float(Name = 'parSpeedFakeFactor' Variability = $/Variability/Fx) ]
+
+// ------------------------------------------------------------------------------------------------------------------------
+
+// /!\ Les index doivent être dans le range de TFSKeysForColorLadder définis dans Slayer\Data\WarGame\UserInterface\InGame\UIInGameManager.ndf et \Slayer\Data\WarGame\UserInterface\OutGame\UIOutgame_Params.ndf
+FuelCapacityIndexColorEvaluator is TFunctionDeclaration
+(
+    Params = [ parAutonomy is TAlias(ExpectedType = 'float'),
+               parFuelCapacity is TAlias(ExpectedType = 'float') ]
+
+    UnitMoveFuelCost is parFuelCapacity div parAutonomy
+
+    // /!\ Les index doivent être dans le range de TFSKeysForColorLadder définis dans Slayer\Data\WarGame\UserInterface\InGame\UIInGameManager.ndf et \Slayer\Data\WarGame\UserInterface\OutGame\UIOutgame_Params.ndf
+    IndexColor is ifte[UnitMoveFuelCost >= 0.0 & UnitMoveFuelCost < 1, 4,
+                  ifte[UnitMoveFuelCost < 2, 3,
+                  ifte[UnitMoveFuelCost < 3, 2,
+                  ifte[UnitMoveFuelCost < 4, 1, 0]]]]
+
+    Code = IndexColor
+)
+
+// Ne pas toucher
+FuelCapacityIndexColorEvaluation is FuelCapacityIndexColorEvaluator[ TGetFromContext_Float(Name = 'parAutonomy' Variability = $/Variability/Fx),
+                                                                     TGetFromContext_Float(Name = 'parFuelCapacity' Variability = $/Variability/Fx) ]
+
+// ------------------------------------------------------------------------------------------------------------------------
+
+export WargameUnitDescriptorResource is TModernWarfareUnitDescriptorResource
+(
+    // Range
+    RangeIndexColorEvaluable = ~/RangeIndexColorEvaluation
+
+    // Accuracy / HE/AP Power / Armor
+    AccuracyEvaluable = ~/AccuracyEvaluation
+    parNumber is TGetFromContext_I32(Name = 'parNumber' Variability = $/Variability/Fx)
+    // /!\ Les index doivent être dans le range de TFSKeysForColorLadder définis dans Slayer\Data\WarGame\UserInterface\InGame\UIInGameManager.ndf et \Slayer\Data\WarGame\UserInterface\OutGame\UIOutgame_Params.ndf
+    AccuracyAndHEAPPowerAndArmorIndexColorEvaluable = ifte[parNumber >= 0 & parNumber < 3, 0,
+                                                      ifte[parNumber < 5, 1,
+                                                      ifte[parNumber < 7, 2,
+                                                      ifte[parNumber < 9, 3, 4]]]]
+    // RateOfFire
+    RateOfFireHowitzerFakeFactor = 0.66 // MASTERWARGAME-158.  (TypeArme == "Howitzer")
+
+    // AmmoCapacity
+    AmmoCapacityIndexColorEvaluable = ~/AmmoCapacityIndexColorEvaluation
+
+    // Size (utilise HitRollSizeModifier)
+    // On utilise un Evaluable car on pourrait avoir une fonction de décision plus complexe qu'une simple map (ex : intervalles, etc. comme c'est le cas pour les Stabilizers et Optics)
+    parSize is TGetFromContext_Float(Name = 'parSize' Variability = $/Variability/Fx)
+    SizeTokenEvaluable =   ifte[parSize >= 0.1, TConstantLocalisationToken(Value = "SIZE_VB"),
+                           ifte[ 0.1 > parSize & parSize >= 0.05, TConstantLocalisationToken(Value = "SIZE_B"),
+                           ifte[0.05 > parSize & parSize > -0.05, TConstantLocalisationToken(Value = "SIZE_N"),
+                           ifte[-0.05 >= parSize & parSize > -0.1, TConstantLocalisationToken(Value = "SIZE_S"),
+                           TConstantLocalisationToken(Value = "SIZE_VS") ]]]]
+
+    // ECM (utilise HitRollECMModifier)
+    parECM is TGetFromContext_Float(Name = 'parECM' Variability = $/Variability/Fx)
+    ECMTokenEvaluable =     ifte[parECM >= -0.1,  TConstantLocalisationToken(Value = "BAD"),
+                            ifte[parECM >= -0.2,  TConstantLocalisationToken(Value = "NORMAL"),
+                            ifte[parECM >= -0.3,  TConstantLocalisationToken(Value = "GOOD"),
+                            ifte[parECM >= -0.4,  TConstantLocalisationToken(Value = "VGOOD"),
+                            ifte[parECM >= -0.5,  TConstantLocalisationToken(Value = "EXCE"),
+                            TConstantLocalisationToken(Value = "EXCE") ]]]]]
+
+    // Speed (utilise VitesseLineaire)
+    SpeedFakeFactorVehicle  = 2.0
+    SpeedFakeFactorInfantry = 3.0
+    SpeedFakeFactorAir      = 2.0
+    SpeedEvaluable = ~/SpeedEvaluation
+    parSpeed is TGetFromContext_Float(Name = 'parSpeed' Variability = $/Variability/Fx)
+    // /!\ Les index doivent être dans le range de TFSKeysForColorLadder définis dans Slayer\Data\WarGame\UserInterface\InGame\UIInGameManager.ndf et \Slayer\Data\WarGame\UserInterface\OutGame\UIOutgame_Params.ndf
+    SpeedIndexColorEvaluable = ifte[parSpeed >= 0.0 & parSpeed < 50.0, 0,
+                               ifte[parSpeed < 60.0, 1,
+                               ifte[parSpeed < 70.0, 2,
+                               ifte[parSpeed < 80.0, 3, 4]]]]
+
+    // Map associant les tokens avec les couleurs (pour Stabilizer et Optics). /!\ Les index doivent être dans le range de TFSKeysForColorLadder définis dans Slayer\Data\WarGame\UserInterface\InGame\UIInGameManager.ndf et \Slayer\Data\WarGame\UserInterface\OutGame\UIOutgame_Params.ndf
+    MapStabilizerAndOpticsTokenToIndexColor = MAP
+    [
+        ("NONE", 0),
+        ("BAD", 1),
+        ("POOR", 1),
+        ("NORMAL", 2),
+        ("GOOD", 3),
+        ("VGOOD", 3),
+        ("EXCE", 4),
+    ]
+
+    // Map associant les tokens avec les couleurs (pour Sealth et Optics).
+    MapSealthTokenToIndexColor = MAP
+    [
+        ("NONE", 0),
+        ("BAD", 1),
+        ("GOOD", 2),
+        ("VGOOD", 3),
+        ("EXCE", 4),
+    ]
+
+
+    // Stabilizer (utilise PourcentageTirDirectEnMouvement pour arme HE et AP tir en mouvement)
+    parStabilizer is TGetFromContext_Float(Name = 'parStabilizer' Variability = $/Variability/Fx)
+    parPourcentageTirDirectEnMouvement is TGetFromContext_Float(Name = 'parPourcentageTirDirectEnMouvement' Variability = $/Variability/Fx)
+    StabilizerTokenEvaluable = ifte[parPourcentageTirDirectEnMouvement == 0.05, TConstantLocalisationToken(Value = "NONE"),
+                               ifte[parStabilizer > 2, TConstantLocalisationToken(Value = "BAD"),
+                               ifte[parStabilizer >= 1.25, TConstantLocalisationToken(Value = "NORMAL"),
+                               ifte[parStabilizer >= 1.15, TConstantLocalisationToken(Value = "GOOD"),
+                               ifte[parStabilizer < 1.15, TConstantLocalisationToken(Value = "VGOOD"), TConstantLocalisationToken(Value = "EXCE")]]]]]
+
+
+
+    // Optics (utilise OpticalStrength)
+    parOptics is TGetFromContext_Float(Name = 'parOptics' Variability = $/Variability/Fx)
+    OpticsTokenEvaluable = ifte[parOptics >= 0.0 & parOptics < 40.0, TConstantLocalisationToken(Value = "NONE"),
+                           ifte[parOptics < 60.0, TConstantLocalisationToken(Value = "BAD"),
+                           ifte[parOptics < 80.0, TConstantLocalisationToken(Value = "POOR"),
+                           ifte[parOptics < 120.0, TConstantLocalisationToken(Value = "NORMAL"),
+                           ifte[parOptics < 170.0, TConstantLocalisationToken(Value = "GOOD"),
+                           ifte[parOptics < 220.0, TConstantLocalisationToken(Value = "VGOOD"), TConstantLocalisationToken(Value = "EXCE")]]]]]]
+
+    // Autonomy
+    // /!\ Les index doivent être dans le range de TFSKeysForColorLadder définis dans Slayer\Data\WarGame\UserInterface\InGame\UIInGameManager.ndf et \Slayer\Data\WarGame\UserInterface\OutGame\UIOutgame_Params.ndf
+    parAutonomy is TGetFromContext_Float(Name = 'parAutonomy' Variability = $/Variability/Fx)
+    AutonomyIndexColorEvaluable = ifte[parAutonomy >= 0.0 & parAutonomy < 300.0, 0,
+                                  ifte[parAutonomy < 500.0, 1,
+                                  ifte[parAutonomy < 700, 2,
+                                  ifte[parAutonomy < 900.0, 3, 4]]]]
+
+
+    // Sealth
+    parSealth is TGetFromContext_Float(Name = 'parSealth' Variability = $/Variability/Fx)
+    SealthTokenEvaluable = ifte[parSealth == 1, TConstantLocalisationToken(Value = "NONE"),
+                           ifte[parSealth == 1.5, TConstantLocalisationToken(Value = "BAD"),
+                           ifte[parSealth == 2, TConstantLocalisationToken(Value = "GOOD"),
+                           ifte[parSealth == 2.5, TConstantLocalisationToken(Value = "VGOOD"),
+                           ifte[parSealth == 3, TConstantLocalisationToken(Value = "EXCE"),TConstantLocalisationToken(Value = "EXCE")]]]]]
+
+    // FuelCapacity
+        // 1) Pour les unités qui consomment du fuel
+    FuelCapacityIndexColorEvaluable = ~/FuelCapacityIndexColorEvaluation
+        // 2) Pour les unités qui ravitaillent
+    // /!\ Les index doivent être dans le range de TFSKeysForColorLadder définis dans Slayer\Data\WarGame\UserInterface\InGame\UIInGameManager.ndf et \Slayer\Data\WarGame\UserInterface\OutGame\UIOutgame_Params.ndf
+    parLogisticCapacity is TGetFromContext_Float(Name = 'parLogisticCapacity' Variability = $/Variability/Fx)
+    LogisticCapacityIndexColorEvaluable = ifte[parLogisticCapacity >= 0.0 & parLogisticCapacity < 500.0, 0,
+                                          ifte[parLogisticCapacity < 1000.0, 1,
+                                          ifte[parLogisticCapacity < 5000.0, 2,
+                                          ifte[parLogisticCapacity < 10000.0, 3, 4]]]]
+
+    // -------------------------------
+
+    NAToken = "NA"
+
+    SpeedKmPerHToken = "SPEED"
+    SpeedKnotToken = "SPEED_BT"
+
+    ArmorsToken = "ARMORS"
+
+    MToken = "RANGE_M"
+    KmToken = "RANGE_KM"
+    LiterToken = "LITER"
+    ROFToken = "ROF"
+    MissilesToken = "MISSILES"
+    RocketsToken = "ROCKETS"
+    RoundsToken = "ROUNDS"
+    BombsToken = "BOMBS"
+)
+
+// ------------------------------------------------------------------------------------------------------------------------

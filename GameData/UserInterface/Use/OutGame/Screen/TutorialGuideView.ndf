@@ -1,0 +1,581 @@
+//-------------------------------------------------------------------------------------
+
+GuideBackButton is CancelButton
+(
+    TextToken = 'NV_BACK'
+    ElementName = 'GuideBackButton'
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+)
+//-------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------
+template ManuelTexteTitre1
+[
+    TextToken : string = 'AGM_14',
+]
+is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKTextDescriptor
+    (
+
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1, 0]
+        )
+
+        ParagraphStyle = TParagraphStyleRTTI
+        (
+            Alignment = ~/UIText_Left
+            //VerticalAlignment = ~/UIText_VerticalCenter
+        )
+
+        TextPadding = TRTTILength4(Magnifiable = [2.0, 80.0, 2.0, 10.0])
+        HorizontalFitStyle = ~/FitStyle/UserDefined
+        VerticalFitStyle = ~/FitStyle/FitToContent //FitToContent
+        BigLineAction = ~/BigLineAction/MultiLine
+        TextStyle = 'Default'
+        TypefaceToken = 'Second'
+        TextSize = '50'
+        TextDico = ~/LocalisationConstantes/dico_briefing
+        TextColor = 'SD2_BleuVariable'
+        TextToken = <TextToken>
+    )
+)
+
+template ManuelTexteTitre2
+[
+    TextToken : string = 'AGM_14',
+]
+is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKTextDescriptor
+    (
+
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1, 0]
+        )
+
+        ParagraphStyle = TParagraphStyleRTTI
+        (
+            Alignment = ~/UIText_Left
+            //VerticalAlignment = ~/UIText_VerticalCenter
+        )
+
+        TextPadding = TRTTILength4(Magnifiable = [8.0, 80.0, 2.0, 10.0])
+        HorizontalFitStyle = ~/FitStyle/UserDefined
+        VerticalFitStyle = ~/FitStyle/FitToContent //FitToContent
+        BigLineAction = ~/BigLineAction/MultiLine
+        TextStyle = 'Default'
+        TypefaceToken = 'Second'
+        TextSize = '42'
+        TextDico = ~/LocalisationConstantes/dico_briefing
+        TextColor = 'SD2_BleuVariable'
+        TextToken = <TextToken>
+    )
+)
+
+template ManuelTexteTitre3
+[
+    TextToken : string = 'AGM_14',
+]
+is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKTextDescriptor
+    (
+
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1, 0]
+        )
+
+        ParagraphStyle = TParagraphStyleRTTI
+        (
+            Alignment = ~/UIText_Left
+            //VerticalAlignment = ~/UIText_VerticalCenter
+        )
+
+        TextPadding = TRTTILength4(Magnifiable = [8.0, 40.0, 2.0, 10.0])
+        HorizontalFitStyle = ~/FitStyle/UserDefined
+        VerticalFitStyle = ~/FitStyle/FitToContent //FitToContent
+        BigLineAction = ~/BigLineAction/MultiLine
+        TextStyle = 'Default'
+        TypefaceToken = 'Second'
+        TextSize = '24'
+        TextDico = ~/LocalisationConstantes/dico_briefing
+        TextColor = 'SD2_BleuVariable'
+        TextToken = <TextToken>
+    )
+)
+
+//-------------------------------------------------------------------------------------
+template ManuelTexteCorps
+[
+    TextToken : string = 'AGM_58',
+]
+is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKTextDescriptor
+    (
+
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1, 0]
+        )
+
+        ParagraphStyle = TParagraphStyleRTTI
+        (
+            Alignment = ~/UIText_Left
+            //VerticalAlignment = ~/UIText_VerticalCenter
+        )
+
+        TextPadding = TRTTILength4(Magnifiable = [25.0, 13.0, 0.0, 0.0])
+        HorizontalFitStyle = ~/FitStyle/UserDefined
+        VerticalFitStyle = ~/FitStyle/FitToContent //FitToContent
+        BigLineAction = ~/BigLineAction/MultiLine
+        TextStyle = 'Default'
+        TypefaceToken = 'Main'
+        TextSize = '20'
+        TextDico = ~/LocalisationConstantes/dico_briefing
+        TextColor = 'SD2_BlancPur'
+        TextToken = <TextToken>
+    )
+)
+
+template ManuelImage
+[
+    TextureToken : string = 'UseOutGame_Manual_AG_01',
+    MagnifiableWidthHeight : float2 = [100.0, 100.0],
+]
+is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKTextureDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            //RelativeWidthHeight = [0.9,1]
+            MagnifiableWidthHeight = <MagnifiableWidthHeight>
+            AlignementToFather = [0.5,0]
+            AlignementToAnchor = [0.5,0]
+
+        )
+
+        TextureToken = <TextureToken>
+        TextureFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1,1]
+        )
+    )
+)
+
+//-------------------------------------------------------------------------------------
+ManuelGrille01 is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKGridDescriptor
+    (
+
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+        )
+
+        FirstElementMargin = TRTTILength2( Magnifiable = [35.0, 0.0])
+        InterElementMargin    = TRTTILength2 (Magnifiable = [0.0, 0.0])
+        LastElementMargin = TRTTILength2( Magnifiable = [8.0, 10.0])
+        ChildFitToContent = true
+        GridElements = MAP
+        [
+
+            ([0,0], DetailGridElt (TextToken = 'AGMT_01')),  ([0,1], DetailGridElt (TextToken = 'AGMT_10')),
+            ([1,0], DetailGridElt (TextToken = 'AGMT_02')), ([1,1], DetailGridElt (TextToken = 'AGMT_11')),
+            ([2,0], DetailGridElt (TextToken = 'AGMT_03')), ([2,1], DetailGridElt (TextToken = 'AGMT_12')),
+            ([3,0], DetailGridElt (TextToken = 'AGMT_04')), ([3,1], DetailGridElt (TextToken = 'AGMT_13')),
+            ([4,0], DetailGridElt (TextToken = 'AGMT_05')), ([4,1], DetailGridElt (TextToken = 'AGMT_14')),
+            ([5,0], DetailGridElt (TextToken = 'AGMT_06')), ([5,1], DetailGridElt (TextToken = 'AGMT_15')),
+            ([6,0], DetailGridElt (TextToken = 'AGMT_07')), ([6,1], DetailGridElt (TextToken = 'AGMT_16')),
+            ([7,0], DetailGridElt (TextToken = 'AGMT_08')), ([7,1], DetailGridElt (TextToken = 'AGMT_17')),
+            ([8,0], DetailGridElt (TextToken = 'AGMT_09')), ([8,1], DetailGridElt (TextToken = 'AGMT_18')),
+
+
+        ]
+    )
+)
+ManuelGrille02 is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKGridDescriptor
+    (
+
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+        )
+
+        FirstElementMargin = TRTTILength2( Magnifiable = [35.0, 0.0])
+        InterElementMargin    = TRTTILength2 (Magnifiable = [0.0, 0.0])
+        LastElementMargin = TRTTILength2( Magnifiable = [8.0, 10.0])
+        ChildFitToContent = true
+        GridElements = MAP
+        [
+
+        ([0,0], DetailGridElt (TextToken = 'AGMT_19' Height = 50 )), ([0,1], DetailGridElt (TextToken = 'AGMT_24' Height = 50)), ([0,2], DetailGridElt (TextToken = 'AGMT_29' Height = 50)),
+        ([1,0], DetailGridElt (TextToken = 'AGMT_20')), ([1,1], DetailGridElt (TextToken = 'AGMT_25')), ([1,2], DetailGridElt (TextToken = 'AGMT_30' )),
+        ([2,0], DetailGridElt (TextToken = 'AGMT_21')), ([2,1], DetailGridElt (TextToken = 'AGMT_26')), ([2,2], DetailGridElt (TextToken = 'AGMT_31' )),
+        ([3,0], DetailGridElt (TextToken = 'AGMT_22')), ([3,1], DetailGridElt (TextToken = 'AGMT_27')), ([3,2], DetailGridElt (TextToken = 'AGMT_32' )),
+        ([4,0], DetailGridElt (TextToken = 'AGMT_23')), ([4,1], DetailGridElt (TextToken = 'AGMT_28')), ([4,2], DetailGridElt (TextToken = 'AGMT_33' )),
+
+        ]
+    )
+)
+
+ManuelGrille03 is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKGridDescriptor
+    (
+
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+        )
+
+        FirstElementMargin = TRTTILength2( Magnifiable = [35.0, 0.0])
+        InterElementMargin    = TRTTILength2 (Magnifiable = [0.0, 0.0])
+        LastElementMargin = TRTTILength2( Magnifiable = [8.0, 10.0])
+        ChildFitToContent = true
+        GridElements = MAP
+        [
+
+        ([0,0], DetailGridElt (TextToken = 'AGMT_34')), ([0,1], DetailGridElt (TextToken = 'AGMT_38')), ([0,2], DetailGridElt (TextToken = 'AGMT_42')),
+        ([1,0], DetailGridElt (TextToken = 'AGMT_35')), ([1,1], DetailGridElt (TextToken = 'AGMT_39')), ([1,2], DetailGridElt (TextToken = 'AGMT_43')),
+        ([2,0], DetailGridElt (TextToken = 'AGMT_36')), ([2,1], DetailGridElt (TextToken = 'AGMT_40')), ([2,2], DetailGridElt (TextToken = 'AGMT_44')),
+        ([3,0], DetailGridElt (TextToken = 'AGMT_37')), ([3,1], DetailGridElt (TextToken = 'AGMT_41')), ([3,2], DetailGridElt (TextToken = 'AGMT_45')),
+
+        ]
+    )
+)
+
+ManuelGrille04 is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKGridDescriptor
+    (
+
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+        )
+
+        FirstElementMargin = TRTTILength2( Magnifiable = [35.0, 0.0])
+        InterElementMargin    = TRTTILength2 (Magnifiable = [0.0, 0.0])
+        LastElementMargin = TRTTILength2( Magnifiable = [8.0, 10.0])
+        ChildFitToContent = true
+        GridElements = MAP
+        [
+
+        ([0,0], DetailGridElt (TextToken = 'AGMT_46')), ([0,1], DetailGridElt (TextToken = 'AGMT_54')),
+        ([1,0], DetailGridElt (TextToken = 'AGMT_47')), ([1,1], DetailGridElt (TextToken = 'AGMT_55')),
+        ([2,0], DetailGridElt (TextToken = 'AGMT_48')), ([2,1], DetailGridElt (TextToken = 'AGMT_56')),
+        ([3,0], DetailGridElt (TextToken = 'AGMT_49')), ([3,1], DetailGridElt (TextToken = 'AGMT_57')),
+        ([4,0], DetailGridElt (TextToken = 'AGMT_50')), ([4,1], DetailGridElt (TextToken = 'AGMT_58')),
+        ([5,0], DetailGridElt (TextToken = 'AGMT_51')), ([5,1], DetailGridElt (TextToken = 'AGMT_59')),
+        ([6,0], DetailGridElt (TextToken = 'AGMT_52')), ([6,1], DetailGridElt (TextToken = 'AGMT_60')),
+        ([7,0], DetailGridElt (TextToken = 'AGMT_53')), ([7,1], DetailGridElt (TextToken = 'AGMT_61')),
+
+
+        ]
+    )
+)
+
+ManuelGrille05 is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKGridDescriptor
+    (
+
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+        )
+
+        FirstElementMargin = TRTTILength2( Magnifiable = [35.0, 0.0])
+        InterElementMargin    = TRTTILength2 (Magnifiable = [0.0, 0.0])
+        LastElementMargin = TRTTILength2( Magnifiable = [8.0, 10.0])
+        ChildFitToContent = true
+        GridElements = MAP
+        [
+
+        ([0,0], DetailGridElt (TextToken = 'AGMT_62')), ([0,1], DetailGridElt (TextToken = 'AGMT_66')),
+        ([1,0], DetailGridElt (TextToken = 'AGMT_63')), ([1,1], DetailGridElt (TextToken = 'AGMT_67')),
+        ([2,0], DetailGridElt (TextToken = 'AGMT_64')), ([2,1], DetailGridElt (TextToken = 'AGMT_68')),
+        ([3,0], DetailGridElt (TextToken = 'AGMT_65')), ([3,1], DetailGridElt (TextToken = 'AGMT_69')),
+
+
+
+        ]
+    )
+)
+
+ManuelGrilleSupply is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKGridDescriptor
+    (
+
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+        )
+
+        FirstElementMargin = TRTTILength2( Magnifiable = [35.0, 0.0])
+        InterElementMargin    = TRTTILength2 (Magnifiable = [0.0, 0.0])
+        LastElementMargin = TRTTILength2( Magnifiable = [8.0, 10.0])
+        ChildFitToContent = true
+        GridElements = MAP
+        [
+
+        ([0,0], DetailGridElt (Height = 50)                      ),  ([0,1], DetailGridElt (TextToken = 'AGMT_71' Height = 50 )), ([0,2], DetailGridElt (TextToken = 'AGMT_73' Height = 50 )),([0,3], DetailGridElt (TextToken = 'AGMT_75' Height = 50 )),
+        ([1,0], DetailGridElt (TextToken = 'AGMT_70' Height = 50 )), ([1,1], DetailGridElt (TextToken = 'AGMT_72' Height = 50 )), ([1,2], DetailGridElt (TextToken = 'AGMT_74' Height = 50 )), ([1,3], DetailGridElt (TextToken = 'AGMT_76' Height = 50 )),
+        ]
+    )
+)
+
+ManuelGrilleRules is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKGridDescriptor
+    (
+
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+        )
+
+        FirstElementMargin = TRTTILength2( Magnifiable = [35.0, 0.0])
+        InterElementMargin    = TRTTILength2 (Magnifiable = [0.0, 0.0])
+        LastElementMargin = TRTTILength2( Magnifiable = [8.0, 10.0])
+        ChildFitToContent = true
+        GridElements = MAP
+        [
+
+        ([0,0], DetailGridElt (TextToken = 'AGMT_77' Width = 340)),
+        ([1,0], DetailGridElt (TextToken = 'AGMT_78' Width = 340)),
+        ([2,0], DetailGridElt (TextToken = 'AGMT_79' Width = 340)),
+        ([3,0], DetailGridElt (TextToken = 'AGMT_80' Width = 340)),
+        ([4,0], DetailGridElt (TextToken = 'AGMT_81' Width = 340)),
+
+
+
+
+
+        ]
+    )
+)
+template DetailGridElt
+[
+    TextToken : string = "",
+    Width : float = 240.0,
+    Height : float = 25.0,
+    TextColor : string = 'SD2_BlancPur'
+]
+is BUCKTextDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [<Width>, <Height>]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Left
+        VerticalAlignment = UIText_VerticalCenter
+    )
+    TextPadding = TRTTILength4(Magnifiable = [5.0, 5.0, 5.0, 5.0])
+    TextStyle = "Default"
+    FitStyle = ~/FitStyle/UserDefined
+    TypefaceToken = "Main"
+    BigLineAction = ~/BigLineAction/CutByDots
+    TextDico = ~/LocalisationConstantes/dico_briefing
+    TextToken = <TextToken>
+    TextSize = '16'
+    TextColor = <TextColor>
+    HasBorder = true
+    //BordersToDraw : int = ~/TBorderSide/Default,
+    BorderThicknessToken = '1'
+    BorderLineColorToken = 'SD2_Blanc184'
+)
+
+
+//-------------------------------------------------------------------------------------
+
+private GuideContainer is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 0.0]
+        MagnifiableOffset = [0,50]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    HasBackground = true
+    BackgroundBlockColorToken = 'Gris123'
+
+    Elements =
+    [
+            ManuelTexteTitre1(TextToken = 'AGM_01'),
+            ManuelTexteCorps(TextToken = 'AGM_02'),
+            //
+            ManuelTexteTitre2(TextToken = 'AGM_03'),
+            ManuelTexteCorps(TextToken = 'AGM_04'),
+            ManuelTexteCorps(TextToken = 'AGM_05'),
+            ManuelTexteCorps(TextToken = 'AGM_06'),
+            ManuelTexteCorps(TextToken = 'AGM_07'),
+            //
+            ManuelTexteTitre2(TextToken = 'AGM_08'),
+            ManuelTexteCorps(TextToken = 'AGM_09'),
+            ManuelTexteCorps(TextToken = 'AGM_10'),
+            ManuelTexteCorps(TextToken = 'AGM_11'),
+            //
+            ManuelTexteTitre2(TextToken = 'AGM_12'),
+            ManuelTexteCorps(TextToken = 'AGM_13'),
+            ManuelGrille01,
+                // the battalion
+            ManuelTexteTitre3(TextToken = 'AGM_14'),
+            ManuelTexteCorps(TextToken = 'AGM_15'),
+            ManuelImage(TextureToken = 'UseOutGame_Manual_AG_01' MagnifiableWidthHeight = [555,460]),
+            ManuelTexteCorps(TextToken = 'AGM_16'),
+            ManuelTexteCorps(TextToken = 'AGM_17'),
+            ManuelImage(TextureToken = 'UseOutGame_Manual_AG_02' MagnifiableWidthHeight = [477,271]),
+            ManuelTexteCorps(TextToken = 'AGM_18'),
+            ManuelTexteCorps(TextToken = 'AGM_19'),
+            ManuelImage(TextureToken = 'UseOutGame_Manual_AG_03' MagnifiableWidthHeight = [401,401]),
+            ManuelTexteCorps(TextToken = 'AGM_20'),
+            //
+            ManuelTexteTitre3(TextToken = 'AGM_21'),
+            ManuelTexteCorps(TextToken = 'AGM_22'),
+            ManuelImage(TextureToken = 'UseOutGame_Manual_AG_04' MagnifiableWidthHeight = [421,226]),
+            ManuelTexteCorps(TextToken = 'AGM_23'),
+            ManuelImage(TextureToken = 'UseOutGame_Manual_AG_05' MagnifiableWidthHeight = [536,558]),
+            ManuelTexteCorps(TextToken = 'AGM_24'),
+            ManuelImage(TextureToken = 'UseOutGame_Manual_AG_06' MagnifiableWidthHeight = [415,203]),
+            ManuelTexteCorps(TextToken = 'AGM_25'),
+            ManuelImage(TextureToken = 'UseOutGame_Manual_AG_07' MagnifiableWidthHeight = [824,726]),
+            ManuelTexteCorps(TextToken = 'AGM_26'),
+            ManuelImage(TextureToken = 'UseOutGame_Manual_AG_08' MagnifiableWidthHeight = [824,89]),
+            ManuelTexteCorps(TextToken = 'AGM_27'),
+            ManuelTexteCorps(TextToken = 'AGM_28'),
+            ManuelTexteCorps(TextToken = 'AGM_29'),
+            //
+            ManuelTexteTitre2(TextToken = 'AGM_30'),
+            ManuelTexteCorps(TextToken = 'AGM_31'),
+            ManuelGrille02,
+            //
+            ManuelTexteTitre2(TextToken = 'AGM_32'),
+            ManuelTexteCorps(TextToken = 'AGM_33'),
+            ManuelGrille03,
+            //combat
+            ManuelTexteTitre1(TextToken = 'AGM_34'),
+            ManuelTexteCorps(TextToken = 'AGM_35'),
+            //
+            ManuelTexteTitre2(TextToken = 'AGM_36'),
+            ManuelTexteCorps(TextToken = 'AGM_37'),
+            ManuelImage(TextureToken = 'UseOutGame_Manual_AG_09' MagnifiableWidthHeight = [574,619]),
+            ManuelTexteCorps(TextToken = 'AGM_38'),
+                //
+            ManuelTexteTitre3(TextToken = 'AGM_39'),
+            ManuelTexteCorps(TextToken = 'AGM_40'),
+            ManuelImage(TextureToken = 'UseOutGame_Manual_AG_10' MagnifiableWidthHeight = [970,407]),
+            ManuelTexteCorps(TextToken = 'AGM_41'),
+            ManuelTexteCorps(TextToken = 'AGM_42'),
+            ManuelTexteCorps(TextToken = 'AGM_43'),
+                //
+            ManuelTexteTitre3(TextToken = 'AGM_44'),
+            ManuelTexteCorps(TextToken = 'AGM_45'),
+            ManuelImage(TextureToken = 'UseOutGame_Manual_AG_11' MagnifiableWidthHeight = [856,647]),
+            ManuelTexteCorps(TextToken = 'AGM_46'),
+            ManuelGrilleRules,
+            ManuelTexteCorps(TextToken = 'AGM_465'),
+            ManuelTexteCorps(TextToken = 'AGM_47'),
+            ManuelImage(TextureToken = 'UseOutGame_Manual_AG_115' MagnifiableWidthHeight = [1000,122]),
+            ManuelTexteCorps(TextToken = 'AGM_48'),
+            ManuelGrille04,
+            ManuelTexteCorps(TextToken = 'AGM_49'),
+            ManuelGrille05,
+                //
+            ManuelTexteTitre3(TextToken = 'AGM_50'),
+            ManuelTexteCorps(TextToken = 'AGM_51'),
+            //Air combat
+            ManuelTexteTitre2(TextToken = 'AGM_52'),
+            ManuelTexteCorps(TextToken = 'AGM_53'),
+            ManuelImage(TextureToken = 'UseOutGame_Manual_AG_12' MagnifiableWidthHeight = [856,647]),
+            ManuelTexteCorps(TextToken = 'AGM_54'),
+            // air squadrons
+            ManuelTexteTitre2(TextToken = 'AGM_55'),
+            ManuelTexteCorps(TextToken = 'AGM_56'),
+                // reconnaissance
+            ManuelTexteTitre3(TextToken = 'AGM_57'),
+            ManuelTexteCorps(TextToken = 'AGM_58'),
+                // interceptors
+            ManuelTexteTitre3(TextToken = 'AGM_59'),
+            ManuelTexteCorps(TextToken = 'AGM_60'),
+                // bombers
+            ManuelTexteTitre3(TextToken = 'AGM_61'),
+            ManuelTexteCorps(TextToken = 'AGM_62'),
+                // ground attack aircraft
+            ManuelTexteTitre3(TextToken = 'AGM_63'),
+            ManuelTexteCorps(TextToken = 'AGM_64'),
+            // reinforcement
+            ManuelTexteTitre2(TextToken = 'AGM_65'),
+            ManuelTexteCorps(TextToken = 'AGM_66'),
+            ManuelImage(TextureToken = 'UseOutGame_Manual_AG_13' MagnifiableWidthHeight = [818,309]),
+            // Resupply
+            ManuelTexteTitre2(TextToken = 'AGM_67'),
+            ManuelTexteCorps(TextToken = 'AGM_68'),
+            ManuelGrilleSupply,
+            ManuelTexteCorps(TextToken = 'AGM_69'),
+
+            BUCKListElementDescriptor
+            (
+                ComponentDescriptor = BUCKContainerDescriptor
+                                        (
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                MagnifiableWidthHeight = [0.0, 100]
+                                                RelativeWidthHeight = [1.0, 0.0]
+                                            )
+                                        )
+            )
+
+
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+BUCKTutorialGuideMainComponentDescriptor is WindowFrame
+(
+    ContentExtendWeight = 1.0
+    ContentRelativeWidthHeight = [0.7, 1.0]
+    TitleToken = 'AB_GUIDE'
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GuideBackButton ),
+    ]
+
+    ContentComponents =
+    [
+        BUCKSpecificScrollingContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            HasVerticalScrollbar = true
+            ScrollStepSize = [0.0, 50.0]
+            Components =
+            [
+                ~/GuideContainer
+            ]
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+TutorialGuideViewDescriptor is TTutorialGuideViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKTutorialGuideMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

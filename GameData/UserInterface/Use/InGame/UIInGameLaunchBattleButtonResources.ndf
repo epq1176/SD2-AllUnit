@@ -1,0 +1,122 @@
+
+HUDLaunchBattleButtonResources is TUISpecificInGameLaunchBattleResources
+(
+    MainComponent = ~/LaunchBattleMainComponent
+    TimerComponent = ~/LaunchBattleTimerComponent
+)
+
+private LaunchBattleMainComponentWidth is 190.0
+private LaunchBattleSpaceBetweenButtonAndTimer is 5.0
+private LaunchBattleButtonHeight is 31.0
+private LaunchBattleTimerPanelHeight is 31.0
+
+private LaunchBattleMainComponent is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 0.0]
+        //MagnifiableWidthHeight = [LaunchBattleMainComponentWidth, 0.0]
+        MagnifiableOffset = [98.0, 165.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+    InterItemMargin = TRTTILength( Magnifiable = LaunchBattleSpaceBetweenButtonAndTimer )
+
+    Elements =
+    [
+        //Bouton Launch Battle
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKSpecificButton
+            (
+                BigBorderBackgroundColorToken  = "ConfirmButton/BigBorder"
+                BorderLineColorToken = "ConfirmButton/Border"
+                BackgroundBlockColorToken  = "ConfirmButton/Background"
+                ExternalBorderLineColorToken  = "ConfirmButton/ExternalBorder"
+
+                UniqueName = "LaunchBattleButton"
+                ElementName = 'LaunchBattleButton'
+
+                ButtonMagnifiableWidthHeight = [LaunchBattleMainComponentWidth, LaunchBattleButtonHeight]
+                //ButtonMagnifiableOffset = [0.0, 0.0]
+                //ButtonRelativeWidthHeight = [1.0, 0.0]
+
+
+                HasText = true
+                TextParagraphStyle = ~/LaunchBattleParagraphStyleCentered
+                TextStyle = "Default"
+                TextSizeToken = "SD2_Moyen"
+                TextColorToken = "ConfirmButton/BigBorder"
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                HidePointerEvents = true
+
+                HintTitleToken = "HLB_BUTTOT"
+                HintBodyToken = "HLB_BUTTOB"
+                HintExtendedToken = "HLB_BUTTOE"
+                HintDico = ~/LocalisationConstantes/dico_interface_ingame
+            )
+        ),
+
+        //Conteneur pour le timer
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ElementName = 'LaunchBattleTimerContainer'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [LaunchBattleMainComponentWidth, LaunchBattleTimerPanelHeight]
+                    //RelativeWidthHeight = [1.0, 0.0]
+                )
+            )
+        ),
+    ]
+)
+
+private LaunchBattleTimerComponent is TContainerDarkStyle
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = 'LaunchBattleTimerText'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            ParagraphStyle = ~/LaunchBattleParagraphStyleCentered
+            TextStyle = "Default"
+
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+            VerticalFitStyle = ~/FitStyle/UserDefined
+
+            TypefaceToken = "Main"
+            BigLineAction = ~/BigLineAction/MultiLine
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextColor = "SD2_Blanc184"
+            TextSize = "SD2_Moyen"
+
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+        )
+    ]
+)
+
+private LaunchBattleParagraphStyleCentered is TParagraphStyleRTTI
+(
+    Alignment = UIText_Center
+    VerticalAlignment = UIText_VerticalCenter
+    InterLine = 0
+)

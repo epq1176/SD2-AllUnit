@@ -1,0 +1,17 @@
+export Gfx_Bunker_PaK_50mm is TDepictionTemplate //arme
+(
+    RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+    Selector = CommonBunkerDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High( MeshDescriptor =  Modele_PaK_38_50mm ),
+        DepictionDescriptor_LOD_Mid ( MeshDescriptor =  Modele_PaK_38_50mm_MID ),
+        DepictionDescriptor_LOD_Low ( MeshDescriptor =  Modele_PaK_38_50mm_LOW ),
+        DepictionDescriptor_LOD_None()
+    ]
+
+    SubDepictions = []
+    Operators = Operators_PaK_38_50mm
+    Actions = Weapons_PaK_38_50mm
+)
+
+export ModelFile_Bunker_PaK_38_50mm_Weapon is ~/ModelFile_PaK_38_50mm

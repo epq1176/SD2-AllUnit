@@ -1,0 +1,22 @@
+export ModelFile_Bef_StuG_III_F is 'GameData:Assets\3D\Units\GER\Char\Stug_III_F\Bef_Stug.Ase2NdfBin'
+
+Modele_Bef_StuG_III_F is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Bef_StuG_III_F
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Bef_StuG_III_F_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\Stug_III_F_MID\Bef_Stug_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Bef_StuG_III_F_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\Stug_III_F_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

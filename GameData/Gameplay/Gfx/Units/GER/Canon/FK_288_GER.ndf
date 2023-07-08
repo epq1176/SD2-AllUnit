@@ -1,0 +1,22 @@
+export ModelFile_FK_288_GER is 'GameData:Assets\3D\Units\GER\Canon\FK288\FK288.Ase2NdfBin'
+
+Modele_FK_288_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_FK_288_GER
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_FK_288_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\FK288_MID\FK288_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_FK_288_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\LODS\FK288_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

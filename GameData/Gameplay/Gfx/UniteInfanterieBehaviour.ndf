@@ -1,0 +1,92 @@
+//--
+// Ndf File for UniteInfanterie Behaviour.
+//--
+
+InfanterieTransitionTime is 1.0
+
+public Template TemplateUniteBehaviourDescriptor
+[
+    NbSoldatInGroupeCombat = 0,
+    Dispersion             = 0,
+    CircleFormation        = false,
+    IsSapery               = False
+]
+is TUniteBehaviourDescriptor
+(
+    NbSoldatInGroupeCombat  = <NbSoldatInGroupeCombat>
+    CircleFormation = <CircleFormation>
+
+    // Chaos dans le mouvement des soldats.
+    NoiseMin                = 15.0 //2.0 //30.0
+    NoiseMax                = 30.0 //5.0 //40.0
+    NoiseTimeMin            = 2.5 //3.0
+    NoiseTimeMax            = 5.0 //6.0
+
+    // Ponderation pour retrouver la formation initiale.
+    // 0 < CoeffRepositionement << 1 !!
+    CoeffRepositionement    = 0.02
+
+    // Coefficient relatif a la taille de la formation
+    // (taille en espace utilise, non en nombre d'unite)
+    // Demander à un dev avant de changer sinon ça fait des trucs chelou dans l'infanterie
+    MinDispersion is 200
+    Dispersion              = ((<Dispersion> > MinDispersion) ? <Dispersion> : MinDispersion) // Avant fix homothetie : 300
+    DispersionMax           = ((<Dispersion> > MinDispersion) ? <Dispersion> : MinDispersion) * 3 // Avant fix homothetie : 370
+
+    DispersionTir           = 0
+
+    // Distance min entre deux soldats, utilise pour les collisions
+    SoldatsDistanceMin      = 150 // Avant fix homothetie : 300
+
+    // Marge temporelle placee entre les animations d'evenement.
+    MargeAnimation          = 0.05
+
+    // Probabilite de tir en deplacement.
+    ProbaTireDeplacement    = 0.1
+
+    // Nombre de balle par chargeur ;)
+    NbBullet                = 7 //8
+
+    // Distance parcourue ne lancant pas d'animation de deplacement.
+    MinDistance             = 10.
+
+    // Distance consideree comme significative.
+    // Normalement DeltaDistance ~= 2 * NoiseMax
+    DeltaDistance           = 100 // Avant fix homothetie : 50
+
+    // Constantes prise en compte pour jouer les animations de hit.
+    OnHitProbaNormalWeapon  = 0.06 //0.1
+    OnHitProbaOtherWeapon   = 0.01
+
+    // Probabilite de lancement de l'animation d'inspection
+    IdleLookProba       = 0.03
+
+    // Constantes pour la mort.
+    ProbaViolentDeath       = 0.65 //0.5
+    DeathOnExplosionDuration = 0.5
+
+    // Ratio de soldat utilisant leur arme secondaire (grenade, etc.)
+    FiringUnitRatio = 0.6
+
+    // Decalage entre les tirs secondaires
+    DecalageSeFire = 0.25
+
+    // Constantes determinees par l'animation de tir.
+    TirEmptyFrames = 4
+
+    // Temps avant que le fx de grenade se declenche après le début de l'animation
+    GrenadeFXDelay = 1.8
+
+    //Est ce que c'est un sapeur (pour les fx)
+    IsSapery = <IsSapery>
+
+    BaseSpeed = 900
+    RegroupSpeed = 1000
+
+    //Utiliser les animations de reload + les tirs automatiques
+    AutoFireAndReload = false
+    RealisticMovement = true
+
+    // Temps qu'une unité met à sortir son arme spéciale (bazooka, etc...)
+    GameplaySpecialWeaponDrawTime = 2.1
+)

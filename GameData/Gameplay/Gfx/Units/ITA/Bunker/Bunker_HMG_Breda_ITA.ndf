@@ -1,0 +1,17 @@
+export Gfx_Bunker_HMG_Breda_ITA is TDepictionTemplate //arme
+(
+    RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+    Selector = CommonBunkerDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_HMG_Breda_M37_ITA ),
+        DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_HMG_Breda_M37_ITA_MID ),
+        DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_HMG_Breda_M37_ITA_LOW ),
+        DepictionDescriptor_LOD_None()
+    ]
+
+    SubDepictions = []
+    Operators = Operators_HMG_Breda_M37_ITA
+    Actions = Weapons_HMG_Breda_M37_ITA
+)
+
+export ModelFile_Bunker_HMG_Breda_ITA_Weapon is ~/ModelFile_HMG_Breda_M37_ITA

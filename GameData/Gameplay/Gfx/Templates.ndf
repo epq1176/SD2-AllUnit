@@ -1,0 +1,15 @@
+template TemplateTimelyDescriptorMapBuilding_OnlyLevelBuild
+[
+    RenderStyleProviderDescriptor = ~/DefaultMapBuildingRenderStyleProvider
+] is TTimelyUpdateLBReceiverFactory
+(
+    MultiRenderTypeMaterialPack = $/M3D/Shader/MultiRenderTypeMaterialPack_Default
+    UnitLevelBuildViewDescriptor = ~/MapBuildingUnitLevelBuildViewDescriptor
+    LevelBuildGeoDatabaseModification = TGfxLevelBuildGeoDatabaseModification
+    (
+        SymbolName = 'undefined'
+        Descriptor = ~/MapBuildingUnitLevelBuildViewDescriptor
+    )
+
+    RenderStyleProviderDescriptor = <RenderStyleProviderDescriptor>
+)

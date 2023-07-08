@@ -1,0 +1,210 @@
+EscapeMenuSpaceBetweenButtons is 12
+
+private EscapePanelContinueButton is HUBButton
+(
+    ElementName = "ContinueButton"
+    TextToken = 'AB_CONTINU'
+
+    HintTitleToken = "OES_CNTINT"
+    HintBodyToken = "OES_CNTINB"
+    HintExtendedToken = "OES_CNTINE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    ButtonAlignementToFather = [0.5, 0.0]
+    ButtonAlignementToAnchor = [0.5, 0.0]
+
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_F10 ) )
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private EscapePanelRestartButton is HUBButton
+(
+    ElementName = "RestartButton"
+    TextToken = 'AB_RESTART'
+
+    HintTitleToken = "OES_RSTRTT"
+    HintBodyToken = "OES_RSTRTB"
+    HintExtendedToken = "OES_RSTRTE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    ButtonAlignementToFather = [0.5, 0.0]
+    ButtonAlignementToAnchor = [0.5, 0.0]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private EscapePanelHelpButton is HUBButton
+(
+    ElementName = "HelpButton"
+    TextToken = 'AB_HELP'
+
+    HintTitleToken = "OES_HELPT"
+    HintBodyToken = "OES_HELPB"
+    HintExtendedToken = "OES_HELPE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    ButtonAlignementToFather = [0.5, 0.0]
+    ButtonAlignementToAnchor = [0.5, 0.0]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private EscapePanelSaveButton is HUBButton
+(
+    ElementName = "SaveButton"
+    TextToken = 'AB_SAVEGAM'
+
+    HintTitleToken = "OES_SAVET"
+    HintBodyToken = "OES_SAVEB"
+    HintExtendedToken = "OES_SAVEE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    ButtonAlignementToFather = [0.5, 0.0]
+    ButtonAlignementToAnchor = [0.5, 0.0]
+
+    Components = [
+        BUCKTextDescriptor
+        (
+            ElementName = "SaveDisabledText"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+                AlignementToFather = [1.0, 0.5]
+                AlignementToAnchor = [0.0, 0.5]
+                MagnifiableOffset = [10.0, 0.0]
+            )
+
+            ParagraphStyle = ~/paragraphStyleTextCenter
+            TextStyle = "OutgameHubButton"
+            TypefaceToken = "MainOutgame"
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            HorizontalFitStyle = ~/FitStyle/FitToContent
+
+            TextToken = "AB_SAVEDIS"
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+            TextColor = "BoutonHUB"
+            TextSize = "BoutonURL"
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private EscapePanelLoadButton is HUBButton
+(
+    ElementName = "LoadButton"
+    TextToken = 'AB_LOADGAM'
+
+    HintTitleToken = "OES_LOADT"
+    HintBodyToken = "OES_LOADB"
+    HintExtendedToken = "OES_LOADE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    ButtonAlignementToFather = [0.5, 0.0]
+    ButtonAlignementToAnchor = [0.5, 0.0]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private EscapePanelOptionsButton is HUBButton
+(
+    ElementName = "OptionsButton"
+    TextToken = 'AB_OPTIONS'
+
+    HintTitleToken = "OES_OPTNST"
+    HintBodyToken = "OES_OPTNSB"
+    HintExtendedToken = "OES_OPTNSE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    ButtonAlignementToFather = [0.5, 0.0]
+    ButtonAlignementToAnchor = [0.5, 0.0]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private EscapePanelTutorialGuideButton is HUBButton
+(
+    ElementName = "TutorialGuideButton"
+    TextToken = 'AB_GUIDE'
+
+    HintableAreaElementName = "TutorialGuideButtonHintableAreaElement"
+    HintTitleToken = "OES_GUIDT"
+    HintBodyToken = "OES_GUIDB"
+    HintExtendedToken = "OES_GUIDE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    ButtonAlignementToFather = [0.5, 0.0]
+    ButtonAlignementToAnchor = [0.5, 0.0]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private EscapePanelSurrenderOrQuitButton is HUBButton
+(
+    ElementName = "SurrenderOrQuitButton"
+    TextToken = 'AB_QUITGAM'
+
+    HintableAreaElementName = "SurrenderOrQuitButtonHintableAreaElement"
+    HintTitleToken = "OES_EXITT"
+    HintBodyToken = "OES_EXITB"
+    HintExtendedToken = "OES_EXITE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    ButtonAlignementToFather = [0.5, 0.0]
+    ButtonAlignementToAnchor = [0.5, 0.0]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private MagnifiableEscapeMenuWidth is 400.0
+
+private EscapeMenuDescriptor is BUCKListDescriptor
+(
+    ElementName = "EscapeMenuMainList"
+
+    ComponentFrame = TUIFramePropertyRTTI(
+        AlignementToFather = [ 0.5, 0.5 ]
+        AlignementToAnchor = [ 0.5, 0.5 ]
+    )
+
+    Axis = ~/ListAxis/Vertical
+
+    InterItemMargin = TRTTILength( Magnifiable = ~/EscapeMenuSpaceBetweenButtons )
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    GridAlign = false
+    AssumeChildrenAreFixedSize = true
+    AssumeChildrenAreClippable = false
+
+    Elements =
+    [
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+EscapePanelResource is TUISpecificOutGameEscapePanelResources
+(
+    EscapePanelMenu = ~/EscapeMenuDescriptor
+
+    EscapePanelContinueButton = ~/EscapePanelContinueButton
+    EscapePanelRestartButton = ~/EscapePanelRestartButton
+    EscapePanelHelpButton = ~/EscapePanelHelpButton
+    EscapePanelSaveButton = ~/EscapePanelSaveButton
+    EscapePanelLoadButton = ~/EscapePanelLoadButton
+    EscapePanelOptionsButton = ~/EscapePanelOptionsButton
+    EscapePanelTutorialGuideButton = ~/EscapePanelTutorialGuideButton
+    EscapePanelSurrenderOrQuitButton = ~/EscapePanelSurrenderOrQuitButton
+)

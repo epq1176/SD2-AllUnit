@@ -1,0 +1,85 @@
+
+
+template UnitComparatorTextureWithHint
+[
+    ElementName : string,
+    Texture : string,
+    HintTitleToken : string,
+    HintBodyToken : string,
+    HintExtendedToken : string
+]
+is BUCKTextureDescriptor
+(
+    ElementName = <ElementName>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+       RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    TextureToken = <Texture>
+    TextureFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1, 1]
+    )
+    Components =
+    [
+        BUCKSpecificHintableArea
+        (
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = <HintTitleToken>
+            HintBodyToken = <HintBodyToken>
+            HintExtendedToken = <HintExtendedToken>
+        )
+    ]
+)
+
+BUCKSpecificUnitComparatorSelectorMainComponentDescriptor is BUCKButtonDescriptor
+(
+    ElementName = 'UnitComparatorSelectorButton'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [25.0, 25.0]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+
+    IsTogglable = false
+    Components =
+    [
+        UnitComparatorTextureWithHint
+        (
+            ElementName = 'UnitComparatorSelectorDisabled'
+            Texture = "unitComparatorDisabled"
+            HintTitleToken = "HSL_UCMPNT"
+            HintBodyToken = "HSL_UCMPBO"
+            HintExtendedToken = "HSL_UCMPBE"
+        ),
+        UnitComparatorTextureWithHint
+        (
+            ElementName = 'UnitComparatorSelectorStatic'
+            Texture = "unitComparatorStatic"
+            HintTitleToken = "HSL_UCMPST"
+            HintBodyToken = "HSL_UCMPBO"
+            HintExtendedToken = "HSL_UCMPBE"
+        ),
+        UnitComparatorTextureWithHint
+        (
+            ElementName = 'UnitComparatorSelectorDynamic'
+            Texture = "unitComparatorDynamic"
+            HintTitleToken = "HSL_UCMPDT"
+            HintBodyToken = "HSL_UCMPBO"
+            HintExtendedToken = "HSL_UCMPBE"
+        ),
+    ]
+
+    SpotlightComponent = SpotlightDescriptor()
+)
+
+
+UISpecificUnitComparatorSelectorViewDescriptor is TUISpecificUnitComparatorSelectorViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificUnitComparatorSelectorMainComponentDescriptor
+    MainComponentContainerUniqueName = "UISpecificUnitComparatorPanelViewDescriptor" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

@@ -1,0 +1,22 @@
+export ModelFile_Toldi_II_ROU is 'GameData:Assets\3D\Units\ROU\Char\Toldi_II_ROU\Toldi_II_ROU.Ase2NdfBin'
+
+Modele_Toldi_II_ROU is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Toldi_II_ROU
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Toldi_II_ROU_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Char\Toldi_II_ROU_MID\Toldi_II_ROU_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Toldi_II_ROU_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Char\LODS\Toldi_II_ROU_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

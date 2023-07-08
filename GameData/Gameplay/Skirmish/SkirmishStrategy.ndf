@@ -1,0 +1,786 @@
+// Classic Strategy
+
+//Char
+//AntiTank
+//AntiAerien
+//"Infanterie_Standard"
+//Reco
+//AntiInfanterie
+//VehiculeLeger
+//Artillerie
+//Observateur_Artillerie
+
+//Char_Reco
+//Char_Leger
+//Char_Moyen
+//Char_Lourd
+//Char_Amphibie
+//Char_CMD
+
+//Vehicule_CMD
+//Vehicule_Flamer
+//Vehicule_Mortier
+//Vehicule_Logistique
+//Vehicule_Reco
+//Appui_Feu  - comme arti mais sans tir indirect
+
+//Arti_Portee_Courte
+//Arti_Portee_Moyenne
+//Arti_Portee_Longue
+//Escouade_Mortier
+//Vehicule_Mortier
+//Obusier
+//Obusier_Porte
+//MLRS - ex: Calliope
+//Observateur_Artillerie
+
+//Canon_Infanterie
+//Canon_AT
+//Canon_AT_Leger
+//Canon_AT_Moyen
+//Canon_AT_Lourd
+//ChasseurDeChar_Leger
+//ChasseurDeChar_Moyen
+//ChasseurDeChar_Lourd
+
+//Canon_AA_Leger - plutot defensif
+//Canon_AA_Lourd - peu buter certains blindés
+//Canon_AA_Porte - plutot offensif
+
+//Chasseur
+//Chasseur_Bombardier
+//Avion_Reco
+//Bombardier
+//Avion_Assaut
+
+//Transport
+//Transport_NonArme
+//Transport_Amphibie
+//Transport_Arme
+
+//Escouade_CMD
+//Escouade_Infanterie
+//Escouade_Commando
+//Escouade_Genie
+//Escouade_MMG
+//Escouade_HMG
+//Escouade_Flamer
+//Escouade_AT
+//Escouade_Sniper
+//Escouade_Scout
+
+
+export SkirmishStrategy is TIAGeneralStrategy
+(
+    StrategyName = "Skirmish"
+    FirstGenerator = Attaque_PhaseA
+    TransitionList =
+    [
+        //Transition_DeployToCommand,
+        //Transition_OpenerToAttaque,
+        Transition_PhaseB,
+        Transition_PhaseC,
+    ]
+)
+
+
+// Transitions
+//export Transition_DeployToCommand is TIAGeneralStrategyTransition
+//(
+//    Origine = Deploy_1vs1
+//    Condition = Condition_CommandPhase
+//    Destination = Opener_1vs1
+//)
+
+//export Transition_OpenerToAttaque is TIAGeneralStrategyTransition
+//(
+//   Origine = Opener_1vs1
+//    Condition = Condition_OpenerTimer
+//    Destination = Attaque_PhaseA
+//)
+
+export Transition_PhaseB is TIAGeneralStrategyTransition
+(
+    Origine = Attaque_PhaseA
+    Condition = Condition_PhaseB
+    Destination = Attaque_PhaseB
+)
+
+export Transition_PhaseC is TIAGeneralStrategyTransition
+(
+    Origine = Attaque_PhaseB
+    Condition = Condition_PhaseC
+    Destination = Attaque_PhaseC
+)
+
+// Conditions
+export Condition_CommandPhase is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+
+export Condition_OpenerTimer is TSequenceCondition_Wait
+(
+    Time = 60
+)
+
+export Condition_PhaseB is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_B'
+)
+
+export Condition_PhaseC is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_C'
+)
+
+//export Defcon_3_fin_1vs1 is TSequenceCondition_And
+//(
+//        Condition1 = Defcon_3_fin_dollars_1vs1
+//        Condition2 = Defcon_3_fin_unites_1vs1
+//)
+
+//PHASES
+export Attaque_PhaseA is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 5
+
+    GeneratorList =
+    [
+        ~/mission_Renfort_AT,
+        ~/mission_Renfort_AA,
+        ~/mission_Renfort_AntiInfanterie,
+
+        ~/mission_attaque_minimale,
+        ~/mission_attaque_minimale,
+        ~/mission_attaque_minimale,
+        ~/mission_defense_1,//defense#1
+        ~/mission_defense_1,//defense#2
+
+        ~/mission_artillerie_sur_carte,
+
+        ~/mission_logistique,
+
+        ~/mission_attaque_massive,
+
+        ~/mission_artillerie_sur_carte,
+    ]
+)
+
+export Attaque_PhaseB is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 5
+
+    GeneratorList =
+    [
+        ~/mission_Renfort_AT,
+        ~/mission_Renfort_AA,
+        ~/mission_Renfort_AntiInfanterie,
+
+        ~/mission_attaque_minimale,
+        ~/mission_attaque_minimale,
+        ~/mission_attaque_minimale,
+        ~/mission_defense_1,//defense#1
+        ~/mission_defense_1,//defense#2
+        ~/mission_defense_1,//defense#3
+
+        ~/mission_artillerie_sur_carte,
+        ~/mission_airstrike_rapide,
+
+        ~/mission_logistique,
+
+        ~/mission_attaque_massive,
+
+        ~/mission_artillerie_sur_carte,
+    ]
+)
+
+export Attaque_PhaseC is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 5
+
+    GeneratorList =
+    [
+        ~/mission_Renfort_AT,
+        ~/mission_Renfort_AA,
+        ~/mission_Renfort_AntiInfanterie,
+
+        ~/mission_attaque_minimale,
+        ~/mission_attaque_minimale,
+        ~/mission_attaque_minimale,
+        ~/mission_defense_1,//defense#1
+        ~/mission_defense_1,//defense#2
+        ~/mission_defense_1,//defense#3
+
+        ~/mission_airstrike_lourd,
+        ~/mission_artillerie_sur_carte,
+
+        ~/mission_attaque_massive,
+
+        ~/mission_logistique,
+        ~/mission_artillerie_hors_carte,
+
+        ~/mission_artillerie_sur_carte,
+    ]
+)
+
+
+//MISSION RECO
+export mission_reco_closest is TMacroActionDescriptor_Reco_Common
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    MenaceLaPlusForteEnPriorite = false
+    IgnoreSafePath = false
+    PoolModelList = [
+        ~/poolModelReconClosest,
+    ]
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/SupportAirSolSimple_US)
+        ),
+    ]
+)
+
+// MISSION AIRSTRIKE
+export mission_airstrike_rapide is TMacroActionDescriptor_AirStrike_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Attack
+
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [
+        ~/poolModelAirstrikeRapide,
+    ]
+)
+
+export mission_airstrike_lourd is TMacroActionDescriptor_AirStrike_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Attack
+
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [
+        ~/poolModelAirstrikeLourd,
+    ]
+)
+
+// MISSION ATTAQUE
+export mission_attaque_minimale is TMacroActionDescriptor_CorridorAttack_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    CompterLesUnitesEnZoneExtendedDansLaMenace = true
+    UtiliserMenaceLaPlusProcheAuLieuDeLaPlusFaible = true
+    IgnoreSafePath = false
+    //ForceZoneAttaque = TEugBUnsigned( Value = 1 )
+    RatioMinimumPourAttaquer = 0.9
+    DisableReinforcement = false
+    StayInCorridorIfp = true
+    //LaunchASAP_RatioMin = 1.0
+    //ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [
+        ~/poolModelAttaqueMinimale,
+    ]
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/SupportAirSolSimple_US)
+        ),
+        (
+            ESettingType/Support,
+            TSupportSettingHolder(SettingList = [Module_Renfort_AT, Module_Renfort_AA, Module_Renfort_Infanterie])
+        ),
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 2 OutMapArtilleryAmount = 1)
+        ),
+    ]
+)
+
+export mission_attaque_massive is TMacroActionDescriptor_CorridorAttack_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    CompterLesUnitesEnZoneExtendedDansLaMenace = true
+    UtiliserMenaceLaPlusProcheAuLieuDeLaPlusFaible = true
+    IgnoreSafePath = false
+    //ForceZoneAttaque = TEugBUnsigned( Value = 1 )
+    RatioMinimumPourAttaquer = 0.65
+    DisableReinforcement = false
+    StayInCorridorIfp = true
+    //LaunchASAP_RatioMin = 0.70
+    //ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [
+        ~/poolModelAttaqueMassive,
+    ]
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/SupportAirSolSimple_US)
+        ),
+        (
+            ESettingType/Support,
+            TSupportSettingHolder(SettingList = [Module_Renfort_AT, Module_Renfort_AA, Module_Renfort_Infanterie])
+        ),
+    ]
+)
+
+// MISSIONS DEFENSE
+export mission_defense_1_deploy is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    LaunchASAP_RatioMin = 0.0
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+    IgnoreSafePath = true
+
+    PoolModelList = [
+        ~/poolModelDefense,
+    ]
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/SupportAirSolSimple_US)
+        ),
+    ]
+)
+
+export mission_defense_1 is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    LaunchASAP_RatioMin = 0.0
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+    IgnoreSafePath = true
+
+    PoolModelList = [
+        ~/poolModelDefense,
+    ]
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/SupportAirSolSimple_US)
+        ),
+    ]
+)
+
+// MISSION LOGISTIQUE
+export mission_logistique is TMacroActionDescriptor_Supply_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    MinimumAmmoRatio = 0.5
+    SupplyAllies = true
+    IgnoreSafePath = false
+
+    PoolModelList = [
+        ~/poolModelLogistique,
+    ]
+)
+
+// MISSION ARTILLERIE
+export mission_artillerie_sur_carte is TMacroActionDescriptor_Artillery_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    SupportPointSafetyMargin = 2
+    MinimumThreatPerSplashForKill = 10
+    MinimumThreatPerSplashForSupport = 10
+    IgnoreSafePath = true
+
+    PoolModelList = [
+        ~/poolModelArtillery,
+    ]
+)
+
+export mission_artillerie_hors_carte is TMacroActionDescriptor_Artillery_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    SupportPointSafetyMargin = 1
+    MinimumThreatPerSplashForKill = 200
+    MinimumThreatPerSplashForSupport = 200
+
+    PoolModelList = [
+        ~/poolModelObserver,
+    ]
+)
+
+// POOL MODELS
+export poolModelReconClosest is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b294085e-07c0-11e6-8ef6-305a3ae065c1}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Escouade_Scout",
+                "Reco",
+            ]
+        ),
+    ]
+)
+
+export poolModelLogistique is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{a24387e1-b7e4-11e6-b9f9-448a5b24d3f9}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Vehicule_Logistique",
+            ]
+        ),
+    ]
+)
+
+export poolModelAirstrikeRapide is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{bedaa81e-99da-11e6-bbd7-a40517c33908}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Avion_Assaut",
+                "Chasseur_Bombardier",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{b2942f70-07c0-11e6-8547-305a3ae065c1}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Chasseur",
+                "Chasseur_Bombardier",//escorte pour un minimum de supériorité aérienne
+            ]
+        ),
+    ]
+)
+
+export poolModelAirstrikeLourd is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{a67c8340-6dcd-11e6-8abb-40167e24e0e2}
+            Required = false
+            Nb = 3
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Avion_Assaut",
+                "Chasseur_Bombardier",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{a67d94b0-6dcd-11e6-b042-40167e24e0e2}
+            Required = false
+            Nb = 2
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Chasseur",
+                "Chasseur_Bombardier",//escorte pour un minimum de supériorité aérienne
+            ]
+        ),
+    ]
+)
+
+export poolModelAttaqueMinimale is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b2942f73-07c0-11e7-86eb-305a3ae065c1}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Escouade_Infanterie",
+                "Infanterie_Standard",
+                //"Infanterie_Standard",
+                //"AllUnits",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{e66fba4f-8edc-11e6-b362-00224d9e1c13}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Escouade_Infanterie",
+                "Escouade_MMG",
+                "Escouade_HMG",
+                //"Anti_Infanterie_Mobile",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{013e84cf-3d19-11e6-95f5-40167e24e0e2}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Char",
+                "VehiculeLeger",
+            ]
+        ),
+        //TPoolElement(
+        //    DescriptorId = GUID:{8ec25f4f-27d1-11e6-b380-40167e24e0e2}
+        //    Required = false
+        //    Nb = 1
+        //    IndexPriorityOverPrice = true
+        //    TagsPriority = [
+        //        "Canon_AT",
+        //        "ChasseurDeChar_Leger",
+        //        //"Anti_Char_Mobile",
+        //    ]
+        //),
+    ]
+)
+
+export poolModelAttaqueMassive is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b69dd7a1-99ca-11e6-bdfc-a40517c33908}
+            Required = false
+            Nb = 3
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Escouade_Infanterie",
+                "Infanterie_Standard",
+                //"AllUnits",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{b69dd7a2-99ca-11e6-b885-a40517c33908}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Canon_AT",
+                "ChasseurDeChar_Lourd",
+                "Anti_Char_Mobile",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{b69dd7a3-99ca-11e6-805e-a40517c33908}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Escouade_Infanterie",
+                "Escouade_MMG",
+                "Escouade_HMG",
+                "Appui_Feu",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{b432b321-7f33-11e6-bf63-90e6babc933d}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Canon_AA",
+            ]
+        ),
+    ]
+)
+
+export poolModelDefense is TPoolModel
+(
+    ModelList = [
+        //AT
+        TPoolElement(
+            DescriptorId = GUID:{b69dd7a4-99ca-11e6-bf33-a40517c33908}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Canon_AT",
+            ]
+        ),
+        //AA
+        TPoolElement(
+            DescriptorId = GUID:{b69dd7a5-99ca-11e6-9927-a40517c33908}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Reco",
+            ]
+        ),
+    ]
+)
+
+export poolModelArtillery is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{39a8542e-953f-11e6-988b-a40517c33908}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Artillerie",
+            ]
+        ),
+    ]
+)
+
+export poolModelObserver is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{475fe90f-9c30-11e6-ae02-00224d9e1c13}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Artillerie_Observateur",
+            ]
+        ),
+    ]
+)
+
+export SupportAirSolSimple_US is
+[
+    (["Avion_Assaut", "Chasseur_Bombardier", "Chasseur_Bombardier",], 2),
+    (["Chasseur", "Chasseur_Bombardier",], 1),
+]
+
+//RENFORTS
+export mission_Renfort_AT is TMacroActionDescriptor_Support_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    IgnoreSafePath = true
+    TagDeContre = "Anti_Char_Mobile"
+
+    PoolModelList = [
+        ~/PoolModelAntiTank,
+    ]
+)
+
+export mission_Renfort_AA is TMacroActionDescriptor_Support_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    IgnoreSafePath = true
+    TagDeContre = "Canon_AA"
+
+    PoolModelList = [
+        ~/PoolModelAntiAerien,
+    ]
+)
+
+export mission_Renfort_AntiInfanterie is TMacroActionDescriptor_Support_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    IgnoreSafePath = true
+    TagDeContre = "VehiculeLeger"
+
+    PoolModelList = [
+        ~/PoolModelAntiInfanterie,
+    ]
+)
+
+//MODULES
+export Module_Renfort_AT is TSupportSetting
+(
+    TagDeContre = "Anti_Char_Mobile"
+    TagAContrer = "Char"
+    Ratio = 0.25
+    NecessaireAuLancement = true // La mission ne lancera sont attaque que si le ratio est respecté au point de regroupement
+)
+
+export Module_Renfort_AA is TSupportSetting
+(
+    TagDeContre = "Canon_AA"
+    TagAContrer = "Air"
+    Ratio = 0.25
+    NecessaireAuLancement = false // La mission ne lancera sont attaque que si le ratio est respecté au point de regroupement
+)
+
+export Module_Renfort_Infanterie is TSupportSetting
+(
+    TagDeContre = "Anti_Infanterie_Mobile"
+    TagAContrer = "Infanterie_Standard"
+    Ratio = 0.25
+    NecessaireAuLancement = false // La mission ne lancera sont attaque que si le ratio est respecté au point de regroupement
+)
+
+export PoolModelAntiTank is TPoolModel
+(
+    ModelList = [
+        //AT
+        TPoolElement(
+            DescriptorId = GUID:{22302b0f-953b-11e6-a6c5-448a5b24d3f9}
+            Required = false
+            //TotalPrice = 60
+            AllowUnitMixing = True
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Canon_AT",
+                "ChasseurDeChar_Leger",
+                "ChasseurDeChar_Lourd",
+            ]
+        ),
+    ]
+)
+
+export PoolModelAntiAerien is TPoolModel
+(
+    ModelList = [
+        //AT
+        TPoolElement(
+            DescriptorId = GUID:{7c7133b0-136f-11e6-aeea-40167e24e0e2}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Canon_AA",
+            ]
+        ),
+    ]
+)
+
+export PoolModelAntiInfanterie is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{7c748f0f-136f-11e6-a379-40167e24e0e2}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "VehiculeLeger",
+            ]
+        ),
+    ]
+)

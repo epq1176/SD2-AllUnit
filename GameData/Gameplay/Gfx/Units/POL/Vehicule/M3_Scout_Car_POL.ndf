@@ -1,0 +1,22 @@
+export ModelFile_M3_Scout_Car_POL is 'GameData:Assets\3D\Units\POL\Vehicule\M3A1_Scout_Car\M3A1_Scout_Car.Ase2NdfBin'
+
+Modele_M3_Scout_Car_POL is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M3_Scout_Car_POL
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_M3_Scout_Car_POL_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Vehicule\M3A1_Scout_Car_MID\M3A1_Scout_Car_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_M3_Scout_Car_POL_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Vehicule\LODS\M3A1_Scout_Car_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

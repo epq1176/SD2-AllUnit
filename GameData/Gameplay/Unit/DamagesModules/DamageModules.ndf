@@ -1,0 +1,253 @@
+// -------------------------------------------------------------------------------------------------
+// Building
+// -------------------------------------------------------------------------------------------------
+
+// Ratio de régénération des points de suppressions suivant le temps passé depuis la dernière suppression reçue
+// Possibilité d'enlever/rajouter des lignes dans le tableau
+Building_SuppressDamagesRegenRatioList is
+[
+    [30, 10],   // 10s => regen x1
+]
+
+// si hors de portés de tir direct d'un ennemi (tir partant comme reçu)
+Building_SuppressDamagesRegenRatioOutOfRange is 20
+
+// Points de "stun" récupérés par seconde
+Building_StunDamagesRegen is 5
+
+// Dégâts de "stun" que l'unité doit atteindre pour être stunned (dégâts augmentant avec les dégâts de suppressions et regénérés avec StunDamagesRegen)
+Building_StunDamagesToGetStunned is 200
+
+Building_MaxSuppressionDamages is 0
+
+
+// -------------------------------------------------------------------------------------------------
+// Missile
+// -------------------------------------------------------------------------------------------------
+
+// Ratio de régénération des points de suppressions suivant le temps passé depuis la dernière suppression reçue
+// Possibilité d'enlever/rajouter des lignes dans le tableau
+Missile_SuppressDamagesRegenRatioList is
+[
+    [30, 5],    // 10s => regen x1
+]
+
+// si hors de portés de tir direct d'un ennemi (tir partant comme reçu)
+Missile_SuppressDamagesRegenRatioOutOfRange is 20
+
+// Points de "stun" récupérés par seconde
+Missile_StunDamagesRegen is 5
+
+// Dégâts de "stun" que l'unité doit atteindre pour être stunned (dégâts augmentant avec les dégâts de suppressions et regénérés avec StunDamagesRegen)
+Missile_StunDamagesToGetStunned is 200
+
+Missile_MaxSuppressionDamages is 0
+
+
+// -------------------------------------------------------------------------------------------------
+// Infanterie
+// -------------------------------------------------------------------------------------------------
+
+// Ratio de régénération des points de suppressions suivant le temps passé depuis la dernière suppression reçue
+// Possibilité d'enlever/rajouter des lignes dans le tableau
+Infanterie_SuppressDamagesRegenRatioList is
+[
+    [30, 2],    // 10s => regen x1
+    [35, 4],
+    [40, 8],
+]
+
+// si hors de portés de tir direct d'un ennemi (tir partant comme reçu)
+Infanterie_SuppressDamagesRegenRatioOutOfRange is 20
+
+// Points de "stun" récupérés par seconde
+Infanterie_StunDamagesRegen is 9999
+
+// Dégâts de "stun" que l'unité doit atteindre pour être stunned (dégâts augmentant avec les dégâts de suppressions et regénérés avec StunDamagesRegen)
+Infanterie_StunDamagesToGetStunned is 9999
+
+Infanterie_MaxSuppressionDamages is 1250
+
+
+// -------------------------------------------------------------------------------------------------
+// GroundUnit
+// -------------------------------------------------------------------------------------------------
+
+// Ratio de régénération des points de suppressions suivant le temps passé depuis la dernière suppression reçue
+// Possibilité d'enlever/rajouter des lignes dans le tableau
+GroundUnit_SuppressDamagesRegenRatioList is
+[
+    [30, 2],    // 10s => regen x1
+    [35, 4],
+    [40, 8],
+]
+
+// si hors de portés de tir direct d'un ennemi (tir partant comme reçu)
+GroundUnit_SuppressDamagesRegenRatioOutOfRange is 20
+
+// Points de "stun" récupérés par seconde
+GroundUnit_StunDamagesRegen is 9999
+
+// Dégâts de "stun" que l'unité doit atteindre pour être stunned (dégâts augmentant avec les dégâts de suppressions et regénérés avec StunDamagesRegen)
+GroundUnit_StunDamagesToGetStunned is 9999
+
+GroundUnit_MaxSuppressionDamages is 1300
+
+
+
+// -------------------------------------------------------------------------------------------------
+// Airplane
+// -------------------------------------------------------------------------------------------------
+
+// Ratio de régénération des points de suppressions suivant le temps passé depuis la dernière suppression reçue
+// Possibilité d'enlever/rajouter des lignes dans le tableau
+Airplane_SuppressDamagesRegenRatioList is
+[
+    [30, 2],    // 10s => regen x1
+    [35, 4],
+    [40, 8],
+]
+
+// si hors de portés de tir direct d'un ennemi (tir partant comme reçu)
+Airplane_SuppressDamagesRegenRatioOutOfRange is 20
+
+// Points de "stun" récupérés par seconde
+Airplane_StunDamagesRegen is 9999
+
+// Dégâts de "stun" que l'unité doit atteindre pour être stunned (dégâts augmentant avec les dégâts de suppressions et regénérés avec StunDamagesRegen)
+Airplane_StunDamagesToGetStunned is 9999
+
+Airplane_MaxSuppressionDamages is 1150
+
+
+
+// -------------------------------------------------------------------------------------------------
+// Bunker
+// -------------------------------------------------------------------------------------------------
+
+// Ratio de régénération des points de suppressions suivant le temps passé depuis la dernière suppression reçue
+// Possibilité d'enlever/rajouter des lignes dans le tableau
+Bunker_SuppressDamagesRegenRatioList is
+[
+    [30, 10],   // 10s => regen x1
+]
+
+// si hors de portés de tir direct d'un ennemi (tir partant comme reçu)
+Bunker_SuppressDamagesRegenRatioOutOfRange is 20
+
+// Points de "stun" récupérés par seconde
+Bunker_StunDamagesRegen is 9999
+
+// Dégâts de "stun" que l'unité doit atteindre pour être stunned (dégâts augmentant avec les dégâts de suppressions et regénérés avec StunDamagesRegen)
+Bunker_StunDamagesToGetStunned is 9999
+
+Bunker_MaxSuppressionDamages is 1000
+
+
+
+// -------------------------------------------------------------------------------------------------
+// Helico
+// -------------------------------------------------------------------------------------------------
+
+// Ratio de régénération des points de suppressions suivant le temps passé depuis la dernière suppression reçue
+// Possibilité d'enlever/rajouter des lignes dans le tableau
+Helico_SuppressDamagesRegenRatioList is
+[
+    [1, 0.2],      // 10s => regen x1
+    [10, 0.5],     // 20s => regen x2
+    [30, 1],       // 30s => regen x4
+    [40, 2],       // 40s => regen x6
+    [50, 3],       // 50s => regen x8
+]
+
+// si hors de portés de tir direct d'un ennemi (tir partant comme reçu)
+Helico_SuppressDamagesRegenRatioOutOfRange is 20
+
+// Points de "stun" récupérés par seconde
+Helico_StunDamagesRegen is 9999
+
+// Dégâts de "stun" que l'unité doit atteindre pour être stunned (dégâts augmentant avec les dégâts de suppressions et regénérés avec StunDamagesRegen)
+Helico_StunDamagesToGetStunned is 9999
+
+Helico_MaxSuppressionDamages is 1000
+
+
+// -------------------------------------------------------------------------------------------------
+// BoatSmall
+// -------------------------------------------------------------------------------------------------
+
+// Ratio de régénération des points de suppressions suivant le temps passé depuis la dernière suppression reçue
+// Possibilité d'enlever/rajouter des lignes dans le tableau
+BoatSmall_SuppressDamagesRegenRatioList is
+[
+    [1, 2],       // 10s => regen x2//x1
+    [10, 4],      // 20s => regen x4//x2
+    [30, 8],      // 30s => regen x8//x4
+    [40, 12],     // 40s => regen x12//x8
+    [50, 18],     // 50s => regen x18//x16
+]
+
+// si hors de portés de tir direct d'un ennemi (tir partant comme reçu)
+BoatSmall_SuppressDamagesRegenRatioOutOfRange is 20
+
+// Points de "stun" récupérés par seconde
+BoatSmall_StunDamagesRegen is 10
+
+// Dégâts de "stun" que l'unité doit atteindre pour être stunned (dégâts augmentant avec les dégâts de suppressions et regénérés avec StunDamagesRegen)
+BoatSmall_StunDamagesToGetStunned is 600
+
+BoatSmall_MaxSuppressionDamages is 1000
+
+
+// -------------------------------------------------------------------------------------------------
+// BoatMedium
+// -------------------------------------------------------------------------------------------------
+
+// Ratio de régénération des points de suppressions suivant le temps passé depuis la dernière suppression reçue
+// Possibilité d'enlever/rajouter des lignes dans le tableau
+BoatMedium_SuppressDamagesRegenRatioList is
+[
+    [1, 4],       // 10s => regen x4 //x2
+    [10, 8],      // 20s => regen x8//x4
+    [30, 12],     // 30s => regen x12//x8
+    [40, 18],     // 40s => regen x18/x16
+    [50, 28],     // 50s => regen x28//x32
+]
+
+// si hors de portés de tir direct d'un ennemi (tir partant comme reçu)
+BoatMedium_SuppressDamagesRegenRatioOutOfRange is 20
+
+// Points de "stun" récupérés par seconde
+BoatMedium_StunDamagesRegen is 20
+
+// Dégâts de "stun" que l'unité doit atteindre pour être stunned (dégâts augmentant avec les dégâts de suppressions et regénérés avec StunDamagesRegen)
+BoatMedium_StunDamagesToGetStunned is 1200
+
+BoatMedium_MaxSuppressionDamages is 2000
+
+
+// -------------------------------------------------------------------------------------------------
+// BoatHeavy
+// -------------------------------------------------------------------------------------------------
+
+// Ratio de régénération des points de suppressions suivant le temps passé depuis la dernière suppression reçue
+// Possibilité d'enlever/rajouter des lignes dans le tableau
+BoatHeavy_SuppressDamagesRegenRatioList is
+[
+    [1, 8],       // 10s => regen x8//x4
+    [10, 12],     // 20s => regen x12//x8
+    [30, 18],     // 30s => regen x18//x16
+    [40, 28],     // 40s => regen x28//x32
+    [50, 42],     // 50s => regen x42//x64
+]
+
+// si hors de portés de tir direct d'un ennemi (tir partant comme reçu)
+BoatHeavy_SuppressDamagesRegenRatioOutOfRange is 20
+
+// Points de "stun" récupérés par seconde
+BoatHeavy_StunDamagesRegen is 40
+
+// Dégâts de "stun" que l'unité doit atteindre pour être stunned (dégâts augmentant avec les dégâts de suppressions et regénérés avec StunDamagesRegen)
+BoatHeavy_StunDamagesToGetStunned is 2400
+
+BoatHeavy_MaxSuppressionDamages is 4000

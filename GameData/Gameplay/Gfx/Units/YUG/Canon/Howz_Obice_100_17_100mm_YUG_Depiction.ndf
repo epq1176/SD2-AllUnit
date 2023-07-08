@@ -1,0 +1,122 @@
+template TemplateMeshDescriptor_Howz_Obice_100_17_100mm_YUG [ ModelFile ] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+
+ModelFile_Boites_Howz_Obice_100_17_100mm_YUG is 'GameData:Assets\3D\Units\ROU\Canon\Howz_Skoda_100mm_ROU\Boites_Howz_Obice_100_17_100mm_YUG.Ase2NdfBin'
+
+Gfx_Howz_Obice_100_17_100mm_YUG_1 is TDepictionTemplate //servant gauche
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Howz_Obice_100_17_100mm_YUG( ModelFile = ModelFile_Partisans_Rifles_YUG)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Howz_Obice_100_17_100mm_YUG( ModelFile = ModelFile_Partisans_Rifles_YUG)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Howz_Obice_100_17_100mm_YUG( ModelFile = ModelFile_Partisans_Rifles_YUG)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Howz_Obice_100_17_100mm_YUG( ModelFile = ModelFile_Partisans_Rifles_YUG)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Gauche
+)
+
+Gfx_Howz_Obice_100_17_100mm_YUG_2 is TDepictionTemplate //servant droite
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Howz_Obice_100_17_100mm_YUG( ModelFile = ModelFile_Partisans_Engineers_YUG)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Howz_Obice_100_17_100mm_YUG( ModelFile = ModelFile_Partisans_Engineers_YUG)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Howz_Obice_100_17_100mm_YUG( ModelFile = ModelFile_Partisans_Engineers_YUG)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Howz_Obice_100_17_100mm_YUG( ModelFile = ModelFile_Partisans_Engineers_YUG)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Droite
+)
+
+//Arme
+// private AnimationPath_Howz_Obice_100_17_100mm_YUG is 'GameData:Assets\3D\Units\GER\Canon\leFH_14_19t\'
+// Howz_leFH_14_19_100mm_Anim_Tree is DepictionAnimationTreeNode
+// (
+//     IAStates = AnimationStateAll
+//     IAOldStates = AnimationStateAll
+//     DefaultAnimationStates = AnimationStateEngineStopping
+//     Animations =
+//     (
+//         [TemplateAnimation(Animation= 'leFH_14_19t_idle' + '.Ase2NdfBin' Loop=false EventAnimation=false AnimationPath = AnimationPath_Howz_Obice_100_17_100mm_YUG Mask = AnimationMask_All())]
+//     )
+
+//     Childs =
+//     [
+//         TAnimNode(IAStates = AnimationStateInstantFire                                                                  Anim = 'leFH_14_19t_Fire'       Loop = false EventAnimation = true AnimationPath = AnimationPath_Howz_Obice_100_17_100mm_YUG Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStopping | AnimationStateEngineStopTurning                             Anim = 'leFH_14_19t_Deploy'     Loop = false AnimationPath = AnimationPath_Howz_Obice_100_17_100mm_YUG Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStarting | AnimationStateEngineStartTurning                            Anim = 'leFH_14_19t_Fold'       Loop = false AnimationPath = AnimationPath_Howz_Obice_100_17_100mm_YUG Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateLeft                                           Anim = 'leFH_14_19t_Turn_Left'  Loop = true  AnimationPath = AnimationPath_Howz_Obice_100_17_100mm_YUG Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateRight                                          Anim = 'leFH_14_19t_Turn_Right' Loop = true  AnimationPath = AnimationPath_Howz_Obice_100_17_100mm_YUG Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateMoving | AnimationStateEngineRunning                                         Anim = 'leFH_14_19t_Move'       Loop = true  AnimationPath = AnimationPath_Howz_Obice_100_17_100mm_YUG Mask = AnimationMask_All()
+//             Childs = [
+//                 TAnimNode(IAStates = AnimationStateBack                                                                 Anim = 'leFH_14_19t_Move_Back'  Loop = true  AnimationPath = AnimationPath_Howz_Obice_100_17_100mm_YUG Mask = AnimationMask_All()),
+//         ]),
+//     ]
+// )
+
+// DepictionOperator_SkeletalAnimation_Howz_Obice_100_17_100mm_YUG is [Template_DepictionOperator_SkeletalAnimation_With_Tree_TEST(AnimationTree = Howz_leFH_14_19_100mm_Anim_Tree)]
+
+Gfx_Howz_Obice_100_17_100mm_YUG_Weapon is TDepictionTemplate //arme
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = CommonDepictionSelector
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_Howz_Obice_100_17_100mm_YUG ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_Howz_Obice_100_17_100mm_YUG_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_Howz_Obice_100_17_100mm_YUG_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor =  Modele_Howz_Obice_100_17_100mm_YUG ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor =  Modele_Howz_Obice_100_17_100mm_YUG_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor =  Modele_Howz_Obice_100_17_100mm_YUG_LOW ),
+        ]
+
+        SubDepictions = []
+        Operators = //DepictionOperator_SkeletalAnimation_Canon_ZIS2_57mmAT_SOV +
+            DepictionOperatorNode_ResetUnit +
+            DepictionOperatorNode_Propulsion_2Wheels_Canon +
+            // DepictionOperator_Carriable_Canon +
+            DepictionOperator_TurretAim_Canon +
+            DepictionOperator_TurretRecoil_Canon
+        Actions = Weapons_Howz_Obice_100_17_100mm_YUG
+    )
+
+SubDepiction_Servant_1_Howz_Obice_100_17_100mm_YUG is TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_Howz_Obice_100_17_100mm_YUG_1 )
+SubDepiction_Servant_2_Howz_Obice_100_17_100mm_YUG is TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_Howz_Obice_100_17_100mm_YUG_2 )
+SubDepiction_Canon_AT_Howz_Obice_100_17_100mm_YUG is TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_Howz_Obice_100_17_100mm_YUG_Weapon )
+
+Gfx_Howz_Obice_100_17_100mm_YUG is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate //les boites
+    (
+        OverrideMeshBoundingBoxMin = [-500,-500,0]
+        OverrideMeshBoundingBoxMax = [ 500, 500,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_Howz_Obice_100_17_100mm_YUG( ModelFile = ModelFile_Boites_Howz_Skoda_100mm_ROU) ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_Howz_Obice_100_17_100mm_YUG( ModelFile = ModelFile_Boites_Howz_Skoda_100mm_ROU) ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_Howz_Obice_100_17_100mm_YUG( ModelFile = ModelFile_Boites_Howz_Skoda_100mm_ROU) ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_Howz_Obice_100_17_100mm_YUG( ModelFile = ModelFile_Boites_Howz_Skoda_100mm_ROU) ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_Howz_Obice_100_17_100mm_YUG( ModelFile = ModelFile_Boites_Howz_Skoda_100mm_ROU) ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_Howz_Obice_100_17_100mm_YUG( ModelFile = ModelFile_Boites_Howz_Skoda_100mm_ROU) ),
+        ]
+        NodeNamesForSelection = [ 'Canon_AT', 'servant_G' , 'servant_D']
+        SubDepictions = [SubDepiction_Servant_1_Howz_Obice_100_17_100mm_YUG,
+                        SubDepiction_Servant_2_Howz_Obice_100_17_100mm_YUG,
+                        SubDepiction_Canon_AT_Howz_Obice_100_17_100mm_YUG]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+    )
+)

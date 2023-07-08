@@ -1,0 +1,22 @@
+export ModelFile_Truck_GMC_Supply is 'GameData:Assets\3D\Units\USA\Vehicule\GMC_CCKW\GMC_CCKW.Ase2NdfBin'
+
+Modele_Truck_GMC_Supply is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Truck_GMC_Supply
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Truck_GMC_Supply_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Vehicule\GMC_CCKW_MID\GMC_CCKW_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Truck_GMC_Supply_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Vehicule\LODS\GMC_CCKW_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

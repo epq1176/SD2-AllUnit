@@ -1,0 +1,151 @@
+
+export Tactic_TeamUnitDescriptor is TEntityDescriptor
+(
+    World          = WorldIndices_Team
+    DescriptorId        = GUID:{00000000-0000-0000-0000-000032000000}
+
+    Modules             =
+    [
+        TTeamAirportModuleDescriptor
+        (
+
+            // Point d'essence par tick
+            FuelSupplyAmountBySecond = 10
+            // Cout du ravitaillement de point de vie par tick
+            HealthSupplyAmountBySecond = 0.018 // 0.034
+            // Cout du ravitaillement de munition par tick
+            AmmunitionSupplyAmountBySecond = 10
+        ),
+        TTeamCurrencyManagerModuleDescriptor
+        (
+            PiggyBanks = [
+                TPiggyBankDescriptor
+                (
+                    CurrencyType = ~/Resource_CommandPoints
+                    BankMaxValue = 2147483647
+                ),
+                TPiggyBankDescriptor
+                (
+                    CurrencyType = ~/Resource_Tickets
+                    BankMaxValue = 2147483647
+                ),
+            ]
+        ),
+        TTeamDeckModuleDescriptor
+        (
+        ),
+        TWargameTeamProductionModuleDescriptor
+        (
+        ),
+        TFactoryModuleDescriptor
+        (
+            Factories = [
+                TVirtualFactoryDescriptor
+                (
+                    FactoryType = EDefaultFactories/Logistic
+                    IsSimultaneous = False
+                ),
+                TVirtualFactoryDescriptor
+                (
+                    FactoryType = EDefaultFactories/Infantry
+                    IsSimultaneous = False
+                ),
+                TVirtualFactoryDescriptor
+                (
+                    FactoryType = EDefaultFactories/Planes
+                    IsSimultaneous = False
+                ),
+                TVirtualFactoryDescriptor
+                (
+                    FactoryType = EDefaultFactories/Vehicles
+                    IsSimultaneous = False
+                ),
+                TVirtualFactoryDescriptor
+                (
+                    FactoryType = EDefaultFactories/Tanks
+                    IsSimultaneous = False
+                ),
+                TVirtualFactoryDescriptor
+                (
+                    FactoryType = EDefaultFactories/Recons
+                    IsSimultaneous = False
+                ),
+                TVirtualFactoryDescriptor
+                (
+                    FactoryType = EDefaultFactories/Helis
+                    IsSimultaneous = False
+                ),
+                TVirtualFactoryDescriptor
+                (
+                    FactoryType = EDefaultFactories/Marine
+                    IsSimultaneous = False
+                ),
+                TVirtualFactoryDescriptor
+                (
+                    FactoryType = EDefaultFactories/Support
+                    IsSimultaneous = False
+                ),
+                TVirtualFactoryDescriptor
+                (
+                    FactoryType = EDefaultFactories/DCA
+                    IsSimultaneous = False
+                ),
+                TVirtualFactoryDescriptor
+                (
+                    FactoryType = EDefaultFactories/Art
+                    IsSimultaneous = False
+                ),
+                TVirtualFactoryDescriptor
+                (
+                    FactoryType = EDefaultFactories/AT
+                    IsSimultaneous = False
+                ),
+                TVirtualFactoryDescriptor
+                (
+                    FactoryType = EDefaultFactories/Defense
+                    IsSimultaneous = False
+                ),
+            ]
+        ),
+        TEventInfoManagerModuleDescriptor
+        (
+            SoundAcknowUnitPriority = 1
+            SoundAcknowUnitDuration = 5
+            DamageFeedbackTriggerLevel = 0.5        // niveau de santé restante pour trigger le feedback "damage received"
+            HeavyDamageFeedbackTriggerLevel = 0.25  // niveau de santé restante pour trigger le feedback "heavy damage received"
+            EnemyContactZoneRadius = 10000 * Metre   // 2000 * OneMeterInGameUnits
+
+            PhaseAlertMessages = ["AlertMessagePhaseA", "AlertMessagePhaseB", "AlertMessagePhaseC"]
+        ),
+        TTeamDescriptionModuleDescriptor
+        (
+        ),
+        TTeamUnitsModuleDescriptor
+        (
+        ),
+        TTagsModuleDescriptor
+        (
+        ),
+        TEffectApplierModuleDescriptor
+        (
+        ),
+        TLinkAllianceModuleDescriptor
+        (
+        ),
+        TTeamForAIModuleDescriptor
+        (
+        ),
+        TTeamGameRulesModuleDescriptor
+        (
+        ),
+        TFumigeneModuleDescriptor
+        (
+        ),
+        TStatisticsModuleDescriptor
+        (
+        ),
+        TStrategicAssociationModuleDescriptor
+        (
+        ),
+    ]
+)

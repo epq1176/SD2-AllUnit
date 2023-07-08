@@ -1,0 +1,22 @@
+export ModelFile_Carrier_2inch_Mortar_CZ is 'GameData:Assets\3D\Units\CZ\Char\Universal_Carrier_CZ\Mortar_Carrier_2inch_CZ.Ase2NdfBin'
+
+Modele_Carrier_2inch_Mortar_CZ is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Carrier_2inch_Mortar_CZ
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_2inch_Mortar_CZ_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CZ\Char\Universal_Carrier_CZ_MID\Mortar_Carrier_2inch_CZ_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_2inch_Mortar_CZ_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CZ\Char\LODS\Mortar_Carrier_2inch_CZ_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

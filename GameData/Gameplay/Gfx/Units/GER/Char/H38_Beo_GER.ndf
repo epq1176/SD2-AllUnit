@@ -1,0 +1,22 @@
+export ModelFile_H38_Beo_GER is 'GameData:Assets\3D\Units\GER\Char\PzBeobWg_38H\PzBeobWg_38H.Ase2NdfBin'
+
+Modele_H38_Beo_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_H38_Beo_GER
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_H38_Beo_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\PzBeobWg_38H_MID\PzBeobWg_38H_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_H38_Beo_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\PzBeobWg_38H_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

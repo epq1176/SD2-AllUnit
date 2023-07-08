@@ -1,0 +1,22 @@
+export ModelFile_Truck_GAZ_AAA_Maxim_ROU is 'GameData:Assets\3D\Units\SOV\Vehicule\Truck_GAZ_AAA_Maxim_SOV\Truck_GAZ_AAA_Maxim_SOV.Ase2NdfBin'
+
+Modele_Truck_GAZ_AAA_Maxim_ROU is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Truck_GAZ_AAA_Maxim_ROU
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Truck_GAZ_AAA_Maxim_ROU_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Vehicule\Truck_GAZ_AAA_Maxim_SOV_MID\Truck_GAZ_AAA_Maxim_SOV_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Truck_GAZ_AAA_Maxim_ROU_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Vehicule\LODS\Truck_GAZ_AAA_Maxim_SOV_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

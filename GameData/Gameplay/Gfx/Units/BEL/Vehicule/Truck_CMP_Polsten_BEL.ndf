@@ -1,0 +1,22 @@
+export ModelFile_Truck_CMP_Polsten_BEL is 'GameData:Assets\3D\Units\BEL\Vehicule\CMP_Polsten\CMP_Polsten.Ase2NdfBin'
+
+Modele_Truck_CMP_Polsten_BEL is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Truck_CMP_Polsten_BEL
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Truck_CMP_Polsten_BEL_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\BEL\Vehicule\CMP_Polsten_MID\CMP_Polsten_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Truck_CMP_Polsten_BEL_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\BEL\Vehicule\LODS\CMP_Polsten_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

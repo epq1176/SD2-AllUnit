@@ -1,0 +1,287 @@
+//-------------------------------------------------------------------------
+//------------------------- MISSIONS DE DEFENSE ---------------------------
+//-------------------------------------------------------------------------
+// Parametres TMacroActionDescriptor_Common
+//-------------------------------------------------------------------------
+// GenerationType :
+// NumberOfMacro :
+// ParametresDeMission : Transport, Airstrike, Support, ArtilleryStrike
+// PoolModelList : liste des unites demandees
+// DisableReinforcement : si on recoit des renforts en cours d'attaque ou pas
+// IgnoreSafePath : Le pathfind de la mission cherche ou non à esquiver la menace
+// TuerLaMissionEnFinDeVieAuLieuDeLaRelancer : (bool)
+// LaunchASAP_RatioMin : permet de lancer l'attaque sans attendre toutes les unites requises à combiner avec ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+// MissionOmnisciente : Pas utilise dans Normandie (systeme de connaissance de zone)
+//-------------------------------------------------------------------------
+// Parametres TMacroActionDescriptor_CorridorDefense_Specific
+//-------------------------------------------------------------------------
+// ForcedCorridor : (format special ex:[1]) permet de forcer l'attaque sur un couloir.
+//
+
+// MAINTAINS
+//-------------------------------------------------------------------------
+export BeFriend_Maintain_CorridorDefenses is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    GenerationType = TGenerationType_Maintain
+)
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+private template BeFriend_Template_Defense_Corridor
+[
+    NumberOfMacro:int = 1,
+    MinimumResourceForLaunch:int = 0,
+    PoolModelList = [~/BeFriend_Pool_AT_Defense, BeFriend_Pool_HMG_Defense],
+    UseTaggedPool:bool = true
+]
+is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = <NumberOfMacro>
+    MinimumResourceForLaunch = <MinimumResourceForLaunch>
+    IgnoreSafePath = true //on n'esquive pas la menace sur le chemin
+    DisableReinforcement = true
+    IgnoreVisionForDefensePosition = false
+    IgnoreEnemyDirectionForDefensePosition = false
+    IgnoreDefensePositionSafety = false
+
+    PoolModelList = <PoolModelList>
+
+    TaggedPoolModelList = (
+        <UseTaggedPool> == false ? [] :
+        [
+            (["DefenseInfantry"], [~/BeFriend_Pool_HMG_Defense]),
+            (["DefenseAA"], [~/BeFriend_Pool_AA_Defense]),
+            (["DefenseTank"], [~/BeFriend_Pool_AT_Defense]),
+        ]
+    )
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/BeFriend_BasicAirstrikeSupport)
+        ),
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0)
+        ),
+        (
+            ESettingType/Support,
+            TSupportSettingHolder(SettingList = [BeFriend_Renfort_AT])
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+private template BeFriend_Template_Dynamic_Defense_Corridor
+[
+    NumberOfMacro:int = 1,
+    MinimumResourceForLaunch:int = 0,
+    PoolModelList = [~/BeFriend_Pool_AT_Defense, BeFriend_Pool_HMG_Defense],
+    UseTaggedPool:bool = true,
+    GenerationType = TGenerationType_FixedSize,
+    IgnoreDefensePositionSafety:bool = false,
+    ConsiderOnlySameDescriptor:bool = false,
+    NumberOfCorridorsPerMission:int = 1
+]
+is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    GenerationType = <GenerationType>
+    NumberOfMacro = <NumberOfMacro>
+    MinimumResourceForLaunch = <MinimumResourceForLaunch>
+    IgnoreSafePath = true //on n'esquive pas la menace sur le chemin
+    DisableReinforcement = true
+    IgnoreVisionForDefensePosition = false
+    IgnoreEnemyDirectionForDefensePosition = false
+    IgnoreDefensePositionSafety = <IgnoreDefensePositionSafety>
+
+    PoolModelList = <PoolModelList>
+
+    TaggedPoolModelList = (
+        <UseTaggedPool> == false ? [] :
+        [
+            (["DefenseInfantry"], [~/BeFriend_Pool_HMG_Defense]),
+            (["DefenseAA"], [~/BeFriend_Pool_AA_Defense]),
+            (["DefenseTank"], [~/BeFriend_Pool_AT_Defense]),
+        ]
+    )
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/BeFriend_BasicAirstrikeSupport)
+        ),
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0)
+        ),
+        (
+            ESettingType/Support,
+            TSupportSettingHolder(SettingList = [BeFriend_Renfort_AT])
+        ),
+        (
+            ESettingType/Generation,
+            TGenerationSettingHolder(NumberOfCorridorsPerMission = <NumberOfCorridorsPerMission> ConsiderOnlySameDescriptor = <ConsiderOnlySameDescriptor>)
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------
+// Defenses couloir classiques
+//-------------------------------------------------------------------------
+export BeFriend_Defense_Static_Adaptive is BeFriend_Template_Defense_Corridor
+(
+)
+//-------------------------------------------------------------------------
+export BeFriend_Defense_Static_AA is BeFriend_Template_Defense_Corridor
+(
+    PoolModelList = [ ~/BeFriend_Pool_AA_Defense ]
+    UseTaggedPool = false
+)
+//-------------------------------------------------------------------------
+export BeFriend_Defense_Dynamic_Adaptive is BeFriend_Template_Dynamic_Defense_Corridor
+(
+)
+//-------------------------------------------------------------------------
+// Defenses couloir autogen
+//-------------------------------------------------------------------------
+export BeFriend_Defense_Static_Adaptive_Autogen is BeFriend_Template_Defense_Corridor
+(
+    MinimumResourceForLaunch = ~/BeFriend_MinimumResourceForLaunch_Stage_1
+)
+//-------------------------------------------------------------------------
+export BeFriend_Defense_Static_AA_Autogen is BeFriend_Template_Defense_Corridor
+(
+    PoolModelList = [ ~/BeFriend_Pool_AA_Defense ]
+    MinimumResourceForLaunch = ~/BeFriend_MinimumResourceForLaunch_Stage_1
+)
+//-------------------------------------------------------------------------
+export BeFriend_Defense_Dynamic_Adaptive_Autogen is BeFriend_Template_Dynamic_Defense_Corridor
+(
+    MinimumResourceForLaunch = ~/BeFriend_MinimumResourceForLaunch_Stage_1
+)
+//-------------------------------------------------------------------------
+export BeFriend_Defense_Dynamic_MapFilling is BeFriend_Template_Dynamic_Defense_Corridor
+(
+    GenerationType = TGenerationType_BasedOnNumberOfCorridors
+    IgnoreDefensePositionSafety = true
+    ConsiderOnlySameDescriptor = true
+    NumberOfCorridorsPerMission = 1
+)
+//-------------------------------------------------------------------------
+export BeFriend_Defense_Dynamic_MapFilling_SecondWave is BeFriend_Template_Dynamic_Defense_Corridor
+(
+    GenerationType = TGenerationType_BasedOnNumberOfCorridors
+    IgnoreDefensePositionSafety = true
+    ConsiderOnlySameDescriptor = true
+    NumberOfCorridorsPerMission = 4
+    PoolModelList = [~/BeFriend_Pool_Tank_Defense]
+    UseTaggedPool = false
+)
+//-------------------------------------------------------------------------
+export BeFriend_Defense_Dynamic_MapFilling_ThirdWave is BeFriend_Template_Dynamic_Defense_Corridor
+(
+    GenerationType = TGenerationType_BasedOnNumberOfCorridors
+    IgnoreDefensePositionSafety = true
+    ConsiderOnlySameDescriptor = true
+    NumberOfCorridorsPerMission = 1
+)
+//-------------------------------------------------------------------------
+// Pool Models
+//-------------------------------------------------------------------------
+BeFriend_ProductionFallback is [
+    "Vehicule_Appui",
+    "Infanterie_Standard",
+    "Canon_AA",
+    "Vehicule_Transport_Arme",
+    "Char"
+] // Ce fallback permet d'assurer la production d'au moins une unite pour les corridors taggués. Sinon ça bloque le couloir
+//-------------------------------------------------------------------------
+export BeFriend_Pool_HMG_Defense is TPoolModel
+(
+    // Pas de budget, il faut quelqu'un
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b05e1692-737a-11e7-9567-d63b7dd5adf5}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Infanterie_Spec_Defense",
+                "Infanterie_Standard",
+                "Appui_Feu",
+            ]
+            +~/BeFriend_ProductionFallback
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export BeFriend_Pool_AT_Defense is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b05e1694-737a-11e7-8613-d63b7dd5adf5}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Canon_AT_Lourd",
+                "ChasseurDeChar_Lourd",
+                "Canon_AT_Standard",
+                "ChasseurDeChar_Standard",
+            ]
+            +~/BeFriend_ProductionFallback
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{e902abc1-d39e-11e8-aa53-88d7f642f58e}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Infanterie_Spec_Defense",
+            ]
+            +~/BeFriend_ProductionFallback
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export BeFriend_Pool_Tank_Defense is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{239159c0-d12a-11e8-b752-4ccc6a0550f6}
+
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Char_Standard",
+                "Vehicule_Appui",
+                "ChasseurDeChar_Standard",
+            ]
+            +~/BeFriend_ProductionFallback
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export BeFriend_Pool_AA_Defense is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b05e3da1-737a-11e7-a96d-d63b7dd5adf5}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Canon_AA_Standard",
+                "Canon_AA_Porte",
+            ]
+            +~/BeFriend_ProductionFallback
+        ),
+    ]
+)
+//-------------------------------------------------------------------------

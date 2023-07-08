@@ -1,0 +1,22 @@
+export ModelFile_Fiat_621_trans is 'GameData:Assets\3D\Units\POL\Vehicule\Fiat_621_trans\Fiat_621_trans.Ase2NdfBin'
+
+Modele_Fiat_621_trans is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Fiat_621_trans
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Fiat_621_trans_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Vehicule\Fiat_621_trans_MID\Fiat_621_trans_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Fiat_621_trans_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Vehicule\LODS\Fiat_621_trans_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

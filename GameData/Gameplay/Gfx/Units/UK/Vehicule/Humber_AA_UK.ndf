@@ -1,0 +1,22 @@
+export ModelFile_Humber_AA_UK is 'GameData:Assets\3D\Units\UK\Vehicule\Humber_AA\Humber_AA.Ase2NdfBin'
+
+Modele_Humber_AA_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Humber_AA_UK
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Humber_AA_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Vehicule\Humber_AA_MID\Humber_AA_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Humber_AA_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Vehicule\LODS\Humber_AA_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

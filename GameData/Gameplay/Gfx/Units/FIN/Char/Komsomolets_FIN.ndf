@@ -1,0 +1,22 @@
+export ModelFile_Komsomolets_FIN is 'GameData:Assets\3D\Units\FIN\Char\Komsomolets_FIN\Komsomolets_FIN.Ase2NdfBin'
+
+Modele_Komsomolets_FIN is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Komsomolets_FIN
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Komsomolets_FIN_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Char\Komsomolets_FIN_MID\Komsomolets_FIN_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Komsomolets_FIN_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Char\LODS\Komsomolets_FIN_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

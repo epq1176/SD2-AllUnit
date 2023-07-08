@@ -1,0 +1,22 @@
+export ModelFile_Carrier_Command_GRE is 'GameData:Assets\3D\Units\GRE\Char\Universal_Carrier\Carrier_Command_GRE.Ase2NdfBin'
+
+Modele_Carrier_Command_GRE is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Carrier_Command_GRE
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_Command_GRE_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GRE\Char\Universal_Carrier_MID\Carrier_Command_GRE_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_Command_GRE_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GRE\Char\LODS\Carrier_Command_GRE_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

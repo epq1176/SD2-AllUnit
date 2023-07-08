@@ -1,0 +1,22 @@
+export ModelFile_Challenger is 'GameData:Assets\3D\Units\UK\Char\Challenger\Challenger.Ase2NdfBin'
+
+export Modele_Challenger is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Challenger
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Challenger_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\Challenger_MID\Challenger_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Challenger_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\LODS\Challenger_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

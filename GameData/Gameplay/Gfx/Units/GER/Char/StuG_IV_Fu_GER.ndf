@@ -1,0 +1,22 @@
+export ModelFile_StuG_IV_Fu_GER is 'GameData:Assets\3D\Units\GER\Char\StuG_IV\StuG_IV.Ase2NdfBin'
+
+Modele_StuG_IV_Fu_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_StuG_IV_Fu_GER
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_StuG_IV_Fu_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\StuG_IV_MID\StuG_IV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_StuG_IV_Fu_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\StuG_IV_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

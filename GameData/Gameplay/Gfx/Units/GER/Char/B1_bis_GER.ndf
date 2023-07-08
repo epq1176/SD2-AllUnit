@@ -1,0 +1,22 @@
+export ModelFile_B1_bis_GER is 'GameData:Assets\3D\Units\GER\Char\B1_Bis\B1_Bis.Ase2NdfBin'
+
+Modele_B1_bis_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_B1_bis_GER
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_B1_bis_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\B1_Bis_MID\B1_Bis_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_B1_bis_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\B1_Bis_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

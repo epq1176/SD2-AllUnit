@@ -1,0 +1,51 @@
+
+BUCKSpecificOrdersPanelMainComponentDescriptor is BUCKButtonDescriptor
+(
+    ElementName = 'OrdersFeedBackButton'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [20.0, 20.0]
+        MagnifiableOffset = [0,2]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+
+    IsTogglable = true
+    DefaultToggleValue = true
+    HasBorder = false
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+               RelativeWidthHeight = [1.0, 1.0]
+            )
+            TextureToken = "textureOrders"
+            TextureColorToken = "SmallButtonsAboveCubeAction"
+            TextureFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1, 1]
+            )
+            Components =
+            [
+                 BUCKSpecificHintableArea
+                (
+                    DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                    HintTitleToken = "HSL_ORDERT"
+                    HintBodyToken = "HSL_ORDERB"
+                )
+            ]
+
+        ),
+    ]
+
+    SpotlightComponent = SpotlightDescriptor()
+)
+
+UISpecificOrdersPanelViewDescriptor is TUISpecificOrdersPanelViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificOrdersPanelMainComponentDescriptor
+    MainComponentContainerUniqueName = "UISpecificOrdersPanelViewDescriptor"
+)

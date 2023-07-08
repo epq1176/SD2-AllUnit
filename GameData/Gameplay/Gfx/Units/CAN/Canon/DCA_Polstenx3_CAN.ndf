@@ -1,0 +1,22 @@
+export ModelFile_DCA_Polstenx3_CAN is 'GameData:Assets\3D\Units\UK\Canon\CMP_Triple_Polsten\CMP_Triple_Polsten.Ase2NdfBin'
+
+Modele_DCA_Polstenx3_CAN is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_DCA_Polstenx3_UK
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_DCA_Polstenx3_CAN_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Canon\CMP_Triple_Polsten_MID\CMP_Triple_Polsten_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_DCA_Polstenx3_CAN_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Canon\LODS\CMP_Triple_Polsten_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

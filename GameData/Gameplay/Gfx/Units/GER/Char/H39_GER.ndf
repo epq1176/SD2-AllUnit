@@ -1,0 +1,22 @@
+export ModelFile_H39_GER is 'GameData:Assets\3D\Units\GER\Char\Stuka_zu_Fuss\Beutepanzer_39H.Ase2NdfBin'
+
+Modele_H39_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_H39_GER
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_H39_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\Stuka_zu_Fuss_MID\Beutepanzer_39H_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_H39_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\Beutepanzer_39H_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

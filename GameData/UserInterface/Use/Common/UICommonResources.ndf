@@ -1,0 +1,43 @@
+// export UITextureDrawer_ScreenWargame2Outgame is TUITextureDrawer
+// (
+//     ShaderDescriptor = $/M3D/Shader/ShaderWargameOutgameScreenPostProcess
+// )
+
+template InterfaceSound
+[
+    FileName  : string
+] is TSoundDescriptor
+(
+    SoundSettings = $/SoundSettings/HUD_SoundSettings
+    TheSoundStream = TSoundStream ( FileName = <FileName> )
+)
+
+ButtonClickSound is InterfaceSound( FileName = "GameData:/Assets/Sons/Hud/mouse.wav" )
+BeepClickSound is InterfaceSound( FileName = "GameData:/Assets/Sons/Hud/beep.wav" )
+OutgameSound_Menu_clic_glass is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/MenuClic_Glass.wav" )
+OutgameSound_Menu_survol_glass is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/MenuSurvol_Glass.wav" )
+
+UICommonResource is TUISpecificResource
+(
+    DistortTextureDrawerAdditive    = $/UserInterface/UIDistortTextureDrawer_Additive
+    DistortTextureDrawer            = $/UserInterface/UIDistortTextureDrawer
+
+    UniformDrawer                   = $/UserInterface/UIUniformDrawer
+    UniformAntiAliasedDrawer        = $/UserInterface/UIUniformAntiAliasedDrawer
+
+    VideoDrawer                     = $/UserInterface/UIVideoDrawer
+
+    TextureDrawer                   = "ColorMultiply"
+    TextureDrawerAdditive           = "ColorMultiply_Additive"
+    TextureDrawerGrayscale          = "ColorMultiply_Grayscale"
+    TextureDrawerHighlight          = "ColorMultiply_Highlight"
+    TextureDrawerOutgamePostProcess = "ScreenWargame2Outgame"
+
+    ProductionMenuUserInputLayer    = $/M3D/Input/UserInputLayerHandler/InputLayer_InGameShortcuts
+    ShowProductionMenuMapping       = $/KeyboardOption/Mapping_MainMenu
+
+    FlarePanelUserInputLayer        = $/M3D/Input/UserInputLayerHandler/InputLayer_InGameShortcuts
+
+    ButtonClickSound                = ~/ButtonClickSound
+    BeepClickSound                  = ~/BeepClickSound
+)

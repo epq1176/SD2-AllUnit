@@ -1,0 +1,69 @@
+Gfx_Spitfire_Mk_Vc_trop_MITRALEXIS_Ace_GRE is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificAirplaneDepictionSelectorWithScale
+        DepictionSkins =
+        [
+            // Reprise de l'existant pour créer la skin par défaut
+            TSkinDescriptor(
+                SkinName = "default"
+                ChoiceTexture = "CommonTexture_Camo"
+                DepictionAlternatives = [
+                    DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_GRE ),
+                    DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_GRE_MID ),
+                    DepictionDescriptor_LOD_Low_NoTurret3( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_GRE_LOW ),
+                    DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_GRE ),
+                    DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_GRE_MID ),
+                    DepictionDescriptor_LOD_WreckedLow_NoTurret3( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_GRE_LOW ),
+        ]
+            ),
+
+            // nouvelle skin
+            TSkinDescriptor(
+                SkinName = "paid_dlc3"
+                DescriptorId = GUID:{afedff1e-d690-4372-b98e-f573007f2a95}
+                ChoiceTexture = "CommonTexture_Camo"
+                DepictionAlternatives = [
+                    DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_MITRALEXIS_Ace_GRE ),
+                    DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_MITRALEXIS_Ace_GRE_MID ),
+                    DepictionDescriptor_LOD_Low_NoTurret3( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_MITRALEXIS_Ace_GRE_LOW ),
+                    DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_MITRALEXIS_Ace_GRE ),
+                    DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_MITRALEXIS_Ace_GRE_MID ),
+                    DepictionDescriptor_LOD_WreckedLow_NoTurret3( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_MITRALEXIS_Ace_GRE_LOW ),
+                ]
+            ),
+        ]
+
+         Operators = Operators_Spitfire_Mk_Vc_trop_MITRALEXIS_Ace_GRE
+                   + DepictionOperator_Airfoil_WingsAndStabilizersAirplane
+                   + DepictionOperator_Propulsion_Single_Engine_Plane
+                   + DepictionOperator_Airplane
+                + DepictionOperator_Feedback_Degat_Level1
+                  + DepictionOperator_Feedback_Degat_Level2
+
+        Actions = //DepictionAction_MovementFX_SingleReactorAirplane
+                 Weapons_Spitfire_Mk_Vc_trop_MITRALEXIS_Ace_GRE
+                + DepictionAction_StressLevel_Avion_2
+                + MAP [ (['FX_Helice_1'], Template_DepictionAction_Rotor( PaleLength = 350 PaleCount = 3 SousMobile = "Bloc_Moteur_1" ))]
+
+    //SubDepictionGenerators = SubGenerators_Spitfire_Mk_Vc_trop_MITRALEXIS_Ace_GRE
+
+    SubDepictions = [
+        TSubDepiction(
+            Anchor = "Landing Gear"
+            // Anchor = 'chassis'
+            Depiction = TDepictionTemplate(
+                RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+                Selector = WarGameShowRoomDepictionSelector
+                DepictionAlternatives = [
+                    TDepictionDescriptor( SelectorId = 'high' MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_MITRALEXIS_Ace_GRE_train ),
+                    TDepictionDescriptor( SelectorId = 'none' )
+                ]
+            )
+        )
+    ]
+    + DepictionSubDepiction_Pilote_UK
+    )
+)

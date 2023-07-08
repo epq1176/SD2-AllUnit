@@ -1,0 +1,29 @@
+export ModelFile_Auster_POL is 'GameData:Assets\3D\Units\POL\Avion\Auster\Auster.Ase2NdfBin'
+
+Modele_Auster_POL is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Auster_POL
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Auster_POL_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Avion\Auster_MID\Auster_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Auster_POL_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Avion\LODS\Auster_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Auster_POL_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Avion\Auster\Auster_train.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

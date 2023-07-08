@@ -1,0 +1,22 @@
+export ModelFile_DMA_Supply_GER is 'GameData:Assets\3D\Units\GER\Vehicule\Peugeot_DMA\Peugeot_DMA.Ase2NdfBin'
+
+Modele_DMA_Supply_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_DMA_Supply_GER
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_DMA_Supply_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\Peugeot_DMA_MID\Peugeot_DMA_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_DMA_Supply_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\LODS\Peugeot_DMA_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

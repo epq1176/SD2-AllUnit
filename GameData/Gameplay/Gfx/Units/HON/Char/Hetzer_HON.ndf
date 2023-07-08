@@ -1,0 +1,22 @@
+export ModelFile_Hetzer_HON is 'GameData:Assets\3D\Units\HON\Char\Hetzer_HON\Hetzer_HON.Ase2NdfBin'
+
+Modele_Hetzer_HON is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Hetzer_HON
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Hetzer_HON_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\HON\Char\Hetzer_HON_MID\Hetzer_HON_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Hetzer_HON_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\HON\Char\LODS\Hetzer_HON_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

@@ -1,0 +1,23 @@
+export ModelFile_PzH_105mm_Lorraine_GER is 'GameData:Assets\3D\Units\GER\Char\PzH_105mm_Lorraine\PzH_105mm_Lorraine.Ase2NdfBin'
+
+Modele_PzH_105mm_Lorraine_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_PzH_105mm_Lorraine_GER
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_PzH_105mm_Lorraine_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\PzH_105mm_Lorraine_MID\PzH_105mm_Lorraine_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_PzH_105mm_Lorraine_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\PzH_105mm_Lorraine_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+

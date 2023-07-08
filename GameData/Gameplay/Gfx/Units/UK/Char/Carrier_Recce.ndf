@@ -1,0 +1,22 @@
+export ModelFile_Carrier_Recce is 'GameData:Assets\3D\Units\UK\Vehicule\Carrier_Recce\Carrier_Recce.Ase2NdfBin'
+
+Modele_Carrier_Recce is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Carrier_Recce
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_Recce_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Vehicule\Carrier_Recce_MID\Carrier_Recce_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_Recce_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Vehicule\LODS\Carrier_Recce_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

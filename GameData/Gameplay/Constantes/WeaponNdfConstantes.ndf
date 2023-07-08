@@ -1,0 +1,32 @@
+PrioriteDeSelectionDeCible is
+[
+    EWeaponRuleType/PriorityTargetSelection | EWeaponRuleType/Shooting,
+    EWeaponRuleType/ReflexTargetSelection   | EWeaponRuleType/Shooting,
+    //EWeaponRuleType/ProjectileSelection     | EWeaponRuleType/Shooting, not implemented
+
+    EWeaponRuleType/PriorityTargetSelection | EWeaponRuleType/Aiming,
+    EWeaponRuleType/ReflexTargetSelection   | EWeaponRuleType/Aiming,
+    //EWeaponRuleType/ProjectileSelection     | EWeaponRuleType/Aiming, not implemented
+]
+
+PrioriteDeSelectionDeCibleAlternatif is
+[
+    EWeaponRuleType/PriorityTargetSelection | EWeaponRuleType/Shooting,
+    EWeaponRuleType/PriorityTargetSelection | EWeaponRuleType/Aiming,
+    EWeaponRuleType/ReflexTargetSelection   | EWeaponRuleType/Shooting,
+    //EWeaponRuleType/ProjectileSelection     | EWeaponRuleType/Shooting, not implemented
+
+    EWeaponRuleType/ReflexTargetSelection   | EWeaponRuleType/Aiming,
+    //EWeaponRuleType/ProjectileSelection     | EWeaponRuleType/Aiming, not implemented
+]
+
+PrioriteDAlignement is
+[
+    EWeaponRuleType/PriorityTargetSelection | EWeaponRuleType/Shooting,
+    EWeaponRuleType/ProjectileSelection     | EWeaponRuleType/Shooting,
+    EWeaponRuleType/ReflexTargetSelection   | EWeaponRuleType/Shooting,
+
+    EWeaponRuleType/PriorityTargetSelection | EWeaponRuleType/Aiming,
+    EWeaponRuleType/ProjectileSelection     | EWeaponRuleType/Aiming,
+    EWeaponRuleType/ReflexTargetSelection   | EWeaponRuleType/Aiming,
+]

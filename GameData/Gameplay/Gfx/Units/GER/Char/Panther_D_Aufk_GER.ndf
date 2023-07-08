@@ -1,0 +1,22 @@
+export ModelFile_Panther_D_Aufk_GER is 'GameData:Assets\3D\Units\GER\Char\Panther_D_Aufk\Panther_D_Aufk.Ase2NdfBin'
+
+Modele_Panther_D_Aufk_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Panther_D_Aufk_GER
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panther_D_Aufk_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\Panther_D_Aufk_MID\Panther_D_Aufk_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panther_D_Aufk_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\Panther_D_Aufk_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

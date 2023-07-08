@@ -1,0 +1,712 @@
+//----------------------------------------------------------------------------------
+// Enum
+//----------------------------------------------------------------------------------
+FeedbackMessage_OnUnitDestroyed                 is 0
+FeedbackMessage_OnEnemyUnitContact              is 1
+FeedbackMessage_OnEnemyBuildingContact          is 2
+FeedbackMessage_OnUnitLost                      is 3
+FeedbackMessage_OnBuildingLost                  is 4
+FeedbackMessage_OnStealthedUnitDiscovered       is 5
+FeedbackMessage_OnDamageReceived                is 6
+FeedbackMessage_OnHeavyDamageReceived           is 7
+FeedbackMessage_OnUnitSelected                  is 8
+FeedbackMessage_OnPositionForbidden             is 9
+FeedbackMessage_OnMoveOrder                     is 10
+FeedbackMessage_OnAttackOrder                   is 11
+FeedbackMessage_OnLoadIntoTransportOrder        is 12
+FeedbackMessage_OnLoadUnitOrder                 is 13
+FeedbackMessage_OnNewPhaseStarted               is 14
+FeedbackMessage_OnPhaseResourcesGained          is 15
+FeedbackMessage_OnAirplaneOutOfFuel             is 16
+FeedbackMessage_OnAirplaneOutOfAmmo             is 17
+FeedbackMessage_OnAssaultOrder                  is 18
+FeedbackMessage_OnStopOrder                     is 19
+FeedbackMessage_OnCapturedEnemyUnit             is 20
+FeedbackMessage_OnUnitCapturedByEnemy           is 21
+FeedbackMessage_OnBuildingCapturedByEnemy       is 22
+FeedbackMessage_OnEnemyBuildingCaptured         is 23
+FeedbackMessage_OnCaptureOrder                  is 24
+FeedbackMessage_OnUnitFiring                    is 25
+FeedbackMessage_OnFlareAttackPlaced             is 26
+FeedbackMessage_OnFlareDefendPlaced             is 27
+FeedbackMessage_OnFlareHelpPlaced               is 28
+FeedbackMessage_OnFlareCustomPlaced             is 29
+FeedbackMessage_OnUnitUnderAttack               is 30
+FeedbackMessage_OnUnloadOrder                   is 31
+FeedbackMessage_OnUnloadAtPositionOrder         is 32
+FeedbackMessage_OnEvacuateOrder                 is 33
+FeedbackMessage_OnEvacFromDistrictOrder         is 34
+FeedbackMessage_OnResourcesGained               is 35
+FeedbackMessage_OnEnemyUnitDestroyed            is 36
+FeedbackMessage_OnEnemyAirplaneContact          is 37
+FeedbackMessage_OnNotEnoughResources            is 38
+FeedbackMessage_OnReverseOrder                  is 39
+FeedbackMessage_OnQuickMoveOrder                is 40
+FeedbackMessage_OnShootOnPositionOrder          is 41
+FeedbackMessage_OnUnitSurrender                 is 42
+FeedbackMessage_OnUnitPanicking                 is 43
+FeedbackMessage_OnOutOfAmmo                     is 44
+FeedbackMessage_OnMoveAndAttackOrder            is 45
+FeedbackMessage_OnTargetUnitDestroyed           is 46
+FeedbackMessage_OnWithdrawOrder                 is 47
+FeedbackMessage_OnNewPhaseStartedForCampaign    is 48
+FeedbackMessage_OnTargetDistrictDestroyed       is 49
+FeedbackMessage_OnTargetBuildingDestroyed       is 50
+FeedbackMessage_OnObjectiveCaptured             is 51
+FeedbackMessage_OnObjectiveLost                 is 52
+FeedbackMessage_OnBuildingUnderAttack           is 53
+FeedbackMessage_OnShootOnPositionSmokeOrder     is 54
+FeedbackMessage_OnCriticEvacuate                is 55
+
+export Generated_DispatchedMessageType_Enum is TDispatchedMessageType
+(
+    Values = [
+        "FeedbackMessage_OnUnitDestroyed",
+        "FeedbackMessage_OnEnemyUnitContact",
+        "FeedbackMessage_OnEnemyBuildingContact",
+        "FeedbackMessage_OnUnitLost",
+        "FeedbackMessage_OnBuildingLost",
+        "FeedbackMessage_OnStealthedUnitDiscovered",
+        "FeedbackMessage_OnDamageReceived",
+        "FeedbackMessage_OnHeavyDamageReceived",
+        "FeedbackMessage_OnUnitSelected",
+        "FeedbackMessage_OnPositionForbidden",
+        "FeedbackMessage_OnMoveOrder",
+        "FeedbackMessage_OnAttackOrder",
+        "FeedbackMessage_OnLoadIntoTransportOrder",
+        "FeedbackMessage_OnLoadUnitOrder",
+        "FeedbackMessage_OnNewPhaseStarted",
+        "FeedbackMessage_OnPhaseResourcesGained",
+        "FeedbackMessage_OnAirplaneOutOfFuel",
+        "FeedbackMessage_OnAirplaneOutOfAmmo",
+        "FeedbackMessage_OnAssaultOrder",
+        "FeedbackMessage_OnStopOrder",
+        "FeedbackMessage_OnCapturedEnemyUnit",
+        "FeedbackMessage_OnUnitCapturedByEnemy",
+        "FeedbackMessage_OnBuildingCapturedByEnemy",
+        "FeedbackMessage_OnEnemyBuildingCaptured",
+        "FeedbackMessage_OnCaptureOrder",
+        "FeedbackMessage_OnUnitFiring",
+        "FeedbackMessage_OnFlareAttackPlaced",
+        "FeedbackMessage_OnFlareDefendPlaced",
+        "FeedbackMessage_OnFlareHelpPlaced",
+        "FeedbackMessage_OnFlareCustomPlaced",
+        "FeedbackMessage_OnUnitUnderAttack",
+        "FeedbackMessage_OnUnloadOrder",
+        "FeedbackMessage_OnUnloadAtPositionOrder",
+        "FeedbackMessage_OnEvacuateOrder",
+        "FeedbackMessage_OnEvacFromDistrictOrder",
+        "FeedbackMessage_OnResourcesGained",
+        "FeedbackMessage_OnEnemyUnitDestroyed",
+        "FeedbackMessage_OnEnemyAirplaneContact",
+        "FeedbackMessage_OnNotEnoughResources",
+        "FeedbackMessage_OnReverseOrder",
+        "FeedbackMessage_OnQuickMoveOrder",
+        "FeedbackMessage_OnShootOnPositionOrder",
+        "FeedbackMessage_OnUnitSurrender",
+        "FeedbackMessage_OnUnitPanicking",
+        "FeedbackMessage_OnOutOfAmmo",
+        "FeedbackMessage_OnMoveAndAttackOrder",
+        "FeedbackMessage_OnTargetUnitDestroyed",
+        "FeedbackMessage_OnWithdrawOrder",
+        "FeedbackMessage_OnNewPhaseStartedForCampaign",
+        "FeedbackMessage_OnTargetDistrictDestroyed",
+        "FeedbackMessage_OnTargetBuildingDestroyed",
+        "FeedbackMessage_OnObjectiveCaptured",
+        "FeedbackMessage_OnObjectiveLost",
+        "FeedbackMessage_OnBuildingUnderAttack",
+        "FeedbackMessage_OnShootOnPositionSmokeOrder",
+        "FeedbackMessage_OnCriticEvacuate",
+    ]
+)
+
+//----------------------------------------------------------------------------------
+// Feedbacks
+//----------------------------------------------------------------------------------
+// Exemple is TDispatchedMessageDescriptor
+// (
+//     HudSound            = ~/HudSoundUnitContact
+//     UnitAcknow          = TAcknowUnitAction_ConstructionFinished
+//     GlobalAcknow        = TAcknowGlobalAction_ElectricityShortage
+//     MinimapPingType     = $/UI/Components/MinimapPing_Cross
+//     MinimapPingAnimType = $/UI/Components/MinimapPingAnim_Fade
+//     MinimapPingDuration = 4
+//     MinimapPingAnimStartTime = 2
+//     AlertMessageType    = AlertMsg_Per_UniteDetruite
+//     TimeBeforeRepeat    = 30 (Seulement pour OnResourceEmpty, OnMaxStock, OnEnemyContact)
+//
+//     UseTeamColorForMinimap = False
+//     BaseFilterColorForMinimap = D3DRGBA[255,0,0,255]
+//
+
+
+OnUnitDestroyed is TDispatchedMessageDescriptor
+(
+    HudSound = ~/HudSoundOnUnitDestroyed
+)
+
+OnEnemyUnitContact is TDispatchedMessageDescriptor
+(
+    HudSound = ~/HudSoundUnitContact     //son placeholder
+    MinimapPingType = $/UI/Components/MinimapPing_Spotted
+    //MinimapPingAnimType = $/UI/Components/MinimapPingAnim_Fade
+    BaseFilterColorForMinimap = [90,206,255,255]
+    MinimapPingAnimType = $/UI/Components/MinimapPingAnim_Scale
+    MinimapPingDuration = 2
+    MinimapPingAnimStartTime = 0.5
+    TimeBeforeRepeat = 20 //20
+    AlertMessageType = AlertMsg_Rens_EnemyContact
+    AllowFocusOnEvent = true
+    UnitAcknow = TAcknowUnitAction_EnemyUnitContact
+    IsActiveForPlayer = true
+)
+
+OnEnemyBuildingContact is TDispatchedMessageDescriptor
+(
+    TimeBeforeRepeat = 20
+    IsActiveForPlayer = true
+)
+
+OnUnitLost is TDispatchedMessageDescriptor
+(
+    MinimapPingType     = $/UI/Components/MinimapPing_Cross
+    HudSound = ~/HudSoundOnUnitDestroyed //son placeholder
+    MinimapPingAnimType = $/UI/Components/MinimapPingAnim_Fade
+    BaseFilterColorForMinimap = [255,0,0,255]
+    MinimapPingDuration = 4
+    MinimapPingAnimStartTime = 1.5
+    TimeBeforeRepeat = 10
+    AlertMessageType = AlertMsg_Per_UniteDetruite
+    AllowFocusOnEvent = true
+    IsActiveForPlayer = true
+)
+
+OnUnitCapturedByEnemy is TDispatchedMessageDescriptor
+(
+//  MinimapPingType     = $/UI/Components/MinimapPing_Cross
+//  HudSound = ~/HudSoundOnUnitDestroyed //son placeholder
+//  MinimapPingAnimType = $/UI/Components/MinimapPingAnim_Fade
+    BaseFilterColorForMinimap = [255,0,0,255]
+    MinimapPingDuration = 4
+    MinimapPingAnimStartTime = 1.5
+    TimeBeforeRepeat = 10
+//  AlertMessageType = AlertMsg_Per_UniteDetruite
+//  AllowFocusOnEvent = true
+    IsActiveForPlayer = true
+)
+
+OnCapturedEnemyUnit is TDispatchedMessageDescriptor
+(
+//  MinimapPingType = $/UI/Components/MinimapPing_Alarm
+//  MinimapPingAnimType = $/UI/Components/MinimapPingAnim_Scale
+    MinimapPingDuration = 2
+    MinimapPingAnimStartTime = 0.5
+    BaseFilterColorForMinimap = [200,238,254,255]
+//  AlertMessageType = AlertMsg_Arei_UnitSurrender_En
+//  AllowFocusOnEvent = true
+    IsActiveForPlayer = true
+    TimeBeforeRepeat = 10
+)
+
+OnUnitSurrender is TDispatchedMessageDescriptor
+(
+    MinimapPingType = $/UI/Components/MinimapPing_Spotted
+    MinimapPingAnimType = $/UI/Components/MinimapPingAnim_Scale
+    MinimapPingDuration = 4
+    MinimapPingAnimStartTime = 0.5
+    BaseFilterColorForMinimap = [200,238,254,255] // [203,132,212,255]
+    AlertMessageType = AlertMsg_Arei_UnitSurrender_En // AlertMessageType = AlertMsg_Arei_UnitSurrender
+    TimeBeforeRepeat = 10
+    UnitAcknow = TAcknowUnitAction_Surrender
+    IsActiveForEnemies = true
+    IsActiveForPlayer = true
+    AllowFocusOnEvent = true
+)
+
+
+OnBuildingLost is TDispatchedMessageDescriptor
+(
+    TimeBeforeRepeat = 20
+    IsActiveForPlayer = true
+)
+
+OnStealthedUnitDiscovered is TDispatchedMessageDescriptor
+(
+    TimeBeforeRepeat = 20
+    IsActiveForPlayer = true
+)
+
+OnDamageReceived is TDispatchedMessageDescriptor
+(
+    UnitAcknow = TAcknowUnitAction_DamageReceived
+    TimeBeforeRepeat = 10
+    IsActiveForPlayer = true
+)
+
+OnHeavyDamageReceived is TDispatchedMessageDescriptor
+(
+    TimeBeforeRepeat = 10
+    IsActiveForPlayer = true
+)
+
+OnUnitSelected is TDispatchedMessageDescriptor
+(
+    UnitAcknow = TAcknowUnitAction_Select
+    TimeBeforeRepeat = 1 // 10
+    IsActiveForPlayer = true
+)
+
+OnPositionForbidden is TDispatchedMessageDescriptor
+(
+    UnitAcknow = TAcknowUnitAction_PositionForbidden
+    TimeBeforeRepeat = 10
+    IsActiveForPlayer = true
+)
+
+OnMoveOrder is TDispatchedMessageDescriptor
+(
+    UnitAcknow = TAcknowUnitAction_Move
+    TimeBeforeRepeat = 10
+    IsActiveForPlayer = true
+)
+
+OnAttackOrder is TDispatchedMessageDescriptor
+(
+     UnitAcknow = TAcknowUnitAction_Attack
+     TimeBeforeRepeat = 10
+     IsActiveForPlayer = true
+)
+
+OnLoadIntoTransportOrder is TDispatchedMessageDescriptor
+(
+    TimeBeforeRepeat = 10
+    UnitAcknow = TAcknowUnitAction_LoadIntoTransport
+    IsActiveForPlayer = true
+)
+
+OnLoadUnitOrder is TDispatchedMessageDescriptor
+(
+    TimeBeforeRepeat = 10
+    IsActiveForPlayer = true
+)
+
+OnNewPhaseStarted is TDispatchedMessageDescriptor
+(
+    HudSound = ~/HudSoundOnPhaseStarted //son placeholder
+    TimeBeforeRepeat = 10
+    AlertMessageType = AlertMsg_Par_NewPhaseStarted
+    IsActiveForPlayer = true
+    IsActiveDuringLoading = true
+)
+
+OnNewPhaseStartedForCampaign is TDispatchedMessageDescriptor
+(
+    HudSound = ~/HudSoundOnPhaseStarted //son placeholder
+    TimeBeforeRepeat = 10
+    AlertMessageType = AlertMsg_Par_NewPhaseStartedForCampaign
+    IsActiveForPlayer = true
+    IsActiveDuringLoading = true
+)
+
+OnPhaseResourcesGained is TDispatchedMessageDescriptor
+(
+    TimeBeforeRepeat = 10
+    IsActiveForPlayer = true
+)
+
+OnAssaultOrder is TDispatchedMessageDescriptor
+(
+    UnitAcknow = TAcknowUnitAction_Assault
+    TimeBeforeRepeat = 10
+    IsActiveForPlayer = true
+)
+
+OnStopOrder is TDispatchedMessageDescriptor
+(
+    UnitAcknow = TAcknowUnitAction_Stop
+    TimeBeforeRepeat = 10
+    IsActiveForPlayer = true
+)
+
+OnBuildingCapturedByEnemy is TDispatchedMessageDescriptor
+(
+    TimeBeforeRepeat = 10
+    IsActiveForPlayer = true
+)
+
+OnEnemyBuildingCaptured is TDispatchedMessageDescriptor
+(
+    TimeBeforeRepeat = 10
+    IsActiveForPlayer = true
+)
+
+OnCaptureOrder is TDispatchedMessageDescriptor
+(
+    TimeBeforeRepeat = 10
+    IsActiveForPlayer = true
+)
+
+OnUnitFiring is TDispatchedMessageDescriptor
+(
+    TimeBeforeRepeat = 10
+    IsActiveForPlayer = true
+)
+
+OnFlareAttackPlaced is TDispatchedMessageDescriptor
+(
+    MinimapPingType = $/UI/Components/MinimapFlareAttack
+    MinimapPingAnimType = $/UI/Components/MinimapPingAnim_Fade
+    MinimapPingDuration = 10
+    MinimapPingAnimStartTime = 0.5
+    BaseFilterColorForMinimap = [20,20,20,255]
+    HudSound = ~/HudSoundFlarePlaced
+    IsActiveForAllies = true
+    IsActiveForPlayer = true
+    AllowFocusOnEvent = true
+    //AlertMessageType = AlertMsg_Rens_AllyLaunchBeacon
+    //TimeBeforeRepeat = 10
+)
+
+OnFlareDefendPlaced is TDispatchedMessageDescriptor
+(
+    MinimapPingType = $/UI/Components/MinimapFlareDefend
+    MinimapPingAnimType = $/UI/Components/MinimapPingAnim_Fade
+    MinimapPingDuration = 10
+    MinimapPingAnimStartTime = 0.5
+    BaseFilterColorForMinimap = [20,20,20,255]
+    HudSound = ~/HudSoundFlarePlaced
+    IsActiveForAllies = true
+    IsActiveForPlayer = true
+    AllowFocusOnEvent = true
+    //AlertMessageType = AlertMsg_Rens_AllyLaunchBeacon
+    //TimeBeforeRepeat = 10
+)
+
+OnFlareHelpPlaced is TDispatchedMessageDescriptor
+(
+    MinimapPingType = $/UI/Components/MinimapFlareHelp
+    MinimapPingAnimType = $/UI/Components/MinimapPingAnim_Fade
+    MinimapPingDuration = 10
+    MinimapPingAnimStartTime = 0.5
+    BaseFilterColorForMinimap = [20,20,20,255]
+    HudSound = ~/HudSoundFlarePlaced
+    IsActiveForAllies = true
+    IsActiveForPlayer = true
+    AllowFocusOnEvent = true
+    //AlertMessageType = AlertMsg_Rens_AllyLaunchBeacon
+    //TimeBeforeRepeat = 10
+)
+
+OnFlareCustomPlaced is TDispatchedMessageDescriptor
+(
+    MinimapPingType = $/UI/Components/MinimapFlareCustom
+    MinimapPingAnimType = $/UI/Components/MinimapPingAnim_Fade
+    MinimapPingDuration = 10
+    MinimapPingAnimStartTime = 0.5
+    BaseFilterColorForMinimap = [20,20,20,255]
+    HudSound = ~/HudSoundFlarePlaced
+    IsActiveForAllies = true
+    IsActiveForPlayer = true
+    AllowFocusOnEvent = true
+    //AlertMessageType = AlertMsg_Rens_AllyLaunchBeacon
+    //TimeBeforeRepeat = 10
+)
+
+OnAirplaneOutOfFuel is TDispatchedMessageDescriptor
+(
+    TimeBeforeRepeat = 10
+    AlertMessageType = AlertMsg_Rens_OnAirplaneOutOfFuel
+    UnitAcknow = TAcknowUnitAction_AirplaneOutOfFuel
+    IsActiveForPlayer = true
+)
+
+OnAirplaneOutOfAmmo is TDispatchedMessageDescriptor
+(
+    TimeBeforeRepeat = 10
+    AlertMessageType = AlertMsg_Rens_OnAirplaneOutOfAmmo
+    IsActiveForPlayer = true
+)
+
+OnUnitUnderAttack is TDispatchedMessageDescriptor
+(
+    HudSound = ~/HudSoundOnUnitUnderAttack
+    TimeBeforeRepeat = 30 //20
+    MinimapPingType = $/UI/Components/MinimapPing_Alarm
+    MinimapPingAnimType = $/UI/Components/MinimapPingAnim_Scale
+    MinimapPingDuration = 2
+    MinimapPingAnimStartTime = 0.5
+    BaseFilterColorForMinimap = [255,255,255,255]
+    AlertMessageType = AlertMsg_Rens_UnitUnderAttack
+    AllowFocusOnEvent = true
+    IsActiveForPlayer = true
+)
+
+OnUnloadOrder is TDispatchedMessageDescriptor
+(
+    UnitAcknow = TAcknowUnitAction_Unload
+    TimeBeforeRepeat = 10
+    IsActiveForPlayer = true
+)
+
+OnUnloadAtPositionOrder is TDispatchedMessageDescriptor
+(
+    UnitAcknow = TAcknowUnitAction_UnloadAtPosition
+    TimeBeforeRepeat = 10
+    IsActiveForPlayer = true
+)
+
+OnEvacuateOrder is TDispatchedMessageDescriptor
+(
+    UnitAcknow = TAcknowUnitAction_Evacuate
+    TimeBeforeRepeat = 10
+    IsActiveForPlayer = true
+)
+
+OnEvacFromDistrictOrder is TDispatchedMessageDescriptor
+(
+    TimeBeforeRepeat = 10
+    IsActiveForPlayer = true
+)
+
+OnResourcesGained is TDispatchedMessageDescriptor
+(
+    TimeBeforeRepeat = 0
+    IsActiveForPlayer = true
+)
+
+OnEnemyUnitDestroyed is TDispatchedMessageDescriptor // une unité ennemie a été tuée par quelqu'un de notre team
+(
+    MinimapPingType = $/UI/Components/MinimapPing_Spotted
+    MinimapPingAnimType = $/UI/Components/MinimapPingAnim_Fade
+    MinimapPingDuration = 3
+    MinimapPingAnimStartTime = 0.5 // 1.5
+    BaseFilterColorForMinimap = [230,230,10,255] // 255,35,35,255
+    AlertMessageType = AlertMsg_Arei_EnemyUnitDestroyed
+    TimeBeforeRepeat = 5
+    IsActiveForPlayer = true
+)
+
+OnTargetUnitDestroyed is TDispatchedMessageDescriptor // une unité du joueur a tué une unité ennemie (donc on joue l'acknow)
+(
+    IsActiveForPlayer = true
+    IsActiveForAllies = false
+    IsActiveForEnemies = false
+    IsActiveOnlyOnSelectedUnits = false
+    UnitAcknow = TAcknowUnitAction_TargetDestroyed
+    TimeBeforeRepeat = 5
+)
+
+OnTargetDistrictDestroyed is TDispatchedMessageDescriptor
+(
+    IsActiveForPlayer = true
+    IsActiveForAllies = false
+    IsActiveForEnemies = false
+    IsActiveOnlyOnSelectedUnits = false
+    //UnitAcknow = TAcknowUnitAction_TargetDestroyed
+    TimeBeforeRepeat = 5
+)
+
+OnTargetBuildingDestroyed is TDispatchedMessageDescriptor
+(
+    IsActiveForPlayer = true
+    IsActiveForAllies = false
+    IsActiveForEnemies = false
+    IsActiveOnlyOnSelectedUnits = false
+    //UnitAcknow = TAcknowUnitAction_TargetDestroyed
+    TimeBeforeRepeat = 5
+)
+
+OnObjectiveCaptured is TDispatchedMessageDescriptor
+(
+    MinimapPingType = $/UI/Components/MinimapPing_Spotted
+    MinimapPingAnimType = $/UI/Components/MinimapPingAnim_Scale
+    MinimapPingDuration = 4
+    MinimapPingAnimStartTime = 0.5
+    BaseFilterColorForMinimap = [250,190,50,250]
+    HudSound = ~/HudSoundOnObjectiveCaptured //son placeholder
+    AlertMessageType = AlertMsg_Par_OnObjectiveCaptured
+    TimeBeforeRepeat = 20 // 30
+    IsActiveForPlayer = true
+    IsActiveForAllies = true
+    IsActiveForEnemies = false
+    AllowFocusOnEvent = true
+    //UnitAcknow = $/SoundSettings/TAcknowUnitAction_EnemyAirplaneContact
+)
+
+OnObjectiveLost is TDispatchedMessageDescriptor
+(
+    MinimapPingType = $/UI/Components/MinimapPing_Spotted
+    MinimapPingAnimType = $/UI/Components/MinimapPingAnim_Scale
+    MinimapPingDuration = 4
+    MinimapPingAnimStartTime = 0.5
+    BaseFilterColorForMinimap = [204,0,0,250]
+    HudSound = ~/HudSoundOnObjectiveLost //son placeholder
+    AlertMessageType = AlertMsg_Par_OnObjectiveLost
+    TimeBeforeRepeat = 20 // 10
+    IsActiveForPlayer = true
+    IsActiveForAllies = true
+    IsActiveForEnemies = false
+    AllowFocusOnEvent = true
+    //UnitAcknow = $/SoundSettings/TAcknowUnitAction_EnemyAirplaneContact
+)
+
+OnEnemyAirplaneContact is TDispatchedMessageDescriptor
+(
+    MinimapPingType = $/UI/Components/MinimapPing_Spotted
+    MinimapPingAnimType = $/UI/Components/MinimapPingAnim_Scale
+    MinimapPingDuration = 4
+    MinimapPingAnimStartTime = 0.5
+    BaseFilterColorForMinimap = [250,190,50,250]
+    HudSound = ~/HudSoundAirContact //son placeholder
+    AlertMessageType = AlertMsg_Arei_AirplanceContact
+    TimeBeforeRepeat = 20 // 30
+    IsActiveForPlayer = true
+    IsActiveForAllies = true
+    AllowFocusOnEvent = true
+    UnitAcknow = TAcknowUnitAction_EnemyAirplaneContact
+)
+
+OnNotEnoughResources is TDispatchedMessageDescriptor
+(
+)
+
+OnReverseOrder is TDispatchedMessageDescriptor
+(
+  UnitAcknow = TAcknowUnitAction_Reverse
+  TimeBeforeRepeat = 10
+  IsActiveForPlayer = true
+)
+
+OnQuickMoveOrder is TDispatchedMessageDescriptor
+(
+  UnitAcknow = TAcknowUnitAction_QuickMove
+  TimeBeforeRepeat = 10
+  IsActiveForPlayer = true
+)
+
+OnShootOnPositionOrder is TDispatchedMessageDescriptor
+(
+    UnitAcknow = TAcknowUnitAction_ShootOnPosition
+    TimeBeforeRepeat = 10
+    IsActiveForPlayer = true
+)
+
+OnUnitPanicking is TDispatchedMessageDescriptor
+(
+    UnitAcknow = TAcknowUnitAction_Panicking
+    TimeBeforeRepeat = 10
+    IsActiveForPlayer = true
+)
+
+OnOutOfAmmo is TDispatchedMessageDescriptor
+(
+   UnitAcknow = TAcknowUnitAction_OutOfAmmo
+   TimeBeforeRepeat = 10
+   IsActiveForPlayer = true
+)
+
+OnMoveAndAttackOrder is TDispatchedMessageDescriptor
+(
+    UnitAcknow = TAcknowUnitAction_MoveAndAttackOrder
+    TimeBeforeRepeat = 10
+    IsActiveForPlayer = true
+)
+
+OnWithdrawOrder is TDispatchedMessageDescriptor
+(
+    UnitAcknow = TAcknowUnitAction_WithdrawOrder
+    TimeBeforeRepeat = 10
+    IsActiveForPlayer = true
+)
+
+OnSmoke is TDispatchedMessageDescriptor
+(
+    UnitAcknow = TAcknowUnitAction_Smoke
+    TimeBeforeRepeat = 10
+    IsActiveForPlayer = true
+)
+
+OnCriticEvacuate is TDispatchedMessageDescriptor
+(
+    UnitAcknow = TAcknowUnitAction_CriticEvacuate
+    TimeBeforeRepeat = 10
+    IsActiveForPlayer = true
+)
+
+//----------------------------------------------------------------------------------
+// Feedback Manager
+//----------------------------------------------------------------------------------
+FeedbackManagerWargame is TFeedbackMessageDispatcher
+(
+    Minimap_TimeBetweenPings = 1
+
+    BitchingBetty_TimeBetweenBitching = 2
+
+    AlertMessage_MaxLines = 8
+    AlertMessage_TimeActive = 10
+    AlertMessage_VerticalSpacing = 2
+    AlertMessage_FontSizeIndex = 3
+
+    UnitAcknowDescriptor = ~/AcknowUnitContainer
+    GlobalAcknowDescriptor = ~/GlobalAcknowContainer
+
+    MessageDescriptors = MAP
+    [
+        ( FeedbackMessage_OnUnitDestroyed, ~/OnUnitDestroyed ),
+        ( FeedbackMessage_OnEnemyUnitContact, ~/OnEnemyUnitContact ),
+        ( FeedbackMessage_OnEnemyBuildingContact, ~/OnEnemyBuildingContact ),
+        ( FeedbackMessage_OnUnitLost, ~/OnUnitLost ),
+        ( FeedbackMessage_OnBuildingLost, ~/OnBuildingLost ),
+        ( FeedbackMessage_OnStealthedUnitDiscovered, ~/OnStealthedUnitDiscovered ),
+        ( FeedbackMessage_OnDamageReceived, ~/OnDamageReceived ),
+        ( FeedbackMessage_OnHeavyDamageReceived, ~/OnHeavyDamageReceived ),
+        ( FeedbackMessage_OnUnitSelected, ~/OnUnitSelected ),
+        ( FeedbackMessage_OnPositionForbidden, ~/OnPositionForbidden ),
+        ( FeedbackMessage_OnMoveOrder, ~/OnMoveOrder ),
+        ( FeedbackMessage_OnAttackOrder, ~/OnAttackOrder ),
+        ( FeedbackMessage_OnLoadIntoTransportOrder, ~/OnLoadIntoTransportOrder ),
+        ( FeedbackMessage_OnLoadUnitOrder, ~/OnLoadUnitOrder ),
+        ( FeedbackMessage_OnNewPhaseStarted, ~/OnNewPhaseStarted ),
+        ( FeedbackMessage_OnNewPhaseStartedForCampaign, ~/OnNewPhaseStartedForCampaign ),
+        ( FeedbackMessage_OnPhaseResourcesGained, ~/OnPhaseResourcesGained ),
+        ( FeedbackMessage_OnAirplaneOutOfFuel, ~/OnAirplaneOutOfFuel ),
+        ( FeedbackMessage_OnAirplaneOutOfAmmo, ~/OnAirplaneOutOfAmmo ),
+        ( FeedbackMessage_OnAssaultOrder, ~/OnAssaultOrder ),
+        ( FeedbackMessage_OnStopOrder, ~/OnStopOrder ),
+        ( FeedbackMessage_OnCapturedEnemyUnit, ~/OnCapturedEnemyUnit ),
+        ( FeedbackMessage_OnUnitCapturedByEnemy, ~/OnUnitCapturedByEnemy ),
+        ( FeedbackMessage_OnBuildingCapturedByEnemy, ~/OnBuildingCapturedByEnemy ),
+        ( FeedbackMessage_OnEnemyBuildingCaptured, ~/OnEnemyBuildingCaptured ),
+        ( FeedbackMessage_OnCaptureOrder, ~/OnCaptureOrder ),
+        ( FeedbackMessage_OnUnitFiring, ~/OnUnitFiring ),
+        ( FeedbackMessage_OnFlareAttackPlaced, ~/OnFlareAttackPlaced ),
+        ( FeedbackMessage_OnFlareDefendPlaced, ~/OnFlareDefendPlaced ),
+        ( FeedbackMessage_OnFlareHelpPlaced, ~/OnFlareHelpPlaced ),
+        ( FeedbackMessage_OnFlareCustomPlaced, ~/OnFlareCustomPlaced ),
+        ( FeedbackMessage_OnUnitUnderAttack, ~/OnUnitUnderAttack ),
+        ( FeedbackMessage_OnUnloadOrder, ~/OnUnloadOrder ),
+        ( FeedbackMessage_OnUnloadAtPositionOrder, ~/OnUnloadAtPositionOrder ),
+        ( FeedbackMessage_OnEvacuateOrder, ~/OnEvacuateOrder ),
+        ( FeedbackMessage_OnEvacFromDistrictOrder, ~/OnEvacFromDistrictOrder ),
+        ( FeedbackMessage_OnResourcesGained, ~/OnResourcesGained ),
+        ( FeedbackMessage_OnEnemyUnitDestroyed, ~/OnEnemyUnitDestroyed ),
+        ( FeedbackMessage_OnEnemyAirplaneContact, ~/OnEnemyAirplaneContact ),
+        ( FeedbackMessage_OnNotEnoughResources, ~/OnNotEnoughResources ),
+        ( FeedbackMessage_OnReverseOrder, ~/OnReverseOrder ),
+        ( FeedbackMessage_OnQuickMoveOrder, ~/OnQuickMoveOrder ),
+        ( FeedbackMessage_OnShootOnPositionOrder, ~/OnShootOnPositionOrder ),
+        ( FeedbackMessage_OnUnitSurrender, ~/OnUnitSurrender ),
+        ( FeedbackMessage_OnUnitPanicking, ~/OnUnitPanicking ),
+        ( FeedbackMessage_OnOutOfAmmo, ~/OnOutOfAmmo ),
+        ( FeedbackMessage_OnMoveAndAttackOrder, ~/OnMoveAndAttackOrder ),
+        ( FeedbackMessage_OnTargetUnitDestroyed, ~/OnTargetUnitDestroyed ),
+        ( FeedbackMessage_OnWithdrawOrder, ~/OnWithdrawOrder ),
+        ( FeedbackMessage_OnTargetDistrictDestroyed, ~/OnTargetDistrictDestroyed ),
+        ( FeedbackMessage_OnTargetBuildingDestroyed, ~/OnTargetBuildingDestroyed ),
+        ( FeedbackMessage_OnObjectiveCaptured, ~/OnObjectiveCaptured ),
+        ( FeedbackMessage_OnObjectiveLost, ~/OnObjectiveLost ),
+        ( FeedbackMessage_OnBuildingUnderAttack, ~/OnUnitUnderAttack ),
+        ( FeedbackMessage_OnShootOnPositionSmokeOrder, ~/OnSmoke ),
+        ( FeedbackMessage_OnCriticEvacuate, ~/OnCriticEvacuate)
+    ]
+)

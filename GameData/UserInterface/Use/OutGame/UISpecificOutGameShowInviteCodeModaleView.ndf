@@ -1,0 +1,198 @@
+template ShowInviteCodeLine
+[
+    TokenTitle : string = "",
+    ElementName : string,
+
+] is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 30.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    FirstMargin = TRTTILength(Magnifiable = 5.0)
+    InterItemMargin = TRTTILength( Magnifiable = 5.0)
+    LastMargin = TRTTILength(Magnifiable = 5.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    VerticalAlignment = ~/UIText_VerticalCenter
+                    Alignment = UIText_Right
+                )
+                TextStyle       = "Default"
+                TypefaceToken   = "Main"
+
+                TextColor       = "SD2_Blanc184"
+                TextSize        = "14"
+
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TextToken = <TokenTitle>
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKEditableTextDescriptor
+            (
+                ElementName = <ElementName> + "EditableText"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [500.0, 0.0]
+                )
+
+                ClippingContainerFrameProperty = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                    MagnifiableWidthHeight = [-6.0, -6.0]
+                    AlignementToFather = [0.5, 0.5]
+                    AlignementToAnchor = [0.5, 0.5]
+                )
+
+                HasBackground = true
+                BackgroundBlockColorToken = "Gray80"
+
+                Flags = ~/EditableTextFlag/H_LEFT | ~/EditableTextFlag/V_TOP | ~/EditableTextFlag/ONE_LINE | ~/EditableTextFlag/READ_ONLY
+
+                TextSizeToken = "14"
+                TypefaceToken = "Main"
+                TextColorToken = "Glacier"
+                SelectionColorToken = "DeckOverview/CaseGrisee/EditableText/Selected"
+
+                MaxChars = 200
+
+                SelectTextOnFocus = true
+            )
+        ),
+    ]
+)
+
+private ShowInviteCopyButton is ConfirmButton
+(
+    ElementName = "CopyButton"
+    TextToken = "BTN_CPYCOD"
+)
+
+private ShowInviteCloseButton is CancelButton
+(
+    ElementName = "CloseButton"
+    TextToken = "BTN_CLOSE"
+)
+
+BUCKSpecificOutGameShowInviteCodeModaleMainComponentDescriptor is SpecificModaleWindowFrame
+(
+    TitleToken = "CB_INVCOD"
+    ContentFitStyle = ~/ContainerFitStyle/FitToContentVertically
+    ContentRelativeWidthHeight = [1.0, 0.0]
+
+    ContentComponents =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+
+            FirstMargin = TRTTILength(Magnifiable = 5.0)
+            InterItemMargin = TRTTILength( Magnifiable = 5.0)
+            LastMargin = TRTTILength(Magnifiable = 5.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            Alignment = UIText_Center
+                        )
+
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+
+                        TextStyle = "Default"
+                        TypefaceToken = "Main"
+
+                        TextColor       = "StandardTextInModal"
+                        TextSize        = "16"
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextToken = "T_INVITCM"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ShowInviteCodeLine
+                    (
+                        ElementName = "InviteCode"
+                        TokenTitle = "T_INVITCOD"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "MessageText"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            Alignment = UIText_Center
+                        )
+
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+
+                        TextStyle       = "Default"
+                        TypefaceToken   = "Main"
+
+                        TextColor       = "StandardTextInModal"
+                        TextSize        = "16"
+                    )
+                ),
+            ]
+        )
+    ]
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/ShowInviteCopyButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/ShowInviteCloseButton ),
+    ]
+)
+
+UISpecificOutGameShowInviteCodeModaleViewDescriptor is TUISpecificOutGameShowInviteCodeModaleViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificOutGameShowInviteCodeModaleMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

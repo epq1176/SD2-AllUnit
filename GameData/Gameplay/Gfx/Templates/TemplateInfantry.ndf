@@ -1,0 +1,104 @@
+DefaultInfantryWaitBetweenShot is 0.16666667
+template FXInfantry
+[
+    FX,
+    WithoutPhysics,
+    InitialSpeed,
+    FluidFriction,
+    Anchor,
+    DirectFire,
+    Power : float,
+    ImpactPower,
+    ShotCountInitialValue
+]
+is TOnMobileHappening
+(
+    ActionDescriptor = <FX>
+    InitialValues = [
+        ('parPower',            TConstant( Value =  <Power>)),
+        ('parShotOnGround',     TConstant( Value =  true)),
+        ('parTirPhysic',        TConstant( Value =  !<WithoutPhysics>)),
+        ('parTirTendu',         TConstant( Value =  <DirectFire>)),
+        ('parFluidFriction',    TConstant( Value =  <FluidFriction>)),
+        ('parInitialSpeed',     TConstant( Value =  <InitialSpeed> )),
+        ('parShotCount',        TConstant( Value =  <ShotCountInitialValue>)),
+        ('parWaitBetweenShot',  TConstant( Value =  DefaultInfantryWaitBetweenShot)),
+        ('parInitialShotDelay', TConstant( Value =  0.0)),
+        ('parImpactOnGround',   TConstant( Value =  true)),
+        ('parTerrain',          TConstant( Value =  1)),
+    ]
+    SousMobile = <Anchor>
+)
+// ****************************************************************************************************************************************
+// *** mitrailleuse ***********************************************************************************************************************
+// ****************************************************************************************************************************************
+template SFXInfantryMachineGun
+[
+    ShotCountInitialValue
+] is TSequencingActionHappening
+(
+    ActionDescriptor = TActionCall
+    (
+        LocalVariables =
+        [
+            parShotCount is TPinnableValue(ExpectedType: float InitialValue = <ShotCountInitialValue>),
+            parWaitBetweenShot is TPinnableValue(ExpectedType: float InitialValue = DefaultInfantryWaitBetweenShot), // pour etre modifié par l'IA, comme avant, mais on peut faire comme pour POWER par exemple à terme.
+        ]
+        MaxDuration = 3
+        Action = FX_Tir_Bullet_SFX
+        NamedParams = MAP[
+            ('parPower', 1),
+            ('parShotCount', parShotCount),
+            ('parWaitBetweenShot', parWaitBetweenShot),
+        ]
+    )
+)
+SFXInfantryMachineGun_Shot5 is SFXInfantryMachineGun(ShotCountInitialValue = 5)
+SFXInfantryMachineGun_Shot1 is SFXInfantryMachineGun(ShotCountInitialValue = 1)
+
+// ****************************************************************************************************************************************
+// *** Roquettes **************************************************************************************************************************
+// ****************************************************************************************************************************************
+
+SFXInfantryRocketSoundStream is Template_SoundStream( SoundFileName = 'GameData:\Assets\Sons\SFX_Wargame\Missile\SFX_Tir_Rocket.wav' )
+
+SFXInfantryRocket_Desc is TSoundDescriptor
+(
+    SoundSettings = $/SoundSettings/SFX_SoundSettings
+    TheSoundStream = SFXInfantryRocketSoundStream
+)
+SFXInfantryRocket_Desc_LR is TSoundDescriptor
+(
+    SoundSettings = $/SoundSettings/SFX_SoundSettings
+    TheSoundStream = SFXInfantryRocketSoundStream
+)
+SFXInfantryRocket_Common is TSoundHappening
+(
+    SoundDesc   = SFXInfantryRocket_Desc
+    SoundDescLR = SFXInfantryRocket_Desc_LR
+)
+SFXInfantryRocket_Power1 is SFXInfantryRocket_Common
+SFXInfantryRocket_Power2 is SFXInfantryRocket_Common
+SFXInfantryRocket_Power3 is SFXInfantryRocket_Common
+SFXInfantryRocket_Power4 is SFXInfantryRocket_Common
+SFXInfantryRocket_Power5 is SFXInfantryRocket_Common
+// ****************************************************************************************************************************************
+// *** lanceflammes ***********************************************************************************************************************
+// ****************************************************************************************************************************************
+SFXInfantryFlamethrower is TSequencingActionHappening
+(
+    ActionDescriptor = TActionCall
+    (
+        LocalVariables =
+        [
+            parShotCount is TPinnableValue(ExpectedType: float InitialValue = 1),
+            parWaitBetweenShot is TPinnableValue(ExpectedType: float InitialValue = DefaultInfantryWaitBetweenShot), // pour etre modifié par l'IA, comme avant, mais on peut faire comme pour POWER par exemple à terme.
+        ]
+        MaxDuration = 3
+        Action = FX_Tir_LanceFlammes_SFX
+        NamedParams = MAP[
+            ('parShotCount', parShotCount),
+            ('parWaitBetweenShot', parWaitBetweenShot),
+        ]
+    )
+)

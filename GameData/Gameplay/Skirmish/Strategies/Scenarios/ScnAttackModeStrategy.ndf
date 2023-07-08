@@ -1,0 +1,382 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export ScnAttackModeStrategy is TIAGeneralStrategy
+(
+    StrategyName = "IAScnAtk"
+    FirstGenerator = ScnAtk_Mod_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    IgnorePlayersForCorridorRepartition = true
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    ShouldUseTaggedCorridorsForTouchDown = true
+
+    TransitionList =
+    [
+        ScnAtk_Mod_Transition_StartToPhaseC,
+        ScnAtk_Mod_Transition_StartToPhaseB,
+        ScnAtk_Mod_Transition_StartToPhaseA,
+        ScnAtk_Mod_Transition_StartToDeploiment,
+        ScnAtk_Mod_Transition_DeployToPhaseA,
+        ScnAtk_Mod_Transition_PhaseB,
+        ScnAtk_Mod_Transition_PhaseC,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export ScnAtk_Mod_Condition_CommandPhase is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+//-------------------------------------------------------------------------
+export ScnAtk_Mod_Condition_PhaseB is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_B'
+)
+//-------------------------------------------------------------------------
+export ScnAtk_Mod_Condition_PhaseC is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_C'
+)
+//-------------------------------------------------------------------------
+export ScnAtk_Mod_Condition_True is TSequenceCondition_True
+(
+
+)
+
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export ScnAtk_Mod_Transition_StartToPhaseC is TIAGeneralStrategyTransition
+(
+    Origine = ScnAtk_Mod_Choose_Strategy
+    Condition = ScnAtk_Mod_Condition_PhaseC
+    Destination = ScnAtk_Mod_PhaseC_1
+)
+export ScnAtk_Mod_Transition_StartToPhaseB is TIAGeneralStrategyTransition
+(
+    Origine = ScnAtk_Mod_Choose_Strategy
+    Condition = ScnAtk_Mod_Condition_PhaseB
+    Destination = ScnAtk_Mod_PhaseB_1
+)
+export ScnAtk_Mod_Transition_StartToPhaseA is TIAGeneralStrategyTransition
+(
+    Origine = ScnAtk_Mod_Choose_Strategy
+    Condition = ScnAtk_Mod_Condition_CommandPhase
+    Destination = ScnAtk_Mod_PhaseA_1
+)
+export ScnAtk_Mod_Transition_StartToDeploiment is TIAGeneralStrategyTransition
+(
+    Origine = ScnAtk_Mod_Choose_Strategy
+    Condition = ScnAtk_Mod_Condition_True
+    Destination = ScnAtk_Mod_PhaseDeploiement_1
+)
+//-------------------------------------------------------------------------
+export ScnAtk_Mod_Transition_DeployToPhaseA is TIAGeneralStrategyTransition
+(
+    Origine = ScnAtk_Mod_PhaseDeploiement_1
+    Condition = ScnAtk_Mod_Condition_CommandPhase
+    Destination = ScnAtk_Mod_PhaseA_1
+)
+//-------------------------------------------------------------------------
+export ScnAtk_Mod_Transition_PhaseB is TIAGeneralStrategyTransition
+(
+    Origine = ScnAtk_Mod_PhaseA_1
+    Condition = ScnAtk_Mod_Condition_PhaseB
+    Destination = ScnAtk_Mod_PhaseB_1
+)
+//-------------------------------------------------------------------------
+export ScnAtk_Mod_Transition_PhaseC is TIAGeneralStrategyTransition
+(
+    Origine = ScnAtk_Mod_PhaseB_1
+    Condition = ScnAtk_Mod_Condition_PhaseC
+    Destination = ScnAtk_Mod_PhaseC_1
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export ScnAtk_Mod_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Scn_Support_AntiTank,
+        ~/Scn_Support_Transports,
+
+        ~/Scn_Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export ScnAtk_Mod_PhaseDeploiement_1 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Scn_Support_AntiTank,
+        ~/Scn_Support_Transports,
+
+        ~/Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        // Grosse attaque
+        ~/ScnAtk_ZoneAttack_Main_A,              // Plusieurs tanks pour un budget donné // 200 => un cmd pas cher, une reco pas cher, et le reste de tanks pour fill le budget en random.
+        ~/ScnAtk_Artillery_Support,              // Artillerie pas chère                 //  80
+        ~/ScnAtk_Artillery_TriggerHappy_1for4Corridors,
+
+        // Reste du front
+        ~/ScnAtk_ZoneAttack_Adaptive_A,          // ~100
+        ~/ScnAtk_ZoneAttack_Adaptive_A,          // ~100
+        ~/ScnAtk_ZoneAttack_Adaptive_A,          // ~100
+        ~/ScnAtk_ZoneAttack_Adaptive_A,          // ~100
+
+        ~/Scn_Reco,            // 40 par reco
+        ~/Scn_AirReco,
+        ~/Scn_Reco,            // 40 par reco
+
+        ~/Scn_Supply_Skirmish_Allied,
+
+    ] + ~/ScnAtk_Defenses_Airstrike_Arti_Shuffle
+
+    +   ~/ScnAtk_Scaling_A
+    +   ~/ScnAtk_Scaling_A
+)
+//-------------------------------------------------------------------------
+export ScnAtk_Mod_PhaseA_1 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Scn_Support_AntiTank,
+        ~/Scn_Support_Transports,
+        ~/Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Support de la main Attack
+        //------------------------------
+        ~/ScnAtk_Attack_MBT_Support,
+        ~/ScnAtk_Artillery_TriggerHappy_1for4Corridors,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/ScnAtk_ZoneAttack_Main_A,         // Plusieurs tanks pour un budget donné // 200
+        ~/ScnAtk_Artillery_Support,         // Artillerie pas chère                 //  80
+        ~/ScnAtk_Artillery_Expensive,
+
+        ~/ScnAtk_ZoneAttack_Adaptive_A,
+        ~/ScnAtk_ZoneAttack_Adaptive_A,
+        ~/ScnAtk_ZoneAttack_Adaptive_A,
+
+        // On insère ici une attaque qui va chercher les objectifs.
+        ~/ScnAtk_Attack_Objectives,
+
+        ~/Scn_Airstrike_Offense,
+        ~/Scn_Airstrike_Defense,
+
+        ~/Scn_SuperCommander,
+
+        ~/Scn_Reco,
+        ~/ScnAtk_Attack_MBT, // MBT devient low prio en phase A pour éviter de pomper trop de thune
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Scn_Supply_Skirmish_Allied,
+
+    ] + ~/ScnAtk_Defenses_Airstrike_Arti_Shuffle
+
+    +   ~/ScnAtk_Scaling_A
+    +   ~/ScnAtk_Scaling_A
+)
+//-------------------------------------------------------------------------
+export ScnAtk_Mod_PhaseB_1 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 2
+    GeneratorList =
+    [
+        ~/ScnAtk_Maintain_ZoneAttacks,
+        ~/ScnAtk_Maintain_CorridorAttacks,
+        ~/ScnAtk_Maintain_ObjectiveAttacks,
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/ScnAtk_Support_AntiTank,
+        ~/Scn_Support_Transports,
+        ~/Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/ScnAtk_Attack_Objectives,
+
+        ~/ScnAtk_ZoneAttack_Adaptive_B,
+        ~/ScnAtk_ZoneAttack_Adaptive_B,
+        ~/ScnAtk_ZoneAttack_Adaptive_B,
+
+        ~/Scn_SuperCommander,
+
+        ~/ScnAtk_ZoneAttack_Main_B,         // Plusieurs tanks pour un budget donné // 200
+        ~/ScnAtk_Artillery_Support,         // Artillerie pas chère                 //  80
+        ~/ScnAtk_Artillery_Expensive,
+
+        //------------------------------
+        // Support de la main Attack
+        //------------------------------
+        ~/ScnAtk_Attack_MBT,
+
+        ~/Scn_Airstrike_Offense,
+        ~/Scn_Airstrike_Defense,
+
+        // Maintien
+        ~/Scn_Reco,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Scn_Supply_Skirmish_Allied,
+
+    ] + ~/ScnAtk_Defenses_Airstrike_Arti_Shuffle
+
+    +   ~/ScnAtk_Scaling_B
+    +   ~/ScnAtk_Scaling_B
+)
+//-------------------------------------------------------------------------
+export ScnAtk_Mod_PhaseC_1 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 1
+    GeneratorList =
+    [
+        ~/ScnAtk_Maintain_ZoneAttacks,
+        ~/ScnAtk_Maintain_CorridorAttacks,
+        ~/ScnAtk_Maintain_ObjectiveAttacks,
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/ScnAtk_Support_AntiTank,
+        ~/Scn_Support_Transports,
+        ~/Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/ScnAtk_Attack_Objectives,
+
+        ~/ScnAtk_ZoneAttack_Adaptive_C,
+        ~/ScnAtk_ZoneAttack_Adaptive_C,
+        ~/ScnAtk_ZoneAttack_Adaptive_C,
+
+        ~/Scn_SuperCommander,
+
+        ~/ScnAtk_ZoneAttack_Main_C,         // Plusieurs tanks pour un budget donné // 200
+        ~/ScnAtk_Artillery_Support,         // Artillerie pas chère                 //  80
+        ~/ScnAtk_Artillery_Expensive,
+
+        //------------------------------
+        // Support de la main Attack
+        //------------------------------
+        ~/ScnAtk_Attack_MBT,
+
+        ~/Scn_Airstrike_Offense,
+        ~/Scn_Airstrike_Defense,
+
+        // Maintien
+        ~/Scn_Reco,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Scn_Supply_Skirmish_Allied,
+
+    ] + ~/ScnAtk_Defenses_Airstrike_Arti_Shuffle
+
+    +   ~/ScnAtk_Scaling_C
+    +   ~/ScnAtk_Scaling_C
+)
+
+ScnAtk_Defenses_Airstrike_Arti_Shuffle is
+[
+    ~/Scn_Airstrike_Assault,
+    ~/ScnAtk_Artillery_Expensive,
+    ~/Scn_Airstrike_Offense,
+    ~/ScnAtk_Artillery_TriggerHappy,
+    ~/Scn_AirReco,
+    ~/Scn_Airstrike_Defense,
+    ~/ScnAtk_Artillery_TriggerHappy_1for4Corridors,
+    ~/Scn_Maintain_AirStrike,
+    ~/ScnAtk_Maintain_Artillery,
+]
+
+ScnAtk_Scaling_A is
+[
+    ~/ScnAtk_ZoneAttack_Main_A_Autogen,
+    ~/ScnAtk_Artillery_Expensive_Autogen,
+    ~/ScnAtk_ZoneAttack_Adaptive_A_Autogen,
+    ~/ScnAtk_Artillery_TriggerHappy_Autogen,
+    ~/ScnAtk_ZoneAttack_Adaptive_A_Autogen,
+    ~/ScnAtk_ZoneAttack_Main_A_Autogen,
+    ~/ScnAtk_Artillery_TriggerHappy_Autogen,
+
+    ~/ScnAtk_ZoneAttack_Main_A_Autogen,
+    ~/ScnAtk_Artillery_Expensive_Autogen,
+    ~/ScnAtk_ZoneAttack_Adaptive_A_Autogen,
+    ~/ScnAtk_Artillery_TriggerHappy_Autogen,
+    ~/ScnAtk_ZoneAttack_Adaptive_A_Autogen,
+    ~/ScnAtk_ZoneAttack_Main_A_Autogen,
+    ~/ScnAtk_Artillery_TriggerHappy_Autogen,
+]
+
+ScnAtk_Scaling_B is
+[
+    ~/ScnAtk_ZoneAttack_Main_B_Autogen,
+    ~/ScnAtk_Artillery_Expensive_Autogen,
+    ~/ScnAtk_ZoneAttack_Adaptive_B_Autogen,
+    ~/ScnAtk_Artillery_TriggerHappy_Autogen,
+    ~/ScnAtk_ZoneAttack_Adaptive_B_Autogen,
+    ~/ScnAtk_ZoneAttack_Main_B_Autogen,
+    ~/ScnAtk_Artillery_TriggerHappy_Autogen,
+
+    ~/ScnAtk_ZoneAttack_Main_B_Autogen,
+    ~/ScnAtk_Artillery_Expensive_Autogen,
+    ~/ScnAtk_ZoneAttack_Adaptive_B_Autogen,
+    ~/ScnAtk_Artillery_TriggerHappy_Autogen,
+    ~/ScnAtk_ZoneAttack_Adaptive_B_Autogen,
+    ~/ScnAtk_ZoneAttack_Main_B_Autogen,
+    ~/ScnAtk_Artillery_TriggerHappy_Autogen,
+]
+
+ScnAtk_Scaling_C is
+[
+    ~/ScnAtk_ZoneAttack_Main_C_Autogen,
+    ~/ScnAtk_Artillery_Expensive_Autogen,
+    ~/ScnAtk_ZoneAttack_Adaptive_C_Autogen,
+    ~/ScnAtk_Artillery_TriggerHappy_Autogen,
+    ~/ScnAtk_ZoneAttack_Adaptive_C_Autogen,
+    ~/ScnAtk_ZoneAttack_Main_C_Autogen,
+    ~/ScnAtk_Artillery_TriggerHappy_Autogen,
+
+    ~/ScnAtk_ZoneAttack_Main_C_Autogen,
+    ~/ScnAtk_Artillery_Expensive_Autogen,
+    ~/ScnAtk_ZoneAttack_Adaptive_C_Autogen,
+    ~/ScnAtk_Artillery_TriggerHappy_Autogen,
+    ~/ScnAtk_ZoneAttack_Adaptive_C_Autogen,
+    ~/ScnAtk_ZoneAttack_Main_C_Autogen,
+    ~/ScnAtk_Artillery_TriggerHappy_Autogen,
+]

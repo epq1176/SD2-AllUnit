@@ -1,0 +1,22 @@
+export ModelFile_Kettenkrad_GER is 'GameData:Assets\3D\Units\GER\Vehicule\Kettenkrad_GER\Kettenkrad_GER.Ase2NdfBin'
+
+Modele_Kettenkrad_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Kettenkrad_GER
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Kettenkrad_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\Kettenkrad_GER_MID\Kettenkrad_GER_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Kettenkrad_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\LODS\Kettenkrad_GER_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

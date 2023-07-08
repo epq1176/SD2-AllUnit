@@ -1,0 +1,46 @@
+
+export CriticalEffectModule_TestUnits is TCriticalEffectModuleDescriptor
+(
+    Bounds = (1,100)
+    TerrainCriticalEffectTimer = 5.0
+
+    PierceEffectsOnFront =
+    [
+        TCriticalEffect(Roll=(1,50) Token='CRITIC1' EffectsPack=~/UnitEffect_Effet_Meurt RepairCost=-1 DisplayOnDeath=True),
+    ]
+
+    PierceEffectsOnSides =
+    [
+        TCriticalEffect(Roll=(1,50) Token='CRITIC1' EffectsPack=~/UnitEffect_Effet_Meurt RepairCost=-1 DisplayOnDeath=True),
+    ]
+
+    PierceEffectsOnRear =
+    [
+        TCriticalEffect(Roll=(1,50) Token='CRITIC1' EffectsPack=~/UnitEffect_Effet_Meurt RepairCost=-1 DisplayOnDeath=True),
+    ]
+
+    PierceEffectsOnTop =
+    [
+        TCriticalEffect(Roll=(1,50) Token='CRITIC1' EffectsPack=~/UnitEffect_Effet_Meurt RepairCost=-1 DisplayOnDeath=True),
+    ]
+
+    RicochetEffectsOnFront =
+    [
+        TCriticalEffect(Roll=(1,100) Token='BOUNCE1' RepairCost=-1),
+    ]
+
+    RicochetEffectsOnSides =
+    [
+        TCriticalEffect(Roll=(1,100) Token='BOUNCE1' RepairCost=-1),
+    ]
+
+    RicochetEffectsOnRear =
+    [
+        TCriticalEffect(Roll=(1,100) Token='BOUNCE1' RepairCost=-1),
+    ]
+
+    RicochetEffectsOnTop =
+    [
+        TCriticalEffect(Roll=(1,100) Token='BOUNCE1' RepairCost=-1),
+    ]
+)

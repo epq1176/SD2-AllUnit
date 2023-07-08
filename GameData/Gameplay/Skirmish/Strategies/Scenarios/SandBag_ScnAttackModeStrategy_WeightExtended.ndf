@@ -1,0 +1,367 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export SandBag_ScnAttackModeStrategy_WeightExtended is TIAGeneralStrategy
+(
+    StrategyName = "SBScnAtk"
+    FirstGenerator = SandBag_ScnAtk_Mod_Choose_Strategy_WeightExtended
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    IgnorePlayersForCorridorRepartition = true
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    ShouldUseTaggedCorridorsForTouchDown = true
+
+    TransitionList =
+    [
+        SandBag_ScnAtk_Mod_Transition_StartToPhaseC_WeightExtended,
+        SandBag_ScnAtk_Mod_Transition_StartToPhaseB_WeightExtended,
+        SandBag_ScnAtk_Mod_Transition_StartToPhaseA_WeightExtended,
+        SandBag_ScnAtk_Mod_Transition_StartToDeploiment_WeightExtended,
+        SandBag_ScnAtk_Mod_Transition_DeployToPhaseA_WeightExtended,
+        SandBag_ScnAtk_Mod_Transition_PhaseB_WeightExtended,
+        SandBag_ScnAtk_Mod_Transition_PhaseC_WeightExtended,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export SandBag_ScnAtk_Mod_Condition_CommandPhase_WeightExtended is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+//-------------------------------------------------------------------------
+export SandBag_ScnAtk_Mod_Condition_PhaseB_WeightExtended is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_B'
+)
+//-------------------------------------------------------------------------
+export SandBag_ScnAtk_Mod_Condition_PhaseC_WeightExtended is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_C'
+)
+//-------------------------------------------------------------------------
+export SandBag_ScnAtk_Mod_Condition_True_WeightExtended is TSequenceCondition_True
+(
+
+)
+
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export SandBag_ScnAtk_Mod_Transition_StartToPhaseC_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_ScnAtk_Mod_Choose_Strategy_WeightExtended
+    Condition = SandBag_ScnAtk_Mod_Condition_PhaseC_WeightExtended
+    Destination = SandBag_ScnAtk_Mod_PhaseC_1_WeightExtended
+)
+export SandBag_ScnAtk_Mod_Transition_StartToPhaseB_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_ScnAtk_Mod_Choose_Strategy_WeightExtended
+    Condition = SandBag_ScnAtk_Mod_Condition_PhaseB_WeightExtended
+    Destination = SandBag_ScnAtk_Mod_PhaseB_1_WeightExtended
+)
+export SandBag_ScnAtk_Mod_Transition_StartToPhaseA_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_ScnAtk_Mod_Choose_Strategy_WeightExtended
+    Condition = SandBag_ScnAtk_Mod_Condition_CommandPhase_WeightExtended
+    Destination = SandBag_ScnAtk_Mod_PhaseA_1_WeightExtended
+)
+export SandBag_ScnAtk_Mod_Transition_StartToDeploiment_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_ScnAtk_Mod_Choose_Strategy_WeightExtended
+    Condition = SandBag_ScnAtk_Mod_Condition_True_WeightExtended
+    Destination = SandBag_ScnAtk_Mod_PhaseDeploiement_1_WeightExtended
+)
+//-------------------------------------------------------------------------
+export SandBag_ScnAtk_Mod_Transition_DeployToPhaseA_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_ScnAtk_Mod_PhaseDeploiement_1_WeightExtended
+    Condition = SandBag_ScnAtk_Mod_Condition_CommandPhase_WeightExtended
+    Destination = SandBag_ScnAtk_Mod_PhaseA_1_WeightExtended
+)
+//-------------------------------------------------------------------------
+export SandBag_ScnAtk_Mod_Transition_PhaseB_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_ScnAtk_Mod_PhaseA_1_WeightExtended
+    Condition = SandBag_ScnAtk_Mod_Condition_PhaseB_WeightExtended
+    Destination = SandBag_ScnAtk_Mod_PhaseB_1_WeightExtended
+)
+//-------------------------------------------------------------------------
+export SandBag_ScnAtk_Mod_Transition_PhaseC_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_ScnAtk_Mod_PhaseB_1_WeightExtended
+    Condition = SandBag_ScnAtk_Mod_Condition_PhaseC_WeightExtended
+    Destination = SandBag_ScnAtk_Mod_PhaseC_1_WeightExtended
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export SandBag_ScnAtk_Mod_Choose_Strategy_WeightExtended is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/SandBag_Scn_Support_AntiTank,
+        ~/SandBag_Scn_Support_Transports,
+
+        ~/SandBag_Scn_Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_ScnAtk_Mod_PhaseDeploiement_1_WeightExtended is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/SandBag_Scn_Support_AntiTank,
+        ~/SandBag_Scn_Support_Transports,
+
+        ~/SandBag_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Arti
+        //------------------------------
+        ~/SandBag_Scn_Airstrike_Assault,
+        ~/SandBag_ScnAtk_Artillery_TriggerHappy_WeightExtended,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/SandBag_ScnAtk_ZoneAttack_Main_A,
+        ~/SandBag_ScnAtk_Artillery_Support_WeightExtended,
+
+        ~/SandBag_ScnAtk_ZoneAttack_Adaptive_A_WeightExtended,
+        ~/SandBag_ScnAtk_ZoneAttack_Adaptive_A_WeightExtended,
+        ~/SandBag_ScnAtk_ZoneAttack_Adaptive_A_WeightExtended,
+        ~/SandBag_Scn_Reco,
+        ~/SandBag_Scn_AirReco,
+
+        ~/SandBag_Scn_Supply_Skirmish_Allied,
+
+    ] + ~/SandBag_ScnAtk_Defenses_Airstrike_Arti_Shuffle_WeightExtended
+
+    +   ~/SandBag_ScnAtk_Scaling_A_WeightExtended
+    +   ~/SandBag_ScnAtk_Scaling_A_WeightExtended
+)
+//-------------------------------------------------------------------------
+export SandBag_ScnAtk_Mod_PhaseA_1_WeightExtended is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/SandBag_Scn_Support_AntiTank,
+        ~/SandBag_Scn_Support_Transports,
+
+        ~/SandBag_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/SandBag_Scn_Maintain_AirStrike,
+        ~/SandBag_ScnAtk_Maintain_Artillery,
+        ~/SandBag_ScnAtk_Maintain_ZoneAttacks,
+        ~/SandBag_ScnAtk_Maintain_CorridorAttacks,
+
+        //------------------------------
+        // Arti
+        //------------------------------
+        ~/SandBag_Scn_Airstrike_Assault,
+        ~/SandBag_ScnAtk_Artillery_TriggerHappy_WeightExtended,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/SandBag_ScnAtk_ZoneAttack_Main_A,
+        ~/SandBag_ScnAtk_Artillery_Support_WeightExtended,
+
+        ~/SandBag_ScnAtk_ZoneAttack_Adaptive_A_WeightExtended,
+        ~/SandBag_ScnAtk_ZoneAttack_Adaptive_A_WeightExtended,
+        ~/SandBag_ScnAtk_ZoneAttack_Adaptive_A_WeightExtended,
+        ~/SandBag_Scn_Reco,
+        ~/SandBag_Scn_AirReco,
+
+        ~/SandBag_Scn_Supply_Skirmish_Allied,
+
+    ] + ~/SandBag_ScnAtk_Defenses_Airstrike_Arti_Shuffle_WeightExtended
+
+    +   ~/SandBag_ScnAtk_Scaling_A_WeightExtended
+    +   ~/SandBag_ScnAtk_Scaling_A_WeightExtended
+)
+//-------------------------------------------------------------------------
+export SandBag_ScnAtk_Mod_PhaseB_1_WeightExtended is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 2
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/SandBag_Scn_Support_AntiTank,
+        ~/SandBag_Scn_Support_Transports,
+
+        ~/SandBag_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/SandBag_Scn_Maintain_AirStrike,
+        ~/SandBag_ScnAtk_Maintain_Artillery,
+        ~/SandBag_ScnAtk_Maintain_ZoneAttacks,
+        ~/SandBag_ScnAtk_Maintain_CorridorAttacks,
+
+        //------------------------------
+        // Arti
+        //------------------------------
+        ~/SandBag_Scn_Airstrike_Assault,
+        ~/SandBag_ScnAtk_Artillery_Expensive_WeightExtended,
+        ~/SandBag_ScnAtk_Artillery_TriggerHappy_WeightExtended,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/SandBag_ScnAtk_ZoneAttack_Main_B_WeightExtended,
+        ~/SandBag_ScnAtk_Artillery_Support_WeightExtended,
+
+        ~/SandBag_ScnAtk_ZoneAttack_Adaptive_B_WeightExtended,
+        ~/SandBag_ScnAtk_ZoneAttack_Adaptive_B_WeightExtended,
+        ~/SandBag_ScnAtk_ZoneAttack_Adaptive_B_WeightExtended,
+        ~/SandBag_Scn_Reco,
+        ~/SandBag_Scn_AirReco,
+
+        ~/SandBag_Scn_Supply_Skirmish_Allied,
+
+    ] + ~/SandBag_ScnAtk_Defenses_Airstrike_Arti_Shuffle_WeightExtended
+
+    +   ~/SandBag_ScnAtk_Scaling_B_WeightExtended
+    +   ~/SandBag_ScnAtk_Scaling_B_WeightExtended
+)
+//-------------------------------------------------------------------------
+export SandBag_ScnAtk_Mod_PhaseC_1_WeightExtended is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 1
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/SandBag_Scn_Support_AntiTank,
+        ~/SandBag_Scn_Support_Transports,
+
+        ~/SandBag_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/SandBag_Scn_Maintain_AirStrike,
+        ~/SandBag_ScnAtk_Maintain_Artillery,
+        ~/SandBag_ScnAtk_Maintain_ZoneAttacks,
+        ~/SandBag_ScnAtk_Maintain_CorridorAttacks,
+
+        //------------------------------
+        // Arti
+        //------------------------------
+        ~/SandBag_Scn_Airstrike_Assault,
+        ~/SandBag_ScnAtk_Artillery_Expensive_WeightExtended,
+        ~/SandBag_ScnAtk_Artillery_TriggerHappy_WeightExtended,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/SandBag_ScnAtk_ZoneAttack_Main_C_WeightExtended,
+        ~/SandBag_ScnAtk_Artillery_Support_WeightExtended,
+
+        ~/SandBag_ScnAtk_ZoneAttack_Main_C_WeightExtended,
+        ~/SandBag_ScnAtk_Artillery_Support_WeightExtended,
+
+        ~/SandBag_ScnAtk_ZoneAttack_Adaptive_C_WeightExtended,
+        ~/SandBag_ScnAtk_ZoneAttack_Adaptive_C_WeightExtended,
+        ~/SandBag_Scn_Reco,
+        ~/SandBag_Scn_AirReco,
+
+        ~/SandBag_Scn_Supply_Skirmish_Allied,
+
+    ] + ~/SandBag_ScnAtk_Defenses_Airstrike_Arti_Shuffle_WeightExtended
+
+    +   ~/SandBag_ScnAtk_Scaling_C_WeightExtended
+    +   ~/SandBag_ScnAtk_Scaling_C_WeightExtended
+)
+
+SandBag_ScnAtk_Defenses_Airstrike_Arti_Shuffle_WeightExtended is
+[
+    ~/SandBag_Scn_Airstrike_Assault,
+    ~/SandBag_ScnAtk_Artillery_Expensive_WeightExtended,
+    ~/SandBag_ScnAtk_Artillery_TriggerHappy_WeightExtended,
+    ~/SandBag_Scn_Airstrike_Offense,
+    ~/SandBag_Scn_Airstrike_Defense,
+    ~/SandBag_ScnAtk_Artillery_TriggerHappy_1for4Corridors_WeightExtended,
+]
+
+SandBag_ScnAtk_Scaling_A_WeightExtended is
+[
+    ~/SandBag_ScnAtk_ZoneAttack_Main_A_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_ZoneAttack_Adaptive_A_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_ZoneAttack_Adaptive_A_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_ZoneAttack_Main_A_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+
+    ~/SandBag_ScnAtk_ZoneAttack_Main_A_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_ZoneAttack_Adaptive_A_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_ZoneAttack_Adaptive_A_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_ZoneAttack_Main_A_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+]
+
+SandBag_ScnAtk_Scaling_B_WeightExtended is
+[
+    ~/SandBag_ScnAtk_ZoneAttack_Main_B_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_ZoneAttack_Adaptive_B_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_ZoneAttack_Adaptive_B_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_ZoneAttack_Main_B_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+
+    ~/SandBag_ScnAtk_ZoneAttack_Main_B_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_ZoneAttack_Adaptive_B_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_ZoneAttack_Adaptive_B_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_ZoneAttack_Main_B_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+]
+
+SandBag_ScnAtk_Scaling_C_WeightExtended is
+[
+    ~/SandBag_ScnAtk_ZoneAttack_Main_C_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_ZoneAttack_Adaptive_C_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_ZoneAttack_Adaptive_C_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_ZoneAttack_Main_C_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+
+    ~/SandBag_ScnAtk_ZoneAttack_Main_C_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_ZoneAttack_Adaptive_C_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_ZoneAttack_Adaptive_C_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_ZoneAttack_Main_C_Autogen_WeightExtended,
+    ~/SandBag_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+]

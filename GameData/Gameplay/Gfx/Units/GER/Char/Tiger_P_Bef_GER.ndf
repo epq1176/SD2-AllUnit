@@ -1,0 +1,22 @@
+export ModelFile_Tiger_P_Bef_GER is 'GameData:Assets\3D\Units\GER\Char\Tiger_P_Bef_GER\Tiger_P_Bef_GER.Ase2NdfBin'
+
+Modele_Tiger_P_Bef_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Tiger_P_Bef_GER
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Tiger_P_Bef_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\Tiger_P_Bef_GER_MID\Tiger_P_Bef_GER_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Tiger_P_Bef_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\Tiger_P_Bef_GER_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

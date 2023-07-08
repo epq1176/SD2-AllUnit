@@ -1,0 +1,129 @@
+template TemplateMeshDescriptor_HMG_M2HB_Disheartened_US [ ModelFile ] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+
+Gfx_HMG_M2HB_Disheartened_US_1 is TDepictionTemplate //servant gauche
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_HMG_M2HB_Disheartened_US( ModelFile = ModelFile_Servant_AT)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_HMG_M2HB_Disheartened_US( ModelFile = ModelFile_Servant_AT_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_HMG_M2HB_Disheartened_US( ModelFile = ModelFile_Servant_AT)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_HMG_M2HB_Disheartened_US( ModelFile = ModelFile_Servant_AT_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_ServantMG_Browning_Gauche
+    // Actions = Weapons_Mortar
+)
+
+Gfx_HMG_M2HB_Disheartened_US_2 is TDepictionTemplate //servant droite
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_HMG_M2HB_Disheartened_US( ModelFile = ModelFile_Servant_AT_Secondary)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_HMG_M2HB_Disheartened_US( ModelFile = ModelFile_Servant_AT_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_HMG_M2HB_Disheartened_US( ModelFile = ModelFile_Servant_AT_Secondary)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_HMG_M2HB_Disheartened_US( ModelFile = ModelFile_Servant_AT_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_ServantMG_Browning_Droite
+    // Actions = Weapons_Mortar
+)
+
+//Arme
+//private AnimationPath_HMG_M2HB_Disheartened_US is 'GameData:Assets\3D\Units\USA\Canon\Browning_M2HB\'
+//export HMG_M2HB_US_Anim_Tree is DepictionAnimationTreeNode
+//(
+//    IAStates = AnimationStateAll
+//    IAOldStates = AnimationStateAll
+//    DefaultAnimationStates = AnimationStateEngineStopping
+//    Animations =
+//    (
+//        [TemplateAnimation(Animation= 'Browning_M2HB' + '.Ase2NdfBin' Loop=false EventAnimation=false AnimationPath = AnimationPath_HMG_M2HB_Disheartened_US Mask = AnimationMask_All())]
+//    )
+
+//    Childs =
+//    [
+//        TAnimNode(IAStates = AnimationStateContinuousFire                                                               Anim = 'Browning_M2HB_Fire'       Loop = true  AnimationPath = AnimationPath_HMG_M2HB_Disheartened_US Mask = AnimationMask_All()),
+//        TAnimNode(IAStates = AnimationStateEngineStopping | AnimationStateEngineStopTurning                             Anim = 'Browning_M2HB_Deploy'     Loop = false AnimationPath = AnimationPath_HMG_M2HB_Disheartened_US Mask = AnimationMask_All()),
+//        TAnimNode(IAStates = AnimationStateEngineStarting | AnimationStateEngineStartTurning                            Anim = 'Browning_M2HB_Fold'       Loop = false AnimationPath = AnimationPath_HMG_M2HB_Disheartened_US Mask = AnimationMask_All()),
+//        TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateLeft                                           Anim = 'Browning_M2HB_Turn_Left'  Loop = true  AnimationPath = AnimationPath_HMG_M2HB_Disheartened_US Mask = AnimationMask_All()),
+//        TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateRight                                          Anim = 'Browning_M2HB_Turn_Right' Loop = true  AnimationPath = AnimationPath_HMG_M2HB_Disheartened_US Mask = AnimationMask_All()),
+//        TAnimNode(IAStates = AnimationStateMoving | AnimationStateEngineRunning                                         Anim = 'Browning_M2HB_Move'       Loop = true  AnimationPath = AnimationPath_HMG_M2HB_Disheartened_US Mask = AnimationMask_All()
+//            Childs = [
+//                TAnimNode(IAStates = AnimationStateBack                                                                 Anim = 'Browning_M2HB_Move_Back'  Loop = true  AnimationPath = AnimationPath_HMG_M2HB_Disheartened_US Mask = AnimationMask_All()),
+//        ]),
+//    ]
+//)
+
+DepictionOperator_SkeletalAnimation_HMG_M2HB_Disheartened_US is [Template_DepictionOperator_SkeletalAnimation_With_Tree_TEST(AnimationTree = HMG_M2HB_US_Anim_Tree)]
+
+Gfx_HMG_M2HB_Disheartened_US_Weapon is TDepictionTemplate //arme
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = CommonDepictionSelector
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_HMG_M2HB_Disheartened_US ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_HMG_M2HB_Disheartened_US_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_HMG_M2HB_Disheartened_US_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_HMG_M2HB_Disheartened_US ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_HMG_M2HB_Disheartened_US_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_HMG_M2HB_Disheartened_US_LOW ),
+        ]
+
+        SubDepictions = []
+        Operators = DepictionOperator_SkeletalAnimation_HMG_M2HB_Disheartened_US +     [TCosmeticTurretOperatorDesc
+            (
+                OperatorId = 'tourelle1'
+                ZAxisNode  = 'Tourelle_01'
+                ZAxisPhysicalPropertyName = 'tourelle1'
+                ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+                ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+                GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+                YAxisNode = 'Axe_Canon_01'
+                YAxisPhysicalPropertyName = 'tourelle1axe'
+                MinYAngle = -0.174532925199
+                MaxYAngle = 0.436332312999
+            ),]
+        Actions = Weapons_HMG_M2HB_Disheartened_US
+    )
+
+SubDepiction_Servant_1_HMG_M2HB_Disheartened_US is TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_HMG_M2HB_Disheartened_US_1 )
+SubDepiction_Servant_2_HMG_M2HB_Disheartened_US is TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_HMG_M2HB_Disheartened_US_2 )
+SubDepiction_Canon_AT_HMG_M2HB_Disheartened_US is TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_HMG_M2HB_Disheartened_US_Weapon )
+
+Gfx_HMG_M2HB_Disheartened_US is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate //les boites
+    (
+        OverrideMeshBoundingBoxMin = [-500,-500,0]
+        OverrideMeshBoundingBoxMax = [ 500, 500,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_HMG_M2HB_Disheartened_US( ModelFile = ModelFile_Boites_HMG_M2HB_US) ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_HMG_M2HB_Disheartened_US( ModelFile = ModelFile_Boites_HMG_M2HB_US) ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_HMG_M2HB_Disheartened_US( ModelFile = ModelFile_Boites_HMG_M2HB_US) ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_HMG_M2HB_Disheartened_US( ModelFile = ModelFile_Boites_HMG_M2HB_US) ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_HMG_M2HB_Disheartened_US( ModelFile = ModelFile_Boites_HMG_M2HB_US) ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_HMG_M2HB_Disheartened_US( ModelFile = ModelFile_Boites_HMG_M2HB_US) ),
+        ]
+        NodeNamesForSelection = [ 'Canon_AT', 'servant_G' , 'servant_D']
+        SubDepictions = [SubDepiction_Servant_1_HMG_M2HB_Disheartened_US,
+                        SubDepiction_Servant_2_HMG_M2HB_Disheartened_US,
+                        SubDepiction_Canon_AT_HMG_M2HB_Disheartened_US]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+    )
+)

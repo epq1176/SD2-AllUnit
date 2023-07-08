@@ -1,0 +1,22 @@
+export ModelFile_Jeep_AWP is 'GameData:Assets\3D\Units\AWP\Vehicule\Jeep_M2_AWP\Jeep_M2_AWP.Ase2NdfBin'
+
+Modele_Jeep_AWP is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Jeep_AWP
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Jeep_AWP_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\AWP\Vehicule\Jeep_M2_AWP_MID\Jeep_M2_AWP_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Jeep_AWP_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\AWP\Vehicule\LODS\Jeep_M2_AWP_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

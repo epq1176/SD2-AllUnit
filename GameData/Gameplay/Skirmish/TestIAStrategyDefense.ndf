@@ -1,0 +1,106 @@
+export TestAuto_IADStrategy is TIAGeneralStrategy
+(
+    StrategyName = "Strat_DUT"
+    FirstGenerator = TestAuto_DDefense
+    TransitionList =
+    [
+        TestAuto_DTransition,
+    ]
+    AuthorizedCorridorList = [0, 1]
+)
+
+export TestAuto_DTransition is TIAGeneralStrategyTransition
+(
+    Origine = TestAuto_DDefense
+    Condition = TestAuto_DCondition
+    Destination = TestAuto_DAttaque
+)
+
+export TestAuto_DCondition is TSequenceCondition_Wait
+(
+    Time = 6000
+)
+
+export TestAuto_DDefense is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 1
+
+    GeneratorList =
+    [
+        ~/test_auto_Dmission_defense,
+    ]
+)
+
+export TestAuto_DAttaque is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 1
+
+    GeneratorList =
+    [
+        ~/test_auto_Dmission_attaque,
+        ~/test_auto_Dmission_attaque,
+        ~/test_auto_Dmission_attaque,
+        ~/test_auto_Dmission_attaque,
+    ]
+)
+
+export test_auto_Dmission_defense is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    LaunchASAP_RatioMin = 0.0
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [
+        ~/poolModelTestAutoDMissionDefense,
+    ]
+)
+
+export test_auto_Dmission_attaque is TMacroActionDescriptor_CorridorAttack_Specific
+(
+    ForcedCorridor = [0]
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    LaunchASAP_RatioMin = 0.0
+    CompterLesUnitesEnZoneExtendedDansLaMenace = true
+    UtiliserMenaceLaPlusProcheAuLieuDeLaPlusFaible = true
+    IgnoreSafePath = true
+    RatioMinimumPourAttaquer = 1.1
+    DisableReinforcement = false
+    StayInCorridorIfp = true
+    ActiveComportementEnBoutDeCouloir = true
+
+    PoolModelList = [
+        ~/poolModelTestAutoDMissionAttaque,
+    ]
+)
+
+export poolModelTestAutoDMissionDefense is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{eca5bdc0-36f2-11e7-b8c5-00b0c202714c}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "TestUnitIAStratDefense",
+            ]
+        ),
+    ]
+)
+
+export poolModelTestAutoDMissionAttaque is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{eca94030-36f2-11e7-9cd0-00b0c202714c}
+            Required = true
+            Nb = 2
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "TestUnitIAStratAttaque",
+            ]
+        ),
+    ]
+)

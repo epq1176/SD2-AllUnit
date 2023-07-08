@@ -1,0 +1,22 @@
+export ModelFile_Carrier_Command_Indian_UK is 'GameData:Assets\3D\Units\UK\Char\Universal_Carrier\Command_Carrier.Ase2NdfBin'
+
+Modele_Carrier_Command_Indian_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Carrier_Command_Indian_UK
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_Command_Indian_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\Universal_Carrier_MID\Command_Carrier_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_Command_Indian_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\LODS\Command_Carrier_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

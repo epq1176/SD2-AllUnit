@@ -1,0 +1,22 @@
+export ModelFile_YA_12_SOV is 'GameData:Assets\3D\Units\SOV\Char\YA_12_SOV\YA_12_SOV.Ase2NdfBin'
+
+Modele_YA_12_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_YA_12_SOV
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_YA_12_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\YA_12_SOV_MID\YA_12_SOV_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_YA_12_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\LODS\YA_12_SOV_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

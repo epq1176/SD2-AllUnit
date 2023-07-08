@@ -1,0 +1,50 @@
+Gfx_Tiger_E_POL is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionSkins =
+        [
+            // Reprise de l'existant pour créer la skin par défaut
+            TSkinDescriptor(
+                SkinName = "default"
+                ChoiceTexture = "CommonTexture_Camo"
+                DepictionAlternatives = [
+                    DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Tiger_E_POL ),
+                    DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Tiger_E_POL_MID ),
+                    DepictionDescriptor_LOD_Low_NoTurret3( MeshDescriptor = Modele_Tiger_E_POL_LOW ),
+                    DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Tiger_E_POL ),
+                    DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Tiger_E_POL_MID ),
+                    DepictionDescriptor_LOD_WreckedLow_NoTurret3( MeshDescriptor = Modele_Tiger_E_POL_LOW ),
+                ]
+            ),
+
+            // nouvelle skin
+            //TSkinDescriptor(
+                //SkinName = "preco"
+                //DescriptorId = GUID:{d7b10595-5517-4666-8420-34a8aba8e226}
+                //ChoiceTexture = "CommonTexture_Camo"
+                //DepictionAlternatives = [
+                    //DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Tiger_E_POL_preco ),
+                    //DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Tiger_E_POL_preco_MID ),
+                    //DepictionDescriptor_LOD_Low_NoTurret3( MeshDescriptor = Modele_Tiger_E_POL_preco_LOW ),
+                    //DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Tiger_E_POL_preco ),
+                    //DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Tiger_E_POL_preco_MID ),
+                    //DepictionDescriptor_LOD_WreckedLow_NoTurret3( MeshDescriptor = Modele_Tiger_E_POL_preco_LOW ),
+                //]
+            //),
+        ]
+
+        Operators = Operators_Tiger_E_POL
+                  + DepictionOperator_Chassis_HeavyTank
+                  + DepictionOperator_Propulsion_ContinuousTrack_HeavyTank
+                  + [DepictionOperator_TurretRecoil(TurretNum='1')]
+                  + [DepictionOperator_TurretRecoilLightMachineGun(TurretNum='3') ]
+
+        Actions = Weapons_Tiger_E_POL
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+    )
+)
+

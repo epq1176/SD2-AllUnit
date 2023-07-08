@@ -1,0 +1,22 @@
+export ModelFile_Carrier_MMG_POL is 'GameData:Assets\3D\Units\POL\Char\Universal_Carrier\Carrier_MMG.Ase2NdfBin'
+
+Modele_Carrier_MMG_POL is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Carrier_MMG_POL
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_MMG_POL_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Char\Universal_Carrier_MID\Carrier_MMG_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_MMG_POL_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Char\LODS\Carrier_MMG_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

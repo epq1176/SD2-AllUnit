@@ -1,0 +1,309 @@
+// largeur maximum autorisée pour le hint
+private HintInGameMaxMagnifiableWidth is 324.0
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+// Texte pour le titre du hint
+private HintInGameTitleTextBUCKComponent is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [20.0, 0.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContent
+
+    Components =
+    [
+
+        HintTitleTextBUCKComponent
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 0.0]
+                MagnifiableWidthHeight = [HintInGameMaxMagnifiableWidth - 20.0, 0.0]
+                AlignementToFather = [0.5, 0.0]
+                AlignementToAnchor = [0.5, 0.0]
+            )
+
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment         = UIText_Left
+                VerticalAlignment = UIText_Up
+                BigWordAction     = ~/BigWordAction/BigWordNewLine
+                Balanced          = false
+                InterLine         = 0.3
+            )
+
+            TextStyle = "Default"
+
+            HorizontalFitStyle = ~/FitStyle/MinBetweenUserDefinedAndContent
+
+            TypefaceToken = "MainBold"
+            BigLineAction = ~/BigLineAction/MultiLine
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+            TextSize = "Hint/InGame/Title"
+            TextColor = "SD2_BlancPur" //"Hint/InGame/Title"
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+// Texte pour le corps hint
+private HintInGameBodyTextBUCKComponent is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [20.0, 0.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContent
+
+    Components =
+    [
+        HintBodyTextBUCKComponent
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 0.0]
+                MagnifiableWidthHeight = [HintInGameMaxMagnifiableWidth - 20.0, 0.0]
+                AlignementToFather = [0.5, 0.0]
+                AlignementToAnchor = [0.5, 0.0]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment         = UIText_Left
+                VerticalAlignment = UIText_Up
+                BigWordAction     = ~/BigWordAction/BigWordNewLine
+                Balanced          = false
+                InterLine         = 0.3
+            )
+
+            TextStyle = "InGameBodyText"
+
+            HorizontalFitStyle = ~/FitStyle/MinBetweenUserDefinedAndContent
+
+            TypefaceToken = "Main"
+            BigLineAction = ~/BigLineAction/MultiLine
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+            TextSize = "Hint/InGame/Body"
+            TextColor = "SD2_BlancPur" //"Hint/InGame/Body"
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+// Texte pour le séparateur entre le corps et le corps étendu du hint
+private HintInGameSeparatorTextBUCKComponent is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [20.0, 0.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContent
+
+    Components =
+    [
+        HintSeparatorTextBUCKComponent
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 0.0]
+                MagnifiableWidthHeight = [HintInGameMaxMagnifiableWidth - 20.0, 0.0]
+                AlignementToFather = [0.5, 0.0]
+                AlignementToAnchor = [0.5, 0.0]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment         = UIText_Left
+                VerticalAlignment = UIText_Up
+                BigWordAction     = ~/BigWordAction/BigWordNewLine
+                Balanced          = false
+                InterLine         = 0.3
+            )
+
+            TextStyle = "InGameBodyText"
+
+            HorizontalFitStyle = ~/FitStyle/MinBetweenUserDefinedAndContent
+
+            TypefaceToken = "Main"
+            BigLineAction = ~/BigLineAction/MultiLine
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+            TextToken = "HINT_EX_SP"
+            TextSize = "Hint/InGame/Separator"
+            TextColor = "SD2_BlancPur" //"Hint/InGame/Separator"
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+// Texte pour le corps étendu du hint
+private HintInGameExtendedTextBUCKComponent is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [20.0, 0.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContent
+
+    Components =
+    [
+        HintExtendedTextBUCKComponent
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 0.0]
+                MagnifiableWidthHeight = [HintInGameMaxMagnifiableWidth - 20.0, 0.0]
+                AlignementToFather = [0.5, 0.0]
+                AlignementToAnchor = [0.5, 0.0]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment         = UIText_Left
+                VerticalAlignment = UIText_Up
+                BigWordAction     = ~/BigWordAction/BigWordNewLine
+                Balanced          = false
+                InterLine         = 0.3
+            )
+
+            TextStyle = "InGameBodyText"
+
+            HorizontalFitStyle = ~/FitStyle/MinBetweenUserDefinedAndContent
+
+            TypefaceToken = "Third"
+            BigLineAction = ~/BigLineAction/MultiLine
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+            TextSize = "Hint/InGame/Extended"
+            TextColor = "SD2_BlancPur" //"Hint/InGame/Extended"
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+// Composant du hint
+private HintInGameBUCKComponent is HintBUCKComponent
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 0.0]
+    )
+
+    TitleBUCKTextComponent = ~/HintInGameTitleTextBUCKComponent
+    BodyBUCKTextComponent = ~/HintInGameBodyTextBUCKComponent
+    SeparatorBUCKTextComponent = nil
+    ExtendedBUCKTextComponent = ~/HintInGameExtendedTextBUCKComponent
+
+    ListFirstMargin = TRTTILength( Magnifiable = 12.0 ) //7.0
+    ListLastMargin = TRTTILength( Magnifiable = 12.0 ) // 7.0
+    ListInterTextVerticalMargin = TRTTILength( Magnifiable = 12.0 ) //7.0
+
+    ListHasBackground = true
+    ListBackgroundBlockColorToken = "SD2_Hint"
+    ListHasBorder = true
+    ListBorderLineColorToken = "SD2_LigneBleuGris" //"Hint/InGame/Borders"
+    ListBorderThicknessToken = "1"
+    ListBordersToDraw = ~/TBorderSide/All
+
+    ListBackgroundComponents =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                MagnifiableWidthHeight = [0.0, 24.0]
+                MagnifiableOffset = [0.0, 0.0]
+                AlignementToFather = [0.0, 0.0]
+                AlignementToAnchor = [0.0, 0.0]
+            )
+
+            //HasBackground = true
+            //BackgroundBlockColorToken = "SD2_BleuGris"
+        ),
+        {BUCKGradientDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                        PixelWidthHeight = [-2.0, -2.0]
+                        AlignementToAnchor = [0.5, 0.5]
+                        AlignementToFather = [0.5, 0.5]
+                    )
+                    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                    Transition0 = 0.0
+                    Transition1 = 0.25
+                    Transition2 = 0.75
+                    Transition3 = 1.0
+
+                    TransitionColor0 = 'AppleGreen' //"Hint/InGame/BackgroundBorders"
+                    TransitionColor1 = 'Red' //"Hint/InGame/BackgroundMiddle"
+
+                    IsRelative = true
+                    IsVertical = true
+                )}
+    ]
+
+    ListForegroundComponents = []
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+// Surface déclenchant un hint
+template BUCKSpecificHintableArea
+[
+    ElementName : string = "",
+
+    ForbiddenTags : list<string> = [],
+
+    // hint standard : un titre, un corps et un corps étendu avec des tokens fixes
+    DicoToken : string = "",
+    HintTitleToken : string = "",
+    HintBodyToken : string = "",
+    HintExtendedToken : string = "",
+
+    // hint avec un composant spécifique : les tokens et le composant standards ne seront pas utilisés
+    HintSpecificBUCKComponent : TBUCKContainerDescriptor = nil,
+]
+is HintableAreaBUCKComponent
+(
+    ElementName = <ElementName>
+
+    ForbiddenTags = <ForbiddenTags>
+
+    DicoToken = <DicoToken>
+    HintTitleToken = <HintTitleToken>
+    HintBodyToken = <HintBodyToken>
+    HintExtendedToken = <HintExtendedToken>
+
+    HintStandardBUCKComponent = ~/HintInGameBUCKComponent
+    HintSpecificBUCKComponent = <HintSpecificBUCKComponent>
+)

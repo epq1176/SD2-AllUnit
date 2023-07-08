@@ -1,0 +1,22 @@
+export ModelFile_Halftrack_M21_Mortier_US is 'GameData:Assets\3D\Units\USA\Vehicule\M21_MMC\M21_MMC.Ase2NdfBin'
+
+Modele_Halftrack_M21_Mortier_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Halftrack_M21_Mortier_US
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Halftrack_M21_Mortier_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Vehicule\M21_MMC_MID\M21_MMC_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Halftrack_M21_Mortier_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Vehicule\LODS\M21_MMC_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

@@ -1,0 +1,22 @@
+export ModelFile_T60_tank_SOV is 'GameData:Assets\3D\Units\SOV\Char\T60_tank_SOV\T60_tank_SOV.Ase2NdfBin'
+
+Modele_T60_tank_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_T60_tank_SOV
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_T60_tank_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\T60_tank_SOV_MID\T60_tank_SOV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_T60_tank_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\LODS\T60_tank_SOV_LOW.Ase2NdfBin'
+        CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

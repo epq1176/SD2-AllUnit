@@ -1,0 +1,22 @@
+export ModelFile_Kubelwagen_non_armee_FFI is 'GameData:Assets\3D\Units\FR\Vehicule\Kubelwagen_FFI\Kubelwagen_FFI_unarmed.Ase2NdfBin'
+
+Modele_Kubelwagen_non_armee_FFI is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Kubelwagen_non_armee_FFI
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Kubelwagen_non_armee_FFI_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Vehicule\Kubelwagen_FFI_MID\Kubelwagen_FFI_unarmed_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Kubelwagen_non_armee_FFI_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Vehicule\LODS\Kubelwagen_FFI_unarmed_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

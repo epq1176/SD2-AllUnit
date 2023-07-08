@@ -1,0 +1,126 @@
+template TemplateMeshDescriptor_DCA_Bofors_SA [ ModelFile ] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+
+ModelFile_Boites_Bofors_SA_40mm is 'GameData:Assets\3D\Units\USA\Canon\Bofors_40mm\Boites_Bofors_40mm.Ase2NdfBin'
+
+Gfx_DCA_Bofors_SA_1 is TDepictionTemplate //servant gauche
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_DCA_Bofors_SA( ModelFile = ModelFile_ArtilleryCrew_SA)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_DCA_Bofors_SA( ModelFile = ModelFile_ArtilleryCrew_SA_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_DCA_Bofors_SA( ModelFile = ModelFile_ArtilleryCrew_SA)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_DCA_Bofors_SA( ModelFile = ModelFile_ArtilleryCrew_SA_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Gauche
+)
+
+Gfx_DCA_Bofors_SA_2 is TDepictionTemplate //servant droite
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_DCA_Bofors_SA( ModelFile = ModelFile_ArtilleryCrew_SA_Secondary)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_DCA_Bofors_SA( ModelFile = ModelFile_ArtilleryCrew_SA_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_DCA_Bofors_SA( ModelFile = ModelFile_ArtilleryCrew_SA_Secondary)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_DCA_Bofors_SA( ModelFile = ModelFile_ArtilleryCrew_SA_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Droite
+)
+
+//Arme
+private AnimationPath_DCA_Bofors_SA is 'GameData:Assets\3D\Units\USA\Canon\Bofors_40mm\'
+DCA_Bofors_SA_Anim_Tree is DepictionAnimationTreeNode
+(
+    IAStates = AnimationStateAll
+    IAOldStates = AnimationStateAll
+    DefaultAnimationStates = AnimationStateEngineStopping
+    Animations =
+    (
+        [TemplateAnimation(Animation= 'Bofors_40mm_Idle' + '.Ase2NdfBin' Loop=false EventAnimation=false AnimationPath = AnimationPath_DCA_Bofors_SA Mask = AnimationMask_All())]
+    )
+
+    Childs =
+    [
+        // TAnimNode(IAStates = AnimationStateInstantFire                                                                  Anim = 'Bofors_40mm_Fire'       Loop = false EventAnimation = true AnimationPath = AnimationPath_DCA_Bofors_SA Mask = AnimationMask_All()),
+        TAnimNode(IAStates = AnimationStateEngineStopping | AnimationStateEngineStopTurning                             Anim = 'Bofors_40mm_Deploy'     Loop = false AnimationPath = AnimationPath_DCA_Bofors_SA Mask = AnimationMask_All()),
+        TAnimNode(IAStates = AnimationStateEngineStarting | AnimationStateEngineStartTurning                            Anim = 'Bofors_40mm_Fold'       Loop = false AnimationPath = AnimationPath_DCA_Bofors_SA Mask = AnimationMask_All()),
+        TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateLeft                                           Anim = 'Bofors_40mm_Turn_Left'  Loop = true  AnimationPath = AnimationPath_DCA_Bofors_SA Mask = AnimationMask_All()),
+        TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateRight                                          Anim = 'Bofors_40mm_Turn_Right' Loop = true  AnimationPath = AnimationPath_DCA_Bofors_SA Mask = AnimationMask_All()),
+        TAnimNode(IAStates = AnimationStateMoving | AnimationStateEngineRunning                                         Anim = 'Bofors_40mm_Move'       Loop = true  AnimationPath = AnimationPath_DCA_Bofors_SA Mask = AnimationMask_All()
+            Childs = [
+                TAnimNode(IAStates = AnimationStateBack                                                                 Anim = 'Bofors_40mm_Move_Back'  Loop = true  AnimationPath = AnimationPath_DCA_Bofors_SA Mask = AnimationMask_All()),
+        ]),
+    ]
+)
+
+DepictionOperator_SkeletalAnimation_DCA_Bofors_SA is [Template_DepictionOperator_SkeletalAnimation_With_Tree_TEST(AnimationTree = DCA_Bofors_US_Anim_Tree)]
+
+Gfx_DCA_Bofors_SA_Weapon is TDepictionTemplate //arme
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = CommonDepictionSelector
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_DCA_Bofors_SA ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_DCA_Bofors_SA_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_DCA_Bofors_SA_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor =  Modele_DCA_Bofors_SA ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor =  Modele_DCA_Bofors_SA_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor =  Modele_DCA_Bofors_SA_LOW ),
+        ]
+
+        SubDepictions = []
+
+        Operators = Operators_DCA_Bofors_SA
+                  + DepictionOperator_SkeletalAnimation_DCA_Bofors_SA //à activer après avoir mis la colonne "Animated" à "oui" dans l'ods. Bien mettre cette ligne en deuxieme position pour continuer a avoir les anims procedurales en meme temps !
+                  // + DepictionOperator_Chassis_MediumTank
+                  // + DepictionOperator_Propulsion_ContinuousTrack_MediumTank
+                  // + DepictionOperator_Propulsion_2Wheels_Generic
+                  + [DepictionOperator_TurretRecoil_AutoCanon( TurretNum = '1' )]
+
+        Actions = Weapons_DCA_Bofors_SA
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Wheeled
+    )
+
+SubDepiction_Servant_1_DCA_Bofors_SA is TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_DCA_Bofors_SA_1 )
+SubDepiction_Servant_2_DCA_Bofors_SA is TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_DCA_Bofors_SA_2 )
+SubDepiction_Canon_AT_DCA_Bofors_SA is TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_DCA_Bofors_SA_Weapon )
+
+Gfx_DCA_Bofors_SA is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate //les boites
+    (
+        OverrideMeshBoundingBoxMin = [-500,-500,0]
+        OverrideMeshBoundingBoxMax = [ 500, 500,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_DCA_Bofors_SA( ModelFile = ModelFile_Boites_Bofors_40mm) ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_DCA_Bofors_SA( ModelFile = ModelFile_Boites_Bofors_40mm) ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_DCA_Bofors_SA( ModelFile = ModelFile_Boites_Bofors_40mm) ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_DCA_Bofors_SA( ModelFile = ModelFile_Boites_Bofors_40mm) ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_DCA_Bofors_SA( ModelFile = ModelFile_Boites_Bofors_40mm) ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_DCA_Bofors_SA( ModelFile = ModelFile_Boites_Bofors_40mm) ),
+        ]
+        NodeNamesForSelection = [ 'Canon_AT', 'servant_G' , 'servant_D']
+        SubDepictions = [SubDepiction_Servant_1_DCA_Bofors_SA,
+                        SubDepiction_Servant_2_DCA_Bofors_SA,
+                        SubDepiction_Canon_AT_DCA_Bofors_SA]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+    )
+)

@@ -1,0 +1,145 @@
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+SliderPixelWidthHeight is -12.0
+
+template BUCKSpecificSliderDescriptor
+[
+    MaskEvents : bool = true
+]
+is BUCKSliderDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    FirstMargin = TRTTILength(Pixel = 4.0)
+    InterItemMargin = TRTTILength(Pixel = 4.0)
+    LastMargin = TRTTILength(Pixel = 4.0)
+
+    HasBackground = true
+    BackgroundBlockColorToken = "Transparent"
+
+    HasBorder = true
+    BorderThicknessToken = "1"
+    BorderLineColorToken = "Slider/BackgroundBorders"
+
+    GoToBeginningButtonName = "HorizontalScrollBar/GoToBeginning"
+    GoToBeginningButton = BUCKButtonDescriptor
+    (
+        ElementName = "HorizontalScrollBar/GoToBeginning"
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [0.0, 1.0]
+            MagnifiableWidthHeight = [10.0, 0.0]
+            PixelWidthHeight = [0.0, SliderPixelWidthHeight]
+            AlignementToAnchor = [0.0, 0.5]
+            AlignementToFather = [0.0, 0.5]
+        )
+
+        MaskEvents = <MaskEvents>
+
+        Components =
+        [
+            BUCKTextureDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.95, 0.95]
+                )
+
+                TextureColorToken = "Slider/GoToBeginningOrEnd"
+                TextureToken = "StyleCockpitTexture_ScrollBarArrowLeft"
+                TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+            )
+        ]
+    )
+
+    GoToEndingButtonName = "HorizontalScrollBar/GoToEnding"
+    GoToEndingButton = BUCKButtonDescriptor
+    (
+        ElementName = "HorizontalScrollBar/GoToEnding"
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [0.0, 1.0]
+            MagnifiableWidthHeight = [10.0, 0.0]
+            PixelWidthHeight = [0.0, SliderPixelWidthHeight]
+            AlignementToAnchor = [0.0, 0.5]
+            AlignementToFather = [0.0, 0.5]
+        )
+
+        MaskEvents = <MaskEvents>
+
+        Components =
+        [
+            BUCKTextureDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.95, 0.95]
+                )
+
+                TextureColorToken = "Slider/GoToBeginningOrEnd"
+                TextureToken = "StyleCockpitTexture_ScrollBarArrowRight"
+                TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+            )
+        ]
+    )
+
+    ElevatorCageAreaName = 'HorizontalScrollBar/Cage'
+    ElevatorButtonName = 'HorizontalScrollBar/Elevator'
+    ElevatorCageArea = BUCKSensibleAreaDescriptor
+    (
+        ElementName = 'HorizontalScrollBar/Cage'
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1.0, 1.0]
+            PixelWidthHeight = [0.0, SliderPixelWidthHeight]
+            AlignementToAnchor = [0.0, 0.5]
+            AlignementToFather = [0.0, 0.5]
+        )
+
+        MaskEvents = <MaskEvents>
+
+        UniformDrawer = $/UserInterface/UIUniformDrawer
+
+        Components =
+        [
+            BUCKContainerDescriptor
+            (
+                ElementName = "SliderJaugeBackground"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.2]
+                    AlignementToAnchor = [0.0, 0.5]
+                    AlignementToFather = [0.0, 0.5]
+                )
+                HasBackground = true
+                BackgroundBlockColorToken="Slider/JaugeBackground"
+
+            ),
+
+            //Curseur
+            BUCKSensibleAreaDescriptor
+            (
+                ElementName = 'HorizontalScrollBar/Elevator'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [4.0, 6.0]
+                    AlignementToFather = [0.0, 0.5]
+                    AlignementToAnchor = [0.0, 0.5]
+                )
+
+                MaskEvents = true
+
+                HasBackground = true
+                BackgroundBlockColorToken = "Slider/Elevator"
+            ),
+        ]
+    )
+)

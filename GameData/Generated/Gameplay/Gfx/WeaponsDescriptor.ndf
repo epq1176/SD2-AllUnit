@@ -1,0 +1,992 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+export Descriptor_Weapon_Arme_1 is TEntityDescriptor
+(
+    DescriptorId = GUID:{2b652f4e-e65b-4fb5-aa39-c22c17581c9d}
+    ClassNameForDebug = 'Arme 1'
+    World        = WorldIndices_Weapon
+    Modules           = [
+        // AerialBehavior
+            TAerialBehaviorModuleDescriptor
+            (
+                AttackStrategyDescriptors =
+                [
+                    TDiveAttackStrategyDescriptor
+                    (
+                        MinPitchForDive = $/GFX/Everything/MinPitchForDive
+                        PitchForDive = $/GFX/Everything/PitchForDive
+                        MaxPitchForDive = $/GFX/Everything/MaxPitchForDive
+                    ),
+                    TDogfightAttackStrategyDescriptor
+                    (
+                        MinDistanceBetweenFighterAndTargetForAttackOnSlowAirplaneStrategy = $/GFX/Everything/MinDistanceBetweenFighterAndTargetForAttackOnSlowAirplaneStrategy
+                        MaxDistanceBetweenFighterAndTargetForLateralMoveOnSlowAirplaneStrategy = $/GFX/Everything/MaxDistanceBetweenFighterAndTargetForLateralMoveOnSlowAirplaneStrategy
+                        SpeedRatioForAttackOnSlowAirplaneStrategy = $/GFX/Everything/SpeedRatioForAttackOnSlowAirplaneStrategy
+                        SpeedRatioForAttackOnVerySlowAirplaneStrategy = $/GFX/Everything/SpeedRatioForAttackOnVerySlowAirplaneStrategy
+                        MaxAngleDifferenceWithTarget = $/GFX/Everything/MaxAngleDifferenceWithTarget
+                        MaxAngleToConsiderTargetAhead = $/GFX/Everything/MaxAngleToConsiderTargetAhead
+                        AngleToFakeTargetPosition = $/GFX/Everything/AngleToFakeTargetPosition
+                    ),
+                ]
+             ),
+
+        // AimTiming
+            TModuleSelector
+            (
+                Default        = TAimTimingModuleDescriptor
+                (
+                    AimingTime                 = 1.0
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+            ),
+
+        // Ammunition
+            TAmmunitionModuleDescriptor
+            (
+                AmmunitionCostPerResource = MAP
+                [
+                    (~/Resource_munitions, 10),
+                ]
+             ),
+
+        // DamageInformation
+            TModuleSelector
+            (
+                Default        = TDamageInformationModuleDescriptor
+                (
+                    DamageByPhysicalState = MAP [
+                        (~/PhysicalState_moral, 2),
+                        (~/PhysicalState_sante, 3),
+                    ]
+                    SplashRadiusByPhysicalState = MAP [
+                        (~/PhysicalState_moral, ((10) * Metre)),
+                        (~/PhysicalState_sante, ((10) * Metre)),
+                    ]
+                    SplashFeedbackByPhysicalState = MAP [
+                    ]
+                    ImuneTagList = [
+                    ]
+                    SplashShapeDescriptor = ~/SplashShape_Forme_splash_1
+                    DamageTypeName = "Epee_1"
+                    DistanceStepToGainDamageLevel = 500.0 * Metre
+                    ForcedBlindageLocation = ~/EResistanceLocation/Default
+                    StealthDamageBonusMultiplicator = 1.0
+                    SplashFilters = [
+                        ~/WeaponCapacityTargetFilter_Enemies
+                    ]
+                    DamageTypeEvolutionOverRangeDescriptor  = nil
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // Dispersion
+            TModuleSelector
+            (
+                Default        = TDispersionModuleDescriptor
+                (
+                    DispersionShape            = ~/Descriptor_DispersionShape_DispersionShape1
+                    AlwaysDisperse             = False
+                    ConsiderSplash             = True
+                    DispersionAtMinRange       = 0.000000
+                    DispersionAtMaxRange       = 0.000000
+                    VisibleTargetMultiplier    = 1.000000
+                    WorstFailedShotMultiplier  = 1.000000
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+            ),
+
+        // EffectApplier
+            ~/EffectApplierModuleSelector,
+
+        // InterfaceInfos
+            TModuleSelector
+            (
+                Default        = TInterfaceInfosModuleDescriptor
+                (
+                    NameToken = "HMG"
+                    Texture = nil
+                    HighlightTexture = nil
+                    MiniatureTexture = nil
+                    MinimapIcon = nil
+                    ColorOnMinimapIfPlayerIsOwner = D3DRGBA[0,0,0,0]
+                    CursorType = Weapon_Cursor_MachineGun
+                    AmmutionPerSalveForHud = 4
+                    AlwaysShowOnMinimap = False
+                    FollowOrientationOnMinimap = False
+                    UseTeamColorOnMinimap = False
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // LinkToOwner
+            TModuleSelector
+            (
+                Default        = TLinkToOwnerModuleDescriptor
+                (
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // Precision
+            TModuleSelector
+            (
+                Default               = TPrecisionModuleDescriptor
+                (
+                    MaxSuccessiveShotCount = 5
+        // DiceHitRollRule
+                    HitRollRuleDescriptor = TDiceHitRollRuleDescriptor
+                    (
+                         DescriptorId          = GUID:{d3ce2d22-5628-42b5-bb00-3b20150dd1f1}
+                         BaseCriticModifier = 0
+                         BaseEffectModifier = 0
+                         BaseHitValueModifiers =
+                         [
+                             (EBaseHitValueModifier/Base, 1),
+                             (EBaseHitValueModifier/Idling, 2),
+                             (EBaseHitValueModifier/Moving, 3),
+                             (EBaseHitValueModifier/SuccessfulShots, 4),
+                             (EBaseHitValueModifier/Targeted, 0.0),
+                         ]
+                         HitModifierList       =
+                         [
+                             EDiceHitModifier/Precision,
+                             EDiceHitModifier/DistanceToTarget,
+                             EDiceHitModifier/SuccesiveShots,
+                             EDiceHitModifier/Suppress,
+                         ]
+                    )
+
+                )
+                Selection             = [ ~/NilDescriptorIfGhostOrCadavre ]
+            ),
+
+        // Projectile
+            TModuleSelector
+            (
+                Default        = TProjectileModuleDescriptor
+                (
+                    ProjectileDescriptor = ~/Descriptor_Projectile_Arme_1
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // Range
+            TRangeModuleDescriptor
+            (
+                RangeSettings =
+                [
+                    ~/RangeSetting_Portee_1,
+                ]
+             ),
+
+        // ReloadTiming
+            TModuleSelector
+            (
+                Default        = ~/ReloadTiming_Simple_1
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+            ),
+
+        // Selection
+            TModuleSelector
+            (
+                Default            = TSelectionModuleDescriptor
+                (
+                    IsSelectable       = True
+                    IsHighlightable    = True
+                    HasSelectionShader = False
+                    HasHighlightShader = True
+                    MultipleSelectionFilterPriorityDefault      = 0
+                    MultipleSelectionFilterPrioritySecondary    = 0
+                )
+                Selection = [ ~/NilDescriptorIfCadavre ]
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // Trajectory
+            TModuleSelector
+            (
+                Default        = TTrajectoryModuleDescriptor
+                (
+                    TrajectoryDescriptor = ~/Trajectory_Rectiligne_1
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // WeaponBehavior
+            TModuleSelector
+            (
+                Default        = TWeaponBehaviorModuleDescriptor
+                (
+                    PiercingWeapon = True
+                    FireAndForget = False
+                    IndirectShot = False
+                    ReflexShot = True
+                    ReflexShotEvenIfDecorCollision = True
+                    ShootOnPosition = True
+                    NumberOfSalvoInShotOnPosition = 0
+                    TimeBeforeTargetLoss = 2.0
+                    PredictionOfTargetMovement = True
+                    Dangerousness = 0
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // WeaponCapacity
+            TModuleSelector
+            (
+                Default        = TWeaponCapacityModuleDescriptor
+                (
+                    CapacityList = [
+                        ~/NoiseCapacity_Bruit_2,
+                    ]
+                )
+                Selection      = [ ~/NilDescriptorIfGhostOrCadavre ]
+            ),
+
+        // WeaponTargeting
+            TModuleSelector
+            (
+                Default        = TWeaponTargetingModuleDescriptor
+                (
+                    RuleSet = ~/DefaultRuleSet
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+    ]
+)
+export Descriptor_Weapon_Arme_2 is TEntityDescriptor
+(
+    DescriptorId = GUID:{3225d549-fff2-442c-ab19-d0a8c63c52b6}
+    ClassNameForDebug = 'Arme 2'
+    World        = WorldIndices_Weapon
+    Modules           = [
+        // AerialBehavior
+            TAerialBehaviorModuleDescriptor
+            (
+                AttackStrategyDescriptors =
+                [
+                    TDiveAttackStrategyDescriptor
+                    (
+                        MinPitchForDive = $/GFX/Everything/MinPitchForDive
+                        PitchForDive = $/GFX/Everything/PitchForDive
+                        MaxPitchForDive = $/GFX/Everything/MaxPitchForDive
+                    ),
+                ]
+             ),
+
+        // AimTiming
+            TModuleSelector
+            (
+                Default        = TAimTimingModuleDescriptor
+                (
+                    AimingTime                 = 2.0
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+            ),
+
+        // Ammunition
+            TAmmunitionModuleDescriptor
+            (
+                AmmunitionCostPerResource = MAP
+                [
+                    (~/Resource_munitions, 1),
+                ]
+             ),
+
+        // DamageInformation
+            TModuleSelector
+            (
+                Default        = TDamageInformationModuleDescriptor
+                (
+                    DamageByPhysicalState = MAP [
+                        (~/PhysicalState_moral, 20),
+                        (~/PhysicalState_sante, 1.5),
+                    ]
+                    SplashRadiusByPhysicalState = MAP [
+                        (~/PhysicalState_moral, ((20) * Metre)),
+                        (~/PhysicalState_sante, ((100) * Metre)),
+                    ]
+                    SplashFeedbackByPhysicalState = MAP [
+                        (~/PhysicalState_moral, ~/RangeFeedback_Dommage),
+                    ]
+                    ImuneTagList = [
+                    ]
+                    SplashShapeDescriptor = ~/SplashShape_Forme_splash_2
+                    DamageTypeName = "Epee_1"
+                    DistanceStepToGainDamageLevel = 500.0 * Metre
+                    ForcedBlindageLocation = ~/EResistanceLocation/Default
+                    StealthDamageBonusMultiplicator = 3.0
+                    SplashFilters = [
+                        ~/WeaponCapacityTargetFilter_Enemies
+                    ]
+                    DamageTypeEvolutionOverRangeDescriptor  = nil
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // Dispersion
+            TModuleSelector
+            (
+                Default        = TDispersionModuleDescriptor
+                (
+                    DispersionShape            = ~/Descriptor_DispersionShape_DispersionShape2
+                    AlwaysDisperse             = True
+                    ConsiderSplash             = False
+                    DispersionAtMinRange       = 1000.000000
+                    DispersionAtMaxRange       = 5000.000000
+                    VisibleTargetMultiplier    = 3.000000
+                    WorstFailedShotMultiplier  = 4.000000
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+            ),
+
+        // EffectApplier
+            ~/EffectApplierModuleSelector,
+
+        // InterfaceInfos
+            TModuleSelector
+            (
+                Default        = TInterfaceInfosModuleDescriptor
+                (
+                    NameToken = "Gren_L"
+                    Texture = nil
+                    HighlightTexture = nil
+                    MiniatureTexture = nil
+                    MinimapIcon = nil
+                    ColorOnMinimapIfPlayerIsOwner = D3DRGBA[0,0,0,0]
+                    CursorType = Weapon_Cursor_MachineGun
+                    AmmutionPerSalveForHud = 10
+                    AlwaysShowOnMinimap = False
+                    FollowOrientationOnMinimap = False
+                    UseTeamColorOnMinimap = False
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // LinkToOwner
+            TModuleSelector
+            (
+                Default        = TLinkToOwnerModuleDescriptor
+                (
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // Precision
+            TModuleSelector
+            (
+                Default               = TPrecisionModuleDescriptor
+                (
+                    MaxSuccessiveShotCount = 0
+        // DiceHitRollRule
+                    HitRollRuleDescriptor = TDiceHitRollRuleDescriptor
+                    (
+                         DescriptorId          = GUID:{c70d1163-4112-4de4-92d1-9b790189ec89}
+                         BaseCriticModifier = 0
+                         BaseEffectModifier = 0
+                         BaseHitValueModifiers =
+                         [
+                             (EBaseHitValueModifier/Base, 4),
+                             (EBaseHitValueModifier/Idling, 0),
+                             (EBaseHitValueModifier/Moving, -3),
+                             (EBaseHitValueModifier/SuccessfulShots, 5),
+                             (EBaseHitValueModifier/Targeted, 0.0),
+                         ]
+                         HitModifierList       =
+                         [
+                             EDiceHitModifier/Precision,
+                             EDiceHitModifier/DistanceToTarget,
+                             EDiceHitModifier/SuccesiveShots,
+                             EDiceHitModifier/Suppress,
+                         ]
+                    )
+
+                )
+                Selection             = [ ~/NilDescriptorIfGhostOrCadavre ]
+            ),
+
+        // Projectile
+            TModuleSelector
+            (
+                Default        = TProjectileModuleDescriptor
+                (
+                    ProjectileDescriptor = ~/Descriptor_Projectile_Arme_2
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // Range
+            TRangeModuleDescriptor
+            (
+                RangeSettings =
+                [
+                    ~/RangeSetting_Portee_2,
+                    ~/RangeSetting_Portee_Fake_Target,
+                ]
+             ),
+
+        // ReloadTiming
+            TModuleSelector
+            (
+                Default        = ~/ReloadTiming_Rafale_1
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+            ),
+
+        // Selection
+            TModuleSelector
+            (
+                Default            = TSelectionModuleDescriptor
+                (
+                    IsSelectable       = True
+                    IsHighlightable    = True
+                    HasSelectionShader = False
+                    HasHighlightShader = True
+                    MultipleSelectionFilterPriorityDefault      = 0
+                    MultipleSelectionFilterPrioritySecondary    = 0
+                )
+                Selection = [ ~/NilDescriptorIfCadavre ]
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // Trajectory
+            TModuleSelector
+            (
+                Default        = TTrajectoryModuleDescriptor
+                (
+                    TrajectoryDescriptor = ~/Trajectory_Parabolique_1
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // WeaponBehavior
+            TModuleSelector
+            (
+                Default        = TWeaponBehaviorModuleDescriptor
+                (
+                    PiercingWeapon = False
+                    FireAndForget = False
+                    IndirectShot = False
+                    ReflexShot = True
+                    ReflexShotEvenIfDecorCollision = False
+                    ShootOnPosition = False
+                    NumberOfSalvoInShotOnPosition = 10
+                    TimeBeforeTargetLoss = 5.0
+                    PredictionOfTargetMovement = False
+                    Dangerousness = 0
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // WeaponCapacity
+            TModuleSelector
+            (
+                Default        = TWeaponCapacityModuleDescriptor
+                (
+                    CapacityList = [
+                        ~/NoiseCapacity_Bruit_1,
+                    ]
+                )
+                Selection      = [ ~/NilDescriptorIfGhostOrCadavre ]
+            ),
+
+        // WeaponTargeting
+            TModuleSelector
+            (
+                Default        = TWeaponTargetingModuleDescriptor
+                (
+                    RuleSet = ~/FartherIsBetterRuleSet
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+    ]
+)
+export Descriptor_Weapon_Arme_3 is TEntityDescriptor
+(
+    DescriptorId = GUID:{32863778-5e30-475d-afdc-220e55db9eb2}
+    ClassNameForDebug = 'Arme 3'
+    World        = WorldIndices_Weapon
+    Modules           = [
+        // AimTiming
+            TModuleSelector
+            (
+                Default        = TAimTimingModuleDescriptor
+                (
+                    AimingTime                 = 1.0
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+            ),
+
+        // Ammunition
+            TAmmunitionModuleDescriptor
+            (
+                AmmunitionCostPerResource = MAP
+                [
+                    (~/Resource_munitions, 1),
+                ]
+             ),
+
+        // DamageInformation
+            TModuleSelector
+            (
+                Default        = TDamageInformationModuleDescriptor
+                (
+                    DamageByPhysicalState = MAP [
+                        (~/PhysicalState_sante, 15),
+                    ]
+                    SplashRadiusByPhysicalState = MAP [
+                    ]
+                    SplashFeedbackByPhysicalState = MAP [
+                    ]
+                    ImuneTagList = [
+                    ]
+                    SplashShapeDescriptor = nil
+                    DamageTypeName = "Epee_1"
+                    DistanceStepToGainDamageLevel = 500.0 * Metre
+                    ForcedBlindageLocation = ~/EResistanceLocation/Front
+                    StealthDamageBonusMultiplicator = 1.5
+                    SplashFilters = [
+                        ~/WeaponCapacityTargetFilter_Enemies
+                    ]
+                    DamageTypeEvolutionOverRangeDescriptor  = nil
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // Dispersion
+            TModuleSelector
+            (
+                Default        = TDispersionModuleDescriptor
+                (
+                    DispersionShape            = ~/Descriptor_DispersionShape_DispersionShape3
+                    AlwaysDisperse             = False
+                    ConsiderSplash             = False
+                    DispersionAtMinRange       = 1242.300000
+                    DispersionAtMaxRange       = 340.000000
+                    VisibleTargetMultiplier    = 1.500000
+                    WorstFailedShotMultiplier  = 4.200000
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+            ),
+
+        // EffectApplier
+            ~/EffectApplierModuleSelector,
+
+        // InterfaceInfos
+            TModuleSelector
+            (
+                Default        = TInterfaceInfosModuleDescriptor
+                (
+                    NameToken = "SMG"
+                    Texture = nil
+                    HighlightTexture = nil
+                    MiniatureTexture = nil
+                    MinimapIcon = nil
+                    ColorOnMinimapIfPlayerIsOwner = D3DRGBA[0,0,0,0]
+                    CursorType = Weapon_Cursor_MachineGun
+                    AmmutionPerSalveForHud = 10
+                    AlwaysShowOnMinimap = False
+                    FollowOrientationOnMinimap = False
+                    UseTeamColorOnMinimap = False
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // LinkToOwner
+            TModuleSelector
+            (
+                Default        = TLinkToOwnerModuleDescriptor
+                (
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // Precision
+            TModuleSelector
+            (
+                Default               = TPrecisionModuleDescriptor
+                (
+                    MaxSuccessiveShotCount = 0
+        // DiceHitRollRule
+                    HitRollRuleDescriptor = TDiceHitRollRuleDescriptor
+                    (
+                         DescriptorId          = GUID:{089f476b-d883-4fc0-ac87-eb62c3728a3e}
+                         BaseCriticModifier = 0
+                         BaseEffectModifier = 0
+                         BaseHitValueModifiers =
+                         [
+                             (EBaseHitValueModifier/Base, 0.0),
+                             (EBaseHitValueModifier/Idling, 0.0),
+                             (EBaseHitValueModifier/Moving, 0.0),
+                             (EBaseHitValueModifier/SuccessfulShots, 0.0),
+                             (EBaseHitValueModifier/Targeted, 0.0),
+                         ]
+                         HitModifierList       =
+                         [
+                             EDiceHitModifier/Precision,
+                             EDiceHitModifier/DistanceToTarget,
+                             EDiceHitModifier/SuccesiveShots,
+                             EDiceHitModifier/Suppress,
+                         ]
+                    )
+
+                )
+                Selection             = [ ~/NilDescriptorIfGhostOrCadavre ]
+            ),
+
+        // Projectile
+            TModuleSelector
+            (
+                Default        = TProjectileModuleDescriptor
+                (
+                    ProjectileDescriptor = ~/Descriptor_Projectile_Arme_3
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // Range
+            TRangeModuleDescriptor
+            (
+                RangeSettings =
+                [
+                    ~/RangeSetting_Portee_Infanterie,
+                    ~/RangeSetting_Portee_1,
+                    ~/RangeSetting_Portee_Fake_Target,
+                ]
+             ),
+
+        // ReloadTiming
+            TModuleSelector
+            (
+                Default        = ~/ReloadTiming_Simple_1
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+            ),
+
+        // Selection
+            TModuleSelector
+            (
+                Default            = TSelectionModuleDescriptor
+                (
+                    IsSelectable       = True
+                    IsHighlightable    = True
+                    HasSelectionShader = False
+                    HasHighlightShader = True
+                    MultipleSelectionFilterPriorityDefault      = 0
+                    MultipleSelectionFilterPrioritySecondary    = 0
+                )
+                Selection = [ ~/NilDescriptorIfCadavre ]
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // Trajectory
+            TModuleSelector
+            (
+                Default        = TTrajectoryModuleDescriptor
+                (
+                    TrajectoryDescriptor = ~/Trajectory_Missile_1
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // WeaponBehavior
+            TModuleSelector
+            (
+                Default        = TWeaponBehaviorModuleDescriptor
+                (
+                    PiercingWeapon = True
+                    FireAndForget = True
+                    IndirectShot = False
+                    ReflexShot = False
+                    ReflexShotEvenIfDecorCollision = True
+                    ShootOnPosition = True
+                    NumberOfSalvoInShotOnPosition = 2
+                    TimeBeforeTargetLoss = 10.0
+                    PredictionOfTargetMovement = True
+                    Dangerousness = 3
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // WeaponCapacity
+            TModuleSelector
+            (
+                Default        = TWeaponCapacityModuleDescriptor
+                (
+                    CapacityList = [
+                        ~/NoiseCapacity_Bruit_3,
+                    ]
+                )
+                Selection      = [ ~/NilDescriptorIfGhostOrCadavre ]
+            ),
+
+        // WeaponTargeting
+            TModuleSelector
+            (
+                Default        = TWeaponTargetingModuleDescriptor
+                (
+                    RuleSet = ~/NotVisibleOnlyRuleSet
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+    ]
+)
+export Descriptor_Weapon_Arme_4 is TEntityDescriptor
+(
+    DescriptorId = GUID:{4262794b-2e90-4d36-af89-35950244e309}
+    ClassNameForDebug = 'Arme 4'
+    World        = WorldIndices_Weapon
+    Modules           = [
+        // AimTiming
+            TModuleSelector
+            (
+                Default        = TAimTimingModuleDescriptor
+                (
+                    AimingTime                 = 1.0
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+            ),
+
+        // Ammunition
+            TAmmunitionModuleDescriptor
+            (
+                AmmunitionCostPerResource = MAP
+                [
+                    (~/Resource_munitions, 1),
+                ]
+             ),
+
+        // DamageInformation
+            TModuleSelector
+            (
+                Default        = TDamageInformationModuleDescriptor
+                (
+                    DamageByPhysicalState = MAP [
+                        (~/PhysicalState_sante, 15),
+                    ]
+                    SplashRadiusByPhysicalState = MAP [
+                    ]
+                    SplashFeedbackByPhysicalState = MAP [
+                    ]
+                    ImuneTagList = [
+                    ]
+                    SplashShapeDescriptor = nil
+                    DamageTypeName = "Epee_1"
+                    DistanceStepToGainDamageLevel = 500.0 * Metre
+                    ForcedBlindageLocation = ~/EResistanceLocation/Front
+                    StealthDamageBonusMultiplicator = 1.5
+                    SplashFilters = [
+                        ~/WeaponCapacityTargetFilter_Enemies
+                    ]
+                    DamageTypeEvolutionOverRangeDescriptor  = nil
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // Dispersion
+            TModuleSelector
+            (
+                Default        = TDispersionModuleDescriptor
+                (
+                    DispersionShape            = ~/Descriptor_DispersionShape_DispersionShape1
+                    AlwaysDisperse             = False
+                    ConsiderSplash             = True
+                    DispersionAtMinRange       = 0.000000
+                    DispersionAtMaxRange       = 0.000000
+                    VisibleTargetMultiplier    = 1.000000
+                    WorstFailedShotMultiplier  = 1.000000
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+            ),
+
+        // EffectApplier
+            ~/EffectApplierModuleSelector,
+
+        // InterfaceInfos
+            TModuleSelector
+            (
+                Default        = TInterfaceInfosModuleDescriptor
+                (
+                    NameToken = "SMG"
+                    Texture = nil
+                    HighlightTexture = nil
+                    MiniatureTexture = nil
+                    MinimapIcon = nil
+                    ColorOnMinimapIfPlayerIsOwner = D3DRGBA[0,0,0,0]
+                    CursorType = Weapon_Cursor_MachineGun
+                    AmmutionPerSalveForHud = 10
+                    AlwaysShowOnMinimap = False
+                    FollowOrientationOnMinimap = False
+                    UseTeamColorOnMinimap = False
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // LinkToOwner
+            TModuleSelector
+            (
+                Default        = TLinkToOwnerModuleDescriptor
+                (
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // Precision
+            TModuleSelector
+            (
+                Default               = TPrecisionModuleDescriptor
+                (
+                    MaxSuccessiveShotCount = 0
+        // DiceHitRollRule
+                    HitRollRuleDescriptor = TDiceHitRollRuleDescriptor
+                    (
+                         DescriptorId          = GUID:{6301b6aa-3a00-420e-a804-4b1af27a1314}
+                         BaseCriticModifier = 0
+                         BaseEffectModifier = 0
+                         BaseHitValueModifiers =
+                         [
+                             (EBaseHitValueModifier/Base, 0.0),
+                             (EBaseHitValueModifier/Idling, 0.0),
+                             (EBaseHitValueModifier/Moving, 0.0),
+                             (EBaseHitValueModifier/SuccessfulShots, 0.0),
+                             (EBaseHitValueModifier/Targeted, 0.0),
+                         ]
+                         HitModifierList       =
+                         [
+                             EDiceHitModifier/Precision,
+                             EDiceHitModifier/DistanceToTarget,
+                             EDiceHitModifier/SuccesiveShots,
+                             EDiceHitModifier/Suppress,
+                         ]
+                    )
+
+                )
+                Selection             = [ ~/NilDescriptorIfGhostOrCadavre ]
+            ),
+
+        // Projectile
+            TModuleSelector
+            (
+                Default        = TProjectileModuleDescriptor
+                (
+                    ProjectileDescriptor = ~/Descriptor_Projectile_Arme_4
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // Range
+            TRangeModuleDescriptor
+            (
+                RangeSettings =
+                [
+                    ~/RangeSetting_Portee_2,
+                    ~/RangeSetting_Portee_Fake_Target,
+                ]
+             ),
+
+        // ReloadTiming
+            TModuleSelector
+            (
+                Default        = ~/ReloadTiming_Simple_1
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+            ),
+
+        // Selection
+            TModuleSelector
+            (
+                Default            = TSelectionModuleDescriptor
+                (
+                    IsSelectable       = True
+                    IsHighlightable    = True
+                    HasSelectionShader = False
+                    HasHighlightShader = True
+                    MultipleSelectionFilterPriorityDefault      = 0
+                    MultipleSelectionFilterPrioritySecondary    = 0
+                )
+                Selection = [ ~/NilDescriptorIfCadavre ]
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // Trajectory
+            TModuleSelector
+            (
+                Default        = TTrajectoryModuleDescriptor
+                (
+                    TrajectoryDescriptor = ~/Trajectory_Rectiligne_1
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // WeaponBehavior
+            TModuleSelector
+            (
+                Default        = TWeaponBehaviorModuleDescriptor
+                (
+                    PiercingWeapon = True
+                    FireAndForget = True
+                    IndirectShot = False
+                    ReflexShot = False
+                    ReflexShotEvenIfDecorCollision = True
+                    ShootOnPosition = True
+                    NumberOfSalvoInShotOnPosition = 2
+                    TimeBeforeTargetLoss = 10.0
+                    PredictionOfTargetMovement = True
+                    Dangerousness = 3
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // WeaponCapacity
+            TModuleSelector
+            (
+                Default        = TWeaponCapacityModuleDescriptor
+                (
+                    CapacityList = [
+                        ~/NoiseCapacity_Bruit_2,
+                    ]
+                )
+                Selection      = [ ~/NilDescriptorIfGhostOrCadavre ]
+            ),
+
+        // WeaponTargeting
+            TModuleSelector
+            (
+                Default        = TWeaponTargetingModuleDescriptor
+                (
+                    RuleSet = ~/NotVisibleOnlyRuleSet
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+    ]
+)

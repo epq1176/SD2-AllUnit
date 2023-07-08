@@ -1,0 +1,34 @@
+
+WorldInterfaceStrategic is TWorldInterfaceDescriptor
+(
+    World3D = $/M3D/Scene/DefaultWorld
+    HelperVisibility = ~/World_Constante.HelperVisibility
+    Damage = (nil, $/GFX/Everything/FX_FeedbackSS_Degats_OffScreen_Call)
+    DeadUnit = (nil, $/GFX/Everything/FX_FeedbackSS_Dead_OffScreen_Call)
+    PositionEventsManager = $/UI/Components/MainPositionEvents
+
+    PlayEventMessageSounds = True
+
+    VisibilityRangeZooms = TVisibilityRangeContainer
+    (
+        ItemList =
+        [
+            $/GFX/Visibility/AllRanges/Zoom1,
+            $/GFX/Visibility/AllRanges/Zoom2,
+            $/GFX/Visibility/AllRanges/Zoom3,
+            $/GFX/Visibility/AllRanges/Zoom4,
+        ]
+    )
+
+    PathDrawingManager = ~/PathDrawingManager
+
+    FeedbackTextManager = FeedbackTextManager
+
+    GfxPorteurUnderCursor = ~/GfxPorteurUnderCursor
+
+    GfxAffichageInfoCurseur = ~/Affichage_Info_Curseur
+
+    SoundAndMusicSwitchDescriptor = soundAndMusic
+
+    ScriptZoneManagerDescriptor = ~/scriptZoneManagerDescriptor
+)

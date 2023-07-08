@@ -1,0 +1,551 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export CheatedBreakthroughAttackStrategy is TIAGeneralStrategy
+(
+    StrategyName = "GenBTAtkAI"
+    FirstGenerator = Cheated_BTAtk_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    ShouldUseTaggedCorridorsForTouchDown = true
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    TransitionList =
+    [
+        Cheated_BTAtk_Transition_StartToPhaseC,
+        Cheated_BTAtk_Transition_StartToPhaseB,
+        Cheated_BTAtk_Transition_StartToPhaseA,
+        Cheated_BTAtk_Transition_StartToGeneric,
+        Cheated_BTAtk_Transition_DeployToPhaseA,
+        Cheated_BTAtk_Transition_Phase_A_2,
+        Cheated_BTAtk_Transition_Phase_B_1,
+        Cheated_BTAtk_Transition_Phase_B_2,
+        Cheated_BTAtk_Transition_Phase_C,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+export Cheated_BTAtk_Condition_GotoGeneric is TSequenceCondition_True
+(
+)
+//-------------------------------------------------------------------------
+export Cheated_BTAtk_Condition_CommandPhase is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+//-------------------------------------------------------------------------
+export Cheated_BTAtk_Condition_PhaseB is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_B'
+)
+//-------------------------------------------------------------------------
+export Cheated_BTAtk_Condition_PhaseC is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_C'
+)
+//-------------------------------------------------------------------------
+export Cheated_BTAtk_Condition_WaitFewMinutes is TSequenceCondition_Wait
+(
+    Time = 5 * 60 // 5 minutes
+)
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export Cheated_BTAtk_Transition_StartToPhaseC is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_BTAtk_Choose_Strategy
+    Condition = Cheated_BTAtk_Condition_PhaseC
+    Destination = Cheated_BTAtk_Phase_C
+)
+export Cheated_BTAtk_Transition_StartToPhaseB is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_BTAtk_Choose_Strategy
+    Condition = Cheated_BTAtk_Condition_PhaseB
+    Destination = Cheated_BTAtk_Phase_B_1
+)
+export Cheated_BTAtk_Transition_StartToPhaseA is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_BTAtk_Choose_Strategy
+    Condition = Cheated_BTAtk_Condition_CommandPhase
+    Destination = Cheated_BTAtk_Phase_A_1
+)
+export Cheated_BTAtk_Transition_StartToGeneric is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_BTAtk_Choose_Strategy
+    Condition = Cheated_BTAtk_Condition_GotoGeneric
+    Destination = Cheated_BTAtk_PhaseDeploiement
+)
+//-------------------------------------------------------------------------
+export Cheated_BTAtk_Transition_DeployToPhaseA is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_BTAtk_PhaseDeploiement
+    Condition = Cheated_BTAtk_Condition_CommandPhase
+    Destination = Cheated_BTAtk_Phase_A_1
+)
+//-------------------------------------------------------------------------
+export Cheated_BTAtk_Transition_Phase_A_2 is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_BTAtk_Phase_A_1
+    Condition = Cheated_BTAtk_Condition_WaitFewMinutes
+    Destination = Cheated_BTAtk_Phase_A_2
+)
+//-------------------------------------------------------------------------
+export Cheated_BTAtk_Transition_Phase_B_1 is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_BTAtk_Phase_A_2
+    Condition = Cheated_BTAtk_Condition_PhaseB
+    Destination = Cheated_BTAtk_Phase_B_1
+)
+//-------------------------------------------------------------------------
+export Cheated_BTAtk_Transition_Phase_B_2 is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_BTAtk_Phase_B_1
+    Condition = Cheated_BTAtk_Condition_WaitFewMinutes
+    Destination = Cheated_BTAtk_Phase_B_2
+)
+//-------------------------------------------------------------------------
+export Cheated_BTAtk_Transition_Phase_C is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_BTAtk_Phase_B_2
+    Condition = Cheated_BTAtk_Condition_PhaseC
+    Destination = Cheated_BTAtk_Phase_C
+)
+//-------------------------------------------------------------------------
+
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export Cheated_BTAtk_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //~/Cheated_BTAtk_Support_AntiTank,
+        ~/Cheated_BTAtk_Support_Transports,
+        ~/Cheated_BTAtk_Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export Cheated_BTAtk_PhaseDeploiement is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_BTAtk_Support_AntiTank,
+        ~/Cheated_BTAtk_Support_Transports,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        // Grosse attaque
+        ~/Cheated_BTAtk_Attack_Main,
+        ~/Cheated_BTAtk_Attack_MBT_Support,
+        ~/Cheated_BTAtk_Artillery_Support,
+
+        // Reste du front
+        ~/Cheated_BTAtk_Attack_Adaptive,
+        ~/Cheated_BTAtk_Attack_Adaptive,
+        ~/Cheated_BTAtk_Attack_Adaptive,
+        ~/Cheated_BTAtk_Artillery_Sniper,
+        ~/Cheated_BTAtk_Artillery_Expensive,
+
+        ~/Cheated_BTAtk_Attack_Filler,
+
+        ~/Cheated_BTAtk_Reco,
+
+        //------------------------------
+        // Supply
+        //------------------------------
+
+        ~/Cheated_BTAtk_Supply_Skirmish,
+        ~/Cheated_BTAtk_Supply_Skirmish_Allied,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Cheated_BTAtk_Airstrike_Assault,
+        ~/Cheated_BTAtk_Defense_Static_AA,
+        ~/Cheated_BTAtk_Artillery_TriggerHappy_1for2Corridors,
+
+        ~/Cheated_BTAtk_Defense_Static_Adaptive,
+        ~/Cheated_BTAtk_Defense_Static_Adaptive,
+
+        ~/Cheated_BTAtk_AirReco,
+        ~/Cheated_BTAtk_Airstrike_Offense,
+        ~/Cheated_BTAtk_Airstrike_Defense,
+
+
+    ]
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+    +   ~/Cheated_BTAtk_Scaling_Phase_XL
+    +   ~/Cheated_BTAtk_Scaling_Phase_XL
+    +   ~/Cheated_BTAtk_Scaling_Phase_XL
+
+)
+//-------------------------------------------------------------------------
+export Cheated_BTAtk_Phase_A_1 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 5
+    GeneratorList =
+    [
+        // Même chose que la phase de déploiement mais avec les Défenses
+        // prioritaires sur les attaques. L'idée est de lancer ses attaques dès
+        // le début, mais de renforcer les backlines avant de récupérer de nos pertes
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_BTAtk_Support_AntiTank,
+        ~/Cheated_BTAtk_Support_Transports,
+
+        ~/Cheated_BTAtk_Supply_Skirmish,
+        ~/Cheated_BTAtk_Supply_Skirmish_Allied,
+
+        ~/Cheated_BTAtk_Attack_Filler,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Cheated_BTAtk_Attack_Main,
+        ~/Cheated_BTAtk_Attack_MBT_Support,
+        ~/Cheated_BTAtk_Artillery_Support,
+
+        ~/Cheated_BTAtk_Attack_Adaptive,
+        ~/Cheated_BTAtk_Attack_Adaptive,
+        ~/Cheated_BTAtk_Attack_Adaptive,
+
+        ~/Cheated_BTAtk_Artillery_Sniper,
+        ~/Cheated_BTAtk_Artillery_Expensive,
+
+        // On insère ici une attaque qui va chercher les objectifs.
+        ~/Cheated_BTAtk_Attack_Objectives,
+
+        ~/Cheated_BTAtk_SuperCommander,
+
+        ~/Cheated_BTAtk_Reco,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Cheated_BTAtk_Airstrike_Assault,
+        ~/Cheated_BTAtk_Defense_Static_AA,
+        ~/Cheated_BTAtk_Artillery_TriggerHappy_1for2Corridors,
+
+        ~/Cheated_BTAtk_AirReco,
+        ~/Cheated_BTAtk_Airstrike_Offense,
+        ~/Cheated_BTAtk_Airstrike_Defense,
+
+        ~/Cheated_BTAtk_Artillery_Sniper,
+        ~/Cheated_BTAtk_Artillery_Expensive,
+
+    ]
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+    + ~/Cheated_BTAtk_Scaling_Phase_XL
+    + ~/Cheated_BTAtk_Scaling_Phase_XL
+    + ~/Cheated_BTAtk_Scaling_Phase_XL
+)
+//-------------------------------------------------------------------------
+export Cheated_BTAtk_Phase_A_2 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 5
+    GeneratorList =
+    [
+        // Même chose que la phase de déploiement mais avec les Défenses
+        // prioritaires sur les attaques. L'idée est de lancer ses attaques dès
+        // le début, mais de renforcer les backlines avant de récupérer de nos pertes
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_Support_AntiTank,
+        ~/Cheated_Support_Transports,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/Cheated_BTAtk_Maintain_CorridorAttacks,
+        ~/Cheated_BTAtk_Maintain_CorridorDefenses,
+        ~/Cheated_BTAtk_Maintain_DynamicDefenses,
+        ~/Cheated_BTAtk_Maintain_Artillery,
+        ~/Cheated_BTAtk_Maintain_ObjectiveAttacks,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Cheated_BTAtk_Attack_Main,
+        ~/Cheated_BTAtk_Attack_MBT_Support,
+        ~/Cheated_BTAtk_Artillery_Support,
+
+        ~/Cheated_BTAtk_Attack_Filler,
+
+        ~/Cheated_BTAtk_Reco,
+
+        ~/Cheated_BTAtk_Supply_Skirmish,
+        ~/Cheated_BTAtk_Supply_Skirmish_Allied,
+
+        //------------------------------
+        // Avions
+        //------------------------------
+        ~/Cheated_BTAtk_AirReco,
+
+        ~/Cheated_BTAtk_Maintain_AirStrike,
+    ]
+    //------------------------------
+    // Scaling
+    //------------------------------
+    + ~/Cheated_BTAtk_Scaling_Phase
+    + ~/Cheated_BTAtk_Scaling_Phase
+    + ~/Cheated_BTAtk_Scaling_Phase
+)
+//-------------------------------------------------------------------------
+export Cheated_BTAtk_Phase_B_1 is TSequenceGeneratorDescriptor
+(
+    // Les défenses prioritaires disparaissent, on lance un nouveau set d'attaques
+    // On ajoute des défenses non prioritaires dynamiques
+    NbMacroActionAllowedToProduceSimultaneous = 2
+    GeneratorList =
+    [
+        ~/Cheated_BTAtk_Maintain_CorridorDefenses,
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_Support_AntiTank,
+        ~/Cheated_BTAtk_Support_Transports,
+
+        ~/Cheated_BTAtk_Maintain_CorridorAttacks,
+        ~/Cheated_BTAtk_Maintain_ObjectiveAttacks,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Cheated_BTAtk_Attack_Main,
+        ~/Cheated_BTAtk_Attack_MBT_Support,
+        ~/Cheated_BTAtk_Artillery_Support,
+
+        ~/Cheated_BTAtk_Attack_Objectives,
+        ~/Cheated_BTAtk_Attack_Objectives,
+
+        ~/Cheated_BTAtk_Artillery_TriggerHappy,
+        ~/Cheated_BTAtk_Artillery_Sniper, //Sniper
+
+        ~/Cheated_BTAtk_Attack_Adaptive,
+        ~/Cheated_BTAtk_Attack_Adaptive,
+
+        ~/Cheated_BTAtk_Attack_Filler,
+
+        ~/Cheated_BTAtk_Supply_Skirmish,
+        ~/Cheated_BTAtk_Supply_Skirmish_Allied,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/Cheated_BTAtk_Maintain_CorridorDefenses,
+        ~/Cheated_BTAtk_Maintain_DynamicDefenses,
+        ~/Cheated_BTAtk_Maintain_Artillery,
+        ~/Cheated_BTAtk_Maintain_AirStrike,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Cheated_BTAtk_Airstrike_Assault,
+        ~/Cheated_BTAtk_Artillery_Expensive,
+
+        ~/Cheated_BTAtk_Defense_Static_Adaptive,
+        ~/Cheated_BTAtk_Defense_Static_AA,
+
+        ~/Cheated_BTAtk_SuperCommander,
+
+        ~/Cheated_BTAtk_Defense_Dynamic_Adaptive,
+        ~/Cheated_BTAtk_Defense_Dynamic_Adaptive,
+
+        ~/Cheated_BTAtk_Artillery_TriggerHappy_1for2Corridors,
+
+        ~/Cheated_BTAtk_AirReco,
+        ~/Cheated_BTAtk_Airstrike_Offense,
+        ~/Cheated_BTAtk_Airstrike_Defense,
+
+    ]
+    //------------------------------
+    // Scaling
+    //------------------------------
+    + ~/Cheated_BTAtk_Scaling_Phase_XL
+    + ~/Cheated_BTAtk_Scaling_Phase_XL
+    + ~/Cheated_BTAtk_Scaling_Phase_XL
+)
+//-------------------------------------------------------------------------
+export Cheated_BTAtk_Phase_B_2 is TSequenceGeneratorDescriptor
+(
+    // Les défenses prioritaires disparaissent, on lance un nouveau set d'attaques
+    // On ajoute des défenses non prioritaires dynamiques
+    NbMacroActionAllowedToProduceSimultaneous = 2
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_Support_AntiTank,
+        ~/Cheated_BTAtk_Support_Transports,
+
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Cheated_BTAtk_Maintain_CorridorAttacks,
+        ~/Cheated_BTAtk_Maintain_ObjectiveAttacks,
+
+        ~/Cheated_BTAtk_Attack_Objectives,
+        ~/Cheated_BTAtk_Attack_Objectives,
+
+        ~/Cheated_BTAtk_Attack_Adaptive,
+        ~/Cheated_BTAtk_Attack_Adaptive,
+
+        ~/Cheated_BTAtk_Attack_Filler,
+
+        ~/Cheated_BTAtk_Reco,
+
+        ~/Cheated_BTAtk_Supply_Skirmish,
+        ~/Cheated_BTAtk_Supply_Skirmish_Allied,
+
+        ~/Cheated_BTAtk_Attack_Main,
+        ~/Cheated_BTAtk_Artillery_Support,
+
+        // Maintien
+        ~/Cheated_BTAtk_Maintain_CorridorDefenses,
+        ~/Cheated_BTAtk_Maintain_Artillery,
+        ~/Cheated_BTAtk_Maintain_AirStrike,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Cheated_BTAtk_AirReco,
+    ]
+    //------------------------------
+    // Scaling
+    //------------------------------
+    + ~/Cheated_BTAtk_Scaling_Phase
+    + ~/Cheated_BTAtk_Scaling_Phase
+    + ~/Cheated_BTAtk_Scaling_Phase
+)
+//-------------------------------------------------------------------------
+export Cheated_BTAtk_Phase_C is TSequenceGeneratorDescriptor
+(
+    // Les défenses prioritaires disparaissent, on lance un nouveau set d'attaques
+    // On ajoute des défenses non prioritaires dynamiques
+    NbMacroActionAllowedToProduceSimultaneous = 2
+    GeneratorList =
+    [
+        ~/Cheated_BTAtk_Maintain_CorridorDefenses,
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_Support_AntiTank,
+        ~/Cheated_BTAtk_Support_Transports,
+
+        ~/Cheated_BTAtk_Maintain_CorridorAttacks,
+        ~/Cheated_BTAtk_Maintain_ObjectiveAttacks,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Cheated_BTAtk_Attack_Main,
+        ~/Cheated_BTAtk_Attack_MBT_Support,
+
+        ~/Cheated_BTAtk_Attack_Objectives,
+        ~/Cheated_BTAtk_Attack_Objectives,
+        ~/Cheated_BTAtk_Attack_Objectives,
+
+        ~/Cheated_BTAtk_Artillery_TriggerHappy,
+        ~/Cheated_BTAtk_Artillery_Sniper,
+
+        ~/Cheated_BTAtk_Attack_Adaptive,
+
+        ~/Cheated_BTAtk_Attack_Filler,
+
+        ~/Cheated_BTAtk_Reco,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/Cheated_BTAtk_Maintain_CorridorDefenses,
+        ~/Cheated_BTAtk_Maintain_DynamicDefenses,
+        ~/Cheated_BTAtk_Maintain_Artillery,
+        ~/Cheated_BTAtk_Maintain_AirStrike,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Cheated_BTAtk_Airstrike_Assault,
+        ~/Cheated_BTAtk_Artillery_Expensive,
+
+        ~/Cheated_BTAtk_Defense_Static_Adaptive,
+        ~/Cheated_BTAtk_Defense_Static_AA,
+
+        ~/Cheated_BTAtk_SuperCommander,
+
+        ~/Cheated_BTAtk_Defense_Dynamic_Adaptive,
+        ~/Cheated_BTAtk_Defense_Dynamic_Adaptive,
+
+        ~/Cheated_BTAtk_Artillery_TriggerHappy_1for2Corridors,
+
+        ~/Cheated_BTAtk_AirReco,
+        ~/Cheated_BTAtk_Airstrike_Offense,
+        ~/Cheated_BTAtk_Airstrike_Defense,
+
+    ]
+    //------------------------------
+    // Scaling
+    //------------------------------
+    + ~/Cheated_BTAtk_Scaling_Phase_XL
+    + ~/Cheated_BTAtk_Scaling_Phase_XL
+    + ~/Cheated_BTAtk_Scaling_Phase_XL
+    + ~/Cheated_BTAtk_Scaling_Phase
+    + ~/Cheated_BTAtk_Scaling_Phase
+    + ~/Cheated_BTAtk_Scaling_Phase
+    + ~/Cheated_BTAtk_Scaling_Phase
+    + ~/Cheated_BTAtk_Scaling_Phase
+    + ~/Cheated_BTAtk_Scaling_Phase
+)
+//-------------------------------------------------------------------------
+
+Cheated_BTAtk_Scaling_Phase is [
+    ~/Cheated_BTAtk_Attack_Main_Autogen,
+    ~/Cheated_BTAtk_Attack_Adaptive_Autogen,
+    ~/Cheated_BTAtk_Attack_Adaptive_Autogen,
+    ~/Cheated_BTAtk_Attack_Adaptive_Autogen,
+
+    ~/Cheated_BTAtk_Defense_Dynamic_Adaptive_Autogen,
+    ~/Cheated_BTAtk_Defense_Dynamic_Adaptive_Autogen,
+    ~/Cheated_BTAtk_Defense_Dynamic_Adaptive_Autogen,
+
+    ~/Cheated_BTAtk_Airstrike_Assault_Autogen,
+    ~/Cheated_BTAtk_Airstrike_Offense_Autogen,
+    ~/Cheated_BTAtk_Airstrike_Defense_Autogen,
+
+    ~/Cheated_BTAtk_Artillery_TriggerHappy_Autogen,
+]
+
+Cheated_BTAtk_Scaling_Phase_XL is [
+    ~/Cheated_BTAtk_Attack_Main_Autogen_XL,
+    ~/Cheated_BTAtk_Attack_Adaptive_Autogen_XL,
+    ~/Cheated_BTAtk_Attack_Adaptive_Autogen_XL,
+    ~/Cheated_BTAtk_Attack_Adaptive_Autogen_XL,
+
+    ~/Cheated_BTAtk_Defense_Dynamic_Adaptive_Autogen_XL,
+    ~/Cheated_BTAtk_Defense_Dynamic_Adaptive_Autogen_XL,
+    ~/Cheated_BTAtk_Defense_Dynamic_Adaptive_Autogen_XL,
+]
+

@@ -1,0 +1,28 @@
+Gfx_Panzer_IV_H_CMD_ROU is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Panzer_IV_H_CMD_ROU ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Panzer_IV_H_CMD_ROU_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret3( MeshDescriptor = Modele_Panzer_IV_H_CMD_ROU_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Panzer_IV_H_CMD_ROU ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Panzer_IV_H_CMD_ROU_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret3( MeshDescriptor = Modele_Panzer_IV_H_CMD_ROU_LOW ),
+        ]
+
+        Operators = Operators_Panzer_IV_H_CMD_ROU
+                  + DepictionOperator_Chassis_MediumTank
+                  + DepictionOperator_Propulsion_ContinuousTrack_MediumTank
+                  + [DepictionOperator_TurretRecoil(TurretNum='1')]
+                 // + [DepictionOperator_TurretRecoilLightMachineGun(TurretNum='2') ]
+
+        Actions = Weapons_Panzer_IV_H_CMD_ROU
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        // SubDepictions = [ SubDepictionTireurIK_GER ]
+    )
+)

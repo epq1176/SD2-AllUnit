@@ -1,0 +1,22 @@
+export ModelFile_Ram_II is 'GameData:Assets\3D\Units\CAN\Char\RAM_OP\RAM_II.Ase2NdfBin'
+
+export Modele_Ram_II is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Ram_II
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Ram_II_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CAN\Char\RAM_OP_MID\RAM_II_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Ram_II_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CAN\Char\LODS\RAM_II_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

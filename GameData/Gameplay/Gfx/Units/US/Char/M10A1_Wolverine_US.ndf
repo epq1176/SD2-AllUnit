@@ -1,0 +1,22 @@
+export ModelFile_M10A1_Wolverine_US is 'GameData:Assets\3D\Units\USA\Char\M10A1_Wolverine\M10A1_Wolverine.Ase2NdfBin'
+
+Modele_M10A1_Wolverine_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M10A1_Wolverine_US
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_M10A1_Wolverine_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Char\M10A1_Wolverine_MID\M10A1_Wolverine_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_M10A1_Wolverine_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Char\LODS\M10A1_Wolverine_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

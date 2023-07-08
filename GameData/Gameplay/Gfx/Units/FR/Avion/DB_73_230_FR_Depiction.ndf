@@ -1,0 +1,48 @@
+export Gfx_DB_73_230_FR is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificAirplaneDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_DB_73_230_FR ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_DB_73_230_FR_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_DB_73_230_FR_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_DB_73_230_FR ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_DB_73_230_FR_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_DB_73_230_FR_LOW ),
+        ]
+
+         Operators = Operators_DB_73_230_FR
+                   + DepictionOperator_Airfoil_WingsAndStabilizersAirplane
+                   + DepictionOperator_Propulsion_Double_Engine_Plane
+                   + DepictionOperator_Airplane
+                + DepictionOperator_Feedback_Degat_Level1
+                  + DepictionOperator_Feedback_Degat_Level2
+
+        Actions = //DepictionAction_MovementFX_SingleReactorAirplane
+                 Weapons_DB_73_230_FR
+                + DepictionAction_StressLevel_Avion_2
+                + MAP [ (['FX_Helice_1'], Template_DepictionAction_Rotor( PaleLength = 350 PaleCount = 4 SousMobile = "Bloc_Moteur_1" ))]
+                + MAP [ (['FX_Helice_2'], Template_DepictionAction_Rotor( PaleLength = 350 PaleCount = 4 SousMobile = "Bloc_Moteur_2" ))]
+
+    // SubDepictionGenerators = SubGenerators_DB_73_230_FR
+
+    SubDepictions = [
+        TSubDepiction(
+            Anchor = "Landing Gear"
+            Depiction = TDepictionTemplate(
+                RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+                Selector = WarGameShowRoomDepictionSelector
+                DepictionAlternatives = [
+                    TDepictionDescriptor( SelectorId = 'high' MeshDescriptor = Modele_DB_73_230_FR_train ),
+                    TDepictionDescriptor( SelectorId = 'none' )
+                ]
+            )
+        )
+    ]
+
+                        + DepictionSubDepiction_Pilote_FR
+                        + DepictionSubDepiction_Pilote2_FR
+    )
+)

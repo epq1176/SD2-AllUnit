@@ -1,0 +1,817 @@
+
+private GameRoomPanelInviteButton is StandardButton
+(
+    ElementName = 'InviteButton'
+    TextToken = 'AB_INVITE'
+
+    HintTitleToken = "OLB_INVITT"
+    HintBodyToken = "OLB_INVITB"
+    HintExtendedToken = "OLB_INVITE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+)
+
+private GameRoomPanelInviteCodeButton is StandardButton
+(
+    ElementName = 'InviteCodeButton'
+    TextToken = 'CB_INVCOD'
+
+    HintTitleToken = "CB_INVCOD"
+    HintBodyToken = "OLB_INVICB"
+    HintExtendedToken = "OLB_INVICE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+)
+
+private GameRoomPanelSwitchPrivacyButton is StandardButton
+(
+    ElementName = 'SwitchPrivacyButton'
+    TextToken = 'GS_SPUBLI'
+
+    HintTitleToken = "GS_ACCESS"
+    HintBodyToken = "GS_ACCESSB"
+    HintExtendedToken = "GS_ACCESSE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+)
+
+private GameRoomPanelSwitchTeamButton is StandardButton
+(
+    ElementName = 'SwitchTeamButton'
+    TextToken = 'AB_CHGTEAM'
+
+    HintTitleToken = "OLB_SWTCHT"
+    HintBodyToken = "OLB_SWTCHB"
+    HintExtendedToken = "OLB_SWTCHE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+)
+
+private GameRoomPanelDecksButton is StandardButton
+(
+    ElementName = 'DecksButton'
+    TextToken = 'CB_GAMDECK'
+
+    ForbiddenTags = [ "ScenarioWithFixedDecks" ]
+
+    HintTitleToken = "OLB_DECKST"
+    HintBodyToken = "OLB_DECKSB"
+    HintExtendedToken = "OLB_DECKSE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+)
+
+private GameRoomPanelViewFixedDeckButton is StandardButton
+(
+    ElementName = 'FixedDeckButton'
+    TextToken = 'CB_VIEWDCK'
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    RequiredTags = [ "ScenarioWithFixedDecks" ]
+
+    HintTitleToken = "OLB_VIEWDT"
+    HintBodyToken = "OLB_VIEWDB"
+    HintExtendedToken = "OLB_VIEWDE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+)
+
+private GameRoomPanelAddFriendButton is StandardButton
+(
+    ElementName = 'AddFriendButton'
+    TextToken = 'OC_HTADD'
+
+    HintTitleToken = "OLB_ADDFDT"
+    HintBodyToken = "OLB_ADDFDB"
+    HintExtendedToken = "OLB_ADDFDE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+)
+
+private GameRoomPanelLaunchButton is ConfirmButton
+(
+    ElementName = 'LaunchButton'
+    TextToken = 'AB_LAUNCH'
+
+    HintTitleToken = "OLB_LNCHT"
+    HintBodyToken = "OLB_LNCHB"
+    HintExtendedToken = "OLB_LNCHE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+)
+
+private GameRoomPanelBrowseButton is StandardButton
+(
+    ElementName = 'BrowseButton'
+    TextToken = 'NV_BROWSE'
+
+    HintableAreaElementName = "BrowseButtonHintableArea"
+    HintTitleToken = "OLB_LEAVET"
+    HintBodyToken = "OLB_LEAVEB"
+    HintExtendedToken = "OLB_LEAVEE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+)
+
+private GameRoomPanelLeaveButton is CancelButton
+(
+    ElementName = 'LeaveButton'
+    TextToken = 'NV_LEAVE'
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+
+    HintableAreaElementName = "LeaveButtonHintableArea"
+    HintTitleToken = "OLB_LEAVET"
+    HintBodyToken = "OLB_LEAVEB"
+    HintExtendedToken = "OLB_LEAVEE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+    TextElementName = 'Text'
+)
+
+private LobbyMultiPanelWindowFrame is WindowFrame
+(
+    ContentExtendWeight = 1.0
+    ContentRelativeWidthHeight = [1.0, 1.0]
+    TitleToken = 'T_LOBBY'
+
+    ContentComponents =
+    [
+        BUCKContainerDescriptor
+        (
+            ElementName = 'AdaptedContent'
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1, 1]
+            )
+        )
+    ]
+
+    HasBackground = false
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelLaunchButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelInviteButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelInviteCodeButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelSwitchTeamButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelBrowseButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelDecksButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelAddFriendButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelLeaveButton ),
+    ]
+)
+
+private LobbySkirmishPanelWindowFrame is WindowFrame
+(
+    ContentExtendWeight = 1.0
+    ContentRelativeWidthHeight = [1.0, 1.0]
+    TitleToken = 'AB_NVSKIRM'
+
+    ContentComponents =
+    [
+        BUCKContainerDescriptor
+        (
+            ElementName = 'AdaptedContent'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                AdditionalHeight is 52
+
+                RelativeWidthHeight = [1, 1]
+                MagnifiableWidthHeight = [0, AdditionalHeight + 30]
+                MagnifiableOffset = [0, -AdditionalHeight]
+            )
+        )
+    ]
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelLaunchButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelSwitchTeamButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelDecksButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelLeaveButton ),
+    ]
+)
+
+template OneOptionComponent [ CheckBoxElementName, TextElementName, TextToken, HasBottomBorder = false ] is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKListDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [0,1] )
+        Axis = ~/ListAxis/Horizontal
+        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+        FirstMargin = TRTTILength( Magnifiable = 6.0 )
+        LastMargin = TRTTILength( Magnifiable = 6.0 )
+        InterItemMargin = TRTTILength( Magnifiable = 10.0 )
+        Elements =
+        [
+            BUCKListElementDescriptor
+            (
+                ComponentDescriptor = BUCKTextDescriptor
+                (
+                    ElementName = <TextElementName>
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableWidthHeight = [100,20]
+                        AlignementToFather = [0,0.5]
+                        AlignementToAnchor = [0,0.5]
+                    )
+
+                    BigLineAction = ~/BigLineAction/MultiLine
+                    ParagraphStyle = ~/paragraphStyleTextLeftAlign
+                    TextStyle = "Default"
+
+                    TextColor       = "AutoMatchOption"
+                    TextSize        = "AutoMatchOption"
+                    TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+                    TextToken       = <TextToken>
+
+                    TypefaceToken   = "MainOutgame"
+                    UniformDrawer   = $/UserInterface/UIUniformDrawer
+                )
+                ExtendWeight = 1
+            ),
+
+            BUCKListElementDescriptor
+            (
+                ComponentDescriptor = BUCKSpecificCheckBoxDescriptor
+                (
+                    ElementName = <CheckBoxElementName>
+
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableWidthHeight = DefaultCheckBoxDims
+                        AlignementToFather = [0,0.5]
+                        AlignementToAnchor = [0,0.5]
+                    )
+
+                    IsFocusable = true
+                    FocusMapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+                )
+            ),
+        ]
+
+        UniformDrawer = $/UserInterface/UIUniformDrawer
+    )
+    ExtendWeight = 1
+)
+
+private OptionsComponent is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [420,130]
+        MagnifiableOffset = [6,42]
+    )
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,0] )
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+            Axis = ~/ListAxis/Vertical
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1,0]
+                            MagnifiableWidthHeight = [0,9]
+                        )
+                        HasBackground = true
+                        UniformDrawer = $/UserInterface/UIUniformDrawer
+                        BackgroundBlockColorToken = "Onglet/Background"
+                    )
+                ),
+                OneOptionComponent( CheckBoxElementName = "CheckBoxMode1v1"  TextElementName = "TextMode1v1"  TextToken = "GT_VERSUS1" ),
+                OneOptionComponent( CheckBoxElementName = "CheckBoxMode2v2"  TextElementName = "TextMode2v2"  TextToken = "GT_VERSUS2" ),
+                OneOptionComponent( CheckBoxElementName = "CheckBoxMode3v3"  TextElementName = "TextMode3v3"  TextToken = "GT_VERSUS3" ),
+                OneOptionComponent( CheckBoxElementName = "CheckBoxMode4v4"  TextElementName = "TextMode4v4"  TextToken = "GT_VERSUS4"  HasBottomBorder = true ),
+            ]
+        )
+    ]
+)
+
+private MarginBetweenNbPlayersModeCheckbox is 10
+private MarginBetweenNbPlayersModeCheckboxAndText is 10
+private MarginBetweenBottomPanelAndNbPlayersMode is 5
+
+private LobbyAutoMatchPanelWindowFrame is WindowFrame
+(
+    ContentExtendWeight = 1.0
+    ContentRelativeWidthHeight = [1.0, 1.0]
+    TitleToken = 'LOBBYRK'
+
+    ContentComponents =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+            Components =
+            [
+                OptionsComponent,
+                BUCKListDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,0] )
+                    Axis = ~/ListAxis/Vertical
+                    InterItemMargin = TRTTILength( Magnifiable = 10 )
+                    Elements =
+                    [
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKSpecificWithTabsComponentDescriptor
+                            (
+                                ElementName = 'Tabs'
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [420 + 12,177]
+                                )
+
+                                TabsAndContent =
+                                [
+                                    (
+                                        BUCKSpecificOneTabComponentDescriptor
+                                        (
+                                            HorizontalFitStyle = ~/FitStyle/FitToContent
+                                            TextToken = "MP_UNRANKD"
+                                            ElementName = "UnrankedTab"
+                                        ),
+                                        BUCKContainerDescriptor
+                                        (
+                                            ElementName = "UnrankedContainer"
+                                            ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+                                        )
+                                    ),
+                                    (
+                                        BUCKSpecificOneTabComponentDescriptor
+                                        (
+                                            HorizontalFitStyle = ~/FitStyle/FitToContent
+                                            TextToken = "MP_RANKED"
+                                            ElementName = "RankedTab"
+                                        ),
+                                        BUCKContainerDescriptor
+                                        (
+                                            ElementName = "RankedContainer"
+                                            ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+                                        )
+                                    ),
+                                ]
+                            )
+                        ),
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKContainerDescriptor
+                            (
+                                ElementName = 'AdaptedContent'
+                                ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1, 1] )
+                            )
+                            ExtendWeight = 1
+                        ),
+                    ]
+                )
+            ]
+        )
+    ]
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelLaunchButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelInviteButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelLeaveButton ),
+    ]
+)
+
+private LobbyChallengePanelWindowFrame is WindowFrame
+(
+    ContentExtendWeight = 1.0
+    ContentRelativeWidthHeight = [1.0, 1.0]
+    TitleToken = ''
+    HasBackground = false
+
+    ContentComponents =
+    [
+        BUCKContainerDescriptor
+        (
+            ElementName = 'AdaptedContent'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                //AdditionalHeight is 52
+
+                RelativeWidthHeight = [1, 1]
+                //MagnifiableWidthHeight = [0, AdditionalHeight + 30]
+                //MagnifiableOffset = [0, -AdditionalHeight]
+            )
+        )
+    ]
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelLaunchButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelInviteButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelInviteCodeButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelSwitchTeamButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelSwitchPrivacyButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelDecksButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelViewFixedDeckButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelLeaveButton ),
+    ]
+)
+
+private LobbyStrategicPanelWindowFrame is WindowFrame
+(
+    ContentExtendWeight = 1.0
+    ContentRelativeWidthHeight = [1.0, 1.0]
+    TitleToken = ''
+
+    ContentComponents =
+    [
+        BUCKContainerDescriptor
+        (
+            ElementName = 'AdaptedContent'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                AdditionalHeight is 52
+
+                RelativeWidthHeight = [1, 1]
+                MagnifiableWidthHeight = [0, AdditionalHeight + 30]
+                MagnifiableOffset = [0, -AdditionalHeight]
+            )
+        )
+    ]
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelLaunchButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelInviteButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelSwitchTeamButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelDecksButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelViewFixedDeckButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/GameRoomPanelLeaveButton ),
+    ]
+)
+
+private DedicatedServerInfosTitle is BUCKTextDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1, 0]
+    )
+
+    HorizontalFitStyle = ~/FitStyle/UserDefined
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    ElementName = "Title"
+
+    TextSize = "ServeurDedie/Titre"
+    TextColor = "LightestGray"
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+    TypefaceToken = "Main"
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+    )
+    TextStyle = "Default"
+)
+
+private DedicatedServerInfosLine1 is BUCKTextDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0]
+    )
+
+    HorizontalFitStyle = ~/FitStyle/UserDefined
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    ElementName = "Line1"
+
+    TextSize = "ServeurDedie/Ligne"
+    TextColor = "InfoSecondaire"
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+    TypefaceToken = "LigneLobby/NomJoueur"
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+    )
+    TextStyle = "Default"
+)
+
+private DedicatedServerInfosLine2 is BUCKTextDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0]
+    )
+
+    HorizontalFitStyle = ~/FitStyle/UserDefined
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    ElementName = "Line2"
+
+    TextSize = "ServeurDedie/Ligne"
+    TextColor = "InfoSecondaire"
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+    TypefaceToken = "MainOutgame"
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+    )
+    TextStyle = "Default"
+)
+
+private DedicatedServerInfos is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableOffset = [0.0, 5.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestBetweenFatherAndChildren
+    InterItemMargin = TRTTILength( Magnifiable = 3.0 )
+
+    Elements = [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/DedicatedServerInfosTitle
+        ),
+        BUCKListElementDescriptor( ComponentDescriptor = BUCKContainerDescriptor(ComponentFrame = TUIFramePropertyRTTI(MagnifiableWidthHeight = [0.0, 2.0]) ) ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/DedicatedServerInfosLine1
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/DedicatedServerInfosLine2
+        )
+    ]
+)
+
+private template OptionDropdownDescriptor
+[
+    HasHint : bool = false
+]
+is BUCKSpecificDropdownDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 24.0]
+    )
+
+    ItemComponents = (<HasHint> ?
+    [
+        BUCKSpecificHintableArea
+        (
+            ElementName = "ItemHint"
+        )
+    ]
+    : [])
+)
+
+private OptionsTabDescriptor is BUCKSpecificWithTabsComponentDescriptor
+(
+    ElementName = 'CampTabs'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1, 0]
+        MagnifiableWidthHeight = [0, 273]
+    )
+
+    TabsAndContent =
+    [
+        (
+            BUCKSpecificOneTabComponentDescriptor
+            (
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                TextToken = "OP_PARAMS"
+            ),
+            BUCKContainerDescriptor
+            (
+                ElementName = 'TabContainer'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0 , 1.0]
+                )
+                Components = []
+            )
+        ),
+    ]
+)
+
+private OptionWarningMagnifiablePadding is 10
+private OptionWarningMagnifiableMargin is 10
+private OptionWarningSpaceBetweenTitleAndText is 5
+private OptionWarningGlobalPixelBorder is 2
+
+private OptionsWarningDescriptor is TScrollingDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        MagnifiableWidthHeight = [-2.0 * OptionWarningMagnifiablePadding, -2.0 * OptionWarningMagnifiablePadding]
+        MagnifiableOffset = [OptionWarningMagnifiablePadding, OptionWarningMagnifiablePadding]
+    )
+
+    Component = BUCKListDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1.0, 0.0]
+        )
+
+        InterItemMargin = TRTTILength
+        (
+            Magnifiable = OptionWarningSpaceBetweenTitleAndText
+        )
+
+        Axis = ~/ListAxis/Vertical
+        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+        Elements = [
+            BUCKListElementDescriptor
+            (
+                ComponentDescriptor = BUCKContainerDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableWidthHeight = [1.0 , OptionWarningMagnifiableMargin]
+                    )
+                )
+            ),
+
+            BUCKListElementDescriptor
+            (
+                ComponentDescriptor = BUCKTextDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableWidthHeight = [-2.0 * OptionWarningMagnifiableMargin, 0.0]
+                        RelativeWidthHeight = [1.0, 0.0]
+                        MagnifiableOffset = [OptionWarningMagnifiableMargin, 0.0]
+                    )
+
+                    ParagraphStyle = ~/paragraphStyleTextLeftAlign
+                    TextStyle = "Default"
+
+                    HorizontalFitStyle = ~/FitStyle/UserDefined
+                    VerticalFitStyle = ~/FitStyle/FitToContent
+
+                    TypefaceToken = "Main"
+                    BigLineAction = ~/BigLineAction/MultiLine
+
+                    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                    TextColor = "Challenge/Warning"
+                    TextSize = "Challenge/WarningTitle"
+
+                    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                    TextToken = "LOBBYWARN"
+                )
+            ),
+
+            BUCKListElementDescriptor
+            (
+                ComponentDescriptor = BUCKTextDescriptor
+                (
+                    ElementName = 'WarningTextComponent'
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 0.0]
+                        MagnifiableWidthHeight = [-2.0 * OptionWarningMagnifiableMargin, 0.0]
+                        MagnifiableOffset = [OptionWarningMagnifiableMargin, 0.0]
+                    )
+
+                    ParagraphStyle = ~/paragraphStyleTextLeftAlign
+                    TextStyle = "Default"
+
+                    HorizontalFitStyle = ~/FitStyle/UserDefined
+                    VerticalFitStyle = ~/FitStyle/FitToContent
+
+                    TypefaceToken = "Stylized"
+                    BigLineAction = ~/BigLineAction/MultiLine
+
+                    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                    TextColor = "Challenge/Warning"
+                    TextSize = "Challenge/WarningContent"
+
+                    TextDico = ~/LocalisationConstantes/dico_maps
+                )
+            ),
+
+            BUCKListElementDescriptor
+            (
+                ComponentDescriptor = BUCKContainerDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableWidthHeight = [1.0 , OptionWarningMagnifiableMargin]
+                    )
+                )
+            ),
+        ]
+    )
+)
+
+// -------------------------------------------------------------------------------------------------
+// FriendPanelConfirmButton
+// -------------------------------------------------------------------------------------------------
+private FriendPanelConfirmButton is ConfirmButton
+(
+    ElementName = "ConfirmButton"
+    TextToken = 'BTN_CONFIR'
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+)
+
+// -------------------------------------------------------------------------------------------------
+// FriendPanelCancelButton
+// -------------------------------------------------------------------------------------------------
+private FriendPanelCancelButton is CancelButton
+(
+    ElementName = "CancelButton"
+    TextToken = 'BTN_CANCEL'
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+)
+
+private FriendInviteModalDescriptor is SpecificModaleWindowFrame
+(
+    ContentMagnifiableWidthHeight = [848.0, 520.0]
+    TitleToken = 'T_INVITE'
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/FriendPanelConfirmButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/FriendPanelCancelButton ),
+    ]
+)
+
+private MapOverviewComponentDescriptor is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [455.0, 234.0]
+        MagnifiableOffset = [0.0, 36.0]
+    )
+
+    // HasBackground = true
+    // BackgroundBlockColorToken = "Onglet/Background"
+    // UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ElementName = "MapOverviewTexture"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                PixelWidthHeight = [-12.0, -12.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            TextureFrame   = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+        )
+    ]
+)
+
+OutGameLobbyResources is TUISpecificOutGameLobbyResource
+(
+    PlayerBanner = "OutgameTexture_PlayerBanner"
+    UnknownMapOverview = "OutgameTexture_UnknownMap"
+    LobbyMultiScreenPanel = ~/LobbyMultiPanelWindowFrame
+    LobbySkirmishScreenPanel = ~/LobbySkirmishPanelWindowFrame
+    LobbyAutoMatchScreenPanel = ~/LobbyAutoMatchPanelWindowFrame
+    LobbyChallengeScreenPanel = ~/LobbyChallengePanelWindowFrame
+    LobbyStrategicScreenPanel = ~/LobbyStrategicPanelWindowFrame
+    LobbyDedicatedComponent = ~/DedicatedServerInfos
+    OptionsTabDescriptor = ~/OptionsTabDescriptor
+    OptionsDropdownDescriptor = OptionDropdownDescriptor()
+    OptionsDropdownWithHintDescriptor = OptionDropdownDescriptor( HasHint = true )
+    OptionsWarningDescriptor = ~/OptionsWarningDescriptor
+    MapOverviewComponentDescriptor = ~/MapOverviewComponentDescriptor
+
+    MapSizeTokens =
+    [
+        'MAP_01V01', // Small
+        'MAP_02V02', // Medium
+        'MAP_04V04', // Large
+        'MAP_10V10', // Very large
+    ]
+
+    FriendInviteModalDescriptor = ~/FriendInviteModalDescriptor
+
+    SpaceBetweenSettingsAndPlayerList = 10.0
+    SpaceBetweenSettingsAndOverview = 16.0
+    OverviewWidthHeight = [455, 234]
+
+    TextColorForGrayedModes = "AutoMatchOption/Grayed"
+    TextColorForNonGrayedModes = "AutoMatchOption"
+
+    {}
+)

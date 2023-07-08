@@ -1,0 +1,22 @@
+export ModelFile_Motoguzzi_trans_YUG is 'GameData:Assets\3D\Units\ROU\Vehicule\BMW_R75\Bef_BMW_R75.Ase2NdfBin'
+
+Modele_Motoguzzi_trans_YUG is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Motoguzzi_trans_YUG
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Motoguzzi_trans_YUG_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Vehicule\BMW_R75_MID\Bef_BMW_R75_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Motoguzzi_trans_YUG_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Vehicule\LODS\Bef_BMW_R75_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

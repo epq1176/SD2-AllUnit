@@ -1,0 +1,112 @@
+
+videoSubtitleDico is TVideoSubtitlesDico
+(
+    ShowSubtitles = $/GameplayOption/ShowSubtitles
+    FileName = 'Assets/Videos/Tutorial/VideoSubtitleDico.dic'
+)
+
+VideoSubtitleParagraphStyle is TParagraphStyleRTTI
+(
+    Alignment         = UIText_Center
+    VerticalAlignment = UIText_Bottom
+    InterLine         = 0
+    LineWidth         = 0
+    Balanced          = true
+)
+
+VideoSubtitleDefaultStyle is TTextStyleRTTI
+(
+    Bold             = false
+    Italic           = false
+    SubOrSuperScript = 0
+    FontSize         = 26
+    Offset           = [  0,   0]
+    ColorBottom      = [255, 255, 255, 255]
+    ColorUp          = [255, 255, 255, 255]
+    ColorStroke      = [  0,   0,   0, 255]
+    Stroke           = true
+)
+{template TVideoComponent [
+
+    VideoFile : TFileName,
+    PlayButton
+    MagnifiableWidthHeight : float2 = [0.0, 0.0],
+    RelativeWidthHeight : float2 = [0.0, 0.0],
+    MagnifiableOffset : float2 = [0.0, 0.0],
+
+] is BUCKVideoDescriptor
+(
+    VideoDrawer  = $/UserInterface/UIVideoDrawer
+    Video        = TUIResourceVideo
+    (
+        VideoFile =  <VideoFile>
+        DicoVideo =  ~/DicoVideoOutGame
+    )
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = <MagnifiableWidthHeight>
+        RelativeWidthHeight = <RelativeWidthHeight>
+        MagnifiableOffset = <MagnifiableOffset>
+    )
+    VideoFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.])
+
+    ButtonFrame          = TUIFramePropertyRTTI
+    (
+        AlignementToFather = [.5 , .5 ]
+        AlignementToAnchor = [.5 , .5 ]
+        RelativeWidthHeight= [.25, .20]
+    )
+    UsePlayButton        = <UsePlayButton>
+    TextureDrawer        = $/UserInterface/UITextureDrawer_ColorMultiply
+    PlayTexture          = TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/Tutorial/PLAY.png")
+    PlayTextureHighlight = TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/Tutorial/PLAY_highlight.png")
+    BackgroundTexture    = <UsePlayButton> ? TUIResourceTexture_OutGame(FileName = <BackgroundTexture>) : nil
+)
+
+template TVideoComponentWithSubtitles [
+
+    VideoFile : TFileName,
+    MagnifiableWidthHeight : float2 = [0.0, 0.0],
+    RelativeWidthHeight : float2 = [0.0, 0.0],
+    MagnifiableOffset : float2 = [0.0, 0.0],
+    Subtitles,
+
+] is TBUCKFramedVideoDescriptor
+(
+    VideoDrawer  = $/UserInterface/UIVideoDrawer
+    Video        = TUIResourceVideo
+    (
+        VideoFile =  <VideoFile>
+        DicoVideo =  ~/DicoVideoOutGame
+    )
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = <MagnifiableWidthHeight>
+        RelativeWidthHeight = <RelativeWidthHeight>
+        MagnifiableOffset = <MagnifiableOffset>
+    )
+    VideoFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.])
+    Subtitles =
+    [
+        TVideoSubtitles
+        (
+            AspectRatioVideo = 4. div 3.
+            LineTextWithInPercentScreen = 0.8
+            DicoSubtitles = ~/videoSubtitleDico
+            TypefaceToken = "Titre"
+            //RenderLayer = $/M3D/Scene/Scene_2D_TopInterface/TopRenderLayer_UI
+            DefaultStyle = ~/VideoSubtitleDefaultStyle
+            ParagrapheStyle = ~/VideoSubtitleParagraphStyle
+            //FormatScript = ~/videoFormatScript
+            Synchronization =
+            [
+                TSynchronizationSubtitles
+                (
+                    DicoToken = ~/LocalisationConstantes/dico_tutorial
+                    FileSynchronization = <Subtitles>
+                )
+            ]
+        )
+    ]
+    SceneForSubtitles = $/M3D/Scene/Scene_2D_TopInterface
+) }

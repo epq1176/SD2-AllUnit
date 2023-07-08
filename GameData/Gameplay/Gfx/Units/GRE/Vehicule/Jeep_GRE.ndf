@@ -1,0 +1,22 @@
+export ModelFile_Jeep_GRE is 'GameData:Assets\3D\Units\GRE\Vehicule\Jeep_M2\Jeep_GRE.Ase2NdfBin'
+
+Modele_Jeep_GRE is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Jeep_GRE
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Jeep_GRE_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GRE\Vehicule\Jeep_M2_MID\Jeep_GRE_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Jeep_GRE_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GRE\Vehicule\LODS\Jeep_GRE_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

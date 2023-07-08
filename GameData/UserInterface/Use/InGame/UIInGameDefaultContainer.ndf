@@ -1,0 +1,156 @@
+DistanceBetweenExternalAndInternalBorder is 3
+
+template TContainerDarkStyle
+[
+    ComponentFrame : TUIFramePropertyRTTI,
+    Components : LIST<TBUCKContainerDescriptor> = [],
+    ElementName : string = '',
+    UniqueName : string = '',
+    FitStyle : int = ~/ContainerFitStyle/None,
+    ShowLightTexture : bool = true,
+    HidePointerEvents : bool = true,
+    HasInternalBorders : bool = false,
+    BorderLineColorToken : string = "ContainerDarkStyle/BordureExterne",
+    BackgroundBlockColorToken : string = "SD2_Noir80"
+]
+is BUCKContainerDescriptor
+(
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+
+    ComponentFrame = <ComponentFrame>
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    HasBackground = true
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+
+    HasBorder = true
+    BorderLineColorToken = <BorderLineColorToken>
+    BorderThicknessToken = "1"
+    BordersToDraw = ~/TBorderSide/All
+
+    HidePointerEvents = <HidePointerEvents>
+
+    Components =
+        (<ShowLightTexture> ?
+        [
+            BUCKTextureDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                   RelativeWidthHeight = [0.17, 0.9]
+                )
+
+                TextureToken = "StyleCockpitTexture_Light_BackgroundDarkStyle"
+                TextureFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1, 1]
+                )
+            ),
+        ]
+        :
+        [])
+        +
+        [
+            BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1, 1]
+                    PixelWidthHeight = [-2 * DistanceBetweenExternalAndInternalBorder, -2 * DistanceBetweenExternalAndInternalBorder]
+                    MagnifiableOffset = [0.0, 0.0]
+                    AlignementToFather = [0.5, 0.5]
+                    AlignementToAnchor = [0.5, 0.5]
+                )
+
+                UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                HasBorder = <HasInternalBorders>
+                BorderLineColorToken = <BorderLineColorToken>
+                BorderThicknessToken = "1"
+                BordersToDraw = ~/TBorderSide/All
+
+                Components = <Components>
+            )
+        ]
+)
+
+OmbrePanel is AuraDescriptor
+(
+    TextureDrawer = "ColorMultiply"
+    AuraBorderSize = 12.0
+    VerticalTextureToken = "CommonTexture_Ombre_VerticalTileTexture"
+    HorizontalTextureToken = "CommonTexture_Ombre_HorizontalTileTexture"
+    TopLeftTexture = "CommonTexture_Ombre_CornerTexture_TopLeft"
+    TopRightTexture = "CommonTexture_Ombre_CornerTexture_TopRight"
+    BottomRightTexture = "CommonTexture_Ombre_CornerTexture_BottomRight"
+    BottomLeftTexture = "CommonTexture_Ombre_CornerTexture_BottomLeft"
+)
+
+OmbrePanel_sansTop is AuraDescriptor
+(
+    TextureDrawer = "ColorMultiply"
+    AuraBorderSize = 12.0
+    VerticalTextureToken = "CommonTexture_Ombre_VerticalTileTexture"
+    HorizontalTextureToken = "CommonTexture_Ombre_HorizontalTileTexture"
+    TopLeftTexture = "CommonTexture_transparent"
+    TopRightTexture = "CommonTexture_Ombre_CornerTexture_TopRight"
+    BottomRightTexture = "CommonTexture_Ombre_CornerTexture_BottomRight"
+    BottomLeftTexture = "CommonTexture_Ombre_CornerTexture_BottomLeft"
+)
+
+SmallOmbrePanel is AuraDescriptor
+(
+    TextureDrawer = "ColorMultiply"
+    AuraBorderSize = 4.0
+    VerticalTextureToken = "CommonTexture_Ombre_VerticalTileTexture"
+    HorizontalTextureToken = "CommonTexture_Ombre_HorizontalTileTexture"
+    TopLeftTexture = "CommonTexture_Ombre_CornerTexture_TopLeft"
+    TopRightTexture = "CommonTexture_Ombre_CornerTexture_TopRight"
+    BottomRightTexture = "CommonTexture_Ombre_CornerTexture_BottomRight"
+    BottomLeftTexture = "CommonTexture_Ombre_CornerTexture_BottomLeft"
+)
+
+LigneOmbreHorizontale is BUCKTextureDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1,0]
+        MagnifiableWidthHeight = [0.0, 10.0]
+        AlignementToAnchor = [0.0, 0.0]
+        AlignementToFather = [0.0, 0.0]
+    )
+    TextureToken = 'CommonTexture_Ombre_VerticalTileTexture'
+    Rotation = 180
+)
+
+template PanelRoundedCorner
+[
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI(),
+    Radius : int = 5,
+    HasBackground : bool = false,
+    BackgroundBlockColorToken : string = "",
+    HasBorder : bool = false,
+    BorderLineColorToken :string = "",
+    BorderThicknessToken : string = "",
+    Components = [],
+]
+is BUCKPolygonDescriptor
+(
+    ComponentFrame = <ComponentFrame>
+    PolygonShape = PolygonShapeRoundedContainer
+    (
+        Radius = TRTTILength(Magnifiable = 5)
+        NbOfPoints = 5
+    )
+
+    HasBackground = <HasBackground>
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+
+    HasBorder = <HasBorder>
+    BorderThicknessToken = <BorderThicknessToken>
+    BorderLineColorToken = <BorderLineColorToken>
+
+    Components = <Components>
+)

@@ -1,0 +1,22 @@
+export ModelFile_Mortier_2inch_Gurkhas_UK is 'GameData:Assets\3D\Units\UK\Canon\2_Inch_Mortar\2_Inch_Mortar.Ase2NdfBin'
+
+export Modele_Mortier_2inch_Gurkhas_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Mortier_2inch_Gurkhas_UK
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+export Modele_Mortier_2inch_Gurkhas_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Canon\2_Inch_Mortar_MID\2_Inch_Mortar_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+export Modele_Mortier_2inch_Gurkhas_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Canon\LODS\2_Inch_Mortar_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

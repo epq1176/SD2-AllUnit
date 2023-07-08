@@ -1,0 +1,368 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export Cheated_ScnDefenseModeStrategy is TIAGeneralStrategy
+(
+    StrategyName = "IAScnDef"
+    FirstGenerator = Cheated_ScnDef_Mod_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    IgnorePlayersForCorridorRepartition = true
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    ShouldUseTaggedCorridorsForTouchDown = true
+
+    TransitionList =
+    [
+        Cheated_ScnDef_Mod_Transition_StartToPhaseC,
+        Cheated_ScnDef_Mod_Transition_StartToPhaseB,
+        Cheated_ScnDef_Mod_Transition_StartToPhaseA,
+        Cheated_ScnDef_Mod_Transition_StartToDeploiment,
+        Cheated_ScnDef_Mod_Transition_DeployToPhaseA,
+        Cheated_ScnDef_Mod_Transition_PhaseB,
+        Cheated_ScnDef_Mod_Transition_PhaseC,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_Condition_CommandPhase is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_Condition_PhaseB is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_B'
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_Condition_PhaseC is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_C'
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_Condition_True is TSequenceCondition_True
+(
+
+)
+
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_Transition_StartToPhaseC is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_ScnDef_Mod_Choose_Strategy
+    Condition = Cheated_ScnDef_Mod_Condition_PhaseC
+    Destination = Cheated_ScnDef_Mod_PhaseC_1
+)
+export Cheated_ScnDef_Mod_Transition_StartToPhaseB is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_ScnDef_Mod_Choose_Strategy
+    Condition = Cheated_ScnDef_Mod_Condition_PhaseB
+    Destination = Cheated_ScnDef_Mod_PhaseB_1
+)
+export Cheated_ScnDef_Mod_Transition_StartToPhaseA is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_ScnDef_Mod_Choose_Strategy
+    Condition = Cheated_ScnDef_Mod_Condition_CommandPhase
+    Destination = Cheated_ScnDef_Mod_PhaseA_1
+)
+export Cheated_ScnDef_Mod_Transition_StartToDeploiment is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_ScnDef_Mod_Choose_Strategy
+    Condition = Cheated_ScnDef_Mod_Condition_True
+    Destination = Cheated_ScnDef_Mod_PhaseDeploiement_1
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_Transition_DeployToPhaseA is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_ScnDef_Mod_PhaseDeploiement_1
+    Condition = Cheated_ScnDef_Mod_Condition_CommandPhase
+    Destination = Cheated_ScnDef_Mod_PhaseA_1
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_Transition_PhaseB is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_ScnDef_Mod_PhaseA_1
+    Condition = Cheated_ScnDef_Mod_Condition_PhaseB
+    Destination = Cheated_ScnDef_Mod_PhaseB_1
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_Transition_PhaseC is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_ScnDef_Mod_PhaseB_1
+    Condition = Cheated_ScnDef_Mod_Condition_PhaseC
+    Destination = Cheated_ScnDef_Mod_PhaseC_1
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_Scn_Support_AntiTank,
+        ~/Cheated_Scn_Support_Transports,
+
+        ~/Cheated_Scn_Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_PhaseDeploiement_1 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_Scn_Support_AntiTank,
+        ~/Cheated_Scn_Support_Transports,
+        ~/Cheated_Scn_Supply_Skirmish,
+
+
+        ~/Cheated_ScnDef_Defense_Static_Adaptive,
+        ~/Cheated_ScnDef_Defense_Static_Adaptive,
+
+        ~/Cheated_ScnDef_Defense_Static_AA,
+        ~/Cheated_ScnDef_Static_SuperCommander,
+
+        ~/Cheated_ScnDef_Artillery_TriggerHappy,
+
+        ~/Cheated_ScnDef_Defense_Static_Adaptive,
+        ~/Cheated_ScnDef_Defense_Static_Adaptive,
+
+        ~/Cheated_ScnDef_Defense_Static_Adaptive,
+        ~/Cheated_ScnDef_Defense_Static_Adaptive,
+
+        ~/Cheated_ScnDef_Defense_Static_Tank,    // Mission avec un char lourd en static
+
+    ] + ~/Cheated_ScnDef_Defenses_Airstrike_Arti_Shuffle
+
+    +   ~/Cheated_ScnDef_Scaling_A
+    +   ~/Cheated_ScnDef_Scaling_A
+    +   ~/Cheated_ScnDef_Scaling_A
+    +   ~/Cheated_ScnDef_Scaling_A
+    +   ~/Cheated_ScnDef_Scaling_A
+    +   ~/Cheated_ScnDef_Scaling_A
+    +   ~/Cheated_ScnDef_Scaling_A
+    +   ~/Cheated_ScnDef_Scaling_A
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_PhaseA_1 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_Scn_Support_AntiTank,
+        ~/Cheated_Scn_Support_Transports,
+
+        ~/Cheated_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/Cheated_Scn_Maintain_AirStrike,
+        ~/Cheated_ScnDef_Maintain_Artillery,
+        ~/Cheated_ScnAtk_Maintain_CorridorDefenses,
+        ~/Cheated_ScnAtk_Maintain_DynamicDefenses,
+
+
+        ~/Cheated_ScnDef_Defense_Static_Adaptive,
+        ~/Cheated_ScnDef_Defense_Static_Adaptive,
+
+        ~/Cheated_Scn_Airstrike_Assault,
+
+        ~/Cheated_ScnDef_Artillery_TriggerHappy,
+
+        ~/Cheated_ScnDef_Defense_Static_Adaptive,
+        ~/Cheated_ScnDef_Defense_Static_Adaptive,
+
+    ] + ~/Cheated_ScnDef_Defenses_Airstrike_Arti_Shuffle
+
+    +   ~/Cheated_ScnDef_Scaling_A
+    +   ~/Cheated_ScnDef_Scaling_A
+    +   ~/Cheated_ScnDef_Scaling_A
+    +   ~/Cheated_ScnDef_Scaling_A
+    +   ~/Cheated_ScnDef_Scaling_A
+    +   ~/Cheated_ScnDef_Scaling_A
+    +   ~/Cheated_ScnDef_Scaling_A
+    +   ~/Cheated_ScnDef_Scaling_A
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_PhaseB_1 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 2
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_Scn_Support_AntiTank,
+        ~/Cheated_Scn_Support_Transports,
+
+        ~/Cheated_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/Cheated_Scn_Maintain_AirStrike,
+        ~/Cheated_ScnDef_Maintain_Artillery,
+        ~/Cheated_ScnAtk_Maintain_CorridorDefenses,
+        ~/Cheated_ScnAtk_Maintain_DynamicDefenses,
+
+
+        ~/Cheated_ScnDef_ZoneAttack_Main,
+        ~/Cheated_ScnDef_Artillery_Support,
+
+        ~/Cheated_ScnDef_Defense_Static_Adaptive,
+        ~/Cheated_ScnDef_Defense_Static_Adaptive,
+
+        ~/Cheated_ScnDef_Artillery_Expensive,
+
+        ~/Cheated_Scn_Airstrike_Offense,
+
+        ~/Cheated_ScnDef_Defense_Static_Adaptive,
+        ~/Cheated_ScnDef_Defense_Static_Adaptive,
+
+    ] + ~/Cheated_ScnDef_Defenses_Airstrike_Arti_Shuffle
+
+    +   ~/Cheated_ScnDef_Scaling_B
+    +   ~/Cheated_ScnDef_Scaling_B
+    +   ~/Cheated_ScnDef_Scaling_B
+    +   ~/Cheated_ScnDef_Scaling_B
+    +   ~/Cheated_ScnDef_Scaling_B
+    +   ~/Cheated_ScnDef_Scaling_B
+    +   ~/Cheated_ScnDef_Scaling_B
+    +   ~/Cheated_ScnDef_Scaling_B
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Mod_PhaseC_1 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 1
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_Scn_Support_AntiTank,
+        ~/Cheated_Scn_Support_Transports,
+
+        ~/Cheated_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/Cheated_Scn_Maintain_AirStrike,
+        ~/Cheated_ScnDef_Maintain_Artillery,
+        ~/Cheated_ScnAtk_Maintain_CorridorDefenses,
+        ~/Cheated_ScnAtk_Maintain_DynamicDefenses,
+
+
+        ~/Cheated_ScnDef_ZoneAttack_Main,
+        ~/Cheated_ScnDef_Artillery_Support,
+
+        ~/Cheated_ScnDef_ZoneAttack_Adaptive,
+
+        ~/Cheated_Scn_Airstrike_Assault,
+        ~/Cheated_ScnDef_Artillery_TriggerHappy,
+
+        ~/Cheated_ScnDef_Defense_Static_Adaptive,
+        ~/Cheated_ScnAtk_Attack_MBT_Support,
+        ~/Cheated_ScnDef_ZoneAttack_Adaptive,
+
+        ~/Cheated_Scn_Supply_Skirmish_Allied,
+
+    ] + ~/Cheated_ScnDef_Defenses_Airstrike_Arti_Shuffle
+
+    +   ~/Cheated_ScnDef_Scaling_C
+    +   ~/Cheated_ScnDef_Scaling_C
+    +   ~/Cheated_ScnDef_Scaling_C
+    +   ~/Cheated_ScnDef_Scaling_C
+    +   ~/Cheated_ScnDef_Scaling_C
+    +   ~/Cheated_ScnDef_Scaling_C
+    +   ~/Cheated_ScnDef_Scaling_C
+    +   ~/Cheated_ScnDef_Scaling_C
+)
+
+Cheated_ScnDef_Defenses_Airstrike_Arti_Shuffle is
+[
+    ~/Cheated_Scn_Airstrike_Defense,
+    ~/Cheated_ScnDef_Artillery_Expensive,
+    ~/Cheated_ScnDef_Defense_Static_Adaptive,
+    ~/Cheated_Scn_Airstrike_Assault,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy,
+    ~/Cheated_ScnDef_Defense_Static_AA,
+    ~/Cheated_Scn_Airstrike_Offense,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_1for4Corridors,
+    ~/Cheated_ScnDef_Defense_Static_Adaptive,
+    ~/Cheated_Scn_Maintain_AirStrike,
+    ~/Cheated_ScnDef_Maintain_Artillery,
+]
+
+Cheated_ScnDef_Scaling_A is
+[
+    ~/Cheated_ScnDef_ZoneAttack_Main_Autogen,
+    ~/Cheated_ScnDef_Artillery_Expensive_Autogen,
+    ~/Cheated_ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_Autogen,
+    ~/Cheated_ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/Cheated_ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_Autogen,
+
+    ~/Cheated_ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/Cheated_ScnDef_Artillery_Expensive_Autogen,
+    ~/Cheated_ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_Autogen,
+    ~/Cheated_ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/Cheated_ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_Autogen,
+]
+
+Cheated_ScnDef_Scaling_B is
+[
+    ~/Cheated_ScnDef_ZoneAttack_Main_Autogen,
+    ~/Cheated_ScnDef_Artillery_Expensive_Autogen,
+    ~/Cheated_ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/Cheated_ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_Autogen,
+    ~/Cheated_ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_Autogen,
+
+    ~/Cheated_ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/Cheated_ScnDef_Artillery_Expensive_Autogen,
+    ~/Cheated_ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_Autogen,
+    ~/Cheated_ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/Cheated_ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_Autogen,
+]
+
+Cheated_ScnDef_Scaling_C is
+[
+    ~/Cheated_ScnDef_ZoneAttack_Main_Autogen,
+    ~/Cheated_ScnDef_Artillery_Expensive_Autogen,
+    ~/Cheated_ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_Autogen,
+    ~/Cheated_ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/Cheated_ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_Autogen,
+
+    ~/Cheated_ScnDef_ZoneAttack_Main_Autogen,
+    ~/Cheated_ScnDef_Artillery_Expensive_Autogen,
+    ~/Cheated_ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_Autogen,
+    ~/Cheated_ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/Cheated_ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/Cheated_ScnDef_Artillery_TriggerHappy_Autogen,
+]

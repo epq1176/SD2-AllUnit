@@ -1,0 +1,22 @@
+export ModelFile_ISU_122_SOV is 'GameData:Assets\3D\Units\SOV\Char\ISU_122_SOV\ISU_122_SOV.Ase2NdfBin'
+
+Modele_ISU_122_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_ISU_122_SOV
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_ISU_122_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\ISU_122_SOV_MID\ISU_122_SOV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_ISU_122_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\LODS\ISU_122_SOV_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

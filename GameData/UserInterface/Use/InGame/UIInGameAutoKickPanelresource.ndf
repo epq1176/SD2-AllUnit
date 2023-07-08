@@ -1,0 +1,309 @@
+
+InGameAutoKickPanelresource is TUISpecificInGameAutoKickPanelResource
+(
+    MainComponent = ~/AutoKickMainComponent
+    OnePlayerLineComponent = ~/AutoKickOnePlayerLineComponent
+)
+
+private AutoKickMainPanelWidth is 600.0
+private AutoKickTitleAndPlayerListWidth is AutoKickMainPanelWidth - 2 * AutoKickLeftRightBorderWidth - AutoKickTextureWidth - AutoKickDistanceBetweenTextureAndContent
+private AutoKickLeftRightBorderWidth is ~/DistanceBetweenExternalAndInternalBorder + 20.0
+private AutoKickOnePlayerLineHeight is 30.0
+private AutoKickDistanceBetweenTextureAndContent is 20.0
+private AutoKickTextureWidth is 52.0
+private AutoKickTextureHeight is 48.0
+
+private AutoKick_Deco is TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/AutoKick/deco.png' )
+
+private AutoKickMainComponent is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableOffset = [0.0, 500.0]
+        MagnifiableWidthHeight = [AutoKickMainPanelWidth, 0.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+    Elements =
+    [
+        //Separateur du haut
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/AutoKickTopBottomBorder
+        ),
+
+        //Contenu
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableOffset = [0.0, 0.0]
+                    MagnifiableWidthHeight = [0.0, 0.0]
+                    RelativeWidthHeight = [0.0, 0.0]
+                )
+
+                Axis = ~/ListAxis/Horizontal
+                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+                InterItemMargin = TRTTILength( Magnifiable = 0.0 )
+
+                Elements =
+                [
+                    //Separator
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = ~/AutoKickRightLeftBorder
+                    ),
+
+                    //Texture deconnexion
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKTextureDescriptor
+                        (
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                               MagnifiableWidthHeight = [AutoKickTextureWidth, AutoKickTextureHeight]
+                                AlignementToFather = [0.0, 0.5]
+                                AlignementToAnchor = [0.0, 0.5]
+                            )
+
+                            TextureToken = "AutoKick_Deco"
+                            TextureFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [1, 1]
+                            )
+                        )
+                    ),
+
+                    //Separator
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = ~/AutoKickSeparatorBetweenTextureAndContent
+                    ),
+
+                    //Title + player list
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = ~/AutoKickContent
+                    ),
+
+                    //Separator
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = ~/AutoKickRightLeftBorder
+                    ),
+                ]
+            )
+        ),
+
+        //Separateur du bas
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/AutoKickTopBottomBorder
+        ),
+    ]
+
+    BackgroundComponents = [
+        //Juste pour le style visuel !
+        TContainerDarkStyle
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            HidePointerEvents = false
+        ),
+    ]
+)
+
+private AutoKickTopBottomBorder is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [1.0, ~/DistanceBetweenExternalAndInternalBorder + 10.0]
+    )
+)
+
+private AutoKickRightLeftBorder is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [AutoKickLeftRightBorderWidth, 1.0]
+    )
+)
+
+
+private AutoKickSeparatorBetweenTextureAndContent is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [AutoKickDistanceBetweenTextureAndContent, 1.0]
+    )
+)
+
+private AutoKickContent is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [AutoKickTitleAndPlayerListWidth, 0.0]
+        RelativeWidthHeight = [0.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+    Elements =
+    [
+        //Title
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                    MagnifiableWidthHeight = [0.0, 0.0]
+                    MagnifiableOffset = [0.0, 0.0]
+                    AlignementToFather = [0.5, 0.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                )
+
+                ParagraphStyle = ~/AutoKickParagraphStyleLeftAligned
+                TextStyle = "AutoKick"
+
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TypefaceToken = "Main"
+                BigLineAction = ~/BigLineAction/MultiLine
+
+                UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                TextColor = "AutoKickPanel/Title"
+                TextSize = "AutoKickPanel/Title"
+
+                TextToken = "CON_PROB"
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+            )
+        ),
+
+        //Player list
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ElementName = "PlayerList"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableOffset = [0.0, 0.0]
+                    MagnifiableWidthHeight = [0.0, 0.0]
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                Axis = ~/ListAxis/Vertical
+                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+                InterItemMargin = TRTTILength( Magnifiable = 0.0 )
+
+                Elements =
+                [
+                ]
+            )
+        ),
+    ]
+)
+
+private AutoKickOnePlayerLineComponent is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, AutoKickOnePlayerLineHeight]
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [0.0, 0.0]
+    )
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = "PlayerName"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.7, 1.0]
+                MagnifiableWidthHeight = [0.0, 0.0]
+                MagnifiableOffset = [0.0, 0.0]
+                AlignementToFather = [0.0, 0.0]
+                AlignementToAnchor = [0.0, 0.0]
+            )
+
+            ParagraphStyle = ~/AutoKickParagraphStyleLeftAligned
+            TextStyle = "AutoKick"
+
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+            VerticalFitStyle = ~/FitStyle/UserDefined
+
+            TypefaceToken = "Stylized"
+            BigLineAction = ~/BigLineAction/CutByDots
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextColor = "AutoKickPanel/PlayerName"
+            TextSize = "AutoKickPanel/PlayerName"
+
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+        ),
+
+        BUCKTextDescriptor
+        (
+            ElementName = "TimeBeforeKick"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.3, 1.0]
+                MagnifiableWidthHeight = [0.0, 0.0]
+                MagnifiableOffset = [0.0, 0.0]
+                RelativeOffset = [0.7, 0.0]
+                AlignementToFather = [0.0, 0.0]
+                AlignementToAnchor = [0.0, 0.0]
+            )
+
+            ParagraphStyle = ~/AutoKickParagraphStyleRightAligned
+            TextStyle = "AutoKick"
+
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+            VerticalFitStyle = ~/FitStyle/UserDefined
+
+            TypefaceToken = "Main"
+            BigLineAction = ~/BigLineAction/MultiLine
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextColor = "AutoKickPanel/Time"
+            TextSize = "AutoKickPanel/Time"
+
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+        ),
+    ]
+)
+
+private AutoKickParagraphStyleLeftAligned is TParagraphStyleRTTI
+(
+    Alignment = UIText_Left
+    VerticalAlignment = UIText_VerticalCenter
+    InterLine = 0
+)
+
+private AutoKickParagraphStyleRightAligned is TParagraphStyleRTTI
+(
+    Alignment = UIText_Right
+    VerticalAlignment = UIText_VerticalCenter
+    InterLine = 0
+)

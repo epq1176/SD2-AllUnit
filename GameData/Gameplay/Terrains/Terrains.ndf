@@ -1,0 +1,1279 @@
+export Batiment is TGameplayTerrain
+(
+    BloqueAmphibie = true
+    BloqueAtterrissage = true
+    BloqueFoW = false
+    BloqueInfanterie = true
+    BloqueVehicule = true
+    BloqueVision = true
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 1
+    DamageModifierHEInfantry = 1
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[192, 61, 0, 255]
+    DissimulationModifierGroundAir = 40 //40
+    DissimulationModifierGroundGround = 40 //40
+    Height = 8
+    ImpactVision1 = false
+    InflammabilityProbability = 0.4
+    LocalizationToken = 'TER_BUILD'
+    Name = 'Batiment'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = true
+    ObstructInsideVehicleSight = true
+    SpeedModifierAllTerrainWheel = 0
+    SpeedModifierHalfTrack = 0
+    SpeedModifierInfantry = 1
+    SpeedModifierTrack = 0
+    SpeedModifierWheel = 0
+    StealthBonus = 9
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = true
+    SpeedModifierBoats = 0
+    SpeedModifierInfantryAmphibious = 1
+    BloqueBateau = true
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/Batiment
+    WorldLayerActiveMask = 255
+)
+export Batiment2 is TGameplayTerrain
+(
+    BloqueAmphibie = true
+    BloqueAtterrissage = true
+    BloqueFoW = false
+    BloqueInfanterie = false
+    BloqueVehicule = true
+    BloqueVision = false
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 1
+    DamageModifierHEInfantry = 1
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[192, 61, 0, 255]
+    DissimulationModifierGroundAir = 0
+    DissimulationModifierGroundGround = 0
+    Height = 3
+    ImpactVision1 = false
+    InflammabilityProbability = 0.4
+    LocalizationToken = 'TER_BUILD2'
+    Name = 'Batiment2'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 0
+    SpeedModifierHalfTrack = 0
+    SpeedModifierInfantry = 1
+    SpeedModifierTrack = 0
+    SpeedModifierWheel = 0
+    StealthBonus = 9
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 0
+    SpeedModifierInfantryAmphibious = 1
+    BloqueBateau = false
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/Batiment2
+    WorldLayerActiveMask = 255
+)
+export MaraisMine is TGameplayTerrain
+(
+    BloqueAmphibie = false
+    BloqueAtterrissage = true
+    BloqueFoW = false
+    BloqueInfanterie = false
+    BloqueVehicule = false
+    BloqueVision = false
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 1
+    DamageModifierHEInfantry = 1
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[192, 61, 0, 255]
+    DissimulationModifierGroundAir = 1
+    DissimulationModifierGroundGround = 1
+    Height = 12
+    ImpactVision1 = false
+    InflammabilityProbability = 0
+    LocalizationToken = 'TER_MNMRSH'
+    Name = 'MaraisMine'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 1
+    SpeedModifierHalfTrack = 1
+    SpeedModifierInfantry = 1
+    SpeedModifierTrack = 1
+    SpeedModifierWheel = 1
+    StealthBonus = 1
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 0
+    SpeedModifierInfantryAmphibious = 1
+    BloqueBateau = false
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/MaraisMine
+    WorldLayerActiveMask = 255
+)
+export FosseAntichar is TGameplayTerrain
+(
+    BloqueAmphibie = true
+    BloqueAtterrissage = true
+    BloqueFoW = false
+    BloqueInfanterie = false
+    BloqueVehicule = true
+    BloqueVision = false
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 0.3
+    DamageModifierHEInfantry = 0.3
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[192, 61, 0, 255]
+    DissimulationModifierGroundAir = 6
+    DissimulationModifierGroundGround = 10
+    Height = 20
+    ImpactVision1 = false
+    InflammabilityProbability = 0.2
+    LocalizationToken = 'TER_ATTRCH'
+    Name = 'FosseAntichar'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 0
+    SpeedModifierHalfTrack = 0
+    SpeedModifierInfantry = 0.5
+    SpeedModifierTrack = 0
+    SpeedModifierWheel = 0
+    StealthBonus = 7
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 0
+    SpeedModifierInfantryAmphibious = 0.5
+    BloqueBateau = false
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/FosseAntichar
+    WorldLayerActiveMask = 255
+)
+export Tranchee is TGameplayTerrain
+(
+    BloqueAmphibie = false
+    BloqueAtterrissage = true
+    BloqueFoW = false
+    BloqueInfanterie = false
+    BloqueVehicule = false
+    BloqueVision = false
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 0.3
+    DamageModifierHEInfantry = 0.1
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[192, 61, 0, 255]
+    DissimulationModifierGroundAir = 1
+    DissimulationModifierGroundGround = 1
+    Height = 1
+    ImpactVision1 = false
+    InflammabilityProbability = 0
+    LocalizationToken = 'TER_TRENCH'
+    Name = 'Trench'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 0.9
+    SpeedModifierHalfTrack = 0.9
+    SpeedModifierInfantry = 1
+    SpeedModifierTrack = 0.9
+    SpeedModifierWheel = 0.9
+    StealthBonus = 9
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 0
+    SpeedModifierInfantryAmphibious = 1
+    BloqueBateau = true
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/Tranchee
+    WorldLayerActiveMask = 255
+)
+export ChampDeMineAP is TGameplayTerrain
+(
+    BloqueAmphibie = false
+    BloqueAtterrissage = true
+    BloqueFoW = false
+    BloqueInfanterie = false
+    BloqueVehicule = false
+    BloqueVision = false
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 1
+    DamageModifierHEInfantry = 1
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[1, 174, 243, 255]
+    DissimulationModifierGroundAir = 0
+    DissimulationModifierGroundGround = 0
+    Height = 5
+    ImpactVision1 = false
+    InflammabilityProbability = 0
+    LocalizationToken = 'TER_APMFLD'
+    Name = 'BocageMoyen'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 1
+    SpeedModifierHalfTrack = 1
+    SpeedModifierInfantry = 0.5
+    SpeedModifierTrack = 1
+    SpeedModifierWheel = 1
+    StealthBonus = 1
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 1
+    SpeedModifierInfantryAmphibious = 0.5
+    BloqueBateau = true
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/BocageMoyen
+    WorldLayerActiveMask = 255
+)
+export ChampDeMineAT is TGameplayTerrain
+(
+    BloqueAmphibie = false
+    BloqueAtterrissage = true
+    BloqueFoW = false
+    BloqueInfanterie = false
+    BloqueVehicule = false
+    BloqueVision = false
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 1
+    DamageModifierHEInfantry = 1
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[0, 0, 0, 255]
+    DissimulationModifierGroundAir = 0
+    DissimulationModifierGroundGround = 0
+    Height = 8
+    ImpactVision1 = false
+    InflammabilityProbability = 0
+    LocalizationToken = 'TER_ATMFLD'
+    Name = 'TerrainNidMitrailleuse'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 1
+    SpeedModifierHalfTrack = 1
+    SpeedModifierInfantry = 1
+    SpeedModifierTrack = 0.5
+    SpeedModifierWheel = 1
+    StealthBonus = 1
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 1
+    SpeedModifierInfantryAmphibious = 1
+    BloqueBateau = true
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/ChampDeMineAT
+    WorldLayerActiveMask = 255
+)
+export Barbeles is TGameplayTerrain
+(
+    BloqueAmphibie = false
+    BloqueAtterrissage = false
+    BloqueFoW = false
+    BloqueInfanterie = true
+    BloqueVehicule = false
+    BloqueVision = false
+    CriticalEffectProbability = 0.6
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 1.5
+    DamageModifierHEInfantry = 1.5
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[0, 0, 0, 255]
+    DissimulationModifierGroundAir = 0
+    DissimulationModifierGroundGround = 0
+    Height = 8
+    ImpactVision1 = false
+    InflammabilityProbability = 0
+    LocalizationToken = 'TER_BWIRE'
+    Name = 'TerrainBarbeles'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 0.25
+    SpeedModifierHalfTrack = 0.25
+    SpeedModifierInfantry = 0.25
+    SpeedModifierTrack = 0.25
+    SpeedModifierWheel = 0.25
+    StealthBonus = 1
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 1
+    SpeedModifierInfantryAmphibious = 0.25
+    BloqueBateau = true
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/Barbeles
+    WorldLayerActiveMask = 255
+)
+export NidMitrailleuse is TGameplayTerrain
+(
+    BloqueAmphibie = true
+    BloqueAtterrissage = true
+    BloqueFoW = false
+    BloqueInfanterie = true
+    BloqueVehicule = true
+    BloqueVision = false
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 0.8
+    DamageModifierHEInfantry = 0.5
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[0, 0, 0, 255]
+    DissimulationModifierGroundAir = 1
+    DissimulationModifierGroundGround = 1
+    Height = 1
+    ImpactVision1 = false
+    InflammabilityProbability = 0
+    LocalizationToken = 'TER_MGNEST'
+    Name = 'GunnerNest'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 1
+    SpeedModifierHalfTrack = 1
+    SpeedModifierInfantry = 1
+    SpeedModifierTrack = 1
+    SpeedModifierWheel = 1
+    StealthBonus = 7
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = true
+    SpeedModifierBoats = 0
+    SpeedModifierInfantryAmphibious = 1
+    BloqueBateau = true
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/NidMitrailleuse
+    WorldLayerActiveMask = 255
+)
+export Bloqueur0 is TGameplayTerrain
+(
+    BloqueAmphibie = true
+    BloqueAtterrissage = true
+    BloqueFoW = false
+    BloqueInfanterie = true
+    BloqueVehicule = true
+    BloqueVision = false
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 1
+    DamageModifierHEInfantry = 1
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[0, 0, 0, 255]
+    DissimulationModifierGroundAir = 0
+    DissimulationModifierGroundGround = 0
+    Height = 0
+    ImpactVision1 = false
+    InflammabilityProbability = 0
+    LocalizationToken = 'TER_BLQ0'
+    Name = 'Bloqueur0'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = true
+    ObstructInsideVehicleSight = true
+    SpeedModifierAllTerrainWheel = 1
+    SpeedModifierHalfTrack = 1
+    SpeedModifierInfantry = 1
+    SpeedModifierTrack = 1
+    SpeedModifierWheel = 1
+    StealthBonus = 1
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = true
+    SpeedModifierBoats = 0.3
+    SpeedModifierInfantryAmphibious = 1
+    BloqueBateau = true
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/Bloqueur0
+    WorldLayerActiveMask = 3
+)
+export Bloqueur1 is TGameplayTerrain
+(
+    BloqueAmphibie = true
+    BloqueAtterrissage = true
+    BloqueFoW = false
+    BloqueInfanterie = true
+    BloqueVehicule = true
+    BloqueVision = false
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 1
+    DamageModifierHEInfantry = 1
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[0, 0, 0, 255]
+    DissimulationModifierGroundAir = 0
+    DissimulationModifierGroundGround = 0
+    Height = 0
+    ImpactVision1 = true
+    InflammabilityProbability = 0
+    LocalizationToken = 'TER_BLQ1'
+    Name = 'Bloqueur1'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 1
+    SpeedModifierHalfTrack = 1
+    SpeedModifierInfantry = 1
+    SpeedModifierTrack = 1
+    SpeedModifierWheel = 1
+    StealthBonus = 1
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = true
+    SpeedModifierBoats = 0.3
+    SpeedModifierInfantryAmphibious = 1
+    BloqueBateau = false
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/Bloqueur1
+    WorldLayerActiveMask = 4
+)
+export BocageLeger is TGameplayTerrain
+(
+    BloqueAmphibie = false
+    BloqueAtterrissage = true
+    BloqueFoW = false
+    BloqueInfanterie = false
+    BloqueVehicule = false
+    BloqueVision = false
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 0.9
+    DamageModifierHEInfantry = 0.9
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[0, 255, 255, 255]
+    DissimulationModifierGroundAir = 0
+    DissimulationModifierGroundGround = 0
+    Height = 2.5
+    ImpactVision1 = true
+    InflammabilityProbability = 0.4
+    LocalizationToken = 'TER_HEDG_L'
+    Name = 'BocageLeger'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 1
+    SpeedModifierHalfTrack = 1
+    SpeedModifierInfantry = 1
+    SpeedModifierTrack = 1
+    SpeedModifierWheel = 1
+    StealthBonus = 4
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 0
+    SpeedModifierInfantryAmphibious = 1
+    BloqueBateau = false
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/BocageLeger
+    WorldLayerActiveMask = 255
+)
+export BocageLourd is TGameplayTerrain
+(
+    BloqueAmphibie = true
+    BloqueAtterrissage = true
+    BloqueFoW = false
+    BloqueInfanterie = false
+    BloqueVehicule = true
+    BloqueVision = true
+    CriticalEffectProbability = 0.05
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 0.8
+    DamageModifierHEInfantry = 0.8
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[0, 0, 245, 255]
+    DissimulationModifierGroundAir = 10
+    DissimulationModifierGroundGround = 15
+    Height = 13
+    ImpactVision1 = false
+    InflammabilityProbability = 0.8
+    LocalizationToken = 'TER_HEDG_H'
+    Name = 'BocageLourd'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 0
+    SpeedModifierHalfTrack = 0
+    SpeedModifierInfantry = 0.7
+    SpeedModifierTrack = 0.15
+    SpeedModifierWheel = 0.1
+    StealthBonus = 4
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 0
+    SpeedModifierInfantryAmphibious = 0.7
+    BloqueBateau = false
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/BocageLourd
+    WorldLayerActiveMask = 255
+)
+export Marais is TGameplayTerrain
+(
+    BloqueAmphibie = true
+    BloqueAtterrissage = true
+    BloqueFoW = false
+    BloqueInfanterie = true
+    BloqueVehicule = true
+    BloqueVision = false
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 1
+    DamageModifierHEInfantry = 1
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[16, 228, 228, 155]
+    DissimulationModifierGroundAir = 0
+    DissimulationModifierGroundGround = 0
+    Height = 0
+    ImpactVision1 = false
+    InflammabilityProbability = 0
+    LocalizationToken = 'TER_SWAMP'
+    Name = 'Marais'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 0.7
+    SpeedModifierHalfTrack = 0.7
+    SpeedModifierInfantry = 0.7
+    SpeedModifierTrack = 0.7
+    SpeedModifierWheel = 0.7
+    StealthBonus = 1.5 //4
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 0.3
+    SpeedModifierInfantryAmphibious = 0.7
+    BloqueBateau = false
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/Marais
+    WorldLayerActiveMask = 3
+)
+export ChampCereales is TGameplayTerrain
+(
+    BloqueAmphibie = false
+    BloqueAtterrissage = false
+    BloqueFoW = false
+    BloqueInfanterie = false
+    BloqueVehicule = false
+    BloqueVision = false
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 1
+    DamageModifierHEInfantry = 1
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[255, 255, 25, 255]
+    DissimulationModifierGroundAir = 0
+    DissimulationModifierGroundGround = 0
+    Height = 0
+    ImpactVision1 = false
+    InflammabilityProbability = 0.1
+    LocalizationToken = 'TER_CEREAL'
+    Name = 'ChampCereales'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 0.8
+    SpeedModifierHalfTrack = 0.8
+    SpeedModifierInfantry = 1
+    SpeedModifierTrack = 0.9
+    SpeedModifierWheel = 0.7
+    StealthBonus = 1
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 0
+    SpeedModifierInfantryAmphibious = 1
+    BloqueBateau = false
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/ChampCereales
+    WorldLayerActiveMask = 255
+)
+export MineAlliance0 is TGameplayTerrain
+(
+    BloqueAmphibie = false
+    BloqueAtterrissage = false
+    BloqueFoW = false
+    BloqueInfanterie = false
+    BloqueVehicule = false
+    BloqueVision = false
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 1
+    DamageModifierHEInfantry = 1
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[118, 37, 37, 255]
+    DissimulationModifierGroundAir = 0
+    DissimulationModifierGroundGround = 0
+    Height = 0
+    ImpactVision1 = false
+    InflammabilityProbability = 0.1
+    LocalizationToken = 'TER_MINE0'
+    Name = 'MineAlliance0'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 1
+    SpeedModifierHalfTrack = 1
+    SpeedModifierInfantry = 1
+    SpeedModifierTrack = 1
+    SpeedModifierWheel = 1
+    StealthBonus = 1
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 0
+    SpeedModifierInfantryAmphibious = 1
+    BloqueBateau = false
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/ChampCultures
+    WorldLayerActiveMask = 255
+)
+export MineAlliance1 is TGameplayTerrain
+(
+    BloqueAmphibie = false
+    BloqueAtterrissage = false
+    BloqueFoW = false
+    BloqueInfanterie = false
+    BloqueVehicule = false
+    BloqueVision = false
+    CriticalEffectProbability = 0.01
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 1
+    DamageModifierHEInfantry = 1
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[118, 118, 118, 255]
+    DissimulationModifierGroundAir = 3.5
+    DissimulationModifierGroundGround = 2.5
+    Height = 8
+    ImpactVision1 = false
+    InflammabilityProbability = 0.05
+    LocalizationToken = 'TER_MINE1'
+    Name = 'MineAlliance1'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 0.8
+    SpeedModifierHalfTrack = 0.8
+    SpeedModifierInfantry = 1
+    SpeedModifierTrack = 0.9
+    SpeedModifierWheel = 0.7
+    StealthBonus = 1.25
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 0
+    SpeedModifierInfantryAmphibious = 1
+    BloqueBateau = false
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/ChampFriche
+    WorldLayerActiveMask = 255
+)
+export DefaultTerrain is TGameplayTerrain
+(
+    BloqueAmphibie = false
+    BloqueAtterrissage = false
+    BloqueFoW = false
+    BloqueInfanterie = false
+    BloqueVehicule = false
+    BloqueVision = false
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 1
+    DamageModifierHEInfantry = 1
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[0, 0, 0, 255]
+    DissimulationModifierGroundAir = 0
+    DissimulationModifierGroundGround = 0
+    Height = 0
+    ImpactVision1 = false
+    InflammabilityProbability = 0
+    LocalizationToken = 'TER_DEF'
+    Name = 'DefaultTerrain'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 1
+    SpeedModifierHalfTrack = 1
+    SpeedModifierInfantry = 1
+    SpeedModifierTrack = 1
+    SpeedModifierWheel = 1
+    StealthBonus = 1
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 0
+    SpeedModifierInfantryAmphibious = 1
+    BloqueBateau = false
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/Default
+    WorldLayerActiveMask = 255
+)
+export Eau is TGameplayTerrain
+(
+    BloqueAmphibie = false
+    BloqueAtterrissage = true
+    BloqueFoW = false
+    BloqueInfanterie = true
+    BloqueVehicule = true
+    BloqueVision = false
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 1
+    DamageModifierHEInfantry = 1
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[16, 228, 228, 255]
+    DissimulationModifierGroundAir = 0
+    DissimulationModifierGroundGround = 0
+    Height = 0
+    ImpactVision1 = false
+    InflammabilityProbability = 0
+    LocalizationToken = 'TER_WATE'
+    Name = 'Eau'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 1
+    SpeedModifierHalfTrack = 1
+    SpeedModifierInfantry = 0.8
+    SpeedModifierTrack = 1
+    SpeedModifierWheel = 1
+    StealthBonus = 1
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 0.3
+    SpeedModifierInfantryAmphibious = 1
+    BloqueBateau = false
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/Eau
+    WorldLayerActiveMask = 3
+)
+export ForetDense is TGameplayTerrain
+(
+    BloqueAmphibie = true
+    BloqueAtterrissage = true
+    BloqueFoW = false
+    BloqueInfanterie = false
+    BloqueVehicule = true
+    BloqueVision = true
+    CriticalEffectProbability = 0.05
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 0.5 // 0.8
+    DamageModifierHEInfantry = 0.8
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[2, 106, 2, 255]
+    DissimulationModifierGroundAir = 20
+    DissimulationModifierGroundGround = 24 //20
+    Height = 11 //13
+    ImpactVision1 = false
+    InflammabilityProbability = 0.8
+    LocalizationToken = 'TER_FOR_H'
+    Name = 'ForetDense'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 0
+    SpeedModifierHalfTrack = 0
+    SpeedModifierInfantry = 1
+    SpeedModifierTrack = 0
+    SpeedModifierWheel = 0
+    StealthBonus = 2.5 //6
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 0
+    SpeedModifierInfantryAmphibious = 1
+    BloqueBateau = false
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/ForetDense
+    WorldLayerActiveMask = 255
+)
+export ForetLegere is TGameplayTerrain
+(
+    BloqueAmphibie = false
+    BloqueAtterrissage = true
+    BloqueFoW = false
+    BloqueInfanterie = false
+    BloqueVehicule = false
+    BloqueVision = false
+    CriticalEffectProbability = 0.025
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 0.8 //0.9
+    DamageModifierHEInfantry = 0.8 //0.9
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[70, 252, 70, 255]
+    DissimulationModifierGroundAir = 11
+    DissimulationModifierGroundGround = 11 //15
+    Height = 9 //10
+    ImpactVision1 = true
+    InflammabilityProbability = 0.6
+    LocalizationToken = 'TER_FOR_L'
+    Name = 'ForetLegere'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 0.5 //0.5
+    SpeedModifierHalfTrack = 0.8 //0.5
+    SpeedModifierInfantry = 1//1
+    SpeedModifierTrack = 0.8 //0.66
+    SpeedModifierWheel = 0.5 //0.33
+    StealthBonus = 1.5 //4
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 0
+    SpeedModifierInfantryAmphibious = 1 //1
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/ForetLegere
+    WorldLayerActiveMask = 255
+)
+export Urbain is TGameplayTerrain
+(
+    BloqueAmphibie = false
+    BloqueAtterrissage = true
+    BloqueFoW = false
+    BloqueInfanterie = false
+    BloqueVehicule = false
+    BloqueVision = false
+    CriticalEffectProbability = 0.05
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 0.8
+    DamageModifierHEInfantry = 0.8
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[200, 170, 170, 255]
+    DissimulationModifierGroundAir = 40 //20
+    DissimulationModifierGroundGround = 40 //20
+    Height = 4//8
+    ImpactVision1 = false
+    InflammabilityProbability = 0.4
+    LocalizationToken = 'TER_URBN'
+    Name = 'Urbain'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 1
+    SpeedModifierHalfTrack = 1
+    SpeedModifierInfantry = 1
+    SpeedModifierTrack = 1
+    SpeedModifierWheel = 1
+    StealthBonus = 4 //7
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 0
+    SpeedModifierInfantryAmphibious = 1
+    BloqueBateau = false
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/Urbain
+    WorldLayerActiveMask = 255
+)
+export Littoral is TGameplayTerrain
+(
+    BloqueAmphibie = false
+    BloqueAtterrissage = false
+    BloqueFoW = false
+    BloqueInfanterie = false
+    BloqueVehicule = false
+    BloqueVision = false
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 1
+    DamageModifierHEInfantry = 1
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[80, 180, 180, 255]
+    DissimulationModifierGroundAir = 0
+    DissimulationModifierGroundGround = 0
+    Height = 0
+    ImpactVision1 = false
+    InflammabilityProbability = 0
+    LocalizationToken = 'TER_COAST'
+    Name = 'Littoral'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 0.5
+    SpeedModifierHalfTrack = 0.5
+    SpeedModifierInfantry = 0.5
+    SpeedModifierTrack = 0.5
+    SpeedModifierWheel = 0.5
+    StealthBonus = 1
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 0.3
+    SpeedModifierInfantryAmphibious = 0.5
+    BloqueBateau = false
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/Littoral
+    WorldLayerActiveMask = 3
+)
+export Passant1 is TGameplayTerrain
+(
+    BloqueAmphibie = false
+    BloqueAtterrissage = false
+    BloqueFoW = false
+    BloqueInfanterie = false
+    BloqueVehicule = false
+    BloqueVision = false
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 1
+    DamageModifierHEInfantry = 1
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[0, 0, 0, 255]
+    DissimulationModifierGroundAir = 0
+    DissimulationModifierGroundGround = 0
+    Height = 0
+    ImpactVision1 = true
+    InflammabilityProbability = 0
+    LocalizationToken = 'TER_PAS1'
+    Name = 'Passant1'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 1
+    SpeedModifierHalfTrack = 1
+    SpeedModifierInfantry = 1
+    SpeedModifierTrack = 1
+    SpeedModifierWheel = 1
+    StealthBonus = 1
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 0.3
+    SpeedModifierInfantryAmphibious = 1
+    BloqueBateau = false
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/Passant1
+    WorldLayerActiveMask = 255
+)
+export Portail is TGameplayTerrain
+(
+    BloqueAmphibie = false
+    BloqueAtterrissage = false
+    BloqueFoW = false
+    BloqueInfanterie = false
+    BloqueVehicule = false
+    BloqueVision = false
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 1
+    DamageModifierHEInfantry = 1
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[0, 0, 0, 255]
+    DissimulationModifierGroundAir = 0
+    DissimulationModifierGroundGround = 0
+    Height = 0
+    ImpactVision1 = false
+    InflammabilityProbability = 0
+    LocalizationToken = 'TER_PORT'
+    Name = 'Portail'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 1
+    SpeedModifierHalfTrack = 1
+    SpeedModifierInfantry = 1
+    SpeedModifierTrack = 1
+    SpeedModifierWheel = 1
+    StealthBonus = 1
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 0.3
+    SpeedModifierInfantryAmphibious = 1
+    BloqueBateau = false
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/Portail
+    WorldLayerActiveMask = 255
+)
+export Rocher is TGameplayTerrain
+(
+    BloqueAmphibie = true
+    BloqueAtterrissage = true
+    BloqueFoW = false
+    BloqueInfanterie = false
+    BloqueVehicule = true
+    BloqueVision = false
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 1
+    DamageModifierHEInfantry = 1
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[186, 247, 200, 255]
+    DissimulationModifierGroundAir = 0
+    DissimulationModifierGroundGround = 0
+    Height = 0
+    ImpactVision1 = false
+    InflammabilityProbability = 0.1
+    LocalizationToken = 'TER_ROCK'
+    Name = 'Rocher'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 0
+    SpeedModifierHalfTrack = 0
+    SpeedModifierInfantry = 1
+    SpeedModifierTrack = 0
+    SpeedModifierWheel = 0
+    StealthBonus = 1
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 0
+    SpeedModifierInfantryAmphibious = 1
+    BloqueBateau = false
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/Rocher
+    WorldLayerActiveMask = 3
+)
+export RocherForet is TGameplayTerrain
+(
+    BloqueAmphibie = true
+    BloqueAtterrissage = true
+    BloqueFoW = false
+    BloqueInfanterie = false
+    BloqueVehicule = true
+    BloqueVision = false
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 0.5
+    DamageModifierHEInfantry = 1
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[90, 120, 100, 255]
+    DissimulationModifierGroundAir = 12
+    DissimulationModifierGroundGround = 10
+    Height = 20
+    ImpactVision1 = false
+    InflammabilityProbability = 0.6
+    LocalizationToken = 'TER_ROFO'
+    Name = 'RocherForet'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 0
+    SpeedModifierHalfTrack = 0
+    SpeedModifierInfantry = 1
+    SpeedModifierTrack = 0
+    SpeedModifierWheel = 0
+    StealthBonus = 2.75
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 0
+    SpeedModifierInfantryAmphibious = 1
+    BloqueBateau = false
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/RocherForet
+    WorldLayerActiveMask = 3
+)
+export SmokeHeavy is TGameplayTerrain
+(
+    BloqueAmphibie = false
+    BloqueAtterrissage = false
+    BloqueFoW = false
+    BloqueInfanterie = false
+    BloqueVehicule = false
+    BloqueVision = false
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 1
+    DamageModifierHEInfantry = 1
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[128, 128, 128, 255]
+    DissimulationModifierGroundAir = 50
+    DissimulationModifierGroundGround = 50
+    Height = 25
+    ImpactVision1 = true
+    InflammabilityProbability = 0
+    LocalizationToken = 'TER_SMOKEH'
+    Name = 'HeavySmoke'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 1
+    SpeedModifierHalfTrack = 1
+    SpeedModifierInfantry = 1
+    SpeedModifierTrack = 1
+    SpeedModifierWheel = 1
+    StealthBonus = 5
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 0
+    SpeedModifierInfantryAmphibious = 1
+    BloqueBateau = true
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/HeavySmoke
+    WorldLayerActiveMask = 255
+)
+export SmokeLight is TGameplayTerrain
+(
+    BloqueAmphibie = false
+    BloqueAtterrissage = false
+    BloqueFoW = false
+    BloqueInfanterie = false
+    BloqueVehicule = false
+    BloqueVision = false
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 1
+    DamageModifierHEInfantry = 1
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[187, 187, 187, 255]
+    DissimulationModifierGroundAir = 50
+    DissimulationModifierGroundGround = 50
+    Height = 25
+    ImpactVision1 = true
+    InflammabilityProbability = 0
+    LocalizationToken = 'TER_SMOKEL'
+    Name = 'LightSmoke'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 1
+    SpeedModifierHalfTrack = 1
+    SpeedModifierInfantry = 1
+    SpeedModifierTrack = 1
+    SpeedModifierWheel = 1
+    StealthBonus = 4
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 0
+    SpeedModifierInfantryAmphibious = 1
+    BloqueBateau = true
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/LightSmoke
+    WorldLayerActiveMask = 255
+)
+export SmokeMedium is TGameplayTerrain
+(
+    BloqueAmphibie = false
+    BloqueAtterrissage = false
+    BloqueFoW = false
+    BloqueInfanterie = false
+    BloqueVehicule = false
+    BloqueVision = false
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 1
+    DamageModifierHEInfantry = 1
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[156, 156, 156, 255]
+    DissimulationModifierGroundAir = 50
+    DissimulationModifierGroundGround = 50
+    Height = 25
+    ImpactVision1 = true
+    InflammabilityProbability = 0
+    LocalizationToken = 'TER_SMOKEM'
+    Name = 'MediumSmoke'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 1
+    SpeedModifierHalfTrack = 1
+    SpeedModifierInfantry = 1
+    SpeedModifierTrack = 1
+    SpeedModifierWheel = 1
+    StealthBonus = 4.5
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 0
+    SpeedModifierInfantryAmphibious = 1
+    BloqueBateau = true
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/MediumSmoke
+    WorldLayerActiveMask = 255
+)
+export EauProfonde is TGameplayTerrain
+(
+    BloqueAmphibie = false
+    BloqueAtterrissage = true
+    BloqueFoW = false
+    BloqueInfanterie = true
+    BloqueVehicule = true
+    BloqueVision = false
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 1
+    DamageModifierHEInfantry = 1
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[16, 187, 187, 255]
+    DissimulationModifierGroundAir = 0
+    DissimulationModifierGroundGround = 0
+    Height = 0
+    ImpactVision1 = false
+    InflammabilityProbability = 0
+    LocalizationToken = 'TER_DEEP_W'
+    Name = 'EauProfonde'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 1
+    SpeedModifierHalfTrack = 1
+    SpeedModifierInfantry = 1
+    SpeedModifierTrack = 1
+    SpeedModifierWheel = 1
+    StealthBonus = 1
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = true
+    SpeedModifierBoats = 1
+    SpeedModifierInfantryAmphibious = 1.0
+    BloqueBateau = false
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/EauProfonde
+    WorldLayerActiveMask = 3
+)
+export BloqueConstruction is TGameplayTerrain
+(
+    BloqueAmphibie = false
+    BloqueAtterrissage = false
+    BloqueFoW = false
+    BloqueInfanterie = false
+    BloqueVehicule = false
+    BloqueVision = false
+    CriticalEffectProbability = 0
+    DamageModifierAPVehicle = 1
+    DamageModifierBulletInfantry = 1
+    DamageModifierHEInfantry = 1
+    DamageModifierHEVehicle = 1
+    DebugColor = d3drgba[100, 100, 100, 100]
+    DissimulationModifierGroundAir = 0
+    DissimulationModifierGroundGround = 0
+    Height = 0
+    ImpactVision1 = false
+    InflammabilityProbability = 0
+    LocalizationToken = 'TER_BLQCST'
+    Name = 'BloqueConstruction'
+    ObstructInsideAirSight = false
+    ObstructInsideInfantrySight = false
+    ObstructInsideVehicleSight = false
+    SpeedModifierAllTerrainWheel = 1
+    SpeedModifierHalfTrack = 1
+    SpeedModifierInfantry = 1
+    SpeedModifierTrack = 1
+    SpeedModifierWheel = 1
+    StealthBonus = 1
+    //~~~~~~~~
+    BloqueInfanterieAmphibie = false
+    SpeedModifierBoats = 1
+    SpeedModifierInfantryAmphibious = 1
+    BloqueBateau = false
+    DissimulationSliceSizeInGameUnits = ~/DissimulationUnitSlice
+    OneMeterInGameUnits = ~/OneMeterInGameUnits
+    SDBMask = ~/NAMask_Terrain/BloqueConstruction
+    WorldLayerActiveMask = 255
+)

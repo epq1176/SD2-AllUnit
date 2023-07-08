@@ -1,0 +1,22 @@
+export ModelFile_Bofors_portee_UK is 'GameData:Assets\3D\Units\UK\Vehicule\Bofors_Portee_UK\Bofors_Portee_UK.Ase2NdfBin'
+
+Modele_Bofors_portee_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Bofors_portee_UK
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Bofors_portee_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Vehicule\Bofors_Portee_UK_MID\Bofors_Portee_UK_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Bofors_portee_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Vehicule\LODS\Bofors_Portee_UK_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

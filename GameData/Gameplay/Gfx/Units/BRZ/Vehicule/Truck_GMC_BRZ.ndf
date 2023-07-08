@@ -1,0 +1,22 @@
+export ModelFile_Truck_GMC_BRZ is 'GameData:Assets\3D\Units\BRZ\Vehicule\Truck_GMC_BRZ\Truck_GMC_BRZ.Ase2NdfBin'
+
+Modele_Truck_GMC_BRZ is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Truck_GMC_BRZ
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Truck_GMC_BRZ_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\BRZ\Vehicule\Truck_GMC_BRZ_MID\Truck_GMC_BRZ_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Truck_GMC_BRZ_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\BRZ\Vehicule\LODS\Truck_GMC_BRZ_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

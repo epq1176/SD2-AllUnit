@@ -1,0 +1,22 @@
+export ModelFile_Panzer_IV_J_HON is 'GameData:Assets\3D\Units\FR\Char\M4A2_Sherman\M4A2_Sherman.Ase2NdfBin'
+
+export Modele_Panzer_IV_J_HON is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Panzer_IV_J_HON
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_IV_J_HON_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Char\M4A2_Sherman_MID\M4A2_Sherman_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_IV_J_HON_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Char\LODS\M4A2_Sherman_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

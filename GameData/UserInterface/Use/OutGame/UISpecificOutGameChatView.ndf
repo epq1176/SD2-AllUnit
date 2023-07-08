@@ -1,0 +1,362 @@
+
+ChatPanel_BackgroundTexture is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/fond_chat.png")
+
+// Liste des channels
+private OutGameChatChannelList is BUCKContainerDescriptor
+(
+    ElementName = "OutGameChatChannelList"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 239.0]
+    )
+)
+
+// Button list
+
+private OutGameChatButtonDim is 38.0
+
+template ChatButton
+[
+    UniqueName : string = '',
+    ElementName : string = '',
+    Grayed : bool = false,
+    ButtonTextureToken : string = "",
+    HintableAreaElementName : string = '',
+    HintTitleToken : string = '',
+    HintBodyToken : string = '',
+    HintExtendedToken : string = '',
+
+    IsFocusable : bool = false,
+    FocusMapping : TEugBMutablePBaseClass = nil,
+]
+is BUCKButtonDescriptor
+(
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [~/OutGameChatButtonDim, ~/OutGameChatButtonDim]
+    )
+
+    Grayed = <Grayed>
+
+    HasBorder = true
+
+    BorderThicknessToken = "BoutonsDAction/Image"
+    BorderLineColorToken = "BoutonsDAction/Image"
+
+    Components =
+    [
+        BUCKSpecificHintableArea
+        (
+            ElementName = <HintableAreaElementName>
+            DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+            HintTitleToken = <HintTitleToken>
+            HintBodyToken = <HintBodyToken>
+            HintExtendedToken = <HintExtendedToken>
+        ),
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            TextureToken = <ButtonTextureToken>
+
+            TextureFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1, 1]
+            )
+
+            TileTextureInComponent = false
+            ClipTextureToComponent = true
+        )
+    ]
+
+    IsFocusable = <IsFocusable>
+    FocusMapping = <FocusMapping>
+)
+
+private OutGameBUCKChatButtonList is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 0.0]
+        MagnifiableWidthHeight = [0.0, ~/OutGameChatButtonDim]
+        AlignementToFather = [1.0, 0.0]
+        AlignementToAnchor = [1.0, 0.0]
+    )
+
+    InterItemMargin = TRTTILength(Pixel = 3.0)
+    FirstMargin = TRTTILength()
+    LastMargin = TRTTILength()
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ChatButton
+            (
+                ElementName = 'ButtonAddFriend'
+
+                ButtonTextureToken = "OutgameTexture_WG2_BgOutGame_AddFriend_Button"
+                HintTitleToken = 'OC_HTADD'
+                HintBodyToken = 'OC_HADD'
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ChatButton
+            (
+                ElementName = 'ButtonClearChat'
+
+                ButtonTextureToken = "OutgameTexture_WG2_BgOutGame_Erase_Button"
+                HintTitleToken = 'OC_HTCLR'
+                HintBodyToken = 'OC_HCLR'
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ChatButton
+            (
+                ElementName = 'ButtonBlackList'
+
+                ButtonTextureToken = "OutgameTexture_WG2_BgOutGame_BlackList_Button"
+                HintTitleToken = 'OC_HTBL'
+                HintBodyToken = 'OC_HTTBL'
+            )
+        ),
+    ]
+)
+
+// Panneau principal
+BUCKSpecificOutGameChatMainComponentDescriptor is BUCKMovableDescriptor
+(
+    UniqueName = 'ChatPanel'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [512, 800]
+    )
+
+    CannotExitContainer = true
+    HidePointerEvents = true
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            Components =
+            [
+                BUCKContainerDescriptor
+                (
+                    ElementName = 'Content'
+
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                    )
+
+                    HasBackground = true
+                    BackgroundBlockColorToken = "Black80"
+                    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                    Components =
+                    [
+                        BUCKContainerDescriptor
+                        (
+                            ElementName = "ChatPanelContainer"
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [1.0, 1.0]
+                            )
+
+                            Components =
+                            [
+                                BUCKListDescriptor
+                                (
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [1.0, 0.0]
+                                    )
+
+                                    InterItemMargin = TRTTILength()
+                                    FirstMargin = TRTTILength()
+                                    LastMargin = TRTTILength()
+
+                                    Axis = ~/ListAxis/Vertical
+                                    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+                                    Elements =
+                                    [
+
+                                        BUCKListElementDescriptor
+                                        (
+                                            ComponentDescriptor = ~/OutGameChatChannelList
+                                        ),
+
+                                        BUCKListElementDescriptor
+                                        (
+                                            ComponentDescriptor = BUCKContainerDescriptor
+                                            (
+                                                ElementName = "ChatMessageListContainer"
+
+                                                ComponentFrame = TUIFramePropertyRTTI
+                                                (
+                                                    RelativeWidthHeight = [1.0, 1.0]
+                                                )
+                                            )
+
+                                            ExtendWeight = 1.0
+                                        ),
+                                        BUCKListElementDescriptor
+                                        (
+                                            ComponentDescriptor = BUCKContainerDescriptor
+                                            (
+                                                ComponentFrame = TUIFramePropertyRTTI
+                                                (
+                                                    RelativeWidthHeight = [1.0, 0.0]
+                                                    MagnifiableWidthHeight = [0.0, ~/OutGameChatButtonDim]
+                                                )
+                                                HasBackground = true
+                                                BackgroundBlockColorToken = "PureBlack"
+                                                Components =
+                                                [
+                                                    ~/OutGameBUCKChatButtonList,
+                                                ]
+                                            )
+
+                                        ),
+                                    ]
+                                )
+                            ]
+                        )
+                    ]
+                ),
+            ]
+        ),
+    ]
+)
+
+BUCKSpecificOutGameLobbyChatMainComponentDescriptor is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                Axis = ~/ListAxis/Vertical
+
+                Elements =
+                [
+                    BUCKListElementDescriptor
+                    (
+                        ExtendWeight = 1.0
+
+                        ComponentDescriptor = BUCKContainerDescriptor
+                        (
+                            ElementName = 'ChatMessageListContainer'
+
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [1.0, 1.0]
+                            )
+                        )
+                    ),
+
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKContainerDescriptor
+                        (
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [1.0, 0.0]
+                                MagnifiableWidthHeight = [0.0, ~/OutGameChatButtonDim]
+                            )
+                            HasBackground = true
+                            BackgroundBlockColorToken = "PureBlack"
+                            Components =
+                            [
+                                ~/OutGameBUCKChatButtonList,
+                            ]
+                        )
+                    ),
+                ]
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/OutGameLobbyChatChannelList
+        ),
+    ]
+)
+
+private OutGameLobbyChatChannelList is BUCKContainerDescriptor
+(
+    ElementName = "OutGameChatChannelList"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+        MagnifiableWidthHeight = [350.0, 0.0]
+    )
+)
+
+private OutgameToggleChatButton is BUCKChatToggleButtonDescriptor
+(
+    UniqueName = "ChatToggleButton"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [54, 48]
+        MagnifiableOffset = [-37, -22]
+        AlignementToFather = [1, 1]
+        AlignementToAnchor = [1, 1]
+    )
+)
+
+UISpecificOutGameChatViewDescriptor is TUISpecificOutGameChatViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificOutGameChatMainComponentDescriptor
+    ChatToggleButtonDescriptor = ~/OutgameToggleChatButton
+    Layer = $/UserInterface/UILayer_2DInterfaceChat_OutGame
+
+    SpecificOutGameChatChannelList = ~/UISpecificOutGameChatChannelListViewDescriptor
+    SpecificOutGameChatMessageList = ~/UISpecificOutGameChatMessageListViewDescriptor
+)
+
+UISpecificOutGameLobbyChatViewDescriptor is TUISpecificOutGameChatViewDescriptor
+(
+    MainComponentContainerUniqueName = "LobbyChatContainer"
+    MainComponentDescriptor = ~/BUCKSpecificOutGameLobbyChatMainComponentDescriptor
+    ChatToggleButtonDescriptor = ~/OutgameToggleChatButton
+
+    SpecificOutGameChatChannelList = ~/UISpecificOutGameChatChannelListViewDescriptor
+    SpecificOutGameChatMessageList = ~/UISpecificOutGameChatMessageListViewDescriptor
+)

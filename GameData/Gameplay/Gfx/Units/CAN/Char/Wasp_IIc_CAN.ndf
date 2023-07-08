@@ -1,0 +1,22 @@
+export ModelFile_Wasp_IIc_CAN is 'GameData:Assets\3D\Units\UK\Char\Wasp_Mk_IIC\Wasp_Mk_IIC.Ase2NdfBin'
+
+Modele_Wasp_IIc_CAN is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Wasp_IIc_CAN
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Wasp_IIc_CAN_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\Wasp_Mk_IIC_MID\Wasp_Mk_IIC_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Wasp_IIc_CAN_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\LODS\Wasp_Mk_IIC_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

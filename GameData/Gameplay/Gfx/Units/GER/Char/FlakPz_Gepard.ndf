@@ -1,0 +1,22 @@
+export ModelFile_FlakPz_Gepard is 'GameData:Assets\3D\Units\GER\Char\FlaKPz_Gepard\FlaKPz_Gepard.Ase2NdfBin'
+
+Modele_FlakPz_Gepard is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_FlakPz_Gepard
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_FlakPz_Gepard_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\FlaKPz_Gepard_MID\FlaKPz_Gepard_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_FlakPz_Gepard_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\FlaKPz_Gepard_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

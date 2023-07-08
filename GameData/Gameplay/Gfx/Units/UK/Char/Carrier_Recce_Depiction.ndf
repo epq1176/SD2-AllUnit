@@ -1,0 +1,28 @@
+export Gfx_Carrier_Recce is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Carrier_Recce ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Carrier_Recce_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_Carrier_Recce_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Carrier_Recce ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Carrier_Recce_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_Carrier_Recce_LOW ),
+        ]
+
+        Operators = Operators_Carrier_Recce
+                  + DepictionOperator_Chassis_SmallTank
+                  + DepictionOperator_Propulsion_ContinuousTrack_SmallTank
+
+        Actions = Weapons_Carrier_Recce
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = DepictionSubDepiction_Driver_UK
+                        + DepictionSubDepiction_Driver2_UK
+                        + [ SubDepictionTowedUnit ]
+    )
+)

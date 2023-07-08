@@ -1,0 +1,24 @@
+export ModelFile_HMG_M2HB_FR is 'GameData:Assets\3D\Units\USA\Canon\Browning_M2HB\Browning_M2HB.Ase2NdfBin'
+
+Modele_HMG_M2HB_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_HMG_M2HB_FR
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_HMG_M2HB_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Canon\Browning_M2HB_MID\Browning_M2HB_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_HMG_M2HB_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Canon\LODS\Browning_M2HB_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+

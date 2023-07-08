@@ -1,0 +1,22 @@
+export ModelFile_Flak_37_Zwillinge_GER is 'GameData:Assets\3D\Units\GER\Canon\Flak_37_Zwillinge\Flak_37_Zwillinge.Ase2NdfBin'
+
+Modele_Flak_37_Zwillinge_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Flak_37_Zwillinge_GER
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Flak_37_Zwillinge_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\Flak_37_Zwillinge_MID\Flak_37_Zwillinge_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Flak_37_Zwillinge_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\LODS\Flak_37_Zwillinge_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

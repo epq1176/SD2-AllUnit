@@ -1,0 +1,69 @@
+export Gfx_IL_2M_x200_PTAB_SOV is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificAirplaneDepictionSelectorWithScale
+        DepictionSkins =
+        [
+            // Reprise de l'existant pour créer la skin par défaut
+            TSkinDescriptor(
+                SkinName = "default"
+                ChoiceTexture = "CommonTexture_Camo"
+                DepictionAlternatives = [
+                    DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_IL_2M_x200_PTAB_SOV ),
+                    DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_IL_2M_x200_PTAB_SOV_MID ),
+                    DepictionDescriptor_LOD_Low_NoTurret3( MeshDescriptor = Modele_IL_2M_x200_PTAB_SOV_LOW ),
+                    DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_IL_2M_x200_PTAB_SOV ),
+                    DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_IL_2M_x200_PTAB_SOV_MID ),
+                    DepictionDescriptor_LOD_WreckedLow_NoTurret3( MeshDescriptor = Modele_IL_2M_x200_PTAB_SOV_LOW ),
+                ]
+            ),
+
+            // nouvelle skin
+            TSkinDescriptor(
+                SkinName = "deluxe"
+                DescriptorId = GUID:{0eee4c04-3a2c-493d-a311-01e2e440a6c7}
+                ChoiceTexture = "CommonTexture_Camo"
+                DepictionAlternatives = [
+                    DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_IL_2M_SOV_deluxe ),
+                    DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_IL_2M_SOV_deluxe_MID ),
+                    DepictionDescriptor_LOD_Low_NoTurret3( MeshDescriptor = Modele_IL_2M_SOV_deluxe_LOW ),
+                    DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_IL_2M_SOV_deluxe ),
+                    DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_IL_2M_SOV_deluxe_MID ),
+                    DepictionDescriptor_LOD_WreckedLow_NoTurret3( MeshDescriptor = Modele_IL_2M_SOV_deluxe_LOW ),
+                ]
+            ),
+        ]
+
+         Operators = Operators_IL_2M_x200_PTAB_SOV
+                   + DepictionOperator_Airfoil_WingsAndStabilizersAirplane
+                   + DepictionOperator_Propulsion_Single_Engine_Plane
+                   + DepictionOperator_Airplane
+                + DepictionOperator_Feedback_Degat_Level1
+                   + DepictionOperator_Feedback_Degat_Level2
+
+        Actions = //DepictionAction_MovementFX_SingleReactorAirplane
+                 Weapons_IL_2M_x200_PTAB_SOV
+                + DepictionAction_StressLevel_Avion_2
+                + MAP [ (['FX_Helice_1'], Template_DepictionAction_Rotor( PaleLength = 300 PaleCount = 3 SousMobile = "Bloc_Moteur_1" ))]
+
+    // SubDepictionGenerators = SubGenerators_IL_2M_x200_PTAB_SOV
+
+    SubDepictions = [
+        TSubDepiction(
+            Anchor = "Landing Gear"
+            Depiction = TDepictionTemplate(
+                RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+                Selector = WarGameShowRoomDepictionSelector
+                DepictionAlternatives = [
+                    TDepictionDescriptor( SelectorId = 'high' MeshDescriptor = Modele_IL_2M_x200_PTAB_SOV_train ),
+                    TDepictionDescriptor( SelectorId = 'none' )
+                ]
+            )
+        )
+    ]
+    + DepictionSubDepiction_Pilote_SOV
+    + DepictionSubDepiction_Pilote2_SOV
+    )
+)

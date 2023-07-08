@@ -1,0 +1,91 @@
+template TemplateMeshDescriptor_Partisans_Mortier_SOV [ ModelFile ] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+
+// export ModelFile_Boites_Mortier_82mm_SOV is 'GameData:Assets\3D\Units\USA\Canon\Mortar_81mm\Boites_Mortar_81mm.Ase2NdfBin'
+
+Gfx_Partisans_Mortier_SOV_1 is TDepictionTemplate //servant gauche
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Partisans_Mortier_SOV( ModelFile = ModelFile_Partisans_MG_SOV)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Partisans_Mortier_SOV( ModelFile = ModelFile_Partisans_MG_SOV_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Partisans_Mortier_SOV( ModelFile = ModelFile_Partisans_MG_SOV)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Partisans_Mortier_SOV( ModelFile = ModelFile_Partisans_MG_SOV_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_ServantMortar_Gauche
+)
+
+Gfx_Partisans_Mortier_SOV_2 is TDepictionTemplate //servant droite
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Partisans_Mortier_SOV( ModelFile = ModelFile_Partisans_SOV)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Partisans_Mortier_SOV( ModelFile = ModelFile_Partisans_SOV_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Partisans_Mortier_SOV( ModelFile = ModelFile_Partisans_SOV)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Partisans_Mortier_SOV( ModelFile = ModelFile_Partisans_SOV_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_ServantMortar_Droite
+)
+
+Gfx_Partisans_Mortier_SOV_Weapon is TDepictionTemplate //arme
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = CommonDepictionSelector
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_Partisans_Mortier_SOV ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_Partisans_Mortier_SOV_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_Partisans_Mortier_SOV_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor =  Modele_Partisans_Mortier_SOV ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor =  Modele_Partisans_Mortier_SOV_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor =  Modele_Partisans_Mortier_SOV_LOW ),
+        ]
+
+        SubDepictions = []
+        Operators = //DepictionOperator_SkeletalAnimation_Mortier_107mm_US
+            DepictionOperatorNode_ResetUnit +
+            DepictionOperator_Carriable_Mortar
+        Actions = Weapons_Partisans_Mortier_SOV
+    )
+
+SubDepiction_Servant_1_Partisans_Mortier_SOV is TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_Partisans_Mortier_SOV_1 )
+SubDepiction_Servant_2_Partisans_Mortier_SOV is TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_Partisans_Mortier_SOV_2 )
+SubDepiction_Canon_AT_Partisans_Mortier_SOV is TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_Partisans_Mortier_SOV_Weapon )
+
+Gfx_Partisans_Mortier_SOV is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate //les boites
+    (
+        OverrideMeshBoundingBoxMin = [-500,-500,0]
+        OverrideMeshBoundingBoxMax = [ 500, 500,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_Partisans_Mortier_SOV( ModelFile = ModelFile_Boites_Mortier_82mm_SOV) ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_Partisans_Mortier_SOV( ModelFile = ModelFile_Boites_Mortier_82mm_SOV) ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_Partisans_Mortier_SOV( ModelFile = ModelFile_Boites_Mortier_82mm_SOV) ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_Partisans_Mortier_SOV( ModelFile = ModelFile_Boites_Mortier_82mm_SOV) ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_Partisans_Mortier_SOV( ModelFile = ModelFile_Boites_Mortier_82mm_SOV) ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_Partisans_Mortier_SOV( ModelFile = ModelFile_Boites_Mortier_82mm_SOV) ),
+        ]
+        NodeNamesForSelection = [ 'Canon_AT', 'servant_G' , 'servant_D']
+        SubDepictions = [SubDepiction_Servant_1_Partisans_Mortier_SOV,
+                        SubDepiction_Servant_2_Partisans_Mortier_SOV,
+                        SubDepiction_Canon_AT_Partisans_Mortier_SOV]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+    )
+)

@@ -1,0 +1,22 @@
+export ModelFile_Kfz_4_GER is 'GameData:Assets\3D\Units\GER\Vehicule\Kfz_4_GER\Kfz_4_GER.Ase2NdfBin'
+
+Modele_Kfz_4_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Kfz_4_GER
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Kfz_4_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\Kfz_4_GER_MID\Kfz_4_GER_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Kfz_4_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\LODS\Kfz_4_GER_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

@@ -1,0 +1,526 @@
+// Index :
+// • BUCKSpecificSkirmishStrategicProductionMenuMainComponentDescriptor
+//     - CommandPointsAndIncomeContainer
+//     - CategoryList
+//     - SkirmishStrategicProductionMenuDivisionText
+//
+// • CommandPointsAndIncomeContainer
+//     - CommandPointsText
+//     - CommandPointsIncomeText
+//     - CommandPointsIncomeChrono
+//
+// • CategoryList
+//
+// • SubCategoryList
+//
+// • UnitButtonList
+//
+// • SkirmishStrategicProductionMenuDivisionText
+//
+// • CategoryButton
+//
+// • SubCategoryButton
+//
+// • UnitListScrollingContainer
+//     - UnitListScrollingContainer
+
+// -------------------------------------------------------------------------------------------------
+// BUCKSpecificSkirmishStrategicProductionMenuMainComponentDescriptor
+// -------------------------------------------------------------------------------------------------
+
+private SkirmishStrategicProductionMenuBarTextHorizontalOffset is -6.0
+// Strategic Production Menu Container
+BUCKSpecificSkirmishStrategicProductionMenuMainComponentDescriptor is BUCKContainerDescriptor
+(
+    UniqueName = 'HUDTopElement'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [-10.0, 36.0]
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [0.0, 0.0]
+        MagnifiableOffset = [10.0, 0.0]
+        PixelWidthHeight = [0.0, -1.0]
+        PixelOffset = [0.0, 1.0]
+    )
+
+    HasBackground = false
+
+    HidePointerEvents = true
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                AlignementToFather = [0.0, 0.0]
+                AlignementToAnchor = [0.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+            FirstMargin = TRTTILength( Magnifiable = 5.0 )
+            InterItemMargin = TRTTILength( Magnifiable = 5.0 )
+            LastMargin = TRTTILength( Magnifiable = 185.0 )//+170 pour le MenuButtonViewMainComponent
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [0.0, 40.0]
+                            AlignementToFather = [0.0, 0.0]
+                            AlignementToAnchor = [0.0, 0.0]
+                        )
+                        Axis = ~/ListAxis/Horizontal
+                        InterItemMargin = TRTTILength( Magnifiable = 5.0 )
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = ~/SkirmishProductionMenuCommandPointsAndIncomeContainer
+
+                            ),
+
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = ~/SkirmishStrategicProductionMenuCategoryList
+                            ),
+                        ]
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/SkirmishStrategicProductionMenuSubCategoryList
+                ),
+            ]
+        ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// CommandPointsAndIncomeContainer
+// -------------------------------------------------------------------------------------------------
+
+// Container for Requisition points, income and income countdown
+private SkirmishStrategicProductionMenuCommandPointsAndIncomeContainer is BUCKContainerDescriptor
+(
+    ElementName = 'MainButton'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+        MagnifiableWidthHeight = [120.0, SkirmishStrategicProductionMenuBarTextHorizontalOffset]
+        MagnifiableOffset = [0.0, SkirmishStrategicProductionMenuBarTextHorizontalOffset]
+        AlignementToAnchor = [0.0, 1.0]
+        AlignementToFather = [0.0, 1.0]
+    )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                AlignementToAnchor = [0.0, 1.0]
+                AlignementToFather = [0.0, 1.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+            FirstMargin = TRTTILength( Magnifiable = 15.0)
+            InterItemMargin = TRTTILength( Pixel = 1.0 Magnifiable = 1.0)
+            Elements =
+            [
+                // Requisition points
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = ~/SkirmishStrategicProductionMenuCommandPointsText
+                ),
+
+                // Income Text
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/SkirmishStrategicProductionMenuCommandPointsIncomeText
+                ),
+
+                // Income Countdown
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/SkirmishStrategicProductionMenuCommandPointsIncomeChrono
+                ),
+            ]
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// CommandPointsText
+// -------------------------------------------------------------------------------------------------
+
+// Requisition points
+private SkirmishStrategicProductionMenuCommandPointsText is BUCKTextDescriptor
+(
+    // À décommenter une fois l'ancienne version du ProductionMenu retirée
+    // UniqueName = "ProductionMenuCommandPointsText"
+    ElementName = 'CommmandPointsText'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Left
+        VerticalAlignment = UIText_Bottom
+        InterLine = 0
+    )
+
+    TextStyle = "CommmandPointsText"
+
+    HorizontalFitStyle = ~/FitStyle/FitToContent
+
+    TypefaceToken = "Main"
+    BigLineAction = ~/BigLineAction/CutByDots
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TextToken = "HPROD_CMDP"
+
+    TextColor = "Orange"
+    TextSize = "20"
+
+    Hint = BUCKSpecificHintableArea
+    (
+        DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+        HintTitleToken = "HPD_CMDT"
+        HintBodyToken = "HPD_CMDB"
+        HintExtendedToken = "HPD_CMDE"
+    )
+)
+
+// -------------------------------------------------------------------------------------------------
+// CommandPointsIncomeText
+// -------------------------------------------------------------------------------------------------
+
+// Income
+private SkirmishStrategicProductionMenuCommandPointsIncomeText is BUCKTextDescriptor
+(
+    // À décommenter une fois l'ancienne version du ProductionMenu retirée
+    // UniqueName = "ProductionMenuCommandPointsIncomeText"
+    ElementName = 'CommmandPointsIncomeText'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Right
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 0
+    )
+
+    TextStyle = "Default"
+
+    HorizontalFitStyle = ~/FitStyle/FitToContent
+
+    TypefaceToken = "Main"
+    BigLineAction = ~/BigLineAction/CutByDots
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TextToken = "HPROD_CMDI"
+
+    TextColor = "Orange"
+    TextSize = "15"
+
+    Hint = BUCKSpecificHintableArea
+    (
+        ForbiddenTags = ['ScenarioBreakthrough']
+        DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+        HintTitleToken = "HPD_INCT"
+        HintBodyToken = "HPD_INCB"
+        HintExtendedToken = "HPD_INCE"
+    )
+)
+
+// -------------------------------------------------------------------------------------------------
+// CommandPointsIncomeChrono
+// -------------------------------------------------------------------------------------------------
+
+// Income Countdown
+private SkirmishStrategicProductionMenuCommandPointsIncomeChrono is BUCKChronoAnimatedTextureDescriptor
+(
+    ElementName = 'CommmandPointsIncomeChrono'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [22.0, 22.0]
+        AlignementToFather = [0.0, 1.0]
+        AlignementToAnchor = [0.0, 1.0]
+    )
+
+    ChronoDrawer = $/UserInterface/ChronoDrawerCommon
+
+    ChronoTexture = "UseInGame_CommandPoints_Chrono_Full"
+    TextureToken = "UseInGame_CommandPoints_Chrono_Fond"
+
+    ChronoTextureColor0 = "ProductionMenu/IncomeChronoColor0"
+    ChronoTextureColor1 = "ProductionMenu/IncomeChronoColor1"
+
+    TextureFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    Components =
+    [
+        BUCKSpecificHintableArea
+        (
+            ForbiddenTags = ['ScenarioBreakthrough']
+
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = "HPD_CHRONT"
+            HintBodyToken = "HPD_CHRONB"
+            HintExtendedToken = "HPD_CHRONE"
+        ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// CategoryList
+// -------------------------------------------------------------------------------------------------
+
+// Categories List
+private SkirmishStrategicProductionMenuCategoryList is BUCKListDescriptor
+(
+    ElementName = 'CategoryButtonList'
+
+    Axis = ~/ListAxis/Horizontal
+
+    FirstMargin = TRTTILength( Magnifiable = 10.0)
+    InterItemMargin = TRTTILength( Magnifiable = 5.0)
+)
+
+// -------------------------------------------------------------------------------------------------
+// SubCategoryList
+// -------------------------------------------------------------------------------------------------
+
+// SubCategories List
+private SkirmishStrategicProductionMenuSubCategoryList is BUCKListDescriptor
+(
+    ElementName = 'SubCategoryButtonList'
+
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    InterItemMargin = TRTTILength( Magnifiable = 5.0)
+
+    Axis = ~/ListAxis/Vertical
+)
+
+// -------------------------------------------------------------------------------------------------
+// CategoryButton
+// -------------------------------------------------------------------------------------------------
+
+private SkirmishStrategicProductionMenuCategoryButtonRadioButtonManager is TBUCKRadioButtonManager()
+
+// Unit Category Button
+SkirmishStrategicProductionMenuCategoryButton is BUCKSpecificButton
+(
+    ButtonRelativeWidthHeight = [0.0, 0.0]
+    ButtonMagnifiableWidthHeight = [273.0, 40.0]
+
+    Ombre = true
+    BigBorderBackgroundColorToken = "Transparent" //"ButtonHUD/BigBorder2"
+    BorderLineColorToken = "Transparent"//"ButtonHUD/Border2"
+    BackgroundBlockColorToken  = "ButtonHUD/Background2"
+    TextColorToken = "ButtonHUD/Text2"
+    Mapping = $/KeyboardOption/Mapping_MainMenu
+
+    IsTogglable = true
+    RadioButtonManager = SkirmishStrategicProductionMenuCategoryButtonRadioButtonManager
+
+    HidePointerEvents = true
+
+    TextStyle = "Default"
+    TextTypefaceToken = "MainBold"
+    TextSizeToken = "16"
+    OverrideTextElementName = true
+
+    HasText = true
+    TextElementName = "TextElement"
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    HintableAreaElementName = "ButtonHintableArea"
+    HintBodyToken = "BAT_NAME"
+    HintDico = ~/LocalisationConstantes/dico_interface_ingame
+    TextComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        MagnifiableWidthHeight = [-3.0, 0.0]
+        AlignementToFather = [0.5, 0.5]
+        AlignementToAnchor = [0.5, 0.5]
+        MagnifiableOffset = [10.0, 0.0]
+    )
+
+    TextParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Left
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 0
+    )
+)
+
+// -------------------------------------------------------------------------------------------------
+// SubCategoryButton
+// -------------------------------------------------------------------------------------------------
+
+private SkirmishStrategicProductionMenuSubCategoryButtonRadioButtonManager is TBUCKRadioButtonManager()
+
+// Unit Sub Category Button
+SkirmishStrategicProductionMenuSubCategoryButton is BUCKSpecificButton
+(
+
+    Ombre = true
+    BigBorderBackgroundColorToken = "Transparent" //"ButtonHUD/BigBorder2"
+    BorderLineColorToken = "Transparent"//"ButtonHUD/Border2"
+    BackgroundBlockColorToken  = "ButtonHUD/Background2"
+    TextColorToken = "ButtonHUD/Text2"
+
+    ButtonRelativeWidthHeight = [0.0, 0.0]
+    ButtonMagnifiableWidthHeight = [170.0, 30.0]
+
+    IsTogglable = true
+    RadioButtonManager = SkirmishStrategicProductionMenuSubCategoryButtonRadioButtonManager
+
+    HidePointerEvents = true
+
+    TextStyle = "Default"
+    TextTypefaceToken = "Main"
+    OverrideTextElementName = true
+
+    HasText = true
+    TextElementName = "TextElement"
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TextDico = ~/LocalisationConstantes/dico_packs
+    HintableAreaElementName = "ButtonHintableArea"
+    HintDico = ~/LocalisationConstantes/dico_interface_ingame
+    TextComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        MagnifiableWidthHeight = [-3.0, 0.0]
+        AlignementToFather = [0.5, 0.5]
+        AlignementToAnchor = [0.5, 0.5]
+        MagnifiableOffset = [10.0, 0.0]
+    )
+
+    TextParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Left
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 0
+    )
+)
+
+// -------------------------------------------------------------------------------------------------
+// UnitButtonList
+// -------------------------------------------------------------------------------------------------
+
+// Unit Buttons List
+private SkirmishStrategicProductionMenuUnitList is BUCKListDescriptor
+(
+    ElementName = 'UnitContainerList'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableOffset = [0.0, 11.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    FirstMargin = TRTTILength( Magnifiable = 15.0 )
+    LastMargin = TRTTILength( Magnifiable = 20.0 )
+    InterItemMargin = TRTTILength( Magnifiable = 10.0 )
+)
+
+// -------------------------------------------------------------------------------------------------
+// UnitListScrollingContainer
+// -------------------------------------------------------------------------------------------------
+
+// Unit List Scroll Container
+private SkirmishStrategicProductionMenuUnitListScrollingContainer is BUCKSpecificScrollingContainerDescriptor
+(
+    ElementName = "UnitContainerListScrollingContainer"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [-350.0, 145.0]
+        MagnifiableOffset = [5.0, 40.0]
+        AlignementToAnchor = [0.5, 0.0]
+        AlignementToFather = [0.5, 0.0]
+    )
+
+    HasHorizontalScrollbar = true
+
+    ExternalScrollbar = true
+
+    Components = [ ~/SkirmishStrategicProductionMenuUnitList ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// UISkirmishFromStrategicProductionMenuViewDescriptor
+// -------------------------------------------------------------------------------------------------
+
+UISkirmishFromStrategicProductionMenuViewDescriptor is TUISkirmishFromStrategicProductionMenuViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificSkirmishStrategicProductionMenuMainComponentDescriptor
+    MainComponentContainerUniqueName = "SpecificInGameHUDProductionViewMainContainer" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    UnitButtonListContainerDescriptor = ~/SkirmishStrategicProductionMenuUnitListScrollingContainer
+    UnitButtonListContainerContainerUniqueName = "UnitContainerListScrollingContainerContainer"
+
+    ShortcutUILayer = $/M3D/Input/UserInputLayerHandler/InputLayer_InGameShortcuts
+
+    CategoryButtonDescriptor = ~/SkirmishStrategicProductionMenuCategoryButton
+    CategoryRadioButtonManager = ~/SkirmishStrategicProductionMenuCategoryButtonRadioButtonManager
+    SubCategoryButtonDescriptor = ~/SkirmishStrategicProductionMenuSubCategoryButton
+    SubCategoryRadioButtonManager = ~/SkirmishStrategicProductionMenuSubCategoryButtonRadioButtonManager
+
+    UnitContainerDescriptor = UISpecificUnitButtonViewDescriptor
+    (
+        // Temps en secondes avant que le conteneur de l'unité additionnelle apparaisse lorsqu'on survole le bouton de l'unité
+        TimeInSecondBeforeAdditionalUnitSpecificContainerShowUp = 0.2
+
+        // Transparence (en pourcentage entre 0 et 1) ajouté au conteneur d'une unité lorsque cette unité n'est pas disponible
+        OpacityPercentWhenUnitNotAvailable = 0.6
+
+        // Couleur et drawer pour les textures et les textes quand l'unité n'est pas disponible
+        TextureDrawerWhenUnitNotAvailable = "ColorMultiply_Grayscale"
+        UnitNameColorWhenUnitNotAvailable = "ProductionMenu/UnitNameWhenNotAvailable"
+        UnitCostColorWhenUnitNotAvailable = "ProductionMenu/UnitCostWhenNotAvailable"
+        UnitCostGlowColorIndexWhenUnitNotAvailable = "ProductionMenu/UnitCostWhenNotAvailable/Glow"
+        UnitCostColorWhenUnitCannotBeBought = "ProductionMenu/UnitCostWhenCannotBeBought"
+
+        AceUnitNameColor = "DeckEditScreen/Ace/UnitNameColor"
+        AceUnitBorderColorBySide =
+        [
+            (~/TBorderSide/Top | ~/TBorderSide/Left, "DeckEditScreen/Ace/UnitBorderTopAndLeftColor"),
+            (~/TBorderSide/Bottom | ~/TBorderSide/Right, "DeckEditScreen/Ace/UnitBorderBottomAndRightColor"),
+        ]
+        AceUnitBorderThickness = "DeckEditScreen/Ace/UnitBorderThickness"
+
+        CannotDeselect = true
+        ForceEvents = true
+    )
+)

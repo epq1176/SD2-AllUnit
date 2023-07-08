@@ -1,0 +1,170 @@
+//------------------------------------------------------------------------------
+
+private PawnSlotButtonRadioButtonManager is TBUCKRadioButtonManager()
+
+//------------------------------------------------------------------------------
+template PawnSlot
+[
+    NameSuffix : string,
+    TextColor : string = "Strategic/StartBattle/Text"
+]
+is BUCKListDescriptor
+(
+    ElementName = "PawnSlotContent_" + <NameSuffix>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+
+    HasBackground = false
+    BackgroundBlockColorToken = "DarkerGray"
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKButtonDescriptor
+            (
+                ElementName = "PawnSlotButton_" + <NameSuffix>
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+
+                    RelativeWidthHeight = [0.77,0]
+                    MagnifiableWidthHeight = [0, 95.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                    AlignementToFather = [0.5, 0.0]
+                )
+
+                IsTogglable = true
+                HasBackground = false
+                BackgroundBlockColorToken = "Orange"
+                HasBorder = true
+                BorderThicknessToken = "1"
+                BorderLineColorToken = "SD2_StratBoutonCombatGroup"
+
+                RadioButtonManager = PawnSlotButtonRadioButtonManager
+
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1,1]
+                            //MagnifiableWidthHeight = [0, 25.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Center
+                            VerticalAlignment = UIText_VerticalCenter
+                        )
+
+                        TextStyle = "Default"
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/UserDefined
+
+                        TextToken = "BAT_Btn"
+                        TypefaceToken = "Main"
+                        BigLineAction = ~/BigLineAction/CutByDots
+                        //TextPadding = TRTTILength4(Magnifiable = [5.0, 5, 5.0,5.0])
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                        TextColor = "SD2_Blanc184"
+                        TextSize = "SD2_Petit"
+
+                        HasBackground = true
+                        BackgroundBlockColorToken = "SD2_Noir80"
+                    ),
+                    BUCKSpecificHintableArea
+                    (
+                        HintTitleToken = 'mob_bout'
+                        HintBodyToken = 'mob_boub'
+                        //HintExtendedToken ='pip_hqe'
+                        DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                    )
+
+                ]
+            )
+    )
+    ]
+)
+
+
+
+//------------------------------------------------------------------------------
+
+template BUCKSpecificStrategicStartBattleGroupMainComponentDescriptor
+[
+    BattlegroupToken : string,
+    UnitListAxis : int = ~/ListAxis/Horizontal,
+    UnitListHasBackground : bool = true,
+]
+is BUCKListDescriptor
+(
+    ElementName = "PawnList"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+
+    HasBackground = false
+    BackgroundBlockColorToken =  "AppleGreen" //"GrayMineShaft80"
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = PawnSlot(NameSuffix = "HQ" TextColor = "GrisClair")
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKRackDescriptor
+            (
+                ElementName = "PawnSlotRack"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                Axis = ~/ListAxis/Vertical
+                BladeDescriptor = PawnSlot(NameSuffix = "Pawn" )
+            )
+        ),
+    ]
+)
+
+//------------------------------------------------------------------------------
+
+template UISpecificStrategicStartBattleGroupViewDescriptor
+[
+    UniqueNameForInsertion : string = "",
+    BattlegroupToken : string,
+
+    UnitListAxis : int = ~/ListAxis/Horizontal,
+    ShowOnlyList : bool = false,
+] is TUISpecificStrategicStartBattleGroupViewDescriptor
+(
+    MainComponentDescriptor = BUCKSpecificStrategicStartBattleGroupMainComponentDescriptor
+    (
+        BattlegroupToken = <BattlegroupToken>
+        UnitListAxis = <UnitListAxis>
+        UnitListHasBackground = !<ShowOnlyList>
+    )
+    MainComponentContainerUniqueName = <UniqueNameForInsertion> // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    PawnBriefDescriptor = ~/UISpecificStrategicStartBattlePawnBriefViewDescriptor
+
+    ShowOnlyList = <ShowOnlyList>
+
+)

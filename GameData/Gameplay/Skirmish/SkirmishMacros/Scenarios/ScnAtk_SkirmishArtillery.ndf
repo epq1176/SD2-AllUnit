@@ -1,0 +1,345 @@
+//-------------------------------------------------------------------------
+//----------------------------- ARTILLERY ---------------------------------
+//-------------------------------------------------------------------------
+// Maintains
+//-------------------------------------------------------------------------
+export ScnAtk_Maintain_Artillery is TMacroActionDescriptor_Artillery_Specific
+(
+    GenerationType = TGenerationType_Maintain
+)
+// Missions
+//-------------------------------------------------------------------------
+private template ScnAtk_Template_Artillery_TriggerHappy
+[
+    GenerationType = TGenerationType_FixedSize,
+    NumberOfMacro:int = 0,
+    MinimumResourceForLaunch:int = 0,
+    ParametresDeMission = MAP[],
+]
+is TMacroActionDescriptor_Artillery_Specific
+(
+    GenerationType = <GenerationType>
+    NumberOfMacro = <NumberOfMacro>
+    MinimumResourceForLaunch = <MinimumResourceForLaunch>
+    PrioritaryZoneWeightList = [66]
+
+    SupportPointSafetyMargin = 1
+    MinimumThreatPerSplashForKill = 45 //20
+    MinimumThreatPerSplashForSupport = 30 //20
+    SupportStrikeRatio = [0.25]
+    ArtilleryPositionOffset = 12500 * Metre
+    OutMapArtilleryPositionOffset = 7000 * Metre
+    ArtilleryUpdateOffset = 3750 * Metre
+    ThreatThresholdValue = 20
+    MoveOutThreatProbability = 0.1
+    IgnoreSafePath = true
+
+    DeployOnRoad = True
+    DistanceToOptimumStartDuringDeployment = 3000*Metre
+
+    ArtilleryStrikeThreatBonusPerTags =  // Multiplicateur appliqué lors du calcul de la menace d'unité. On applique le premier bonus qui match les tags de notre unité (1 par défaut)
+    [
+        (["Canon_AT"], 1.5),
+        (["Canon_AA"], 1.5),
+        (["Infanterie_Standard"], 1.5),
+        (["Infanterie_SuperCMD"], 3.0),
+        (["Infanterie_Spec_Defense"], 2.0),
+        (["Artillerie"], 2.0),
+        (["Defense_BunkerMG"], 5.0),
+        (["Defense_BunkerAT_Leger"], 2.0),
+        (["Defense_BunkerAT_Standard"], 2.0),
+        (["Defense_BunkerAT_Lourd"], 2.0),
+        (["Vehicule_Logistique"], 2.0),
+        (["Vehicule_SuperCMD"], 2.0),
+        (["Infanterie"], 1.5),
+        (["Vehicule"], 0.5),
+        (["Char"], 0.3),
+        (["Char_SuperCMD"], 0.5),
+    ]
+
+    PoolModelList = [
+        ~/ScnAtk_Pool_Artillery_TriggerHappy,
+    ]
+
+    ParametresDeMission = <ParametresDeMission>
+)
+//-------------------------------------------------------------------------
+export ScnAtk_Artillery_TriggerHappy_1for4Corridors is ScnAtk_Template_Artillery_TriggerHappy
+(
+    GenerationType = TGenerationType_BasedOnNumberOfCorridors
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Generation,
+            TGenerationSettingHolder(NumberOfCorridorsPerMission = 4 ConsiderOnlySameDescriptor = true)
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export ScnAtk_Artillery_TriggerHappy_1for4Corridors_WeightExtended is ScnAtk_Template_Artillery_TriggerHappy
+(
+    GenerationType = TGenerationType_BasedOnNumberOfCorridors
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Generation,
+            TGenerationSettingHolder(NumberOfCorridorsPerMission = 4 ConsiderOnlySameDescriptor = true)
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export ScnAtk_Artillery_TriggerHappy is ScnAtk_Template_Artillery_TriggerHappy
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+)
+//-------------------------------------------------------------------------
+export ScnAtk_Artillery_TriggerHappy_WeightExtended is ScnAtk_Template_Artillery_TriggerHappy
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+)
+//-------------------------------------------------------------------------
+export ScnAtk_Artillery_TriggerHappy_Autogen is ScnAtk_Template_Artillery_TriggerHappy
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    MinimumResourceForLaunch = ~/Scn_MinimumResourceForLaunch_Stage_1
+)
+//-------------------------------------------------------------------------
+export ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended is ScnAtk_Template_Artillery_TriggerHappy
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    MinimumResourceForLaunch = ~/Scn_MinimumResourceForLaunch_Stage_1
+)
+//-------------------------------------------------------------------------
+export ScnAtk_Artillery_Support is TMacroActionDescriptor_Artillery_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    SupportPointSafetyMargin = 1
+    MinimumThreatPerSplashForKill = 30 //15
+    MinimumThreatPerSplashForSupport = 30 //10
+    SupportStrikeRatio = [0.1]
+
+    ArtilleryPositionOffset = 10000 * Metre
+    OutMapArtilleryPositionOffset = 7000 * Metre
+    ArtilleryUpdateOffset = 3750 * Metre
+    ThreatThresholdValue = 20
+    MoveOutThreatProbability = 0.1
+    IgnoreSafePath = true
+
+    DeployOnRoad = True
+    DistanceToOptimumStartDuringDeployment = 3000*Metre
+
+    ArtilleryStrikeThreatBonusPerTags =  // Multiplicateur appliqué lors du calcul de la menace d'unité. On applique le premier bonus qui match les tags de notre unité (1 par défaut)
+    [
+        (["Canon_AT"], 1.5),
+        (["Canon_AA"], 1.5),
+        (["Infanterie_Standard"], 2.5),
+        (["Infanterie_Spec_Defense"], 2.5),
+        (["Infanterie"], 2.0),
+        (["Artillerie"], 1.5),
+        (["Defense_BunkerMG"], 5.0),
+        (["Defense_BunkerAT_Leger"], 2.0),
+        (["Defense_BunkerAT_Standard"], 2.0),
+        (["Defense_BunkerAT_Lourd"], 2.0),
+        (["Vehicule_Logistique"], 0.5),
+        (["Vehicule"], 1.0),
+        (["Char"], 0.5),
+    ]
+
+    PoolModelList = [
+        ~/ScnAtk_Pool_Artillery_Support,
+    ]
+
+    ParametresDeMission = MAP
+    [
+        (
+            ESettingType/Coordination,
+            TCoordinationSettingHolder(CoordinationType = ESupportingStatus/IsSupport)
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export ScnAtk_Artillery_Support_WeightExtended is TMacroActionDescriptor_Artillery_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    SupportPointSafetyMargin = 1
+    MinimumThreatPerSplashForKill = 30 //15
+    MinimumThreatPerSplashForSupport = 30 //10
+    SupportStrikeRatio = [0.1]
+
+    ArtilleryPositionOffset = 10000 * Metre
+    OutMapArtilleryPositionOffset = 7000 * Metre
+    ArtilleryUpdateOffset = 3750 * Metre
+    ThreatThresholdValue = 20
+    MoveOutThreatProbability = 0.1
+    IgnoreSafePath = true
+
+    DeployOnRoad = True
+    DistanceToOptimumStartDuringDeployment = 3000*Metre
+
+    ArtilleryStrikeThreatBonusPerTags =  // Multiplicateur appliqué lors du calcul de la menace d'unité. On applique le premier bonus qui match les tags de notre unité (1 par défaut)
+    [
+        (["Canon_AT"], 1.5),
+        (["Canon_AA"], 1.5),
+        (["Infanterie_Standard"], 2.5),
+        (["Infanterie_Spec_Defense"], 2.5),
+        (["Infanterie"], 2.0),
+        (["Artillerie"], 1.5),
+        (["Defense_BunkerMG"], 5.0),
+        (["Defense_BunkerAT_Leger"], 2.0),
+        (["Defense_BunkerAT_Standard"], 2.0),
+        (["Defense_BunkerAT_Lourd"], 2.0),
+        (["Vehicule_Logistique"], 0.5),
+        (["Vehicule"], 1.0),
+        (["Char"], 0.5),
+    ]
+
+    PoolModelList = [
+        ~/ScnAtk_Pool_Artillery_Support,
+    ]
+
+    ParametresDeMission = MAP
+    [
+        (
+            ESettingType/Coordination,
+            TCoordinationSettingHolder(CoordinationType = ESupportingStatus/IsSupport)
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+private template ScnAtk_Template_Artillery_Expensive
+[
+    MinimumResourceForLaunch:int = 0,
+]
+is TMacroActionDescriptor_Artillery_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    MinimumResourceForLaunch = <MinimumResourceForLaunch>
+
+    SupportPointSafetyMargin = 1
+    MinimumThreatPerSplashForKill = 55
+    MinimumThreatPerSplashForSupport = 999
+    SupportStrikeRatio = [0.0]
+    PrioritaryZoneWeightList = [66]
+
+    ArtilleryPositionOffset = 6000 * Metre
+    OutMapArtilleryPositionOffset = 6000 * Metre
+    ArtilleryUpdateOffset = 0 * Metre
+    ThreatThresholdValue = 20
+    MoveOutThreatProbability = 0.1
+    IgnoreSafePath = true
+    PrioritizeCorridorsForTaggedPoolModels = true
+
+    DeployOnRoad = True
+    DistanceToOptimumStartDuringDeployment = 3000*Metre
+
+    ArtilleryStrikeThreatBonusPerTags =  // Multiplicateur appliqué lors du calcul de la menace d'unité. On applique le premier bonus qui match les tags de notre unité (1 par défaut)
+    [
+        (["Canon_AT"], 1.0),
+        (["Canon_AA"], 1.0),
+        (["Infanterie_Standard"], 2.5),
+        (["Infanterie_Spec_Defense"], 2.5),
+        (["Infanterie"], 2.0),
+        (["Artillerie"], 1.5),
+        (["Defense_BunkerMG"], 5.0),
+        (["Defense_BunkerAT_Leger"], 2.0),
+        (["Defense_BunkerAT_Standard"], 2.0),
+        (["Defense_BunkerAT_Lourd"], 2.0),
+        (["Vehicule_Logistique"], 0.5),
+        (["Vehicule"], 0.5),
+        (["Char"], 0.5),
+    ]
+
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    TaggedPoolModelList = [
+        (["AttackMain"], [~/GenBTAtk_Pool_Artillery_Expensive]),
+    ]
+
+    PoolModelList = [
+        ~/ScnAtk_Pool_Artillery_Expensive,
+    ]
+)
+//-------------------------------------------------------------------------
+export ScnAtk_Artillery_Expensive is ScnAtk_Template_Artillery_Expensive
+(
+)
+//-------------------------------------------------------------------------
+export ScnAtk_Artillery_Expensive_WeightExtended is ScnAtk_Template_Artillery_Expensive
+(
+)
+//-------------------------------------------------------------------------
+export ScnAtk_Artillery_Expensive_Autogen is ScnAtk_Template_Artillery_Expensive
+(
+    MinimumResourceForLaunch = ~/Scn_MinimumResourceForLaunch_Stage_1
+)
+//-------------------------------------------------------------------------
+export ScnAtk_Artillery_Expensive_Autogen_WeightExtended is ScnAtk_Template_Artillery_Expensive
+(
+    MinimumResourceForLaunch = ~/Scn_MinimumResourceForLaunch_Stage_1
+)
+
+
+// Pool Models
+//-------------------------------------------------------------------------
+export ScnAtk_Pool_Artillery_TriggerHappy is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{54d326ee-7592-11e9-b89e-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        PriceComparisonMethod = EPriceComparatorType/Random
+        TagsPriority = [
+            "Artillerie_Longue_Portee",
+            "Artillerie_Courte_Portee",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export ScnAtk_Pool_Artillery_Support is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{54d6a95e-7592-11e9-9a29-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        PriceComparisonMethod = EPriceComparatorType/Cheapest
+        TagsPriority = [
+            "Artillerie_Courte_Portee",
+            "Artillerie_Longue_Portee",
+            "Artillerie_Observateur",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export ScnAtk_Pool_Artillery_Expensive is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{54d6a95f-7592-11e9-93c1-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = false
+        PriceComparisonMethod = EPriceComparatorType/Random
+        TagsPriority = [
+            "Artillerie_MLRS",
+            "Artillerie_Observateur",
+        ]
+        ForbiddenTags = [
+            "Avion",
+        ]
+    ),
+    ]
+)
+

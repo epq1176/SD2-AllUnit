@@ -1,0 +1,22 @@
+export ModelFile_NbW_42_30cm is 'GameData:Assets\3D\Units\GER\Canon\NbW42_30cm\NbW42_30cm.Ase2NdfBin'
+
+Modele_NbW_42_30cm is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_NbW_42_30cm
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_NbW_42_30cm_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\NbW42_30cm_MID\NbW42_30cm_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_NbW_42_30cm_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\LODS\NbW42_30cm_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

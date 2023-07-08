@@ -1,0 +1,22 @@
+export ModelFile_AH_IV_ROU is 'GameData:Assets\3D\Units\ROU\Char\AH_IV_ROU\AH_IV_ROU.Ase2NdfBin'
+
+Modele_AH_IV_ROU is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_AH_IV_ROU
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_AH_IV_ROU_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Char\AH_IV_ROU_MID\AH_IV_ROU_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_AH_IV_ROU_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Char\LODS\AH_IV_ROU_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

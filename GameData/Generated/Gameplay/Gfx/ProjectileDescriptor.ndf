@@ -1,0 +1,336 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+export Descriptor_Projectile_Arme_1 is TEntityDescriptor
+(
+    DescriptorId = GUID:{a5e6bd88-73ce-42db-8d9c-97bdcb741aeb}
+    ClassNameForDebug = 'Projectile Arme 1'
+    World        = WorldIndices_Projectile
+    Modules           = [
+        // ApparenceModel
+            TApparenceModelModuleDescriptor
+            (
+                AllowMissingGameplayBBoxBone = False
+                Scale = 1.0
+                Depiction  = Template_DescriptorProjectile_Rectiligne
+                (
+                    ProjectileModelFile = ModelFile_Projectile_ANM64
+                )
+            )
+            ,
+
+        // EffectApplier
+            ~/EffectApplierModuleSelector,
+
+        // LinkToOwner
+            TModuleSelector
+            (
+                Default        = TLinkToOwnerModuleDescriptor
+                (
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // PhysicalState
+            TModuleSelector
+            (
+                Default        = TPhysicalStateModuleDescriptor
+                (
+                    ThresholdConsequencesByPhysicalState = MAP [
+                        (~/PhysicalState_sante, ~/ThresholdConsequenceList_seuil_consequence_sante),
+                    ]
+                    MaxValueByPhysicalState = MAP [
+                        (~/PhysicalState_sante, 2),
+                    ]
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // ProjectileInformation
+            TModuleSelector
+            (
+                Default        = TProjectileInformationModuleDescriptor
+                (
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = False
+                ClampOutMap                = True
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUniteVolante
+                Radius                     = ((5) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // ProjectileTrajectory
+            TProjectileTrajectoryModuleDescriptor
+            (
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+                TagSet = [
+                    "AllProjectiles",
+                ]
+            ),
+
+    ]
+)
+export Descriptor_Projectile_Arme_2 is TEntityDescriptor
+(
+    DescriptorId = GUID:{741ce041-67c2-43b8-8051-34dc4f03fd7f}
+    ClassNameForDebug = 'Projectile Arme 2'
+    World        = WorldIndices_Projectile
+    Modules           = [
+        // ApparenceModel
+            TApparenceModelModuleDescriptor
+            (
+                AllowMissingGameplayBBoxBone = False
+                Scale = 1.0
+                Depiction  = Template_DescriptorProjectile_Parabolique
+                (
+                    ProjectileModelFile = ModelFile_Projectile_ANM64
+                )
+            )
+            ,
+
+        // EffectApplier
+            ~/EffectApplierModuleSelector,
+
+        // LinkToOwner
+            TModuleSelector
+            (
+                Default        = TLinkToOwnerModuleDescriptor
+                (
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // ProjectileInformation
+            TModuleSelector
+            (
+                Default        = TProjectileInformationModuleDescriptor
+                (
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = False
+                ClampOutMap                = True
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUniteVolante
+                Radius                     = ((5) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // ProjectileTrajectory
+            TProjectileTrajectoryModuleDescriptor
+            (
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+                TagSet = [
+                    "AllProjectiles",
+                ]
+            ),
+
+    ]
+)
+export Descriptor_Projectile_Arme_3 is TEntityDescriptor
+(
+    DescriptorId = GUID:{18d66204-34ba-4211-a8f6-6e55b054c776}
+    ClassNameForDebug = 'Projectile Arme 3'
+    World        = WorldIndices_Projectile
+    Modules           = [
+        // ApparenceModel
+            TApparenceModelModuleDescriptor
+            (
+                AllowMissingGameplayBBoxBone = False
+                Scale = 1.0
+                Depiction  = Template_DescriptorProjectile_Missile
+                (
+                    ProjectileModelFile = ModelFile_Projectile_ANM64
+                )
+            )
+            ,
+
+        // EffectApplier
+            ~/EffectApplierModuleSelector,
+
+        // LinkToOwner
+            TModuleSelector
+            (
+                Default        = TLinkToOwnerModuleDescriptor
+                (
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // PhysicalState
+            TModuleSelector
+            (
+                Default        = TPhysicalStateModuleDescriptor
+                (
+                    ThresholdConsequencesByPhysicalState = MAP [
+                        (~/PhysicalState_sante, ~/ThresholdConsequenceList_seuil_consequence_sante),
+                    ]
+                    MaxValueByPhysicalState = MAP [
+                        (~/PhysicalState_sante, 2),
+                    ]
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // ProjectileInformation
+            TModuleSelector
+            (
+                Default        = TProjectileInformationModuleDescriptor
+                (
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = False
+                ClampOutMap                = True
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUniteVolante
+                Radius                     = ((5) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // ProjectileTrajectory
+            TProjectileTrajectoryModuleDescriptor
+            (
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+                TagSet = [
+                    "AllProjectiles",
+                ]
+            ),
+
+    ]
+)
+export Descriptor_Projectile_Arme_4 is TEntityDescriptor
+(
+    DescriptorId = GUID:{c0b8d472-2fe2-4231-a0b4-1edda2a4e669}
+    ClassNameForDebug = 'Projectile Arme 4'
+    World        = WorldIndices_Projectile
+    Modules           = [
+        // ApparenceModel
+            TApparenceModelModuleDescriptor
+            (
+                AllowMissingGameplayBBoxBone = False
+                Scale = 1.0
+                Depiction  = Template_DescriptorProjectile_Rectiligne
+                (
+                    ProjectileModelFile = ModelFile_Projectile_ANM64
+                )
+            )
+            ,
+
+        // EffectApplier
+            ~/EffectApplierModuleSelector,
+
+        // LinkToOwner
+            TModuleSelector
+            (
+                Default        = TLinkToOwnerModuleDescriptor
+                (
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // PhysicalState
+            TModuleSelector
+            (
+                Default        = TPhysicalStateModuleDescriptor
+                (
+                    ThresholdConsequencesByPhysicalState = MAP [
+                        (~/PhysicalState_sante, ~/ThresholdConsequenceList_seuil_consequence_sante),
+                    ]
+                    MaxValueByPhysicalState = MAP [
+                        (~/PhysicalState_sante, 1),
+                    ]
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // ProjectileInformation
+            TModuleSelector
+            (
+                Default        = TProjectileInformationModuleDescriptor
+                (
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = False
+                ClampOutMap                = True
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUniteVolante
+                Radius                     = ((5) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // ProjectileTrajectory
+            TProjectileTrajectoryModuleDescriptor
+            (
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+                TagSet = [
+                    "AllProjectiles",
+                ]
+            ),
+
+    ]
+)

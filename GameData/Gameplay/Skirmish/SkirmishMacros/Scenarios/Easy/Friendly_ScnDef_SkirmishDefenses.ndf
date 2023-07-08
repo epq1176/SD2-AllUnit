@@ -1,0 +1,257 @@
+//-------------------------------------------------------------------------
+//------------------------- MISSIONS DE DEFENSE ---------------------------
+//-------------------------------------------------------------------------
+// Parametres TMacroActionDescriptor_Common
+//-------------------------------------------------------------------------
+// GenerationType :
+// NumberOfMacro :
+// ParametresDeMission : Transport, Airstrike, Support, ArtilleryStrike
+// PoolModelList : liste des unites demandees
+// DisableReinforcement : si on recoit des renforts en cours d'attaque ou pas
+// IgnoreSafePath : Le pathfind de la mission cherche ou non à esquiver la menace
+// TuerLaMissionEnFinDeVieAuLieuDeLaRelancer : (bool)
+// LaunchASAP_RatioMin : permet de lancer l'attaque sans attendre toutes les unites requises à combiner avec ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+// MissionOmnisciente : Pas utilise dans Normandie (systeme de connaissance de zone)
+//-------------------------------------------------------------------------
+// Parametres TMacroActionDescriptor_CorridorDefense_Specific
+//-------------------------------------------------------------------------
+// ForcedCorridor : (format special ex:[1]) permet de forcer l'attaque sur un couloir.
+//
+
+// MAINTAINS
+//-------------------------------------------------------------------------
+export Friendly_ScnDef_Maintain_Defenses is TMacroActionDescriptor_Defense_Specific
+(
+    GenerationType = TGenerationType_Maintain
+)
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+private template Friendly_ScnDef_Template_Defense
+[
+    NumberOfMacro:int = 1,
+    MinimumResourceForLaunch:int = 0,
+    PoolModelList = [~/Friendly_ScnDef_Pool_AT_Defense, Friendly_ScnDef_Pool_HMG_Defense],
+    UseTaggedPool:bool = true,
+    OrderedZoneWeightList = [1, 2, 3],
+]
+is TMacroActionDescriptor_Defense_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = <NumberOfMacro>
+    MinimumResourceForLaunch = <MinimumResourceForLaunch>
+    IgnoreSafePath = true //on n'esquive pas la menace sur le chemin
+    DisableReinforcement = true
+    IgnoreVisionForDefensePosition = false
+    IgnoreEnemyDirectionForDefensePosition = false
+    IgnoreDefensePositionSafety = true
+    LaunchASAP_RatioMin = 0.01
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+    OrderedZoneWeightList = <OrderedZoneWeightList>
+
+    PoolModelList = <PoolModelList>
+
+    TaggedPoolModelList = (
+        <UseTaggedPool> == false ? [] :
+        [
+            (["DefenseInfantry"], [~/Friendly_ScnDef_Pool_HMG_Defense]),
+            (["DefenseAA"], [~/Friendly_ScnDef_Pool_AA_Defense]),
+            (["DefenseTank"], [~/Friendly_ScnDef_Pool_AT_Defense]),
+        ]
+    )
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/Friendly_Scn_BasicAirstrikeSupport)
+        ),
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0)
+        ),
+        (
+            ESettingType/Support,
+            TSupportSettingHolder(SettingList = [Friendly_Scn_Renfort_AT])
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+private template Friendly_ScnDef_Template_Dynamic_Defense
+[
+    NumberOfMacro:int = 1,
+    MinimumResourceForLaunch:int = 0,
+    PoolModelList = [],
+    UseTaggedPool:bool = true,
+]
+is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = <NumberOfMacro>
+    MinimumResourceForLaunch = <MinimumResourceForLaunch>
+    IgnoreSafePath = true //on n'esquive pas la menace sur le chemin
+    DisableReinforcement = true
+    IgnoreVisionForDefensePosition = false
+    IgnoreEnemyDirectionForDefensePosition = false
+    IgnoreDefensePositionSafety = false
+    LaunchASAP_RatioMin = 0.01
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = <PoolModelList>
+
+    TaggedPoolModelList = (
+        <UseTaggedPool> == false ? [] :
+        [
+            (["DefenseInfantry"], [~/Friendly_ScnDef_Pool_HMG_Defense]),
+            (["DefenseAA"], [~/Friendly_ScnDef_Pool_AA_Defense]),
+            (["DefenseTank"], [~/Friendly_ScnDef_Pool_AT_Defense]),
+        ]
+    )
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/Friendly_Scn_BasicAirstrikeSupport)
+        ),
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0)
+        ),
+        (
+            ESettingType/Support,
+            TSupportSettingHolder(SettingList = [Friendly_Scn_Renfort_AT])
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+// Defenses couloir classiques
+//-------------------------------------------------------------------------
+export Friendly_ScnDef_Defense_Static_Adaptive is Friendly_ScnDef_Template_Defense
+(
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnDef_Defense_Static_Adaptive_WeightExtended is Friendly_ScnDef_Template_Defense
+(
+    OrderedZoneWeightList = [5, 6, 7]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnDef_Defense_Static_AA is Friendly_ScnDef_Template_Defense
+(
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnDef_Defense_Static_AA_WeightExtended is Friendly_ScnDef_Template_Defense
+(
+    OrderedZoneWeightList = [5, 6, 7]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnDef_Defense_Dynamic_Adaptive is Friendly_ScnDef_Template_Dynamic_Defense
+(
+)
+//-------------------------------------------------------------------------
+// Defenses couloir autogen
+//-------------------------------------------------------------------------
+export Friendly_ScnDef_Defense_Static_Adaptive_Autogen is Friendly_ScnDef_Template_Defense
+(
+    MinimumResourceForLaunch = ~/Friendly_Scn_MinimumResourceForLaunch_Stage_1
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnDef_Defense_Static_Adaptive_Autogen_WeightExtended is Friendly_ScnDef_Template_Defense
+(
+    MinimumResourceForLaunch = ~/Friendly_Scn_MinimumResourceForLaunch_Stage_1
+    OrderedZoneWeightList = [5, 6, 7]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnDef_Defense_Static_AA_Autogen is Friendly_ScnDef_Template_Defense
+(
+    MinimumResourceForLaunch = ~/Friendly_Scn_MinimumResourceForLaunch_Stage_1
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnDef_Defense_Static_AA_Autogen_WeightExtended is Friendly_ScnDef_Template_Defense
+(
+    MinimumResourceForLaunch = ~/Friendly_Scn_MinimumResourceForLaunch_Stage_1
+    OrderedZoneWeightList = [5, 6, 7]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnDef_Defense_Dynamic_Adaptive_Autogen is Friendly_ScnDef_Template_Dynamic_Defense
+(
+    MinimumResourceForLaunch = ~/Friendly_Scn_MinimumResourceForLaunch_Stage_1
+)
+//-------------------------------------------------------------------------
+// Pool Models
+//-------------------------------------------------------------------------
+Friendly_ScnDef_ProductionFallback is [
+    "Vehicule_Appui",
+    "Infanterie_Standard",
+    "Canon_AA",
+    "Vehicule_Transport_Arme",
+    "Char"
+] // Ce fallback permet d'assurer la production d'au moins une unite pour les corridors taggués. Sinon ça bloque le couloir
+//-------------------------------------------------------------------------
+export Friendly_ScnDef_Pool_HMG_Defense is TPoolModel
+(
+    // Pas de budget, il faut quelqu'un
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{28bcba6e-d77c-11e8-8a68-9c5c8ed10a9f}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Infanterie_Spec_Defense",
+                "Infanterie_Standard",
+                "Vehicule_Appui",
+            ]
+            +~/Friendly_ScnDef_ProductionFallback
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnDef_Pool_AT_Defense is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{28bcba6f-d77c-11e8-8aeb-9c5c8ed10a9f}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Canon_AT_Lourd",
+                "ChasseurDeChar_Lourd",
+                "Canon_AT_Standard",
+                "ChasseurDeChar_Standard",
+            ]
+            +~/Friendly_ScnDef_ProductionFallback
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{d9bb2191-e1b5-11e8-977e-2c56dc4c150d}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Infanterie_Spec_Defense",
+            ]
+            +~/Friendly_ScnDef_ProductionFallback
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnDef_Pool_AA_Defense is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{28bcba70-d77c-11e8-8ea3-9c5c8ed10a9f}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Canon_AA_Standard",
+                "Canon_AA_Porte",
+            ]
+            +~/Friendly_ScnDef_ProductionFallback
+        ),
+    ]
+)
+//-------------------------------------------------------------------------

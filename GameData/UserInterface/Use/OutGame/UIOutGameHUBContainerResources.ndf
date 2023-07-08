@@ -1,0 +1,125 @@
+//Toplights locals
+TopLights_XOffset is 148.
+TopLights_YOffset is 157.
+TopLights_XMultiplicant is 1.5
+
+private VideoFondOutgame is TUIResourceVideo
+(
+    VideoFile =  "GameData:/Assets/Videos/fond_outgame.webm"
+    DicoVideo =  ~/DicoVideoOutGame
+)
+
+private VideoFondEscapeMenu is TUIResourceVideo
+(
+    VideoFile =  "GameData:/Assets/Videos/fond_escape_menu.webm"
+    DicoVideo =  ~/DicoVideoOutGame
+)
+
+outGameHUBContainerResource is TUISpecificOutGameHUBContainerResource
+(
+    RefMagnification = ~/RefMagnification
+    ContentRefSize = [ 1920 , 1080 ]
+    SafeBoxMin     = [    0 ,    0 ]
+    SafeBoxSize    = [ 1920 , 1080 ]
+    //En partant du bas
+    ScreenMinY     = (154. + 18.) div ~/RefMagnification
+    ScreenMaxY     = (154. + 699. - 40.) div ~/RefMagnification
+    EventInterceptorLayer = $/M3D/Input/UserInputLayerHandler/InputLayer_EscapeMenuInterceptor
+
+    BackgroundVideoOutgame = ~/VideoFondOutgame
+    BackgroundVideoEscapeMenu = ~/VideoFondEscapeMenu
+
+    BackgroundComponents = BUCKContainerDescriptor
+    (
+        Components =
+        [
+            {BUCKVideoDescriptor
+            (
+                ElementName = "BackgroundVideo"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableOffset = [ 0, 0 ]
+                    RelativeWidthHeight = [1.0, 1.0]
+                    AlignementToFather = [ 0.5, 0.5 ]
+                    AlignementToAnchor = [ 0.5, 0.5 ]
+                )
+
+                VideoDrawer  = $/UserInterface/UIVideoDrawer
+                Video        = ~/VideoFondOutgame
+                VideoFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.])
+            ),}
+{            BUCKTextureDescriptor
+            (
+                TextureToken   = "OutgameTexture_outgame_sd2"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [ 1.0, 1.0 ]
+                    AlignementToFather = [ 0.5, 0.5 ]
+                    AlignementToAnchor = [ 0.5, 0.5 ]
+                )
+                TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.])
+            ),}
+        ]
+        ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+    )
+    ScreenComponents = BUCKContainerDescriptor
+    (
+        Components =
+        [
+            //BUCKTextureDescriptor
+            //(
+            //    TextureDrawer  = $/UserInterface/UITextureDrawer_ColorMultiply
+            //    Texture        = ~/OutgameTexture_WG2_BgOutGame_Screen
+            //    ComponentFrame = TUIFramePropertyRTTI
+            //    (
+            //    MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+            //    MagnifiableWidthHeight = [ 919. div ~/RefMagnification , 725. div ~/RefMagnification ]
+            //        AlignementToFather = [ 0.5, 0.5 ]
+            //        AlignementToAnchor = [ 0.5, 0.5 ]
+            //        )
+            //        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.])
+            //),
+        ]
+        ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+    )
+
+    RoomComponents = BUCKContainerDescriptor
+    (
+        Components =
+        [
+            // BUCKTextureDescriptor
+            // (
+                // TextureDrawer  = $/UserInterface/UITextureDrawer_ColorMultiply
+                // Texture        = ~/OutgameTexture_WG2_BgOutGame_Table
+                // ComponentFrame = TUIFramePropertyRTTI
+                // (
+                    // MagnifiableOffset = [ 0 , 160 div ~/RefMagnification ]
+                    // MagnifiableWidthHeight = [ 2134. div ~/RefMagnification, 542. div ~/RefMagnification ]
+                    // AlignementToFather = [0.5, 1.]
+                    // AlignementToAnchor = [0.5, 1.]
+                // )
+                // TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+            // ),
+        ]
+        ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+    )
+
+    ForegroundComponents = BUCKContainerDescriptor
+    (
+        Components =
+        [
+            //------------------------------------------------------------------------------------
+            //TBUCKFramedTextureWithColorDescriptor
+            //(
+            //    TextureDrawer  = $/UserInterface/UITextureDrawer_ColorMultiply_Additive
+            //    Texture        = ~/OutgameTexture_WG2_FgOutGame_Right_Light
+            //    ComponentFrame = TUIFramePropertyRTTI( MagnifiableOffset = [-1280, 154]  MagnifiableWidthHeight = [1280,800] AlignementToFather = [ 1.0, 0.0 ] )
+            //    TextureFrame   = TUIFramePropertyRTTI( AlignementToFather = [0., 0.] AlignementToAnchor = [0.0, 0.0] RelativeWidthHeight = [1.0,1.0])
+            //    Color = [255,50,50,64]
+            //),
+            //------------------------------------------------------------------------------------
+        ]
+        ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+    )
+)

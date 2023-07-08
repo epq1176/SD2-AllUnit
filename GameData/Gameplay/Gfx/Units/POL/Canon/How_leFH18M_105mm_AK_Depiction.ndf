@@ -1,0 +1,122 @@
+template TemplateMeshDescriptor_How_leFH18M_105mm_AK [ ModelFile ] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+
+ModelFile_Boites_How_leFH18M_AK is 'GameData:Assets\3D\Units\GER\Canon\How_leFH18M_105mm\Boites_How_leFH18M.Ase2NdfBin'
+
+Gfx_How_leFH18M_105mm_AK_1 is TDepictionTemplate //servant gauche
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_How_leFH18M_105mm_AK( ModelFile = ModelFile_Saboteurs_AK_1)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_How_leFH18M_105mm_AK( ModelFile = ModelFile_Saboteurs_AK_1_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_How_leFH18M_105mm_AK( ModelFile = ModelFile_Saboteurs_AK_1)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_How_leFH18M_105mm_AK( ModelFile = ModelFile_Saboteurs_AK_1_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Gauche
+)
+
+Gfx_How_leFH18M_105mm_AK_2 is TDepictionTemplate //servant droite
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_How_leFH18M_105mm_AK( ModelFile = ModelFile_SzareSzeregi_AK_2)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_How_leFH18M_105mm_AK( ModelFile = ModelFile_SzareSzeregi_AK_2_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_How_leFH18M_105mm_AK( ModelFile = ModelFile_SzareSzeregi_AK_2)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_How_leFH18M_105mm_AK( ModelFile = ModelFile_SzareSzeregi_AK_2_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Droite
+)
+
+//Arme
+// private AnimationPath_How_leFH18M_105mm_AK is 'GameData:Assets\3D\Units\GER\Canon\How_leFH18M_105mm\'
+// How_leFH18M_105mm_GER_Anim_Tree is DepictionAnimationTreeNode
+// (
+//     IAStates = AnimationStateAll
+//     IAOldStates = AnimationStateAll
+//     DefaultAnimationStates = AnimationStateEngineStopping
+//     Animations =
+//     (
+//         [TemplateAnimation(Animation= 'How_leFH18M_Idle' + '.Ase2NdfBin' Loop=false EventAnimation=false AnimationPath = AnimationPath_How_leFH18M_105mm_AK Mask = AnimationMask_All())]
+//     )
+
+//     Childs =
+//     [
+//         TAnimNode(IAStates = AnimationStateInstantFire                                                                  Anim = 'How_leFH18M_Fire'       Loop = false EventAnimation = true AnimationPath = AnimationPath_How_leFH18M_105mm_AK Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStopping | AnimationStateEngineStopTurning                             Anim = 'How_leFH18M_Deploy'     Loop = false AnimationPath = AnimationPath_How_leFH18M_105mm_AK Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStarting | AnimationStateEngineStartTurning                            Anim = 'How_leFH18M_Fold'       Loop = false AnimationPath = AnimationPath_How_leFH18M_105mm_AK Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateLeft                                           Anim = 'How_leFH18M_Turn_Left'  Loop = true  AnimationPath = AnimationPath_How_leFH18M_105mm_AK Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateRight                                          Anim = 'How_leFH18M_Turn_Right' Loop = true  AnimationPath = AnimationPath_How_leFH18M_105mm_AK Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateMoving | AnimationStateEngineRunning                                         Anim = 'How_leFH18M_Move'       Loop = true  AnimationPath = AnimationPath_How_leFH18M_105mm_AK Mask = AnimationMask_All()
+//             Childs = [
+//                 TAnimNode(IAStates = AnimationStateBack                                                                 Anim = 'How_leFH18M_Move_Back'  Loop = true  AnimationPath = AnimationPath_How_leFH18M_105mm_AK Mask = AnimationMask_All()),
+//         ]),
+//     ]
+// )
+
+// DepictionOperator_SkeletalAnimation_How_leFH18M_105mm_AK is [Template_DepictionOperator_SkeletalAnimation_With_Tree_TEST(AnimationTree = How_leFH18M_105mm_GER_Anim_Tree)]
+
+Gfx_How_leFH18M_105mm_AK_Weapon is TDepictionTemplate //arme
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = CommonDepictionSelector
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_How_leFH18M_105mm_AK ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_How_leFH18M_105mm_AK_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_How_leFH18M_105mm_AK_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor =  Modele_How_leFH18M_105mm_AK ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor =  Modele_How_leFH18M_105mm_AK_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor =  Modele_How_leFH18M_105mm_AK_LOW ),
+        ]
+
+        SubDepictions = []
+        Operators = //DepictionOperator_SkeletalAnimation_Canon_ZIS2_57mmAT_SOV +
+            DepictionOperatorNode_ResetUnit +
+            DepictionOperatorNode_Propulsion_2Wheels_Canon +
+            DepictionOperator_Carriable_Canon +
+            DepictionOperator_TurretAim_Canon +
+            DepictionOperator_TurretRecoil_Canon
+        Actions = Weapons_How_leFH18M_105mm_AK
+    )
+
+SubDepiction_Servant_1_How_leFH18M_105mm_AK is TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_How_leFH18M_105mm_AK_1 )
+SubDepiction_Servant_2_How_leFH18M_105mm_AK is TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_How_leFH18M_105mm_AK_2 )
+SubDepiction_Canon_AT_How_leFH18M_105mm_AK is TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_How_leFH18M_105mm_AK_Weapon )
+
+Gfx_How_leFH18M_105mm_AK is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate //les boites
+    (
+        OverrideMeshBoundingBoxMin = [-500,-500,0]
+        OverrideMeshBoundingBoxMax = [ 500, 500,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_How_leFH18M_105mm_AK( ModelFile = ModelFile_Boites_How_leFH18M) ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_How_leFH18M_105mm_AK( ModelFile = ModelFile_Boites_How_leFH18M) ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_How_leFH18M_105mm_AK( ModelFile = ModelFile_Boites_How_leFH18M) ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_How_leFH18M_105mm_AK( ModelFile = ModelFile_Boites_How_leFH18M) ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_How_leFH18M_105mm_AK( ModelFile = ModelFile_Boites_How_leFH18M) ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_How_leFH18M_105mm_AK( ModelFile = ModelFile_Boites_How_leFH18M) ),
+        ]
+        NodeNamesForSelection = [ 'Canon_AT', 'servant_G' , 'servant_D']
+        SubDepictions = [SubDepiction_Servant_1_How_leFH18M_105mm_AK,
+                        SubDepiction_Servant_2_How_leFH18M_105mm_AK,
+                        SubDepiction_Canon_AT_How_leFH18M_105mm_AK]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+    )
+)

@@ -1,0 +1,39 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+RangeSetting_Portee_1 is TRangeSettingDescriptor
+(
+    TargetTag = "AllUnits"
+    MinRange = ((0) * Metre)
+    MaxRange = ((2000) * Metre)
+    ShapeType = ERangeShapeType/Sphere
+    MinRangeFeedback = nil
+    MaxRangeFeedback = nil
+)
+RangeSetting_Portee_2 is TRangeSettingDescriptor
+(
+    TargetTag = "AllUnits"
+    MinRange = ((0) * Metre)
+    MaxRange = ((5000) * Metre)
+    ShapeType = ERangeShapeType/Cylinder
+    MinRangeFeedback = nil
+    MaxRangeFeedback = ~/RangeFeedback_Portee_Max
+)
+RangeSetting_Portee_Fake_Target is TRangeSettingDescriptor
+(
+    TargetTag = "None"
+    MinRange = ((0) * Metre)
+    MaxRange = ((2000) * Metre)
+    ShapeType = ERangeShapeType/Circle
+    MinRangeFeedback = nil
+    MaxRangeFeedback = ~/RangeFeedback_Portee_Max
+)
+RangeSetting_Portee_Infanterie is TRangeSettingDescriptor
+(
+    TargetTag = "Infanterie"
+    MinRange = ((1000) * Metre)
+    MaxRange = ((2245) * Metre)
+    ShapeType = ERangeShapeType/Circle
+    MinRangeFeedback = ~/RangeFeedback_Portee_Min
+    MaxRangeFeedback = ~/RangeFeedback_Portee_Max
+)

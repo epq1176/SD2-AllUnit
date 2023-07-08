@@ -1,0 +1,84 @@
+
+BUCKSpecificStrategicDateMainComponentDescriptor is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+    )
+
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    Axis = ~/ListAxis/Horizontal
+
+    InterItemMargin = TRTTILength( Magnifiable = 4.0 )
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "StratDate"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                )
+                ParagraphStyle = paragraphStyleTextRightAlign
+
+                TextStyle = "Default"
+
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextToken = "StrStrDate"
+                TextColor = "SD2_Blanc184"
+                TextSize = "24"
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                TypefaceToken = "Main"
+
+                Hint = BUCKSpecificHintableArea
+                (
+                    DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                    HintTitleToken = "nextT_dat"
+                    HintBodyToken = "nextT_dab"
+                    HintExtendedToken = "nextT_dae"
+                )
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "StratMorningOrAfternoon"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                )
+                ParagraphStyle = paragraphStyleTextRightAlign
+
+                TextStyle = "Default"
+
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextColor = "SD2_BleuVariable"
+                TextSize = "20"
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                TypefaceToken = "Main"
+
+                Hint = BUCKSpecificHintableArea
+                (
+                    DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                    HintTitleToken = "nextT_apt"
+                    HintBodyToken = "nextT_apb"
+                    HintExtendedToken = "nextT_ape"
+                )
+            )
+        ),
+    ]
+)
+
+UISpecificStrategicDateViewDescriptor is TUISpecificStrategicDateViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificStrategicDateMainComponentDescriptor
+    MainComponentContainerUniqueName = "StrategicDateContainer" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

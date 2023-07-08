@@ -1,0 +1,22 @@
+export ModelFile_T50_FIN is 'GameData:Assets\3D\Units\FIN\Char\T50\T50.Ase2NdfBin'
+
+Modele_T50_FIN is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_T50_FIN
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_T50_FIN_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Char\T50_MID\T50_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_T50_FIN_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Char\LODS\T50_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

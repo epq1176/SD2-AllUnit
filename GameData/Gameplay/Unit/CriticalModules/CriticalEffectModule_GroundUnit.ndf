@@ -1,0 +1,369 @@
+
+private template TemplateCriticalEffectModule_GroundUnit
+[
+    EffectsFromTerrain = [],
+]
+is TCriticalEffectModuleDescriptor
+(
+    Bounds = (1,20)
+    TerrainCriticalEffectTimer = 1// 5.0
+
+    EffectsFromTerrain = <EffectsFromTerrain>
+
+    EffectsOnFront =
+    [
+        /////////// TCriticalEffect_LimitVision(Token='CRITIC58' Roll=(5,5) MaxRange=77.0*Metre TimeOut=20.0),
+        /////////// TCriticalEffect_ReduceIdentification (Roll=(5,5) TimeOut=20.0),
+        /////////// TCriticalEffect_DisableShoot(Roll=(5,5) TimeOut=20.0),
+        /////////// TCriticalEffect_ReduceSpeed(Roll=(5,5) Multiplier=0.0 TimeOut=20.0),
+        /////////// TCriticalEffect_ReduceRotation(Roll=(5,5) Multiplier=0 TimeOut=20),
+
+        /////////// TCriticalEffect_LimitPrecision(Token='CRITIC59' Roll=(6,6) Limitation=0.20 TimeOut=-1),
+
+        /////////// TCriticalEffect_DisableShoot(Token='CRITIC60' Roll=(7,7) TimeOut=-1),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC61' Roll=(8,8) Multiplier=0.5 TimeOut=-1),
+        /////////// TCriticalEffect_ReduceRotation(Roll=(8,8) Multiplier=0.5 TimeOut=-1),
+
+        /////////// TCriticalEffect_LimitVision(Token='CRITIC62' Roll=(9,9) MaxRange=230.0*Metre TimeOut=-1),
+        /////////// TCriticalEffect_ReduceIdentification (Roll=(9,9) TimeOut=-1),
+
+        /////////// TCriticalEffect_DisableShoot(Token='CRITIC63' Roll=(10,10) TimeOut=-1),
+        /////////// TCriticalEffect_ReduceSpeed(Roll=(10,10) Multiplier=0 TimeOut=-1),
+        /////////// TCriticalEffect_ReduceIdentification (Roll=(10,10) TimeOut=-1),
+        /////////// TCriticalEffect_LimitVision(Roll=(10,10) MaxRange=0*Metre TimeOut=-1),
+        /////////// TCriticalEffect_ReduceRotation(Roll=(10,10) Multiplier=0 TimeOut=-1),
+    ]
+
+    EffectsOnSides =
+    [
+        /////////// TCriticalEffect_LimitVision(Token='CRITIC58' Roll=(3,3) MaxRange=77.0*Metre TimeOut=20.0),
+        /////////// TCriticalEffect_ReduceIdentification (Roll=(3,3) TimeOut=20.0),
+        /////////// TCriticalEffect_DisableShoot(Roll=(3,3) TimeOut=20.0),
+        /////////// TCriticalEffect_ReduceSpeed(Roll=(3,3) Multiplier=0.0 TimeOut=20.0),
+        /////////// TCriticalEffect_ReduceRotation(Roll=(3,3) Multiplier=0 TimeOut=20),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC64' Roll=(4,6) Multiplier=0.5 TimeOut=-1),
+        /////////// TCriticalEffect_ReduceRotation(Roll=(4,6) Multiplier=0.5 TimeOut=-1),
+
+        /////////// TCriticalEffect_LimitPrecision(Token='CRITIC65' Roll=(7,7) Limitation=0.30 TimeOut=-1),
+        /////////// TCriticalEffect_DisableShoot(Roll=(7,7) TimeOut=20.0),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC66' Roll=(8,8) Multiplier=0.25 TimeOut=-1),
+        /////////// TCriticalEffect_ReduceRotation(Roll=(8,8) Multiplier=0.25 TimeOut=-1),
+        /////////// TCriticalEffect_LoseFuel(Roll=(8,8) LossRatio=1 TimeOut=240),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC67' Roll=(9,9) Multiplier=0 TimeOut=-1),
+        /////////// TCriticalEffect_ReduceRotation(Roll=(9,9) Multiplier=0 TimeOut=-1),
+
+        /////////// TCriticalEffect_RemoveAmmo(Token='CRITIC68' Roll=(10,10) LossRatio=1.0),
+        /////////// TCriticalEffect_AddDamages(Roll=(10,10) Damages=5.0),
+        /////////// TCriticalEffect_ReduceIdentification (Roll=(10,10) TimeOut=20.0),
+        /////////// TCriticalEffect_ReduceSpeed(Roll=(10,10) Multiplier=0.0 TimeOut=20.0),
+        /////////// TCriticalEffect_ReduceRotation(Roll=(10,10) Multiplier=0 TimeOut=20),
+    ]
+
+    EffectsOnRear =
+    [
+        /////////// TCriticalEffect_LimitPrecision(Token='CRITIC65' Roll=(4,4) Limitation=0.30 TimeOut=-1),
+        /////////// TCriticalEffect_DisableShoot(Roll=(4,4) TimeOut=20.0),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC66' Roll=(5,6) Multiplier=0.25 TimeOut=-1),
+        /////////// TCriticalEffect_ReduceRotation(Roll=(5,6) Multiplier=0.25 TimeOut=-1),
+        /////////// TCriticalEffect_LoseFuel(Roll=(5,6) LossRatio=1 TimeOut=180),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC67' Roll=(7,8) Multiplier=0 TimeOut=-1),
+        /////////// TCriticalEffect_ReduceRotation(Roll=(7,8) Multiplier=0 TimeOut=-1),
+
+        /////////// TCriticalEffect_DisableShoot(Token='CRITIC69' Roll=(9,10) TimeOut=-1),
+        /////////// TCriticalEffect_ReduceSpeed(Roll=(9,10) Multiplier=0 TimeOut=-1),
+        /////////// TCriticalEffect_ReduceIdentification (Roll=(9,10) TimeOut=-1),
+        /////////// TCriticalEffect_LimitVision(Roll=(9,10) MaxRange=0*Metre TimeOut=-1),
+        /////////// TCriticalEffect_ReduceRotation(Roll=(9,10) Multiplier=0 TimeOut=-1),
+    ]
+
+    EffectsOnTop =
+    [
+
+    ]
+
+    // EFFETS SI BLINDAGE PERCE
+
+    PierceEffectsOnFront =
+    [
+        //TCriticalEffect_DieDieDie(Token='CRITIC21' Roll=(1,1) RepairCost=-1),
+
+        //TCriticalEffect_DieDieDie(Token='CRITIC19' Roll=(2,3) RepairCost=-1),
+
+        //TCriticalEffect_DieDieDie(Token='CRITIC3' Roll=(4,4) RepairCost=-1),
+
+        //TCriticalEffect_Disrupt(Token='CRITIC15' Roll=(5,5) TimeOut=-1 RepairCost=20),
+        //TCriticalEffect_ReduceSpeed(Roll=(5,5) Multiplier=0 TimeOut=-1 RepairCost=20),
+        //TCriticalEffect_ReduceRotation(Roll=(5,5) Multiplier=0 TimeOut=-1 RepairCost=20),
+        //TCriticalEffect_ReduceIdentification (Roll=(5,5) Multiplier=0 TimeOut=-1 RepairCost=20),
+        //TCriticalEffect_LimitVision(Roll=(5,5) MaxRange=0*Metre TimeOut=-1 RepairCost=20),
+
+
+        //TCriticalEffect_RemoveAmmo(Token='CRITIC22' Roll=(6,7) LossRatio=1.0 RepairCost=-1),
+        //TCriticalEffect_Disrupt(Roll=(6,7) TimeOut=5 RepairCost=-1),
+
+        //TCriticalEffect_Disrupt(Token='CRITIC11' Roll=(8,9) TimeOut=10 RepairCost=-1),
+        //TCriticalEffect_AddDamages(Roll=(8,9) Damages=2.0 RepairCost=-1),
+
+        //TCriticalEffect_ReduceSpeed(Token='CRITIC12' Roll=(10,12) Multiplier=0 TimeOut=10 RepairCost=-1),
+        //TCriticalEffect_ReduceRotation(Roll=(10,12) Multiplier=0 TimeOut=10 RepairCost=-1),
+        //TCriticalEffect_AddDamages(Roll=(10,12) Damages=2.0 RepairCost=-1),
+
+        //TCriticalEffect_Disrupt(Token='CRITIC13' Roll=(13,13) TimeOut=10 RepairCost=-1),
+        //TCriticalEffect_ReduceSpeed( Roll=(13,13) Multiplier=0 TimeOut=10 RepairCost=-1),
+        //TCriticalEffect_ReduceRotation(Roll=(13,13) Multiplier=0 TimeOut=10 RepairCost=-1),
+        //TCriticalEffect_AddDamages(Roll=(13,13) Damages=2.0 RepairCost=-1),
+
+        //TCriticalEffect_Disrupt(Token='CRITIC17' Roll=(14,14) TimeOut=20 RepairCost=-1),
+        //TCriticalEffect_RemoveAmmo(Roll=(14,14) LossRatio=0.25 RepairCost=-1),
+        //TCriticalEffect_AddDamages(Roll=(14,14) Damages=2.0 RepairCost=-1),
+
+        //TCriticalEffect_Disrupt(Token='CRITIC20' Roll=(15,15) TimeOut=-1 RepairCost=100),
+
+        //TCriticalEffect_ReduceSpeed(Token='CRITIC4' Roll=(16,16) Multiplier=0.5 TimeOut=-1 RepairCost=100),
+        //TCriticalEffect_ReduceRotation(Roll=(16,16) Multiplier=0.5 TimeOut=-1 RepairCost=100),
+        //TCriticalEffect_AddDamages(Roll=(16,16) Damages=2.0 RepairCost=-1),
+
+        //TCriticalEffect_RemoveAmmo(Token='CRITIC18' Roll=(17,17) LossRatio=0.5 RepairCost=-1),
+        //TCriticalEffect_Disrupt(Roll=(17,17) TimeOut=3 RepairCost=-1),
+        //TCriticalEffect_AddDamages(Roll=(17,17) Damages=2.0 RepairCost=-1),
+
+        //TCriticalEffect_ReduceSpeed(Token='CRITIC16'Roll=(18,19) Multiplier=0.5 TimeOut=-1 RepairCost=100),
+        //TCriticalEffect_ReduceRotation(Roll=(18,19) Multiplier=0.5 TimeOut=-1 RepairCost=100),
+        //TCriticalEffect_AddDamages(Roll=(18,19) Damages=2.0 RepairCost=-1),
+
+        //TCriticalEffect_ReduceSpeed(Token='CRITIC23'Roll=(20,20) Multiplier=0.0 TimeOut=-1 RepairCost=200),
+        //TCriticalEffect_ReduceRotation(Roll=(20,20) Multiplier=0.5 TimeOut=-1 RepairCost=200),
+        //TCriticalEffect_AddDamages(Roll=(20,20) Damages=2.0 RepairCost=-1),
+
+    ]
+
+    PierceEffectsOnSides =
+    [
+
+        //TCriticalEffect_DieDieDie(Token='CRITIC21' Roll=(1,3) RepairCost=-1),
+
+        //TCriticalEffect_DieDieDie(Token='CRITIC2' Roll=(4,5) RepairCost=-1),
+
+        //TCriticalEffect_DieDieDie(Token='CRITIC3' Roll=(6,6) RepairCost=-1),
+
+        //TCriticalEffect_Disrupt(Token='CRITIC15' Roll=(7,7) TimeOut=-1 RepairCost=20),
+        //TCriticalEffect_ReduceSpeed(Roll=(7,7) Multiplier=0 TimeOut=-1 RepairCost=20),
+        //TCriticalEffect_ReduceRotation(Roll=(7,7) Multiplier=0 TimeOut=-1 RepairCost=20),
+        //TCriticalEffect_ReduceIdentification (Roll=(7,7) Multiplier=0 TimeOut=-1 RepairCost=20),
+        //TCriticalEffect_LimitVision(Roll=(7,7) MaxRange=0*Metre TimeOut=-1 RepairCost=20),
+
+        //TCriticalEffect_ReduceSpeed(Token='CRITIC16'Roll=(8,9) Multiplier=0.5 TimeOut=-1 RepairCost=100),
+        //TCriticalEffect_ReduceRotation(Roll=(8,9) Multiplier=0.5 TimeOut=-1 RepairCost=100),
+        //TCriticalEffect_AddDamages(Roll=(8,9) Damages=2.0 RepairCost=-1),
+
+        //TCriticalEffect_Disrupt(Token='CRITIC20' Roll=(10,10) TimeOut=-1 RepairCost=100),
+
+        //TCriticalEffect_RemoveAmmo(Token='CRITIC18' Roll=(11,11) LossRatio=0.5 RepairCost=-1),
+        //TCriticalEffect_Disrupt(Roll=(11,11) TimeOut=3 RepairCost=-1),
+        //TCriticalEffect_AddDamages(Roll=(11,11) Damages=2.0 RepairCost=-1),
+
+        //TCriticalEffect_ReduceSpeed(Token='CRITIC23'Roll=(12,13) Multiplier=0.0 TimeOut=-1 RepairCost=200),
+        //TCriticalEffect_ReduceRotation(Roll=(12,13) Multiplier=0.5 TimeOut=-1 RepairCost=200),
+        //TCriticalEffect_AddDamages(Roll=(12,13) Damages=2.0 RepairCost=-1),
+
+        //TCriticalEffect_ReduceSpeed(Token='CRITIC4' Roll=(14,15) Multiplier=0.5 TimeOut=-1 RepairCost=100),
+        //TCriticalEffect_ReduceRotation(Roll=(14,15) Multiplier=0.5 TimeOut=-1 RepairCost=100),
+        //TCriticalEffect_AddDamages(Roll=(14,15) Damages=2.0 RepairCost=-1),
+
+        //TCriticalEffect_Disrupt(Token='CRITIC13' Roll=(16,16) TimeOut=10 RepairCost=-1),
+        //TCriticalEffect_ReduceSpeed( Roll=(16,16) Multiplier=0 TimeOut=10 RepairCost=-1),
+        //TCriticalEffect_ReduceRotation(Roll=(16,16) Multiplier=0 TimeOut=10 RepairCost=-1),
+        //TCriticalEffect_AddDamages(Roll=(16,16) Damages=2.0 RepairCost=-1),
+
+        //TCriticalEffect_Disrupt(Token='CRITIC17' Roll=(17,17) TimeOut=20 RepairCost=-1),
+        //TCriticalEffect_RemoveAmmo(Roll=(17,17) LossRatio=0.25 RepairCost=-1),
+        //TCriticalEffect_AddDamages(Roll=(17,17) Damages=2.0 RepairCost=-1),
+
+        //TCriticalEffect_ReduceSpeed(Token='CRITIC5'Roll=(18,20) Multiplier=0.0 TimeOut=-1 RepairCost=300),
+        //TCriticalEffect_ReduceRotation(Roll=(18,20) Multiplier=0.0 TimeOut=-1 RepairCost=300),
+        //TCriticalEffect_Disrupt(Roll=(18,20) TimeOut=5 RepairCost=-1),
+        //TCriticalEffect_AddDamages(Roll=(18,20) Damages=2.0 RepairCost=-1),
+    ]
+
+    PierceEffectsOnRear =
+    [
+        //TCriticalEffect_DieDieDie(Token='CRITIC21' Roll=(1,3) RepairCost=-1),
+
+        //TCriticalEffect_DieDieDie(Token='CRITIC2' Roll=(4,8) RepairCost=-1),
+
+        //TCriticalEffect_DieDieDie(Token='CRITIC3' Roll=(11,11) RepairCost=-1),
+
+        //TCriticalEffect_ReduceSpeed(Token='CRITIC4' Roll=(12,13) Multiplier=0.5 TimeOut=-1 RepairCost=100),
+        //TCriticalEffect_ReduceRotation(Roll=(12,13) Multiplier=0.5 TimeOut=-1 RepairCost=100),
+        //TCriticalEffect_AddDamages(Roll=(12,13) Damages=2.0 RepairCost=-1),
+
+        //TCriticalEffect_RemoveAmmo(Token='CRITIC18' Roll=(14,14) LossRatio=0.5 RepairCost=-1),
+        //TCriticalEffect_AddDamages(Roll=(14,14) Damages=2.0 RepairCost=-1),
+
+        //TCriticalEffect_Disrupt(Token='CRITIC15' Roll=(15,15) TimeOut=-1 RepairCost=20),
+        //TCriticalEffect_ReduceSpeed(Roll=(15,15) Multiplier=0 TimeOut=-1 RepairCost=20),
+        //TCriticalEffect_ReduceRotation(Roll=(15,15) Multiplier=0 TimeOut=-1 RepairCost=20),
+        //TCriticalEffect_ReduceIdentification (Roll=(15,15) Multiplier=0 TimeOut=-1 RepairCost=20),
+        //TCriticalEffect_LimitVision(Roll=(15,15) MaxRange=0*Metre TimeOut=-1 RepairCost=20),
+
+        //TCriticalEffect_Disrupt(Token='CRITIC20' Roll=(16,16) TimeOut=-1 RepairCost=100),
+        //TCriticalEffect_AddDamages(Roll=(16,16) Damages=2.0 RepairCost=-1),
+
+        //TCriticalEffect_Disrupt(Token='CRITIC17' Roll=(17,17) TimeOut=20 RepairCost=-1),
+        //TCriticalEffect_RemoveAmmo(Roll=(17,17) LossRatio=0.25 RepairCost=-1),
+        //TCriticalEffect_AddDamages(Roll=(17,17) Damages=2.0 RepairCost=-1),
+
+        //TCriticalEffect_ReduceSpeed(Token='CRITIC5'Roll=(18,20) Multiplier=0.0 TimeOut=-1 RepairCost=300),
+        //TCriticalEffect_ReduceRotation(Roll=(18,20) Multiplier=0.0 TimeOut=-1 RepairCost=300),
+        //TCriticalEffect_Disrupt(Roll=(18,20) TimeOut=5 RepairCost=-1),
+        //TCriticalEffect_AddDamages(Roll=(18,20) Damages=2.0 RepairCost=-1),
+
+    ]
+
+    PierceEffectsOnTop =
+    [
+        //TCriticalEffect_DieDieDie(Token='CRITIC21' Roll=(1,7) RepairCost=-1),
+
+        //TCriticalEffect_DieDieDie(Token='CRITIC2' Roll=(8,13) RepairCost=-1),
+
+        //TCriticalEffect_DieDieDie(Token='CRITIC3' Roll=(14,20) RepairCost=-1),
+    ]
+
+    // EFFETS SI RICOCHET
+
+    RicochetEffectsOnFront =
+    [
+        //TCriticalEffect_ReduceSpeed(Token='BOUNCE1' Roll=(1,17) Multiplier=1.0 RepairCost=-1),
+
+        //TCriticalEffect_Disrupt(Token='CRITIC8' Roll=(18,18) TimeOut=10 RepairCost=-1),
+
+        //TCriticalEffect_ReduceSpeed(Token='CRITIC9' Roll=(19,19) Multiplier=0 TimeOut=10 RepairCost=-1),
+        //TCriticalEffect_ReduceRotation(Roll=(19,19) Multiplier=0 TimeOut=10 RepairCost=-1),
+
+        //TCriticalEffect_Disrupt(Token='CRITIC10' Roll=(20,20) TimeOut=10 RepairCost=-1),
+        //TCriticalEffect_ReduceSpeed( Roll=(20,20) Multiplier=0 TimeOut=10 RepairCost=-1),
+        //TCriticalEffect_ReduceRotation(Roll=(20,20) Multiplier=0 TimeOut=10 RepairCost=-1),
+    ]
+
+    RicochetEffectsOnSides =
+    [
+        //TCriticalEffect_ReduceSpeed(Token='BOUNCE1' Roll=(1,13) Multiplier=1.0 RepairCost=-1),
+
+        //TCriticalEffect_ReduceSpeed(Token='CRITIC16'Roll=(14,14) Multiplier=0.5 TimeOut=-1 RepairCost=100),
+        //TCriticalEffect_ReduceRotation(Roll=(14,14) Multiplier=0.5 TimeOut=-1 RepairCost=100),
+
+        //TCriticalEffect_Disrupt(Token='CRITIC8' Roll=(15,15) TimeOut=10 RepairCost=-1),
+
+        //TCriticalEffect_ReduceSpeed(Token='CRITIC9' Roll=(16,16) Multiplier=0 TimeOut=10 RepairCost=-1),
+        //TCriticalEffect_ReduceRotation(Roll=(16,16) Multiplier=0 TimeOut=10 RepairCost=-1),
+
+        //TCriticalEffect_Disrupt(Token='CRITIC10' Roll=(17,17) TimeOut=10 RepairCost=-1),
+        //TCriticalEffect_ReduceSpeed( Roll=(17,17) Multiplier=0 TimeOut=10 RepairCost=-1),
+        //TCriticalEffect_ReduceRotation(Roll=(17,17) Multiplier=0 TimeOut=10 RepairCost=-1),
+
+        //TCriticalEffect_RemoveAmmo(Token='CRITIC18' Roll=(18,18) LossRatio=0.5 RepairCost=-1),
+
+        //TCriticalEffect_ReduceSpeed(Token='CRITIC14' Roll=(19,20) Multiplier=0 TimeOut=30 RepairCost=-1),
+        //TCriticalEffect_ReduceRotation(Roll=(19,20) Multiplier=0 TimeOut=30 RepairCost=-1),
+
+
+    ]
+
+    RicochetEffectsOnRear =
+    [
+        //TCriticalEffect_ReduceSpeed(Token='BOUNCE1' Roll=(1,8) Multiplier=1.0 RepairCost=-1),
+
+        //TCriticalEffect_ReduceSpeed(Token='CRITIC14' Roll=(8,12) Multiplier=0 TimeOut=30 RepairCost=-1),
+        //TCriticalEffect_ReduceRotation(Roll=(8,12) Multiplier=0 TimeOut=30 RepairCost=-1),
+
+        //TCriticalEffect_ReduceSpeed(Token='CRITIC23'Roll=(13,13) Multiplier=0.0 TimeOut=-1 RepairCost=200),
+        //TCriticalEffect_ReduceRotation(Roll=(13,13) Multiplier=0.5 TimeOut=-1 RepairCost=200),
+
+        //TCriticalEffect_ReduceSpeed(Token='CRITIC4' Roll=(14,15) Multiplier=0.5 TimeOut=-1 RepairCost=100),
+        //TCriticalEffect_ReduceRotation(Roll=(14,15) Multiplier=0.5 TimeOut=-1 RepairCost=100),
+
+        //TCriticalEffect_Disrupt(Token='CRITIC8' Roll=(16,16) TimeOut=10 RepairCost=-1),
+
+        //TCriticalEffect_ReduceSpeed(Token='CRITIC16'Roll=(17,17) Multiplier=0.5 TimeOut=-1 RepairCost=100),
+        //TCriticalEffect_ReduceRotation(Roll=(17,17) Multiplier=0.5 TimeOut=-1 RepairCost=100),
+
+        //TCriticalEffect_Disrupt(Token='CRITIC10' Roll=(18,18) TimeOut=10 RepairCost=-1),
+        //TCriticalEffect_ReduceSpeed( Roll=(18,18) Multiplier=0 TimeOut=10 RepairCost=-1),
+        //TCriticalEffect_ReduceRotation(Roll=(18,18) Multiplier=0 TimeOut=10 RepairCost=-1),
+
+        //TCriticalEffect_RemoveAmmo(Token='CRITIC18' Roll=(19,19) LossRatio=0.5 RepairCost=-1),
+
+        //TCriticalEffect_Disrupt(Token='CRITIC20' Roll=(20,20) TimeOut=-1 RepairCost=100),
+    ]
+
+    RicochetEffectsOnTop =
+    [
+        //TCriticalEffect_ReduceSpeed(Token='BOUNCE1' Roll=(1,20) Multiplier=1.0 RepairCost=-1),
+    ]
+
+)
+
+export CriticalEffectModule_Chenilles is TemplateCriticalEffectModule_GroundUnit
+(
+    EffectsFromTerrain =
+    [
+        /////////// TCriticalEffect_IncreaseFuelConsumption(Token='CRITIC201' Roll=(1,13) Multiplier=10.0 TimeOut=30.0),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC202' Roll=(1,5) Multiplier=0.5 TimeOut=10.0),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC206' Roll=(6,12) Multiplier=0.0 TimeOut=15.0),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC204' Roll=(13,15) Multiplier=0.5 TimeOut=30.0),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC205' Roll=(16,17) Multiplier=0.0 TimeOut=35.0),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC23'Roll=(18,20) Multiplier=0.0 TimeOut=-1),
+        /////////// TCriticalEffect_ReduceRotation(Roll=(18,20) Multiplier=0.5 TimeOut=-1),
+
+        /////////// TCriticalEffect_Disrupt(Token='CRITIC24' Roll=(1,20) TimeOut=5 KeepWhenLeavingTerrain = True),
+    ]
+)
+
+export CriticalEffectModule_ToutTerrain is TemplateCriticalEffectModule_GroundUnit
+(
+    EffectsFromTerrain =
+    [
+        /////////// TCriticalEffect_IncreaseFuelConsumption(Token='CRITIC201' Roll=(1,10) Multiplier=10.0 TimeOut=60.0),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC204' Roll=(1,8) Multiplier=0.5 TimeOut=30.0),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC205' Roll=(9,15) Multiplier=0.0 TimeOut=30.0),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC23'Roll=(16,20) Multiplier=0.0 TimeOut=-1),
+        /////////// TCriticalEffect_ReduceRotation(Roll=(16,20) Multiplier=0.5 TimeOut=-1),
+
+        /////////// TCriticalEffect_Disrupt(Token='CRITIC24' Roll=(1,20) TimeOut=5 KeepWhenLeavingTerrain = True),
+
+
+    ]
+)
+
+export CriticalEffectModule_Roues is TemplateCriticalEffectModule_GroundUnit
+(
+    EffectsFromTerrain =
+    [
+        /////////// TCriticalEffect_IncreaseFuelConsumption(Token='CRITIC201' Roll=(1,6) Multiplier=10.0 TimeOut=60.0),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC204' Roll=(7,9) Multiplier=0.5 TimeOut=30.0),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC205' Roll=(10,14) Multiplier=0.0 TimeOut=60.0),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC23'Roll=(15,20) Multiplier=0.0 TimeOut=-1),
+        /////////// TCriticalEffect_ReduceRotation(Roll=(15,20) Multiplier=0.5 TimeOut=-1),
+
+        /////////// TCriticalEffect_Disrupt(Token='CRITIC24' Roll=(1,20) TimeOut=5 KeepWhenLeavingTerrain = True),
+
+
+    ]
+)

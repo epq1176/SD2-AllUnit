@@ -1,0 +1,22 @@
+export ModelFile_Panzer_IV_H_Beo is 'GameData:Assets\3D\Units\GER\Char\Beo_Panzer_IV_H\Beo_Panzer_IV_H.Ase2NdfBin'
+
+Modele_Panzer_IV_H_Beo is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Panzer_IV_H_Beo
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_IV_H_Beo_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\Beo_Panzer_IV_H_MID\Beo_Panzer_IV_H_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_IV_H_Beo_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\Beo_Panzer_IV_H_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

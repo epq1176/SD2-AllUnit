@@ -1,0 +1,22 @@
+export ModelFile_SdKfz_10 is 'GameData:Assets\3D\Units\GER\Vehicule\SdKfz_10\SdKfz_10.Ase2NdfBin'
+
+Modele_SdKfz_10 is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_SdKfz_10
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_SdKfz_10_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\SdKfz_10_MID\SdKfz_10_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_SdKfz_10_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\LODS\SdKfz_10_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

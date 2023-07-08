@@ -1,0 +1,22 @@
+export ModelFile_Priest_DD is 'GameData:Assets\3D\Units\USA\Char\M7_DD\Priest_DD.Ase2NdfBin'
+
+Modele_Priest_DD is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Priest_DD
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Priest_DD_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Char\M7_DD_MID\Priest_DD_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Priest_DD_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Char\LODS\Priest_DD_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

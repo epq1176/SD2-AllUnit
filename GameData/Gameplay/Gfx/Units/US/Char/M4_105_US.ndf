@@ -1,0 +1,22 @@
+export ModelFile_M4_105_US is 'GameData:Assets\3D\Units\USA\Char\M4_105\M4_105.Ase2NdfBin'
+
+Modele_M4_105_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M4_105_US
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_M4_105_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Char\M4_105_MID\M4_105_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_M4_105_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Char\LODS\M4_105_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

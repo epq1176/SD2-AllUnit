@@ -1,0 +1,237 @@
+//------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------//
+StartBattlePawnBriefHeader is BUCKListDescriptor
+(
+    Axis = ~/ListAxis/Horizontal
+
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    FirstMargin = TRTTILength( Magnifiable = 10.0 )
+    LastMargin = TRTTILength( Magnifiable = 10.0 )
+
+    BackgroundComponents =
+    [
+        // Background Texture
+        BUCKContainerDescriptor
+        (
+            ElementName = "FriezeContainer"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1, 0.0]
+                MagnifiableWidthHeight = [0,90]
+            )
+
+            ClipContent = true
+            HasBackground = true
+
+            Components =
+            [
+                HUDBackgroundParallelogram
+                (
+                    MagnifiableWidthHeight = [300.0, 100.0]
+                    MagnifiableOffset = [-130.0, 0.0]
+                    AlignementToAnchor = [0, 0]
+                    AlignementToFather = [0, 0]
+                    Color0 = "Noir50"
+                    Color1 = "Noir50"
+                )
+            ]
+        ),
+        SmallOmbrePanel
+    ]
+
+    Elements =
+    [
+        // Pawn Name
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+
+            ComponentDescriptor = BUCKListElementDescriptor
+            (
+                ComponentDescriptor = BUCKTextDescriptor
+                (
+                    ElementName = 'BattalionName'
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 0.0]
+                        AlignementToFather = [0,0.5]
+                        AlignementToAnchor = [0,0.5]
+
+                    )
+
+                    ParagraphStyle = TParagraphStyleRTTI
+                    (
+                        Alignment = ~/UIText_Left
+                        VerticalAlignment = ~/UIText_VerticalCenter
+                    )
+                     TextPadding = TRTTILength4(Magnifiable = [5.0, 5.0, 0.0, 0.0])
+                    TextStyle = 'Default'
+                    TypefaceToken = 'MainBold'
+
+                    VerticalFitStyle = ~/FitStyle/FitToContent
+                    BigLineAction = ~/BigLineAction/CutByDots
+
+                    TextDico = ~/LocalisationConstantes/dico_unites
+                    TextSize = 'SD2_Moyen'
+                    TextColor = 'SD2_Blanc184'
+                )
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = IconeEtPhase
+        ),
+
+
+        // Flag   -> j'ai scalé à zero :/
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0, 0]
+                    //MagnifiableWidthHeight = [65.4, 60.0] //Les images sont en 110x101, donc je garde le ratio.
+                    AlignementToAnchor = [0.0, 0.5]
+                    AlignementToFather = [0.0, 0.5]
+                )
+
+                HasBackground = true
+                BackgroundBlockColorToken = 'SD2_Blanc184'
+
+                Components =
+                [
+                    BUCKTextureDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        ElementName = 'Flag'
+                        ResizeMode = ~/TextureResizeMode/UserDefined
+
+                        TextureDrawer = 'ColorMultiply_NoGrayscale'
+                    )
+                ]
+            )
+        ),
+
+    ]
+)
+private IconeEtPhase is BUCKListDescriptor
+(
+    Axis = ~/ListAxis/Vertical
+    FirstMargin = TRTTILength( Magnifiable = 10.0 )
+    LastMargin = TRTTILength( Magnifiable = 10.0 )
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    Elements =
+    [
+    // NATO Icon
+        BUCKListElementDescriptor
+        (
+
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+
+                    MagnifiableWidthHeight  = [42, 26.0]
+                    AlignementToAnchor      = [0.5, 0]
+                    AlignementToFather      = [0.5, 0]
+                )
+
+                HasBackground = false
+                BackgroundBlockColorToken = 'SD2_Blanc184'
+
+                Components =
+                [
+                    BUCKTextureDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        ElementName = 'NATOIcon'
+                        ResizeMode = ~/TextureResizeMode/UserDefined
+
+                        TextureDrawer = 'ColorMultiply_NoGrayscale'
+                    )
+                ]
+            )
+        ),
+        //Phase
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = 'PhaseId'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToAnchor = [0.0, 0]
+                    AlignementToFather = [0.0, 0]
+                    MagnifiableWidthHeight = [55.0, 0.0] //36
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = ~/UIText_Center
+                    VerticalAlignment = ~/UIText_VerticalCenter
+                )
+                //TextPadding = TRTTILength4(Magnifiable = [0.0, 2.0, 2.0, 0.0])
+                TextStyle = 'UnlockingPhase'
+                TypefaceToken = 'Main'
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextToken = "LABEL_PHAA"
+                TextSize = '42'
+                TextColor = 'SD2_Blanc184'
+            )
+        ),
+    ]
+)
+//------------------------------------------------------------------------------
+
+BUCKSpecificStrategicStartBattlePawnBriefMainComponentDescriptor is BUCKButtonDescriptor
+(
+    ElementName = "HeaderButton"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    HidePointerEvents = true
+    HasBorder = true
+    BorderThicknessToken = '1'
+    BorderLineColorToken = 'Strategic/PawnSelection/MainButton'
+
+    IsTogglable = true
+
+    FitStyle = ~/ContainerFitStyle/FitToContentVertically
+
+    Components =
+    [
+        ~/StartBattlePawnBriefHeader,
+    ]
+)
+
+//------------------------------------------------------------------------------
+
+UISpecificStrategicStartBattlePawnBriefViewDescriptor is TUISpecificStrategicStartBattlePawnBriefViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificStrategicStartBattlePawnBriefMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    AssaultColorToken = "SeaBlue"
+    ArmoredColorToken = "DarkGreen"
+    ArtilleryColorToken = "Red"
+)
+

@@ -1,0 +1,22 @@
+export ModelFile_RSO_supply_GER is 'GameData:Assets\3D\Units\GER\Char\RSO_Supply_GER\RSO_Supply_GER.Ase2NdfBin'
+
+Modele_RSO_supply_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_RSO_supply_GER
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_RSO_supply_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\RSO_Supply_GER_MID\RSO_Supply_GER_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_RSO_supply_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\RSO_Supply_GER_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

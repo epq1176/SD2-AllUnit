@@ -1,0 +1,22 @@
+export ModelFile_Steyr_1500_FAO_HON is 'GameData:Assets\3D\Units\HON\Vehicule\Steyr_1500A_HON\Steyr_1500A_HON.Ase2NdfBin'
+
+Modele_Steyr_1500_FAO_HON is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Steyr_1500_FAO_HON
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Steyr_1500_FAO_HON_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\HON\Vehicule\Steyr_1500A_HON_MID\Steyr_1500A_HON_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Steyr_1500_FAO_HON_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\HON\Vehicule\LODS\Steyr_1500A_HON_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

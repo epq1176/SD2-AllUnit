@@ -1,0 +1,56 @@
+private unitRatioDescriptor is TModernWarfareUnitRatioDescriptor
+(
+    //-----------------------------------------------------------
+    //  Size
+    // Range pour le code couleur d'importance dans la feuille d'unité
+    SizeColorStep       = [-0.1, -0.05, 0, 0.05, 0.1]// Baptiste : fonctionnement particulier pour les valeurs de taille
+    //-----------------------------------------------------------
+    //  Strength
+    //  [0,1[ = Blanc / [1,5[ = Rouge / [5,10[ = Orange / [10,15[ = Vert / >=15 = Bleu
+    StrengthColorStep   = [1, 5, 10, 15]
+    //-----------------------------------------------------------
+
+    //-----------------------------------------------------------
+    //  On considère les valeurs infèrieures ou égales aux bornes données dans la liste
+    //-----------------------------------------------------------
+    //  Discretion
+    //  <= 0.5 : Bad(Rouge) / <= 1 : Poor(Rouge) / <= 1.5 : Normal(Orange) / <= 2 : High(Vert) / <= 2.5 : VeryHigh(Vert) / <= 3 : Exceptionnal(Bleu)
+    DiscretionColorStep = [0.5, 1, 1.5, 2, 2.5, 3]
+    //-----------------------------------------------------------
+    //  Optique Sol
+    //  <= 0 = Bad(Rouge) / <= 60 : Poor(Rouge) / <= 80 : Normal(Orange) / <= 120 : High(Vert) / <= 170 : VeryHigh(Vert) / <= 220 : Exceptionnal(Bleu)
+    OptiqueSolColorStep = [40, 60, 80, 120, 170, 220]
+    //-----------------------------------------------------------
+    //  Optique Air
+    //  <= 20 : Bad(Rouge) / <= 40 : Poor(Rouge) / <= 80 : Normal(Orange) / <= 150 :High(Vert) / <= 300 : VeryHigh(Vert) / <= 500 : Exceptionnal(Bleu)
+    OptiqueAirColorStep = [20, 40, 80, 150, 300, 500]
+    //-----------------------------------------------------------
+    //  Optique Bateaux
+    //  <= 40 : Bad(Rouge) / <= 75 : Poor(Rouge) / <= 90 : Normal(Orange) / <= 120 : High(Vert) / <= 150 : VeryHigh(Vert) / <= 220 : Exceptionnal(Bleu)
+    OptiqueBoatColorStep = [40, 60, 80, 120, 170, 220]
+    //-----------------------------------------------------------
+    //  Temps sur cible
+    //  <= 60 : Poor(Rouge) / <= 70 : Normal(Orange) / <= 80 : High(Vert) / <= 90 : Exceptionnal(Bleu)
+    TimeOverTargetColorStep = [60, 70, 80, 90]
+    //-----------------------------------------------------------
+
+    //-----------------------------------------------------------
+    //  On considère les valeurs supérieures ou égales aux bornes données dans la liste
+    //-----------------------------------------------------------
+    //  Rate of Turn (Demi-tour)
+    //  >= 700 = Poor(Rouge) / >= 400 : Normal(Orange) / >= 200 : High(Vert) / >= 100 : Exceptionnal(Bleu)
+    RateOfTurnColorStep = [700, 400, 200, 100]
+    //-----------------------------------------------------------
+
+
+    //  Accuracy
+    MaxAccuracyRatio    = 0.65
+
+    // Color Step pour les TJauge correspondant au palier pour le changement de couleur des jauges
+    // Pour les jauges du panel d'info unité
+    // [ /*Rouge*/ 0.3, /*Orange*/ 0.5, /*Vert*/ 0.7 /*Bleu*/ ]
+    JaugeColorStepUnitInfo = [0.3,0.5,0.7]
+    // Pour les jauges du panel de score ingame
+    // [ /*Rouge*/ 0.4, /*Orange*/ 0.6, /*Vert*/ 0.8 /*Bleu*/ ]
+    JaugeColorStepScore    = [0.4,0.6,0.8]
+)

@@ -1,0 +1,17 @@
+export Gfx_Bunker_AT_Pantherturm_GER is TDepictionTemplate //arme
+(
+    RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+    Selector = CommonBunkerDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_Panther_D ),
+        DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_Panther_D_MID ),
+        DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_Panther_D_LOW ),
+        DepictionDescriptor_LOD_None()
+    ]
+
+    SubDepictions = []
+    Operators = Operators_Panther_D
+    Actions = Weapons_Panther_D
+)
+
+export ModelFile_Bunker_Pantherturm_Weapon is ~/ModelFile_Panther_D

@@ -1,0 +1,376 @@
+
+//ci dessous les ancienne valeur pré-bidouille et réappliquées au cas par cas
+export SeuilZoom1ForWG is 420000
+export SeuilZoom2ForWG is 130000 //100000 // 70000 // 60000 //90000
+export SeuilZoom3ForWG is 6000
+export SeuilZoom4ForWG is 0
+
+export SeuilZoom4Mic is 200000
+
+export SeuilZoomAffichageZoneDeploiement_notVisible is 600000
+export SeuilZoomAffichageZoneDeploiement is 30000//600000
+
+
+// export SeuilZoom1 is 420000 //600000 //280000 // 600000 //300000 //240000 //180000
+// Bidouille pour Wargame :
+
+export SeuilZoom1 is 420000
+
+export SeuilZoom2 is 420000
+
+
+export SeuilZoom1AvionExtern is  600000 //400000 //100000 //90000 //240000 //200000
+export SeuilZoom2AvionExtern is  130000 //100000 //60000 // 90000 //30000 //900000
+export SeuilZoom3AvionExtern is  60000 //20000 // 30000 //0 //30000
+export SeuilZoom4AvionExtern is  0
+
+export AllRanges is TVisibilityRangeContainer
+(
+    AltitudeMax     is 15000000
+    AltitudeMaxForFx is 1000000 // valeur max utilisé pour le scale des fx
+
+
+    SeuilZoomCompanyIconMin is 1000 // 10000 //50000 //20000
+    SeuilZoomCompanyIconMax is 420000 // SeuilZoom4Mic //420000
+
+    // SeuilZoom4 is 0
+    // Bidouille pour Wargame :
+    SeuilZoom3 is 420000
+    SeuilZoom4 is 0
+
+    // SeuilZoom1Infanterie is 420000
+    // SeuilZoom2Infanterie is 70000 //13000
+    // SeuilZoom3Etiquette is 20000
+    // SeuilZoom3Infanterie is 6000
+    // SeuilZoom4Infanterie is 0
+    // Bidouille pour Wargame :
+    SeuilZoom1Infanterie is 420000
+    SeuilZoom2Infanterie is 420000
+    SeuilZoom3Etiquette is 20000
+    SeuilZoom3Infanterie is 420000
+    SeuilZoom4Infanterie is 0
+
+    SeuilZoomIconeVisibilite is 40000 //visibilité des unités au loin
+
+    // SeuilZoom2InfanterieLow is 30000
+    // Bidouille pour Wargame :
+    SeuilZoom2InfanterieLow is 420000
+
+    // Ces valeurs sont extraites de CommonData:System/Test/Globals.ndf :
+    SeuilZoom1Avion is  SeuilZoom1AvionExtern
+    SeuilZoom2Avion is  SeuilZoom2AvionExtern
+    SeuilZoom3Avion is  SeuilZoom3AvionExtern
+    SeuilZoom4Avion is  SeuilZoom4AvionExtern
+
+    ItemList =
+    [
+
+        export ZoomCommandZone2 is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMax
+            AltitudeMin = SeuilZoom1
+            VisibilityControlByFloat = $/M3D/Shader/AreaFillOpacity     // si presence de ce champ alors la visibilitee est controlle par le float
+            VisibilityControlByFloat_Seuil = 0.99 //100000 //0.01                       // en dessous de cette valeur on ne voit pas
+        ),
+        export ZoomCommandZone is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMax
+            AltitudeMin = SeuilZoom1
+            VisibilityControlByFloat = $/M3D/Shader/AreaFillOpacity     // si presence de ce champ alors la visibilitee est controlle par le float
+            VisibilityControlByFloat_Seuil = 0.01 //0.01                       // en dessous de cette valeur on ne voit pas
+        ),
+        export Zoom1 is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMax
+            AltitudeMin = SeuilZoom1
+        ),
+        export Zoom2 is TVisibilityRange
+        (
+            AltitudeMax = SeuilZoom1
+            AltitudeMin = SeuilZoom2
+        ),
+        export Zoom2ForWGandUpper is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMax
+            AltitudeMin = SeuilZoom2ForWG
+        ),
+        export Zoom3 is TVisibilityRange
+        (
+            AltitudeMax = SeuilZoom2
+            AltitudeMin = SeuilZoom3
+        ),
+        export Zoom3ForWG is TVisibilityRange
+        (
+            AltitudeMax = SeuilZoom2ForWG
+            AltitudeMin = SeuilZoom3ForWG
+        ),
+        export Zoom4 is TVisibilityRange
+        (
+            AltitudeMax = SeuilZoom3
+            AltitudeMin = SeuilZoom4
+        ),
+        export Zoom12 is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMax
+            AltitudeMin = SeuilZoom2
+        ),
+        export Zoom12bis is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMax
+            AltitudeMin = 350000
+        ),
+        export Zoom23 is TVisibilityRange
+        (
+            AltitudeMax = SeuilZoom1
+            AltitudeMin = SeuilZoom3
+        ),
+        export Zoom34 is TVisibilityRange
+        (
+            AltitudeMax = SeuilZoom2
+            AltitudeMin = SeuilZoom4
+        ),
+        export Zoom123 is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMax
+            AltitudeMin = SeuilZoom4Mic //SeuilZoom3
+        ),
+        export Zoom234 is TVisibilityRange
+        (
+            AltitudeMax = SeuilZoom1
+            AltitudeMin = SeuilZoom4
+        ),
+        export Zoom1234 is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMax
+            AltitudeMin = SeuilZoom4
+        ),
+        export Zoom1ForFx is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMaxForFx
+            AltitudeMin = SeuilZoom1
+        ),
+        export Zoom12ForFx is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMaxForFx
+            AltitudeMin = SeuilZoom2
+        ),
+        export Zoom123ForFx is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMaxForFx
+            AltitudeMin = SeuilZoom3
+        ),
+        export Zoom1234ForFx is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMaxForFx
+            AltitudeMin = SeuilZoom4
+        ),
+        export ZoomNone is TVisibilityRange
+        (
+            AltitudeMax = -15000000
+            AltitudeMin = -15000000
+        ),
+
+        export Zoom1_Avion is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMax
+            AltitudeMin = SeuilZoom1Avion
+        ),
+        export Zoom2_Avion is TVisibilityRange
+        (
+            AltitudeMax = SeuilZoom1Avion
+            AltitudeMin = SeuilZoom2Avion
+        ),
+        export Zoom3_Avion is TVisibilityRange
+        (
+            AltitudeMax = SeuilZoom2Avion
+            AltitudeMin = SeuilZoom3Avion
+        ),
+        export Zoom4_Avion is TVisibilityRange
+        (
+            AltitudeMax = SeuilZoom3Avion
+            AltitudeMin = SeuilZoom4Avion
+        ),
+        export Zoom12_Avion is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMax
+            AltitudeMin = SeuilZoom2Avion
+        ),
+        export Zoom23_Avion is TVisibilityRange
+        (
+            AltitudeMax = SeuilZoom1Avion
+            AltitudeMin = SeuilZoom3Avion
+        ),
+        export Zoom123_Avion is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMax
+            AltitudeMin = SeuilZoom3Avion
+        ),
+        export Zoom234_Avion is TVisibilityRange
+        (
+            AltitudeMax = SeuilZoom1Avion
+            AltitudeMin = SeuilZoom4Avion
+        ),
+        export Zoom1234_Avion is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMax
+            AltitudeMin = SeuilZoom4Avion
+        ),
+
+        export Zoom1_AvionForFx is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMaxForFx
+            AltitudeMin = SeuilZoom1Avion
+        ),
+        export Zoom12_AvionForFx is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMaxForFx
+            AltitudeMin = SeuilZoom2Avion
+        ),
+        export Zoom123_AvionForFx is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMaxForFx
+            AltitudeMin = SeuilZoom3Avion
+        ),
+        export Zoom1234_AvionForFx is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMax
+            AltitudeMin = SeuilZoom4Avion
+        ),
+
+        export Zoom1_Infanterie is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMax
+            AltitudeMin = SeuilZoom1Infanterie
+        ),
+        export Zoom2_Infanterie is TVisibilityRange
+        (
+            AltitudeMax = SeuilZoom1Infanterie
+            AltitudeMin = SeuilZoom2Infanterie
+        ),
+        export Zoom3_Infanterie is TVisibilityRange
+        (
+            AltitudeMax = SeuilZoom2Infanterie
+            AltitudeMin = SeuilZoom3Infanterie
+        ),
+        export Zoom4_Infanterie is TVisibilityRange
+        (
+            AltitudeMax = SeuilZoom3Infanterie
+            AltitudeMin = SeuilZoom4Infanterie
+        ),
+        export Zoom4_Etiquette is TVisibilityRange
+        (
+            AltitudeMax = SeuilZoom3Etiquette
+            AltitudeMin = SeuilZoom4
+        ),
+        export Zoom12_Infanterie is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMax
+            AltitudeMin = SeuilZoom2Infanterie
+        ),
+        export Zoom12_InfanterieForFx is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMaxForFx
+            AltitudeMin = SeuilZoom2Infanterie
+        ),
+        export Zoom23_Infanterie is TVisibilityRange
+        (
+            AltitudeMax = SeuilZoom1Infanterie
+            AltitudeMin = SeuilZoom3Infanterie
+        ),
+        export Zoom34_Infanterie is TVisibilityRange
+        (
+            AltitudeMax = SeuilZoom2Infanterie
+            AltitudeMin = SeuilZoom4Infanterie
+        ),
+
+        export Zoom34_Infanterie_Low is TVisibilityRange
+        (
+            AltitudeMax = SeuilZoom2InfanterieLow
+            AltitudeMin = SeuilZoom4Infanterie
+        ),
+
+        export Zoom123_Infanterie is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMax
+            AltitudeMin = SeuilZoom3Infanterie
+        ),
+        export Zoom234_Infanterie is TVisibilityRange
+        (
+            AltitudeMax = SeuilZoom1Infanterie
+            AltitudeMin = SeuilZoom4Infanterie
+        ),
+        export Zoom1234_Infanterie is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMax
+            AltitudeMin = SeuilZoom4Infanterie
+        ),
+
+        export ZoomSelection is TVisibilityRange
+        (
+            AltitudeMax = 1900 * OneMeterInGameUnits
+            AltitudeMin = 0
+        ),
+        //-------------- Visibilité unités au loin (diamants)---------------
+        export ZoomIconeVisibilite is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMax
+            AltitudeMin = SeuilZoom4Infanterie
+        ),
+
+        //-------------------------------------------------------------------
+        export ZoomScalePara is TVisibilityRange
+        (
+            AltitudeMax = SeuilZoom2
+            AltitudeMin = SeuilZoom3Infanterie
+        ),
+
+        export ZoomCompanyIcon is TVisibilityRange
+        (
+            AltitudeMax = SeuilZoomCompanyIconMax
+            AltitudeMin = SeuilZoomCompanyIconMin
+        ),
+        export ZoomMinimap is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMax //SeuilZoomCompanyIconMax
+            AltitudeMin = 0
+        ),
+
+        export ZoomScaleIconePara is TVisibilityRange
+        (
+            AltitudeMax = SeuilZoom2
+            AltitudeMin = SeuilZoom2Infanterie
+        ),
+        private SoundLayer0 is TVisibilityRange
+        (
+            IsSoundLayer    = True
+            SoundLayerToUse = 0
+            //AltitudeMin     = -100000
+            //AltitudeMax     = SeuilZoom2 //SeuilZoom3
+            AltitudeMin     = -100000
+            AltitudeMax     = SeuilZoom3
+        ),
+        private SoundLayer1 is TVisibilityRange
+        (
+            IsSoundLayer    = True
+            SoundLayerToUse = 1
+            //AltitudeMin     = -100000 //SeuilZoom3
+            //AltitudeMax     = SeuilZoom2
+            AltitudeMin     = SeuilZoom3
+            AltitudeMax     = SeuilZoom2
+        ),
+        private SoundLayer2 is TVisibilityRange
+        (
+            IsSoundLayer    = true
+            SoundLayerToUse = 2
+            AltitudeMin     = SeuilZoom2
+            AltitudeMax     = SeuilZoom1
+        ),
+        private SoundLayer3 is TVisibilityRange
+        (
+            IsSoundLayer    = true
+            SoundLayerToUse = 3
+            AltitudeMin     = SeuilZoom1
+            AltitudeMax     = AltitudeMax
+        )
+    ]
+)

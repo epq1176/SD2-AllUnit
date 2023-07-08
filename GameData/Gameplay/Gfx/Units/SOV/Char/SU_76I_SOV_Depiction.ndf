@@ -1,0 +1,48 @@
+Gfx_SU_76I_SOV is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionSkins =
+        [
+            // Reprise de l'existant pour créer la skin par défaut
+            TSkinDescriptor(
+                SkinName = "default"
+                ChoiceTexture = "CommonTexture_Camo"
+                DepictionAlternatives = [
+                    DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_SU_76I_SOV ),
+                    DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_SU_76I_SOV_MID ),
+                    DepictionDescriptor_LOD_Low_NoTurret3( MeshDescriptor = Modele_SU_76I_SOV_LOW ),
+                    DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_SU_76I_SOV ),
+                    DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_SU_76I_SOV_MID ),
+                    DepictionDescriptor_LOD_WreckedLow_NoTurret3( MeshDescriptor = Modele_SU_76I_SOV_LOW ),
+        ]
+            ),
+
+            // nouvelle skin
+            TSkinDescriptor(
+                SkinName = "paid_dlc3"
+                DescriptorId = GUID:{4dbd6be3-6168-4f20-bae3-dce8e306a586}
+                ChoiceTexture = "CommonTexture_Camo"
+                DepictionAlternatives = [
+                    DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_SU_76I_SOV_Camo1 ),
+                    DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_SU_76I_SOV_Camo1_MID ),
+                    DepictionDescriptor_LOD_Low_NoTurret3( MeshDescriptor = Modele_SU_76I_SOV_Camo1_LOW ),
+                    DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_SU_76I_SOV_Camo1 ),
+                    DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_SU_76I_SOV_Camo1_MID ),
+                    DepictionDescriptor_LOD_WreckedLow_NoTurret3( MeshDescriptor = Modele_SU_76I_SOV_Camo1_LOW ),
+                ]
+            ),
+        ]
+
+        Operators = Operators_SU_76I_SOV
+                  + DepictionOperator_Chassis_MediumTank
+                  + DepictionOperator_Propulsion_ContinuousTrack_MediumTank
+                  + [DepictionOperator_TurretRecoil(TurretNum='1')]
+
+        Actions = Weapons_SU_76I_SOV
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+    )
+)

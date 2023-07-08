@@ -1,0 +1,22 @@
+export ModelFile_Borgward_IV_GER is 'GameData:Assets\3D\Units\GER\Char\Borgward_IV\Borgward_IV.Ase2NdfBin'
+
+Modele_Borgward_IV_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Borgward_IV_GER
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Borgward_IV_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\Borgward_IV_MID\Borgward_IV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Borgward_IV_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\Borgward_IV_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

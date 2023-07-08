@@ -1,0 +1,178 @@
+template TemplateMeshDescriptor_DCA_M2_90mm_US [ ModelFile ] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+
+export ModelFile_Boites_DCA_M2_90mm_US is 'GameData:Assets\3D\Units\USA\Canon\DCA_M2_90mm_US\Boites_DCA_M2_90mm_US.Ase2NdfBin'
+
+Gfx_DCA_M2_90mm_US_1 is TDepictionTemplate //servant gauche
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_DCA_M2_90mm_US( ModelFile = ModelFile_Servant_AT)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_DCA_M2_90mm_US( ModelFile = ModelFile_Servant_AT_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_DCA_M2_90mm_US( ModelFile = ModelFile_Servant_AT)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_DCA_M2_90mm_US( ModelFile = ModelFile_Servant_AT_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Gauche
+)
+
+Gfx_DCA_M2_90mm_US_2 is TDepictionTemplate //servant droite
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_DCA_M2_90mm_US( ModelFile = ModelFile_Servant_AT_Secondary)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_DCA_M2_90mm_US( ModelFile = ModelFile_Servant_AT_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_DCA_M2_90mm_US( ModelFile = ModelFile_Servant_AT_Secondary)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_DCA_M2_90mm_US( ModelFile = ModelFile_Servant_AT_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Droite
+)
+
+Gfx_DCA_M2_90mm_US_3 is TDepictionTemplate //servant gauche supplementaire
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_DCA_M2_90mm_US( ModelFile = ModelFile_Servant_AT)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_DCA_M2_90mm_US( ModelFile = ModelFile_Servant_AT_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_DCA_M2_90mm_US( ModelFile = ModelFile_Servant_AT)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_DCA_M2_90mm_US( ModelFile = ModelFile_Servant_AT_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Gauche2
+)
+
+Gfx_DCA_M2_90mm_US_4 is TDepictionTemplate //servant droite supplementaire
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_DCA_M2_90mm_US( ModelFile = ModelFile_Servant_AT_Secondary)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_DCA_M2_90mm_US( ModelFile = ModelFile_Servant_AT_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_DCA_M2_90mm_US( ModelFile = ModelFile_Servant_AT_Secondary)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_DCA_M2_90mm_US( ModelFile = ModelFile_Servant_AT_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Droite2
+)
+
+//Arme
+// private AnimationPath_DCA_M2_90mm_US is 'GameData:Assets\3D\Units\USA\Canon\DCA_M2_90mm_US\'
+// export DCA_M2_90mm_US_Anim_Tree is DepictionAnimationTreeNode
+// (
+//     IAStates = AnimationStateAll
+//     IAOldStates = AnimationStateAll
+//     DefaultAnimationStates = AnimationStateEngineStopping
+//     Animations =
+//     (
+//         [TemplateAnimation(Animation= 'DCA_M2_90mm_US_idle' + '.Ase2NdfBin' Loop=false EventAnimation=false AnimationPath = AnimationPath_DCA_M2_90mm_US Mask = AnimationMask_All())]
+//     )
+
+//     Childs =
+//     [
+//         TAnimNode(IAStates = AnimationStateInstantFire                                                                  Anim = 'DCA_M2_90mm_US_Fire'       Loop = false EventAnimation = true AnimationPath = AnimationPath_DCA_M2_90mm_US Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStopping | AnimationStateEngineStopTurning                             Anim = 'DCA_M2_90mm_US_Deploy'     Loop = false AnimationPath = AnimationPath_DCA_M2_90mm_US Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStarting | AnimationStateEngineStartTurning                            Anim = 'DCA_M2_90mm_US_Fold'       Loop = false AnimationPath = AnimationPath_DCA_M2_90mm_US Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateLeft                                           Anim = 'DCA_M2_90mm_US_Turn_Left'  Loop = true  AnimationPath = AnimationPath_DCA_M2_90mm_US Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateRight                                          Anim = 'DCA_M2_90mm_US_Turn_Right' Loop = true  AnimationPath = AnimationPath_DCA_M2_90mm_US Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateMoving | AnimationStateEngineRunning                                         Anim = 'DCA_M2_90mm_US_Move'       Loop = true  AnimationPath = AnimationPath_DCA_M2_90mm_US Mask = AnimationMask_All()
+//             Childs = [
+//                 TAnimNode(IAStates = AnimationStateBack                                                                 Anim = 'DCA_M2_90mm_US_Move_Back'  Loop = true  AnimationPath = AnimationPath_DCA_M2_90mm_US Mask = AnimationMask_All()),
+//         ]),
+//     ]
+// )
+
+// DepictionOperator_SkeletalAnimation_DCA_M2_90mm_US is [Template_DepictionOperator_SkeletalAnimation_With_Tree_TEST(AnimationTree = DCA_M2_90mm_US_Anim_Tree)]
+
+Gfx_DCA_M2_90mm_US_Weapon is TDepictionTemplate //arme
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = CommonDepictionSelector
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_DCA_M2_90mm_US ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_DCA_M2_90mm_US_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_DCA_M2_90mm_US_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor =  Modele_DCA_M2_90mm_US ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor =  Modele_DCA_M2_90mm_US_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor =  Modele_DCA_M2_90mm_US_LOW ),
+        ]
+
+        SubDepictions = []
+        Operators = //DepictionOperator_SkeletalAnimation_DCA_M2_90mm_US +
+            DepictionOperatorNode_ResetUnit +
+            // DepictionOperatorNode_Propulsion_2Wheels_Canon +
+            DepictionOperator_Propulsion_4Wheels_Generic +
+            DepictionOperator_Carriable_Canon_4wheels +
+            DepictionOperator_TurretAim_Canon +
+            DepictionOperator_TurretRecoil_Canon
+        Actions = Weapons_DCA_M2_90mm_US
+    )
+
+    //     SubDepictions = []
+    //     Operators = DepictionOperator_SkeletalAnimation_DCA_M2_90mm_US +     [TCosmeticTurretOperatorDesc
+    //         (
+    //             OperatorId = 'tourelle1'
+    //             ZAxisNode  = 'Tourelle_01'
+    //             ZAxisPhysicalPropertyName = 'tourelle1'
+    //             ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+    //             ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+    //             GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+    //             YAxisNode = 'Axe_Canon_01'
+    //             YAxisPhysicalPropertyName = 'tourelle1axe'
+    //             MinYAngle = -0.349065850399
+    //             MaxYAngle = 1.4835298642
+    //         ),]
+    //     Actions = Weapons_DCA_M2_90mm_US
+    // )
+
+SubDepiction_Servant_1_DCA_M2_90mm_US is TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_DCA_M2_90mm_US_1 )
+SubDepiction_Servant_2_DCA_M2_90mm_US is TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_DCA_M2_90mm_US_2 )
+SubDepiction_Servant_3_DCA_M2_90mm_US is TSubDepiction( Anchor = 'servant_G2' Depiction = Gfx_DCA_M2_90mm_US_3 )
+SubDepiction_Servant_4_DCA_M2_90mm_US is TSubDepiction( Anchor = 'servant_D2' Depiction = Gfx_DCA_M2_90mm_US_4 )
+SubDepiction_Canon_AT_DCA_M2_90mm_US is TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_DCA_M2_90mm_US_Weapon )
+
+Gfx_DCA_M2_90mm_US is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate //les boites
+    (
+        OverrideMeshBoundingBoxMin = [-500,-500,0]
+        OverrideMeshBoundingBoxMax = [ 500, 500,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_DCA_M2_90mm_US( ModelFile = ModelFile_Boites_DCA_M2_90mm_US) ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_DCA_M2_90mm_US( ModelFile = ModelFile_Boites_DCA_M2_90mm_US) ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_DCA_M2_90mm_US( ModelFile = ModelFile_Boites_DCA_M2_90mm_US) ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_DCA_M2_90mm_US( ModelFile = ModelFile_Boites_DCA_M2_90mm_US) ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_DCA_M2_90mm_US( ModelFile = ModelFile_Boites_DCA_M2_90mm_US) ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_DCA_M2_90mm_US( ModelFile = ModelFile_Boites_DCA_M2_90mm_US) ),
+        ]
+        NodeNamesForSelection = [ 'Canon_AT', 'servant_G' , 'servant_D' , 'servant_G2' , 'servant_D2' ]
+        SubDepictions = [SubDepiction_Servant_1_DCA_M2_90mm_US,
+                        SubDepiction_Servant_2_DCA_M2_90mm_US,
+                        SubDepiction_Servant_3_DCA_M2_90mm_US,
+                        SubDepiction_Servant_4_DCA_M2_90mm_US,
+                        SubDepiction_Canon_AT_DCA_M2_90mm_US]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+    )
+)

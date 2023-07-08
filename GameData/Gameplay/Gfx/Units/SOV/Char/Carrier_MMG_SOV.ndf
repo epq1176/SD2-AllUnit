@@ -1,0 +1,22 @@
+export ModelFile_Carrier_MMG_SOV is 'GameData:Assets\3D\Units\SOV\Char\Carrier_MMG_SOV\Carrier_MMG_SOV.Ase2NdfBin'
+
+Modele_Carrier_MMG_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Carrier_MMG_SOV
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_MMG_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\Carrier_MMG_SOV_MID\Carrier_MMG_SOV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_MMG_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\LODS\Carrier_MMG_SOV_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

@@ -1,0 +1,22 @@
+export ModelFile_DUKW_SOV is 'GameData:Assets\3D\Units\SOV\Vehicule\DUKW_SOV\DUKW_SOV.Ase2NdfBin'
+
+Modele_DUKW_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_DUKW_SOV
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_DUKW_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Vehicule\DUKW_SOV_MID\DUKW_SOV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_DUKW_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Vehicule\LODS\DUKW_SOV_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

@@ -1,0 +1,22 @@
+export ModelFile_Daimler_Scout_Car_POL is 'GameData:Assets\3D\Units\POL\Vehicule\Daimler_Scout_Car\Daimler_Scout_Car.Ase2NdfBin'
+
+Modele_Daimler_Scout_Car_POL is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Daimler_Scout_Car_POL
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Daimler_Scout_Car_POL_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Vehicule\Daimler_Scout_Car_MID\Daimler_Scout_Car_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Daimler_Scout_Car_POL_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Vehicule\LODS\Daimler_Scout_Car_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

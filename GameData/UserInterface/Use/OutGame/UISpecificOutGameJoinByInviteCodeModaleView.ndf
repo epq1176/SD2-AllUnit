@@ -1,0 +1,198 @@
+template JoinByInviteCodeLine
+[
+    TokenTitle : string = "",
+    ElementName : string,
+
+] is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 30.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    FirstMargin = TRTTILength(Magnifiable = 5.0)
+    InterItemMargin = TRTTILength( Magnifiable = 5.0)
+    LastMargin = TRTTILength(Magnifiable = 5.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    VerticalAlignment = ~/UIText_VerticalCenter
+                    Alignment = UIText_Right
+                )
+                TextStyle       = "Default"
+                TypefaceToken   = "Main"
+
+                TextColor       = "SD2_Blanc184"
+                TextSize        = "14"
+
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TextToken = <TokenTitle>
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKEditableTextDescriptor
+            (
+                ElementName = <ElementName> + "EditableText"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [500.0, 0.0]
+                )
+
+                ClippingContainerFrameProperty = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                    MagnifiableWidthHeight = [-6.0, -6.0]
+                    AlignementToFather = [0.5, 0.5]
+                    AlignementToAnchor = [0.5, 0.5]
+                )
+
+                HasBackground = true
+                BackgroundBlockColorToken = "Gray80"
+
+                Flags = ~/EditableTextFlag/H_LEFT | ~/EditableTextFlag/V_TOP | ~/EditableTextFlag/ONE_LINE
+
+                TextSizeToken = "14"
+                TypefaceToken = "Main"
+                TextColorToken = "Glacier"
+                SelectionColorToken = "DeckOverview/CaseGrisee/EditableText/Selected"
+
+                MaxChars = 200
+
+                SelectTextOnFocus = true
+            )
+        ),
+    ]
+)
+
+private JoinByInviteValidateButton is ConfirmButton
+(
+    ElementName = "JoinButton"
+    TextToken = "AB_GAMJOIN"
+)
+
+private JoinByInviteCancelButton is CancelButton
+(
+    ElementName = "CancelButton"
+    TextToken = "BTN_CANCEL"
+)
+
+BUCKSpecificOutGameJoinByInviteCodeModaleMainComponentDescriptor is SpecificModaleWindowFrame
+(
+    TitleToken = "AB_GAMJOIN"
+    ContentFitStyle = ~/ContainerFitStyle/FitToContentVertically
+    ContentRelativeWidthHeight = [1.0, 0.0]
+
+    ContentComponents =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+
+            FirstMargin = TRTTILength(Magnifiable = 5.0)
+            InterItemMargin = TRTTILength( Magnifiable = 5.0)
+            LastMargin = TRTTILength(Magnifiable = 5.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            Alignment = UIText_Center
+                        )
+
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+
+                        TextStyle = "Default"
+                        TypefaceToken = "Main"
+
+                        TextColor       = "StandardTextInModal"
+                        TextSize        = "16"
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextToken = "Ask_INVITC"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = JoinByInviteCodeLine
+                    (
+                        ElementName = "InviteCode"
+                        TokenTitle = "T_INVITCOD"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "ErrorText"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            Alignment = UIText_Center
+                        )
+
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+
+                        TextStyle       = "Default"
+                        TypefaceToken   = "Main"
+
+                        TextColor       = "ErrorTextInModal"
+                        TextSize        = "16"
+                    )
+                ),
+            ]
+        )
+    ]
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/JoinByInviteValidateButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/JoinByInviteCancelButton ),
+    ]
+)
+
+UISpecificOutGameJoinByInviteCodeModaleViewDescriptor is TUISpecificOutGameJoinByInviteCodeModaleViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificOutGameJoinByInviteCodeModaleMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

@@ -1,0 +1,22 @@
+export ModelFile_Canon_17pdr_SA is 'GameData:Assets\3D\Units\SA\Canon\17_pdr\17_pdr.Ase2NdfBin'
+
+Modele_Canon_17pdr_SA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Canon_17pdr_SA
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Canon_17pdr_SA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SA\Canon\17_pdr_MID\17_pdr_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Canon_17pdr_SA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SA\Canon\LODS\17_pdr_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

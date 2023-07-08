@@ -1,0 +1,22 @@
+export ModelFile_Flak_38_20mm_Heimat is 'GameData:Assets\3D\Units\GER\Canon\Flak_38_20mm\Flak_38_20mm.Ase2NdfBin'
+
+Modele_Flak_38_20mm_Heimat is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Flak_38_20mm_Heimat
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Flak_38_20mm_Heimat_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\Flak_38_20mm_MID\Flak_38_20mm_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Flak_38_20mm_Heimat_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\LODS\Flak_38_20mm_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

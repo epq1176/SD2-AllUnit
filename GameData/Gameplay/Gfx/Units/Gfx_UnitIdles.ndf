@@ -1,0 +1,38 @@
+
+// pour que l'unit idle soit configurable depuis l'ods,
+// prefixer avec UnitIdle_
+
+UnitIdle_WatchForwardNormal is TUnitIdleManagerWatchForwardDescriptor
+(
+    WaitMinInSeconds = 1.0
+    WaitMaxInSeconds = 4.0
+    Spread = 60
+
+    TurretRotationSpeedMultiplier = 0.25
+)
+
+
+
+UnitIdle_ArtilleryAutoMoteur is TUnitIdleManagerArtillerieAutoMoteurDescriptor
+(
+)
+
+UnitIdle_DCAAutoMoteur is TUnitIdleManagerDCADescriptor
+(
+    WaitMinInSeconds = 2.0
+    WaitMaxInSeconds = 4.0
+    Spread = 180
+    TurretRotationSpeedMultiplier = 0.5
+
+    UseCustomVerticalAngles = false
+    VerticalAngleMin = 0
+    VerticalAngleMax = 10
+)
+
+UnitIdle_VehicleReco is TUnitIdleManagerWatchForwardDescriptor
+(
+    WaitMinInSeconds = 2.0
+    WaitMaxInSeconds = 4.0
+    Spread = 180
+    TurretRotationSpeedMultiplier = 0.25
+)

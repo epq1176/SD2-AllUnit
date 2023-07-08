@@ -1,0 +1,29 @@
+export ModelFile_Fiat_G50_bis_FIN is 'GameData:Assets\3D\Units\FIN\Avion\Fiat_G50_bis\Fiat_G50_bis.Ase2NdfBin'
+
+Modele_Fiat_G50_bis_FIN is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Fiat_G50_bis_FIN
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Fiat_G50_bis_FIN_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Avion\Fiat_G50_bis_MID\Fiat_G50_bis_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Fiat_G50_bis_FIN_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Avion\LODS\Fiat_G50_bis_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Fiat_G50_bis_FIN_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Avion\Fiat_G50_bis\Fiat_G50_bis_Train.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

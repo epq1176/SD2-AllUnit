@@ -1,0 +1,468 @@
+// (Vivien 28/01/2019) Permet d'overrider la priorité de chargement d'un operator. À n'utiliser que si vous êtes sûr de savoir ce que vous faite !
+// Dois matcher avec l'enum Priority définie dans AbstractCosmeticMvtOperatorDesc.h.
+OperatorPriority is TBaseClass
+(
+    Highest is 0
+    High    is 1
+    Medium  is 2
+    Low     is 3
+)
+
+//Notation : prefix (DepictionOperator), feature (Chassis, ...), classe (small, heavy, etc)
+
+// ****************************************************************************************************************************************
+// *** Chassis ****************************************************************************************************************************
+// ****************************************************************************************************************************************
+
+DepictionOperator_Chassis_SmallTank  is [ TCosmeticChassisPortingDesc( OperatorId = 'Chassis' ChassisDescriptor = ~/GfxDescriptorChassis_SmallTank ) ]
+DepictionOperator_Chassis_MediumTank is [ TCosmeticChassisPortingDesc( OperatorId = 'Chassis' ChassisDescriptor = ~/GfxDescriptorChassis_MediumTank ) ]
+DepictionOperator_Chassis_HeavyTank  is [ TCosmeticChassisPortingDesc( OperatorId = 'Chassis' ChassisDescriptor = ~/GfxDescriptorChassis_HeavyTank ) ]
+DepictionOperator_Chassis_Vehicle    is [ TCosmeticChassisPortingDesc( OperatorId = 'Chassis' ChassisDescriptor = ~/GfxDescriptorChassis_Vehicule ) ]
+DepictionOperator_Chassis_MediumTank_AutoCanon is [ TCosmeticChassisPortingDesc( OperatorId = 'Chassis' ChassisDescriptor = ~/GfxDescriptorChassis_MediumTank_AutoCanon ) ]
+
+// ****************************************************************************************************************************************
+// *** Tech *******************************************************************************************************************************
+// ****************************************************************************************************************************************
+
+// Ajoute la boundingbox de l'unité dans le point cloud shadow.
+// C'est utile pour fixer la non-contribution à l'ombre d'une unité. Cela arrive lorsque son volume
+// englobant n'est pas inclut dans le volume crée par l'intersection du terrain et du frustum.
+// Apriori à mettre pour les unités navales (amphibies + bateaux). A voir pour les unités volantes.
+// ArnaudV 12/11/13
+DepictionOperator_ShadowPointCloudProvider is [
+    TPointCloudProviderOperatorDesc(
+        OperatorId = 'ShadowPointCloudProvider'
+        PointCloudProvider = $/M3D/Scene/PointCloudProviderPrincipal
+        Camera = $/M3D/Camera/CameraPrincipale
+    )
+]
+
+// ****************************************************************************************************************************************
+// *** Propulsion *************************************************************************************************************************
+// ****************************************************************************************************************************************
+
+//array-ization
+DepictionOperatorNode_Propulsion_ContinuousTrack is TCosmeticCaterpillarTrackOperatorDesc
+(
+    OperatorId = 'Tracks'
+    WorldFloorProxy = $/M3D/Scene/WorldFloorForIAProxy
+    FirstWheelOnGround = false
+    LastWheelOnGround = false
+)
+
+DepictionCosmeticMovementOperatorDesc_Standard is TCosmeticMovementFXOperatorDesc(OperatorId = 'fx_deplacement' FXName = 'fx_deplacement' OnRoad = false OnWater = false)
+DepictionCosmeticMovementOperatorDesc_Amphibious is [
+    TCosmeticMovementFXOperatorDesc(OperatorId = 'fx_deplacement_Amphibious' FXName = 'fx_deplacement_Amphibious' OnRoad = false OnWater = true),
+] + DepictionOperator_ShadowPointCloudProvider
+
+DepictionOperator_Propulsion_ContinuousTrack_SmallTank                  is [ DepictionOperatorNode_Propulsion_ContinuousTrack, DepictionCosmeticMovementOperatorDesc_Standard ]
+DepictionOperator_Propulsion_ContinuousTrack_MediumTank                 is [ DepictionOperatorNode_Propulsion_ContinuousTrack, DepictionCosmeticMovementOperatorDesc_Standard ]
+DepictionOperator_Propulsion_ContinuousTrack_HeavyTank                  is [ DepictionOperatorNode_Propulsion_ContinuousTrack, DepictionCosmeticMovementOperatorDesc_Standard ]
+
+DepictionOperator_Propulsion_Single_Rotor_Boat is
+[
+    TCosmeticWaterRotorOperatorDesc(
+        OperatorId = 'WaterRotors'
+        RotorPack = TCosmeticWaterRotorPack
+        (
+            RotorList =
+            [
+                TCosmeticWaterRotor
+                (
+                    RotorBoneName       = 'Helice_Eau_1'
+                    RotationSpeedInRPM       = 80 // en RPM (Rotations par minute)
+                ),
+            ]
+        )
+    )
+]
+
+DepictionOperator_Propulsion_Double_Rotor_Boat is
+[
+    TCosmeticWaterRotorOperatorDesc(
+        OperatorId = 'WaterRotors'
+        RotorPack = TCosmeticWaterRotorPack
+        (
+            RotorList =
+            [
+                TCosmeticWaterRotor
+                (
+                    RotorBoneName       = 'Helice_Eau_1'
+                    RotationSpeedInRPM       = 80 // en RPM (Rotations par minute)
+                ),
+                TCosmeticWaterRotor
+                (
+                    RotorBoneName       = 'Helice_Eau_2'
+                    RotationSpeedInRPM       = 80 // en RPM (Rotations par minute)
+                )
+            ]
+        )
+    )
+]
+
+DepictionOperator_Propulsion_Single_Engine_Plane is
+[
+    TCosmeticRotorOperatorDesc(
+        OperatorId = 'Rotors'
+        RotorPack = TRotorPack
+        (
+            RotorList =
+            [
+                TRotor
+                (
+                    NbBlade             = 4
+                    BladesBoneName      = 'Helice_LS_1'
+                    RotorBoneName       = 'Bloc_Moteur_1'
+                    RotationAxis        = VECTOR[1, 0, 0]
+                    RotationSpeed       = 242 // en RPM (Rotations par minute)
+                    BlurActionId        = ['FX_Helice_1']
+                ),
+            ]
+        )
+    )
+] + ~/DepictionOperator_ShadowPointCloudProvider
+
+DepictionOperator_Propulsion_Double_Engine_Plane is
+[
+    TCosmeticRotorOperatorDesc(
+        OperatorId = 'Rotors'
+        RotorPack = TRotorPack
+        (
+            RotorList =
+            [
+                TRotor
+                (
+                    NbBlade             = 4
+                    BladesBoneName      = 'Helice_LS_1'
+                    RotorBoneName       = 'Bloc_Moteur_1'
+                    RotationAxis        = VECTOR[1, 0, 0]
+                    RotationSpeed       = 242 // en RPM (Rotations par minute)
+                    BlurActionId        = ['FX_Helice_1']
+                ),
+                TRotor
+                (
+                    NbBlade             = 4
+                    BladesBoneName      = 'Helice_LS_2'
+                    RotorBoneName       = 'Bloc_Moteur_2'
+                    RotationAxis        = VECTOR[1, 0, 0]
+                    RotationSpeed       = 242 // en RPM (Rotations par minute)
+                    BlurActionId        = ['FX_Helice_2']
+                ),
+            ]
+        )
+    )
+] + ~/DepictionOperator_ShadowPointCloudProvider
+
+DepictionOperator_Propulsion_Triple_Engine_Plane is
+[
+    TCosmeticRotorOperatorDesc(
+        OperatorId = 'Rotors'
+        RotorPack = TRotorPack
+        (
+            RotorList =
+            [
+                TRotor
+                (
+                    NbBlade             = 4
+                    BladesBoneName      = 'Helice_LS_1'
+                    RotorBoneName       = 'Bloc_Moteur_1'
+                    RotationAxis        = VECTOR[1, 0, 0]
+                    RotationSpeed       = 242 // en RPM (Rotations par minute)
+                    BlurActionId        = ['FX_Helice_1']
+                ),
+                TRotor
+                (
+                    NbBlade             = 4
+                    BladesBoneName      = 'Helice_LS_2'
+                    RotorBoneName       = 'Bloc_Moteur_2'
+                    RotationAxis        = VECTOR[1, 0, 0]
+                    RotationSpeed       = 242 // en RPM (Rotations par minute)
+                    BlurActionId        = ['FX_Helice_2']
+                ),
+                TRotor
+                (
+                    NbBlade             = 4
+                    BladesBoneName      = 'Helice_LS_3'
+                    RotorBoneName       = 'Bloc_Moteur_3'
+                    RotationAxis        = VECTOR[1, 0, 0]
+                    RotationSpeed       = 242 // en RPM (Rotations par minute)
+                    BlurActionId        = ['FX_Helice_3']
+                ),
+            ]
+        )
+    )
+] + ~/DepictionOperator_ShadowPointCloudProvider
+
+DepictionOperatorNode_Propulsion_Wheels_Generic is TCosmeticWheelsOperatorDesc( OperatorId = 'Wheels' RotateDirection = true MoveFromSuspension = true )
+DepictionOperatorNode_Propulsion_4Wheels_Generic is DepictionOperatorNode_Propulsion_Wheels_Generic
+DepictionOperatorNode_Propulsion_6Wheels_Generic is DepictionOperatorNode_Propulsion_Wheels_Generic
+DepictionOperatorNode_Propulsion_8Wheels_Generic is DepictionOperatorNode_Propulsion_Wheels_Generic
+
+//half track
+DepictionOperatorNode_Propulsion_2Wheels_Generic is TCosmeticWheelsOperatorDesc( OperatorId = 'Wheels' RotateDirection = true MoveFromSuspension = true )
+
+// Version des canons (les roues ne tournent pas lors des virages et il n'y a pas de FX de propulsion)
+DepictionOperatorNode_Propulsion_Wheels_Canon is TCosmeticWheelsOperatorDesc( OperatorId = 'Wheels' RotateDirection = false MoveFromSuspension = false )
+DepictionOperatorNode_Propulsion_2Wheels_Canon is [ DepictionOperatorNode_Propulsion_Wheels_Canon ]
+
+//Roues directrices pour Halftrack
+DepictionOperator_Propulsion_2Wheels_Generic is [ DepictionOperatorNode_Propulsion_2Wheels_Generic, DepictionCosmeticMovementOperatorDesc_Standard ]
+
+//variantes
+DepictionOperator_Propulsion_4Wheels_Generic                    is [ DepictionOperatorNode_Propulsion_4Wheels_Generic, DepictionCosmeticMovementOperatorDesc_Standard ]
+DepictionOperator_Propulsion_4Wheels_Generic_MediumVehicleSound is DepictionOperator_Propulsion_4Wheels_Generic
+DepictionOperator_Propulsion_4Wheels_Jeep                       is DepictionOperator_Propulsion_4Wheels_Generic
+
+DepictionOperator_Propulsion_6Wheels_Generic                    is [ DepictionOperatorNode_Propulsion_6Wheels_Generic, DepictionCosmeticMovementOperatorDesc_Standard ]
+DepictionOperator_Propulsion_6Wheels_Generic_MediumVehicleSound  is DepictionOperator_Propulsion_6Wheels_Generic
+
+DepictionOperator_Propulsion_8Wheels_Generic                    is [ DepictionOperatorNode_Propulsion_8Wheels_Generic, DepictionCosmeticMovementOperatorDesc_Standard ]
+
+// ****************************************************************************************************************************************
+// ***** Ecrasement ***********************************************************************************************************************
+// ****************************************************************************************************************************************
+
+template DepictionOperatorNode_CropFlattening
+[
+    Radius
+]
+is TCosmeticStateDBWriterOperatorDesc(
+    Radius = <Radius>
+    Mask  = SDMask_Squash
+    Value = SDMask_Squash
+    LevelBuildStateGeoDatabaseProxy = $/M3D/Scene/LevelBuildStateGeoDatabaseProxy
+)
+
+// ****************************************************************************************************************************************
+// ***** Mouvement des canons lors des visées *********************************************************************************************
+// ****************************************************************************************************************************************
+
+template DepictionOperator_TurretAim
+[
+    TurretNum : string,
+    MinYAngle : float,
+    MaxYAngle : float
+]
+is
+TCosmeticTurretOperatorDesc
+(
+    OperatorId = 'tourelle1'+<TurretNum>
+    ZAxisNode  = 'Tourelle_0'+<TurretNum>
+    ZAxisPhysicalPropertyName = 'tourelle'+<TurretNum>
+    ZAxisAbsolutePhysicalPropertyName = 'tourelle'+<TurretNum>+'absolute'
+    ZAxisHasTargetPhysicalPropertyName = 'tourelle'+<TurretNum>+'target'
+    GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle'+<TurretNum>+'control'
+    YAxisNode = 'Axe_Canon_0'+<TurretNum>
+    YAxisPhysicalPropertyName = 'tourelle'+<TurretNum>+'axe'
+    MinYAngle = <MinYAngle>
+    MaxYAngle = <MaxYAngle>
+)
+
+
+DepictionOperator_TurretAim_Canon is [DepictionOperator_TurretAim // Legacy, doit disparaitre lorsqu'on sera pleinement passé sur les fichiers de dépictions générées.
+(
+    TurretNum = '1'
+    MinYAngle = -0.174532925199 // -10°
+    MaxYAngle = 0.436332312999  // 25°
+)]
+DepictionOperator_TurretAim_MMG is  [DepictionOperator_TurretAim
+(
+    TurretNum = '1'
+    MinYAngle = -0.174532925199 // -10°
+    MaxYAngle = 0.436332312999  // 25°
+)]
+
+// ****************************************************************************************************************************************
+// ***** Mouvement des canons lors des tirs ***********************************************************************************************
+// ****************************************************************************************************************************************
+
+template DepictionOperator_TurretRecoil
+[
+    TurretNum
+]
+is
+TCosmeticTurretCanonOperatorDesc
+(
+    OperatorId = 'tourelle_canon'
+    RecoilNode = 'Canon_0'+<TurretNum>
+    MaxRecoil = 75//40//20//80. //Distance totale du recul
+    RecoilSpeed = 4//0.8 //Vitesse de recul
+    RecoilPeak = 0.5 //0.9 //entre 0 et 1, détermine à quel "pourcentage" de l'aller-retour le canon est complètement rentré. Ex : 0.9 veut dire qu'il mettra 9 fois plus de temps à revenir. 0.5 veut dire qu'il met autant de temps à rentrer qu'à sortir.
+
+    PitchNode = 'Axe_Canon_0'+<TurretNum>
+    PitchMax = 0.035//0.07 // Amplitude max d'oscillation du canon
+    PitchPeriod = 0.25//2//6.1 // Durée pendant laquelle le canon oscille
+    PitchDamp = 0.025//0.01 // Atténue l'oscillation du canon. Très sensible. Plus la valeur est élevée, moins le canon oscille.
+)
+
+template DepictionOperator_TurretRecoil_AutoCanon
+[
+    TurretNum
+]
+is
+TCosmeticTurretCanonOperatorDesc
+(
+    OperatorId = 'tourelle_canon'
+    RecoilNode = 'Canon_0'+<TurretNum>
+    MaxRecoil = 10
+    RecoilSpeed = 4
+    RecoilPeak = 0.5
+
+    PitchNode = 'Axe_Canon_0'+<TurretNum>
+    PitchMax = 0.025
+    PitchPeriod = 0.25
+    PitchDamp = 0.025
+)
+
+
+template DepictionOperator_TurretRecoilLightMachineGun
+[
+    TurretNum
+]
+is
+TCosmeticTurretCanonOperatorDesc
+(
+    OperatorId = 'tourelle_canon'
+    RecoilNode = '' //'Canon_0'+<TurretNum>
+    MaxRecoil = 80.
+    RecoilSpeed = 0.8
+    RecoilPeak = 0.9
+
+    PitchNode = 'Axe_Canon_0'+<TurretNum>
+    PitchMax = 0.05
+    PitchPeriod = 0
+    PitchDamp = 0.01
+
+    TimeBetweenFiringFxName = 'TimeBetweenFiringFx_'+<TurretNum>
+    ContinuousFiringName = 'ContinuousFiring_'+<TurretNum>
+)
+
+DepictionOperator_TurretRecoil_Canon is [DepictionOperator_TurretRecoil( TurretNum = '1' )]
+DepictionOperator_TurretRecoil_MMG is [DepictionOperator_TurretRecoilLightMachineGun( TurretNum = '1' )]
+
+
+DepictionOperator_Feedback_Degat_Level1 is [TCosmeticDegatFXOperatorDesc( FXKey1Name = 'Stress_' FXKey2Name = 'fumee_noire' FXBoxCount = 2 Scale = 1 DamageRatioOverride = 0.5)]
+DepictionOperator_Feedback_Degat_Level2 is [TCosmeticDegatFXOperatorDesc( FXKey1Name = 'Stress_' FXKey2Name = 'fumee_noire' FXBoxCount = 2 Scale = 1 DamageRatioOverride = 0.75)]
+
+// ****************************************************************************************************************************************
+// ***** Mouvement des canons lors des déploiements et mouvements *************************************************************************
+// ****************************************************************************************************************************************
+
+template template_DepictionOperator_Carriable
+[
+    ArmsSpreadAngleInDegrees            : float = 0.0,
+    ChassisMovingAngleInDegrees         : float = 0.0,
+    ChassisAltitudeTranslationInMeters  : float = 0.0,
+    StartingAnimationDuration           : float,
+    StoppingAnimationDuration           : float,
+    ArmsMovementDeltaFrames             = [],
+    ChassisMovementDeltaFrames          = []
+]
+is TCosmeticCarriableOperatorDesc
+(
+    OperatorId = 'biped'
+    ArmsSpreadAngle = <ArmsSpreadAngleInDegrees>
+    ChassisMovingAngle = <ChassisMovingAngleInDegrees>
+    ChassisAltitudeTranslation = <ChassisAltitudeTranslationInMeters> * OneMeterInGameUnits
+    StartingAnimationDuration = <StartingAnimationDuration>
+    StoppingAnimationDuration = <StoppingAnimationDuration>
+    ArmsMovementDeltaFrames = <ArmsMovementDeltaFrames>
+    ChassisMovementDeltaFrames = <ChassisMovementDeltaFrames>
+)
+
+template template_DepictionOperator_Carriable_Canon_2Wheels
+[
+    ArmsSpreadAngleInDegrees : float
+]
+is template_DepictionOperator_Carriable
+(
+    ArmsSpreadAngleInDegrees = <ArmsSpreadAngleInDegrees>
+    ChassisMovingAngleInDegrees = 12
+    StartingAnimationDuration = 1.8
+    StoppingAnimationDuration = 1.8
+    ArmsMovementDeltaFrames = [0.5, 0.7]
+    ChassisMovementDeltaFrames = [0.75, 1.0]
+)
+// Variation de Carriable_Canon pour les canons types Flak_88
+template template_DepictionOperator_Carriable_Canon_4Wheels
+[
+]
+is template_DepictionOperator_Carriable
+(
+    ArmsSpreadAngleInDegrees = 90
+    ChassisMovingAngleInDegrees = 0
+    StartingAnimationDuration = 1.8
+    StoppingAnimationDuration = 1.8
+    ArmsMovementDeltaFrames = [0.5, 0.7]
+    ChassisMovementDeltaFrames = [0.75, 1.0]
+)
+
+DepictionOperator_Carriable_Canon is [template_DepictionOperator_Carriable // Legacy, doit disparaitre lorsqu'on sera pleinement passé sur les fichiers de dépictions générées.
+(
+    ArmsSpreadAngleInDegrees = 22
+    ChassisMovingAngleInDegrees = 12
+    StartingAnimationDuration = 1.8
+    StoppingAnimationDuration = 1.8
+    ArmsMovementDeltaFrames = [0.5, 0.7]
+    ChassisMovementDeltaFrames = [0.75, 1.0]
+)]
+DepictionOperator_Carriable_Canon_NoArms is [template_DepictionOperator_Carriable
+(
+    // ArmsSpreadAngleInDegrees = 22
+    ChassisMovingAngleInDegrees = 12
+    StartingAnimationDuration = 1.8
+    StoppingAnimationDuration = 1.8
+    ArmsMovementDeltaFrames = [0.5, 0.7]
+    ChassisMovementDeltaFrames = [0.75, 1.0]
+)]
+//variation de Carriable_Canon pour le canon Howz_M1_8in_203mm_US
+DepictionOperator_Carriable_Canon_Howz_M1_155mm_US is [template_DepictionOperator_Carriable
+(
+    ArmsSpreadAngleInDegrees = 15
+    ChassisMovingAngleInDegrees = 12
+    StartingAnimationDuration = 1.8
+    StoppingAnimationDuration = 1.8
+    ArmsMovementDeltaFrames = [0.5, 0.7]
+    ChassisMovementDeltaFrames = [0.75, 1.0]
+)]
+DepictionOperator_Carriable_MMG is [template_DepictionOperator_Carriable
+(
+    ChassisMovingAngleInDegrees = 0
+    ChassisAltitudeTranslationInMeters = 0.5
+    StartingAnimationDuration = 1.4
+    StoppingAnimationDuration = 1.6
+    ChassisMovementDeltaFrames = [0.75, 1.0]
+)]
+DepictionOperator_Carriable_Mortar is [template_DepictionOperator_Carriable
+(
+    ChassisMovingAngleInDegrees = 30
+    ChassisAltitudeTranslationInMeters = 0.5
+    StartingAnimationDuration = 1.4
+    StoppingAnimationDuration = 1.6
+    ChassisMovementDeltaFrames = [0.75, 1.0]
+)]
+//variation de Carriable_Canon pour les canons types Flak_88
+DepictionOperator_Carriable_Canon_4wheels is [template_DepictionOperator_Carriable
+(
+    ArmsSpreadAngleInDegrees = 90
+    // ChassisMovingAngleInDegrees = 12
+    StartingAnimationDuration = 1.8
+    StoppingAnimationDuration = 1.8
+    ArmsMovementDeltaFrames = [0.5, 0.7]
+    ChassisMovementDeltaFrames = [0.75, 1.0]
+)]
+//variation de Carriable_Canon pour le canon Howz_M1_8in_203mm_US
+DepictionOperator_Carriable_Canon_4wheels_M1_203mm_US is [template_DepictionOperator_Carriable
+(
+    ArmsSpreadAngleInDegrees = 30
+    // ChassisMovingAngleInDegrees = 12
+    StartingAnimationDuration = 1.8
+    StoppingAnimationDuration = 1.8
+    ArmsMovementDeltaFrames = [0.5, 0.7]
+    ChassisMovementDeltaFrames = [0.75, 1.0]
+)]
+
+// ****************************************************************************************************************************************
+// ***** Réinitialise l'unité à chaque frame **********************************************************************************************
+// ****************************************************************************************************************************************
+DepictionOperatorNode_ResetUnit is [TCosmeticSetToPoseOperatorDesc()]

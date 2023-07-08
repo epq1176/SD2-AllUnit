@@ -1,0 +1,22 @@
+export ModelFile_Carrier_Loyd_NZ is 'GameData:Assets\3D\Units\NZ\Vehicule\Loyd_Carrier\Loyd_Carrier_NZ.Ase2NdfBin'
+
+Modele_Carrier_Loyd_NZ is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Carrier_Loyd_NZ
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_Loyd_NZ_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\NZ\Vehicule\Loyd_Carrier_MID\Loyd_Carrier_NZ_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_Loyd_NZ_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\NZ\Vehicule\LODS\Loyd_Carrier_NZ_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

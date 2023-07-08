@@ -1,0 +1,151 @@
+//-------------------------------------------------------------------------
+//----------------------------- AIRSTRIKE ---------------------------------
+//-------------------------------------------------------------------------
+
+// Maintains
+//-------------------------------------------------------------------------
+export BeFriend_BTDef_Maintain_AirStrike is TMacroActionDescriptor_AirStrike_Specific
+(
+    GenerationType = TGenerationType_Maintain
+)
+//-------------------------------------------------------------------------
+// Template
+//-------------------------------------------------------------------------
+private template BeFriend_BTDef_Template_Airstrike
+[
+    MinimumResourceForLaunch:int = 0,
+    AnnulerSupportSiAttaqueEchoue:bool = false,
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/All,
+    PoolModel = ~/BeFriend_BTDef_Pool_Airstrike_Defense
+]
+is TMacroActionDescriptor_AirStrike_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    MinimumResourceForLaunch = <MinimumResourceForLaunch>
+    NumberOfMacro = 1
+
+    AnnulerSupportSiAttaqueEchoue = <AnnulerSupportSiAttaqueEchoue>
+    TypesDeRequetesAcceptees = <TypesDeRequetesAcceptees>
+
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [
+        <PoolModel>,
+    ]
+)
+//-------------------------------------------------------------------------
+// Missions
+//-------------------------------------------------------------------------
+export BeFriend_BTDef_Airstrike_Defense is BeFriend_BTDef_Template_Airstrike
+(
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Defense // pas d'attaque du tout
+    PoolModel = ~/BeFriend_BTDef_Pool_Airstrike_Defense
+)
+//-------------------------------------------------------------------------
+export BeFriend_BTDef_Airstrike_Offense is BeFriend_BTDef_Template_Airstrike
+(
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Attack | ~/EAirStrikeRequestType/OpportunisticTargetInGroup
+    PoolModel = ~/BeFriend_BTDef_Pool_Airstrike_Offense
+)
+//-------------------------------------------------------------------------
+export BeFriend_BTDef_Airstrike_Assault is BeFriend_BTDef_Template_Airstrike
+(
+    AnnulerSupportSiAttaqueEchoue = true
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/OpportunisticSingleTarget
+    PoolModel = ~/BeFriend_BTDef_Pool_Airstrike_Assault
+)
+//-------------------------------------------------------------------------
+// Autogens
+//-------------------------------------------------------------------------
+export BeFriend_BTDef_Airstrike_Defense_Autogen is BeFriend_BTDef_Template_Airstrike
+(
+    MinimumResourceForLaunch = ~/BeFriend_BTDef_MinimumResourceForLaunch_Stage_1
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Defense // pas d'attaque du tout
+    PoolModel = ~/BeFriend_BTDef_Pool_Airstrike_Defense
+)
+//-------------------------------------------------------------------------
+export BeFriend_BTDef_Airstrike_Defense_Autogen_Economic is BeFriend_BTDef_Template_Airstrike
+(
+    MinimumResourceForLaunch = ~/BeFriend_BTDef_MinimumResourceForLaunch_Economic
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Defense // pas d'attaque du tout
+    PoolModel = ~/BeFriend_BTDef_Pool_Airstrike_Defense
+)
+//-------------------------------------------------------------------------
+export BeFriend_BTDef_Airstrike_Offense_Autogen is BeFriend_BTDef_Template_Airstrike
+(
+    MinimumResourceForLaunch = ~/BeFriend_BTDef_MinimumResourceForLaunch_Stage_1
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Attack | ~/EAirStrikeRequestType/OpportunisticTargetInGroup
+    PoolModel = ~/BeFriend_BTDef_Pool_Airstrike_Offense
+)
+//-------------------------------------------------------------------------
+export BeFriend_BTDef_Airstrike_Assault_Autogen is BeFriend_BTDef_Template_Airstrike
+(
+    MinimumResourceForLaunch = ~/BeFriend_BTDef_MinimumResourceForLaunch_Stage_1
+    AnnulerSupportSiAttaqueEchoue = true
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/OpportunisticSingleTarget
+    PoolModel = ~/BeFriend_BTDef_Pool_Airstrike_Assault
+)
+
+// Pool Models
+//-------------------------------------------------------------------------
+export BeFriend_BTDef_Pool_Airstrike_Defense is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{80bb17d1-d931-11e8-bc98-2c56dc4c150d}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        TagsPriority = [
+            "Avion_Chasseur",
+            "Avion_Chasseur_Bombardier",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export BeFriend_BTDef_Pool_Airstrike_Offense is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{80bb17d2-d931-11e8-aa7c-2c56dc4c150d}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        TagsPriority = [
+            "Avion_Bombardier",
+            "Avion_Chasseur_Bombardier",
+            "Avion_Assaut",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export BeFriend_BTDef_Pool_Airstrike_Assault is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{80bb17d3-d931-11e8-a4c0-2c56dc4c150d}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        TagsPriority = [
+            "Avion_AT",
+            "Avion_Assaut",
+        ]
+    ),
+    ]
+)
+// Requetes
+//-------------------------------------------------------------------------
+export BeFriend_BTDef_BasicAirstrikeSupport is
+[
+    (["Avion_Chasseur_Bombardier", "Avion_Bombardier", "Avion_Assaut", "Avion_AT"], 2),
+]
+//-------------------------------------------------------------------------
+

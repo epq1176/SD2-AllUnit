@@ -1,0 +1,122 @@
+template TemplateMeshDescriptor_ATR_placeholder_HON [ ModelFile ] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+
+ModelFile_Boites_PaK_41_Gerlich is 'GameData:Assets\3D\Units\GER\Canon\PaK_41_Gerlich\Boites_PaK_41_Gerlich.Ase2NdfBin'
+
+Gfx_ATR_placeholder_HON_1 is TDepictionTemplate //servant gauche
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_ATR_placeholder_HON( ModelFile = ModelFile_Fallschirm_GR)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_ATR_placeholder_HON( ModelFile = ModelFile_Fallschirm_GR_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_ATR_placeholder_HON( ModelFile = ModelFile_Fallschirm_GR)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_ATR_placeholder_HON( ModelFile = ModelFile_Fallschirm_GR_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Gauche
+)
+
+Gfx_ATR_placeholder_HON_2 is TDepictionTemplate //servant droite
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_ATR_placeholder_HON( ModelFile = ModelFile_Fallschirm_GR_Secondary)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_ATR_placeholder_HON( ModelFile = ModelFile_Fallschirm_GR_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_ATR_placeholder_HON( ModelFile = ModelFile_Fallschirm_GR_Secondary)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_ATR_placeholder_HON( ModelFile = ModelFile_Fallschirm_GR_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Droite
+)
+
+//Arme
+// private AnimationPath_ATR_placeholder_HON is 'GameData:Assets\3D\Units\GER\Canon\PaK_41_Gerlich\'
+// PaK_Gerlich_Anim_Tree is DepictionAnimationTreeNode
+// (
+//     IAStates = AnimationStateAll
+//     IAOldStates = AnimationStateAll
+//     DefaultAnimationStates = AnimationStateEngineStopping
+//     Animations =
+//     (
+//         [TemplateAnimation(Animation= 'PaK_41_Gerlich_idle' + '.Ase2NdfBin' Loop=false EventAnimation=false AnimationPath = AnimationPath_ATR_placeholder_HON Mask = AnimationMask_All())]
+//     )
+
+//     Childs =
+//     [
+//         TAnimNode(IAStates = AnimationStateInstantFire                                                                  Anim = 'PaK_41_Gerlich_Fire'       Loop = false EventAnimation = true AnimationPath = AnimationPath_ATR_placeholder_HON Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStopping | AnimationStateEngineStopTurning                             Anim = 'PaK_41_Gerlich_Deploy'     Loop = false AnimationPath = AnimationPath_ATR_placeholder_HON Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStarting | AnimationStateEngineStartTurning                            Anim = 'PaK_41_Gerlich_Fold'       Loop = false AnimationPath = AnimationPath_ATR_placeholder_HON Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateLeft                                           Anim = 'PaK_41_Gerlich_Turn_Left'  Loop = true  AnimationPath = AnimationPath_ATR_placeholder_HON Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateRight                                          Anim = 'PaK_41_Gerlich_Turn_Right' Loop = true  AnimationPath = AnimationPath_ATR_placeholder_HON Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateMoving | AnimationStateEngineRunning                                         Anim = 'PaK_41_Gerlich_Move'       Loop = true  AnimationPath = AnimationPath_ATR_placeholder_HON Mask = AnimationMask_All()
+//             Childs = [
+//                 TAnimNode(IAStates = AnimationStateBack                                                                 Anim = 'PaK_41_Gerlich_Move_Back'  Loop = true  AnimationPath = AnimationPath_ATR_placeholder_HON Mask = AnimationMask_All()),
+//         ]),
+//     ]
+// )
+
+// DepictionOperator_SkeletalAnimation_ATR_placeholder_HON is [Template_DepictionOperator_SkeletalAnimation_With_Tree_TEST(AnimationTree = PaK_Gerlich_Anim_Tree)]
+
+Gfx_ATR_placeholder_HON_Weapon is TDepictionTemplate //arme
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = CommonDepictionSelector
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_ATR_placeholder_HON ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_ATR_placeholder_HON_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_ATR_placeholder_HON_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor =  Modele_ATR_placeholder_HON ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor =  Modele_ATR_placeholder_HON_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor =  Modele_ATR_placeholder_HON_LOW ),
+        ]
+
+        SubDepictions = []
+        Operators = //DepictionOperator_SkeletalAnimation_Canon_ZIS2_57mmAT_SOV +
+            DepictionOperatorNode_ResetUnit +
+            DepictionOperatorNode_Propulsion_2Wheels_Canon +
+            DepictionOperator_Carriable_Canon +
+            DepictionOperator_TurretAim_Canon +
+            DepictionOperator_TurretRecoil_Canon
+        Actions = Weapons_ATR_placeholder_HON
+    )
+
+SubDepiction_Servant_1_ATR_placeholder_HON is TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_ATR_placeholder_HON_1 )
+SubDepiction_Servant_2_ATR_placeholder_HON is TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_ATR_placeholder_HON_2 )
+SubDepiction_Canon_AT_ATR_placeholder_HON is TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_ATR_placeholder_HON_Weapon )
+
+Gfx_ATR_placeholder_HON is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate //les boites
+    (
+        OverrideMeshBoundingBoxMin = [-500,-500,0]
+        OverrideMeshBoundingBoxMax = [ 500, 500,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_ATR_placeholder_HON( ModelFile = ModelFile_Boites_PaK_41_Gerlich) ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_ATR_placeholder_HON( ModelFile = ModelFile_Boites_PaK_41_Gerlich) ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_ATR_placeholder_HON( ModelFile = ModelFile_Boites_PaK_41_Gerlich) ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_ATR_placeholder_HON( ModelFile = ModelFile_Boites_PaK_41_Gerlich) ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_ATR_placeholder_HON( ModelFile = ModelFile_Boites_PaK_41_Gerlich) ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_ATR_placeholder_HON( ModelFile = ModelFile_Boites_PaK_41_Gerlich) ),
+        ]
+        NodeNamesForSelection = [ 'Canon_AT', 'servant_G' , 'servant_D']
+        SubDepictions = [SubDepiction_Servant_1_ATR_placeholder_HON,
+                        SubDepiction_Servant_2_ATR_placeholder_HON,
+                        SubDepiction_Canon_AT_ATR_placeholder_HON]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+    )
+)

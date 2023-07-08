@@ -1,0 +1,341 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export ScnDefenseModeStrategy is TIAGeneralStrategy
+(
+    StrategyName = "IAScnDef"
+    FirstGenerator = ScnDef_Mod_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    IgnorePlayersForCorridorRepartition = true
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    ShouldUseTaggedCorridorsForTouchDown = true
+
+    TransitionList =
+    [
+        ScnDef_Mod_Transition_StartToPhaseC,
+        ScnDef_Mod_Transition_StartToPhaseB,
+        ScnDef_Mod_Transition_StartToPhaseA,
+        ScnDef_Mod_Transition_StartToDeploiment,
+        ScnDef_Mod_Transition_DeployToPhaseA,
+        ScnDef_Mod_Transition_PhaseB,
+        ScnDef_Mod_Transition_PhaseC,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export ScnDef_Mod_Condition_CommandPhase is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+//-------------------------------------------------------------------------
+export ScnDef_Mod_Condition_PhaseB is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_B'
+)
+//-------------------------------------------------------------------------
+export ScnDef_Mod_Condition_PhaseC is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_C'
+)
+//-------------------------------------------------------------------------
+export ScnDef_Mod_Condition_True is TSequenceCondition_True
+(
+
+)
+
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export ScnDef_Mod_Transition_StartToPhaseC is TIAGeneralStrategyTransition
+(
+    Origine = ScnDef_Mod_Choose_Strategy
+    Condition = ScnDef_Mod_Condition_PhaseC
+    Destination = ScnDef_Mod_PhaseC_1
+)
+export ScnDef_Mod_Transition_StartToPhaseB is TIAGeneralStrategyTransition
+(
+    Origine = ScnDef_Mod_Choose_Strategy
+    Condition = ScnDef_Mod_Condition_PhaseB
+    Destination = ScnDef_Mod_PhaseB_1
+)
+export ScnDef_Mod_Transition_StartToPhaseA is TIAGeneralStrategyTransition
+(
+    Origine = ScnDef_Mod_Choose_Strategy
+    Condition = ScnDef_Mod_Condition_CommandPhase
+    Destination = ScnDef_Mod_PhaseA_1
+)
+export ScnDef_Mod_Transition_StartToDeploiment is TIAGeneralStrategyTransition
+(
+    Origine = ScnDef_Mod_Choose_Strategy
+    Condition = ScnDef_Mod_Condition_True
+    Destination = ScnDef_Mod_PhaseDeploiement_1
+)
+//-------------------------------------------------------------------------
+export ScnDef_Mod_Transition_DeployToPhaseA is TIAGeneralStrategyTransition
+(
+    Origine = ScnDef_Mod_PhaseDeploiement_1
+    Condition = ScnDef_Mod_Condition_CommandPhase
+    Destination = ScnDef_Mod_PhaseA_1
+)
+//-------------------------------------------------------------------------
+export ScnDef_Mod_Transition_PhaseB is TIAGeneralStrategyTransition
+(
+    Origine = ScnDef_Mod_PhaseA_1
+    Condition = ScnDef_Mod_Condition_PhaseB
+    Destination = ScnDef_Mod_PhaseB_1
+)
+//-------------------------------------------------------------------------
+export ScnDef_Mod_Transition_PhaseC is TIAGeneralStrategyTransition
+(
+    Origine = ScnDef_Mod_PhaseB_1
+    Condition = ScnDef_Mod_Condition_PhaseC
+    Destination = ScnDef_Mod_PhaseC_1
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export ScnDef_Mod_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Scn_Support_AntiTank,
+        ~/Scn_Support_Transports,
+
+        ~/Scn_Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export ScnDef_Mod_PhaseDeploiement_1 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Scn_Support_AntiTank,
+        ~/Scn_Support_Transports,
+        ~/Scn_Supply_Skirmish,
+
+
+        ~/ScnDef_Defense_Static_Adaptive,
+        ~/ScnDef_Defense_Static_Adaptive,
+
+        ~/ScnDef_Defense_Static_AA,
+        ~/ScnDef_Static_SuperCommander,
+
+        ~/ScnDef_Artillery_TriggerHappy,
+
+        ~/ScnDef_Defense_Static_Adaptive,
+        ~/ScnDef_Defense_Static_Adaptive,
+
+        ~/ScnDef_Defense_Static_Adaptive,
+        ~/ScnDef_Defense_Static_Adaptive,
+
+        ~/ScnDef_Defense_Static_Tank,    // Mission avec un char lourd en static
+
+    ] + ~/ScnDef_Defenses_Airstrike_Arti_Shuffle
+
+    +   ~/ScnDef_Scaling_A
+    +   ~/ScnDef_Scaling_A
+)
+//-------------------------------------------------------------------------
+export ScnDef_Mod_PhaseA_1 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Scn_Support_AntiTank,
+        ~/Scn_Support_Transports,
+
+        ~/Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/Scn_Maintain_AirStrike,
+        ~/ScnDef_Maintain_Artillery,
+        ~/ScnDef_Maintain_Defenses,
+
+
+        ~/ScnDef_Defense_Static_Adaptive,
+        ~/ScnDef_Defense_Static_Adaptive,
+
+        ~/Scn_Airstrike_Assault,
+
+        ~/ScnDef_Artillery_TriggerHappy,
+
+        ~/ScnDef_Defense_Static_Adaptive,
+        ~/ScnDef_Defense_Static_Adaptive,
+
+    ] + ~/ScnDef_Defenses_Airstrike_Arti_Shuffle
+
+    +   ~/ScnDef_Scaling_A
+    +   ~/ScnDef_Scaling_A
+)
+//-------------------------------------------------------------------------
+export ScnDef_Mod_PhaseB_1 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 2
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Scn_Support_AntiTank,
+        ~/Scn_Support_Transports,
+
+        ~/Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/Scn_Maintain_AirStrike,
+        ~/ScnDef_Maintain_Artillery,
+        ~/ScnDef_Maintain_Defenses,
+
+
+        ~/ScnDef_ZoneAttack_Main,
+        ~/ScnDef_Artillery_Support,
+
+        ~/ScnDef_Defense_Static_Adaptive,
+        ~/ScnDef_Defense_Static_Adaptive,
+
+        ~/ScnDef_Artillery_Expensive,
+
+        ~/Scn_Airstrike_Offense,
+
+        ~/ScnDef_Defense_Static_Adaptive,
+        ~/ScnDef_Defense_Static_Adaptive,
+
+    ] + ~/ScnDef_Defenses_Airstrike_Arti_Shuffle
+
+    +   ~/ScnDef_Scaling_B
+    +   ~/ScnDef_Scaling_B
+)
+//-------------------------------------------------------------------------
+export ScnDef_Mod_PhaseC_1 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 1
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Scn_Support_AntiTank,
+        ~/Scn_Support_Transports,
+
+        ~/Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/Scn_Maintain_AirStrike,
+        ~/ScnDef_Maintain_Artillery,
+        ~/ScnDef_Maintain_Defenses,
+
+
+        ~/ScnDef_ZoneAttack_Main,
+        ~/ScnDef_Artillery_Support,
+
+        ~/ScnDef_ZoneAttack_Adaptive,
+
+        ~/Scn_Airstrike_Assault,
+        ~/ScnDef_Artillery_TriggerHappy,
+
+        ~/ScnDef_Defense_Static_Adaptive,
+        ~/ScnAtk_Attack_MBT_Support,
+        ~/ScnDef_ZoneAttack_Adaptive,
+
+        ~/Scn_Supply_Skirmish_Allied,
+
+    ] + ~/ScnDef_Defenses_Airstrike_Arti_Shuffle
+
+    +   ~/ScnDef_Scaling_C
+    +   ~/ScnDef_Scaling_C
+)
+
+ScnDef_Defenses_Airstrike_Arti_Shuffle is
+[
+    ~/Scn_Airstrike_Defense,
+    ~/ScnDef_Artillery_Expensive,
+    ~/ScnDef_Defense_Static_Adaptive,
+    ~/Scn_Airstrike_Assault,
+    ~/ScnDef_Artillery_TriggerHappy,
+    ~/ScnDef_Defense_Static_AA,
+    ~/Scn_Airstrike_Offense,
+    ~/ScnDef_Artillery_TriggerHappy_1for4Corridors,
+    ~/ScnDef_Defense_Static_Adaptive,
+    ~/Scn_Maintain_AirStrike,
+    ~/ScnDef_Maintain_Artillery,
+]
+
+ScnDef_Scaling_A is
+[
+    ~/ScnDef_ZoneAttack_Main_Autogen,
+    ~/ScnDef_Artillery_Expensive_Autogen,
+    ~/ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/ScnDef_Artillery_TriggerHappy_Autogen,
+    ~/ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/ScnDef_Artillery_TriggerHappy_Autogen,
+
+    ~/ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/ScnDef_Artillery_Expensive_Autogen,
+    ~/ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/ScnDef_Artillery_TriggerHappy_Autogen,
+    ~/ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/ScnDef_Artillery_TriggerHappy_Autogen,
+]
+
+ScnDef_Scaling_B is
+[
+    ~/ScnDef_ZoneAttack_Main_Autogen,
+    ~/ScnDef_Artillery_Expensive_Autogen,
+    ~/ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/ScnDef_Artillery_TriggerHappy_Autogen,
+    ~/ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/ScnDef_Artillery_TriggerHappy_Autogen,
+
+    ~/ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/ScnDef_Artillery_Expensive_Autogen,
+    ~/ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/ScnDef_Artillery_TriggerHappy_Autogen,
+    ~/ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/ScnDef_Artillery_TriggerHappy_Autogen,
+]
+
+ScnDef_Scaling_C is
+[
+    ~/ScnDef_ZoneAttack_Main_Autogen,
+    ~/ScnDef_Artillery_Expensive_Autogen,
+    ~/ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/ScnDef_Artillery_TriggerHappy_Autogen,
+    ~/ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/ScnDef_Artillery_TriggerHappy_Autogen,
+
+    ~/ScnDef_ZoneAttack_Main_Autogen,
+    ~/ScnDef_Artillery_Expensive_Autogen,
+    ~/ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/ScnDef_Artillery_TriggerHappy_Autogen,
+    ~/ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/ScnDef_Artillery_TriggerHappy_Autogen,
+]

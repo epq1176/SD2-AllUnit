@@ -1,0 +1,23 @@
+export ModelFile_Sherman_M4A2_SOV is 'GameData:Assets\3D\Units\SOV\Char\Emsha\Emsha.Ase2NdfBin'
+
+export Modele_Sherman_M4A2_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Sherman_M4A2_SOV
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Sherman_M4A2_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\Emsha_MID\Emsha_MID.Ase2NdfBin'
+
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Sherman_M4A2_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\LODS\Emsha_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

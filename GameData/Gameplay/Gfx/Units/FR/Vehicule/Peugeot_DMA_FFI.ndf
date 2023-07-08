@@ -1,0 +1,23 @@
+export ModelFile_Peugeot_DMA_FFI is 'GameData:Assets\3D\Units\FR\Vehicule\Peugeot_DMA\Peugeot_DMA.Ase2NdfBin'
+
+Modele_Peugeot_DMA_FFI is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Peugeot_DMA_FFI
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Peugeot_DMA_FFI_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Vehicule\Peugeot_DMA_MID\Peugeot_DMA_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Peugeot_DMA_FFI_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Vehicule\LODS\Peugeot_DMA_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+

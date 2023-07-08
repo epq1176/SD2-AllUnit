@@ -1,0 +1,657 @@
+private CubeActionWargameButtonDims is [106, 32]
+private CubeActionWargameSmartOrdersButtonDims is [106,32]//[82, 32]
+private CubeActionWargameButtonSpacing is [2, 3]
+private CubeActionWargameWidth is 322 // (CubeActionWargameButtonDims[0] + CubeActionWargameButtonSpacing[0]) * nombre de colonnes
+private CubeActionWargameTitleHeight is 30
+private CubeActionWargameContentHeight is 130 // (CubeActionWargameButtonDims[1] + CubeActionWargameButtonSpacing[1]) * nombre de lignes
+
+//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+- //
+//                   Cube Action                        //
+//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+- //
+template CubeActionButton
+[
+    BigLineAction : int,
+    BackgroundColor : string = "ButtonHUD/Background_cubeAction",
+    LineBorderColor : string = "ButtonHUD/Border",
+    BorderColor : string = "ButtonHUD/BigBorder",
+    TextColor : string = "SD2_Blanc184_cubeAction",
+    TextSize : string = "11"
+] is TCommonInGameCubeActionButtonDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    HasBackground = true
+    BackgroundBlockColorToken = <BackgroundColor>
+
+    HasBorder = false
+    BorderThicknessToken = "1"
+    BorderLineColorToken = <LineBorderColor>
+
+    MaskEvents = true
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                PixelWidthHeight = [-4.0, -4.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            HasBackground = true
+            BackgroundBlockColorToken = <BackgroundColor>
+        ),
+
+        BUCKTextDescriptor
+        (
+            ElementName = "CubeActionButtonText"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                PixelWidthHeight = [-6.0, -6.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+            )
+
+            HasBackground = true
+            BackgroundBlockColorToken = <BackgroundColor>
+
+            TextStyle = "Default"
+
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+            VerticalFitStyle = ~/FitStyle/UserDefined
+
+            BigLineAction   = <BigLineAction>
+            TextColor       = <TextColor>
+            TextSize        = <TextSize>
+            TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+            TypefaceToken   = "Main"
+            UniformDrawer   = $/UserInterface/UIUniformDrawer
+        ),
+
+        BUCKSpecificHintableArea
+        (
+            ElementName = "CubeActionHintableArea"
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = "HUD_UNKN"
+            HintBodyToken = "HUD_UNKN"
+            HintExtendedToken = "HUD_UNKN"
+        ),
+
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+                PixelWidthHeight = [3.0, 0.0]
+                PixelOffset = [1.0, 0.0]
+                AlignementToAnchor = [0.0, 0.5]
+                AlignementToFather = [0.0, 0.5]
+            )
+
+            HasBackground = false
+            BackgroundBlockColorToken = <BorderColor>
+        ),
+    ]
+)
+
+template CubeActionToggleButton
+[
+    BigLineAction : int,
+] is TCommonInGameCubeActionToggleButtonDescriptor
+(
+    IsTogglable = true
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    HasBackground = true
+    BackgroundBlockColorToken = "ButtonHUD/BigBorder2"
+
+    HasBorder = false
+    BorderThicknessToken = "1"
+    BorderLineColorToken = "ButtonHUD/Border2"
+
+    MaskEvents = true
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                PixelWidthHeight = [-2.0, -2.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            HasBackground = true
+            BackgroundBlockColorToken = "ButtonHUD/Background2_cubeAction"
+        ),
+
+        BUCKTextDescriptor
+        (
+            ElementName = "CubeActionButtonText"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                PixelWidthHeight = [-6.0, -6.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+            )
+
+            TextStyle = "Default"
+
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+            VerticalFitStyle = ~/FitStyle/UserDefined
+
+            BigLineAction   = <BigLineAction>
+            TextColor       = "ButtonHUD/Text2"
+            TextSize        = "11"
+            TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+            TypefaceToken   = "Main"
+            UniformDrawer   = $/UserInterface/UIUniformDrawer
+        ),
+
+        BUCKSpecificHintableArea
+        (
+            ElementName = "CubeActionHintableArea"
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = "HUD_UNKN"
+            HintBodyToken = "HUD_UNKN"
+            HintExtendedToken = "HUD_UNKN"
+        ),
+
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+                PixelWidthHeight = [3.0, 0.0]
+                PixelOffset = [1.0, 0.0]
+                AlignementToAnchor = [0.0, 0.5]
+                AlignementToFather = [0.0, 0.5]
+            )
+
+            HasBackground = false
+            BackgroundBlockColorToken = "ButtonHUD/BigBorder2"
+        ),
+    ]
+)
+
+CubeActionEmptyButton is TCommonInGameCubeActionButtonDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    HasBackground = true
+    BackgroundBlockColorToken = "ButtonHUD/Second"
+
+    HasBorder = false
+    BordersToDraw = ~/TBorderSide/All
+    BorderThicknessToken = "Normal"
+    BorderLineColorToken = "ButtonHUD"
+
+    MaskEvents = true
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = "CubeActionButtonText"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                PixelWidthHeight = [-6.0, -6.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+            )
+
+            HasBackground = false
+            BackgroundBlockColorToken = "BoutonHUD"
+
+            TextStyle = "Default"
+
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+            VerticalFitStyle = ~/FitStyle/UserDefined
+
+            BigLineAction   = ~/BigLineAction/BalancedMultiline
+            TextColor       = "BoutonHUD"
+            TextSize        = "11"
+            TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+            TypefaceToken   = "Main"
+            UniformDrawer   = $/UserInterface/UIUniformDrawer
+        ),
+
+        BUCKSpecificHintableArea
+        (
+            ElementName = "CubeActionHintableArea"
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = "HUD_UNKN"
+            HintBodyToken = "HUD_UNKN"
+            HintExtendedToken = "HUD_UNKN"
+        ),
+
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+                PixelWidthHeight = [3.0, 0.0]
+                PixelOffset = [1.0, 0.0]
+                AlignementToAnchor = [0.0, 0.5]
+                AlignementToFather = [0.0, 0.5]
+            )
+
+            HasBackground = false
+            BackgroundBlockColorToken = "ButtonHUD/BigBorder"
+        ),
+    ]
+)
+
+//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+- //
+template InGameCubeActionWargameButtonContainer
+[
+    UniqueName : string = '',
+    Dimensions = CubeActionWargameButtonDims
+]
+is BUCKContainerDescriptor
+(
+    UniqueName = <UniqueName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = <Dimensions>
+    )
+
+    SpotlightComponent = SpotlightDescriptor()
+)
+
+//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+- //
+
+InGameCubeActionWargame is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToFather = [ 1.0, 1.0 ]
+        AlignementToAnchor = [ 1.0, 1.0 ]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestBetweenFatherAndChildren
+
+    InterItemMargin = TRTTILength( Magnifiable = 5.0)
+
+    Elements =
+    [
+        ///////////////////////////////////////////////////////////////////////
+        // Smart orders Cube action
+        ///////////////////////////////////////////////////////////////////////
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ElementName = "SmartOrderCubeAction"
+                Axis = ~/ListAxis/Vertical
+                HasBorder = true
+                BorderLineColorToken = "Gray"
+                BorderThicknessToken = "1"
+
+                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [~/CubeActionWargameWidth, 0.0]
+                )
+
+                Elements =
+                [
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKListDescriptor
+                        (
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                MagnifiableWidthHeight = [0.0, 25.0]
+                            )
+
+                            HasBackground = true
+                            BackgroundBlockColorToken = "Black80" //PureBlack
+                            HasBorder = false
+                            BorderThicknessToken = '1'
+                            BorderLineColorToken = "SD2_LigneBleuGris"
+
+                            Axis = ~/ListAxis/Horizontal
+                            Elements =
+                            [
+                                // Title // ORDERS
+                                BUCKListElementDescriptor
+                                (
+                                    ComponentDescriptor = BUCKTextDescriptor
+                                    (
+                                        ComponentFrame = TUIFramePropertyRTTI
+                                        (
+                                            AlignementToFather = [0.0, 0.5]
+                                            AlignementToAnchor = [0.0, 0.5]
+                                        )
+
+                                        TextPadding = TRTTILength4(Magnifiable = [6.0, 0.0, 6.0, 0.0])
+
+                                        ParagraphStyle = TParagraphStyleRTTI
+                                        (
+                                            Alignment = UIText_Center
+                                            VerticalAlignment = UIText_VerticalCenter
+                                        )
+
+                                        TextStyle = "Default"
+
+                                        HorizontalFitStyle = ~/FitStyle/FitToContent
+                                        VerticalFitStyle = ~/FitStyle/FitToContent
+
+                                        TextColor       = "ButtonHUD/SmartOrdersText"
+                                        TextSize        = "16"
+                                        TextToken       = "SCA_TITLE"
+                                        TextDico        = ~/LocalisationConstantes/dico_interface_ingame
+
+                                        TypefaceToken   = "MainBold"
+                                    )
+                                ),
+                                // Dummy
+                                BUCKListElementDescriptor
+                                (
+                                    ExtendWeight = 1.0
+                                    ComponentDescriptor = BUCKContainerDescriptor
+                                    (
+                                        ComponentFrame = TUIFramePropertyRTTI
+                                        (
+                                            RelativeWidthHeight = [1.0, 1.0]
+                                        )
+                                    )
+                                ),
+                            ]
+                        )
+                    ),
+
+                    // Buttons
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKGridDescriptor
+                        (
+                            ElementName = "SmartOrderCubeActionButtonList"
+
+                            FirstElementMargin = TRTTILength2( Magnifiable = [1.0, 1.0] )
+                            InterElementMargin = TRTTILength2( Magnifiable = [1.0, 1.0] )
+                            LastElementMargin  = TRTTILength2( Magnifiable = [1.0, 1.0] )
+
+                            HasBackground = true
+                            BackgroundBlockColorToken = "Black80"
+
+                            GridElements = MAP
+                            [
+                                ( [0, 0], InGameCubeActionWargameButtonContainer( UniqueName=BUCKIdentifiers/IngameCubeActionButtonContainer21 Dimensions=CubeActionWargameSmartOrdersButtonDims ) ),
+                                ( [0, 1], InGameCubeActionWargameButtonContainer( UniqueName=BUCKIdentifiers/IngameCubeActionButtonContainer22 Dimensions=CubeActionWargameSmartOrdersButtonDims ) ),
+                                ( [0, 2], InGameCubeActionWargameButtonContainer( UniqueName=BUCKIdentifiers/IngameCubeActionButtonContainer23 Dimensions=CubeActionWargameSmartOrdersButtonDims ) ),
+
+                                ( [1, 0], InGameCubeActionWargameButtonContainer( UniqueName=BUCKIdentifiers/IngameCubeActionButtonContainer24 Dimensions=CubeActionWargameSmartOrdersButtonDims ) ),
+                                ( [1, 1], InGameCubeActionWargameButtonContainer( UniqueName=BUCKIdentifiers/IngameCubeActionButtonContainer25 Dimensions=CubeActionWargameSmartOrdersButtonDims ) ),
+                            ]
+                        )
+                    ),
+                ]
+
+                BackgroundComponents =
+                [
+                OmbrePanel
+                ]
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                UniqueName = "UISpecificTacticEngagementRulesViewDescriptor"
+                ComponentFrame = TUIFramePropertyRTTI()
+                FitStyle = ~/ContainerFitStyle/FitToContent
+            )
+        ),
+
+
+        ///////////////////////////////////////////////////////////////////////
+        // Standard orders Cube action
+        ///////////////////////////////////////////////////////////////////////
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ElementName = "StandardOrderCubeAction"
+                Axis = ~/ListAxis/Vertical
+                HasBorder = true
+                BorderLineColorToken = "Gray"
+                BorderThicknessToken = "1"
+
+                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [~/CubeActionWargameWidth, 0.0]
+                )
+
+                Elements =
+                [
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKListDescriptor
+                        (
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                MagnifiableWidthHeight = [0.0, 25.0]
+                            )
+
+                            HasBackground = true
+                            BackgroundBlockColorToken = "Black80" //PureBlack
+                            HasBorder = false
+                            BorderThicknessToken = '1'
+                            BorderLineColorToken = "SD2_LigneBleuGris"
+
+                            Axis = ~/ListAxis/Horizontal
+                            Elements =
+                            [
+                                // Title // ORDERS
+                                BUCKListElementDescriptor
+                                (
+                                    ComponentDescriptor = BUCKTextDescriptor
+                                    (
+                                        ComponentFrame = TUIFramePropertyRTTI
+                                        (
+                                            AlignementToFather = [0.0, 0.5]
+                                            AlignementToAnchor = [0.0, 0.5]
+                                        )
+
+                                        TextPadding = TRTTILength4(Magnifiable = [6.0, 0.0, 6.0, 0.0])
+
+                                        ParagraphStyle = TParagraphStyleRTTI
+                                        (
+                                            Alignment = UIText_Center
+                                            VerticalAlignment = UIText_VerticalCenter
+                                        )
+
+                                        TextStyle = "Default"
+
+                                        HorizontalFitStyle = ~/FitStyle/FitToContent
+                                        VerticalFitStyle = ~/FitStyle/FitToContent
+
+                                        TextColor       = "SD2_Blanc184" //"ButtonSimple/TextBleuGris"
+                                        TextSize        = "16"
+                                        TextToken       = "CA_TITLE"
+                                        TextDico        = ~/LocalisationConstantes/dico_interface_ingame
+
+                                        TypefaceToken   = "MainBold"
+                                    )
+                                ),
+
+                                //Show orders
+                                BUCKListElementDescriptor
+                                (
+                                    ComponentDescriptor = BUCKContainerDescriptor
+                                    (
+                                        UniqueName = "UISpecificOrdersPanelViewDescriptor"
+                                        ComponentFrame = TUIFramePropertyRTTI()
+                                        FitStyle = ~/ContainerFitStyle/FitToContent
+                                    )
+                                ),
+
+                                // LOS Panel
+                                BUCKListElementDescriptor
+                                (
+                                    ComponentDescriptor = BUCKContainerDescriptor
+                                    (
+                                        UniqueName = "UISpecificLOSPanelViewDescriptor"
+                                        ComponentFrame = TUIFramePropertyRTTI()
+                                        FitStyle = ~/ContainerFitStyle/FitToContent
+                                    )
+                                ),
+
+                                // Unit comparator selector
+                                BUCKListElementDescriptor
+                                (
+                                    ComponentDescriptor = BUCKContainerDescriptor
+                                    (
+                                        UniqueName = "UISpecificUnitComparatorPanelViewDescriptor"
+                                        ComponentFrame = TUIFramePropertyRTTI()
+                                        FitStyle = ~/ContainerFitStyle/FitToContent
+                                    )
+                                ),
+
+                                // Dummy
+                                BUCKListElementDescriptor
+                                (
+                                    ExtendWeight = 1.0
+                                    ComponentDescriptor = BUCKContainerDescriptor
+                                    (
+                                        ComponentFrame = TUIFramePropertyRTTI
+                                        (
+                                            RelativeWidthHeight = [1.0, 1.0]
+                                        )
+                                    )
+                                ),
+
+                                // FlarePanel
+                                BUCKListElementDescriptor
+                                (
+                                    ComponentDescriptor = BUCKContainerDescriptor
+                                    (
+                                        UniqueName = "UICommonFlarePanelViewMainContainer"
+                                        ComponentFrame = TUIFramePropertyRTTI()
+                                        FitStyle = ~/ContainerFitStyle/FitToContent
+                                    )
+                                ),
+                            ]
+                        )
+                    ),
+
+                    // Buttons
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKGridDescriptor
+                        (
+                            ElementName = "StandardOrderCubeActionButtonList"
+
+                            FirstElementMargin = TRTTILength2( Magnifiable = [1.0, 1.0] )
+                            InterElementMargin = TRTTILength2( Magnifiable = [1.0, 1.0] )
+                            LastElementMargin  = TRTTILength2( Magnifiable = [1.0, 1.0] )
+
+                            HasBackground = true
+                            BackgroundBlockColorToken = "Black80"
+
+                            GridElements = MAP
+                            [
+                                ( [0, 0], InGameCubeActionWargameButtonContainer( UniqueName=BUCKIdentifiers/IngameCubeActionButtonContainer1 ) ),
+                                ( [0, 1], InGameCubeActionWargameButtonContainer( UniqueName=BUCKIdentifiers/IngameCubeActionButtonContainer2 ) ),
+                                ( [0, 2], InGameCubeActionWargameButtonContainer( UniqueName=BUCKIdentifiers/IngameCubeActionButtonContainer3 ) ),
+
+                                ( [1, 0], InGameCubeActionWargameButtonContainer( UniqueName=BUCKIdentifiers/IngameCubeActionButtonContainer4 ) ),
+                                ( [1, 1], InGameCubeActionWargameButtonContainer( UniqueName=BUCKIdentifiers/IngameCubeActionButtonContainer5 ) ),
+                                ( [1, 2], InGameCubeActionWargameButtonContainer( UniqueName=BUCKIdentifiers/IngameCubeActionButtonContainer6 ) ),
+
+                                ( [2, 0], InGameCubeActionWargameButtonContainer( UniqueName=BUCKIdentifiers/IngameCubeActionButtonContainer7 ) ),
+                                ( [2, 1], InGameCubeActionWargameButtonContainer( UniqueName=BUCKIdentifiers/IngameCubeActionButtonContainer8 ) ),
+                                ( [2, 2], InGameCubeActionWargameButtonContainer( UniqueName=BUCKIdentifiers/IngameCubeActionButtonContainer9 ) ),
+
+                                ( [3, 0], InGameCubeActionWargameButtonContainer( UniqueName=BUCKIdentifiers/IngameCubeActionButtonContainer10 ) ),
+                                ( [3, 1], InGameCubeActionWargameButtonContainer( UniqueName=BUCKIdentifiers/IngameCubeActionButtonContainer11 ) ),
+                                ( [3, 2], InGameCubeActionWargameButtonContainer( UniqueName=BUCKIdentifiers/IngameCubeActionButtonContainer12 ) ),
+                            ]
+                        )
+                    ),
+                ]
+
+                BackgroundComponents =
+                [
+                OmbrePanel
+                ]
+            )
+        ),
+    ]
+
+    SpotlightComponent = SpotlightDescriptor()
+)
+
+
+private UISpecificTacticCubeActionViewDescriptor is TUISpecificCubeActionViewDescriptor
+(
+    MainComponentDescriptor = ~/InGameCubeActionWargame
+    MainComponentContainerUniqueName = "UISpecificTacticCubeActionViewMainContainer"
+
+    ButtonTemplateDescriptorMap       = MAP
+    [
+        (~/TacticCubeActionFunctionType/Orders, CubeActionButton(BigLineAction = ~/BigLineAction/BalancedMultiline)),
+        (~/TacticCubeActionFunctionType/TogglableOrders, CubeActionToggleButton(BigLineAction = ~/BigLineAction/BalancedMultiline)),
+        (~/TacticCubeActionFunctionType/SmartOrders, CubeActionButton(BigLineAction = ~/BigLineAction/BalancedMultiline
+                                                                LineBorderColor = "ButtonHUD/SmartOrdersLineBorder"
+                                                                TextColor = "ButtonHUD/SmartOrdersText"
+                                                                TextSize = "10"
+                                                                BorderColor = "ButtonHUD/SmartOrdersBorder"
+                                                                BackgroundColor = "ButtonHUD/SmartOrdersBackground")),
+    ]
+    EmptyButtonTemplateDescriptor  = ~/CubeActionEmptyButton
+)

@@ -1,0 +1,22 @@
+export ModelFile_Mortar_81mm_Nisei_USA is 'GameData:Assets\3D\Units\USA\Canon\Mortar_81mm\Mortar_81mm.Ase2NdfBin'
+
+Modele_Mortar_81mm_Nisei_USA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Mortar_81mm_Nisei_USA
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Mortar_81mm_Nisei_USA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Canon\Mortar_81mm_MID\Mortar_81mm_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Mortar_81mm_Nisei_USA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Canon\LODS\Mortar_81mm_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

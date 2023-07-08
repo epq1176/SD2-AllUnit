@@ -1,0 +1,22 @@
+export ModelFile_M3_Scout_Car_CAN is 'GameData:Assets\3D\Units\CAN\Vehicule\White_Truck\White_Truck.Ase2NdfBin'
+
+Modele_M3_Scout_Car_CAN is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M3_Scout_Car_CAN
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_M3_Scout_Car_CAN_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CAN\Vehicule\White_Truck_MID\White_Truck_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_M3_Scout_Car_CAN_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CAN\Vehicule\LODS\White_Truck_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

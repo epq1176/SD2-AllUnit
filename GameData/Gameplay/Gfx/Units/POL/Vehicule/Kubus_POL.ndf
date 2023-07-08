@@ -1,0 +1,22 @@
+export ModelFile_Kubus_POL is 'GameData:Assets\3D\Units\POL\Vehicule\Kubus_POL\Kubus_POL.Ase2NdfBin'
+
+Modele_Kubus_POL is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Kubus_POL
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Kubus_POL_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Vehicule\Kubus_POL_MID\Kubus_POL_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Kubus_POL_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Vehicule\LODS\Kubus_POL_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

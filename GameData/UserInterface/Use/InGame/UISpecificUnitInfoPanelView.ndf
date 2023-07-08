@@ -1,0 +1,1165 @@
+
+private UnitInfoPanelHorizontalHeader is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+
+        MagnifiableWidthHeight = [0.0, 35.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    FirstMargin = TRTTILength( Magnifiable = 8.0 )
+    InterItemMargin = TRTTILength ( Magnifiable = 3.0 )
+    LastMargin = TRTTILength( Magnifiable = 4.0 )
+    HasBackground = true
+    BackgroundBlockColorToken = "PanelInfoUnit_gris1" //"UnitInfoPanel/MainTitleBar"
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = 'UnitPrice'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [38,0]
+                    AlignementToAnchor = [0.0, 0.5]
+                    AlignementToFather = [0.0, 0.5]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Center
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0
+                )
+                HasBorder = true
+                BorderThicknessToken = '1'
+                BorderLineColorToken = "LigneGold"
+
+                TextStyle = "Default"
+
+                Hint = BUCKSpecificHintableArea
+                (
+                    DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                    HintTitleToken = "HIP_UCOSTT"
+                    HintBodyToken = "HIP_UCOSTB"
+                    HintExtendedToken = "HIP_UCOSTE"
+                )
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TypefaceToken = "Second"
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                UniformDrawer = $/UserInterface/UIUniformDrawer
+                HasBackground = false
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextToken  = "UIP_VAL"
+
+                TextColor = "UnitInfoPanel/UnitPrice/Text"
+                TextSize = "24"
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            // Unit Name
+            MinSize = TRTTILength( Magnifiable = 250.0 )
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = 'UnitName'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToAnchor = [0.0, 0.5]
+                    AlignementToFather = [0.0, 0.5]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Left
+                    VerticalAlignment = UIText_Up
+                    InterLine = 0
+                )
+
+                TextPadding = TRTTILength4( Magnifiable = [4.0, 0.0, 4.0, 0.0] )
+
+                TextStyle = "Default"
+
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                Hint = BUCKSpecificHintableArea
+                (
+                    DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                    HintTitleToken = "HIP_UNAMET"
+                    HintBodyToken = "HIP_UNAMEB"
+                    HintExtendedToken = "HIP_UNAMEE"
+                )
+
+                TypefaceToken = "Second"
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                TextDico = ~/LocalisationConstantes/dico_unites
+
+                TextColor = "UnitInfoPanel/Title/Main"
+                TextSize = "24"
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKRackDescriptor
+            (
+                ElementName = 'SpecialityTextureRack'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    AlignementToAnchor = [0.0, 0.5]
+                    AlignementToFather = [0.0, 0.5]
+                )
+
+                Axis = ~/ListAxis/Horizontal
+
+                BladeDescriptor = BUCKTextureDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableWidthHeight = [20.0, 20.0]
+                    )
+
+
+                    TextureFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                    )
+                )
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToAnchor = [0.0, 0.5]
+                    AlignementToFather = [0.0, 0.5]
+                )
+
+                Axis = ~/ListAxis/Vertical
+                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+                FirstMargin = TRTTILength( Pixel = 4.0 )
+                LastMargin = TRTTILength( Pixel = 4.0 )
+
+                Elements =
+                [
+                    BUCKListElementDescriptor
+                    (
+                        // Unit Country Flag
+                        ComponentDescriptor = BUCKTextureDescriptor
+                        (
+                            ElementName = "UnitCountryFlag"
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                MagnifiableWidthHeight = [36.0, 20.5]
+                                AlignementToAnchor = [1.0, 0.0]
+                                AlignementToFather = [1.0, 0.0]
+                            )
+                        )
+                    ),
+
+                    BUCKListElementDescriptor
+                    (
+                        // Unit Country
+                        ComponentDescriptor = BUCKTextDescriptor
+                        (
+                            ElementName = 'UnitCountry'
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                AlignementToFather = [1.0, 0.0]
+                                AlignementToAnchor = [1.0, 0.0]
+                            )
+
+                            ParagraphStyle = TParagraphStyleRTTI
+                            (
+                                Alignment = UIText_Left
+                                VerticalAlignment = UIText_Up
+                                InterLine = 0
+                            )
+
+                            TextStyle = "Default"
+
+                            {Hint = BUCKSpecificHintableArea
+                            (
+                                DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                                HintTitleToken = "HIP_UNAMET"
+                                HintBodyToken = "HIP_UNAMEB"
+                                HintExtendedToken = "HIP_UNAMEE"
+                            )}
+
+                            HorizontalFitStyle = ~/FitStyle/FitToContent
+                            VerticalFitStyle = ~/FitStyle/FitToContent
+
+                            TypefaceToken = "Third"
+                            BigLineAction = ~/BigLineAction/CutByDots
+
+                            TextDico = ~/LocalisationConstantes/dico_unites
+
+                            TextColor = "UnitInfoPanel/Title/Main"
+                            TextSize = "11"
+                        )
+                    ),
+                ]
+            )
+        ),
+    ]
+)
+
+
+// -------------------------------------------------------------------------------------------------
+// UnitInfoPanelVerticalHeader
+// -------------------------------------------------------------------------------------------------
+
+template UnitInfoPanelHorizontalSubHeader
+[
+    UseForStrategic : bool,
+]
+is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 22.0]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "PanelInfoUnit_gris1"
+
+    Axis = ~/ListAxis/Horizontal
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = 'UnitCategoryType'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToFather = [0.0, 0.5]
+                    AlignementToAnchor = [0.0, 0.5]
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Left
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0
+                )
+
+                TextStyle = "Default"
+                TextPadding = TRTTILength4( Magnifiable = [10.0, 0.0, 4.0, 0.0] )
+
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                TypefaceToken = "Third"
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                TextColor = "UnitInfoPanel/Title/Main"
+                TextSize = "18"
+            )
+        ),
+    ] + (<UseForStrategic> ?
+        [
+            BUCKListElementDescriptor
+            (
+                ComponentDescriptor = PawnPowerSummary
+                (
+                    ElementName = "PawnTabularComponent"
+
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableWidthHeight = [0.0, 22.0]
+                        AlignementToFather = [0.0, 0.5]
+                        AlignementToAnchor = [0.0, 0.5]
+                    )
+                    HasBackground = false
+                    ValueColor = 'LightestGray'
+                    IsVertical = false
+                    TextSize = '15'
+                )
+            )
+        ] :
+        []
+    )
+)
+
+// -------------------------------------------------------------------------------------------------
+// UnitInfoPanelPlatingSubPanel
+// -------------------------------------------------------------------------------------------------
+
+private UnitInfoPanelPlatingSubPanel is BUCKContainerDescriptor
+(
+    ElementName = "TestAlex"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [160.0, 0.0]
+        RelativeWidthHeight = [0.0, 1.0]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ElementName = "TopUnitIcon"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                MagnifiableWidthHeight = [0.0, 40]
+                AlignementToAnchor = [0.0, 0.5]
+                AlignementToFather = [0.0, 0.5]
+            )
+
+            ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+            TextureFrame = TUIFramePropertyRTTI
+            (
+                AlignementToAnchor = [0.5, 0.5]
+                AlignementToFather = [0.5, 0.5]
+            )
+        ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+
+private UnitInfoPanelDivisionSubPanel is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        //MagnifiableWidthHeight = [180,0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestBetweenFatherAndChildren
+    FirstMargin = TRTTILength(Magnifiable = 3.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = UnitInfoPanelTypeAttribute(ElementName = 'PlatingFront' Token = 'UIP_PLATFR' ValueToken = "UIPW_MILLI" HintToken = "HIP_PLAT")
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = UnitInfoPanelTypeAttribute(ElementName = 'PlatingTop' Token = 'UIP_PLATTP' ValueToken = "UIPW_MILLI" HintToken = "HIP_PLAT")
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = UnitInfoPanelTypeAttribute(ElementName = 'PlatingSides' Token = 'UIP_PLATSD' ValueToken = "UIPW_MILLI" HintToken = "HIP_PLAT")
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = UnitInfoPanelTypeAttribute(ElementName = 'PlatingBack' Token = 'UIP_PLATBK' ValueToken = "UIPW_MILLI" HintToken = "HIP_PLAT")
+        ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// UnitInfoPanelAttribute
+// -------------------------------------------------------------------------------------------------
+private template UnitInfoPanelAttribute
+[
+    ElementName : string,
+
+    Token : string,
+    DicoToken : string = ~/LocalisationConstantes/dico_interface_ingame,
+    ValueToken : string = "",
+
+    HintToken : string = ""
+]
+is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [180,0]
+        //RelativeWidthHeight = [1.0, 0.0]
+        PixelWidthHeight = [-2.0, 0.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContentVertically
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.5, 0.0]
+            )
+
+            FitStyle = ~/ContainerFitStyle/FitToContentVertically
+            ChildFitToContent = true
+
+            Components =
+            [
+                BUCKTextDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        AlignementToFather = [1.0, 0.0]
+                        AlignementToAnchor = [1.0, 0.0]
+                    )
+
+                    ParagraphStyle = TParagraphStyleRTTI
+                    (
+                        Alignment = UIText_Right
+                        VerticalAlignment = UIText_VerticalCenter
+                        InterLine = 0
+                    )
+
+                    TextStyle = "Default"
+
+                    TextPadding = TRTTILength4(Magnifiable = [4.0, 3.0, 4.0, 2.0])
+                    VerticalFitStyle = ~/FitStyle/FitToContent
+                    HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                    TypefaceToken = "Main"
+                    BigLineAction = ~/BigLineAction/CutByDots
+
+                    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                    TextToken = <Token>
+
+                    TextColor = "SD2_Blanc184"
+                    TextSize = "12"
+                )
+            ]
+        ),
+
+        BUCKContainerDescriptor
+        (
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.5, 0.0]
+                AlignementToFather = [1.0, 0.0]
+                AlignementToAnchor = [1.0, 0.0]
+            )
+
+            FitStyle = ~/ContainerFitStyle/FitToContentVertically
+
+            Components =
+            [
+                BUCKTextDescriptor
+                (
+                    ElementName = <ElementName> + "Value"
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        AlignementToFather = [0.0, 0.0]
+                        AlignementToAnchor = [0.0, 0.0]
+                    )
+
+                    ParagraphStyle = TParagraphStyleRTTI
+                    (
+                        Alignment = UIText_Left
+                        VerticalAlignment = UIText_VerticalCenter
+                        InterLine = 0
+                    )
+                    TextPadding = TRTTILength4(Magnifiable = [2.0, 3.0, 4.0, 3.0])
+                    TextStyle = "Default"
+
+                    VerticalFitStyle = ~/FitStyle/FitToContent
+                    HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                    TypefaceToken = "Main"
+                    BigLineAction = ~/BigLineAction/CutByDots
+
+                    TextDico = <DicoToken>
+                    TextToken = <ValueToken>
+
+                    TextColor = "Glacier"
+                    TextSize = "12"
+                ),
+            ]
+        )
+    ] +
+
+    (<HintToken> != "" ?
+    [
+        BUCKSpecificHintableArea
+        (
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            //HintTitleToken = <HintToken> + "T"
+            HintBodyToken = <HintToken> + "B"
+            HintExtendedToken = <HintToken> + "E"
+        )
+    ] : [])
+)
+
+// -------------------------------------------------------------------------------------------------
+// UnitInfoPanelTypeAttribute
+// -------------------------------------------------------------------------------------------------
+
+private template UnitInfoPanelTypeAttribute
+[
+    ElementName : string,
+
+    Token : string,
+    ValueToken : string,
+    HintToken : string = ""
+]
+is BUCKListDescriptor
+(
+    ElementName = <ElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        //RelativeWidthHeight = [1.0, 0.0]
+        //MagnifiableWidthHeight = [0.0, 20.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestBetweenFatherAndChildren
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 0.5
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    //RelativeWidthHeight = [1,0]
+                    AlignementToAnchor = [0.0, 0.5]
+                    AlignementToFather = [0.0, 0.5]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Left
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0
+                )
+
+                TextStyle = "Default"
+
+                TextPadding = TRTTILength4( Magnifiable = [4.0, 0.0, 4.0, 0.0] Pixel = [0.0, 2.0, 0.0, 2.0] )
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+
+                TypefaceToken = "Main"
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextToken = <Token>
+
+                TextColor = "SD2_Blanc184"
+                TextSize = "12"
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    //RelativeWidthHeight = [1.0, 0.0]
+                    MagnifiableWidthHeight = [0.0, 16.0]
+                )
+
+                Axis = ~/ListAxis/Horizontal
+
+                Elements =
+                [
+                    BUCKListElementDescriptor
+                    (
+                        //ExtendWeight = 0.5
+                        ComponentDescriptor =  BUCKSimpleGaugeDescriptor
+                        (
+                            ElementName = <ElementName> + "Gauge"
+
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                MagnifiableWidthHeight = [70.0, 10.0]
+                                AlignementToFather     = [0.0, 0.5]
+                                AlignementToAnchor     = [0.0, 0.5]
+                            )
+
+                            GridAlign = true
+
+                            HasBorder = true
+                            BorderThicknessToken = "1"
+                            BorderLineColorToken = "Ingame/GaugeBorder"
+
+                            GaugeValueMinSize = TRTTILength( Pixel = 1.0 )
+                            DurationForGaugeFullChange = 1
+
+                            GaugeComponentName = <ElementName> + 'Value'
+
+                            Components =
+                            [
+                                BUCKContainerDescriptor
+                                (
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [1.0, 1.0]
+                                    )
+
+                                    HasBackground = true
+                                    BackgroundBlockColorToken = "Gray"
+                                ),
+
+                                BUCKSimpleGaugeValueDescriptor
+                                (
+                                    ElementName = <ElementName> + 'Value'
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight    = [0.0, 1.0]
+                                        AlignementToFather     = [0.0, 0.5]
+                                        AlignementToAnchor     = [0.0, 0.5]
+                                    )
+
+                                    ValueContainerName = <ElementName> + 'ValueContainer'
+                                    ValueContainerComponent = BUCKContainerDescriptor
+                                    (
+                                        ElementName = <ElementName> + 'ValueContainer'
+                                        ComponentFrame = TUIFramePropertyRTTI
+                                        (
+                                            RelativeWidthHeight = [0.0, 1.0]
+                                        )
+
+                                        HasBackground = true
+                                        BackgroundBlockColorToken = "Glacier"
+                                    )
+                                ),
+                            ]
+                        )
+                    ),
+
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKTextDescriptor
+                        (
+                            ElementName = <ElementName> + 'Text'
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [0.0, 1.0]
+                                AlignementToAnchor = [0.0, 0.5]
+                                AlignementToFather = [0.0, 0.5]
+                            )
+
+                            ParagraphStyle = TParagraphStyleRTTI
+                            (
+                                Alignment = UIText_Left
+                                VerticalAlignment = UIText_VerticalCenter
+                                InterLine = 0
+                            )
+
+                            TextStyle = "Default"
+
+                            VerticalFitStyle = ~/FitStyle/UserDefined
+                            HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                            TypefaceToken = "Main"
+                            BigLineAction = ~/BigLineAction/ResizeFont
+
+                            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                            TextToken = <ValueToken>
+                            TextPadding = TRTTILength4( Magnifiable = [4.0, 0.0, 4.0, 0.0] Pixel = [0.0, 2.0, 0.0, 2.0] )
+
+                            TextColor = "Glacier"
+                            TextSize = "12"
+                        )
+                    ),
+                ]
+            )
+        ),
+    ]
+
+    ForegroundComponents =
+    (   <HintToken> != "" ?
+        [
+            BUCKSpecificHintableArea
+            (
+                DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                HintTitleToken = <HintToken> + "T"
+                HintBodyToken = <HintToken> + "B"
+                HintExtendedToken = <HintToken> + "E"
+            )
+        ] : []
+    )
+)
+
+// -------------------------------------------------------------------------------------------------
+
+private UnitInfoPanelSpecialtiesSubPanel is BUCKRackDescriptor
+(
+    ElementName = "UnitInfoPanelSpecialtiesSubPanel"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        //MagnifiableWidthHeight = [180,0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    FirstMargin = TRTTILength(Magnifiable = 3.0)
+    LastMargin = TRTTILength(Pixel = 1.0)
+
+    BladeDescriptor = BUCKListDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            AlignementToAnchor = [0.0, 0.0]
+            AlignementToFather = [0.0, 0.0]
+        )
+
+        Axis = ~/ListAxis/Horizontal
+        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+        FirstMargin = TRTTILength(Magnifiable = 20.0)
+        InterItemMargin = TRTTILength(Magnifiable = 2.0)
+
+        Elements =
+        [
+            BUCKListElementDescriptor
+            (
+                ComponentDescriptor = BUCKTextureDescriptor
+                (
+                    ElementName = "IconTexture"
+
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableWidthHeight = [SpecialityIconMagnifiableWitdhHeight, SpecialityIconMagnifiableWitdhHeight]
+                        AlignementToAnchor = [0.0, 0.5]
+                        AlignementToFather = [0.0, 0.5]
+                    )
+
+                    TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+                    ClipTextureToComponent = true
+
+                    Components =
+                    [
+                        BUCKSpecificHintableArea
+                        (
+                            ElementName = "IconHint"
+
+                            DicoToken = ~/LocalisationConstantes/dico_unites
+                        )
+                    ]
+                )
+            ),
+            BUCKListElementDescriptor
+            (
+                ComponentDescriptor = BUCKTextDescriptor
+                (
+                    ElementName = "NameText"
+
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        AlignementToAnchor = [0.0, 0.5]
+                        AlignementToFather = [0.0, 0.5]
+                    )
+
+                    ParagraphStyle = TParagraphStyleRTTI
+                    (
+                        Alignment = UIText_Left
+                        VerticalAlignment = UIText_VerticalCenter
+                        InterLine = 0
+                    )
+
+                    TextStyle = "Default"
+
+                    VerticalFitStyle = ~/FitStyle/FitToContent
+                    HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                    TypefaceToken = "Main"
+                    BigLineAction = ~/BigLineAction/CutByDots
+
+                    TextDico = ~/LocalisationConstantes/dico_unites
+
+                    TextColor = "SD2_Blanc184"
+                    TextSize = "10"
+                )
+            ),
+        ]
+    )
+)
+
+// -------------------------------------------------------------------------------------------------
+
+private UnitInfoPanelAttributesSubPanel is BUCKListDescriptor
+(
+    ElementName = "UnitAttributeContainer"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+
+    )
+
+    Axis = ~/ListAxis/Vertical
+
+    FirstMargin = TRTTILength(Magnifiable = 3.0)
+    LastMargin = TRTTILength(Pixel = 1.0)
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+)
+
+// -------------------------------------------------------------------------------------------------
+
+private UnitInfoSubPanels is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    HasBackground = true
+    BackgroundBlockColorToken = "PanelInfoUnit_gris4"
+
+    Elements =
+    [   BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKContainerDescriptor ( ComponentFrame = TUIFramePropertyRTTI () )
+        ),
+        BUCKListElementDescriptor
+        (
+
+            ComponentDescriptor = ~/UnitInfoPanelSpecialtiesSubPanel
+        ),
+        BUCKListElementDescriptor
+        (
+
+            ComponentDescriptor = ~/UnitInfoPanelAttributesSubPanel
+        ),
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKContainerDescriptor ( ComponentFrame = TUIFramePropertyRTTI () )
+        ),
+    ]
+    BackgroundComponents = [LigneOmbreHorizontale]
+)
+//-------------------------------------------------------------------------------------
+private PanelInfoDivision is BUCKListDescriptor
+(
+    ElementName = 'InfoDivisionContainer'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1,0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+
+    HasBackground = true
+    BackgroundBlockColorToken = "PanelInfoUnit_gris5"
+
+    FirstMargin = TRTTILength( Magnifiable = 5.0 )
+    InterItemMargin = TRTTILength ( Magnifiable = 5.0 )
+    LastMargin = TRTTILength( Magnifiable = 5.0 )
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToAnchor = [0.5, 0]
+                    AlignementToFather = [0.5, 0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Center
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0
+                )
+
+                TextStyle = "Default"
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TypefaceToken = "Main"
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextToken = 'DES_DE_T'
+                TextColor = "SD2_Blanc184"
+                TextSize = "SD2_Moyen"
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKGridDescriptor
+            (
+                ElementName = 'DivisionEmblemTextureGrid'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToAnchor = [0.5, 0.0]
+                    AlignementToFather = [0.5, 0.0]
+                )
+
+                FirstElementMargin = TRTTILength2( Magnifiable = [5.0, 5.0] )
+                InterElementMargin = TRTTILength2( Magnifiable = [2.0, 5.0] )
+                LastElementMargin = TRTTILength2( Magnifiable = [5.0, 5.0] )
+
+                MaxElementsPerDimension = [8, 0]
+            )
+        )
+    ]
+
+    BackgroundComponents = [LigneOmbreHorizontale]
+)
+
+// -------------------------------------------------------------------------------------------------
+// BUCKSpecificUnitInfoPanelMainComponentDescriptor
+// -------------------------------------------------------------------------------------------------
+
+private template BUCKSpecificUnitInfoPanelMainComponentDescriptor
+[
+    MainComponentFrame : TUIFramePropertyRTTI,
+    UseForStrategic : bool,
+    IsShowRoom : bool,
+]
+is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+    )
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/UnitInfoPanelHorizontalHeader
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = UnitInfoPanelHorizontalSubHeader(UseForStrategic = <UseForStrategic>)
+        ),
+
+        BUCKListElementDescriptor
+        (
+            // J'ai pas trouvé mieux que la liste de liste pour gérer le background... (on insère des éléments dans la sous-liste)
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToFather = [0.5, 0.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                )
+
+                Axis = ~/ListAxis/Horizontal
+                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                HasBackground = true
+                BackgroundBlockColorToken = "PanelInfoUnit_gris2"
+
+                Elements =
+                [
+                    BUCKListElementDescriptor
+                    (
+                        ExtendWeight = 1.0
+                        ComponentDescriptor = BUCKListDescriptor
+                        (
+                            ElementName = "WeaponLinesContainer"
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                AlignementToFather = [0.5, 0.0]
+                                AlignementToAnchor = [0.5, 0.0]
+                            )
+
+                            ChildFitToContent = true
+                            Axis = ~/ListAxis/Horizontal
+                            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+                        )
+                    )
+                ]
+                BackgroundComponents = [LigneOmbreHorizontale]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ElementName = 'petitVide_dummy'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1,0]
+                    MagnifiableWidthHeight = [0,5]
+                )
+                HasBackground = true
+                BackgroundBlockColorToken = "PanelInfoUnit_gris2"
+
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ElementName = "PlatingSubpanelContainer"
+                Axis = ~/ListAxis/Horizontal
+                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestBetweenFatherAndChildren
+
+                HasBackground = true
+                BackgroundBlockColorToken = "PanelInfoUnit_gris3"
+
+                Elements =
+                [
+                    BUCKListElementDescriptor
+                    (
+                        ExtendWeight = 1.0
+                        ComponentDescriptor = BUCKContainerDescriptor ( ComponentFrame = TUIFramePropertyRTTI () )
+                    ),
+                    BUCKListElementDescriptor
+                    (
+                        //ExtendWeight = 1.0
+                        ComponentDescriptor = ~/UnitInfoPanelPlatingSubPanel
+                    ),
+
+                    BUCKListElementDescriptor
+                    (
+                        //ExtendWeight = 1.0
+                        ComponentDescriptor = ~/UnitInfoPanelDivisionSubPanel
+                    ),
+                    BUCKListElementDescriptor
+                    (
+                        ExtendWeight = 1.0
+                        ComponentDescriptor = BUCKContainerDescriptor ( ComponentFrame = TUIFramePropertyRTTI () )
+                    ),
+                ]
+
+                BackgroundComponents = [LigneOmbreHorizontale]
+            )
+        ),
+
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/UnitInfoSubPanels
+        ),
+    ] + (<IsShowRoom> ?
+        [
+            BUCKListElementDescriptor
+            (
+                ComponentDescriptor = ~/PanelInfoDivision
+            ),
+        ] :
+        []
+    )
+
+    BackgroundComponents =
+    [
+        OmbrePanel
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// UISpecificUnitInfoPanelViewDescriptor
+// -------------------------------------------------------------------------------------------------
+template UISpecificUnitInfoPanelViewDescriptor
+[
+    MainComponentContainerUniqueName : string = "",
+    MainComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI( AlignementToAnchor = [0.0, 0.5] AlignementToFather = [0.0, 0.5] ),
+    UseForStrategic : bool = False,
+    IsShowRoom : bool = false,
+]
+is TUISpecificUnitInfoPanelViewDescriptor
+(
+    MainComponentDescriptor = BUCKSpecificUnitInfoPanelMainComponentDescriptor( MainComponentFrame = <MainComponentFrame> UseForStrategic = <UseForStrategic> IsShowRoom = <IsShowRoom> )
+    MainComponentContainerUniqueName = <MainComponentContainerUniqueName>
+
+    WeaponViewDescriptor = ~/UISpecificUnitInfoSingleWeaponPanelViewDescriptor
+
+    VehiculeToken = "UIP_VEHIC"
+    WeakTopToken = "UIP_RFWK"
+    StrongTopToken = "UIP_RFST"
+
+    VeteranceColorName = "Orange"
+
+    AttributeDescriptorsPool = MAP
+    [
+        // Attribute Strength
+        ("AttributeStrength",       UnitInfoPanelAttribute(ElementName = "AttributeStrength" Token = "UIPA_STR" ValueToken = "UIP_VAL" HintToken = "HIP_TEAM")),
+        // Attribute Speed
+        ("AttributeSpeed",          UnitInfoPanelAttribute(ElementName = "AttributeSpeed" Token = "UIPA_SPD" ValueToken = "UIP_KMH" HintToken = "HIP_RSPED" )),
+        // Attribute Road Speed
+        ("AttributeRoadSpeed",      UnitInfoPanelAttribute(ElementName = "AttributeRoadSpeed" Token = "UIPA_RSPD" ValueToken = "UIP_KMH" HintToken = "HIP_RSPED")),
+        // Attribute Category
+        ("AttributeCategory",       UnitInfoPanelAttribute(ElementName = "AttributeCategory" Token = "UIPA_CAT" DicoToken = ~/LocalisationConstantes/dico_interface_outgame)),
+        // Attribute Stealth
+        ("AttributeStealth",        UnitInfoPanelAttribute(ElementName = "AttributeStealth" Token = "UIPA_STEAL" ValueToken = "UIP_VAL" HintToken = "HIP_STEAL")),
+        // Attribute Optics
+        ("AttributeOptics",         UnitInfoPanelAttribute(ElementName = "AttributeOptics" Token = "UIP_OPTICS" ValueToken = "UIP_VAL" HintToken = "HIP_OPTIC")),
+        // Attribute Transport Size
+        ("AttributeTransportSize",  UnitInfoPanelAttribute(ElementName = "AttributeTransportSize" Token = "UIP_TPTER" ValueToken = "UIP_VAL" HintToken = "HIP_TPTER")),
+        // Attribute Size
+        ("AttributeSize",           UnitInfoPanelAttribute(ElementName = "AttributeSize" Token = "UIP_TPTBL" ValueToken = "UIP_VAL" HintToken ="HIP_TPTBL" )),
+        // Attribute Agility
+        ("AttributeAgility",        UnitInfoPanelAttribute(ElementName = "AttributeAgility" Token = "UIP_AGIL" ValueToken = "UIP_VAL" HintToken = "HIP_AGIL")),
+        // Attribute Resilience
+        ("AttributeResilience",     UnitInfoPanelAttribute(ElementName = "AttributeResilience" Token = "UIP_RESIL" ValueToken = "UIP_VAL" HintToken = "HIP_RESIL")),
+        // Attribute Production Year
+        ("AttributeProductionYear", UnitInfoPanelAttribute(ElementName = "AttributeProductionYear" Token = "UIPA_PROD" ValueToken = "UIP_VAL" )),
+        // Attribute Supply
+        ("AttributeSupply",         UnitInfoPanelAttribute(ElementName = "AttributeSupply" Token = "UIPA_SUPLY" ValueToken = "UIP_VAL" HintToken = "HIP_SUPP")),
+    ]
+
+    AttributeTypeConfiguration = MAP
+    [
+        ("Default", ["AttributeSpeed",  "AttributeRoadSpeed", "AttributeStealth", "AttributeOptics" ]),
+        ("Vehicule", ["AttributeSpeed",  "AttributeRoadSpeed", "AttributeStealth", "AttributeOptics", ]),
+        ("VehiculeSupplier", ["AttributeSpeed",  "AttributeRoadSpeed", "AttributeStealth", "AttributeOptics",  "AttributeSupply"]),
+        ("VehiculeTransporter", ["AttributeSpeed", "AttributeRoadSpeed", "AttributeStealth", "AttributeOptics", "AttributeTransportSize"]),
+        ("VehiculeTransporterSupplier", ["AttributeSpeed",  "AttributeRoadSpeed", "AttributeStealth", "AttributeOptics", "AttributeTransportSize", "AttributeSupply", ]),
+        ("Infantry", ["AttributeStrength", "AttributeOptics", "AttributeStealth", "AttributeSize", ]),
+        ("Airplane", ["AttributeSpeed", "AttributeOptics", "AttributeAgility", "AttributeResilience", ]),
+    ]
+
+    DivisionEmblemDescriptor = BUCKTextureDescriptor
+    (
+        ElementName = 'DivisionEmblemTexture'
+
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [36.0, 36.0]
+        )
+
+        TextureFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1.0, 1.0]
+        )
+
+        ClipTextureToComponent = true
+
+        Components =
+        [
+            BUCKSpecificHintableArea
+            (
+                ElementName = "DivisionEmblemHint"
+                DicoToken = ~/LocalisationConstantes/dico_unites
+            )
+        ]
+    )
+
+    TagsToShow = ~/HiddenTags
+)

@@ -1,0 +1,22 @@
+export ModelFile_ISU_122_AWP is 'GameData:Assets\3D\Units\AWP\Char\ISU_122_AWP\ISU_122_AWP.Ase2NdfBin'
+
+Modele_ISU_122_AWP is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_ISU_122_AWP
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_ISU_122_AWP_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\AWP\Char\ISU_122_AWP_MID\ISU_122_AWP_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_ISU_122_AWP_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\AWP\Char\LODS\ISU_122_AWP_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

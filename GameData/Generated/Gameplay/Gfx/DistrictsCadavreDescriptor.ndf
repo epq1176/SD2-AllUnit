@@ -1,0 +1,309 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+export Descriptor_UnitCadavre_Quartier_Gros is TEntityDescriptor(
+    DescriptorId         = GUID:{cc4f8769-00f4-499e-9fca-4984f3e6be9c}
+    ClassNameForDebug    = 'CadavreQuartier_Gros'
+    Modules =
+    [
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/Undef
+                )
+                Selection = [ ~/NilDescriptorIfCadavre ]
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+                TagSet = [
+                    "Standard",
+                ]
+            ),
+
+        // Flags
+            TFlagsModuleDescriptor
+            (
+                InitialFlagSet =
+                [
+                    Flag_Detectable,
+                    Flag_Selectionnable,
+                    Flag_Batiment,
+                    Flag_Highlightable,
+                    Flag_Target,
+                    Flag_Blessable,
+                ]
+            ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = False
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurBatiment
+                Radius                     = ((5) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Debug
+            ~/DebugModuleDescriptor,
+
+        // IAStrat
+            TModuleSelector
+            (
+                Default        = TIAStratModuleDescriptor
+                (
+                    DatabaseId = 2
+                    GameplayBehavior = EGameplayBehavior/Nothing
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // Cadavre
+            TCadavreModuleDescriptor
+            (
+                ExplodeAtEnd = False
+                KillAsVehicule = False
+                KillAsInfanterie = False
+                KillAsHelico = False
+                KillAsAirplane = False
+                KillAsBatiment = True
+                FollowVisibilityRules = False
+                CadavreDuration = 10*3600
+                DisappearanceDuration = ($/GFX/Everything/CadavreDurationApresFeu_Batiment - 5)
+                CadavreFireDuration = $/GFX/Everything/CadavrePeriodEnFeu_Batiment
+                FxBinderStartCrashing = ""
+                FxBinderOnCrash = ""
+                FxBinderBurning = ""
+                FadingDuration = 6
+                DamageRatio = 1.
+                DeathExplosionAmmo = nil
+                SecondaryDeathExplosionAmmo = nil
+                InvulnerablePeriod = $/GFX/Everything/CadavreInvulnerablePeriode
+                ModuleDescriptorsToSteal =
+                [
+                   $/GFX/Everything/Descriptor_District_Quartier_Gros/ApparenceModel,
+                ]
+            ),
+            $/GFX/Everything/Descriptor_District_Quartier_Gros/ApparenceModel,
+
+    ]
+)
+export Descriptor_UnitCadavre_Quartier_Moyen is TEntityDescriptor(
+    DescriptorId         = GUID:{cd83f4b5-dabf-457e-b147-61aa0d3a2e4c}
+    ClassNameForDebug    = 'CadavreQuartier_Moyen'
+    Modules =
+    [
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/Undef
+                )
+                Selection = [ ~/NilDescriptorIfCadavre ]
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+                TagSet = [
+                    "Standard",
+                ]
+            ),
+
+        // Flags
+            TFlagsModuleDescriptor
+            (
+                InitialFlagSet =
+                [
+                    Flag_Detectable,
+                    Flag_Selectionnable,
+                    Flag_Batiment,
+                    Flag_Highlightable,
+                    Flag_Target,
+                    Flag_Blessable,
+                ]
+            ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = False
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurBatiment
+                Radius                     = ((5) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Debug
+            ~/DebugModuleDescriptor,
+
+        // IAStrat
+            TModuleSelector
+            (
+                Default        = TIAStratModuleDescriptor
+                (
+                    DatabaseId = 2
+                    GameplayBehavior = EGameplayBehavior/Nothing
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // Cadavre
+            TCadavreModuleDescriptor
+            (
+                ExplodeAtEnd = False
+                KillAsVehicule = False
+                KillAsInfanterie = False
+                KillAsHelico = False
+                KillAsAirplane = False
+                KillAsBatiment = True
+                FollowVisibilityRules = False
+                CadavreDuration = 10*3600
+                DisappearanceDuration = ($/GFX/Everything/CadavreDurationApresFeu_Batiment - 5)
+                CadavreFireDuration = $/GFX/Everything/CadavrePeriodEnFeu_Batiment
+                FxBinderStartCrashing = ""
+                FxBinderOnCrash = ""
+                FxBinderBurning = ""
+                FadingDuration = 6
+                DamageRatio = 1.
+                DeathExplosionAmmo = nil
+                SecondaryDeathExplosionAmmo = nil
+                InvulnerablePeriod = $/GFX/Everything/CadavreInvulnerablePeriode
+                ModuleDescriptorsToSteal =
+                [
+                   $/GFX/Everything/Descriptor_District_Quartier_Moyen/ApparenceModel,
+                ]
+            ),
+            $/GFX/Everything/Descriptor_District_Quartier_Moyen/ApparenceModel,
+
+    ]
+)
+export Descriptor_UnitCadavre_Quartier_Petit is TEntityDescriptor(
+    DescriptorId         = GUID:{e8a2176c-72b6-4511-b76a-2d0de7034b80}
+    ClassNameForDebug    = 'CadavreQuartier_Petit'
+    Modules =
+    [
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/Undef
+                )
+                Selection = [ ~/NilDescriptorIfCadavre ]
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+                TagSet = [
+                    "Standard",
+                ]
+            ),
+
+        // Flags
+            TFlagsModuleDescriptor
+            (
+                InitialFlagSet =
+                [
+                    Flag_Detectable,
+                    Flag_Selectionnable,
+                    Flag_Batiment,
+                    Flag_Highlightable,
+                    Flag_Target,
+                    Flag_Blessable,
+                ]
+            ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = False
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurBatiment
+                Radius                     = ((5) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Debug
+            ~/DebugModuleDescriptor,
+
+        // IAStrat
+            TModuleSelector
+            (
+                Default        = TIAStratModuleDescriptor
+                (
+                    DatabaseId = 2
+                    GameplayBehavior = EGameplayBehavior/Nothing
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // Cadavre
+            TCadavreModuleDescriptor
+            (
+                ExplodeAtEnd = False
+                KillAsVehicule = False
+                KillAsInfanterie = False
+                KillAsHelico = False
+                KillAsAirplane = False
+                KillAsBatiment = True
+                FollowVisibilityRules = False
+                CadavreDuration = 10*3600
+                DisappearanceDuration = ($/GFX/Everything/CadavreDurationApresFeu_Batiment - 5)
+                CadavreFireDuration = $/GFX/Everything/CadavrePeriodEnFeu_Batiment
+                FxBinderStartCrashing = ""
+                FxBinderOnCrash = ""
+                FxBinderBurning = ""
+                FadingDuration = 6
+                DamageRatio = 1.
+                DeathExplosionAmmo = nil
+                SecondaryDeathExplosionAmmo = nil
+                InvulnerablePeriod = $/GFX/Everything/CadavreInvulnerablePeriode
+                ModuleDescriptorsToSteal =
+                [
+                   $/GFX/Everything/Descriptor_District_Quartier_Petit/ApparenceModel,
+                ]
+            ),
+            $/GFX/Everything/Descriptor_District_Quartier_Petit/ApparenceModel,
+
+    ]
+)

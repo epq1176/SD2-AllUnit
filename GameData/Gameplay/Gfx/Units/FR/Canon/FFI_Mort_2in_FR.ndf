@@ -1,0 +1,24 @@
+export ModelFile_FFI_Mort_2in_FR is 'GameData:Assets\3D\Units\UK\Canon\2_Inch_Mortar\2_Inch_Mortar.Ase2NdfBin'
+
+export Modele_FFI_Mort_2in_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_FFI_Mort_2in_FR
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+export Modele_FFI_Mort_2in_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Canon\2_Inch_Mortar_MID\2_Inch_Mortar_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+export Modele_FFI_Mort_2in_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Canon\LODS\2_Inch_Mortar_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+

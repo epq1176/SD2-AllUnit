@@ -1,0 +1,22 @@
+export ModelFile_Panzer_IV_H_Bef_ROU is 'GameData:Assets\3D\Units\ROU\Char\Panzer_IV_H\Panzer_IV_H_Bef_ROU.Ase2NdfBin'
+
+Modele_Panzer_IV_H_Bef_ROU is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Panzer_IV_H_Bef_ROU
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_IV_H_Bef_ROU_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Char\Panzer_IV_H_MID\Panzer_IV_H_Bef_ROU_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_IV_H_Bef_ROU_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Char\LODS\Panzer_IV_H_Bef_ROU_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

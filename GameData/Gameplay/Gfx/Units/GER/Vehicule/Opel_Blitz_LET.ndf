@@ -1,0 +1,22 @@
+export ModelFile_Opel_Blitz_LET is 'GameData:Assets\3D\Units\GER\Vehicule\Opel_Blitz\Opel_Blitz.Ase2NdfBin'
+
+Modele_Opel_Blitz_LET is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Opel_Blitz_LET
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Opel_Blitz_LET_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\Opel_Blitz_MID\Opel_Blitz_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Opel_Blitz_LET_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\LODS\Opel_Blitz_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

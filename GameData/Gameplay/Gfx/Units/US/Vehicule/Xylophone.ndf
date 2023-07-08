@@ -1,0 +1,22 @@
+export ModelFile_Xylophone is 'GameData:Assets\3D\Units\USA\Vehicule\T27_Xylophone\T27_Xylophone.Ase2NdfBin'
+
+Modele_Xylophone is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Xylophone
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Xylophone_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Vehicule\T27_Xylophone_MID\T27_Xylophone_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Xylophone_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Vehicule\LODS\T27_Xylophone_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

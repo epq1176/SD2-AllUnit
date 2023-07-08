@@ -1,0 +1,224 @@
+{
+// L'etiquette
+    // Fond de l'étiquette
+    // Icône d'unité
+    // Tout ce qui se trouve au dessus de l'étiquette
+        // Icône d'évacuation
+        // Nom du joueur
+        // Nom de l'unité
+        // Icône de rechargement
+        // Jauge de moral
+    // Icône d'AP
+    // Icône de spécialité
+    // Icône de couverture
+    // Icône de parachutiste
+    // Tout ce qui se trouve en dessous de l'étiquette
+        // Nombre d'unités
+        // Icône d'experience
+        // Block invisible dessous
+        // Critiques
+            // Critique : Description
+            // Critique : Liste
+    // Icône de riposte
+    // Icône de surrender
+}
+
+private UnitLabelAggregationViewDescriptor is BUCKSensibleAreaDescriptor
+(
+    ElementName = 'UnitLabelAggregation'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [55.0, 56.0]
+    )
+
+    Components =
+    [
+        BUCKLocalLayerContainerDescriptor
+        (
+            ElementName = "LocalLayerContainer"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                MagnifiableWidthHeight = [24.0, 62.0]
+                MagnifiableOffset = [0.0, 0.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            NbLayersToLock = 6
+
+            Components =
+            [
+                UnitLabelParachutistIcon( LocalRenderLayer = 1 ),
+
+                UnitLabelBackground( LocalRenderLayer = 2 ),
+
+                UnitLabelUnitIcon( LocalRenderLayer = 3 ),
+
+                UnitLabelGroupNumber( LocalRenderLayer = 4 ),
+
+                // Tout ce qui se trouve au dessus de l'étiquette
+                BUCKListDescriptor
+                (
+                    ElementName = 'UpperLabel'
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableWidthHeight = [250.0, 0.0]
+                        MagnifiableOffset = [0.0, 43.0]
+                        AlignementToFather = [0.5, 0.0]
+                        AlignementToAnchor = [0.5, 1.0]
+                    )
+
+                    Axis = ~/ListAxis/Vertical
+                    InterItemMargin = TRTTILength( Magnifiable = 1.0 )
+                    AssumeChildrenAreFixedSize = true
+                    Elements =
+                    [
+                        // Icône d'évacuation
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = ~/UnitLabelUnitEvacIconBUCKComponent
+                        ),
+
+                        // Icône de feedback radio
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = ~/UnitLabelUnitRadioFeedbackBUCKComponent
+                        ),
+
+                        // Nom du joueur
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = ~/UnitLabelUnitPlayerNameBUCKComponent
+                        ),
+
+                        // Nom de l'unité
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = ~/UnitLabelUnitNameBUCKComponent
+                        ),
+
+                        // Icône de rechargement
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = ~/UnitLabelUnitReloadIconBUCKComponent
+                        ),
+
+                        // Jauge de Moral
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = ~/UnitLabelUnitMoraleGaugeBUCKComponent
+                        ),
+                    ]
+                ),
+
+                // Icône de spécialité
+                UnitLabelSpecialtyIcon( LocalRenderLayer = 4 MagnifiableOffset = [10,0]),
+
+                SmartOrderText( LocalRenderLayer = 4 Offsetx = 6 ),
+
+                // Icône de transport
+                UnitLabelCarriedUnitIcon( LocalRenderLayer = 4 MagnifiableOffset = [10.0, 0.0]),
+
+                // Icône de couverture
+                UnitLabelCoverIcon( LocalRenderLayer = 4 MagnifiableOffset = [10,-2]),
+
+                // Tout ce qui se trouve à droite du label
+                BUCKListDescriptor
+                (
+                    ElementName = "RightLabel"
+
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableWidthHeight = [0.0, 32.0]
+                        MagnifiableOffset = [-11.0, 0.0]
+                        AlignementToFather = [1.0, 0.5]
+                        AlignementToAnchor = [0.0, 0.5]
+                    )
+
+                    Axis = ~/ListAxis/Horizontal
+
+                    Elements =
+                    [
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKListDescriptor
+                            (
+                                Axis = ~/ListAxis/Vertical
+                                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+                                Elements =
+                                [
+                                    // Icône d'AP
+                                    BUCKListElementDescriptor
+                                    (
+                                        ComponentDescriptor =UnitLabelApIcon( LocalRenderLayer = 4 )
+                                    ),
+                                    // Icône de Blindage
+                                    BUCKListElementDescriptor
+                                    (
+                                        ComponentDescriptor =UnitLabelPlatingIcon( LocalRenderLayer = 4 )
+                                    ),
+                                ]
+                            )
+                        )
+                    ]
+                ),
+
+
+                // Tout ce qui se trouve en dessous de l'étiquette
+                BUCKListDescriptor
+                (
+                    ElementName = 'LowerLabel'
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableWidthHeight = [222.0, 0.0]
+                        MagnifiableOffset = [0.0, -54.0]
+                        AlignementToFather = [0.5, 1.0]
+                        AlignementToAnchor = [0.5, 0.0]
+                    )
+
+                    InterItemMargin = TRTTILength( Magnifiable = 1.0 )
+                    Axis = ~/ListAxis/Vertical
+                    AssumeChildrenAreFixedSize = true
+                    Elements =
+                    [
+                        // Icônes d'experience
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = UnitLabelUnitExperienceIconsBUCKComponent( LocalRenderLayer = 3 )
+                        ),
+
+                        // Block invisible dessous
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = ~/UnitLabelUnitInvisibleLowerBlockBUCKComponent
+                        ),
+
+                        // Message de critiques
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = ~/UnitLabelUnitCriticalMessageBUCKComponent
+                        ),
+                    ]
+                ),
+
+                // Nombre d'unités
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = UnitLabelUnitCountIconBUCKComponent( LocalRenderLayer = 4 )
+                ),
+
+
+                UnitLabelSmartHoldFireIcon( LocalRenderLayer = 4 MagnifiableOffset = [11.0, 8.0]),
+
+                UnitLabelRetalliateIcon( LocalRenderLayer = 4 ),
+            ]
+        ),
+    ]
+)
+
+// L'etiquette
+UISpecificUnitLabelAggregationViewDescriptor is UISpecificInGameUnitLabelViewDescriptor
+(
+    MainComponentDescriptor = ~/UnitLabelAggregationViewDescriptor
+)

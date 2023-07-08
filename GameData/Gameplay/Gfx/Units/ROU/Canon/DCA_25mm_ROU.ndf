@@ -1,0 +1,22 @@
+export ModelFile_DCA_25mm_ROU is 'GameData:Assets\3D\Units\GER\Canon\DCA_25mm\DCA_25mm.Ase2NdfBin'
+
+Modele_DCA_25mm_ROU is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_DCA_25mm_ROU
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_DCA_25mm_ROU_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\DCA_25mm_MID\DCA_25mm_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_DCA_25mm_ROU_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\LODS\DCA_25mm_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

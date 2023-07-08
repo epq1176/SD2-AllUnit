@@ -1,0 +1,26 @@
+export Gfx_Panhard_178_CDM is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Panhard_178_CDM ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Panhard_178_CDM_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_Panhard_178_CDM_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Panhard_178_CDM ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Panhard_178_CDM_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_Panhard_178_CDM_LOW ),
+        ]
+
+        Operators = Operators_Panhard_178_CDM
+                  + DepictionOperator_Chassis_Vehicle
+                  + DepictionOperator_Propulsion_4Wheels_Generic
+                  + [DepictionOperator_TurretRecoil(TurretNum='1')]
+                  // + [DepictionOperator_TurretRecoilLightMachineGun(TurretNum='2') ]
+
+        Actions = Weapons_Panhard_178_CDM
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Wheeled
+    )
+)

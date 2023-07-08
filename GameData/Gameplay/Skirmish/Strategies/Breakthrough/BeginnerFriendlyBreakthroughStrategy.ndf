@@ -1,0 +1,107 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export BeginnerFriendlyBreakthroughStrategy is TIAGeneralStrategy
+(
+    StrategyName = "BeFri_BTAI"
+    FirstGenerator = BeFriend_BT_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    ShouldUseTaggedCorridorsForTouchDown = true
+    DefaultIncomeForDynamicBudget = 100
+    TransitionList =
+    [
+        BeFriend_BT_Transition_DefMod,
+        BeFriend_BT_Transition_AtkMod,
+
+        BeFriend_BTDef_Transition_StartToDeploy,
+        BeFriend_BTDef_Transition_StartToFrontLineDefense,
+        BeFriend_BTDef_Transition_StartToBackLineDefense,
+        BeFriend_BTDef_Transition_DeployToFrontLineDefense,
+        BeFriend_BTDef_Transition_FrontLineDefenseToBackLineDefense,
+        BeFriend_BTDef_Transition_BackLineDefenseToStrikeBack,
+
+        BeFriend_BTAtk_Transition_StartToPhaseC,
+        BeFriend_BTAtk_Transition_StartToPhaseB,
+        BeFriend_BTAtk_Transition_StartToPhaseA,
+        BeFriend_BTAtk_Transition_StartToLowCost,
+        BeFriend_BTAtk_Transition_StartToGeneric,
+        BeFriend_BTAtk_Transition_DeployToPhaseA,
+        BeFriend_BTAtk_Transition_Phase_B,
+        BeFriend_BTAtk_Transition_Phase_C,
+        BeFriend_BTAtk_Transition_DeployToPhaseA_LowCost,
+        BeFriend_BTAtk_Transition_PhaseB_LowCost,
+        BeFriend_BTAtk_Transition_PhaseC_LowCost,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export BeFriend_BT_Condition_GotoDefMod is TSequenceCondition_MapPossession
+(
+    PossessionRatio = 0.6
+)
+
+export BeFriend_BT_Condition_GotoAtkMod is TSequenceCondition_Not
+(
+    Condition = ~/BeFriend_BT_Condition_GotoDefMod
+)
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export BeFriend_BT_Transition_DefMod is TIAGeneralStrategyTransition
+(
+    Origine = BeFriend_BT_Choose_Strategy
+    Condition = BeFriend_BT_Condition_GotoDefMod
+    Destination = BeFriend_BTDef_Choose_Strategy
+)
+
+export BeFriend_BT_Transition_AtkMod is TIAGeneralStrategyTransition
+(
+    Origine = BeFriend_BT_Choose_Strategy
+    Condition = BeFriend_BT_Condition_GotoAtkMod
+    Destination = BeFriend_BTAtk_Choose_Strategy
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export BeFriend_BT_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ~/BeFriend_BT_FakeSupport,
+    ]
+)
+
+//-------------------------------------------------------------------------
+export BeFriend_BT_FakeSupport is TMacroActionDescriptor_Support_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    TagDeContre = "ThisUnitDoesNotExist"
+
+    PoolModelList = [
+        ~/BeFriend_BT_FakePool,
+    ]
+)
+//-------------------------------------------------------------------------
+export BeFriend_BT_FakePool is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{fee87630-55e5-11e9-949f-704d7b2c87d4}
+            Required = true
+            Nb = 1
+            TagsPriority = [
+                "ThisUnitDoesNotExist",
+            ]
+        ),
+    ]
+)

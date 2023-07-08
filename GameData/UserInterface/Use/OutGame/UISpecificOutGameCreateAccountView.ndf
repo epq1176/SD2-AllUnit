@@ -1,0 +1,898 @@
+template CreateAccountLine
+[
+    ElementName : string = "",
+    TitleToken : string,
+
+    ComponentDescriptor = TBUCKContainerDescriptor,
+]
+is BUCKListDescriptor
+(
+    ElementName = <ElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    FirstMargin = TRTTILength(Magnifiable = 50.0)
+    InterItemMargin = TRTTILength(Magnifiable = 50.0)
+    LastMargin = TRTTILength(Magnifiable = 50.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [250.0, 0.0]
+                    AlignementToFather = [0.0, 0.5]
+                    AlignementToAnchor = [0.0, 0.5]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    VerticalAlignment = ~/UIText_VerticalCenter
+                    Alignment = UIText_Right
+                )
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextStyle = "Default"
+                TypefaceToken = "Main"
+
+                TextColor       = "StandardTextInModal"
+                TextSize        = "16"
+
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TextToken = <TitleToken>
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [500.0, 0.0]
+                    AlignementToFather = [0.0, 0.5]
+                    AlignementToAnchor = [0.0, 0.5]
+                )
+
+                FitStyle = ~/ContainerFitStyle/FitToContentVertically
+
+                Components =
+                [
+                    <ComponentDescriptor>
+                ]
+            )
+        )
+    ]
+)
+
+BUCKSpecificOutGameCreateAccountMainComponentDescriptor is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+
+    InterItemMargin = TRTTILength(Magnifiable = 30.0)
+    LastMargin = TRTTILength(Magnifiable = 30.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    VerticalAlignment = ~/UIText_VerticalCenter
+                    Alignment = UIText_Center
+                )
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextStyle = "Default"
+                TypefaceToken = "Main"
+
+                TextColor       = "StandardTextInModal"
+                TextSize        = "16"
+
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TextToken = "CA_Intro"
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                Axis = ~/ListAxis/Vertical
+
+                InterItemMargin = TRTTILength(Magnifiable = 10.0)
+
+                Elements =
+                [
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = CreateAccountLine
+                        (
+                            ElementName = "LoginElement"
+                            TitleToken = "login"
+                            ComponentDescriptor = BUCKEditableTextDescriptor
+                            (
+                                ElementName = "LoginEditableText"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 0.0]
+                                    MagnifiableWidthHeight = [0.0, 30.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                ClippingContainerFrameProperty = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                    MagnifiableWidthHeight = [-6.0, -6.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                HasBackground = true
+                                BackgroundBlockColorToken = "Gray80"
+
+                                Flags = ~/EditableTextFlag/H_LEFT | ~/EditableTextFlag/V_TOP | ~/EditableTextFlag/ONE_LINE
+
+                                TextSizeToken = "14"
+                                TypefaceToken = "Main"
+                                TextColorToken = "Glacier"
+                                SelectionColorToken = "DeckOverview/CaseGrisee/EditableText/Selected"
+
+                                MaxChars = 50
+
+                                SelectTextOnFocus = true
+                            )
+                        )
+                    ),
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = CreateAccountLine
+                        (
+                            TitleToken = "email"
+                            ComponentDescriptor = BUCKEditableTextDescriptor
+                            (
+                                ElementName = "EmailEditableText"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 0.0]
+                                    MagnifiableWidthHeight = [0.0, 30.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                ClippingContainerFrameProperty = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                    MagnifiableWidthHeight = [-6.0, -6.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                HasBackground = true
+                                BackgroundBlockColorToken = "Gray80"
+
+                                Flags = ~/EditableTextFlag/H_LEFT | ~/EditableTextFlag/V_TOP | ~/EditableTextFlag/ONE_LINE
+
+                                TextSizeToken = "14"
+                                TypefaceToken = "Main"
+                                TextColorToken = "Glacier"
+                                SelectionColorToken = "DeckOverview/CaseGrisee/EditableText/Selected"
+
+                                MaxChars = 50
+
+                                SelectTextOnFocus = true
+                            )
+                        )
+                    ),
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = CreateAccountLine
+                        (
+                            TitleToken = "confemail"
+                            ComponentDescriptor = BUCKEditableTextDescriptor
+                            (
+                                ElementName = "ConfirmationEmailEditableText"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 0.0]
+                                    MagnifiableWidthHeight = [0.0, 30.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                ClippingContainerFrameProperty = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                    MagnifiableWidthHeight = [-6.0, -6.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                HasBackground = true
+                                BackgroundBlockColorToken = "Gray80"
+
+                                Flags = ~/EditableTextFlag/H_LEFT | ~/EditableTextFlag/V_TOP | ~/EditableTextFlag/ONE_LINE
+
+                                TextSizeToken = "14"
+                                TypefaceToken = "Main"
+                                TextColorToken = "Glacier"
+                                SelectionColorToken = "DeckOverview/CaseGrisee/EditableText/Selected"
+
+                                MaxChars = 50
+
+                                SelectTextOnFocus = true
+                            )
+                        )
+                    ),
+
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = CreateAccountLine
+                        (
+                            TitleToken = "Birthdate"
+                            ComponentDescriptor = BUCKListDescriptor
+                            (
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [0.0, 30.0]
+                                )
+
+                                Axis = ~/ListAxis/Horizontal
+
+                                InterItemMargin = TRTTILength(Magnifiable = 5.0)
+
+                                Elements =
+                                [
+                                    BUCKListElementDescriptor
+                                    (
+                                        ComponentDescriptor = BUCKTextDescriptor
+                                        (
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                MagnifiableWidthHeight = [0.0, 0.0]
+                                                AlignementToFather = [0.0, 0.5]
+                                                AlignementToAnchor = [0.0, 0.5]
+                                            )
+
+                                            ParagraphStyle = TParagraphStyleRTTI
+                                            (
+                                                VerticalAlignment = ~/UIText_VerticalCenter
+                                                Alignment = UIText_Right
+                                            )
+
+                                            VerticalFitStyle = ~/FitStyle/FitToContent
+                                            HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                                            TextStyle = "Default"
+                                            TypefaceToken = "Main"
+
+                                            TextColor       = "StandardTextInModal"
+                                            TextSize        = "16"
+
+                                            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                                            TextToken = "BirthDay"
+                                        )
+                                    ),
+
+                                    BUCKListElementDescriptor
+                                    (
+                                        ExtendWeight = 1.0
+                                        ComponentDescriptor = BUCKSpecificDropdownDescriptor
+                                        (
+                                            ElementName = "Day"
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                RelativeWidthHeight = [1.0, 0.0]
+                                                MagnifiableWidthHeight = [0.0, 30.0]
+                                                AlignementToFather = [0.5, 0.5]
+                                                AlignementToAnchor = [0.5, 0.5]
+                                            )
+
+                                            IsForModale = true
+                                        )
+                                    ),
+
+                                    BUCKListElementDescriptor
+                                    (
+                                        ComponentDescriptor = BUCKTextDescriptor
+                                        (
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                MagnifiableWidthHeight = [0.0, 0.0]
+                                                AlignementToFather = [0.0, 0.5]
+                                                AlignementToAnchor = [0.0, 0.5]
+                                            )
+
+                                            ParagraphStyle = TParagraphStyleRTTI
+                                            (
+                                                VerticalAlignment = ~/UIText_VerticalCenter
+                                                Alignment = UIText_Right
+                                            )
+
+                                            VerticalFitStyle = ~/FitStyle/FitToContent
+                                            HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                                            TextStyle = "Default"
+                                            TypefaceToken = "Main"
+
+                                            TextColor       = "StandardTextInModal"
+                                            TextSize        = "16"
+
+                                            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                                            TextToken = "BirthMonth"
+                                        )
+                                    ),
+
+                                    BUCKListElementDescriptor
+                                    (
+                                        ExtendWeight = 2.0
+                                        ComponentDescriptor = BUCKSpecificDropdownDescriptor
+                                        (
+                                            ElementName = "Month"
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                RelativeWidthHeight = [1.0, 0.0]
+                                                MagnifiableWidthHeight = [0.0, 30.0]
+                                                AlignementToFather = [0.5, 0.5]
+                                                AlignementToAnchor = [0.5, 0.5]
+                                            )
+
+                                            IsForModale = true
+                                        )
+                                    ),
+
+                                    BUCKListElementDescriptor
+                                    (
+                                        ComponentDescriptor = BUCKTextDescriptor
+                                        (
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                MagnifiableWidthHeight = [0.0, 0.0]
+                                                AlignementToFather = [0.0, 0.5]
+                                                AlignementToAnchor = [0.0, 0.5]
+                                            )
+
+                                            ParagraphStyle = TParagraphStyleRTTI
+                                            (
+                                                VerticalAlignment = ~/UIText_VerticalCenter
+                                                Alignment = UIText_Right
+                                            )
+
+                                            VerticalFitStyle = ~/FitStyle/FitToContent
+                                            HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                                            TextStyle = "Default"
+                                            TypefaceToken = "Main"
+
+                                            TextColor       = "StandardTextInModal"
+                                            TextSize        = "16"
+
+                                            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                                            TextToken = "BirthYear"
+                                        )
+                                    ),
+
+                                    BUCKListElementDescriptor
+                                    (
+                                        ExtendWeight = 1.0
+                                        ComponentDescriptor = BUCKSpecificDropdownDescriptor
+                                        (
+                                            ElementName = "Year"
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                RelativeWidthHeight = [1.0, 0.0]
+                                                MagnifiableWidthHeight = [0.0, 30.0]
+                                                AlignementToFather = [0.5, 0.5]
+                                                AlignementToAnchor = [0.5, 0.5]
+                                            )
+
+                                            IsForModale = true
+                                        )
+                                    ),
+                                ]
+                            )
+                        )
+                    ),
+
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = CreateAccountLine
+                        (
+                            ElementName = "PasswordElement"
+                            TitleToken = "password"
+                            ComponentDescriptor = BUCKEditableTextDescriptor
+                            (
+                                ElementName = "PasswordEditableText"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 0.0]
+                                    MagnifiableWidthHeight = [0.0, 30.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                ClippingContainerFrameProperty = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                    MagnifiableWidthHeight = [-6.0, -6.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                HasBackground = true
+                                BackgroundBlockColorToken = "Gray80"
+
+                                Flags = ~/EditableTextFlag/H_LEFT | ~/EditableTextFlag/V_TOP | ~/EditableTextFlag/ONE_LINE | ~/EditableTextFlag/PASSWORD
+
+                                TextSizeToken = "14"
+                                TypefaceToken = "Main"
+                                TextColorToken = "Glacier"
+                                SelectionColorToken = "DeckOverview/CaseGrisee/EditableText/Selected"
+
+                                MaxChars = 50
+
+                                SelectTextOnFocus = true
+                            )
+                        )
+                    ),
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = CreateAccountLine
+                        (
+                            ElementName = "ConfPassElement"
+                            TitleToken = "confpass"
+                            ComponentDescriptor = BUCKEditableTextDescriptor
+                            (
+                                ElementName = "ConfirmationPasswordEditableText"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 0.0]
+                                    MagnifiableWidthHeight = [0.0, 30.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                ClippingContainerFrameProperty = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                    MagnifiableWidthHeight = [-6.0, -6.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                HasBackground = true
+                                BackgroundBlockColorToken = "Gray80"
+
+                                Flags = ~/EditableTextFlag/H_LEFT | ~/EditableTextFlag/V_TOP | ~/EditableTextFlag/ONE_LINE |  ~/EditableTextFlag/PASSWORD
+
+                                TextSizeToken = "14"
+                                TypefaceToken = "Main"
+                                TextColorToken = "Glacier"
+                                SelectionColorToken = "DeckOverview/CaseGrisee/EditableText/Selected"
+
+                                MaxChars = 50
+
+                                SelectTextOnFocus = true
+                            )
+                        )
+                    ),
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = CreateAccountLine
+                        (
+                            ElementName = "PseudoElement"
+                            TitleToken = "pseudo"
+                            ComponentDescriptor = BUCKEditableTextDescriptor
+                            (
+                                ElementName = "PseudoEditableText"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 0.0]
+                                    MagnifiableWidthHeight = [0.0, 30.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                ClippingContainerFrameProperty = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                    MagnifiableWidthHeight = [-6.0, -6.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                HasBackground = true
+                                BackgroundBlockColorToken = "Gray80"
+
+                                Flags = ~/EditableTextFlag/H_LEFT | ~/EditableTextFlag/V_TOP | ~/EditableTextFlag/ONE_LINE
+
+                                TextSizeToken = "14"
+                                TypefaceToken = "Main"
+                                TextColorToken = "Glacier"
+                                SelectionColorToken = "DeckOverview/CaseGrisee/EditableText/Selected"
+
+                                MaxChars = 50
+
+                                SelectTextOnFocus = true
+                            )
+                        )
+                    ),
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = CreateAccountLine
+                        (
+                            ElementName = "CDKeyElement"
+                            TitleToken = "cdkey"
+                            ComponentDescriptor = BUCKEditableTextDescriptor
+                            (
+                                ElementName = "CDKeyEditableText"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 0.0]
+                                    MagnifiableWidthHeight = [0.0, 30.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                ClippingContainerFrameProperty = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                    MagnifiableWidthHeight = [-6.0, -6.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                HasBackground = true
+                                BackgroundBlockColorToken = "Gray80"
+
+                                Flags = ~/EditableTextFlag/H_LEFT | ~/EditableTextFlag/V_TOP | ~/EditableTextFlag/ONE_LINE
+
+                                TextSizeToken = "14"
+                                TypefaceToken = "Main"
+                                TextColorToken = "Glacier"
+                                SelectionColorToken = "DeckOverview/CaseGrisee/EditableText/Selected"
+
+                                MaxChars = 50
+
+                                SelectTextOnFocus = true
+                            )
+                        )
+                    ),
+                    BUCKListElementDescriptor
+                    (
+                        ExtendWeight = 1.0
+                        ComponentDescriptor = BUCKContainerDescriptor
+                        (
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [1.0, 1.0]
+                            )
+                        )
+                    ),
+                ]
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.8, 0.0]
+                    AlignementToFather = [0.5, 0.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                )
+
+                FitStyle = ~/ContainerFitStyle/FitToContentVertically
+
+                Components =
+                [
+                    BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 0.0]
+                        )
+
+                        Axis = ~/ListAxis/Horizontal
+                        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                        InterItemMargin = TRTTILength(Magnifiable = 10.0)
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = BUCKSpecificCheckBoxDescriptor
+                                (
+                                    ElementName = "ToSCheckbox"
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        MagnifiableWidthHeight = DefaultCheckBoxDims
+                                        AlignementToFather = [0.0, 0.5]
+                                        AlignementToAnchor = [0.0, 0.5]
+                                    )
+                                )
+                            ),
+                            BUCKListElementDescriptor
+                            (
+                                ExtendWeight = 1.0
+                                ComponentDescriptor = BUCKTextDescriptor
+                                (
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [1.0, 0.0]
+                                        AlignementToFather = [0.0, 0.5]
+                                        AlignementToAnchor = [0.0, 0.5]
+                                    )
+
+                                    ParagraphStyle = TParagraphStyleRTTI
+                                    (
+                                        VerticalAlignment = ~/UIText_VerticalCenter
+                                        Alignment = UIText_Left
+                                    )
+
+                                    VerticalFitStyle = ~/FitStyle/FitToContent
+
+                                    BigLineAction = ~/BigLineAction/MultiLine
+
+                                    TextStyle = "Default"
+                                    TypefaceToken = "Main"
+
+                                    TextColor       = "StandardTextInModal"
+                                    TextSize        = "16"
+
+                                    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                                    TextToken = "TosApprov"
+                                )
+                            )
+                        ]
+                    )
+                ]
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKButtonDescriptor
+            (
+                ElementName = "TosUseLink"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 0.0]
+                    RelativeOffset = [0.1, 0.0]
+                    MagnifiableOffset = [34.0, 0.0]
+
+                )
+
+                FitStyle = ~/ContainerFitStyle/FitToContent
+
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToFather = [0.0, 0.5]
+                            AlignementToAnchor = [0.0, 0.5]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            Alignment = UIText_Left
+                        )
+
+                        HasUnderline = true
+                        UnderlineColor = "ConfirmButton/Border"
+                        UnderlineThickness = "1"
+
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                        TextStyle = "Default"
+                        TypefaceToken = "Main"
+
+                        TextColor       = "Outgame/Link"
+                        TextSize        = "16"
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextToken = "TosUse"
+                    )
+                ]
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKButtonDescriptor
+            (
+                ElementName = "PrivacyPolicyLink"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 0.0]
+                    RelativeOffset = [0.1, 0.0]
+                    MagnifiableOffset = [34.0, 0.0]
+                )
+
+                FitStyle = ~/ContainerFitStyle/FitToContent
+
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToFather = [0.0, 0.5]
+                            AlignementToAnchor = [0.0, 0.5]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            Alignment = UIText_Left
+                        )
+
+                        HasUnderline = true
+                        UnderlineColor = "ConfirmButton/Border"
+                        UnderlineThickness = "1"
+
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                        TextStyle = "Default"
+                        TypefaceToken = "Main"
+
+                        TextColor       = "Outgame/Link"
+                        TextSize        = "16"
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextToken = "TosPrivPol"
+                    )
+                ]
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.8, 0.0]
+                    AlignementToFather = [0.5, 0.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                )
+
+                FitStyle = ~/ContainerFitStyle/FitToContentVertically
+
+                Components =
+                [
+                    BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 0.0]
+                        )
+
+                        Axis = ~/ListAxis/Horizontal
+                        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                        InterItemMargin = TRTTILength(Magnifiable = 10.0)
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = BUCKSpecificCheckBoxDescriptor
+                                (
+                                    ElementName = "NewsletterCheckbox"
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        MagnifiableWidthHeight = DefaultCheckBoxDims
+                                        AlignementToFather = [0.0, 0.5]
+                                        AlignementToAnchor = [0.0, 0.5]
+                                    )
+                                )
+                            ),
+                            BUCKListElementDescriptor
+                            (
+                                ExtendWeight = 1.0
+                                ComponentDescriptor = BUCKTextDescriptor
+                                (
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [1.0, 0.0]
+                                        AlignementToFather = [0.0, 0.5]
+                                        AlignementToAnchor = [0.0, 0.5]
+                                    )
+
+                                    ParagraphStyle = TParagraphStyleRTTI
+                                    (
+                                        VerticalAlignment = ~/UIText_VerticalCenter
+                                        Alignment = UIText_Left
+                                    )
+
+                                    VerticalFitStyle = ~/FitStyle/FitToContent
+
+                                    BigLineAction = ~/BigLineAction/MultiLine
+
+                                    TextStyle = "Default"
+                                    TypefaceToken = "Main"
+
+                                    TextColor       = "StandardTextInModal"
+                                    TextSize        = "16"
+
+                                    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                                    TextToken = "CreAcc_Nw"
+                                )
+                            )
+                        ]
+                    )
+                ]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "ErrorText"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    VerticalAlignment = ~/UIText_VerticalCenter
+                    Alignment = UIText_Center
+                )
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextStyle       = "Default"
+                TypefaceToken   = "Main"
+
+                TextColor       = "ErrorTextInModal"
+                TextSize        = "16"
+            )
+        )
+    ]
+)
+
+UISpecificOutGameCreateAccountViewDescriptor is TUISpecificOutGameCreateAccountViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificOutGameCreateAccountMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

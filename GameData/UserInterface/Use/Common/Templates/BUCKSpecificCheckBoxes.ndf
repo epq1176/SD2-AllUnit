@@ -1,0 +1,110 @@
+
+// -------------------------------------------------------------------------------------------------
+// Specific Checkbox
+// -------------------------------------------------------------------------------------------------
+
+DefaultCheckBoxDims is [ 24.0, 24.0 ]
+
+template BUCKSpecificCheckBoxDescriptor
+[
+    UniqueName : string = '',
+    ElementName : string = '',
+
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI(
+        MagnifiableWidthHeight = DefaultCheckBoxDims
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [0.0, 0.0]
+    ),
+
+    IsFocusable : bool = false,
+    FocusMapping : TEugBMutablePBaseClass = nil,
+    ComponentStateLocked : bool = true,
+    ClickSound : TSoundDescriptor = nil,
+]
+is BUCKCheckBoxDescriptor
+(
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+
+    ComponentFrame = <ComponentFrame>
+
+    IsFocusable = <IsFocusable>
+    FocusMapping = <FocusMapping>
+
+    ClickSound = <ClickSound>
+
+    HidePointerEvents = true
+    ComponentStateLocked = <ComponentStateLocked>
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    HasBackground = true
+    BackgroundBlockColorToken = "Checkbox/Background"
+
+    HasBorder = true
+    BorderLineColorToken = "Checkbox/Frame"
+    BorderThicknessToken = "1"
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            TextureToken = "StyleDeskTexture_CheckBox"
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// Sorting Checkbox
+// -------------------------------------------------------------------------------------------------
+
+template BUCKSpecificSortingCheckBoxDescriptor
+[
+    UniqueName : string = '',
+    ElementName : string = '',
+
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI(
+        MagnifiableWidthHeight = DefaultCheckBoxDims
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [0.0, 0.0]
+    ),
+
+    HasBackground : bool = true,
+    HasBorder : bool = true,
+]
+is BUCKCheckBoxDescriptor
+(
+    UniqueName = <UniqueName>
+    ElementName = <ElementName>
+
+    ComponentFrame = <ComponentFrame>
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    HasBackground = <HasBackground>
+    BackgroundBlockColorToken = "SortingCheckbox/Background"
+
+    HasBorder = <HasBorder>
+    BorderLineColorToken = "SortingCheckbox/Frame"
+    BorderThicknessToken = "1"
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            TextureToken   = "StyleDeskTexture_SortingCheckBox"
+        )
+    ]
+)
+

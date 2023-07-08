@@ -1,0 +1,22 @@
+export ModelFile_DCA_Bofors_ROU is 'GameData:Assets\3D\Units\USA\Canon\Bofors_40mm\Bofors_40mm.Ase2NdfBin'
+
+Modele_DCA_Bofors_ROU is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_DCA_Bofors_ROU
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_DCA_Bofors_ROU_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Canon\Bofors_40mm_MID\Bofors_40mm_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_DCA_Bofors_ROU_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Canon\LODS\Bofors_40mm_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

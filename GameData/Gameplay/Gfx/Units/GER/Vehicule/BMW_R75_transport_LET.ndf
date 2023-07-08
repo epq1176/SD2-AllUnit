@@ -1,0 +1,22 @@
+export ModelFile_BMW_R75_transport_LET is 'GameData:Assets\3D\Units\GER\Vehicule\Bef_BMW_R75\Bef_BMW_R75.Ase2NdfBin'
+
+Modele_BMW_R75_transport_LET is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_BMW_R75_transport_LET
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_BMW_R75_transport_LET_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\Bef_BMW_R75_MID\Bef_BMW_R75_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_BMW_R75_transport_LET_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\LODS\Bef_BMW_R75_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

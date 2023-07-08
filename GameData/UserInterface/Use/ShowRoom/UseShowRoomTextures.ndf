@@ -1,0 +1,27 @@
+// !!!!!! ATTENTION
+// Toutes les textures listées ici doivent forcement se trouver dans GameData:/Assets/2D/Interface/ShowRoom
+// !!!!!! ATTENTION
+
+//Ex : ShowRoomTexture_Blablabla is TUIResourceTexture_Common(FileName = "GameData:/Assets/2D/Interface/ShowRoom/Blablabla.png")
+
+
+ShowRoomTexture_HideHUDButton           is TUIResourceTexture_Common( FileName = "GameData:/Assets/2D/Interface/ShowRoom/Hide_HUD.png" )
+ShowRoomTexture_HideHUDButton_Selected  is TUIResourceTexture_Common( FileName = "GameData:/Assets/2D/Interface/ShowRoom/Hide_HUD_s.png" )
+ShowRoomTexture_EditDeckName            is TUIResourceTexture_Common( FileName = "GameData:/Assets/2D/Interface/ShowRoom/Edit_Deck_Name.png" )
+ShowRoomTexture_EditDeckName_Selected   is TUIResourceTexture_Common( FileName = "GameData:/Assets/2D/Interface/ShowRoom/Edit_Deck_Name_s.png" )
+
+ShowRoomTexture_AdditionalTextureBank is TBUCKToolAdditionalTextureBank
+(
+    Textures = MAP [
+        ("ShowRoomTexture_HideHUDButton",               MAP [
+                                                            (~/ComponentState/Normal, ~/ShowRoomTexture_HideHUDButton),
+                                                            (~/ComponentState/Toggled, ~/ShowRoomTexture_HideHUDButton_Selected),
+                                                            (~/ComponentState/ToggleHighlighted, ~/ShowRoomTexture_HideHUDButton_Selected),
+                                                        ]),
+        ("ShowRoomTexture_EditDeckName",                MAP [
+                                                            (~/ComponentState/Normal, ~/ShowRoomTexture_EditDeckName),
+                                                            (~/ComponentState/Toggled, ~/ShowRoomTexture_EditDeckName_Selected),
+                                                            (~/ComponentState/ToggleHighlighted, ~/ShowRoomTexture_EditDeckName_Selected),
+                                                        ]),
+    ]
+)

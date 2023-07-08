@@ -1,0 +1,122 @@
+template TemplateMeshDescriptor_Pak_Puppchen [ ModelFile ] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+
+ModelFile_Boites_Puppchen is 'GameData:Assets\3D\Units\GER\Canon\Puppchen\Boites_Puppchen.Ase2NdfBin'
+
+Gfx_Pak_Puppchen_1 is TDepictionTemplate //servant gauche
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Pak_Puppchen( ModelFile = ModelFile_Fallschirm_GR_Secondary)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Pak_Puppchen( ModelFile = ModelFile_Fallschirm_GR_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Pak_Puppchen( ModelFile = ModelFile_Fallschirm_GR_Secondary)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Pak_Puppchen( ModelFile = ModelFile_Fallschirm_GR_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Gauche
+)
+
+Gfx_Pak_Puppchen_2 is TDepictionTemplate //servant droite
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Pak_Puppchen( ModelFile = ModelFile_Fallschirm_GR)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Pak_Puppchen( ModelFile = ModelFile_Fallschirm_GR_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Pak_Puppchen( ModelFile = ModelFile_Fallschirm_GR)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Pak_Puppchen( ModelFile = ModelFile_Fallschirm_GR_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Droite
+)
+
+//Arme
+// private AnimationPath_Pak_Puppchen is 'GameData:Assets\3D\Units\GER\Canon\Puppchen\'
+// Pak_Puppchen_Anim_Tree is DepictionAnimationTreeNode
+// (
+//     IAStates = AnimationStateAll
+//     IAOldStates = AnimationStateAll
+//     DefaultAnimationStates = AnimationStateEngineStopping
+//     Animations =
+//     (
+//         [TemplateAnimation(Animation= 'Puppchen_Idle' + '.Ase2NdfBin' Loop=false EventAnimation=false AnimationPath = AnimationPath_Pak_Puppchen Mask = AnimationMask_All())]
+//     )
+
+//     Childs =
+//     [
+//         TAnimNode(IAStates = AnimationStateInstantFire                                                                  Anim = 'Puppchen_Fire'       Loop = false EventAnimation = true AnimationPath = AnimationPath_Pak_Puppchen Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStopping | AnimationStateEngineStopTurning                             Anim = 'Puppchen_Deploy'     Loop = false AnimationPath = AnimationPath_Pak_Puppchen Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStarting | AnimationStateEngineStartTurning                            Anim = 'Puppchen_Fold'       Loop = false AnimationPath = AnimationPath_Pak_Puppchen Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateLeft                                           Anim = 'Puppchen_Turn_Left'  Loop = true  AnimationPath = AnimationPath_Pak_Puppchen Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateRight                                          Anim = 'Puppchen_Turn_Right' Loop = true  AnimationPath = AnimationPath_Pak_Puppchen Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateMoving | AnimationStateEngineRunning                                         Anim = 'Puppchen_Move'       Loop = true  AnimationPath = AnimationPath_Pak_Puppchen Mask = AnimationMask_All()
+//             Childs = [
+//                 TAnimNode(IAStates = AnimationStateBack                                                                 Anim = 'Puppchen_Move_Back'  Loop = true  AnimationPath = AnimationPath_Pak_Puppchen Mask = AnimationMask_All()),
+//         ]),
+//     ]
+// )
+
+// DepictionOperator_SkeletalAnimation_Pak_Puppchen is [Template_DepictionOperator_SkeletalAnimation_With_Tree_TEST(AnimationTree = Pak_Puppchen_Anim_Tree)]
+
+Gfx_Pak_Puppchen_Weapon is TDepictionTemplate //arme
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = CommonDepictionSelector
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_Pak_Puppchen ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_Pak_Puppchen_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_Pak_Puppchen_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor =  Modele_Pak_Puppchen ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor =  Modele_Pak_Puppchen_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor =  Modele_Pak_Puppchen_LOW ),
+        ]
+
+        SubDepictions = []
+        Operators = //DepictionOperator_SkeletalAnimation_Canon_ZIS2_57mmAT_SOV +
+            DepictionOperatorNode_ResetUnit +
+            DepictionOperatorNode_Propulsion_2Wheels_Canon +
+            DepictionOperator_Carriable_Canon +
+            DepictionOperator_TurretAim_Canon +
+            DepictionOperator_TurretRecoil_Canon
+        Actions = Weapons_Pak_Puppchen
+    )
+
+SubDepiction_Servant_1_Pak_Puppchen is TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_Pak_Puppchen_1 )
+SubDepiction_Servant_2_Pak_Puppchen is TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_Pak_Puppchen_2 )
+SubDepiction_Canon_AT_Pak_Puppchen is TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_Pak_Puppchen_Weapon )
+
+Gfx_Pak_Puppchen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate //les boites
+    (
+        OverrideMeshBoundingBoxMin = [-500,-500,0]
+        OverrideMeshBoundingBoxMax = [ 500, 500,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_Pak_Puppchen( ModelFile = ModelFile_Boites_Puppchen) ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_Pak_Puppchen( ModelFile = ModelFile_Boites_Puppchen) ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_Pak_Puppchen( ModelFile = ModelFile_Boites_Puppchen) ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_Pak_Puppchen( ModelFile = ModelFile_Boites_Puppchen) ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_Pak_Puppchen( ModelFile = ModelFile_Boites_Puppchen) ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_Pak_Puppchen( ModelFile = ModelFile_Boites_Puppchen) ),
+        ]
+        NodeNamesForSelection = [ 'Canon_AT', 'servant_G' , 'servant_D']
+        SubDepictions = [SubDepiction_Servant_1_Pak_Puppchen,
+                        SubDepiction_Servant_2_Pak_Puppchen,
+                        SubDepiction_Canon_AT_Pak_Puppchen]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+    )
+)

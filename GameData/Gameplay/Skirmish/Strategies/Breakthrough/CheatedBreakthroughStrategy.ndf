@@ -1,0 +1,105 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export CheatedBreakthroughStrategy is TIAGeneralStrategy
+(
+    StrategyName = "GenBTAI"
+    FirstGenerator = Cheated_BT_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    ShouldUseTaggedCorridorsForTouchDown = true
+    DefaultIncomeForDynamicBudget = 100
+    TransitionList =
+    [
+        Cheated_BT_Transition_DefMod,
+        Cheated_BT_Transition_AtkMod,
+
+        Cheated_BTDef_Transition_StartToDeploy,
+        Cheated_BTDef_Transition_StartToFrontLineDefense,
+        Cheated_BTDef_Transition_StartToBackLineDefense,
+        Cheated_BTDef_Transition_DeployToFrontLineDefense,
+        Cheated_BTDef_Transition_FrontLineDefenseToBackLineDefense,
+        Cheated_BTDef_Transition_BackLineDefenseToStrikeBack,
+
+        Cheated_BTAtk_Transition_StartToPhaseC,
+        Cheated_BTAtk_Transition_StartToPhaseB,
+        Cheated_BTAtk_Transition_StartToPhaseA,
+        Cheated_BTAtk_Transition_StartToGeneric,
+        Cheated_BTAtk_Transition_DeployToPhaseA,
+        Cheated_BTAtk_Transition_Phase_A_2,
+        Cheated_BTAtk_Transition_Phase_B_1,
+        Cheated_BTAtk_Transition_Phase_B_2,
+        Cheated_BTAtk_Transition_Phase_C,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export Cheated_BT_Condition_GotoDefMod is TSequenceCondition_MapPossession
+(
+    PossessionRatio = 0.6
+)
+
+export Cheated_BT_Condition_GotoAtkMod is TSequenceCondition_Not
+(
+    Condition = ~/Cheated_BT_Condition_GotoDefMod
+)
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export Cheated_BT_Transition_DefMod is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_BT_Choose_Strategy
+    Condition = Cheated_BT_Condition_GotoDefMod
+    Destination = Cheated_BTDef_Choose_Strategy
+)
+
+export Cheated_BT_Transition_AtkMod is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_BT_Choose_Strategy
+    Condition = Cheated_BT_Condition_GotoAtkMod
+    Destination = Cheated_BTAtk_Choose_Strategy
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export Cheated_BT_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ~/Cheated_BT_FakeSupport,
+    ]
+)
+
+//-------------------------------------------------------------------------
+export Cheated_BT_FakeSupport is TMacroActionDescriptor_Support_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    TagDeContre = "ThisUnitDoesNotExist"
+
+    PoolModelList = [
+        ~/Cheated_BT_FakePool,
+    ]
+)
+//-------------------------------------------------------------------------
+export Cheated_BT_FakePool is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b6fa94cf-6a89-11e9-be05-704d7b2c87d4}
+            Required = true
+            Nb = 1
+            TagsPriority = [
+                "ThisUnitDoesNotExist",
+            ]
+        ),
+    ]
+)

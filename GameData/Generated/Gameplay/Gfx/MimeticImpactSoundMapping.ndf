@@ -1,0 +1,1298 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+// ---------------------------------------------------------------- //
+// ------------------------- SFX Impacts -------------------------- //
+export AllImpactSoundHappenings is TImpactHappening
+(
+    Happenings = MAP
+    [
+        (   TFxWeaponType_ArtillerieKarl , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_KarlSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_KarlBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_KarlVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_KarlVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_KarlVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_ArtillerieGros , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_grosBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_grosVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_grosVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_grosVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_ArtillerieMarine , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_grosBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_grosVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_grosVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_grosVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_ArtillerieMoyen , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_moyenSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Moyen_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_moyenBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_moyenVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_moyenVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_moyenVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_ArtilleriePetit , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_petitSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Petit_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_petitBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_petitVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_petitVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_petitVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Autocanon20Mm200Ms , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Autocanon_20mmSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Petit_Eau ),
+                ( EImpactSurface/Air           , SFXImpact_Autocanon_20mmSol ),
+                ( EImpactSurface/Wall          , SFXImpact_Autocanon_20mmBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Autocanon_20mmVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Autocanon_20mmVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Autocanon_20mmVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Autocanon20Mm400Ms , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Autocanon_20mmSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Petit_Eau ),
+                ( EImpactSurface/Air           , SFXImpact_Autocanon_20mmSol ),
+                ( EImpactSurface/Wall          , SFXImpact_Autocanon_20mmBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Autocanon_20mmVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Autocanon_20mmVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Autocanon_20mmVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Autocanon20Mm500MsEtPlus , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Autocanon_20mmSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Petit_Eau ),
+                ( EImpactSurface/Air           , SFXImpact_Autocanon_20mmSol ),
+                ( EImpactSurface/Wall          , SFXImpact_Autocanon_20mmBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Autocanon_20mmVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Autocanon_20mmVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Autocanon_20mmVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Autocanon20MmX4 , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Autocanon_20mmSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Petit_Eau ),
+                ( EImpactSurface/Air           , SFXImpact_Autocanon_20mmSol ),
+                ( EImpactSurface/Wall          , SFXImpact_Autocanon_20mmBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Autocanon_20mmVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Autocanon_20mmVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Autocanon_20mmVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Autocanon40Mm , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Autocanon_40mmSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Petit_Eau ),
+                ( EImpactSurface/Air           , SFXImpact_Autocanon_40mmSol ),
+                ( EImpactSurface/Wall          , SFXImpact_Autocanon_40mmBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Autocanon_40mmVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Autocanon_40mmVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Autocanon_40mmVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Bombe100Kg , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Bombe300Kg , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Bombe500Kg , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeANM47A2Smoke100Lb , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeANM57250Lb , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeANM64500Lb , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeANM651000Lb , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_KarlSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_KarlBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_KarlVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_KarlVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_KarlVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombePTAB , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_petitSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Petit_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_petitBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_petitVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_petitVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_petitVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeSC1000 , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_KarlSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_KarlBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_KarlVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_KarlVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_KarlVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeSC250 , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeSC50 , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeSC500 , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeSD23 , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_petitSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Petit_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_petitBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_petitVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_petitVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_petitVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeSD70 , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_petitSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Petit_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_petitBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_petitVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_petitVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_petitVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombePhosphore , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_petitSol ),
+                ( EImpactSurface/Water         , SFXImpact_Artillerie_petitSol ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_petitBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_petitVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_petitVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_petitVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombePhosphoreCluster , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_petitSol ),
+                ( EImpactSurface/Water         , SFXImpact_Artillerie_petitSol ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_petitBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_petitVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_petitVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_petitVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombePhosphoreClusterPetit , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_petitSol ),
+                ( EImpactSurface/Water         , SFXImpact_Artillerie_petitSol ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_petitBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_petitVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_petitVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_petitVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_CanonGrosAP , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Canon_grosSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Canon_grosBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Canon_grosVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Canon_grosVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Canon_grosVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , SFXImpact_Canon_grosVehicule ),
+            ]
+        ),
+        (   TFxWeaponType_CanonGrosAPCR , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Canon_grosSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Canon_grosBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Canon_grosVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Canon_grosVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Canon_grosVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , SFXImpact_Canon_grosVehicule ),
+            ]
+        ),
+        (   TFxWeaponType_CanonGrosAPDouille , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Canon_grosSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , SFXImpact_Canon_grosSol ),
+                ( EImpactSurface/Wall          , SFXImpact_Canon_grosBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Canon_grosVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Canon_grosVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Canon_grosVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , SFXImpact_Canon_grosVehicule ),
+            ]
+        ),
+        (   TFxWeaponType_CanonGrosHE , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Canon_grosSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , SFXImpact_Canon_grosSol ),
+                ( EImpactSurface/Wall          , SFXImpact_Canon_grosBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Canon_grosVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Canon_grosVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Canon_grosVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , SFXImpact_Canon_grosVehicule ),
+            ]
+        ),
+        (   TFxWeaponType_CanonGrosHEDouille , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Canon_grosSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , SFXImpact_Canon_grosSol ),
+                ( EImpactSurface/Wall          , SFXImpact_Canon_grosBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Canon_grosVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Canon_grosVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Canon_grosVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , SFXImpact_Canon_grosVehicule ),
+            ]
+        ),
+        (   TFxWeaponType_CanonMoyenAP , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Canon_moyenSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Moyen_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Canon_moyenBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Canon_moyenVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Canon_moyenVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Canon_moyenVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , SFXImpact_Canon_moyenVehicule ),
+            ]
+        ),
+        (   TFxWeaponType_CanonMoyenAPCR , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Canon_moyenSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Moyen_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Canon_moyenBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Canon_moyenVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Canon_moyenVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Canon_moyenVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , SFXImpact_Canon_moyenVehicule ),
+            ]
+        ),
+        (   TFxWeaponType_CanonMoyenAPCRDouille , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Canon_moyenSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Moyen_Eau ),
+                ( EImpactSurface/Air           , SFXImpact_Canon_moyenSol ),
+                ( EImpactSurface/Wall          , SFXImpact_Canon_moyenBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Canon_moyenVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Canon_moyenVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Canon_moyenVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , SFXImpact_Canon_moyenVehicule ),
+            ]
+        ),
+        (   TFxWeaponType_CanonMoyenAPDouille , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Canon_moyenSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Moyen_Eau ),
+                ( EImpactSurface/Air           , SFXImpact_Canon_moyenSol ),
+                ( EImpactSurface/Wall          , SFXImpact_Canon_moyenBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Canon_moyenVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Canon_moyenVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Canon_moyenVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , SFXImpact_Canon_moyenVehicule ),
+            ]
+        ),
+        (   TFxWeaponType_CanonMoyenHE , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Canon_moyenSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Moyen_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Canon_moyenBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Canon_moyenVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Canon_moyenVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Canon_moyenVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , SFXImpact_Canon_moyenVehicule ),
+            ]
+        ),
+        (   TFxWeaponType_CanonMoyenHEDouille , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Canon_moyenSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Moyen_Eau ),
+                ( EImpactSurface/Air           , SFXImpact_Canon_moyenSol ),
+                ( EImpactSurface/Wall          , SFXImpact_Canon_moyenBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Canon_moyenVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Canon_moyenVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Canon_moyenVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , SFXImpact_Canon_moyenVehicule ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetitAP , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Canon_petitSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Petit_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Canon_petitBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Canon_petitVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Canon_petitVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Canon_petitVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , SFXImpact_Canon_petitVehicule ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetitAPCR , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Canon_petitSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Petit_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Canon_petitBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Canon_petitVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Canon_petitVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Canon_petitVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , SFXImpact_Canon_petitVehicule ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetitAPDouille , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Canon_petitSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Petit_Eau ),
+                ( EImpactSurface/Air           , SFXImpact_Canon_petitSol ),
+                ( EImpactSurface/Wall          , SFXImpact_Canon_petitBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Canon_petitVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Canon_petitVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Canon_petitVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , SFXImpact_Canon_petitVehicule ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetitHE , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Canon_petitSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Petit_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Canon_petitBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Canon_petitVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Canon_petitVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Canon_petitVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , SFXImpact_Canon_petitVehicule ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetitHEDouille , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Canon_petitSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Petit_Eau ),
+                ( EImpactSurface/Air           , SFXImpact_Canon_petitSol ),
+                ( EImpactSurface/Wall          , SFXImpact_Canon_petitBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Canon_petitVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Canon_petitVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Canon_petitVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , SFXImpact_Canon_petitVehicule ),
+            ]
+        ),
+        (   TFxWeaponType_CanonTresGrosHE , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_grosBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_grosVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_grosVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_grosVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , SFXImpact_Canon_grosVehicule ),
+            ]
+        ),
+        (   TFxWeaponType_CanonTresGrosHEDouille , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_grosBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_grosVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_grosVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_grosVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , SFXImpact_Canon_grosVehicule ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionInfanterie , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_DestructionInfanterie ),
+                ( EImpactSurface/Water         , SFXImpact_DestructionInfanterie ),
+                ( EImpactSurface/Air           , SFXImpact_DestructionInfanterie ),
+                ( EImpactSurface/Wall          , SFXImpact_DestructionInfanterie ),
+                ( EImpactSurface/Vehicle       , SFXImpact_DestructionInfanterie ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_DestructionInfanterie ),
+                ( EImpactSurface/Missile       , SFXImpact_DestructionInfanterie ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionUnite , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_DestructionUniteSol ),
+                ( EImpactSurface/Water         , SFXImpact_DestructionUniteSol ),
+                ( EImpactSurface/Air           , SFXImpact_DestructionUniteAir ),
+                ( EImpactSurface/Wall          , SFXImpact_DestructionUniteSol ),
+                ( EImpactSurface/Vehicle       , SFXImpact_DestructionUniteSol ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_DestructionUniteAir ),
+                ( EImpactSurface/Missile       , SFXImpact_DestructionUniteSol ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionUniteAvion , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_DestructionUniteSol ),
+                ( EImpactSurface/Water         , SFXImpact_DestructionUniteSol ),
+                ( EImpactSurface/Air           , SFXImpact_DestructionUniteAir ),
+                ( EImpactSurface/Wall          , SFXImpact_DestructionUniteSol ),
+                ( EImpactSurface/Vehicle       , SFXImpact_DestructionUniteSol ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_DestructionUniteAir ),
+                ( EImpactSurface/Missile       , SFXImpact_DestructionUniteSol ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionUniteAvionGros , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_DestructionUniteGrosSol ),
+                ( EImpactSurface/Water         , SFXImpact_DestructionUniteGrosSol ),
+                ( EImpactSurface/Air           , SFXImpact_DestructionUniteAir ),
+                ( EImpactSurface/Wall          , SFXImpact_DestructionUniteGrosSol ),
+                ( EImpactSurface/Vehicle       , SFXImpact_DestructionUniteGrosSol ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_DestructionUniteAir ),
+                ( EImpactSurface/Missile       , SFXImpact_DestructionUniteGrosSol ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionUniteAvionPetit , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_DestructionUnitePetitSol ),
+                ( EImpactSurface/Water         , SFXImpact_DestructionUnitePetitSol ),
+                ( EImpactSurface/Air           , SFXImpact_DestructionUniteAir ),
+                ( EImpactSurface/Wall          , SFXImpact_DestructionUnitePetitSol ),
+                ( EImpactSurface/Vehicle       , SFXImpact_DestructionUnitePetitSol ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_DestructionUniteAir ),
+                ( EImpactSurface/Missile       , SFXImpact_DestructionUnitePetitSol ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionUniteGros , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_DestructionUniteGrosSol ),
+                ( EImpactSurface/Water         , SFXImpact_DestructionUniteGrosSol ),
+                ( EImpactSurface/Air           , SFXImpact_DestructionUniteAir ),
+                ( EImpactSurface/Wall          , SFXImpact_DestructionUniteGrosSol ),
+                ( EImpactSurface/Vehicle       , SFXImpact_DestructionUniteGrosSol ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_DestructionUniteAir ),
+                ( EImpactSurface/Missile       , SFXImpact_DestructionUniteGrosSol ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionUniteRavitaillement , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_DestructionUniteSol_Ravitaillement ),
+                ( EImpactSurface/Water         , SFXImpact_DestructionUniteSol_Ravitaillement ),
+                ( EImpactSurface/Air           , SFXImpact_DestructionUniteAir ),
+                ( EImpactSurface/Wall          , SFXImpact_DestructionUniteSol_Ravitaillement ),
+                ( EImpactSurface/Vehicle       , SFXImpact_DestructionUniteSol_Ravitaillement ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_DestructionUniteAir ),
+                ( EImpactSurface/Missile       , SFXImpact_DestructionUniteSol_Ravitaillement ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionUnitePetit , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_DestructionUnitePetitSol ),
+                ( EImpactSurface/Water         , SFXImpact_DestructionUnitePetitSol ),
+                ( EImpactSurface/Air           , SFXImpact_DestructionUniteAir ),
+                ( EImpactSurface/Wall          , SFXImpact_DestructionUnitePetitSol ),
+                ( EImpactSurface/Vehicle       , SFXImpact_DestructionUnitePetitSol ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_DestructionUniteAir ),
+                ( EImpactSurface/Missile       , SFXImpact_DestructionUnitePetitSol ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_FinalBlow , MAP
+            [
+                ( EImpactSurface/Ground        , nil ),
+                ( EImpactSurface/Water         , nil ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , nil ),
+                ( EImpactSurface/Vehicle       , nil ),
+                ( EImpactSurface/FlyingVehicle , nil ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Fusil7Mm , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_BallesSol ),
+                ( EImpactSurface/Water         , SFXImpact_BallesSol ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_BallesBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_BallesVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_BallesVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_BallesVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Fusil7MmRailgun , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_BallesSol ),
+                ( EImpactSurface/Water         , SFXImpact_BallesSol ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_BallesBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_BallesVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_BallesVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_BallesVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_FusilPrecision , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_BallesSol_Sniper ),
+                ( EImpactSurface/Water         , SFXImpact_BallesSol_Sniper ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_BallesBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_BallesVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_BallesVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_BallesVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_GrenadeMain , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Petit_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Vehicle       , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Missile       , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_GrenadePineapple , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Petit_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Vehicle       , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Missile       , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_GrenadeANM16Smoke , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Petit_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Vehicle       , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Missile       , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_GrenadeGermanBundle , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Petit_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Vehicle       , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Missile       , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_GrenadePanzerknacker , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Petit_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Vehicle       , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Missile       , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_GrenadeSatchem , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Petit_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Vehicle       , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Missile       , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_GrenadeStielhandgranate , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Petit_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Vehicle       , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Missile       , SFXImpact_GrenadeMainSol ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Lanceflamme , MAP
+            [
+                ( EImpactSurface/Ground        , nil ),
+                ( EImpactSurface/Water         , nil ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , nil ),
+                ( EImpactSurface/Vehicle       , nil ),
+                ( EImpactSurface/FlyingVehicle , nil ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_LanceflammePetit , MAP
+            [
+                ( EImpactSurface/Ground        , nil ),
+                ( EImpactSurface/Water         , nil ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , nil ),
+                ( EImpactSurface/Vehicle       , nil ),
+                ( EImpactSurface/FlyingVehicle , nil ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MIssileATGros , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_MissileAT_grosSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_MissileAT_grosVehicule ),
+                ( EImpactSurface/Vehicle       , SFXImpact_MissileAT_grosVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_MissileAT_grosVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_MissileAT_grosVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MissileATPetit , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_MissileAT_petitSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Petit_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_MissileAT_moyenVehicule ),
+                ( EImpactSurface/Vehicle       , SFXImpact_MissileAT_moyenVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_MissileAT_moyenVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_MissileAT_moyenVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Mitraillette7MmBurst , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_BallesSol ),
+                ( EImpactSurface/Water         , SFXImpact_BallesSol ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_BallesBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Mitrailleuse14Mm , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_BallesSol ),
+                ( EImpactSurface/Water         , SFXImpact_BallesSol ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_BallesBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Mitrailleuse7Mm , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_BallesSol ),
+                ( EImpactSurface/Water         , SFXImpact_BallesSol ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_BallesBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Mitrailleuse7MmMP44 , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_BallesSol ),
+                ( EImpactSurface/Water         , SFXImpact_BallesSol ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_BallesBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseCal30 , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_BallesSol ),
+                ( EImpactSurface/Water         , SFXImpact_BallesSol ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_BallesBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseCal30Externe , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_BallesSol ),
+                ( EImpactSurface/Water         , SFXImpact_BallesSol ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_BallesBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseCal30X2 , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Straffing_Sol ),
+                ( EImpactSurface/Water         , SFXImpact_BallesSol ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_BallesBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseCal30X4 , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Straffing_Sol ),
+                ( EImpactSurface/Water         , SFXImpact_BallesSol ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_BallesBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseCal50 , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_BallesSol ),
+                ( EImpactSurface/Water         , SFXImpact_BallesSol ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_BallesBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseCal50Externe , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_BallesSol ),
+                ( EImpactSurface/Water         , SFXImpact_BallesSol ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_BallesBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseCal50X2 , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Straffing_Sol ),
+                ( EImpactSurface/Water         , SFXImpact_BallesSol ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_BallesBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseCal50X4 , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Straffing_Sol ),
+                ( EImpactSurface/Water         , SFXImpact_BallesSol ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_BallesBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseCal50X4AAExterne , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Straffing_Sol ),
+                ( EImpactSurface/Water         , SFXImpact_BallesSol ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_BallesBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseCal50X8 , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Straffing_Sol ),
+                ( EImpactSurface/Water         , SFXImpact_BallesSol ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_BallesBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseMG34 , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Balles_burstSol ),
+                ( EImpactSurface/Water         , SFXImpact_Balles_burstSol ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Balles_burstBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseMG34Externe , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Balles_burstSol ),
+                ( EImpactSurface/Water         , SFXImpact_Balles_burstSol ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Balles_burstBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseMG42 , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Balles_burstSol ),
+                ( EImpactSurface/Water         , SFXImpact_Balles_burstSol ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Balles_burstBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseMG42Externe , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Balles_burstSol ),
+                ( EImpactSurface/Water         , SFXImpact_Balles_burstSol ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Balles_burstBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Balles_burstVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_None , MAP
+            [
+                ( EImpactSurface/Ground        , nil ),
+                ( EImpactSurface/Water         , nil ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , nil ),
+                ( EImpactSurface/Vehicle       , nil ),
+                ( EImpactSurface/FlyingVehicle , nil ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Recoiless , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_RecoilessSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Petit_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_RecoilessBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_RecoilessVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_RecoilessVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_RecoilessVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteBazooka , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Roquette_petitSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Petit_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Roquette_petitBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Roquette_petitVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Roquette_petitVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Roquette_petitVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteRP3HE , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Roquette_moyenSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Moyen_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Roquette_moyenBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Roquette_moyenVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Roquette_moyenVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Roquette_moyenVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteRP3HESAP , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Roquette_petitSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Roquette_petitBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Roquette_petitVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Roquette_petitVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Roquette_petitVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteRoc110Mm , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Roquette_moyenSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Moyen_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Roquette_moyenBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Roquette_moyenVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Roquette_moyenVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Roquette_moyenVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteRoc210Mm , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Roquette_grosSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Roquette_grosBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Roquette_grosVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Roquette_grosVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Roquette_grosVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteRoc380MmSturmtiger , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_KarlSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_KarlBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_KarlVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_KarlVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_KarlVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteRoc5In , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Roquette_petitSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Roquette_petitBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Roquette_petitVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Roquette_petitVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Roquette_petitVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteGros , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Roquette_grosSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Roquette_grosBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Roquette_grosVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Roquette_grosVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Roquette_grosVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteMoyen , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Roquette_moyenSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Moyen_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Roquette_moyenBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Roquette_moyenVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Roquette_moyenVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Roquette_moyenVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquettePetit , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Roquette_petitSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Petit_Eau ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SFXImpact_Roquette_petitBatiment ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Roquette_petitVehicule ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Roquette_petitVehicule ),
+                ( EImpactSurface/Missile       , SFXImpact_Roquette_petitVehicule ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Satchel , MAP
+            [
+                ( EImpactSurface/Ground        , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Water         , SFXImpact_HE_Gros_Eau ),
+                ( EImpactSurface/Air           , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Wall          , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Vehicle       , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/FlyingVehicle , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Missile       , SFXImpact_Artillerie_grosSol ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+    ]
+)

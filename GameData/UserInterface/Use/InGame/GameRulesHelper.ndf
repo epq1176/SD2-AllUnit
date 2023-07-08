@@ -1,0 +1,116 @@
+GameRulesHelper is TUITacticalGameRulesHelper
+(
+    TimeStepMessage = "REM_TIME"
+    TimeInMinutesStepList = [3, 2, 1]
+
+    StandardStepMessages = TUITacticalGameRulesHelperStepMessages
+    (
+        // Message on self score update
+        LocalPlayerAllianceScoreByGameMode = MAP
+        [
+            (
+                GameMode/ConquestGameMode,
+                [
+                    //(50.0, "CSQTLOC50"),
+                    //(75.0, "CSQTLOC75"),
+                    (90.0, "CSQTLOC90")
+                ]
+            ),
+            (
+                GameMode/CloseQuarterConquest,
+                [
+                    //(50.0, "CSQTLOC50"),
+                    (90.0, "CSQTLOC90")
+                ]
+            ),
+        ]
+
+        // Message about other alliance score update
+        OtherAllianceScoreByGameMode = MAP
+        [
+            (
+                GameMode/ConquestGameMode,
+                [
+                    //(50.0, "CSQTOTH50"),
+                    //(75.0, "CSQTOTH75"),
+                    (90.0, "CSQTOTH90")
+                ]
+            ),
+            (
+                GameMode/CloseQuarterConquest,
+                [
+                    //(50.0, "CSQTOTH50"),
+                    (90.0, "CSQTOTH90")
+                ]
+            ),
+        ]
+    )
+
+    //Attacking alliance
+    AttackingAllianceStepMessages = TUITacticalGameRulesHelperStepMessages
+    (
+        // Message on self score update
+        LocalPlayerAllianceScoreByGameMode = MAP
+        [
+            (
+                GameMode/BreakthroughConquest,
+                [
+                    (20.0, "BKLOC20"),
+                    (50.0, "BKLOC50"),
+                    (75.0, "BKLOC75")
+                ]
+            ),
+        ]
+
+        // Message about other alliance score update
+        OtherAllianceScoreByGameMode = MAP
+        [
+            (
+                GameMode/BreakthroughConquest,
+                [
+                    //(80.0, "BKOTH80"),
+                    //(50.0, "BKOTH50"),
+                    //(25.0, "BKOTH25")
+                ]
+            ),
+        ]
+    )
+
+    // Defending alliance
+    DefendingAllianceStepMessages = TUITacticalGameRulesHelperStepMessages
+    (
+        // Message on self score update
+        LocalPlayerAllianceScoreByGameMode = MAP
+        [
+            (
+                GameMode/BreakthroughConquest,
+                [
+                    (80.0, "BKOTH80"),
+                    (50.0, "BKOTH50"),
+                    (25.0, "BKOTH25")
+                ]
+            ),
+        ]
+
+        // Message about other alliance score update
+        OtherAllianceScoreByGameMode = MAP
+        [
+            (
+                GameMode/BreakthroughConquest,
+                [
+                    //(80.0, "BKOTH80"),
+                    //(50.0, "BKOTH50"),
+                    //(25.0, "BKOTH25")
+                ]
+            ),
+        ]
+
+        AreDecreasingSteps = true
+    )
+
+    TimeToShowStepMessageInSecond = 5
+
+    ComponentToUseForRemainingTimeMessage = "RemainingTimeAlertComponent"
+    ComponentToUseForLocalPlayerAllianceMessage = "ConquestLocalPlayerHasAdvantageComponent"
+    ComponentToUseForOtherAllianceMessage = "ConquestOpponentHasAdvantageComponent"
+)

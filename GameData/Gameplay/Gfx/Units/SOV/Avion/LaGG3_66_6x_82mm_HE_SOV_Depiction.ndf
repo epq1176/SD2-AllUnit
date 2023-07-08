@@ -1,0 +1,45 @@
+export Gfx_LaGG3_66_6x_82mm_HE_SOV is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificAirplaneDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_LaGG3_66_6x_82mm_HE_SOV ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_LaGG3_66_6x_82mm_HE_SOV_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_LaGG3_66_6x_82mm_HE_SOV_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_LaGG3_66_6x_82mm_HE_SOV ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_LaGG3_66_6x_82mm_HE_SOV_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_LaGG3_66_6x_82mm_HE_SOV_LOW ),
+        ]
+
+         Operators = Operators_LaGG3_66_6x_82mm_HE_SOV
+                   + DepictionOperator_Airfoil_WingsAndStabilizersAirplane
+                   + DepictionOperator_Propulsion_Single_Engine_Plane
+                   + DepictionOperator_Airplane
+                + DepictionOperator_Feedback_Degat_Level1
+                  + DepictionOperator_Feedback_Degat_Level2
+
+        Actions = //DepictionAction_MovementFX_SingleReactorAirplane
+                Weapons_LaGG3_66_6x_82mm_HE_SOV
+                + DepictionAction_StressLevel_Avion_2
+                + MAP [ (['FX_Helice_1'], Template_DepictionAction_Rotor( PaleLength = 300 PaleCount = 3 SousMobile = "Bloc_Moteur_1" ))]
+
+        SubDepictionGenerators = SubGenerators_LaGG3_66_6x_82mm_HE_SOV
+
+    SubDepictions = [
+        TSubDepiction(
+            Anchor = "Landing Gear"
+            Depiction = TDepictionTemplate(
+                RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+                Selector = WarGameShowRoomDepictionSelector
+                DepictionAlternatives = [
+                    TDepictionDescriptor( SelectorId = 'high' MeshDescriptor = Modele_LaGG3_66_6x_82mm_HE_SOV_train ),
+                    TDepictionDescriptor( SelectorId = 'none' )
+                ]
+            )
+        )
+    ]
+    + DepictionSubDepiction_Pilote_SOV
+    )
+)

@@ -1,0 +1,115 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+export Trajectory_Missile_1 is TTrajectoryDescriptor
+(
+    DescriptorId = GUID:{25180b97-f7f8-4c1d-b067-f56bb83e231f}
+    Shape = TMissileTrajectoryShapeDescriptor
+    (
+        CruisingStage = TMissileTrajectoryShapeStageDescriptor
+        (
+            Acceleration = 20.0
+            MaxSpeed = 45.0
+            RotationSpeed = 17.0
+            ChaosAmplitude = 4.0
+        )
+        AscendingStage = TMissileTrajectoryShapeStageDescriptor
+        (
+            Acceleration = 50.0
+            MaxSpeed = 100.0
+            RotationSpeed = 30.0
+            ChaosAmplitude = 10.0
+        )
+        DescendingStage = TMissileTrajectoryShapeStageDescriptor
+        (
+            Acceleration = -10.0
+            MaxSpeed = 30.0
+            RotationSpeed = 6.0
+            ChaosAmplitude = 2.0
+        )
+        CruisingAltitude = 5.0
+        MaxTimeBetweenTwoUncontrollableMovements = 8.0
+        MinTimeBetweenTwoUncontrollableMovements = 2.0
+        UncontrollableRotationSpeed = 29.0
+        UncontrollableMaxAngle = 45.0
+        UncontrollableChaosAmplitude = 30.0
+    )
+    StartSpeed = 9 * Metre
+    AimCenter = True
+    AimEnemyDistrictFirstShotPoint = False
+    CollideWithDecorOnTheWay = True
+    CollideWithUnitOnTheWay = True
+    FollowTarget = False
+    DamageTypeForFXRadius = [
+      ~/PhysicalState_sante,
+      ~/PhysicalState_moral,
+    ]
+)
+export Trajectory_Parabolique_1 is TTrajectoryDescriptor
+(
+    DescriptorId = GUID:{feacb7f5-ddc8-4e64-ad37-58c80e7f4dac}
+    Shape = TParabolicTrajectoryShapeDescriptor
+    (
+        StateToFxConfig = MAP[
+            (
+                ~/ETrajectoryState/Start,
+                TFxLauncherConfig( DurationToken = 'fx_propulsion_on'
+                                   StartToken = 'fx_fire' )
+            ),
+            (
+                ~/ETrajectoryState/Flying,
+                TFxLauncherConfig( DurationToken = 'fx_propulsion_on')
+            ),
+            (
+                ~/ETrajectoryState/Explode,
+                TFxLauncherConfig( StartToken = 'fx_explosion' )
+            )
+        ]
+        AltitudeMinRange = 0.0 * Metre
+        AltitudeMaxRange = 1000.0 * Metre
+    )
+    StartSpeed = 50 * Metre
+    AimCenter = False
+    AimEnemyDistrictFirstShotPoint = False
+    CollideWithDecorOnTheWay = True
+    CollideWithUnitOnTheWay = False
+    FollowTarget = False
+    DamageTypeForFXRadius = [
+      ~/PhysicalState_sante,
+      ~/PhysicalState_moral,
+    ]
+)
+export Trajectory_Rectiligne_1 is TTrajectoryDescriptor
+(
+    DescriptorId = GUID:{5aae648d-f4cf-4df9-8dd9-bc811ef10f7b}
+    Shape = TParabolicTrajectoryShapeDescriptor
+    (
+        AltitudeMinRange = 0.0
+        AltitudeMaxRange = 0.0
+        StateToFxConfig = MAP[
+            (
+                ~/ETrajectoryState/Start,
+                TFxLauncherConfig( DurationToken = 'fx_propulsion_on'
+                                   StartToken = 'fx_fire' )
+            ),
+            (
+                ~/ETrajectoryState/Flying,
+                TFxLauncherConfig( DurationToken = 'fx_propulsion_on')
+            ),
+            (
+                ~/ETrajectoryState/Explode,
+                TFxLauncherConfig( StartToken = 'fx_explosion' )
+            )
+        ]
+    )
+    StartSpeed = 10 * Metre
+    AimCenter = False
+    AimEnemyDistrictFirstShotPoint = True
+    CollideWithDecorOnTheWay = False
+    CollideWithUnitOnTheWay = False
+    FollowTarget = False
+    DamageTypeForFXRadius = [
+      ~/PhysicalState_sante,
+      ~/PhysicalState_moral,
+    ]
+)

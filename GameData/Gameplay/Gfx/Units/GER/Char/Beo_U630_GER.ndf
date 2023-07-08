@@ -1,0 +1,22 @@
+export ModelFile_Beo_U630_GER is 'GameData:Assets\3D\Units\GER\Char\UE630_Hotchkiss\Beo_UE630.Ase2NdfBin'
+
+Modele_Beo_U630_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Beo_U630_GER
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Beo_U630_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\UE630_Hotchkiss_MID\Beo_UE630_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Beo_U630_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\Beo_UE630_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

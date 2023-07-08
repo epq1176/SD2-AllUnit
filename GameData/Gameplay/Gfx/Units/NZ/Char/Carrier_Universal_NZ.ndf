@@ -1,0 +1,22 @@
+export ModelFile_Carrier_Universal_NZ is 'GameData:Assets\3D\Units\NZ\Char\Universal_Carrier\Universal_Carrier_NZ.Ase2NdfBin'
+
+Modele_Carrier_Universal_NZ is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Carrier_Universal_NZ
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_Universal_NZ_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\NZ\Char\Universal_Carrier_MID\Universal_Carrier_NZ_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_Universal_NZ_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\NZ\Char\LODS\Universal_Carrier_NZ_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

@@ -1,0 +1,66 @@
+template TemplateMeshDescriptor_MMG_M1919_FR [ ModelFile ] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+
+// ModelFile_Boites_Browning_M1919A3 is 'GameData:Assets\3D\Units\USA\Canon\Browning_M1919A3\Boites_Browning_M1919A3.Ase2NdfBin'
+
+
+
+// Arme
+// private AnimationPath_MMG_M1919_FR is 'GameData:Assets\3D\Units\USA\Canon\Browning_M1919A3\'
+// MMG_M1919_FR_Anim_Tree is DepictionAnimationTreeNode
+// (
+//     IAStates = AnimationStateAll
+//     IAOldStates = AnimationStateAll
+//     Animations =
+//     (
+//         [TemplateAnimation(Animation= 'Browning_M1919A3' + '.Ase2NdfBin' Loop=false EventAnimation=false AnimationPath = AnimationPath_MMG_M1919_FR Mask = AnimationMask_All())]
+//     )
+
+//     Childs =
+//     [
+//         TAnimNode(IAStates = AnimationStateInstantFire                                                                  Anim = 'Browning_M1919A3_Fire'       Loop = false EventAnimation = true AnimationPath = AnimationPath_MMG_M1919_FR Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStopping | AnimationStateEngineStopTurning                             Anim = 'Browning_M1919A3_Deploy'     Loop = false AnimationPath = AnimationPath_MMG_M1919_FR Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStarting | AnimationStateEngineStartTurning                            Anim = 'Browning_M1919A3_Fold'       Loop = false AnimationPath = AnimationPath_MMG_M1919_FR Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateLeft                                           Anim = 'Browning_M1919A3_Turn_Left'  Loop = true  AnimationPath = AnimationPath_MMG_M1919_FR Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateRight                                          Anim = 'Browning_M1919A3_Turn_Right' Loop = true  AnimationPath = AnimationPath_MMG_M1919_FR Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateMoving | AnimationStateEngineRunning                                         Anim = 'Browning_M1919A3_Move'       Loop = true  AnimationPath = AnimationPath_MMG_M1919_FR Mask = AnimationMask_All()
+//             Childs = [
+//                 TAnimNode(IAStates = AnimationStateBack                                                                 Anim = 'Browning_M1919A3_Move_Back'  Loop = true  AnimationPath = AnimationPath_MMG_M1919_FR Mask = AnimationMask_All()),
+//         ]),
+//     ]
+// )
+
+
+
+// SubDepiction_Servant_1_MMG_M1919_FR is TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_MMG_M1919_FR_1 )
+// SubDepiction_Servant_2_MMG_M1919_FR is TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_MMG_M1919_FR_2 )
+// SubDepiction_Canon_AT_MMG_M1919_FR is TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_MMG_M1919_FR_Weapon )
+
+Gfx_MMG_M1919_FR is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate //les boites
+    (
+        OverrideMeshBoundingBoxMin = [-500,-500,0]
+        OverrideMeshBoundingBoxMax = [ 500, 500,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_MMG_M1919_FR( ModelFile = ModelFile_Boites_Browning_M1919A3) ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_MMG_M1919_FR( ModelFile = ModelFile_Boites_Browning_M1919A3) ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_MMG_M1919_FR( ModelFile = ModelFile_Boites_Browning_M1919A3) ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_MMG_M1919_FR( ModelFile = ModelFile_Boites_Browning_M1919A3) ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_MMG_M1919_FR( ModelFile = ModelFile_Boites_Browning_M1919A3) ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_MMG_M1919_FR( ModelFile = ModelFile_Boites_Browning_M1919A3) ),
+        ]
+        NodeNamesForSelection = [ 'Canon_AT', 'servant_G' , 'servant_D']
+        SubDepictions = [SubDepiction_Servant_1_MMG_M1919_Rangers_US,
+                        SubDepiction_Servant_2_MMG_M1919_Rangers_US,
+                        SubDepiction_Canon_AT_MMG_M1919_Rangers_US]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+    )
+)

@@ -1,0 +1,151 @@
+//-------------------------------------------------------------------------
+//----------------------------- AIRSTRIKE ---------------------------------
+//-------------------------------------------------------------------------
+
+// Maintains
+//-------------------------------------------------------------------------
+export Cheated_BTDef_Maintain_AirStrike is TMacroActionDescriptor_AirStrike_Specific
+(
+    GenerationType = TGenerationType_Maintain
+)
+//-------------------------------------------------------------------------
+// Template
+//-------------------------------------------------------------------------
+private template Cheated_BTDef_Template_Airstrike
+[
+    MinimumResourceForLaunch:int = 0,
+    AnnulerSupportSiAttaqueEchoue:bool = false,
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/All,
+    PoolModel = ~/Cheated_BTDef_Pool_Airstrike_Defense
+]
+is TMacroActionDescriptor_AirStrike_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    MinimumResourceForLaunch = <MinimumResourceForLaunch>
+    NumberOfMacro = 1
+
+    AnnulerSupportSiAttaqueEchoue = <AnnulerSupportSiAttaqueEchoue>
+    TypesDeRequetesAcceptees = <TypesDeRequetesAcceptees>
+
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [
+        <PoolModel>,
+    ]
+)
+//-------------------------------------------------------------------------
+// Missions
+//-------------------------------------------------------------------------
+export Cheated_BTDef_Airstrike_Defense is Cheated_BTDef_Template_Airstrike
+(
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Defense // pas d'attaque du tout
+    PoolModel = ~/Cheated_BTDef_Pool_Airstrike_Defense
+)
+//-------------------------------------------------------------------------
+export Cheated_BTDef_Airstrike_Offense is Cheated_BTDef_Template_Airstrike
+(
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Attack | ~/EAirStrikeRequestType/OpportunisticTargetInGroup
+    PoolModel = ~/Cheated_BTDef_Pool_Airstrike_Offense
+)
+//-------------------------------------------------------------------------
+export Cheated_BTDef_Airstrike_Assault is Cheated_BTDef_Template_Airstrike
+(
+    AnnulerSupportSiAttaqueEchoue = true
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/OpportunisticSingleTarget
+    PoolModel = ~/Cheated_BTDef_Pool_Airstrike_Assault
+)
+//-------------------------------------------------------------------------
+// Autogens
+//-------------------------------------------------------------------------
+export Cheated_BTDef_Airstrike_Defense_Autogen is Cheated_BTDef_Template_Airstrike
+(
+    MinimumResourceForLaunch = ~/Cheated_BTDef_MinimumResourceForLaunch_Stage_1
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Defense // pas d'attaque du tout
+    PoolModel = ~/Cheated_BTDef_Pool_Airstrike_Defense
+)
+//-------------------------------------------------------------------------
+export Cheated_BTDef_Airstrike_Defense_Autogen_Economic is Cheated_BTDef_Template_Airstrike
+(
+    MinimumResourceForLaunch = ~/Cheated_BTDef_MinimumResourceForLaunch_Economic
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Defense // pas d'attaque du tout
+    PoolModel = ~/Cheated_BTDef_Pool_Airstrike_Defense
+)
+//-------------------------------------------------------------------------
+export Cheated_BTDef_Airstrike_Offense_Autogen is Cheated_BTDef_Template_Airstrike
+(
+    MinimumResourceForLaunch = ~/Cheated_BTDef_MinimumResourceForLaunch_Stage_1
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Attack | ~/EAirStrikeRequestType/OpportunisticTargetInGroup
+    PoolModel = ~/Cheated_BTDef_Pool_Airstrike_Offense
+)
+//-------------------------------------------------------------------------
+export Cheated_BTDef_Airstrike_Assault_Autogen is Cheated_BTDef_Template_Airstrike
+(
+    MinimumResourceForLaunch = ~/Cheated_BTDef_MinimumResourceForLaunch_Stage_1
+    AnnulerSupportSiAttaqueEchoue = true
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/OpportunisticSingleTarget
+    PoolModel = ~/Cheated_BTDef_Pool_Airstrike_Assault
+)
+
+// Pool Models
+//-------------------------------------------------------------------------
+export Cheated_BTDef_Pool_Airstrike_Defense is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{b689d1a1-6a89-11e9-955a-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        TagsPriority = [
+            "Avion_Chasseur",
+            "Avion_Chasseur_Bombardier",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Cheated_BTDef_Pool_Airstrike_Offense is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{b689d1a2-6a89-11e9-aa99-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        TagsPriority = [
+            "Avion_Bombardier",
+            "Avion_Chasseur_Bombardier",
+            "Avion_Assaut",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Cheated_BTDef_Pool_Airstrike_Assault is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{b689d1a3-6a89-11e9-adcc-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        TagsPriority = [
+            "Avion_AT",
+            "Avion_Assaut",
+        ]
+    ),
+    ]
+)
+// Requetes
+//-------------------------------------------------------------------------
+export Cheated_BTDef_BasicAirstrikeSupport is
+[
+    (["Avion_Chasseur_Bombardier", "Avion_Bombardier", "Avion_Assaut", "Avion_AT"], 2),
+]
+//-------------------------------------------------------------------------
+

@@ -1,0 +1,101 @@
+template template_UnitLevelBuildViewDescriptor
+         [
+         RangeHigh = $/GraphicOption/LevelBuild_High/Value,
+         RangeMid = $/GraphicOption/LevelBuild_Mid/Value,
+         RangeLow = $/GraphicOption/LevelBuild_Low/Value,
+
+         ModeSticker = SDMode_Sticker + SDMode_StickerDynamic,
+
+         ModeLow  = SDMode_Low,
+         ModeMid  = SDMode_Mid,
+         ModeHigh = SDMode_High,
+
+         RangeHighDisabled : TEugBBoolean = $/GraphicOption/SceneryDontUseModelsHigh/Value,
+         RangeMidDisabled  : TEugBBoolean = nil,
+         RangeLowDisabled  : TEugBBoolean = nil,
+
+         MaxRange = $/GraphicOption/LevelBuild_Low/Value,
+
+         LevelBuildHierarchyTag,
+
+         UseAutoBatcher : bool,
+
+         AnimationControllerFactory = nil,
+         StickersHandler = nil
+         ] is TUnitLevelBuildViewDescriptor
+(
+    ModeLowComplete  is <ModeLow> + <ModeSticker>
+    ModeMidComplete  is <ModeMid> + <ModeSticker>
+    ModeHighComplete is <ModeHigh> + <ModeSticker>
+
+    SymbolDatabaseProxy = $/M3D/Scene/LevelBuildSymbolDatabaseProxy
+    StateDatabaseProxy  = $/M3D/Scene/LevelBuildStateGeoDatabaseProxy
+    Camera              = $/M3D/Camera/CameraPrincipale
+    World               = $/M3D/Scene/DefaultWorld
+
+    LevelBuildHierarchyTag  = <LevelBuildHierarchyTag>
+    FxMode = SDMode_FXModel
+    DepictionMode = SDMode_Depiction
+    MaskDestroyed = SDMask_Destroy
+    Modes = (UseModelsHighInScenery ?  [ModeHighComplete] : [] ) + [ModeMidComplete,ModeLowComplete]
+    KeepGeometryMask = UseModelsHighInScenery ? 4 : 2  // on garde que le LOW en mémoire.
+    Ranges = (UseModelsHighInScenery ? [0.1] :[]) + [0.05, 0.003] // attention quand on fait disparaitre avant que le baking est pris le relai
+    MinRange = GraphicOption/LevelBuild_Low/Value
+    MaxRange = <MaxRange>
+    LodMultiplier = $/GraphicOption/LodRangeMultiplier/Value
+    RangesDisabled = ( UseModelsHighInScenery ? [<RangeHighDisabled>] : [] ) + [<RangeMidDisabled>,<RangeLowDisabled>]
+    UseAutoBatcher = <UseAutoBatcher>
+    MediumModelSize = OneMeterInGameUnits * 15
+    JobPriority = 500
+    ZToken = $/VFX_Bank/ZMobile.Name
+    CaseInfoKey = $/M3D/Shader/ShaderForLevelBuild_CaseInfoKey
+    QuantizationRange = [100000, 100000, 100000]
+    ImposteurSystemProxy = $/M3D/Shader/ImposteurSystemProxy
+    AnimationControllerFactory = <AnimationControllerFactory>
+    ShadowPointCloudProvider = $/M3D/Scene/PointCloudProviderPrincipal
+    StickersHandler = <StickersHandler>
+    DamageRatioPrecision = 0.01
+)
+
+export DynamicStickersHandlerProxy is TDynamicStickersHandlerProxy()
+
+export DefaultUnitLevelBuildViewDescriptor is template_UnitLevelBuildViewDescriptor
+(
+    LevelBuildHierarchyTag = LevelBuildHierarchyTag/BaseBuildingOnly
+    StickersHandler = ~/DynamicStickersHandlerProxy
+    ModeSticker = SDMode_Sticker + SDMode_StickerDynamic
+    UseAutoBatcher = true
+)
+
+export DefenseUnitLevelBuildViewDescriptor is template_UnitLevelBuildViewDescriptor
+(
+    LevelBuildHierarchyTag = LevelBuildHierarchyTag/BaseBuildingOnly
+    MaxRange = $/GraphicOption/LevelBuild_Infinite/Value
+    StickersHandler = ~/DynamicStickersHandlerProxy
+    ModeSticker = SDMode_Sticker + SDMode_StickerDynamic
+    UseAutoBatcher = false
+)
+
+export MapBuildingUnitLevelBuildViewDescriptor is template_UnitLevelBuildViewDescriptor
+(
+    LevelBuildHierarchyTag  = LevelBuildHierarchyTag/MapBuilding
+    MaxRange = $/GraphicOption/LevelBuild_Infinite/Value
+    StickersHandler = ~/DynamicStickersHandlerProxy
+    ModeSticker = SDMode_StickerDynamic // SURTOUT PAS DE SDMode_Sticker DANS LES MAPBUILDINGS ! Les stickers des habitations sont déjà compris dans le LevelBuild sauvegardé dans l'éditeur !
+    UseAutoBatcher = true
+)
+
+
+//------------------------------------------------------------------------------
+UnitLevelBuildViewPolylineInstanceManager is TUnitLevelBuildViewPolylineInstanceManager
+(
+    UnitLevelBuildViewDescriptor    = ~/DefenseUnitLevelBuildViewDescriptor
+    MultiRenderTypeMaterialPack     = $/M3D/Shader/MultiRenderTypeMaterialPack_Default
+    MainCamera                      = $/M3D/Camera/CameraPrincipale
+    World                           = $/M3D/Scene/DefaultWorld
+    RenderStyleProviderDescriptor   = ~/DefaultMapBuildingRenderStyleProvider
+    SceneryDescriptorNamesToIgnore =
+    [
+        "Creux_tranchee_BaseBuilding"
+    ]
+)

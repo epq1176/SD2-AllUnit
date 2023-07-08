@@ -1,0 +1,324 @@
+template HostGameLine
+[
+    ListElementName : string,
+
+    TitleToken : string,
+
+    ComponentDescriptor = TBUCKContainerDescriptor,
+]
+is
+BUCKListDescriptor
+(
+    ElementName = <ListElementName>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    FirstMargin = TRTTILength(Magnifiable = 50.0)
+    InterItemMargin = TRTTILength(Magnifiable = 50.0)
+    LastMargin = TRTTILength(Magnifiable = 50.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [250.0, 0.0]
+                    AlignementToFather = [0.0, 0.5]
+                    AlignementToAnchor = [0.0, 0.5]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    VerticalAlignment = ~/UIText_VerticalCenter
+                    Alignment = UIText_Right
+                )
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextStyle = "Default"
+                TypefaceToken = "Main"
+
+                TextColor       = "StandardTextInModal"
+                TextSize        = "16"
+
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TextToken = <TitleToken>
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [300.0, 0.0]
+                    AlignementToFather = [0.0, 0.5]
+                    AlignementToAnchor = [0.0, 0.5]
+                )
+
+                FitStyle = ~/ContainerFitStyle/FitToContentVertically
+
+                Components =
+                [
+                    <ComponentDescriptor>
+                ]
+            )
+        )
+    ]
+)
+
+BUCKSpecificOutGameHostPanelMainComponentDescriptor is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+
+    FirstMargin = TRTTILength(Magnifiable = 0.0)
+    InterItemMargin = TRTTILength(Magnifiable = 30.0)
+    LastMargin = TRTTILength(Magnifiable = 0.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                Axis = ~/ListAxis/Vertical
+
+                FirstMargin = TRTTILength(Magnifiable = 30.0)
+                InterItemMargin = TRTTILength(Magnifiable = 10.0)
+                LastMargin = TRTTILength(Magnifiable = 30.0)
+
+                Elements =
+                [
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = HostGameLine
+                        (
+                            ListElementName = "Gametype"
+                            TitleToken = "Gametype"
+
+                            ComponentDescriptor = BUCKSpecificDropdownDescriptor
+                            (
+                                ElementName = "GametypeDropdown"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 0.0]
+                                    MagnifiableWidthHeight = [0.0, 30.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                IsForModale = true
+                            )
+                        )
+                    ),
+
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = HostGameLine
+                        (
+                            ListElementName = "GameVisibility"
+                            TitleToken = "gameVisibi"
+                            ComponentDescriptor = BUCKSpecificDropdownDescriptor
+                            (
+                                ElementName = "GameVisibiDropdown"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 0.0]
+                                    MagnifiableWidthHeight = [0.0, 30.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                IsForModale = true
+                            )
+                        )
+                    ),
+
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = HostGameLine
+                        (
+                            ListElementName = "GameSide"
+                            TitleToken = "Gametype"
+                            ComponentDescriptor = BUCKSpecificDropdownDescriptor
+                            (
+                                ElementName = "SideDropdown"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 0.0]
+                                    MagnifiableWidthHeight = [0.0, 30.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                IsForModale = true
+                            )
+                        )
+                    ),
+
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = HostGameLine
+                        (
+                            ListElementName = "GameName"
+                            TitleToken = "gameName"
+                            ComponentDescriptor = BUCKEditableTextDescriptor
+                            (
+                                ElementName = "GameNameEditable"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 0.0]
+                                    MagnifiableWidthHeight = [0.0, 30.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                ClippingContainerFrameProperty = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                    MagnifiableWidthHeight = [-6.0, -6.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                HasBackground = true
+                                BackgroundBlockColorToken = "Gray80"
+
+                                Flags = ~/EditableTextFlag/H_LEFT | ~/EditableTextFlag/V_TOP | ~/EditableTextFlag/ONE_LINE
+
+                                TextSizeToken = "14"
+                                TypefaceToken = "Main"
+                                TextColorToken = "Glacier"
+                                SelectionColorToken = "DeckOverview/CaseGrisee/EditableText/Selected"
+
+                                MaxChars = 50
+
+                                SelectTextOnFocus = true
+                            )
+                        )
+                    ),
+
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = HostGameLine
+                        (
+                            ListElementName = "Spectate"
+                            TitleToken = "Spectate"
+                            ComponentDescriptor = BUCKSpecificDropdownDescriptor
+                            (
+                                ElementName = "SpectateDropdown"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 0.0]
+                                    MagnifiableWidthHeight = [0.0, 30.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                IsForModale = true
+                            )
+                        )
+                    ),
+
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = HostGameLine
+                        (
+                            ListElementName = "FilterDeck"
+                            TitleToken = "GPS_Filter"
+                            ComponentDescriptor = BUCKSpecificDropdownDescriptor
+                            (
+                                ElementName = "FilterDeckDropdown"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 0.0]
+                                    MagnifiableWidthHeight = [0.0, 30.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                IsForModale = true
+                            )
+                        )
+                    ),
+                ]
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "ErrorText"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [250.0, 0.0]
+                    AlignementToFather = [0.5, 0.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    VerticalAlignment = ~/UIText_VerticalCenter
+                    Alignment = UIText_Center
+                )
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextStyle = "Default"
+                TypefaceToken = "Main"
+
+                TextColor       = "ErrorTextInModal"
+                TextSize        = "16"
+
+                BigLineAction = ~/BigLineAction/MultiLine
+
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+            )
+        )
+    ]
+)
+
+FilterDeckPolicy is TBaseClass
+(
+    All                     is 0
+    OnlyEastFront           is 1
+    OnlyNormandyFront       is 2
+    OnlyMediterraneanFront  is 3
+)
+
+UISpecificOutGameHostPanelViewDescriptor is TUISpecificOutGameHostPanelViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificOutGameHostPanelMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    TagMap = MAP
+    [
+        (~/FilterDeckPolicy/All,                    ("DEFAULT", "GPS_FilAll")),
+        (~/FilterDeckPolicy/OnlyEastFront,          ("East", "GPS_FilEas")),
+        (~/FilterDeckPolicy/OnlyNormandyFront,      ("West", "GPS_FilWes")),
+        (~/FilterDeckPolicy/OnlyMediterraneanFront, ("Mediterranean", "GPS_FilMed")),
+    ]
+)

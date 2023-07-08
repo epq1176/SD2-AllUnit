@@ -1,0 +1,37 @@
+template TemplateMeshDescriptor_Mortier_81mm_FR [ ModelFile ] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+
+// ModelFile_Boites_Mortar_81mm is 'GameData:Assets\3D\Units\UK\Canon\6_pdr\Boites_6_pdr.Ase2NdfBin'
+
+// SubDepiction_Servant_1_Mortier_81mm_FR is TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_Mortier_81mm_FR_1 )
+// SubDepiction_Servant_2_Mortier_81mm_FR is TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_Mortier_81mm_FR_2 )
+// SubDepiction_Canon_AT_Mortier_81mm_FR is TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_Mortier_81mm_FR_Weapon )
+
+Gfx_Mortier_81mm_FR is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate //les boites
+    (
+        OverrideMeshBoundingBoxMin = [-500,-500,0]
+        OverrideMeshBoundingBoxMax = [ 500, 500,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_Mortier_81mm_FR( ModelFile = ModelFile_Boites_Mortar_81mm) ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_Mortier_81mm_FR( ModelFile = ModelFile_Boites_Mortar_81mm) ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_Mortier_81mm_FR( ModelFile = ModelFile_Boites_Mortar_81mm) ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_Mortier_81mm_FR( ModelFile = ModelFile_Boites_Mortar_81mm) ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_Mortier_81mm_FR( ModelFile = ModelFile_Boites_Mortar_81mm) ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_Mortier_81mm_FR( ModelFile = ModelFile_Boites_Mortar_81mm) ),
+        ]
+        NodeNamesForSelection = [ 'Canon_AT', 'servant_G' , 'servant_D']
+        SubDepictions = [SubDepiction_Servant_1_Mortier_81mm_US,
+                        SubDepiction_Servant_2_Mortier_81mm_US,
+                        SubDepiction_Canon_AT_Mortier_81mm_US]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+    )
+)

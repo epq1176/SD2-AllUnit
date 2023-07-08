@@ -1,0 +1,29 @@
+export ModelFile_Mosquito_Chasse is 'GameData:Assets\3D\Units\UK\Avion\DH98_Mosquito\DH98_Mosquito.Ase2NdfBin'
+
+Modele_Mosquito_Chasse is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Mosquito_Chasse
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Mosquito_Chasse_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Avion\DH98_Mosquito_MID\DH98_Mosquito_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Mosquito_Chasse_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Avion\LODS\DH98_Mosquito_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Mosquito_Chasse_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Avion\DH98_Mosquito\DH98_Mosquito_train.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

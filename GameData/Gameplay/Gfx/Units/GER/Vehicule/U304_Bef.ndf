@@ -1,0 +1,22 @@
+export ModelFile_U304_Bef is 'GameData:Assets\3D\Units\GER\Vehicule\U304_leSPW\U304_PzBefWg.Ase2NdfBin'
+
+Modele_U304_Bef is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_U304_Bef
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_U304_Bef_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\U304_leSPW_MID\U304_PzBefWg_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_U304_Bef_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\LODS\U304_PzBefWg_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

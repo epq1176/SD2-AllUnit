@@ -1,0 +1,155 @@
+Template TAnimNodeServant
+[
+IAStates : integer = ~/AnimationStateAll,
+IAOldStates : integer = ~/AnimationStateAll,
+DefaultAnimationStates : integer = ~/AnimationStateAll,
+Childs             = [],
+Loop     : boolean = true,
+Top      : boolean = true,
+Bot      : boolean = true,
+Anim     : string  = '',
+Side     : string  = '',
+EventAnim : bool = false,
+] is DepictionAnimationTreeNode
+(
+    IAStates = <IAStates>
+    IAOldStates = <IAOldStates>
+    DefaultAnimationStates = <DefaultAnimationStates>
+    Childs = <Childs>
+    UsedSlots = InfantryAnimationAllSlots
+    private AnimationFileName is 'Gunner_'+<Side>+ '_' + <Anim> + '.Ase2NdfBin'
+    Animations =
+    ( <Top> & <Bot> ?
+    [TemplateAnimationTop(Animation=AnimationFileName Loop=<Loop> EventAnimation = <EventAnim>), TemplateAnimationBottom( Animation=AnimationFileName  Loop=<Loop> EventAnimation = <EventAnim>)]
+    : ( <Top> ?
+    [TemplateAnimationTop(Animation=AnimationFileName Loop=<Loop> EventAnimation = <EventAnim>)]
+    : (<Bot> ?
+    [TemplateAnimationBottom(Animation=AnimationFileName Loop=<Loop> EventAnimation = <EventAnim>)]
+    : [] ) ) )
+)
+
+
+Template ServantAnimTree
+[
+    Side : string = ''
+]
+ is TAnimNodeServant
+(
+    IAStates = AnimationStateAll
+    DefaultAnimationStates = ~/AnimationStateEngineStopping
+    Childs =
+    [
+        TAnimNodeServant
+        (
+            IAStates = AnimationStateDestruction
+            Anim = 'Dead'
+            Loop = false
+            Side = <Side>
+        ),
+        TAnimNodeServant
+        (
+            IAStates = AnimationStateInstantFire
+            Anim = 'Fire'
+            Loop = false
+            EventAnim = true
+            Side = <Side>
+        ),
+        TAnimNodeServant
+        (
+            IAStates = AnimationStateAttacking
+            IAOldStates = AnimationStateInstantFire
+            Anim = 'Reload'
+            Loop = false
+            EventAnim = true
+            Side = <Side>
+        ),
+        TAnimNodeServant
+        (
+            IAStates = AnimationStateEngineStarting
+            Anim = 'Fold'
+            Loop = false
+            Side = <Side>
+        ),
+        TAnimNodeServant
+        (
+            IAStates = AnimationStateEngineRunning
+            Anim = 'Move'
+            Side = <Side>
+            Childs = [
+                TAnimNodeServant
+                (
+                    IAStates = AnimationStateBack
+                    Anim = 'Move_Back'
+                    Side = <Side>
+                )
+            ]
+        ),
+        TAnimNodeServant
+        (
+            IAStates = AnimationStateEngineStopping
+            Anim = 'Deploy'
+            Loop = false
+            Side = <Side>
+        ),
+        TAnimNodeServant
+        (
+            IAStates = AnimationStateEngineStartTurning
+            Anim = 'Fold'
+            Loop = false
+            Side = <Side>
+        ),
+        TAnimNodeServant
+        (
+            IAStates = AnimationStateEngineTurning | AnimationStateLeft
+            Anim = 'Turn_Left'
+            Side = <Side>
+        ),
+        TAnimNodeServant
+        (
+            IAStates = AnimationStateEngineTurning | AnimationStateRight
+            Anim = 'Turn_Right'
+            Side = <Side>
+        ),
+        TAnimNodeServant
+        (
+            IAStates = AnimationStateEngineStopTurning
+            Anim = 'Deploy'
+            Loop = false
+            Side = <Side>
+        ),
+        TAnimNodeServant
+        (
+            IAStates = AnimationStateAttacking
+            Anim = 'Ready_to_Fire'
+            EventAnim = false
+            Loop = false
+            Side = <Side>
+        ),
+        TAnimNodeServant
+        (
+            IAStates = AnimationStateSurrender
+            Anim = 'Idle' // A remplacer par Surrender quand l'anim aura ete produite
+            Loop = false
+            Side = <Side>
+        ),
+
+    ]
+
+    Anim = 'Idle'
+    Side = <Side>
+)
+
+
+ServantAnimTreeGauche is ServantAnimTree(Side = 'L')
+ServantAnimTreeDroite is ServantAnimTree(Side = 'R')
+
+export DepictionOperator_Animation_Servant_Droite is [ Template_DepictionOperator_SkeletalAnimation_With_Tree( AnimationTree = ServantAnimTreeDroite )]
+export DepictionOperator_Animation_Servant_Gauche is [ Template_DepictionOperator_SkeletalAnimation_With_Tree( AnimationTree = ServantAnimTreeGauche )]
+
+
+//2 Servants supplementaires (ex: sur le Flak 88)
+ServantAnimTreeGauche2 is ServantAnimTree(Side = 'L')
+ServantAnimTreeDroite2 is ServantAnimTree(Side = 'R')
+
+export DepictionOperator_Animation_Servant_Droite2 is [ Template_DepictionOperator_SkeletalAnimation_With_Tree( AnimationTree = ServantAnimTreeDroite2 )]
+export DepictionOperator_Animation_Servant_Gauche2 is [ Template_DepictionOperator_SkeletalAnimation_With_Tree( AnimationTree = ServantAnimTreeGauche2 )]

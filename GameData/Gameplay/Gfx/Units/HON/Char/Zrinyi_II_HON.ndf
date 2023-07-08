@@ -1,0 +1,22 @@
+export ModelFile_Zrinyi_II_HON is 'GameData:Assets\3D\Units\HON\Char\Zrinyi_II\Zrinyi_II.Ase2NdfBin'
+
+Modele_Zrinyi_II_HON is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Zrinyi_II_HON
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Zrinyi_II_HON_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\HON\Char\Zrinyi_II_MID\Zrinyi_II_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Zrinyi_II_HON_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\HON\Char\LODS\Zrinyi_II_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

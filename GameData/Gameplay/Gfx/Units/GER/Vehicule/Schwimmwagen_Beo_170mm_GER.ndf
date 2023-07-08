@@ -1,0 +1,22 @@
+export ModelFile_Schwimmwagen_Beo_170mm_GER is 'GameData:Assets\3D\Units\GER\Vehicule\Schwimmwagen\Beob_Wg_Schwimmwagen.Ase2NdfBin'
+
+Modele_Schwimmwagen_Beo_170mm_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Schwimmwagen_Beo_170mm_GER
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Schwimmwagen_Beo_170mm_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\Schwimmwagen_MID\Beob_Wg_Schwimmwagen_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Schwimmwagen_Beo_170mm_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\LODS\Beob_Wg_Schwimmwagen_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

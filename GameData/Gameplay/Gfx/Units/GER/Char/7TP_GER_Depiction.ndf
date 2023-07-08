@@ -1,0 +1,26 @@
+Gfx_7TP_GER is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_7TP_GER ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_7TP_GER_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret3( MeshDescriptor = Modele_7TP_GER_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_7TP_GER ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_7TP_GER_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret3( MeshDescriptor = Modele_7TP_GER_LOW ),
+        ]
+
+        Operators = Operators_7TP_GER
+                  + DepictionOperator_Chassis_SmallTank
+                  + DepictionOperator_Propulsion_ContinuousTrack_SmallTank
+                  + [DepictionOperator_TurretRecoil(TurretNum='1')]
+                  // + [DepictionOperator_TurretRecoilLightMachineGun(TurretNum='3') ]
+
+        Actions = Weapons_7TP_GER
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+    )
+)

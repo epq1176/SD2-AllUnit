@@ -1,0 +1,22 @@
+export ModelFile_WLA_side_CO_FIN is 'GameData:Assets\3D\Units\FIN\Vehicule\WLA_side_CO_FIN\WLA_side_CO_FIN.Ase2NdfBin'
+
+Modele_WLA_side_CO_FIN is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_WLA_side_CO_FIN
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_WLA_side_CO_FIN_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Vehicule\WLA_side_CO_FIN_MID\WLA_side_CO_FIN_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_WLA_side_CO_FIN_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Vehicule\LODS\WLA_side_CO_FIN_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

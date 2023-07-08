@@ -1,0 +1,29 @@
+export ModelFile_Mosquito_Supply_POL is 'GameData:Assets\3D\Units\POL\Avion\DH98_Mosquito\DH98_Mosquito_Bombx4.Ase2NdfBin'
+
+Modele_Mosquito_Supply_POL is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Mosquito_Supply_POL
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Mosquito_Supply_POL_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Avion\DH98_Mosquito_MID\DH98_Mosquito_Bombx4_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Mosquito_Supply_POL_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Avion\LODS\DH98_Mosquito_Bombx4_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Mosquito_Supply_POL_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Avion\DH98_Mosquito\DH98_Mosquito_train.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

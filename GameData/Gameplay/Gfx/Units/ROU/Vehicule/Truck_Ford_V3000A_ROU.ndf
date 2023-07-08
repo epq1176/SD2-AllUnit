@@ -1,0 +1,22 @@
+export ModelFile_Truck_Ford_V3000A_ROU is 'GameData:Assets\3D\Units\ROU\Vehicule\Truck_Ford_G917T_trans_ROU\Truck_Ford_G917T_trans_ROU.Ase2NdfBin'
+
+Modele_Truck_Ford_V3000A_ROU is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Truck_Ford_V3000A_ROU
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Truck_Ford_V3000A_ROU_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Vehicule\Truck_Ford_G917T_trans_ROU_MID\Truck_Ford_G917T_trans_ROU_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Truck_Ford_V3000A_ROU_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Vehicule\LODS\Truck_Ford_G917T_trans_ROU_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

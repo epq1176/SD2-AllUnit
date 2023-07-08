@@ -1,0 +1,22 @@
+export ModelFile_RSO_ROU is 'GameData:Assets\3D\Units\ROU\Char\RSO_ROU\RSO_ROU.Ase2NdfBin'
+
+Modele_RSO_ROU is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_RSO_ROU
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_RSO_ROU_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Char\RSO_ROU_MID\RSO_ROU_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_RSO_ROU_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Char\LODS\RSO_ROU_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

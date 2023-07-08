@@ -1,0 +1,151 @@
+//-------------------------------------------------------------------------
+//----------------------------- AIRSTRIKE ---------------------------------
+//-------------------------------------------------------------------------
+
+// Maintains
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Maintain_AirStrike is TMacroActionDescriptor_AirStrike_Specific
+(
+    GenerationType = TGenerationType_Maintain
+)
+//-------------------------------------------------------------------------
+// Template
+//-------------------------------------------------------------------------
+private template SandBag_BTDef_Template_Airstrike
+[
+    MinimumResourceForLaunch:int = 0,
+    AnnulerSupportSiAttaqueEchoue:bool = false,
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/All,
+    PoolModel = ~/SandBag_BTDef_Pool_Airstrike_Defense
+]
+is TMacroActionDescriptor_AirStrike_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    MinimumResourceForLaunch = <MinimumResourceForLaunch>
+    NumberOfMacro = 1
+
+    AnnulerSupportSiAttaqueEchoue = <AnnulerSupportSiAttaqueEchoue>
+    TypesDeRequetesAcceptees = <TypesDeRequetesAcceptees>
+
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [
+        <PoolModel>,
+    ]
+)
+//-------------------------------------------------------------------------
+// Missions
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Airstrike_Defense is SandBag_BTDef_Template_Airstrike
+(
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Defense // pas d'attaque du tout
+    PoolModel = ~/SandBag_BTDef_Pool_Airstrike_Defense
+)
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Airstrike_Offense is SandBag_BTDef_Template_Airstrike
+(
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Attack | ~/EAirStrikeRequestType/OpportunisticTargetInGroup
+    PoolModel = ~/SandBag_BTDef_Pool_Airstrike_Offense
+)
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Airstrike_Assault is SandBag_BTDef_Template_Airstrike
+(
+    AnnulerSupportSiAttaqueEchoue = true
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/OpportunisticSingleTarget
+    PoolModel = ~/SandBag_BTDef_Pool_Airstrike_Assault
+)
+//-------------------------------------------------------------------------
+// Autogens
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Airstrike_Defense_Autogen is SandBag_BTDef_Template_Airstrike
+(
+    MinimumResourceForLaunch = ~/SandBag_BTDef_MinimumResourceForLaunch_Stage_1
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Defense // pas d'attaque du tout
+    PoolModel = ~/SandBag_BTDef_Pool_Airstrike_Defense
+)
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Airstrike_Defense_Autogen_Economic is SandBag_BTDef_Template_Airstrike
+(
+    MinimumResourceForLaunch = ~/SandBag_BTDef_MinimumResourceForLaunch_Economic
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Defense // pas d'attaque du tout
+    PoolModel = ~/SandBag_BTDef_Pool_Airstrike_Defense
+)
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Airstrike_Offense_Autogen is SandBag_BTDef_Template_Airstrike
+(
+    MinimumResourceForLaunch = ~/SandBag_BTDef_MinimumResourceForLaunch_Stage_1
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Attack | ~/EAirStrikeRequestType/OpportunisticTargetInGroup
+    PoolModel = ~/SandBag_BTDef_Pool_Airstrike_Offense
+)
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Airstrike_Assault_Autogen is SandBag_BTDef_Template_Airstrike
+(
+    MinimumResourceForLaunch = ~/SandBag_BTDef_MinimumResourceForLaunch_Stage_1
+    AnnulerSupportSiAttaqueEchoue = true
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/OpportunisticSingleTarget
+    PoolModel = ~/SandBag_BTDef_Pool_Airstrike_Assault
+)
+
+// Pool Models
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Pool_Airstrike_Defense is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{b6d7f19e-6a89-11e9-a073-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        TagsPriority = [
+            "Avion_Chasseur",
+            "Avion_Chasseur_Bombardier",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Pool_Airstrike_Offense is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{b6d7f19f-6a89-11e9-b18c-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        TagsPriority = [
+            "Avion_Bombardier",
+            "Avion_Chasseur_Bombardier",
+            "Avion_Assaut",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Pool_Airstrike_Assault is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{b6d7f1a0-6a89-11e9-8c4d-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        TagsPriority = [
+            "Avion_AT",
+            "Avion_Assaut",
+        ]
+    ),
+    ]
+)
+// Requetes
+//-------------------------------------------------------------------------
+export SandBag_BTDef_BasicAirstrikeSupport is
+[
+    (["Avion_Chasseur_Bombardier", "Avion_Bombardier", "Avion_Assaut", "Avion_AT"], 2),
+]
+//-------------------------------------------------------------------------
+

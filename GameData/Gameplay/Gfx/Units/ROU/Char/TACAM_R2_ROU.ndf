@@ -1,0 +1,22 @@
+export ModelFile_TACAM_R2_ROU is 'GameData:Assets\3D\Units\ROU\Char\TACAM_R2_ROU\TACAM_R2_ROU.Ase2NdfBin'
+
+Modele_TACAM_R2_ROU is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_TACAM_R2_ROU
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_TACAM_R2_ROU_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Char\TACAM_R2_ROU_MID\TACAM_R2_ROU_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_TACAM_R2_ROU_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Char\LODS\TACAM_R2_ROU_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

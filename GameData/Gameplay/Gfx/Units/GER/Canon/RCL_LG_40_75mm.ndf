@@ -1,0 +1,22 @@
+export ModelFile_RCL_LG_40_75mm is 'GameData:Assets\3D\Units\GER\Canon\LG40\LG40.Ase2NdfBin'
+
+Modele_RCL_LG_40_75mm is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_RCL_LG_40_75mm
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_RCL_LG_40_75mm_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\LG40_MID\LG40_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_RCL_LG_40_75mm_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\LODS\LG40_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

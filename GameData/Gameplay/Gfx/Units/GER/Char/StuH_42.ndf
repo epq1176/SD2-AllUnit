@@ -1,0 +1,22 @@
+export ModelFile_StuH_42 is 'GameData:Assets\3D\Units\GER\Char\StuH_42\StuH_42.Ase2NdfBin'
+
+Modele_StuH_42 is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_StuH_42
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_StuH_42_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\StuH_42_MID\StuH_42_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_StuH_42_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\StuH_42_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

@@ -1,0 +1,22 @@
+export ModelFile_Ford_AA_trans_FIN is 'GameData:Assets\3D\Units\FIN\Vehicule\Ford_AA_trans_FIN\Ford_AA_trans_FIN.Ase2NdfBin'
+
+Modele_Ford_AA_trans_FIN is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Ford_AA_trans_FIN
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Ford_AA_trans_FIN_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Vehicule\Ford_AA_trans_FIN_MID\Ford_AA_trans_FIN_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Ford_AA_trans_FIN_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Vehicule\LODS\Ford_AA_trans_FIN_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

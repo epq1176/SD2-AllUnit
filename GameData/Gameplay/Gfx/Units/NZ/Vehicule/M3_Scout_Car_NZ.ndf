@@ -1,0 +1,22 @@
+export ModelFile_M3_Scout_Car_NZ is 'GameData:Assets\3D\Units\NZ\Vehicule\Scout_Car\M3A1_Scout_Car_NZ.Ase2NdfBin'
+
+Modele_M3_Scout_Car_NZ is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M3_Scout_Car_NZ
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_M3_Scout_Car_NZ_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\NZ\Vehicule\Scout_Car_MID\M3A1_Scout_Car_NZ_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_M3_Scout_Car_NZ_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\NZ\Vehicule\LODS\M3A1_Scout_Car_NZ_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

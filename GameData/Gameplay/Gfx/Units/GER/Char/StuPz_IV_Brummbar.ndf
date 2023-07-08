@@ -1,0 +1,22 @@
+export ModelFile_StuPz_IV_Brummbar is 'GameData:Assets\3D\Units\GER\Char\StuPzIV_Brummbar\StuPzIV_Brummbar.Ase2NdfBin'
+
+Modele_StuPz_IV_Brummbar is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_StuPz_IV_Brummbar
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_StuPz_IV_Brummbar_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\StuPzIV_Brummbar_MID\StuPzIV_Brummbar_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_StuPz_IV_Brummbar_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\StuPzIV_Brummbar_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

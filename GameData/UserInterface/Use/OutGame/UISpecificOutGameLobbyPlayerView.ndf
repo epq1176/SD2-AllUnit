@@ -1,0 +1,321 @@
+private PlayerLinePlayerIcon is BUCKSpecificAvatarDescriptor
+(
+    ElementName = "IconTexture"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [50.0, 50.0]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+)
+
+private PlayerLinePlayerLevel is BUCKTextDescriptor
+(
+    ElementName = "PlayerLevel"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [40.0, 40.0]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+
+    BigLineAction = ~/BigLineAction/ResizeFont
+    ParagraphStyle = ~/CenteredParagraphStyle
+    TextStyle = "Default"
+
+    TextColor       = "Lobby/PlayerLine"
+    TextSize        = "Lobby/PlayerLevel"
+    TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+    TypefaceToken   = "Main"
+    UniformDrawer   = $/UserInterface/UIUniformDrawer
+
+    Components =
+    [
+        BUCKSpecificHintableArea
+        (
+            ElementName = "HintLevel"
+            DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+        ),
+    ]
+)
+
+private PlayerLinePlayerRank is BUCKSpecificRankDescriptor
+(
+    ElementName = "RankTexture"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [50.0, 25.0]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+)
+
+private PlayerLinePlayerName is BUCKTextDescriptor
+(
+    ElementName = "PlayerName"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [150.0, 40.0]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+
+    BigLineAction = ~/BigLineAction/ResizeFont
+    ParagraphStyle = ~/CenteredParagraphStyle
+    TextStyle = "Default"
+
+    TextColor       = "Lobby/PlayerLine"
+    TextSize        = "Lobby/PlayerLine"
+    TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+    TypefaceToken   = "Main"
+    UniformDrawer   = $/UserInterface/UIUniformDrawer
+)
+
+private deckNameDescription is BUCKTextDescriptor
+(
+    ElementName = "DropDownItemText"
+
+    ComponentFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+    )
+
+    TextStyle = "Default"
+    TypefaceToken = "Main"
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+    TextColor = "ButtonHUD/Text2"
+    TextSize = "SD2_Moyen"
+)
+
+private PlayerDeckDropDown is BUCKSpecificDropdownDescriptor
+(
+    ElementName = "DeckDropDown"
+
+    HidePointerEvents = true
+    PointerEventsToAllow = ~/EAllowablePointerEventType/Move | ~/EAllowablePointerEventType/Button1
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.9, 0.0]
+        MagnifiableWidthHeight = [0.0, 30.0]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+
+    ItemComponents =
+    [
+        ~/deckNameDescription
+    ]
+    Components =
+    [
+        ~/deckNameDescription
+    ]
+)
+
+private PlayerLinePlayerEconomy is BUCKTextDescriptor
+(
+    ElementName = "PlayerEconomy"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [120.0, 45.0]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+    ParagraphStyle = ~/CenteredParagraphStyle
+    TextStyle = "Default"
+
+    TextColor       = "Lobby/PlayerLine"
+    TextSize        = "Lobby/PlayerLine"
+    TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+    TextToken       = "LB_INCFRMT"
+
+    TypefaceToken   = "Main"
+    UniformDrawer   = $/UserInterface/UIUniformDrawer
+)
+
+private PlayerLinePlayerDivision is BUCKTextureDescriptor
+(
+    ElementName = "DivisionTexture"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [46.0, 46.0]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+
+    TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [ 1, 1] )
+    TileTextureInComponent = false
+    ClipTextureToComponent = true
+
+    Components =
+    [
+        BUCKSpecificHintableArea
+        (
+            ElementName = "HintDivision"
+            DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+        ),
+    ]
+)
+
+private PlayerStateDropDown is BUCKSpecificDropdownDescriptor
+(
+    ElementName = "StateDropDown"
+
+    HidePointerEvents = true
+    PointerEventsToAllow = ~/EAllowablePointerEventType/Move | ~/EAllowablePointerEventType/Button1
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [150, 30]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+)
+
+private PlayerStateCheckBox is BUCKButtonDescriptor
+(
+    ElementName = "StateButton"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [30.0, 30.0]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+
+    Components =
+    [
+        BUCKSpecificCheckBoxDescriptor
+        (
+            ElementName = "StateCheckBox"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+        )
+    ]
+)
+
+BUCKSpecificOutGameLobbyPlayerMainComponentDescriptor is BUCKButtonDescriptor
+(
+    ElementName = "MainButton"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 50.0]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "PlayerLine/Background/Empty"
+
+    HasBorder = true
+    BorderLineColorToken = "BorderButtonHUD"
+    BorderThicknessToken = "1"
+
+    IsTogglable = true
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ElementName = "BackgroundOverlay"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+            HasBackground = true
+            BackgroundBlockColorToken = "DivisionBrief/OddOverlay"
+        ),
+
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+
+            InterItemMargin = TRTTILength( Magnifiable = 5.0 )
+            LastMargin = TRTTILength( Magnifiable = 5.0 )
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/PlayerLinePlayerIcon
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/PlayerLinePlayerLevel
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/PlayerLinePlayerRank
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/PlayerLinePlayerName
+                ),
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = ~/PlayerDeckDropDown
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/PlayerLinePlayerEconomy
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/PlayerLinePlayerDivision
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ElementName = "PingArea"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1]
+                            MagnifiableWidthHeight = [50.0, 0]
+                            AlignementToFather = [0.0, 0.5]
+                            AlignementToAnchor = [0.0, 0.5]
+                        )
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/PlayerStateDropDown
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/PlayerStateCheckBox
+                ),
+            ]
+        )
+    ]
+)
+
+UISpecificOutGameLobbyPlayerViewDescriptor is TUISpecificOutGameLobbyPlayerViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificOutGameLobbyPlayerMainComponentDescriptor
+
+    BackgroundPlayerLineAllies = "DivisionBrief/Background/Allies"
+    BackgroundPlayerLineEmpty = "PlayerLine/Background/Empty"
+    BackgroundPlayerLineAxis = "DivisionBrief/Background/Axis"
+)

@@ -1,0 +1,161 @@
+// ****************************************************************************************************************************************
+// *** mitrailleuse ***********************************************************************************************************************
+// ****************************************************************************************************************************************
+ SFXMachineGunInstant_Power1 is TSequencingActionHappening
+(
+    ActionDescriptor = TActionCall
+    (
+        LocalVariables =
+        [
+            parShotCount is TPinnableValue(ExpectedType: float InitialValue = 1),
+            parWaitBetweenShot is TPinnableValue(ExpectedType: float InitialValue = 1.), // pour etre modifié par l'IA, comme avant, mais on peut faire comme pour POWER par exemple à terme.
+        ]
+        MaxDuration = 3
+        Action = FX_Tir_Bullet_SFX
+        NamedParams = MAP[
+            ('parPower', 1),
+            ('parShotCount', parShotCount),
+            ('parWaitBetweenShot', parWaitBetweenShot),
+        ]
+    )
+)
+template SFXMachineGunContinuous
+[
+    Power,
+    WaitBetweenShot,
+] is TSequencingActionHappening
+(
+    ActionDescriptor = TActionCall
+    (
+        LocalVariables =
+        [
+            parShotCount is TPinnableValue(ExpectedType: float InitialValue = 0),
+            parWaitBetweenShot is TPinnableValue(ExpectedType: float InitialValue = <WaitBetweenShot>), // pour etre modifié par l'IA, comme avant, mais on peut faire comme pour POWER par exemple à terme.
+        ]
+        MaxDuration = 3
+        Action = FX_Tir_Bullet_SFX
+        NamedParams = MAP[
+            ('parPower', <Power>),
+            ('parShotCount', parShotCount),
+            ('parWaitBetweenShot', parWaitBetweenShot),
+        ]
+    )
+)
+// ****************************************************************************************************************************************
+// *** Obus/Artillerie ********************************************************************************************************************
+// ****************************************************************************************************************************************
+
+// ****************************************************************************************************************************************
+// *** ObusAP *****************************************************************************************************************************
+// ****************************************************************************************************************************************
+
+All_LR is [ $/VFX_Bank/SFX_Tir_CanonAP_3_Instant_01_LR, $/VFX_Bank/SFX_Tir_CanonAP_3_Instant_02_LR, $/VFX_Bank/SFX_Tir_CanonAP_3_Instant_03_LR, $/VFX_Bank/SFX_Tir_CanonAP_3_Instant_04_LR ]
+SFXAPShellInstant_Power1 is TSoundHappening
+(
+    SoundDesc   = $/VFX_Bank/SFX_Tir_CanonAP_1_Instant_01
+    SoundDescLRList = TSoundDescriptorList( Items = All_LR PlayInRandomOrder = True )
+)
+SFXAPShellInstant_Power2 is TSoundHappening
+(
+    SoundDesc   = $/VFX_Bank/SFX_Tir_CanonAP_2_Instant_01
+    SoundDescLRList = TSoundDescriptorList( Items = All_LR PlayInRandomOrder = True )
+)
+SFXAPShellInstant_Power3 is TSoundHappening
+(
+    SoundDesc   = $/VFX_Bank/SFX_Tir_CanonAP_2_Instant_01
+    SoundDescLRList = TSoundDescriptorList( Items = All_LR PlayInRandomOrder = True )
+)
+SFXAPShellInstant_Power4 is TSoundHappening
+(
+    SoundDescList   = TSoundDescriptorList( Items = [ $/VFX_Bank/SFX_Tir_CanonAP_4_Instant_01, $/VFX_Bank/SFX_Tir_CanonAP_4_Instant_02 ] PlayInRandomOrder = True )
+    SoundDescLRList = TSoundDescriptorList( Items = All_LR PlayInRandomOrder = True )
+)
+SFXAPShellInstant_Power5 is TSoundHappening
+(
+    SoundDesc   = $/VFX_Bank/SFX_Tir_CanonAP_5_Instant_01
+    SoundDescLRList = TSoundDescriptorList( Items = All_LR PlayInRandomOrder = True )
+)
+// ****************************************************************************************************************************************
+SFXHEShellInstant_All_LR is TSoundDescriptorList
+(
+    Items = [ $/VFX_Bank/SFX_Tir_CanonAP_5_Instant_01_LR, $/VFX_Bank/SFX_Tir_CanonAP_5_Instant_02_LR, $/VFX_Bank/SFX_Tir_CanonAP_5_Instant_03_LR, $/VFX_Bank/SFX_Tir_CanonAP_5_Instant_04_LR ]
+    PlayInRandomOrder = True
+)
+SFXHEShellInstant_Power1 is TSoundHappening
+(
+    SoundDesc   = $/VFX_Bank/SFX_Tir_CanonAP_1_Instant_01
+    SoundDescLRList = SFXHEShellInstant_All_LR
+)
+SFXHEShellInstant_Power2 is TSoundHappening
+(
+    SoundDesc   = $/VFX_Bank/SFX_Tir_CanonAP_2_Instant_01
+    SoundDescLRList = SFXHEShellInstant_All_LR
+)
+SFXHEShellInstant_Power3 is TSoundHappening
+(
+    SoundDesc   = $/VFX_Bank/SFX_Tir_CanonAP_2_Instant_01
+    SoundDescLRList = SFXHEShellInstant_All_LR
+)
+SFXHEShellInstant_Power4 is TSoundHappening
+(
+    SoundDescList   = TSoundDescriptorList( Items = [ $/VFX_Bank/SFX_Tir_CanonAP_4_Instant_01, $/VFX_Bank/SFX_Tir_CanonAP_4_Instant_02 ] PlayInRandomOrder = True )
+    SoundDescLRList = SFXHEShellInstant_All_LR
+)
+SFXHEShellInstant_Power5 is TSoundHappening
+(
+    SoundDesc   = $/VFX_Bank/SFX_Tir_CanonAP_5_Instant_01
+    SoundDescLRList = SFXHEShellInstant_All_LR
+)
+// ****************************************************************************************************************************************
+// *** Bushmaster *************************************************************************************************************************
+// ****************************************************************************************************************************************
+template TemplateBushmaster
+[
+    SoundFileName,
+] is TSoundDescriptor
+(
+    SoundSettings = $/SoundSettings/SFX_SoundSettings
+    UseSpecialLoop = True
+    TheSoundStream = Template_SoundStream
+    (
+        SoundFileName = 'GameData:\Assets\Sons\SFX_Wargame\' + <SoundFileName>
+    )
+)
+
+SFXBushmaster_MG42 is TSoundHappening
+(
+    SoundDesc = TemplateBushmaster ( SoundFileName = 'Bushmaster\MG42.wav' )
+    SoundDescLR = TemplateBushmaster ( SoundFileName = 'Bushmaster\MG42_LR.wav' )
+)
+
+// ****************************************************************************************************************************************
+// *** Roquettes **************************************************************************************************************************
+// ****************************************************************************************************************************************
+SFXRocketInstant_Power1 is SFXInfantryRocket_Power1
+SFXRocketInstant_Power2 is SFXInfantryRocket_Power2
+SFXRocketInstant_Power3 is SFXInfantryRocket_Power3
+SFXRocketInstant_Power4 is SFXInfantryRocket_Power4
+SFXRocketInstant_Power5 is SFXInfantryRocket_Power5
+// ****************************************************************************************************************************************
+// *** lanceflammes ***********************************************************************************************************************
+// ****************************************************************************************************************************************
+template SFXFlamethrowerContinuous
+[
+    WaitBetweenShot,
+] is TSequencingActionHappening
+(
+    ActionDescriptor = TActionCall
+    (
+        LocalVariables =
+        [
+            parShotCount is TPinnableValue(ExpectedType: float InitialValue = 0),
+            parWaitBetweenShot is TPinnableValue(ExpectedType: float InitialValue = <WaitBetweenShot>), // pour etre modifié par l'IA, comme avant, mais on peut faire comme pour POWER par exemple à terme.
+        ]
+        MaxDuration = 3
+        Action = FX_Tir_LanceFlammes_SFX
+        NamedParams = MAP[
+            ('parShotCount', parShotCount),
+            ('parWaitBetweenShot', parWaitBetweenShot),
+        ]
+    )
+)

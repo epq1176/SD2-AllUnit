@@ -1,0 +1,433 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+export Descriptor_AimManager_Pod_roquettes_canon is TAimManagerDescriptor
+(
+    DescriptorId = GUID:{7ead3d2f-52d9-409a-a277-eb8d34666a96}
+    ClassNameForDebug = 'Pod roquettes canon'
+    YawConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{8cc814b6-89c4-42c5-ba52-5f59f3fcda6e}
+        Min = -3.141592653589793
+        Max = 3.141592653589793
+        Start = 0.0
+        AngularVelocity = 0.5235987755982988
+    )
+    PitchConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{66d4f04b-c161-49c7-bebf-49a4645780fc}
+        Min = -0.4363323129985824
+        Max = 0.7853981633974483
+        Start = 0.0
+        AngularVelocity = 0.5235987755982988
+    )
+    AlignmentValidator = ~/AngularAlignementValidator
+)
+export Descriptor_AimManager_Tourelle_artillerie_15_degre is TAimManagerDescriptor
+(
+    DescriptorId = GUID:{cfea1a24-f1b1-4430-b4d7-e1bb95ecf1b4}
+    ClassNameForDebug = 'Tourelle artillerie 15 degre'
+    YawConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{40099ec7-6399-41d2-9972-2e253c3af5ef}
+        Min = -0.12217304763960307
+        Max = 0.12217304763960307
+        Start = 0.0
+        AngularVelocity = 0.5235987755982988
+    )
+    PitchConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{6cc2f0db-3b7b-44a8-9c97-5ba237502412}
+        Min = -0.4363323129985824
+        Max = 1.3089969389957472
+        Start = 0.17453292519943295
+        AngularVelocity = 0.5235987755982988
+    )
+    AlignmentValidator = ~/AngularAlignementValidator
+)
+export Descriptor_AimManager_Tourelle_test_1 is TAimManagerDescriptor
+(
+    DescriptorId = GUID:{4d1991cb-1365-4ea1-b387-9878bc0025d6}
+    ClassNameForDebug = 'Tourelle test 1'
+    YawConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{f461bf38-37cf-4505-a1b1-54bdeb40d02b}
+        Min = -3.141592653589793
+        Max = 3.141592653589793
+        Start = 0.0
+        AngularVelocity = 0.3490658503988659
+    )
+    PitchConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{70a8cab1-444e-4d82-bed8-6f5b7dab1eca}
+        Min = -0.17453292519943295
+        Max = 0.17453292519943295
+        Start = 0.0
+        AngularVelocity = 0.07853981633974483
+    )
+    AlignmentValidator = ~/AngularAlignementValidator
+)
+export Descriptor_AimManager_Tourelle_test_2 is TAimManagerDescriptor
+(
+    DescriptorId = GUID:{1474ca3a-4ad0-4f3b-9a11-52d5409bf47d}
+    ClassNameForDebug = 'Tourelle test 2'
+    YawConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{fb0ca163-99dc-41d8-b084-c399720f0226}
+        Min = -1.5707963267948966
+        Max = 1.5707963267948966
+        Start = 0.0
+        AngularVelocity = 0.08726646259971647
+    )
+    PitchConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{ef7d5256-0369-4b6f-ac62-acb3b664c931}
+        Min = -0.5235987755982988
+        Max = 0.5235987755982988
+        Start = 0.0
+        AngularVelocity = 0.3490658503988659
+    )
+    AlignmentValidator = ~/AngularAlignementValidator
+)
+export Descriptor_AimManager_Tourelle_test_3_no_yaw is TAimManagerDescriptor
+(
+    DescriptorId = GUID:{0a173cb4-21f6-4d02-80c5-7725548e9970}
+    ClassNameForDebug = 'Tourelle test 3 no yaw'
+    YawConfiguration = nil
+    PitchConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{2db0b855-3955-4211-8446-f36c44be0172}
+        Min = -0.5235987755982988
+        Max = 0.5235987755982988
+        Start = 0.0
+        AngularVelocity = 0.3490658503988659
+    )
+    AlignmentValidator = ~/AngularAlignementValidator
+)
+export Descriptor_AimManager_Tourelle_test_4_no_pitch is TAimManagerDescriptor
+(
+    DescriptorId = GUID:{7e6a447d-0b22-41da-945c-a3cba7114bd6}
+    ClassNameForDebug = 'Tourelle test 4 no pitch'
+    YawConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{0c2df8ba-dbb2-434c-9429-8d40b6fb0c17}
+        Min = -1.5707963267948966
+        Max = 1.5707963267948966
+        Start = 0.0
+        AngularVelocity = 0.08726646259971647
+    )
+    PitchConfiguration = nil
+    AlignmentValidator = ~/AngularAlignementValidator
+)
+export Descriptor_AimManager_pitch_constrained_fast is TAimManagerDescriptor
+(
+    DescriptorId = GUID:{1436eb80-a321-4abb-9dd4-64068f57e771}
+    ClassNameForDebug = 'pitch constrained fast'
+    YawConfiguration = nil
+    PitchConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{daeebc22-5b48-44ac-88f5-f719e1a77a9c}
+        Min = -0.2617993877991494
+        Max = 1.0471975511965976
+        Start = 0.0
+        AngularVelocity = 0.7853981633974483
+    )
+    AlignmentValidator = ~/AngularAlignementValidator
+)
+export Descriptor_AimManager_pitch_constrained_medium is TAimManagerDescriptor
+(
+    DescriptorId = GUID:{90f38227-3e58-4c46-b045-44b16be2e8c0}
+    ClassNameForDebug = 'pitch constrained medium'
+    YawConfiguration = nil
+    PitchConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{514084b0-be35-4c7d-a39f-1dcb1a295a39}
+        Min = -0.2617993877991494
+        Max = 1.0471975511965976
+        Start = 0.0
+        AngularVelocity = 0.4363323129985824
+    )
+    AlignmentValidator = ~/AngularAlignementValidator
+)
+export Descriptor_AimManager_pitch_constrained_slow is TAimManagerDescriptor
+(
+    DescriptorId = GUID:{eb1ce62c-ff81-4477-933b-975e89d77b61}
+    ClassNameForDebug = 'pitch constrained slow'
+    YawConfiguration = nil
+    PitchConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{642ae84d-a752-4b00-9d64-f37b4ff2e352}
+        Min = -0.2617993877991494
+        Max = 1.0471975511965976
+        Start = 0.0
+        AngularVelocity = 0.08726646259971647
+    )
+    AlignmentValidator = ~/AngularAlignementValidator
+)
+export Descriptor_AimManager_pitch_free_fast is TAimManagerDescriptor
+(
+    DescriptorId = GUID:{e0e51a1a-2815-4fdf-a948-da60490fd64e}
+    ClassNameForDebug = 'pitch free fast'
+    YawConfiguration = nil
+    PitchConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{b1dae1ce-c541-4dcf-b23a-d309acfc7956}
+        Min = -1.5707963267948966
+        Max = 1.5707963267948966
+        Start = 0.0
+        AngularVelocity = 0.7853981633974483
+    )
+    AlignmentValidator = ~/AngularAlignementValidator
+)
+export Descriptor_AimManager_pitch_free_medium is TAimManagerDescriptor
+(
+    DescriptorId = GUID:{7d444bc7-202d-434f-8b0e-b3a5102de922}
+    ClassNameForDebug = 'pitch free medium'
+    YawConfiguration = nil
+    PitchConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{79cce835-9596-438c-a49c-498c03841706}
+        Min = -1.5707963267948966
+        Max = 1.5707963267948966
+        Start = 0.0
+        AngularVelocity = 0.4363323129985824
+    )
+    AlignmentValidator = ~/AngularAlignementValidator
+)
+export Descriptor_AimManager_pitch_free_slow is TAimManagerDescriptor
+(
+    DescriptorId = GUID:{1104c379-8e39-495a-bb7d-90ac628b14c3}
+    ClassNameForDebug = 'pitch free slow'
+    YawConfiguration = nil
+    PitchConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{bf8bcbf2-a050-4f87-94da-8eb348dd7509}
+        Min = -1.5707963267948966
+        Max = 1.5707963267948966
+        Start = 0.0
+        AngularVelocity = 0.08726646259971647
+    )
+    AlignmentValidator = ~/AngularAlignementValidator
+)
+export Descriptor_AimManager_yaw_constrained_fast is TAimManagerDescriptor
+(
+    DescriptorId = GUID:{27cd4c42-4190-4adc-9a35-6466621bbb5e}
+    ClassNameForDebug = 'yaw constrained fast'
+    YawConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{573929ef-6aac-46dd-8cca-49be5541e9ac}
+        Min = -1.5707963267948966
+        Max = 2.0943951023931953
+        Start = 0.0
+        AngularVelocity = 0.7853981633974483
+    )
+    PitchConfiguration = nil
+    AlignmentValidator = ~/AngularAlignementValidator
+)
+export Descriptor_AimManager_yaw_constrained_fast_pitch_constrained_fast is TAimManagerDescriptor
+(
+    DescriptorId = GUID:{3f9530e9-215c-46a2-b617-ead55f45248d}
+    ClassNameForDebug = 'yaw constrained fast pitch constrained fast'
+    YawConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{a72eb254-21d0-4c73-b20b-e99b9dce4c23}
+        Min = -1.5707963267948966
+        Max = 2.0943951023931953
+        Start = 0.0
+        AngularVelocity = 0.7853981633974483
+    )
+    PitchConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{1aff7a4a-5b62-4f6a-88bd-9d2c3962dbad}
+        Min = -0.2617993877991494
+        Max = 1.0471975511965976
+        Start = 0.0
+        AngularVelocity = 0.7853981633974483
+    )
+    AlignmentValidator = ~/AngularAlignementValidator
+)
+export Descriptor_AimManager_yaw_constrained_medium is TAimManagerDescriptor
+(
+    DescriptorId = GUID:{9df26af1-b53d-4b50-aaa4-b79eb9ac5ed7}
+    ClassNameForDebug = 'yaw constrained medium'
+    YawConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{73b05c3d-710f-4bc4-a6ec-54d2761c414a}
+        Min = -1.5707963267948966
+        Max = 2.0943951023931953
+        Start = 0.0
+        AngularVelocity = 0.4363323129985824
+    )
+    PitchConfiguration = nil
+    AlignmentValidator = ~/AngularAlignementValidator
+)
+export Descriptor_AimManager_yaw_constrained_medium_pitch_constrained_medium is TAimManagerDescriptor
+(
+    DescriptorId = GUID:{57e77bb1-91f3-461d-a4d5-c116bac88889}
+    ClassNameForDebug = 'yaw constrained medium pitch constrained medium'
+    YawConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{0285e630-4082-4171-a46b-e63720a521c9}
+        Min = -1.5707963267948966
+        Max = 2.0943951023931953
+        Start = 0.0
+        AngularVelocity = 0.4363323129985824
+    )
+    PitchConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{61cf4184-6d81-4f01-9f9f-a914728eac97}
+        Min = -0.2617993877991494
+        Max = 1.0471975511965976
+        Start = 0.0
+        AngularVelocity = 0.4363323129985824
+    )
+    AlignmentValidator = ~/AngularAlignementValidator
+)
+export Descriptor_AimManager_yaw_constrained_slow is TAimManagerDescriptor
+(
+    DescriptorId = GUID:{2dedda2e-9c3a-45d9-b459-2ea8c3239ef5}
+    ClassNameForDebug = 'yaw constrained slow'
+    YawConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{7e01c8e6-2c8f-44ec-ae35-d4bde2a2f0ed}
+        Min = -1.5707963267948966
+        Max = 2.0943951023931953
+        Start = 0.0
+        AngularVelocity = 0.08726646259971647
+    )
+    PitchConfiguration = nil
+    AlignmentValidator = ~/AngularAlignementValidator
+)
+export Descriptor_AimManager_yaw_constrained_slow_pitch_constrained_slow is TAimManagerDescriptor
+(
+    DescriptorId = GUID:{20ad822e-c463-48cf-845c-24afccccded8}
+    ClassNameForDebug = 'yaw constrained slow pitch constrained slow'
+    YawConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{66449af4-eafd-4555-a950-8cc1866048c3}
+        Min = -1.5707963267948966
+        Max = 2.0943951023931953
+        Start = 0.0
+        AngularVelocity = 0.08726646259971647
+    )
+    PitchConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{07eb0b83-2e88-4849-9d60-c4bf55b76e13}
+        Min = -0.2617993877991494
+        Max = 1.0471975511965976
+        Start = 0.0
+        AngularVelocity = 0.08726646259971647
+    )
+    AlignmentValidator = ~/AngularAlignementValidator
+)
+export Descriptor_AimManager_yaw_free_fast is TAimManagerDescriptor
+(
+    DescriptorId = GUID:{477f71c9-8fc8-4e84-bd7d-98d54aa55311}
+    ClassNameForDebug = 'yaw free fast'
+    YawConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{ab34baaa-5034-4bfe-80d9-efd0a00e4a1d}
+        Min = -3.141592653589793
+        Max = 3.141592653589793
+        Start = 0.0
+        AngularVelocity = 0.7853981633974483
+    )
+    PitchConfiguration = nil
+    AlignmentValidator = ~/AngularAlignementValidator
+)
+export Descriptor_AimManager_yaw_free_fast_pitch_free_fast is TAimManagerDescriptor
+(
+    DescriptorId = GUID:{1d1f303d-39ca-4bf8-8ef2-3499041f3431}
+    ClassNameForDebug = 'yaw free fast pitch free fast'
+    YawConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{1dbb7637-50fc-4e2b-9e33-8b87271c759b}
+        Min = -3.141592653589793
+        Max = 3.141592653589793
+        Start = 0.0
+        AngularVelocity = 0.7853981633974483
+    )
+    PitchConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{7cd562b8-c627-478b-b262-fc4c323e2ee2}
+        Min = -1.5707963267948966
+        Max = 1.5707963267948966
+        Start = 0.0
+        AngularVelocity = 0.7853981633974483
+    )
+    AlignmentValidator = ~/AngularAlignementValidator
+)
+export Descriptor_AimManager_yaw_free_medium is TAimManagerDescriptor
+(
+    DescriptorId = GUID:{effe9ed9-218b-473a-9e49-067cf9d1eb31}
+    ClassNameForDebug = 'yaw free medium'
+    YawConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{3667ef7a-cdd8-4e23-9576-aad4a104d22d}
+        Min = -3.141592653589793
+        Max = 3.141592653589793
+        Start = 0.0
+        AngularVelocity = 0.4363323129985824
+    )
+    PitchConfiguration = nil
+    AlignmentValidator = ~/AngularAlignementValidator
+)
+export Descriptor_AimManager_yaw_free_medium_pitch_free_medium is TAimManagerDescriptor
+(
+    DescriptorId = GUID:{e200e6e6-8a33-406c-a1e1-bd0f86724543}
+    ClassNameForDebug = 'yaw free medium pitch free medium'
+    YawConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{512c92b6-5aa5-4838-bd9c-af93420a0118}
+        Min = -3.141592653589793
+        Max = 3.141592653589793
+        Start = 0.0
+        AngularVelocity = 0.4363323129985824
+    )
+    PitchConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{28f8e06d-66f6-44f6-95cb-391af67368a5}
+        Min = -1.5707963267948966
+        Max = 1.5707963267948966
+        Start = 0.0
+        AngularVelocity = 0.4363323129985824
+    )
+    AlignmentValidator = ~/AngularAlignementValidator
+)
+export Descriptor_AimManager_yaw_free_slow is TAimManagerDescriptor
+(
+    DescriptorId = GUID:{d88a7a9d-df91-4b13-b011-46b5ad445a8b}
+    ClassNameForDebug = 'yaw free slow'
+    YawConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{4b63416a-052c-49c3-bdc9-2577b55dc5e7}
+        Min = -3.141592653589793
+        Max = 3.141592653589793
+        Start = 0.0
+        AngularVelocity = 0.08726646259971647
+    )
+    PitchConfiguration = nil
+    AlignmentValidator = ~/AngularAlignementValidator
+)
+export Descriptor_AimManager_yaw_free_slow_pitch_free_slow is TAimManagerDescriptor
+(
+    DescriptorId = GUID:{e8590ad1-3bf6-444a-9fbe-f919f7d2a90a}
+    ClassNameForDebug = 'yaw free slow pitch free slow'
+    YawConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{142e1cc5-abec-4103-a902-baeb65cbbd0c}
+        Min = -3.141592653589793
+        Max = 3.141592653589793
+        Start = 0.0
+        AngularVelocity = 0.08726646259971647
+    )
+    PitchConfiguration = TAxisConfigurationDescriptor
+    (
+        DescriptorId = GUID:{99fa9a3d-23ae-4f0a-8f14-80fa1c73b9f8}
+        Min = -1.5707963267948966
+        Max = 1.5707963267948966
+        Start = 0.0
+        AngularVelocity = 0.08726646259971647
+    )
+    AlignmentValidator = ~/AngularAlignementValidator
+)

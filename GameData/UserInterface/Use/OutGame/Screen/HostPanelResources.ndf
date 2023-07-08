@@ -1,0 +1,65 @@
+
+private CreateButton is ConfirmButton
+(
+    ElementName = "CreateButton"
+    TextToken = "BTN_CREATE"
+)
+
+private LocCancelButton is CancelButton
+(
+    ElementName = "CancelButton"
+    TextToken = "BTN_CANCEL"
+)
+
+private ModalWindowHost is SpecificModaleWindowFrame
+(
+    UniqueName = "ModalWindowHostOrAutoMatch"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [848.0, 0.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+
+    ContentRelativeWidthHeight = [1.0, 0.0]
+    ContentMagnifiableWidthHeight = [0.0, 250.0]
+
+    TitleToken = 'T_HOST'
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/CreateButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/LocCancelButton ),
+    ]
+)
+
+private ModalWindowCreateAutoMatch is SpecificModaleWindowFrame
+(
+    UniqueName = "ModalWindowHostOrAutoMatch"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [848.0, 0.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+
+    ContentRelativeWidthHeight = [1.0, 0.0]
+    ContentMagnifiableWidthHeight = [0.0, 552.0]
+    TitleToken = 'T_RANKED'
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/CreateButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/LocCancelButton ),
+    ]
+)
+
+export HostPanelResources is TUISpecificOutGameHostPanelResources
+(
+    ModalWindowHost                         = ~/ModalWindowHost
+    ModalWindowCreateAutoMatch              = ~/ModalWindowCreateAutoMatch
+
+    ContentDescriptor                       = ~/UISpecificOutGameHostPanelViewDescriptor
+)

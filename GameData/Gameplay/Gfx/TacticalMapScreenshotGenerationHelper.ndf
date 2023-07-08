@@ -1,0 +1,31 @@
+export TacticalMapScreenShotGenerationHelper is TTacticalMapScreenShotGenerationHelper
+(
+    CameraMoverClient   = $/Camera/CameraMoverTargetClientForOverviewScreenshot
+    Camera              = $/M3D/Camera/CameraPrincipale
+    Scene3D             = $/M3D/Scene/Scene_PostProcess
+    WantedResolution    = [1024, 1024]
+    ZonePosPixelShift   = [0, 10]
+
+    InterfaceLayersToHide =
+    [
+        $/M3D/Scene/Scene_2D_Interface/Calque_Interface,
+        $/M3D/Scene/Scene_2D_Interface/Calque_Interface_Text,
+        $/M3D/Scene/Scene_2D_Interface/Calque_FX_First,
+        $/M3D/Scene/Scene_2D_Interface/Calque_FX_Billboard,
+        $/M3D/Scene/Scene_2D_Interface/Calque_FX,
+    ]
+
+    InterfaceLayerArraysToHide =
+    [
+        $/M3D/Scene/Scene_2D_Interface/CalqueArray_Objective,
+        $/M3D/Scene/Scene_2D_Interface/CalqueArray_Labels,
+        $/M3D/Scene/Scene_2D_Interface/CalqueArray_2DInterface_InGame,
+        $/M3D/Scene/Scene_2D_Interface/CalqueArray_2DInterface_OutGame,
+        $/M3D/Scene/Scene_2D_AlwaysOnTopInterface/LayerArray_UIDebug,
+        $/M3D/Scene/Scene_2D_AlwaysOnTopInterface/CalqueArray_2DInterface_debug,
+
+        $/M3D/Scene/Scene3D_AfterPostProcess/debugInfo/Render/Calque_UIDebug3D_Array,
+    ]
+
+    ShootVideoMode = $/M3D/Scene/ShootVideoMode
+)

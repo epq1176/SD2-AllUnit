@@ -1,0 +1,22 @@
+export ModelFile_Flak_43_37mm is 'GameData:Assets\3D\Units\GER\Canon\Flak_36_37mm\Flak_36_37mm.Ase2NdfBin'
+
+Modele_Flak_43_37mm is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Flak_43_37mm
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Flak_43_37mm_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\Flak_36_37mm_MID\Flak_36_37mm_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Flak_43_37mm_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\LODS\Flak_36_37mm_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

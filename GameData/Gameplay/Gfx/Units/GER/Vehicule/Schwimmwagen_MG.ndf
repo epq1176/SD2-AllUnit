@@ -1,0 +1,22 @@
+export ModelFile_Schwimmwagen_MG is 'GameData:Assets\3D\Units\GER\Vehicule\Schwimmwagen\Schwimmwagen_MG.Ase2NdfBin'
+
+Modele_Schwimmwagen_MG is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Schwimmwagen_MG
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Schwimmwagen_MG_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\Schwimmwagen_MID\Schwimmwagen_MG_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Schwimmwagen_MG_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\LODS\Schwimmwagen_MG_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

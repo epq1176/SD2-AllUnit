@@ -1,0 +1,22 @@
+export ModelFile_Scott_FR is 'GameData:Assets\3D\Units\FR\Char\M8_HMC\M8_HMC.Ase2NdfBin'
+
+Modele_Scott_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Scott_FR
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Scott_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Char\M8_HMC_MID\M8_HMC_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Scott_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Char\LODS\M8_HMC_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

@@ -1,0 +1,124 @@
+template TemplateMeshDescriptor_PaK_97_38_75mm_HON [ ModelFile ] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+
+// ModelFile_Boites is 'GameData:Assets\3D\Units\USA\Infanterie\GI\Boites.Ase2NdfBin'
+
+Gfx_PaK_97_38_75mm_HON_1 is TDepictionTemplate //servant gauche
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            ( MeshDescriptor = TemplateMeshDescriptor_PaK_97_38_75mm_HON( ModelFile = ModelFile_Kanonier_HON) ),
+        DepictionDescriptor_LOD_Mid             ( MeshDescriptor = TemplateMeshDescriptor_PaK_97_38_75mm_HON( ModelFile = ModelFile_Kanonier_HON_LOW) ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     ( MeshDescriptor = TemplateMeshDescriptor_PaK_97_38_75mm_HON( ModelFile = ModelFile_Kanonier_HON) ),
+        DepictionDescriptor_LOD_WreckedMid      ( MeshDescriptor = TemplateMeshDescriptor_PaK_97_38_75mm_HON( ModelFile = ModelFile_Kanonier_HON_LOW) ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Gauche
+    // Actions = Weapons_Mortar
+)
+
+Gfx_PaK_97_38_75mm_HON_2 is TDepictionTemplate //servant droite
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            ( MeshDescriptor = TemplateMeshDescriptor_PaK_97_38_75mm_HON( ModelFile = ModelFile_Kanonier_HON_2) ),
+        DepictionDescriptor_LOD_Mid             ( MeshDescriptor = TemplateMeshDescriptor_PaK_97_38_75mm_HON( ModelFile = ModelFile_Kanonier_HON_2_LOW) ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     ( MeshDescriptor = TemplateMeshDescriptor_PaK_97_38_75mm_HON( ModelFile = ModelFile_Kanonier_HON_2) ),
+        DepictionDescriptor_LOD_WreckedMid      ( MeshDescriptor = TemplateMeshDescriptor_PaK_97_38_75mm_HON( ModelFile = ModelFile_Kanonier_HON_2_LOW) ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Droite
+    // Actions = Weapons_Mortar
+)
+
+//Arme
+// private AnimationPath_PaK_97_38_75mm_HON is 'GameData:Assets\3D\Units\USA\Canon\M5_76mm\'
+// Canon_76mm_US_Anim_Tree is DepictionAnimationTreeNode
+// (
+//     IAStates = AnimationStateAll
+//     IAOldStates = AnimationStateAll
+//     DefaultAnimationStates = AnimationStateEngineStopping
+//     Animations =
+//     (
+//         [TemplateAnimation(Animation= 'M5_76mm' + '.Ase2NdfBin' Loop=false EventAnimation=false AnimationPath = AnimationPath_PaK_97_38_75mm_HON Mask = AnimationMask_All())]
+//     )
+
+//     Childs =
+//     [
+//         TAnimNode(IAStates = AnimationStateInstantFire                                                                  Anim = 'M5_76mm_Fire'       Loop = false EventAnimation = true AnimationPath = AnimationPath_PaK_97_38_75mm_HON Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStopping | AnimationStateEngineStopTurning                             Anim = 'M5_76mm_Deploy'     Loop = false AnimationPath = AnimationPath_PaK_97_38_75mm_HON Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStarting | AnimationStateEngineStartTurning                            Anim = 'M5_76mm_Fold'       Loop = false AnimationPath = AnimationPath_PaK_97_38_75mm_HON Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateLeft                                           Anim = 'M5_76mm_Turn_Left'  Loop = true  AnimationPath = AnimationPath_PaK_97_38_75mm_HON Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateRight                                          Anim = 'M5_76mm_Turn_Right' Loop = true  AnimationPath = AnimationPath_PaK_97_38_75mm_HON Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateMoving | AnimationStateEngineRunning                                         Anim = 'M5_76mm_Move'       Loop = true  AnimationPath = AnimationPath_PaK_97_38_75mm_HON Mask = AnimationMask_All()
+//             Childs = [
+//                 TAnimNode(IAStates = AnimationStateBack                                                                 Anim = 'M5_76mm_Move_Back'  Loop = true  AnimationPath = AnimationPath_PaK_97_38_75mm_HON Mask = AnimationMask_All()),
+//         ]),
+//     ]
+// )
+
+// export DepictionOperator_SkeletalAnimation_PaK_97_38_75mm_HON is Template_DepictionOperator_SkeletalAnimation_With_Tree_TEST(AnimationTree = Canon_76mm_US_Anim_Tree)
+
+Gfx_PaK_97_38_75mm_HON_Weapon is TDepictionTemplate //arme
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = CommonDepictionSelector
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_PaK_97_38_75mm_HON ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_PaK_97_38_75mm_HON_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_PaK_97_38_75mm_HON_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor =  Modele_PaK_97_38_75mm_HON ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor =  Modele_PaK_97_38_75mm_HON_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor =  Modele_PaK_97_38_75mm_HON_LOW ),
+        ]
+
+        SubDepictions = []
+        Operators = //DepictionOperator_SkeletalAnimation_PaK_97_38_75mm_HON +
+            DepictionOperatorNode_ResetUnit +
+            DepictionOperatorNode_Propulsion_2Wheels_Canon +
+            DepictionOperator_Carriable_Canon +
+            DepictionOperator_TurretAim_Canon +
+            DepictionOperator_TurretRecoil_Canon
+        Actions = Weapons_PaK_97_38_75mm_HON
+    )
+
+SubDepiction_Servant_1_PaK_97_38_75mm_HON is TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_PaK_97_38_75mm_HON_1 )
+SubDepiction_Servant_2_PaK_97_38_75mm_HON is TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_PaK_97_38_75mm_HON_2 )
+SubDepiction_Canon_AT_PaK_97_38_75mm_HON is TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_PaK_97_38_75mm_HON_Weapon )
+
+Gfx_PaK_97_38_75mm_HON is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate //les boites
+    (
+        OverrideMeshBoundingBoxMin = [-500,-500,0]
+        OverrideMeshBoundingBoxMax = [ 500, 500,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_PaK_97_38_75mm_HON( ModelFile = ModelFile_Boites) ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_PaK_97_38_75mm_HON( ModelFile = ModelFile_Boites) ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_PaK_97_38_75mm_HON( ModelFile = ModelFile_Boites) ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_PaK_97_38_75mm_HON( ModelFile = ModelFile_Boites) ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_PaK_97_38_75mm_HON( ModelFile = ModelFile_Boites) ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_PaK_97_38_75mm_HON( ModelFile = ModelFile_Boites) ),
+        ]
+        NodeNamesForSelection = [ 'Canon_AT', 'servant_G' , 'servant_D']
+        SubDepictions = [SubDepiction_Servant_1_PaK_97_38_75mm_HON,
+                        SubDepiction_Servant_2_PaK_97_38_75mm_HON,
+                        SubDepiction_Canon_AT_PaK_97_38_75mm_HON]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+    )
+)

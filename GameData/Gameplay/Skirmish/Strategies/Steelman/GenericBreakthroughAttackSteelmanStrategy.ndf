@@ -1,0 +1,388 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export GenericBreakthroughAttackSteelmanStrategy is TIAGeneralStrategy
+(
+    StrategyName = "StmBTAtkAI"
+    FirstGenerator = GenBTSteelmanAtk_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    ShouldUseTaggedCorridorsForTouchDown = true
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    DefaultIncomeForDynamicBudget = 3
+    TransitionList =
+    [
+        GenBTSteelmanAtk_Transition_StartToPhaseC,
+        GenBTSteelmanAtk_Transition_StartToPhaseB,
+        GenBTSteelmanAtk_Transition_StartToPhaseA,
+        GenBTSteelmanAtk_Transition_StartToGeneric,
+        GenBTSteelmanAtk_Transition_DeployToPhaseA,
+        GenBTSteelmanAtk_Transition_Phase_B,
+        GenBTSteelmanAtk_Transition_Phase_C,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export GenBTSteelmanAtk_Condition_GotoGeneric is TSequenceCondition_True
+(
+)
+//-------------------------------------------------------------------------
+export GenBTSteelmanAtk_Condition_CommandPhase is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+//-------------------------------------------------------------------------
+export GenBTSteelmanAtk_Condition_PhaseB is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_B'
+)
+//-------------------------------------------------------------------------
+export GenBTSteelmanAtk_Condition_PhaseC is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_C'
+)
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export GenBTSteelmanAtk_Transition_StartToPhaseC is TIAGeneralStrategyTransition
+(
+    Origine = GenBTSteelmanAtk_Choose_Strategy
+    Condition = GenBTSteelmanAtk_Condition_PhaseC
+    Destination = GenBTSteelmanAtk_Phase_C
+)
+export GenBTSteelmanAtk_Transition_StartToPhaseB is TIAGeneralStrategyTransition
+(
+    Origine = GenBTSteelmanAtk_Choose_Strategy
+    Condition = GenBTSteelmanAtk_Condition_PhaseB
+    Destination = GenBTSteelmanAtk_Phase_B
+)
+export GenBTSteelmanAtk_Transition_StartToPhaseA is TIAGeneralStrategyTransition
+(
+    Origine = GenBTSteelmanAtk_Choose_Strategy
+    Condition = GenBTSteelmanAtk_Condition_CommandPhase
+    Destination = GenBTSteelmanAtk_Phase_A
+)
+export GenBTSteelmanAtk_Transition_StartToGeneric is TIAGeneralStrategyTransition
+(
+    Origine = GenBTSteelmanAtk_Choose_Strategy
+    Condition = GenBTSteelmanAtk_Condition_GotoGeneric
+    Destination = GenBTSteelmanAtk_PhaseDeploiement
+)
+//-------------------------------------------------------------------------
+export GenBTSteelmanAtk_Transition_DeployToPhaseA is TIAGeneralStrategyTransition
+(
+    Origine = GenBTSteelmanAtk_PhaseDeploiement
+    Condition = GenBTSteelmanAtk_Condition_CommandPhase
+    Destination = GenBTSteelmanAtk_Phase_A
+)
+//-------------------------------------------------------------------------
+export GenBTSteelmanAtk_Transition_Phase_B is TIAGeneralStrategyTransition
+(
+    Origine = GenBTSteelmanAtk_Phase_A
+    Condition = GenBTSteelmanAtk_Condition_PhaseB
+    Destination = GenBTSteelmanAtk_Phase_B
+)
+//-------------------------------------------------------------------------
+export GenBTSteelmanAtk_Transition_Phase_C is TIAGeneralStrategyTransition
+(
+    Origine = GenBTSteelmanAtk_Phase_B
+    Condition = GenBTSteelmanAtk_Condition_PhaseC
+    Destination = GenBTSteelmanAtk_Phase_C
+)
+//-------------------------------------------------------------------------
+
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export GenBTSteelmanAtk_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //~/GenBTSteelmanAtk_Support_AntiTank,
+        ~/GenBTSteelmanAtk_Support_Transports,
+        ~/GenBTSteelmanAtk_Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export GenBTSteelmanAtk_PhaseDeploiement is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/GenBTSteelmanAtk_Support_AntiTank,
+        ~/GenBTSteelmanAtk_Support_Transports,
+
+        ~/GenBTSteelmanAtk_Supply_Skirmish,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        // Grosse attaque
+        ~/GenBTSteelmanAtk_Attack_Main,              // Plusieurs tanks pour un budget donné // 200 => un cmd pas cher, une reco pas cher, et le reste de tanks pour fill le budget en random.
+        ~/GenBTSteelmanAtk_Artillery_Support,        // Artillerie pas chère                 //  80
+        ~/GenBTSteelmanAtk_Artillery_TriggerHappy_1for4Corridors,
+
+        // Reste du front
+        ~/GenBTSteelmanAtk_Attack_Adaptive,          // ~100
+        ~/GenBTSteelmanAtk_Attack_Adaptive,          // ~100
+        ~/GenBTSteelmanAtk_Attack_Adaptive,          // ~100
+        ~/GenBTSteelmanAtk_Attack_Filler,            // budget 40
+        ~/GenBTSteelmanAtk_Reco,            // 40 par reco
+        ~/GenBTSteelmanAtk_AirReco,
+        ~/GenBTSteelmanAtk_Reco,            // 40 par reco
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/GenBTSteelmanAtk_Supply_Skirmish_Allied,
+
+    ] + ~/GenBTSteelmanAtk_Defenses_Airstrike_Arti_Shuffle_Deploy
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+        // Dans les difficultés supérieures il faudra surement maintenir
+        // ça avec des maintain à la phase d'après pour être sur qu'on
+        // produise de nouvelles unités
+    +   ~/GenBTSteelmanAtk_Scaling
+    +   ~/GenBTSteelmanAtk_Scaling
+    +   ~/GenBTSteelmanAtk_Scaling
+    +   ~/GenBTSteelmanAtk_Scaling
+    +   ~/GenBTSteelmanAtk_Scaling
+    +   ~/GenBTSteelmanAtk_Scaling
+    +   ~/GenBTSteelmanAtk_Scaling
+    +   ~/GenBTSteelmanAtk_Scaling
+    +   ~/GenBTSteelmanAtk_Scaling
+
+)
+//-------------------------------------------------------------------------
+export GenBTSteelmanAtk_Phase_A is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 3
+    GeneratorList =
+    [
+        // Même chose que la phase de déploiement mais avec les Défenses
+        // prioritaires sur les attaques. L'idée est de lancer ses attaques dès
+        // le début, mais de renforcer les backlines avant de récupérer de nos pertes
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/GenBTSteelmanAtk_Support_AntiTank,
+        ~/GenBTSteelmanAtk_Support_Transports,
+
+        ~/GenBTSteelmanAtk_Supply_Skirmish,
+        ~/GenBTSteelmanAtk_Attack_Filler,
+
+        //------------------------------
+        // Défenses prioritaires
+        //------------------------------
+        // Statiques pour tenir le terrain
+        //~/GenBTSteelmanAtk_Defense_Dynamic_Adaptive, // Canon AT - Chasseur de char - ATInf - HMG - Flamer // 85
+        //~/GenBTSteelmanAtk_Defense_Dynamic_Adaptive,
+        ~/GenBTSteelmanAtk_Defense_Static_AA,
+        //~/GenBTSteelmanAtk_Defense_Dynamic_Adaptive,
+
+        //------------------------------
+        // Support de la main Attack
+        //------------------------------
+        ~/GenBTSteelmanAtk_Attack_MBT_Support,       // Un gros tank à voir si on le passe en phase A // DISABLE REINFORCEMENTS + TGenerationType_RestrictedNumberOfLaunch 1
+        ~/GenBTSteelmanAtk_Artillery_TriggerHappy_1for4Corridors,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/GenBTSteelmanAtk_Attack_Main,              // Plusieurs tanks pour un budget donné // 200
+        ~/GenBTSteelmanAtk_Artillery_Support,        // Artillerie pas chère                 //  80
+        ~/GenBTSteelmanAtk_Artillery_Expensive,
+
+        ~/GenBTSteelmanAtk_Attack_Adaptive,  // Faire du code pour adapater le budget en fonction de l'income
+        ~/GenBTSteelmanAtk_Attack_Adaptive,
+        ~/GenBTSteelmanAtk_Attack_Adaptive,
+
+        // On insère ici une attaque qui va chercher les objectifs.
+        ~/GenBTSteelmanAtk_Attack_Objectives,
+
+        ~/GenBTSteelmanAtk_Airstrike_Offense,
+        ~/GenBTSteelmanAtk_Airstrike_Defense,
+
+        ~/GenBTSteelmanAtk_SuperCommander,
+
+        ~/GenBTSteelmanAtk_Reco,
+        ~/GenBTSteelmanAtk_Attack_MBT, // MBT devient low prio en phase A pour éviter de pomper trop de thune
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/GenBTSteelmanAtk_Maintain_CorridorDefenses,
+        ~/GenBTSteelmanAtk_Supply_Skirmish_Allied,
+
+    ] + ~/GenBTSteelmanAtk_Airstrike_Arti_Shuffle // On sort les défenses d'ici pour les mettre plus haut dans la prio
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+        // Dans les difficultés supérieures il faudra surement maintenir
+        // ça avec des maintain à la phase d'après pour être sur qu'on
+        // produise de nouvelles unités
+    +   ~/GenBTSteelmanAtk_Scaling
+    +   ~/GenBTSteelmanAtk_Scaling
+    +   ~/GenBTSteelmanAtk_Scaling
+    +   ~/GenBTSteelmanAtk_Scaling
+    +   ~/GenBTSteelmanAtk_Scaling
+    +   ~/GenBTSteelmanAtk_Scaling
+    +   ~/GenBTSteelmanAtk_Scaling
+    +   ~/GenBTSteelmanAtk_Scaling
+    +   ~/GenBTSteelmanAtk_Scaling
+)
+//-------------------------------------------------------------------------
+private template GenBTSteelmanAtk_Phases_B_and_C_template
+[
+]
+is TSequenceGeneratorDescriptor
+(
+    // Les défenses prioritaires disparaissent, on lance un nouveau set d'attaques
+    // On ajoute des défenses non prioritaires dynamiques
+    NbMacroActionAllowedToProduceSimultaneous = 2
+    GeneratorList =
+    [
+        ~/GenBTSteelmanAtk_Maintain_CorridorAttacks,
+        ~/GenBTSteelmanAtk_Maintain_ObjectiveAttacks,
+        ~/GenBTSteelmanAtk_Maintain_CorridorDefenses,
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/GenBTSteelmanAtk_Support_AntiTank,
+        ~/GenBTSteelmanAtk_Support_Transports,
+        ~/GenBTSteelmanAtk_Supply_Skirmish,
+        ~/GenBTSteelmanAtk_Attack_Filler,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/GenBTSteelmanAtk_Attack_Objectives,
+
+        ~/GenBTSteelmanAtk_Attack_Adaptive,  // Faire du code pour adapater le budget en fonction de l'income
+        ~/GenBTSteelmanAtk_Attack_Adaptive,
+        ~/GenBTSteelmanAtk_Attack_Adaptive,
+
+        ~/GenBTSteelmanAtk_SuperCommander,
+
+        ~/GenBTSteelmanAtk_Attack_Main,              // Plusieurs tanks pour un budget donné // 200
+        ~/GenBTSteelmanAtk_Artillery_Support,        // Artillerie pas chère                 //  80
+        ~/GenBTSteelmanAtk_Artillery_Expensive,
+
+        //------------------------------
+        // Support de la main Attack
+        //------------------------------
+        ~/GenBTSteelmanAtk_Attack_MBT,       // On enlève le status support // DISABLE REINFORCEMENTS + TGenerationType_RestrictedNumberOfLaunch 1
+
+        ~/GenBTSteelmanAtk_Airstrike_Offense,
+        ~/GenBTSteelmanAtk_Airstrike_Defense,
+
+        // Maintien
+        ~/GenBTSteelmanAtk_Reco,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/GenBTSteelmanAtk_Supply_Skirmish_Allied,
+
+
+    ] + ~/GenBTSteelmanAtk_Defenses_Airstrike_Arti_Shuffle
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+        // Dans les difficultés supérieures il faudra surement maintenir
+        // ça avec des maintain à la phase d'après pour être sur qu'on
+        // produise de nouvelles unités
+    +   ~/GenBTSteelmanAtk_Scaling
+    +   ~/GenBTSteelmanAtk_Scaling
+    +   ~/GenBTSteelmanAtk_Scaling
+    +   ~/GenBTSteelmanAtk_Scaling
+    +   ~/GenBTSteelmanAtk_Scaling
+    +   ~/GenBTSteelmanAtk_Scaling
+    +   ~/GenBTSteelmanAtk_Scaling
+    +   ~/GenBTSteelmanAtk_Scaling
+    +   ~/GenBTSteelmanAtk_Scaling
+)
+//-------------------------------------------------------------------------
+export GenBTSteelmanAtk_Phase_B is GenBTSteelmanAtk_Phases_B_and_C_template()
+//-------------------------------------------------------------------------
+export GenBTSteelmanAtk_Phase_C is GenBTSteelmanAtk_Phases_B_and_C_template()
+//-------------------------------------------------------------------------
+
+// Le concept de ces blocs de missions
+// est d'à la fois défendre ses arrières
+// mais aussi de faire usage d'unités diverses
+// (artillerie et avions) pour débloquer
+// les situations et appuyer le reste des missions
+GenBTSteelmanAtk_Defenses_Airstrike_Arti_Shuffle_Deploy is
+[
+    ~/GenBTSteelmanAtk_Airstrike_Assault,
+    ~/GenBTSteelmanAtk_Artillery_Expensive,
+    ~/GenBTSteelmanAtk_Defense_Static_AA,
+    ~/GenBTSteelmanAtk_Airstrike_Offense,
+    ~/GenBTSteelmanAtk_AirReco,
+    ~/GenBTSteelmanAtk_Airstrike_Defense,
+    ~/GenBTSteelmanAtk_Artillery_TriggerHappy_1for4Corridors,
+]
+
+GenBTSteelmanAtk_Defenses_Airstrike_Arti_Shuffle is
+[
+    ~/GenBTSteelmanAtk_Defense_Dynamic_Adaptive,
+    ~/GenBTSteelmanAtk_Airstrike_Assault,
+    ~/GenBTSteelmanAtk_Artillery_Expensive,
+    ~/GenBTSteelmanAtk_Defense_Dynamic_Adaptive,
+    ~/GenBTSteelmanAtk_Artillery_TriggerHappy,
+    ~/GenBTSteelmanAtk_Defense_Static_AA,
+    ~/GenBTSteelmanAtk_Defense_Dynamic_Adaptive,
+    ~/GenBTSteelmanAtk_Airstrike_Offense,
+    ~/GenBTSteelmanAtk_AirReco,
+    ~/GenBTSteelmanAtk_Airstrike_Defense,
+    ~/GenBTSteelmanAtk_Artillery_TriggerHappy_1for4Corridors,
+    ~/GenBTSteelmanAtk_Maintain_AirStrike,
+    ~/GenBTSteelmanAtk_Maintain_Artillery,
+]
+
+GenBTSteelmanAtk_Airstrike_Arti_Shuffle is
+[
+    ~/GenBTSteelmanAtk_Airstrike_Assault,
+    ~/GenBTSteelmanAtk_Artillery_Expensive,
+    ~/GenBTSteelmanAtk_Airstrike_Offense,
+    ~/GenBTSteelmanAtk_AirReco,
+    ~/GenBTSteelmanAtk_Airstrike_Defense,
+    ~/GenBTSteelmanAtk_Artillery_TriggerHappy_1for4Corridors,
+    ~/GenBTSteelmanAtk_Maintain_AirStrike,
+    ~/GenBTSteelmanAtk_Maintain_Artillery,
+]
+
+GenBTSteelmanAtk_Scaling is
+[
+    ~/GenBTSteelmanAtk_Attack_Main_Autogen,
+    ~/GenBTSteelmanAtk_Attack_Adaptive_Autogen,
+    ~/GenBTSteelmanAtk_Attack_Objectives_Autogen,
+    ~/GenBTSteelmanAtk_Artillery_Expensive_Autogen,
+    ~/GenBTSteelmanAtk_Attack_Adaptive_Autogen,
+    ~/GenBTSteelmanAtk_Defense_Dynamic_Adaptive_Autogen,
+    ~/GenBTSteelmanAtk_Defense_Dynamic_Adaptive_Autogen,
+    ~/GenBTSteelmanAtk_Airstrike_Defense_Autogen,
+    ~/GenBTSteelmanAtk_Defense_Dynamic_Adaptive_Autogen,
+    ~/GenBTSteelmanAtk_Defense_Static_AA_Autogen,
+    ~/GenBTSteelmanAtk_Attack_MBT_Support_Autogen,
+    ~/GenBTSteelmanAtk_Artillery_TriggerHappy_Autogen,
+    ~/GenBTSteelmanAtk_Airstrike_Offense_Autogen,
+    ~/GenBTSteelmanAtk_Artillery_TriggerHappy_Autogen,
+    ~/GenBTSteelmanAtk_Airstrike_Assault_Autogen,
+]
+

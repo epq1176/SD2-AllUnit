@@ -1,0 +1,22 @@
+export ModelFile_Panzer_38t_Bef_HON is 'GameData:Assets\3D\Units\HON\Char\Panzer_38t_Bef_HON\Panzer_38t_Bef_HON.Ase2NdfBin'
+
+Modele_Panzer_38t_Bef_HON is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Panzer_38t_Bef_HON
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_38t_Bef_HON_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\HON\Char\Panzer_38t_Bef_HON_MID\Panzer_38t_Bef_HON_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_38t_Bef_HON_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\HON\Char\LODS\Panzer_38t_Bef_HON_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

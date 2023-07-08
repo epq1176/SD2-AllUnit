@@ -1,0 +1,22 @@
+export ModelFile_Cromwell_V_CMD_POL is 'GameData:Assets\3D\Units\POL\Char\Cromwell_V\Cromwell_V.Ase2NdfBin'
+
+export Modele_Cromwell_V_CMD_POL is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Cromwell_V_CMD_POL
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Cromwell_V_CMD_POL_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Char\Cromwell_V_MID\Cromwell_V_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Cromwell_V_CMD_POL_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Char\LODS\Cromwell_V_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

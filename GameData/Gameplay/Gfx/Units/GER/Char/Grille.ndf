@@ -1,0 +1,23 @@
+export ModelFile_Grille is 'GameData:Assets\3D\Units\GER\Char\Grille_Ausf_M\Grille_Ausf_M.Ase2NdfBin'
+
+Modele_Grille is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Grille
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Grille_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\Grille_Ausf_M_MID\Grille_Ausf_M_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Grille_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\Grille_Ausf_M_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+

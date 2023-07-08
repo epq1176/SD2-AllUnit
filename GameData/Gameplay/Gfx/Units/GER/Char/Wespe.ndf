@@ -1,0 +1,23 @@
+export ModelFile_Wespe is 'GameData:Assets\3D\Units\GER\Char\Wespe\Wespe.Ase2NdfBin'
+
+Modele_Wespe is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Wespe
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Wespe_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\Wespe_MID\Wespe_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Wespe_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\Wespe_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+

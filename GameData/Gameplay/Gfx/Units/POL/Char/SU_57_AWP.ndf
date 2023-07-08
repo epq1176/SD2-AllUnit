@@ -1,0 +1,22 @@
+export ModelFile_SU_57_AWP is 'GameData:Assets\3D\Units\AWP\Vehicule\SU_57_AWP\SU_57_AWP.Ase2NdfBin'
+
+export Modele_SU_57_AWP is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_SU_57_AWP
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_SU_57_AWP_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\AWP\Vehicule\SU_57_AWP_MID\SU_57_AWP_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_SU_57_AWP_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\AWP\Vehicule\LODS\SU_57_AWP_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

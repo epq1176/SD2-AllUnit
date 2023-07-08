@@ -1,0 +1,203 @@
+
+
+// evenements moteur, Enum C++ ! ne pas changer l'ordre.
+TMusicInGameEvent_NewBuildingProductionStarted is 0
+TMusicInGameEvent_NewPlayerBuildingDeloyed is 1
+TMusicInGameEvent_NewUnitProduction is 2
+TMusicInGameEvent_NewUnitSpawned is 3
+
+TMusicInGameEvent_NewRusePlayer is 4
+TMusicInGameEvent_NewRuseAlliance is 5
+TMusicInGameEvent_NewRuseEnemy is 6
+TMusicInGameEvent_Attack is 7
+// -----------------------------------------------------
+
+// Index des jauge et des musiques.
+ProgressIndex is 0
+BattleIndex is 1
+MysteryIndex is 2
+// -----------------------------------------------------
+
+
+// temps avant que la jauge ne redescende.
+DecreaseDelay_Progress is 7.0
+DecreaseDelay_Mystery is 7.0
+DecreaseDelay_Battle is 7.0
+
+//
+PlayListLiveDuration_Progress is 15.0
+PlayListLiveDuration_Mystery is 15.0
+PlayListLiveDuration_Battle is 15.0
+
+// Temp de mise a jour. Toutes les X secondes on determine quelle musique jouer.
+MusicPlayingDuration_Progress is 45.0
+MusicPlayingDuration_Mystery is 45.0
+MusicPlayingDuration_Battle is 45.0
+
+// export pour les mapsconstantes.
+{   // CYRILT  on desactive les musiques interactives ingame
+export musicInGame is TMusicInGameDescriptor
+(
+
+    PlayLists =
+    [
+        // ne pas changer l'ordre sans changer l'index des constantes.
+
+        // ProgressIndex is 0
+        TMusicInGamePlayListDescriptor
+        (
+            Musics =
+            [
+                $/Misc/Musics/RUSE_progression1,
+                $/Misc/Musics/RUSE_progression2,
+                $/Misc/Musics/RUSE_progression3,
+                $/Misc/Musics/RUSE_progression4,
+                $/Misc/Musics/RUSE_progression5,
+            ]
+        ),
+
+        // BattleIndex is 1
+        TMusicInGamePlayListDescriptor
+        (
+            Musics =
+            [
+                $/Misc/Musics/RUSE_battle1,
+                $/Misc/Musics/RUSE_battle2,
+                $/Misc/Musics/RUSE_battle3,
+                $/Misc/Musics/RUSE_battle4
+            ]
+        ),
+
+        // MysteryIndex is 2
+        TMusicInGamePlayListDescriptor
+        (
+            Musics =
+            [
+                $/Misc/Musics/RUSE_mystery1,
+                $/Misc/Musics/RUSE_mystery2,
+                $/Misc/Musics/RUSE_mystery3,
+                $/Misc/Musics/RUSE_mystery4,
+                $/Misc/Musics/RUSE_mystery5,
+                $/Misc/Musics/RUSE_mystery8
+            ]
+        )
+
+    ]
+
+    Gauges =
+    [
+        // ne pas changer l'ordre sans changer l'index des constantes.
+
+        // ProgressIndex is 0
+        TMusicInGameGaugeDescriptor
+        (
+            Capacity = 10
+            DecreaseValue = 0.1
+            DecreaseDelay = DecreaseDelay_Progress
+            DebugColor = D3DRGBA[168,255,168,255]
+            MusicPlayingDuration = MusicPlayingDuration_Progress
+        ),
+
+        // BattleIndex is 1
+        TMusicInGameGaugeDescriptor
+        (
+            Capacity = 10
+            DecreaseValue = 0.1
+            DecreaseDelay = DecreaseDelay_Battle
+            DebugColor = D3DRGBA[255,168,168,255]
+            MusicPlayingDuration = MusicPlayingDuration_Battle
+        ),
+
+        // MysteryIndex is 2
+        TMusicInGameGaugeDescriptor
+        (
+            Capacity = 10
+            DecreaseValue = 0.1
+            DecreaseDelay = DecreaseDelay_Mystery
+            DebugColor = D3DRGBA[168,168,255,255]
+            MusicPlayingDuration = MusicPlayingDuration_Mystery
+        ),
+    ]
+
+    Events =
+    [
+        TMusicInGameEventDescriptor
+        (
+            EventType = TMusicInGameEvent_Attack
+            TargetGauge = BattleIndex
+            GaugeImpulse = 1
+            PlayListLiveDuration = PlayListLiveDuration_Battle
+        ),
+
+        TMusicInGameEventDescriptor
+        (
+            EventType = TMusicInGameEvent_NewBuildingProductionStarted
+            TargetGauge = ProgressIndex
+            GaugeImpulse = 8
+            PlayListLiveDuration = PlayListLiveDuration_Progress
+        ),
+
+        TMusicInGameEventDescriptor
+        (
+            EventType = TMusicInGameEvent_NewPlayerBuildingDeloyed
+            TargetGauge = ProgressIndex
+            GaugeImpulse = 5
+            PlayListLiveDuration = PlayListLiveDuration_Progress
+        ),
+
+        TMusicInGameEventDescriptor
+        (
+            EventType = TMusicInGameEvent_NewUnitProduction
+            TargetGauge = ProgressIndex
+            GaugeImpulse = 3
+            PlayListLiveDuration = PlayListLiveDuration_Progress
+        ),
+
+        TMusicInGameEventDescriptor
+        (
+            EventType = TMusicInGameEvent_NewUnitSpawned
+            TargetGauge = ProgressIndex
+            GaugeImpulse = 2
+            PlayListLiveDuration = PlayListLiveDuration_Progress
+        ),
+
+        TMusicInGameEventDescriptor
+        (
+            EventType = TMusicInGameEvent_NewRusePlayer
+            TargetGauge = MysteryIndex
+            GaugeImpulse = 11
+            PlayListLiveDuration = PlayListLiveDuration_Mystery
+        ),
+
+        TMusicInGameEventDescriptor
+        (
+            EventType = TMusicInGameEvent_NewRuseAlliance
+            TargetGauge = MysteryIndex
+            GaugeImpulse = 8
+            PlayListLiveDuration = PlayListLiveDuration_Mystery
+        ),
+
+        TMusicInGameEventDescriptor
+        (
+            EventType = TMusicInGameEvent_NewRuseEnemy
+            TargetGauge = MysteryIndex
+            GaugeImpulse = 11
+            PlayListLiveDuration = PlayListLiveDuration_Mystery
+        ),
+
+    ]
+)
+}   // fin de commentaire
+
+// export pour map sound config.
+export soundAndMusic is TSoundAndMusicSwitchDescriptor
+(
+    AcknowManagerDescriptor = AcknowManager
+//     MusicInGameDescriptor = musicInGame      CYRILT on desactive les musiques interactives ingame
+    SoundServiceVolumesDescriptor = $/SoundServiceVolumes/soundServicesVolumesDescriptor
+
+    // event automatique de musique
+    TriggMusicDynamicEventEnabled = true
+    TriggMusicDynamicEventType = TMusicInGameEvent_NewBuildingProductionStarted
+    TriggMusicDynamicEventDelay = 10.0
+)

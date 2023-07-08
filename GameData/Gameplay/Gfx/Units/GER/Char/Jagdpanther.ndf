@@ -1,0 +1,22 @@
+export ModelFile_Jagdpanther is 'GameData:Assets\3D\Units\GER\Char\Jagdpanther\Jagdpanther.Ase2NdfBin'
+
+Modele_Jagdpanther is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Jagdpanther
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Jagdpanther_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\Jagdpanther_MID\Jagdpanther_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Jagdpanther_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\Jagdpanther_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

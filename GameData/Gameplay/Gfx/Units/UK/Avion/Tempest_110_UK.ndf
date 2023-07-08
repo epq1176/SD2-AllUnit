@@ -1,0 +1,29 @@
+export ModelFile_Tempest_110_UK is 'GameData:Assets\3D\Units\UK\Avion\Tempest_MkV\Tempest_MkV_bomb.Ase2NdfBin'
+
+Modele_Tempest_110_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Tempest_110_UK
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Tempest_110_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Avion\Tempest_MkV_MID\Tempest_MkV_bomb_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Tempest_110_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Avion\LODS\Tempest_MkV_bomb_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Tempest_110_UK_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Avion\Tempest_MkV\Tempest_MkV_train.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

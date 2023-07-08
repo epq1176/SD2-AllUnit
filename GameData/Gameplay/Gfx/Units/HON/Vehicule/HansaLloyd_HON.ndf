@@ -1,0 +1,22 @@
+export ModelFile_HansaLloyd_HON is 'GameData:Assets\3D\Units\HON\Vehicule\HansaLloyd_HON\HansaLloyd_HON.Ase2NdfBin'
+
+Modele_HansaLloyd_HON is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_HansaLloyd_HON
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_HansaLloyd_HON_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\HON\Vehicule\HansaLloyd_HON_MID\HansaLloyd_HON_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_HansaLloyd_HON_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\HON\Vehicule\LODS\HansaLloyd_HON_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

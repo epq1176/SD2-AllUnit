@@ -1,0 +1,122 @@
+template TemplateMeshDescriptor_RCL_LG_40_75mm [ ModelFile ] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+
+ModelFile_Boites_LG40 is 'GameData:Assets\3D\Units\GER\Canon\LG40\Boites_LG40.Ase2NdfBin'
+
+Gfx_RCL_LG_40_75mm_1 is TDepictionTemplate //servant gauche
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_RCL_LG_40_75mm( ModelFile = ModelFile_Fallschirm_GR_1)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_RCL_LG_40_75mm( ModelFile = ModelFile_Fallschirm_GR_1_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_RCL_LG_40_75mm( ModelFile = ModelFile_Fallschirm_GR_1)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_RCL_LG_40_75mm( ModelFile = ModelFile_Fallschirm_GR_1_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Gauche
+)
+
+Gfx_RCL_LG_40_75mm_2 is TDepictionTemplate //servant droite
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_RCL_LG_40_75mm( ModelFile = ModelFile_Fallschirm_GR)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_RCL_LG_40_75mm( ModelFile = ModelFile_Fallschirm_GR_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_RCL_LG_40_75mm( ModelFile = ModelFile_Fallschirm_GR)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_RCL_LG_40_75mm( ModelFile = ModelFile_Fallschirm_GR_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Droite
+)
+
+//Arme
+// private AnimationPath_RCL_LG_40_75mm is 'GameData:Assets\3D\Units\GER\Canon\LG40\'
+// RCL_LG_40_75mm_Anim_Tree is DepictionAnimationTreeNode
+// (
+//     IAStates = AnimationStateAll
+//     IAOldStates = AnimationStateAll
+//     DefaultAnimationStates = AnimationStateEngineStopping
+//     Animations =
+//     (
+//         [TemplateAnimation(Animation= 'LG40_Idle' + '.Ase2NdfBin' Loop=false EventAnimation=false AnimationPath = AnimationPath_RCL_LG_40_75mm Mask = AnimationMask_All())]
+//     )
+
+//     Childs =
+//     [
+//         TAnimNode(IAStates = AnimationStateInstantFire                                                                  Anim = 'LG40_Fire'       Loop = false EventAnimation = true AnimationPath = AnimationPath_RCL_LG_40_75mm Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStopping | AnimationStateEngineStopTurning                             Anim = 'LG40_Deploy'     Loop = false AnimationPath = AnimationPath_RCL_LG_40_75mm Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStarting | AnimationStateEngineStartTurning                            Anim = 'LG40_Fold'       Loop = false AnimationPath = AnimationPath_RCL_LG_40_75mm Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateLeft                                           Anim = 'LG40_Turn_Left'  Loop = true  AnimationPath = AnimationPath_RCL_LG_40_75mm Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateRight                                          Anim = 'LG40_Turn_Right' Loop = true  AnimationPath = AnimationPath_RCL_LG_40_75mm Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateMoving | AnimationStateEngineRunning                                         Anim = 'LG40_Move'       Loop = true  AnimationPath = AnimationPath_RCL_LG_40_75mm Mask = AnimationMask_All()
+//             Childs = [
+//                 TAnimNode(IAStates = AnimationStateBack                                                                 Anim = 'LG40_Move_Back'  Loop = true  AnimationPath = AnimationPath_RCL_LG_40_75mm Mask = AnimationMask_All()),
+//         ]),
+//     ]
+// )
+
+// DepictionOperator_SkeletalAnimation_RCL_LG_40_75mm is [Template_DepictionOperator_SkeletalAnimation_With_Tree_TEST(AnimationTree = RCL_LG_40_75mm_Anim_Tree)]
+
+Gfx_RCL_LG_40_75mm_Weapon is TDepictionTemplate //arme
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = CommonDepictionSelector
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_RCL_LG_40_75mm ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_RCL_LG_40_75mm_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_RCL_LG_40_75mm_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor =  Modele_RCL_LG_40_75mm ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor =  Modele_RCL_LG_40_75mm_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor =  Modele_RCL_LG_40_75mm_LOW ),
+        ]
+
+        SubDepictions = []
+        Operators = //DepictionOperator_SkeletalAnimation_Canon_ZIS2_57mmAT_SOV +
+            DepictionOperatorNode_ResetUnit +
+            DepictionOperatorNode_Propulsion_2Wheels_Canon +
+            DepictionOperator_Carriable_Canon +
+            DepictionOperator_TurretAim_Canon +
+            DepictionOperator_TurretRecoil_Canon
+        Actions = Weapons_RCL_LG_40_75mm
+    )
+
+SubDepiction_Servant_1_RCL_LG_40_75mm is TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_RCL_LG_40_75mm_1 )
+SubDepiction_Servant_2_RCL_LG_40_75mm is TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_RCL_LG_40_75mm_2 )
+SubDepiction_Canon_AT_RCL_LG_40_75mm is TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_RCL_LG_40_75mm_Weapon )
+
+Gfx_RCL_LG_40_75mm is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate //les boites
+    (
+        OverrideMeshBoundingBoxMin = [-500,-500,0]
+        OverrideMeshBoundingBoxMax = [ 500, 500,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_RCL_LG_40_75mm( ModelFile = ModelFile_Boites_LG40) ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_RCL_LG_40_75mm( ModelFile = ModelFile_Boites_LG40) ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_RCL_LG_40_75mm( ModelFile = ModelFile_Boites_LG40) ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_RCL_LG_40_75mm( ModelFile = ModelFile_Boites_LG40) ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_RCL_LG_40_75mm( ModelFile = ModelFile_Boites_LG40) ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_RCL_LG_40_75mm( ModelFile = ModelFile_Boites_LG40) ),
+        ]
+        NodeNamesForSelection = [ 'Canon_AT', 'servant_G' , 'servant_D']
+        SubDepictions = [SubDepiction_Servant_1_RCL_LG_40_75mm,
+                        SubDepiction_Servant_2_RCL_LG_40_75mm,
+                        SubDepiction_Canon_AT_RCL_LG_40_75mm]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+    )
+)

@@ -1,0 +1,96 @@
+template TemplateMeshDescriptor_MG_08_GER [ ModelFile ] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+
+Gfx_MG_08_GER_1 is TDepictionTemplate //servant gauche
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_MG_08_GER( ModelFile = ModelFile_Servant_AT_GER)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_MG_08_GER( ModelFile = ModelFile_Servant_AT_GER_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_MG_08_GER( ModelFile = ModelFile_Servant_AT_GER)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_MG_08_GER( ModelFile = ModelFile_Servant_AT_GER_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_ServantMG_Browning_Gauche
+    // Actions = Weapons_Mortar
+)
+
+Gfx_MG_08_GER_2 is TDepictionTemplate //servant droite
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_MG_08_GER( ModelFile = ModelFile_Servant_AT_GER_Secondary)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_MG_08_GER( ModelFile = ModelFile_Servant_AT_GER_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_MG_08_GER( ModelFile = ModelFile_Servant_AT_GER_Secondary)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_MG_08_GER( ModelFile = ModelFile_Servant_AT_GER_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_ServantMG_Browning_Droite
+    // Actions = Weapons_Mortar
+)
+
+
+// DepictionOperator_SkeletalAnimation_MG_08_GER is [Template_DepictionOperator_SkeletalAnimation_With_Tree_TEST(AnimationTree = HMG_MG34_GR_Anim_Tree)]
+
+Gfx_MG_08_GER_Weapon is TDepictionTemplate //arme
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = CommonDepictionSelector
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_MG_08_GER ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_MG_08_GER_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_MG_08_GER_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor =  Modele_MG_08_GER ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor =  Modele_MG_08_GER_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor =  Modele_MG_08_GER_LOW ),
+        ]
+
+        SubDepictions = []
+        Operators = //DepictionOperator_SkeletalAnimation_MMG_M1919_Rangers_US +
+            DepictionOperatorNode_ResetUnit +
+            DepictionOperator_Carriable_MMG +
+            DepictionOperator_TurretAim_MMG +
+            DepictionOperator_TurretRecoil_MMG
+        Actions = Weapons_MG_08_GER
+    )
+
+SubDepiction_Servant_1_MG_08_GER is TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_MG_08_GER_1 )
+SubDepiction_Servant_2_MG_08_GER is TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_MG_08_GER_2 )
+SubDepiction_Canon_AT_MG_08_GER is TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_MG_08_GER_Weapon )
+
+Gfx_MG_08_GER is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate //les boites
+    (
+        OverrideMeshBoundingBoxMin = [-500,-500,0]
+        OverrideMeshBoundingBoxMax = [ 500, 500,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_MG_08_GER( ModelFile = ModelFile_Boites_MG_Maxim_SOV) ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_MG_08_GER( ModelFile = ModelFile_Boites_MG_Maxim_SOV) ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_MG_08_GER( ModelFile = ModelFile_Boites_MG_Maxim_SOV) ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_MG_08_GER( ModelFile = ModelFile_Boites_MG_Maxim_SOV) ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_MG_08_GER( ModelFile = ModelFile_Boites_MG_Maxim_SOV) ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_MG_08_GER( ModelFile = ModelFile_Boites_MG_Maxim_SOV) ),
+        ]
+        NodeNamesForSelection = [ 'Canon_AT', 'servant_G' , 'servant_D']
+        SubDepictions = [SubDepiction_Servant_1_MG_08_GER,
+                        SubDepiction_Servant_2_MG_08_GER,
+                        SubDepiction_Canon_AT_MG_08_GER]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+    )
+)

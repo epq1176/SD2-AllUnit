@@ -1,0 +1,334 @@
+//-------------------------------------------------------------------------
+//------------------------- MISSIONS DE DEFENSE ---------------------------
+//-------------------------------------------------------------------------
+// Parametres TMacroActionDescriptor_Common
+//-------------------------------------------------------------------------
+// GenerationType :
+// NumberOfMacro :
+// ParametresDeMission : Transport, Airstrike, Support, ArtilleryStrike
+// PoolModelList : liste des unites demandees
+// DisableReinforcement : si on recoit des renforts en cours d'attaque ou pas
+// IgnoreSafePath : Le pathfind de la mission cherche ou non à esquiver la menace
+// TuerLaMissionEnFinDeVieAuLieuDeLaRelancer : (bool)
+// LaunchASAP_RatioMin : permet de lancer l'attaque sans attendre toutes les unites requises à combiner avec ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+// MissionOmnisciente : Pas utilise dans Normandie (systeme de connaissance de zone)
+//-------------------------------------------------------------------------
+// Parametres TMacroActionDescriptor_CorridorDefense_Specific
+//-------------------------------------------------------------------------
+// ForcedCorridor : (format special ex:[1]) permet de forcer l'attaque sur un couloir.
+//
+
+// MAINTAINS
+//-------------------------------------------------------------------------
+export SandBag_Maintain_CorridorDefenses is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    GenerationType = TGenerationType_Maintain
+)
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+private template SandBag_Template_Defense_Corridor
+[
+    NumberOfMacro:int = 1,
+    MinimumResourceForLaunch:int = 0,
+    PoolModel = ~/SandBag_Pool_Defense_Backliner_AT,
+]
+is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = <NumberOfMacro>
+    MinimumResourceForLaunch = <MinimumResourceForLaunch>
+    IgnoreSafePath = true //on n'esquive pas la menace sur le chemin
+    DisableReinforcement = false
+    IgnoreVisionForDefensePosition = false
+    IgnoreEnemyDirectionForDefensePosition = false
+    IgnoreDefensePositionSafety = false
+
+    PoolModelList = [
+        <PoolModel>,
+    ]
+
+    TaggedPoolModelList = [
+        (["InfantryOriented"], [~/SandBag_Pool_Defense_Backliner_HMG_Fallback]),
+        (["AntiAirOriented"], [~/SandBag_Pool_Defense_Backliner_AA_Fallback]),
+        (["TankOriented"], [~/SandBag_Pool_Defense_Backliner_AT_Fallback]),
+    ]
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/SandBag_BasicAirstrikeSupport)
+        ),
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0)
+        ),
+        (
+            ESettingType/Support,
+            TSupportSettingHolder(SettingList = [SandBag_Renfort_AT_Defense])
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+// Defenses couloir classiques
+//-------------------------------------------------------------------------
+export SandBag_Defense_Backliner_AT is SandBag_Template_Defense_Corridor
+(
+    PoolModel = ~/SandBag_Pool_Defense_Backliner_AT
+)
+//-------------------------------------------------------------------------
+export SandBag_Defense_Backliner_HMG is SandBag_Template_Defense_Corridor
+(
+    PoolModel = ~/SandBag_Pool_Defense_Backliner_HMG
+)
+//-------------------------------------------------------------------------
+export SandBag_Defense_Backliner_AA is SandBag_Template_Defense_Corridor
+(
+    PoolModel = ~/SandBag_Pool_Defense_Backliner_AA
+)
+//-------------------------------------------------------------------------
+export SandBag_Defense_light_MBT is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    IgnoreSafePath = true //on n'esquive pas la menace sur le chemin
+    DisableReinforcement = false
+    IgnoreVisionForDefensePosition = false
+    IgnoreEnemyDirectionForDefensePosition = false
+    IgnoreDefensePositionSafety = false
+
+    PoolModelList = []
+
+    TaggedPoolModelList = [
+        (["MainBattletank"], [~/SandBag_Pool_Attack_light_MBT]),
+    ]
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/SandBag_BasicAirstrikeSupport)
+        ),
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0)
+        ),
+        (
+            ESettingType/Support,
+            TSupportSettingHolder(SettingList = [SandBag_Renfort_AT_Defense])
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Defense_MBT is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    IgnoreSafePath = true //on n'esquive pas la menace sur le chemin
+    DisableReinforcement = false
+    IgnoreVisionForDefensePosition = false
+    IgnoreEnemyDirectionForDefensePosition = false
+    IgnoreDefensePositionSafety = false
+
+    PoolModelList = []
+
+    TaggedPoolModelList = [
+        (["MainBattletank"], [~/SandBag_Pool_Attack_MBT]),
+    ]
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/SandBag_BasicAirstrikeSupport)
+        ),
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0)
+        ),
+        (
+            ESettingType/Support,
+            TSupportSettingHolder(SettingList = [SandBag_Renfort_AT_Defense])
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Defense_Filler is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    GenerationType = TGenerationType_BasedOnNumberOfCorridors
+    IgnoreSafePath = true //on n'esquive pas la menace sur le chemin
+    DisableReinforcement = false
+    IgnoreVisionForDefensePosition = false
+    IgnoreEnemyDirectionForDefensePosition = false
+    IgnoreDefensePositionSafety = false
+
+    PoolModelList = [
+        ~/SandBag_Pool_Defense_Filler,
+    ]
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/SandBag_BasicAirstrikeSupport)
+        ),
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 2 OutMapArtilleryAmount = 0)
+        ),
+        (
+            ESettingType/Generation,
+            TGenerationSettingHolder(NumberOfCorridorsPerMission = 1)
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+
+
+// Pool Models
+//-------------------------------------------------------------------------
+SandBag_ProductionFallback is [
+    "Infanterie",
+    "Canon_AA",
+    "Vehicule_Transport_Arme",
+    "Char"
+] // Ce fallback permet d'assurer la production d'au moins une unite pour les corridors taggués. Sinon ça bloque le couloir
+//-------------------------------------------------------------------------
+export SandBag_Pool_Defense_Filler is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{f1e0a59e-f2b6-11e6-8c2e-4ccc6a0550f6}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Vehicule_Appui",
+                "Canon_AT_Standard",
+                "Char_Standard",
+                "Infanterie_Spec_Defense",
+                "Char"
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{f1e4eb61-f2b6-11e6-bd03-4ccc6a0550f6}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Infanterie_CMD",
+                "Infanterie_Spec_Defense",
+                "Infanterie_Standard",
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Pool_Defense_Backliner_HMG is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{fdc31382-f1df-11e6-9475-4ccc6a0550f6}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Escouade_MMG",
+                "Escouade_Sniper",
+                "Escouade_CMD",
+                "Escouade_Flamer",
+                "Escouade_Infanterie",
+                "Appui_Feu","Infanterie_CMD",
+                "Infanterie_Spec_Defense",
+                "Infanterie_Standard",
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Pool_Defense_Backliner_HMG_Fallback is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{fdc31383-f1df-11e6-b313-4ccc6a0550f6}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Escouade_MMG",
+                "Escouade_Sniper",
+                "Escouade_Flamer",
+                "Escouade_CMD",
+                "Escouade_Infanterie",
+                "Appui_Feu",
+            ]
+            +~/SandBag_ProductionFallback
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Pool_Defense_Backliner_AT is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{fdc31384-f1df-11e6-be04-4ccc6a0550f6}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Canon_AT_Standard",
+                "ChasseurDeChar_Standard",
+                "Canon_AT",
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Pool_Defense_Backliner_AT_Fallback is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{fdc31385-f1df-11e6-9870-4ccc6a0550f6}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Canon_AT_Standard",
+                "ChasseurDeChar_Standard",
+                "Canon_AT",
+            ]
+            +~/SandBag_ProductionFallback
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Pool_Defense_Backliner_AA is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{fdc31386-f1df-11e6-94c4-4ccc6a0550f6}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Canon_AA_Standard",
+                "Canon_AA_Porte",
+                "Infanterie", // C'est pas très AA mais c'est mieux que rien.
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Pool_Defense_Backliner_AA_Fallback is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{fdc31387-f1df-11e6-be39-4ccc6a0550f6}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Canon_AA_Standard",
+                "Canon_AA_Porte",
+            ]
+            +~/SandBag_ProductionFallback
+        ),
+    ]
+)
+//-------------------------------------------------------------------------

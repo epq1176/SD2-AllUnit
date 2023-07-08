@@ -1,0 +1,581 @@
+
+ConfigPanelResetButtonDescriptor is BUCKSpecificButton
+(
+    ElementName = "ResetButton"
+    TextToken = 'AB_OPDEFAU'
+
+    HintTitleToken = "OOP_RESETT"
+    HintBodyToken = "OOP_RESETB"
+    HintExtendedToken = "OOP_RESETE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+ConfigPanelApplyButtonDescriptor is ConfirmButton
+(
+    ElementName = "ApplyButton"
+    TextToken = 'AB_OPAPPLY'
+
+    HintTitleToken = "OOP_APPLYT"
+    HintBodyToken = "OOP_APPLYB"
+    HintExtendedToken = "OOP_APPLYE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+ConfigPanelApplyEngagementRulesButtonDescriptor is ConfirmButton
+(
+    ElementName = "ApplyEngagementRulesButton"
+    TextToken = 'AB_OPAPPER'
+
+    HintTitleToken = "OOP_APPERT"
+    HintBodyToken = "OOP_APPERB"
+    HintExtendedToken = "OOP_APPERE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+ConfigPanelAutoSetButtonDescriptor is BUCKSpecificButton
+(
+    ElementName = "AutoSetButton"
+    TextToken = 'AB_AUTOSET'
+
+    HintTitleToken = "AB_AUTOSET"
+    HintBodyToken = "M_CoAutSet"
+    HintExtendedToken = "OOP_AUTOSE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+ConfigPanelBackButtonDescriptor is BUCKSpecificButton
+(
+    ElementName = "BackButton"
+    TextToken = 'NV_BACK'
+
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+
+    HintTitleToken = "OOP_BACKT"
+    HintBodyToken = "OOP_BACKB"
+    HintExtendedToken = "OOP_BACKE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+ConfigPanelSlider is BUCKSpecificSliderDescriptor( MaskEvents = false )
+
+ConfigPanelDropdown is BUCKSpecificDropdownDescriptor()
+
+
+// -------------------------------------------------------------------------------------------------
+// COMPOSANTS À SUPPRIMER - Ne sont plus utilisés(cf WindowModalManager.ndf pour les modales utilisées)
+// -------------------------------------------------------------------------------------------------
+
+ConfigPanelWaitingAutoSettingModal is WindowFrame()
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+ConfigPanelMappingButton is BUCKSpecificButton
+(
+    ButtonMagnifiableWidthHeight = [102.0, 20.0]
+    ButtonAlignementToFather = [0.0, 0.5]
+    ButtonAlignementToAnchor = [0.0, 0.5]
+
+    IsTogglable = true
+
+    HasText = true
+    OverrideTextElementName = true
+    TextElementName = "MappingText"
+
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+    TextSizeToken = "17"
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+ConfigPanelDescriptor is WindowFrame
+(
+    ContentExtendWeight = 1.0
+    ContentRelativeWidthHeight = [0.75, 1.0]
+    TitleToken = 'T_OPTIONS'
+    ContentComponents = [ ~/ConfigPanelTabsComponent ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+CreditsSubCategoryTitle is BUCKTextDescriptor
+(
+    ElementName = "EntryTitle"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 65.0]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_Bottom
+    )
+
+    TextStyle = "Default"
+    TypefaceToken = "Main"
+
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    TextColor = "Credits"
+    TextSize = "Credits/SubCategory"
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+CreditsPeopleCategoryTitle is BUCKTextDescriptor
+(
+    ElementName = "EntryTitle"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 50.0]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_Bottom
+    )
+
+    TextStyle = "Default"
+    TypefaceToken = "Main"
+
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    TextColor = "Credits"
+    TextSize = "Credits/PeopleCategoryTitle"
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+CreditsNameEntry is BUCKTextDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 30.0]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+    )
+
+    TextStyle = "Default"
+    TypefaceToken = "Main"
+
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    TextColor = "Credits"
+    TextSize = "Credits/PeopleCategoryEntry"
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+CreditsTitle is BUCKTextDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 60.0]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_Bottom
+    )
+
+    TextStyle = "Default"
+    TypefaceToken = "Main"
+
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    TextColor = "Credits"
+    TextSize = "Credits/Title"
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+CreditsCategoryList is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [-20.0, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+        AlignementToFather = [0.5, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+    InterItemMargin = TRTTILength( Magnifiable = 3.0 )
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+SpecificConfigPanelResource is TUISpecificOutGameConfigPanelResource
+(
+    ConfigPanelResetButton = ~/ConfigPanelResetButtonDescriptor
+    ConfigPanelApplyButton = ~/ConfigPanelApplyButtonDescriptor
+    ConfigPanelApplyEngagementRulesButton = ~/ConfigPanelApplyEngagementRulesButtonDescriptor
+    ConfigPanelAutoSetButton = ~/ConfigPanelAutoSetButtonDescriptor
+    ConfigPanelBackButton = ~/ConfigPanelBackButtonDescriptor
+
+    ConfigPanelBackground = ~/ConfigPanelDescriptor
+    ConfigPanelDescriptor = ~/ConfigPanelDescriptor
+
+    ConfigPanelWaitingAutoSettingModal = ~/ConfigPanelWaitingAutoSettingModal
+
+    ConfigPanelSlider = ~/ConfigPanelSlider
+    ConfigPanelDropdown = ~/ConfigPanelDropdown
+    ConfigPanelMappingButton = ~/ConfigPanelMappingButton
+
+    ConfigPanelUserInputLayer = $/M3D/Input/UserInputLayerHandler/InputLayer_2DInterfaceAboveBlur_OutGame
+
+    CreditsTitle = ~/CreditsTitle
+    CreditsSubCategoryTitle = ~/CreditsSubCategoryTitle
+    CreditsPeopleCategoryTitle = ~/CreditsPeopleCategoryTitle
+    CreditsNameEntry = ~/CreditsNameEntry
+    CreditsCategoryList = ~/CreditsCategoryList
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+ConfigPanelMultiListLine is BUCKStateUpdaterDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 24.0]
+    )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [0.0, 24.0]
+                AlignementToAnchor = [0.0, 0.5]
+                AlignementToFather = [0.0, 0.5]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            FirstMargin = TRTTILength( Magnifiable = 10.0 )
+            InterItemMargin = TRTTILength( Magnifiable = 70.0 ) // Le FirstMargin décale déjà tout vers la droite. Pour être aligné un peu derrirèe "Options" et avec "Setting"
+            LastMargin = TRTTILength( Magnifiable = 10.0 )
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 0.5
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "OptionName"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Right
+                            VerticalAlignment = UIText_VerticalCenter
+                        )
+
+                        TextStyle = "Default"
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+
+                        TypefaceToken = "Main"
+                        BigLineAction = ~/BigLineAction/MultiLine
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                        TextColor = "ListeExcel/Lignes/Defaut"
+                        TextSize = "17"
+
+
+                        Hint = BUCKSpecificHintableArea
+                        (
+                            ElementName = "OptionHint"
+                            DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+                        )
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 0.5
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                        )
+
+                        Axis = ~/ListAxis/Horizontal
+                        FirstMargin = TRTTILength( Magnifiable = 0.0 )
+                        InterItemMargin = TRTTILength( Magnifiable = 30.0 )
+                        LastMargin = TRTTILength( Magnifiable = 0.0 )
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = BUCKContainerDescriptor
+                                (
+                                    ElementName = "OptionSetting"
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [0.0, 1.0]
+                                        MagnifiableWidthHeight = [250.0, 0.0]
+                                    )
+                                )
+                            ),
+
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = BUCKTextDescriptor
+                                (
+                                    ElementName = "OptionValue"
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [0.0, 1.0]
+                                        MagnifiableWidthHeight = [50.0, 0.0]
+                                    )
+
+                                    ParagraphStyle = TParagraphStyleRTTI
+                                    (
+                                        Alignment = UIText_Left
+                                        VerticalAlignment = UIText_VerticalCenter
+                                    )
+
+                                    TextStyle = "Default"
+
+                                    HorizontalFitStyle = ~/FitStyle/UserDefined
+
+                                    TypefaceToken = "Main"
+
+                                    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                                    TextColor = "ListeExcel/Lignes/Defaut"
+                                    TextSize = "17"
+                                )
+                            ),
+                        ]
+                    )
+                )
+            ]
+        )
+    ]
+)
+
+template ConfigPanelMultiListScrollingContainer [ ScrollingElementName : string ]
+is TScrollingDescriptor
+(
+    ScrollingElementName = <ScrollingElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    Component = BUCKRackDescriptor
+    (
+        ElementName = <ScrollingElementName> + "/List"
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1.0, 0.0]
+        )
+
+        FirstMargin = TRTTILength(Magnifiable = 12.0)
+        InterItemMargin = TRTTILength(Magnifiable = 12.0)
+        LastMargin = TRTTILength(Magnifiable = 12.0)
+
+        BladeDescriptor = ~/ConfigPanelMultiListLine
+    )
+)
+
+private CreditsScrollingDescriptor is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [480.0, 192.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            TextureToken = "OutgameTexture_Bg_Credits"
+            TextureColorToken = "PureWhite30"
+        ),
+
+        BUCKSpecificScrollingContainerDescriptor
+        (
+            ElementName = "CreditsScrollingContainer"
+
+            CanScrollVertically = true
+            HasVerticalScrollbar = false
+            Components =
+            [
+                BUCKListDescriptor
+                (
+                    ElementName = "CreditsScrollingContainer/List"
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 0.0]
+                    )
+
+                    GridAlign = true
+
+                    Axis = ~/ListAxis/Vertical
+                    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+                    FirstMargin = TRTTILength( Magnifiable = 10.0 )
+                    InterItemMargin = TRTTILength( Magnifiable = 40.0 )
+                )
+            ]
+        )
+    ]
+)
+
+
+template ConfigPanelMultiList [ ElementName : string ]
+is BUCKContainerDescriptor
+(
+    ElementName = <ElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    Components =
+    [
+        ConfigPanelMultiListScrollingContainer( ScrollingElementName = <ElementName> + "/Scrolling" )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+ConfigPanelTabsComponent is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    Components =
+    [
+        BUCKSpecificWithTabsComponentDescriptor
+        (
+            ElementName = 'TabsComponent'
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            TabsAndContent =
+            [
+                (
+                    BUCKSpecificOneTabComponentDescriptor
+                    (
+                        UniqueName = "gameplay_tab"
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        TextToken = "AB_OPGPLAY"
+                    ),
+                    ConfigPanelMultiList( ElementName = "GameplayMultiList" )
+                ),
+                (
+                    BUCKSpecificOneTabComponentDescriptor
+                    (
+                        UniqueName = "interface_tab"
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        TextToken = "AB_OPGUI"
+                    ),
+                    ConfigPanelMultiList( ElementName = "InterfaceMultiList" )
+                ),
+                (
+                    BUCKSpecificOneTabComponentDescriptor
+                    (
+                        UniqueName = "control_tab"
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        TextToken = "AB_OPCONTR"
+                    ),
+                    ConfigPanelMultiList( ElementName = "ControlsMultiList" )
+                ),
+
+                (
+                    BUCKSpecificOneTabComponentDescriptor
+                    (
+                        UniqueName = "audio_tab"
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        TextToken = "AB_OPAUDIO"
+                    ),
+                    ConfigPanelMultiList( ElementName = "AudioMultiList" )
+                ),
+
+                (
+                    BUCKSpecificOneTabComponentDescriptor
+                    (
+                        UniqueName = "video_tab"
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        TextToken = "AB_OPVID"
+                    ),
+                    ConfigPanelMultiList( ElementName = "VideoMultiList" )
+                ),
+
+                (
+                    BUCKSpecificOneTabComponentDescriptor
+                    (
+                        UniqueName = "credit_tab"
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        TextToken = "AB_CREDITS"
+                    ),
+
+                    CreditsScrollingDescriptor
+                ),
+            ]
+        )
+    ]
+)

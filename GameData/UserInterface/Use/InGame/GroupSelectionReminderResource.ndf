@@ -1,0 +1,23 @@
+export MainPositionEvents is TDescriptorPositionEventsModernWarfare
+(
+    MaxEventCount = 10
+    EventsDurationInSeconds = 30
+    TriggNextEventDurationCeilInSeconds = 2.0
+    CameraMoverTargetClient = $/Camera/CameraMoverTargetClient
+
+    World3D = $/M3D/Scene/DefaultWorld
+    SituationAwarenessNextEventCommandName = CommandName/SituationAwarenessNextEvent
+
+    EraseEventWhenVisited = true
+    EnablePlayFX = true
+
+    MinAltitude = 100 * OneMeterInGameUnits
+    MaxAltitude = 1300 * OneMeterInGameUnits
+)
+
+GroupSelectionReminder is TGroupSelectionReminderResources
+(
+    UserInputLayer              = $/M3D/Input/UserInputLayerHandler/InputLayer_InGameShortcuts
+    EpsilonTimeForDoubleClic    = 1
+    PositionEventManager        = ~/MainPositionEvents
+)

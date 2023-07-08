@@ -1,0 +1,22 @@
+export ModelFile_Hetzer_ROU is 'GameData:Assets\3D\Units\ROU\Char\Hetzer_ROU\Hetzer_ROU.Ase2NdfBin'
+
+Modele_Hetzer_ROU is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Hetzer_ROU
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Hetzer_ROU_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Char\Hetzer_ROU_MID\Hetzer_ROU_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Hetzer_ROU_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Char\LODS\Hetzer_ROU_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

@@ -1,0 +1,167 @@
+template TemplateMeshDescriptor_Flak_36_88mm [ ModelFile ] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+
+export ModelFile_Boites_Flak_36_88mm is 'GameData:Assets\3D\Units\GER\Canon\Flak_36_88mm\Boites_Flak_36_88mm.Ase2NdfBin'
+
+Gfx_Flak_36_88mm_1 is TDepictionTemplate //servant gauche
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm( ModelFile = ModelFile_Servant_AT_GER)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm( ModelFile = ModelFile_Servant_AT_GER_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm( ModelFile = ModelFile_Servant_AT_GER)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm( ModelFile = ModelFile_Servant_AT_GER_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Gauche
+)
+
+Gfx_Flak_36_88mm_2 is TDepictionTemplate //servant droite
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm( ModelFile = ModelFile_Servant_AT_GER_Secondary)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm( ModelFile = ModelFile_Servant_AT_GER_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm( ModelFile = ModelFile_Servant_AT_GER_Secondary)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm( ModelFile = ModelFile_Servant_AT_GER_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Droite
+)
+
+Gfx_Flak_36_88mm_3 is TDepictionTemplate //servant gauche supplementaire
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm( ModelFile = ModelFile_Servant_AT_GER)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm( ModelFile = ModelFile_Servant_AT_GER)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm( ModelFile = ModelFile_Servant_AT_GER)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm( ModelFile = ModelFile_Servant_AT_GER)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Gauche2
+)
+
+Gfx_Flak_36_88mm_4 is TDepictionTemplate //servant droite supplementaire
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm( ModelFile = ModelFile_Servant_AT_GER_Secondary)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm( ModelFile = ModelFile_Servant_AT_GER_Secondary)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm( ModelFile = ModelFile_Servant_AT_GER_Secondary)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm( ModelFile = ModelFile_Servant_AT_GER_Secondary)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Droite2
+)
+
+//Arme
+private AnimationPath_Flak_36_88mm is 'GameData:Assets\3D\Units\GER\Canon\Flak_36_88mm\'
+export Flak_36_88mm_Anim_Tree is DepictionAnimationTreeNode
+(
+   IAStates = AnimationStateAll
+   IAOldStates = AnimationStateAll
+   DefaultAnimationStates = AnimationStateEngineStopping
+    Animations =
+    (
+        [TemplateAnimation(Animation= 'Flak_36_88mm_Idle' + '.Ase2NdfBin' Loop=false EventAnimation=false AnimationPath = AnimationPath_Flak_36_88mm Mask = AnimationMask_All())]
+    )
+
+    Childs =
+    [
+        TAnimNode(IAStates = AnimationStateInstantFire                                                                  Anim = 'Flak_36_88mm_Fire'       Loop = false EventAnimation = true AnimationPath = AnimationPath_Flak_36_88mm Mask = AnimationMask_All()),
+        TAnimNode(IAStates = AnimationStateEngineStopping | AnimationStateEngineStopTurning                             Anim = 'Flak_36_88mm_Deploy'     Loop = false AnimationPath = AnimationPath_Flak_36_88mm Mask = AnimationMask_All()),
+        TAnimNode(IAStates = AnimationStateEngineStarting | AnimationStateEngineStartTurning                            Anim = 'Flak_36_88mm_Fold'       Loop = false AnimationPath = AnimationPath_Flak_36_88mm Mask = AnimationMask_All()),
+        TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateLeft                                           Anim = 'Flak_36_88mm_Turn_Left'  Loop = true  AnimationPath = AnimationPath_Flak_36_88mm Mask = AnimationMask_All()),
+        TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateRight                                          Anim = 'Flak_36_88mm_Turn_Right' Loop = true  AnimationPath = AnimationPath_Flak_36_88mm Mask = AnimationMask_All()),
+        TAnimNode(IAStates = AnimationStateMoving | AnimationStateEngineRunning                                         Anim = 'Flak_36_88mm_Move'       Loop = true  AnimationPath = AnimationPath_Flak_36_88mm Mask = AnimationMask_All()
+            Childs = [
+                TAnimNode(IAStates = AnimationStateBack                                                                 Anim = 'Flak_36_88mm_Move_Back'  Loop = true  AnimationPath = AnimationPath_Flak_36_88mm Mask = AnimationMask_All()),
+        ]),
+    ]
+)
+
+DepictionOperator_SkeletalAnimation_Flak_36_88mm is [Template_DepictionOperator_SkeletalAnimation_With_Tree_TEST(AnimationTree = Flak_36_88mm_Anim_Tree)]
+
+Gfx_Flak_36_88mm_Weapon is TDepictionTemplate //arme
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = CommonDepictionSelector
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_Flak_36_88mm ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_Flak_36_88mm_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_Flak_36_88mm_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor =  Modele_Flak_36_88mm ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor =  Modele_Flak_36_88mm_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor =  Modele_Flak_36_88mm_LOW ),
+        ]
+
+        SubDepictions = []
+        Operators = DepictionOperator_SkeletalAnimation_Flak_36_88mm +     [TCosmeticTurretOperatorDesc
+            (
+                OperatorId = 'tourelle1'
+                ZAxisNode  = 'Tourelle_01'
+                ZAxisPhysicalPropertyName = 'tourelle1'
+                ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+                ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+                GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+                YAxisNode = 'Axe_Canon_01'
+                YAxisPhysicalPropertyName = 'tourelle1axe'
+                MinYAngle = -0.349065850399
+                MaxYAngle = 1.4835298642
+            ),]
+        Actions = Weapons_Flak_36_88mm
+    )
+
+SubDepiction_Servant_1_Flak_36_88mm is TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_Flak_36_88mm_1 )
+SubDepiction_Servant_2_Flak_36_88mm is TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_Flak_36_88mm_2 )
+SubDepiction_Servant_3_Flak_36_88mm is TSubDepiction( Anchor = 'servant_G2' Depiction = Gfx_Flak_36_88mm_3 )
+SubDepiction_Servant_4_Flak_36_88mm is TSubDepiction( Anchor = 'servant_D2' Depiction = Gfx_Flak_36_88mm_4 )
+SubDepiction_Canon_AT_Flak_36_88mm is TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_Flak_36_88mm_Weapon )
+
+Gfx_Flak_36_88mm is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate //les boites
+    (
+        OverrideMeshBoundingBoxMin = [-500,-500,0]
+        OverrideMeshBoundingBoxMax = [ 500, 500,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm( ModelFile = ModelFile_Boites_Flak_36_88mm) ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm( ModelFile = ModelFile_Boites_Flak_36_88mm) ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm( ModelFile = ModelFile_Boites_Flak_36_88mm) ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm( ModelFile = ModelFile_Boites_Flak_36_88mm) ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm( ModelFile = ModelFile_Boites_Flak_36_88mm) ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm( ModelFile = ModelFile_Boites_Flak_36_88mm) ),
+        ]
+        NodeNamesForSelection = [ 'Canon_AT', 'servant_G' , 'servant_D' , 'servant_G2' , 'servant_D2' ]
+        SubDepictions = [SubDepiction_Servant_1_Flak_36_88mm,
+                        SubDepiction_Servant_2_Flak_36_88mm,
+                        SubDepiction_Servant_3_Flak_36_88mm,
+                        SubDepiction_Servant_4_Flak_36_88mm,
+                        SubDepiction_Canon_AT_Flak_36_88mm]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+    )
+)

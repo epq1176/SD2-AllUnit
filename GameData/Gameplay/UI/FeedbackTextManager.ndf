@@ -1,0 +1,20 @@
+
+export FeedbackTextManager is TFeedbackTextManager
+(
+    FeedbackDescriptors =
+    [
+        DebugFeedbackDescriptor, // FIXME : ne pas l'avoir en Final
+        MoneyFeedbackDescriptor,
+        AmbushFeedbackDescriptor,
+        DecoyFeedbackDescriptor,
+        GainXPLevelFeedbackDescriptor,
+        GainActionPointsFeedbackDescriptor,
+        LoseActionPointsFeedbackDescriptor,
+        DeathFeedbackDescriptor,
+        InterceptionFeedbackDescriptor,
+        MeleeLossFeedbackDescriptor,
+        ArmoredLossFeedbackDescriptor,
+        SupportFeedbackDescriptor,
+        OrderCancelledFeedbackDescriptor,
+    ]
+)

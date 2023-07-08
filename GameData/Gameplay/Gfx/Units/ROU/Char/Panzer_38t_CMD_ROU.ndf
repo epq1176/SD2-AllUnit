@@ -1,0 +1,22 @@
+export ModelFile_Panzer_38t_CMD_ROU is 'GameData:Assets\3D\Units\ROU\Char\Panzer_38t_CMD_ROU\Panzer_38t_CMD_ROU.Ase2NdfBin'
+
+Modele_Panzer_38t_CMD_ROU is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Panzer_38t_CMD_ROU
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_38t_CMD_ROU_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Char\Panzer_38t_CMD_ROU_MID\Panzer_38t_CMD_ROU_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_38t_CMD_ROU_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Char\LODS\Panzer_38t_CMD_ROU_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

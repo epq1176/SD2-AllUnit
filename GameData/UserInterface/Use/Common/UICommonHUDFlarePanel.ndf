@@ -1,0 +1,254 @@
+
+private FlaresButtonDims           is [ 25.0, 25.0 ]
+
+FlareButtonAttack is BUCKButtonDescriptor
+(
+    ElementName = 'FlareDanger'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = FlaresButtonDims
+        AlignementToFather = [ 0.0, 0.5 ]
+        AlignementToAnchor = [ 0.0, 0.5 ]
+    )
+
+    Mapping = $/KeyboardOption/Mapping_FlareAttack
+    IsTogglable = true
+
+    HasBackground = false
+    BackgroundBlockColorToken = "FlarePanel/FlareButtonBackground"
+
+    HasBorder = false
+    BorderThicknessToken = "1"
+    BorderLineColorToken = "FlarePanel/FlareButtonBorder"
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+
+            TextureToken = "textureFlareAttack"
+        ),
+
+        BUCKSpecificHintableArea
+        (
+            ElementName = "FlareDangerButtonHintableArea"
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = "HFL_ATTACT"
+            HintBodyToken = "HFL_ATTACB"
+            HintExtendedToken = "HFL_ATTACE"
+        )
+    ]
+)
+
+FlareButtonDefend is BUCKButtonDescriptor
+(
+    ElementName = 'FlareDefend'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = FlaresButtonDims
+        AlignementToFather = [ 0.0, 0.5 ]
+        AlignementToAnchor = [ 0.0, 0.5 ]
+    )
+
+    Mapping = $/KeyboardOption/Mapping_FlareDefend
+    IsTogglable = true
+
+    HasBackground = false
+    BackgroundBlockColorToken = "FlarePanel/FlareButtonBackground"
+
+    HasBorder = false
+    BorderThicknessToken = "1"
+    BorderLineColorToken = "FlarePanel/FlareButtonBorder"
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+
+            TextureToken = "textureFlareDefense"
+        ),
+
+        BUCKSpecificHintableArea
+        (
+            ElementName = "FlareDefendButtonHintableArea"
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = "HFL_DEFENT"
+            HintBodyToken = "HFL_DEFENB"
+            HintExtendedToken = "HFL_DEFENE"
+        )
+    ]
+)
+
+FlareButtonHelp is BUCKButtonDescriptor
+(
+    ElementName = 'FlareHelp'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = FlaresButtonDims
+        AlignementToFather = [ 0.0, 0.5 ]
+        AlignementToAnchor = [ 0.0, 0.5 ]
+    )
+
+    Mapping = $/KeyboardOption/Mapping_FlareHelp
+    IsTogglable = true
+
+    HasBackground = false
+    BackgroundBlockColorToken = "FlarePanel/FlareButtonBackground"
+
+    HasBorder = false
+    BorderThicknessToken = "1"
+    BorderLineColorToken = "FlarePanel/FlareButtonBorder"
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+
+            TextureToken = "textureFlareHelp"
+        ),
+
+        BUCKSpecificHintableArea
+        (
+            ElementName = "FlareHelpButtonHintableArea"
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = "HFL_HELPT"
+            HintBodyToken = "HFL_HELPB"
+            HintExtendedToken = "HFL_HELPE"
+        )
+    ]
+)
+
+FlareButtonCustom is BUCKButtonDescriptor
+(
+    ElementName = 'FlareCustom'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = FlaresButtonDims
+        AlignementToFather = [ 0.0, 0.5 ]
+        AlignementToAnchor = [ 0.0, 0.5 ]
+    )
+
+    Mapping = $/KeyboardOption/Mapping_FlareCustom
+    IsTogglable = true
+
+    HasBackground = false
+    BackgroundBlockColorToken = "FlarePanel/FlareButtonBackground"
+
+    HasBorder = false
+    BorderThicknessToken = "1"
+    BorderLineColorToken = "FlarePanel/FlareButtonBorder"
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+
+            TextureToken = "textureFlareCustom"
+        ),
+
+        BUCKSpecificHintableArea
+        (
+            ElementName = "FlareCustomButtonHintableArea"
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = "HFL_CUSMET"
+            HintBodyToken = "HFL_CUSMEB"
+            HintExtendedToken = "HFL_CUSMEE"
+        )
+    ]
+)
+
+FlareCustomEditableText is BUCKEditableTextDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 20.0]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "FlaresPanel/CustomFlare/EditableText/Fond"
+
+    ClippingContainerFrameProperty = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        MagnifiableWidthHeight = [-6.0, -6.0]
+        AlignementToFather = [0.5, 0.5]
+        AlignementToAnchor = [0.5, 0.5]
+    )
+
+    TextSizeToken = "FlaresPanel/CustomFlare/EditableText"
+    TypefaceToken = "Main"
+    TextColorToken = "FlaresPanel/CustomFlare/EditableText"
+    SelectionColorToken = "FlaresPanel/CustomFlare/EditableText/Selected"
+
+    MaxChars = 100
+)
+
+// Conteneur pour les flares
+UICommonFlarePanelViewMainComponent is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToFather = [ 1, 1 ]
+        AlignementToAnchor = [ 1, 1 ]
+    )
+    FitStyle = ~/ContainerFitStyle/FitToContent
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                AlignementToFather = [ 1, 0 ]
+                AlignementToAnchor = [ 1, 0 ]
+                MagnifiableWidthHeight = [0, 23]
+            )
+
+            InterItemMargin = TRTTILength( Magnifiable = 6.0 )
+            LastMargin = TRTTILength( Magnifiable = 8.0 )
+
+            Axis = ~/ListAxis/Horizontal
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = FlareButtonDefend
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = FlareButtonAttack
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = FlareButtonHelp
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = FlareButtonCustom
+                ),
+            ]
+        ),
+    ]
+)
+
+UICommonFlarePanelViewDescriptor is TUIInGameFlarePanelViewDescriptor
+(
+    MainComponentDescriptor = ~/UICommonFlarePanelViewMainComponent
+    MainComponentContainerUniqueName = "UICommonFlarePanelViewMainContainer"
+
+    CustomEditableTextDescriptor = ~/FlareCustomEditableText
+    CustomEditableTextContainerUniqueName = "FlareEditableTextContainer"
+)

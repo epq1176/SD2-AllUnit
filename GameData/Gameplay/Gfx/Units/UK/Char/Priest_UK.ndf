@@ -1,0 +1,22 @@
+export ModelFile_Priest_UK is 'GameData:Assets\3D\Units\UK\Char\M7HMC_Priest\M7HMC_Priest.Ase2NdfBin'
+
+Modele_Priest_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Priest_UK
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Priest_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\M7HMC_Priest_MID\M7HMC_Priest_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Priest_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\LODS\M7HMC_Priest_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

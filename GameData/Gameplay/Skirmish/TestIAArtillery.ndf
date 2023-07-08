@@ -1,0 +1,71 @@
+export TestAuto_Artillery is TIAGeneralStrategy
+(
+    StrategyName = "Strat_Art"
+    FirstGenerator = TestAuto_ArtilleryGen
+    TransitionList = []
+    AuthorizedCorridorList = [0, 1]
+)
+
+export TestAuto_ArtilleryGen is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 1
+
+    GeneratorList =
+    [
+        ~/test_auto_mission_artillerie,
+    ]
+)
+
+
+export test_auto_mission_artillerie is TMacroActionDescriptor_Artillery_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    ForcedCorridor = [0] // La notation [] ne doit pas être oubliée ici, mais un seul couloir doit être renseigné.
+    SupportPointSafetyMargin = 1 // La marge, en nombre de cases IA Strat, utilisée pour définir si une position est sûre comme point d'appui.
+                                 // Une valeur de 1, par exemple, vérifiera la case visée et les 8 cases adjacentes.
+    MinimumThreatPerSplashForKill = 1 //  La valeur de menace minimum à une position pour lancer un ordre pour tuer.
+    MinimumThreatPerSplashForSupport = 1 //  La valeur de menace minimum à une position pour soutenir une mission d'attaque.
+    PoolModelList = [
+        ~/poolModelTestAutoArtillery,
+    ]
+)
+
+export poolModelTestAutoArtillery is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{dc91e7c0-3a25-11e7-8f06-00b0c202714c}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "TestUnitIAStratArtillerie",
+                "Artillerie",
+            ]
+        ),
+    ]
+)
+
+export test_auto_mission_attaque_artillerie is TMacroActionDescriptor_CorridorAttack_Specific
+(
+    ForcedCorridor = [0]
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    LaunchASAP_RatioMin = 0.0
+    CompterLesUnitesEnZoneExtendedDansLaMenace = true
+    UtiliserMenaceLaPlusProcheAuLieuDeLaPlusFaible = true
+    IgnoreSafePath = true
+    RatioMinimumPourAttaquer = 1.1
+    DisableReinforcement = false
+    StayInCorridorIfp = true
+    PoolModelList = [
+        ~/poolModelTestAutoArtillery,
+    ]
+    ParametresDeMission = MAP[
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0)
+        ),
+    ]
+)

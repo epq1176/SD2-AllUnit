@@ -1,0 +1,22 @@
+export ModelFile_Centaur_IV is 'GameData:Assets\3D\Units\UK\Char\Centaur_IV\Centaur_IV.Ase2NdfBin'
+
+export Modele_Centaur_IV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Centaur_IV
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Centaur_IV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\Centaur_IV_MID\Centaur_IV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Centaur_IV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\LODS\Centaur_IV_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

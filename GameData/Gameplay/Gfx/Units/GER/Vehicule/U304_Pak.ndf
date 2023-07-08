@@ -1,0 +1,22 @@
+export ModelFile_U304_Pak is 'GameData:Assets\3D\Units\GER\Vehicule\U304_PaK_36\U304_PaK_36.Ase2NdfBin'
+
+Modele_U304_Pak is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_U304_Pak
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_U304_Pak_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\U304_PaK_36_MID\U304_PaK_36_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_U304_Pak_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\LODS\U304_PaK_36_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

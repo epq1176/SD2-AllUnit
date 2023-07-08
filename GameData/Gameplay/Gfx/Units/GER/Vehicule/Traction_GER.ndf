@@ -1,0 +1,22 @@
+export ModelFile_Traction_GER is 'GameData:Assets\3D\Units\GER\Vehicule\Traction_GER\Traction_GER.Ase2NdfBin'
+
+Modele_Traction_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Traction_GER
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Traction_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\Traction_GER_MID\Traction_GER_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Traction_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\LODS\Traction_GER_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

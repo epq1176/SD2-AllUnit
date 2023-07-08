@@ -1,0 +1,146 @@
+
+export CriticalEffectModule_Chenille_Canon is TCriticalEffectModuleDescriptor
+(
+    Bounds = (1,100) //Attention le debug crée un assert si on a des unités utilisant des bounds différents vaut mieux garder les mêmes partout
+    TerrainCriticalEffectTimer = 5.0
+
+    EffectsFromTerrain = []
+
+    EffectsOnFront =
+    [
+        TCriticalEffect(Roll=(1,15) Token='BOUNCE2' EffectsPack=~/UnitEffect_Critic_Stop_Armes TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Shooter KO -> Armes stop 10sec
+        TCriticalEffect(Roll=(16,30) Token='BOUNCE3' EffectsPack=~/UnitEffect_Critic_Stop_Reload TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Loader KO -> no reload 10sec
+        TCriticalEffect(Roll=(31,45) Token='BOUNCE4' EffectsPack=~/UnitEffect_Critic_Full_Stop TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Driver KO -> Full stop 10sec
+        TCriticalEffect(Roll=(46,60) Token='BOUNCE5' EffectsPack=~/UnitEffect_Critic_Bailed_Out TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Crew KO -> Bailout 10sec
+        TCriticalEffect(Roll=(61,70) Token='CRITIC10' EffectsPack=~/UnitEffect_Critic_Chenille_Detruite TimeOut=-1 RepairCost=100 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Track broken -> no rotation
+        TCriticalEffect(Roll=(71,80) Token='CRITIC22' EffectsPack=~/UnitEffect_Critic_Full_Stop TimeOut=30 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Moteur calé -> Full stop 30sec
+    ]
+
+    EffectsOnSides =
+    [
+        TCriticalEffect(Roll=(1,15) Token='BOUNCE2' EffectsPack=~/UnitEffect_Critic_Stop_Armes TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Shooter KO -> Armes stop 10sec
+        TCriticalEffect(Roll=(16,30) Token='BOUNCE3' EffectsPack=~/UnitEffect_Critic_Stop_Reload TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Loader KO -> no reload 10sec
+        TCriticalEffect(Roll=(31,45) Token='BOUNCE4' EffectsPack=~/UnitEffect_Critic_Full_Stop TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Driver KO -> Full stop 10sec
+        TCriticalEffect(Roll=(46,60) Token='BOUNCE5' EffectsPack=~/UnitEffect_Critic_Bailed_Out TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Crew KO -> Bailout 10sec
+        TCriticalEffect(Roll=(61,70) Token='CRITIC10' EffectsPack=~/UnitEffect_Critic_Chenille_Detruite TimeOut=-1 RepairCost=100 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Track broken -> no rotation
+        TCriticalEffect(Roll=(71,80) Token='CRITIC22' EffectsPack=~/UnitEffect_Critic_Full_Stop TimeOut=30 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Moteur calé -> Full stop 30sec
+    ]
+
+    EffectsOnRear =
+    [
+        TCriticalEffect(Roll=(1,15) Token='BOUNCE2' EffectsPack=~/UnitEffect_Critic_Stop_Armes TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Shooter KO -> Armes stop 10sec
+        TCriticalEffect(Roll=(16,30) Token='BOUNCE3' EffectsPack=~/UnitEffect_Critic_Stop_Reload TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Loader KO -> no reload 10sec
+        TCriticalEffect(Roll=(31,45) Token='BOUNCE4' EffectsPack=~/UnitEffect_Critic_Full_Stop TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Driver KO -> Full stop 10sec
+        TCriticalEffect(Roll=(46,60) Token='BOUNCE5' EffectsPack=~/UnitEffect_Critic_Bailed_Out TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Crew KO -> Bailout 10sec
+        TCriticalEffect(Roll=(61,70) Token='CRITIC10' EffectsPack=~/UnitEffect_Critic_Chenille_Detruite TimeOut=-1 RepairCost=100 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Track broken -> no rotation
+        TCriticalEffect(Roll=(71,80) Token='CRITIC22' EffectsPack=~/UnitEffect_Critic_Full_Stop TimeOut=30 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Moteur calé -> Full stop 30sec
+    ]
+
+    EffectsOnTop =
+    [
+        TCriticalEffect(Roll=(1,15) Token='BOUNCE2' EffectsPack=~/UnitEffect_Critic_Stop_Armes TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Shooter KO -> Armes stop 10sec
+        TCriticalEffect(Roll=(16,30) Token='BOUNCE3' EffectsPack=~/UnitEffect_Critic_Stop_Reload TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Loader KO -> no reload 10sec
+        TCriticalEffect(Roll=(31,45) Token='BOUNCE4' EffectsPack=~/UnitEffect_Critic_Full_Stop TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Driver KO -> Full stop 10sec
+        TCriticalEffect(Roll=(46,60) Token='BOUNCE5' EffectsPack=~/UnitEffect_Critic_Bailed_Out TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Crew KO -> Bailout 10sec
+        TCriticalEffect(Roll=(61,70) Token='CRITIC10' EffectsPack=~/UnitEffect_Critic_Chenille_Detruite TimeOut=-1 RepairCost=100 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Track broken -> no rotation
+        TCriticalEffect(Roll=(71,80) Token='CRITIC22' EffectsPack=~/UnitEffect_Critic_Full_Stop TimeOut=30 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Moteur calé -> Full stop 30sec
+    ]
+
+    PierceEffectsOnFront =
+    [
+        TCriticalEffect(Roll=(1,1) Token='CRITIC3' EffectsPack=~/UnitEffect_Effet_Meurt TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True), // Armour cracked -> mort
+        TCriticalEffect(Roll=(2,2) Token='CRITIC5' EffectsPack=~/UnitEffect_Critic_Bailed_Out TimeOut=-1 RepairCost=100 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Bailed out
+        TCriticalEffect(Roll=(3,3) Token='CRITIC14' EffectsPack=~/UnitEffect_Critic_Stop_Armes TimeOut=-1 RepairCost=100 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Gun Jammed -> plus de tir
+        TCriticalEffect(Roll=(4,4) Token='CRITIC18' EffectsPack=~/UnitEffect_Critic_Visee_50 TimeOut=-1 RepairCost=100 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Sight damaged -> Précision 0.5
+        TCriticalEffect(Roll=(5,5) Token='CRITIC19' EffectsPack=~/UnitEffect_Critic_Reload_50 TimeOut=-1 RepairCost=100 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Loader wounded -> reload *0.5
+        TCriticalEffect(Roll=(6,6) Token='CRITIC6' EffectsPack=~/UnitEffect_Critic_Vitesse_50 TimeOut=-1 RepairCost=50 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Transmission endommagée -> 50% vitesse
+        TCriticalEffect(Roll=(7,7) Token='CRITIC23' EffectsPack=~/UnitEffect_Critic_Deroute TimeOut=30 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Crew panicked -> Deroute
+        TCriticalEffect(Roll=(8,8) Token='CRITIC21' EffectsPack=~/UnitEffect_Critic_Pert_2_PV TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=True), // Spalling -> perd 2PV
+        TCriticalEffect(Roll=(9,9) Token='CRITIC15' EffectsPack=~/UnitEffect_Critic_Stop_Armes TimeOut=30 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Shooter killed -> Armes stop 30sec
+        TCriticalEffect(Roll=(10,10) Token='CRITIC17' EffectsPack=~/UnitEffect_Critic_Full_Stop TimeOut=30 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Driver killed -> Full stop 30sec
+        TCriticalEffect(Roll=(11,11) Token='CRITIC4' EffectsPack=~/UnitEffect_Critic_Bailed_Out TimeOut=-1 RepairCost=100 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Crew killed -> Bail out
+    ]
+
+    PierceEffectsOnSides =
+    [
+        TCriticalEffect(Roll=(1,1) Token='CRITIC1' EffectsPack=~/UnitEffect_Effet_Meurt TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True), // Ammo explosion -> mort
+        TCriticalEffect(Roll=(2,2) Token='CRITIC4' EffectsPack=~/UnitEffect_Critic_Bailed_Out TimeOut=-1 RepairCost=100 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Crew killed -> Bail out
+        TCriticalEffect(Roll=(3,3) Token='CRITIC10' EffectsPack=~/UnitEffect_Critic_Chenille_Detruite TimeOut=-1 RepairCost=100 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Track broken -> no rotation
+        TCriticalEffect(Roll=(4,4) Token='CRITIC7' EffectsPack=~/UnitEffect_Critic_Full_Stop TimeOut=-1 RepairCost=100 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Transmission pétée -> Full stop
+        TCriticalEffect(Roll=(5,5) Token='CRITIC19' EffectsPack=~/UnitEffect_Critic_Reload_50 TimeOut=-1 RepairCost=100 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Loader wounded -> reload *0.5
+        TCriticalEffect(Roll=(6,6) Token='CRITIC23' EffectsPack=~/UnitEffect_Critic_Deroute TimeOut=30 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Crew panicked -> Deroute
+        TCriticalEffect(Roll=(7,7) Token='CRITIC21' EffectsPack=~/UnitEffect_Critic_Pert_2_PV TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=True), // Spalling -> perd 2PV
+        TCriticalEffect(Roll=(8,8) Token='CRITIC15' EffectsPack=~/UnitEffect_Critic_Stop_Armes TimeOut=30 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Shooter killed -> Armes stop 30sec
+        TCriticalEffect(Roll=(9,9) Token='CRITIC16' EffectsPack=~/UnitEffect_Critic_Stop_Reload TimeOut=30 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Loader killed -> no reload 30sec
+        TCriticalEffect(Roll=(10,10) Token='CRITIC4' EffectsPack=~/UnitEffect_Critic_Bailed_Out TimeOut=-1 RepairCost=100 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Crew killed -> Bail out
+    ]
+
+    PierceEffectsOnRear =
+    [
+        TCriticalEffect(Roll=(1,1) Token='CRITIC2' EffectsPack=~/UnitEffect_Effet_Meurt TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True), // Fuel explosion -> mort
+        TCriticalEffect(Roll=(2,2) Token='CRITIC5' EffectsPack=~/UnitEffect_Critic_Bailed_Out TimeOut=-1 RepairCost=100 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Bailed out
+        TCriticalEffect(Roll=(3,3) Token='CRITIC7' EffectsPack=~/UnitEffect_Critic_Full_Stop TimeOut=-1 RepairCost=100 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Transmission pétée -> Full stop
+        TCriticalEffect(Roll=(4,4) Token='CRITIC19' EffectsPack=~/UnitEffect_Critic_Reload_50 TimeOut=-1 RepairCost=100 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Loader wounded -> reload *0.5
+        TCriticalEffect(Roll=(5,5) Token='CRITIC6' EffectsPack=~/UnitEffect_Critic_Vitesse_50 TimeOut=-1 RepairCost=50 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Transmission endommagée -> 50% vitesse
+        TCriticalEffect(Roll=(6,6) Token='CRITIC23' EffectsPack=~/UnitEffect_Critic_Deroute TimeOut=30 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Crew panicked -> Deroute
+        TCriticalEffect(Roll=(7,7) Token='CRITIC20' EffectsPack=~/UnitEffect_Critic_Pert_2_PV TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=True), // Incendiary -> perd 2PV
+        TCriticalEffect(Roll=(8,8) Token='CRITIC15' EffectsPack=~/UnitEffect_Critic_Stop_Armes TimeOut=30 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Shooter killed -> Armes stop 30sec
+        TCriticalEffect(Roll=(9,9) Token='CRITIC16' EffectsPack=~/UnitEffect_Critic_Stop_Reload TimeOut=30 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Loader killed -> no reload 30sec
+        TCriticalEffect(Roll=(10,10) Token='CRITIC4' EffectsPack=~/UnitEffect_Critic_Bailed_Out TimeOut=-1 RepairCost=100 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Crew killed -> Bail out
+    ]
+
+    PierceEffectsOnTop =
+    [
+        TCriticalEffect(Roll=(1,2) Token='CRITIC2' EffectsPack=~/UnitEffect_Effet_Meurt TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True), // Fuel explosion -> mort
+        TCriticalEffect(Roll=(3,4) Token='CRITIC5' EffectsPack=~/UnitEffect_Critic_Bailed_Out TimeOut=-1 RepairCost=100 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Bailed out
+        TCriticalEffect(Roll=(5,6) Token='CRITIC23' EffectsPack=~/UnitEffect_Critic_Deroute TimeOut=30 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Crew panicked -> Deroute
+        TCriticalEffect(Roll=(7,8) Token='CRITIC21' EffectsPack=~/UnitEffect_Critic_Pert_2_PV TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=True), // Spalling -> perd 2PV
+        TCriticalEffect(Roll=(9,10) Token='CRITIC4' EffectsPack=~/UnitEffect_Critic_Bailed_Out TimeOut=-1 RepairCost=100 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Crew killed -> Bail out
+    ]
+
+    RicochetEffectsOnFront =
+    [
+        TCriticalEffect(Roll=(1,1) Token='BOUNCE2' EffectsPack=~/UnitEffect_Critic_Stop_Armes TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Shooter KO -> Armes stop 10sec
+        TCriticalEffect(Roll=(2,2) Token='BOUNCE3' EffectsPack=~/UnitEffect_Critic_Stop_Reload TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Loader KO -> no reload 10sec
+        TCriticalEffect(Roll=(3,3) Token='BOUNCE4' EffectsPack=~/UnitEffect_Critic_Full_Stop TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Driver KO -> Full stop 10sec
+        TCriticalEffect(Roll=(4,5) Token='CRITIC6' EffectsPack=~/UnitEffect_Critic_Vitesse_50 TimeOut=-1 RepairCost=50 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Transmission endommagée -> 50% vitesse
+        TCriticalEffect(Roll=(6,100) Token='BOUNCE1' EffectsPack=nil TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // BOUNCE
+    ]
+
+    RicochetEffectsOnSides =
+    [
+        TCriticalEffect(Roll=(1,1) Token='BOUNCE2' EffectsPack=~/UnitEffect_Critic_Stop_Armes TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Shooter KO -> Armes stop 10sec
+        TCriticalEffect(Roll=(2,2) Token='BOUNCE3' EffectsPack=~/UnitEffect_Critic_Stop_Reload TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Loader KO -> no reload 10sec
+        TCriticalEffect(Roll=(3,3) Token='BOUNCE4' EffectsPack=~/UnitEffect_Critic_Full_Stop TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Driver KO -> Full stop 10sec
+        TCriticalEffect(Roll=(4,5) Token='CRITIC6' EffectsPack=~/UnitEffect_Critic_Vitesse_50 TimeOut=-1 RepairCost=50 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Transmission endommagée -> 50% vitesse
+        TCriticalEffect(Roll=(6,100) Token='BOUNCE1' EffectsPack=nil TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // BOUNCE
+        {TCriticalEffect(Roll=(1,65) Token='BOUNCE1' EffectsPack=nil TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // BOUNCE
+                TCriticalEffect(Roll=(66,70) Token='CRITIC23' EffectsPack=~/UnitEffect_Critic_Deroute TimeOut=30 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Crew panicked -> Deroute
+                TCriticalEffect(Roll=(71,75) Token='BOUNCE2' EffectsPack=~/UnitEffect_Critic_Stop_Armes TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Shooter KO -> Armes stop 10sec
+                TCriticalEffect(Roll=(76,80) Token='BOUNCE3' EffectsPack=~/UnitEffect_Critic_Stop_Reload TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Loader KO -> no reload 10sec
+                TCriticalEffect(Roll=(81,85) Token='BOUNCE4' EffectsPack=~/UnitEffect_Critic_Full_Stop TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Driver KO -> Full stop 10sec
+                TCriticalEffect(Roll=(86,90) Token='BOUNCE5' EffectsPack=~/UnitEffect_Critic_Bailed_Out TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Crew KO -> Bailout 10sec
+                TCriticalEffect(Roll=(91,95) Token='CRITIC6' EffectsPack=~/UnitEffect_Critic_Vitesse_50 TimeOut=-1 RepairCost=50 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Transmission endommagée -> 50% vitesse
+                TCriticalEffect(Roll=(96,100) Token='CRITIC8' EffectsPack=~/UnitEffect_Critic_Vitesse_50 TimeOut=-1 RepairCost=50 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Moteur endommagée -> 50% vitesse}
+    ]
+
+    RicochetEffectsOnRear =
+    [
+        TCriticalEffect(Roll=(1,1) Token='BOUNCE2' EffectsPack=~/UnitEffect_Critic_Stop_Armes TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Shooter KO -> Armes stop 10sec
+        TCriticalEffect(Roll=(2,2) Token='BOUNCE3' EffectsPack=~/UnitEffect_Critic_Stop_Reload TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Loader KO -> no reload 10sec
+        TCriticalEffect(Roll=(3,3) Token='BOUNCE4' EffectsPack=~/UnitEffect_Critic_Full_Stop TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Driver KO -> Full stop 10sec
+        TCriticalEffect(Roll=(4,5) Token='CRITIC6' EffectsPack=~/UnitEffect_Critic_Vitesse_50 TimeOut=-1 RepairCost=50 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Transmission endommagée -> 50% vitesse
+        TCriticalEffect(Roll=(6,100) Token='BOUNCE1' EffectsPack=nil TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // BOUNCE
+        {TCriticalEffect(Roll=(1,60) Token='BOUNCE1' EffectsPack=nil TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // BOUNCE
+                TCriticalEffect(Roll=(61,65) Token='CRITIC23' EffectsPack=~/UnitEffect_Critic_Deroute TimeOut=30 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Crew panicked -> Deroute
+                TCriticalEffect(Roll=(66,70) Token='BOUNCE2' EffectsPack=~/UnitEffect_Critic_Stop_Armes TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Shooter KO -> Armes stop 10sec
+                TCriticalEffect(Roll=(71,75) Token='BOUNCE3' EffectsPack=~/UnitEffect_Critic_Stop_Reload TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Loader KO -> no reload 10sec
+                TCriticalEffect(Roll=(76,80) Token='BOUNCE4' EffectsPack=~/UnitEffect_Critic_Full_Stop TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Driver KO -> Full stop 10sec
+                TCriticalEffect(Roll=(81,85) Token='BOUNCE5' EffectsPack=~/UnitEffect_Critic_Bailed_Out TimeOut=10 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Crew KO -> no move et tir 10sec
+                TCriticalEffect(Roll=(86,90) Token='CRITIC6' EffectsPack=~/UnitEffect_Critic_Vitesse_50 TimeOut=-1 RepairCost=50 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Transmission endommagée -> 50% vitesse
+                TCriticalEffect(Roll=(91,95) Token='CRITIC8' EffectsPack=~/UnitEffect_Critic_Vitesse_50 TimeOut=-1 RepairCost=50 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Moteur endommagée -> 50% vitesse
+                TCriticalEffect(Roll=(96,100) Token='CRITIC22' EffectsPack=~/UnitEffect_Critic_Full_Stop TimeOut=30 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False), // Moteur calé -> Full stop 30sec}
+    ]
+
+    RicochetEffectsOnTop = []
+)

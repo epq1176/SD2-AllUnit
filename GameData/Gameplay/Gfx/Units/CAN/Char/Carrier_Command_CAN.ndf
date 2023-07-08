@@ -1,0 +1,22 @@
+export ModelFile_Carrier_Command_CAN is 'GameData:Assets\3D\Units\CAN\Char\Universal_Carrier\Command_Carrier.Ase2NdfBin'
+
+Modele_Carrier_Command_CAN is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Carrier_Command_CAN
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_Command_CAN_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CAN\Char\Universal_Carrier_MID\Command_Carrier_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_Command_CAN_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CAN\Char\LODS\Command_Carrier_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

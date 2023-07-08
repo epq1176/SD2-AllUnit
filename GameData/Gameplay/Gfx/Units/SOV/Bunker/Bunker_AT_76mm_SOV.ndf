@@ -1,0 +1,17 @@
+export Gfx_Bunker_AT_76mm_SOV is TDepictionTemplate //arme
+(
+    RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+    Selector = CommonBunkerDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_Howz_ZIS3_76mm_SOV ),
+        DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_Howz_ZIS3_76mm_SOV_MID ),
+        DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_Howz_ZIS3_76mm_SOV_LOW ),
+        DepictionDescriptor_LOD_None()
+    ]
+
+    SubDepictions = []
+    Operators = Operators_Howz_ZIS3_76mm_SOV
+    Actions = Weapons_Howz_ZIS3_76mm_SOV
+)
+
+export ModelFile_Bunker_AT_76mm_SOV is ~/ModelFile_Howz_ZIS3_76mm_SOV

@@ -1,0 +1,22 @@
+export ModelFile_BT_7_SOV is 'GameData:Assets\3D\Units\SOV\Char\BT_7_SOV\BT_7_SOV.Ase2NdfBin'
+
+Modele_BT_7_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_BT_7_SOV
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_BT_7_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\BT_7_SOV_MID\BT_7_SOV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_BT_7_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\LODS\BT_7_SOV_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

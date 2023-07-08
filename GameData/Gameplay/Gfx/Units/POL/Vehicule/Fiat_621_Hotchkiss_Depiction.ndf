@@ -1,0 +1,27 @@
+Gfx_Fiat_621_Hotchkiss is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Fiat_621_Hotchkiss ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Fiat_621_Hotchkiss_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_Fiat_621_Hotchkiss_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Fiat_621_Hotchkiss ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Fiat_621_Hotchkiss_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_Fiat_621_Hotchkiss_LOW ),
+        ]
+
+        Operators = Operators_Fiat_621_Hotchkiss
+                  + DepictionOperator_Chassis_MediumTank
+                  + DepictionOperator_Propulsion_6Wheels_Generic_MediumVehicleSound
+
+        Actions = Weapons_Fiat_621_Hotchkiss
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Wheeled
+
+        SubDepictions = DepictionSubDepiction_Driver_Civilian_1_POL
+                        + DepictionSubDepiction_Tireur_Civilian_2_POL
+    )
+)

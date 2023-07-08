@@ -1,0 +1,246 @@
+//-------------------------------------------------------------------------
+//------------------------- MISSIONS DE DEFENSE ---------------------------
+//-------------------------------------------------------------------------
+// Parametres TMacroActionDescriptor_Common
+//-------------------------------------------------------------------------
+// GenerationType :
+// NumberOfMacro :
+// ParametresDeMission : Transport, Airstrike, Support, ArtilleryStrike
+// PoolModelList : liste des unites demandees
+// DisableReinforcement : si on recoit des renforts en cours d'attaque ou pas
+// IgnoreSafePath : Le pathfind de la mission cherche ou non à esquiver la menace
+// TuerLaMissionEnFinDeVieAuLieuDeLaRelancer : (bool)
+// LaunchASAP_RatioMin : permet de lancer l'attaque sans attendre toutes les unites requises à combiner avec ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+// MissionOmnisciente : Pas utilise dans Normandie (systeme de connaissance de zone)
+//-------------------------------------------------------------------------
+// Parametres TMacroActionDescriptor_CorridorDefense_Specific
+//-------------------------------------------------------------------------
+// ForcedCorridor : (format special ex:[1]) permet de forcer l'attaque sur un couloir.
+//
+
+// MAINTAINS
+//-------------------------------------------------------------------------
+export Cheated_Maintain_CorridorDefenses is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    GenerationType = TGenerationType_Maintain
+)
+//-------------------------------------------------------------------------
+export Cheated_Maintain_DynamicDefenses is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    GenerationType = TGenerationType_Maintain
+)
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+private template Cheated_Template_Defense_Corridor
+[
+    NumberOfMacro:int = 1,
+    MinimumResourceForLaunch:int = 0,
+    PoolModelList = [~/Cheated_Pool_AT_Defense, Cheated_Pool_HMG_Defense],
+    UseTaggedPool:bool = true
+]
+is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = <NumberOfMacro>
+    MinimumResourceForLaunch = <MinimumResourceForLaunch>
+    IgnoreSafePath = true //on n'esquive pas la menace sur le chemin
+    DisableReinforcement = true
+    IgnoreVisionForDefensePosition = false
+    IgnoreEnemyDirectionForDefensePosition = false
+    IgnoreDefensePositionSafety = false
+
+    PoolModelList = <PoolModelList>
+
+    TaggedPoolModelList = (
+        <UseTaggedPool> == false ? [] :
+        [
+            (["DefenseInfantry"], [~/Cheated_Pool_HMG_Defense]),
+            (["DefenseAA"], [~/Cheated_Pool_AA_Defense]),
+            (["DefenseTank"], [~/Cheated_Pool_AT_Defense]),
+        ]
+    )
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/Cheated_BasicAirstrikeSupport)
+        ),
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0)
+        ),
+        (
+            ESettingType/Support,
+            TSupportSettingHolder(SettingList = [Cheated_Renfort_AT])
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+private template Cheated_Template_Dynamic_Defense_Corridor
+[
+    NumberOfMacro:int = 1,
+    MinimumResourceForLaunch:int = 0,
+    PoolModelList = [~/Cheated_Pool_AT_Defense, Cheated_Pool_HMG_Defense],
+    UseTaggedPool:bool = true
+]
+is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = <NumberOfMacro>
+    MinimumResourceForLaunch = <MinimumResourceForLaunch>
+    IgnoreSafePath = true //on n'esquive pas la menace sur le chemin
+    DisableReinforcement = true
+    IgnoreVisionForDefensePosition = false
+    IgnoreEnemyDirectionForDefensePosition = false
+    IgnoreDefensePositionSafety = false
+
+    LaunchASAP_RatioMin = 0.01
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = <PoolModelList>
+
+    TaggedPoolModelList = (
+        <UseTaggedPool> == false ? [] :
+        [
+            (["DefenseInfantry"], [~/Cheated_Pool_HMG_Defense]),
+            (["DefenseAA"], [~/Cheated_Pool_AA_Defense]),
+            (["DefenseTank"], [~/Cheated_Pool_AT_Defense]),
+        ]
+    )
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/Cheated_BasicAirstrikeSupport)
+        ),
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0)
+        ),
+        (
+            ESettingType/Support,
+            TSupportSettingHolder(SettingList = [Cheated_Renfort_AT])
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+// Defenses couloir classiques
+//-------------------------------------------------------------------------
+export Cheated_Defense_Static_Adaptive is Cheated_Template_Defense_Corridor
+(
+)
+//-------------------------------------------------------------------------
+export Cheated_Defense_Static_AA is Cheated_Template_Defense_Corridor
+(
+    PoolModelList = [ ~/Cheated_Pool_AA_Defense ]
+    UseTaggedPool = false
+)
+//-------------------------------------------------------------------------
+export Cheated_Defense_Dynamic_Adaptive is Cheated_Template_Dynamic_Defense_Corridor
+(
+)
+//-------------------------------------------------------------------------
+// Defenses couloir autogen
+//-------------------------------------------------------------------------
+export Cheated_Defense_Static_Adaptive_Autogen is Cheated_Template_Defense_Corridor
+(
+    MinimumResourceForLaunch = ~/Cheated_MinimumResourceForLaunch_Stage_1
+)
+//-------------------------------------------------------------------------
+export Cheated_Defense_Static_AA_Autogen is Cheated_Template_Defense_Corridor
+(
+    PoolModelList = [ ~/Cheated_Pool_AA_Defense ]
+    MinimumResourceForLaunch = ~/Cheated_MinimumResourceForLaunch_Stage_1
+    UseTaggedPool = false
+)
+//-------------------------------------------------------------------------
+export Cheated_Defense_Dynamic_Adaptive_Autogen is Cheated_Template_Dynamic_Defense_Corridor
+(
+    MinimumResourceForLaunch = ~/Cheated_MinimumResourceForLaunch_Stage_1
+)
+//-------------------------------------------------------------------------
+export Cheated_Defense_Dynamic_Adaptive_Autogen_XL is Cheated_Template_Dynamic_Defense_Corridor
+(
+    MinimumResourceForLaunch = ~/Cheated_MinimumResourceForLaunch_Scaling_XL
+)
+//-------------------------------------------------------------------------
+// Pool Models
+//-------------------------------------------------------------------------
+Cheated_ProductionFallback is [
+    "Vehicule_Appui",
+    "Infanterie_Standard",
+    "Canon_AA",
+    "Vehicule_Transport_Arme",
+    "Char"
+] // Ce fallback permet d'assurer la production d'au moins une unite pour les corridors taggués. Sinon ça bloque le couloir
+//-------------------------------------------------------------------------
+export Cheated_Pool_HMG_Defense is TPoolModel
+(
+    // Pas de budget, il faut quelqu'un
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{bfbc58de-d611-11e8-88fe-704d7b2c87d4}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Infanterie_Spec_Defense",
+                "Infanterie_Standard",
+                "Vehicule_Appui",
+            ]
+            +~/Cheated_ProductionFallback
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Cheated_Pool_AT_Defense is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{bfbc58df-d611-11e8-a5a4-704d7b2c87d4}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Canon_AT_Lourd",
+                "ChasseurDeChar_Lourd",
+                "Canon_AT_Standard",
+                "ChasseurDeChar_Standard",
+            ]
+            +~/Cheated_ProductionFallback
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{d98b10e1-e1b5-11e8-b510-2c56dc4c150d}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Infanterie_Spec_Defense",
+            ]
+            +~/Cheated_ProductionFallback
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Cheated_Pool_AA_Defense is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{bfbc58e0-d611-11e8-9e5b-704d7b2c87d4}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Canon_AA_Standard",
+                "Canon_AA_Porte",
+            ]
+            +~/Cheated_ProductionFallback
+        ),
+    ]
+)
+//-------------------------------------------------------------------------

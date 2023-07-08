@@ -1,0 +1,344 @@
+//------------------------------------------------------------------------------
+// Template de tir pour les animations
+// Utilise par les infanteries
+//------------------------------------------------------------------------------
+
+// Template de base, utilise pour lancer les FX a partir d'une animation.
+Default_FX_WAIT_BETWEEN_SHOT is 0.99
+public Template TemplateActionTir_Proto_OnSousMobile
+[
+    FX_TIR_COMPLET,
+    FX_FLUID_FRICTION,
+    FX_TIR_TENDU,
+    FX_SANS_PHYSIC,
+    FX_INITIAL_SPEED,
+    FX_POWER : float,
+    FX_IMPACT_POWER : float,
+    SOUS_MOBILE_NAME,
+    FX_WAIT_BETWEEN_SHOT : float = Default_FX_WAIT_BETWEEN_SHOT,
+    SHOT_COUNT_INITIAL_VALUE : float = 1,
+    IsTirContinu : bool = false
+]
+is TActionDescriptorLaunchEffetOnSousMobile
+(
+    LocalVariables =
+    [
+        parShotOnGround is TPinnableValue(ExpectedType: bool InitialValue = true),
+        parDestination is TPinnableValue(ExpectedType : float3),
+        parTravelDuration is TPinnableValue(ExpectedType : float),
+        parShotCount is TPinnableValue(ExpectedType: float InitialValue = <IsTirContinu>? 0 : <SHOT_COUNT_INITIAL_VALUE>),
+        parWaitBetweenShot is TPinnableValue(ExpectedType: float InitialValue = <FX_WAIT_BETWEEN_SHOT>), // pour etre modifié par l'IA, comme avant, mais on peut faire comme pour POWER par exemple à terme.
+        parInitialShotDelay is TPinnableValue(ExpectedType: float InitialValue = 0), // modifié par l'IA pour les tirs continus, sert pour le tir multi tude ( pour un canon avec X tube, chaque tube tir a une frequence FrequenceTir/x le premier avec 0 de delais, le deuxieme ave 1/x, le troisieme avec 2/x etc...
+        parImpactOnGround is TPinnableValue(ExpectedType: bool InitialValue = true),
+        parInitialSpeed is TPinnableValue( ExpectedType: float3),
+        parTerrain is TPinnableValue( ExpectedType: int InitialValue = 1),
+    ]
+
+    SousMobile = <SOUS_MOBILE_NAME>
+    MaxDuration = 3
+
+    EffetToLaunch = TActionCall
+    (
+        Action = <FX_TIR_COMPLET>
+
+        NamedParams = MAP[
+            ('parPower', <FX_POWER>),
+            ('parShotOnGround', parShotOnGround),
+            ('parDestination', parDestination),
+            ('parTirPhysic', !<FX_SANS_PHYSIC>),
+            ('parTirTendu', <FX_TIR_TENDU>),
+            ('parFluidFriction', <FX_FLUID_FRICTION>),
+            ('parInitialSpeed', parInitialSpeed ),
+            ('parFlyDuration', parTravelDuration),
+            ('parShotCount', parShotCount),
+            ('parWaitBetweenShot', parWaitBetweenShot),
+            ('parInitialShotDelay', parInitialShotDelay),
+            ('parImpactOnGround', parImpactOnGround),
+            ('parTerrain', parTerrain),
+        ]
+    )
+)
+//------------------------------------------------------------------------------
+// template référencés par la génération de l'ODS
+//------------------------------------------------------------------------------
+template templateFXWeapon_InstantFX
+[
+    FX,
+    FluidFriction,
+    DirectFire,
+    WithoutPhysics,
+    InitialSpeed,
+    Power : float,
+    ImpactPower : float,
+    Anchor,
+    WaitBetweenShot : float = Default_FX_WAIT_BETWEEN_SHOT,
+    WorldImpact = [], // pas utilisé mais ca simplifie l'ecriture du générateur ODS.
+    TargetPositionPhysicalPropertyName : string, // pas utilisé mais ca simplifie l'ecriture du générateur ODS.
+    FlyingTimeAndHitPhysicalPropertyName : string // idem
+]
+is TOnMobileHappening
+(
+    ActionDescriptor = <FX>
+    InitialValues = [
+        ('parPower',            TConstant( Value =  <Power>)),
+        ('parShotOnGround',     TConstant( Value =  true)),
+        ('parTirPhysic',        TConstant( Value =  !<WithoutPhysics>)),
+        ('parTirTendu',         TConstant( Value =  <DirectFire>)),
+        ('parFluidFriction',    TConstant( Value =  <FluidFriction>)),
+        ('parInitialSpeed',     TConstant( Value =  float3[<InitialSpeed>, 0, 0])),
+        ('parShotCount',        TConstant( Value =  1)),
+        ('parWaitBetweenShot',  TConstant( Value =  <WaitBetweenShot>)),
+        ('parInitialShotDelay', TConstant( Value =  0.0)),
+        ('parImpactOnGround',   TConstant( Value =  true)),
+        ('parTerrain',          TConstant( Value =  1)),
+    ]
+    SousMobile = <Anchor>
+)
+//------------------------------------------------------------------------------
+template templateFXWeapon_ContinuousFX
+[
+    FX,
+    FluidFriction,
+    DirectFire,
+    WithoutPhysics,
+    InitialSpeed,
+    Power : float,
+    ImpactPower : float,
+    Anchor,
+    WaitBetweenShot : float = Default_FX_WAIT_BETWEEN_SHOT,
+    WorldImpact = [],
+    TargetPositionPhysicalPropertyName : string,
+    FlyingTimeAndHitPhysicalPropertyName : string
+]
+is TFiringHappening
+(
+    TargetPositionPhysicalPropertyName = <TargetPositionPhysicalPropertyName>
+    FlyingTimeAndHitPhysicalPropertyName = <FlyingTimeAndHitPhysicalPropertyName>
+    SousMobile = <Anchor>
+
+    ActionDescriptor = <FX>
+
+    InitialValues = [
+        ('parPower',            TConstant( Value = <Power>)),
+        ('parShotOnGround',     TConstant( Value = true)),
+        ('parTirPhysic',        TConstant( Value = !<WithoutPhysics>)),
+        ('parTirTendu',         TConstant( Value = <DirectFire>)),
+        ('parFluidFriction',    TConstant( Value = <FluidFriction>)),
+        ('parInitialSpeed',     TConstant( Value = float3[<InitialSpeed>, 0, 0] )),
+        ('parShotCount',        TConstant( Value = 0)),
+        ('parWaitBetweenShot',  TConstant( Value = <WaitBetweenShot>)),
+        ('parInitialShotDelay', TConstant( Value = 0.0)),
+        ('parImpactOnGround',   TConstant( Value = true)),
+        ('parTerrain',          TConstant( Value = 1)),
+    ]
+
+    WorldImpact = <WorldImpact>
+    WaitBetweenShot = <WaitBetweenShot>
+)
+//------------------------------------------------------------------------------
+template templateFXWeapon_BombFX
+[
+    FX,
+    FluidFriction,
+    DirectFire,
+    WithoutPhysics,
+    InitialSpeed,
+    Power : float,
+    ImpactPower : float,
+    Anchor,
+    WaitBetweenShot : float = Default_FX_WAIT_BETWEEN_SHOT,
+    WorldImpact = [], // pas utilisé mais ca simplifie l'ecriture du générateur ODS.
+    TargetPositionPhysicalPropertyName : string, // pas utilisé mais ca simplifie l'ecriture du générateur ODS.
+    FlyingTimeAndHitPhysicalPropertyName : string // idem
+]
+is TBombHappening
+(
+    ActionDescriptor = <FX>
+    InitialValues = [
+        ('parPower',            TConstant( Value =  <Power>)),
+        ('parShotOnGround',     TConstant( Value =  true)),
+        ('parTirPhysic',        TConstant( Value =  !<WithoutPhysics>)),
+        ('parTirTendu',         TConstant( Value =  <DirectFire>)),
+        ('parFluidFriction',    TConstant( Value =  <FluidFriction>)),
+        ('parInitialSpeed',     TConstant( Value =  float3[<InitialSpeed>, 0, 0])),
+        ('parShotCount',        TConstant( Value =  1)),
+        ('parWaitBetweenShot',  TConstant( Value =  <WaitBetweenShot>)),
+        ('parInitialShotDelay', TConstant( Value =  0.0)),
+        ('parImpactOnGround',   TConstant( Value =  true)),
+        ('parTerrain',          TConstant( Value =  1))
+    ]
+)
+//------------------------------------------------------------------------------
+// Template de FX sous mobile general
+//------------------------------------------------------------------------------
+
+public Template TemplateFxOnSousMobile
+[
+    Fx,
+    SousMobileName
+]
+is TActionDescriptorLaunchEffetOnSousMobile
+(
+    SousMobile = <SousMobileName>
+
+    EffetToLaunch = TActionCall ( Action = <Fx> )
+)
+
+//------------------------------------------------------------------------------
+// Templates Firing, ControlProjectile et Impact
+//------------------------------------------------------------------------------
+
+// ControlProjectile :
+public Template Template_FxControlProjectile
+[
+    Power = 3.0,
+    ShotOnGround = false,
+    FlyDuration = 20.0,
+    SpeedMagnitude = 1000,
+
+    Fx,
+]
+is TActionCall
+(
+    Action = <Fx>
+    LocalVariables =
+    [
+        parPower is TPinnableValue(ExpectedType: float InitialValue = <Power>),
+        parShotOnGround is TPinnableValue(ExpectedType: bool InitialValue = <ShotOnGround>),
+        parTravelDuration is TPinnableValue(ExpectedType: float InitialValue = <FlyDuration>),
+        parSpeedMagnitude is TPinnableValue(ExpectedType: float InitialValue = <SpeedMagnitude>),
+    ]
+    NamedParams = MAP[
+        ('parPower', parPower),
+        ('parShotOnGround', parShotOnGround),
+        ('parFlyDuration', parTravelDuration),
+        ('parInitialSpeed', parSpeedMagnitude)
+    ]
+)
+
+// Firing :
+
+public Template Template_FxFiring_OnSousMobile
+[
+    Power = 3.0,
+    ShotOnGround = false,
+    ShotCount = 1,
+    WaitBetweenShot = 1.0,
+
+    Fx,
+    SousMobile,
+]
+is TActionDescriptorLaunchEffetOnSousMobile
+(
+    LocalVariables =
+    [
+        parPower is TPinnableValue(ExpectedType: float InitialValue = <Power>),
+        parShotOnGround is TPinnableValue(ExpectedType: bool InitialValue = <ShotOnGround>),
+        parShotCount is TPinnableValue(ExpectedType: int InitialValue = <ShotCount>),
+        parWaitBetweenShot is TPinnableValue(ExpectedType: float InitialValue = <WaitBetweenShot>),
+    ]
+
+    EffetToLaunch = TActionCall
+    (
+        Action = <Fx>
+
+        NamedParams = MAP[
+            ('parPower', parPower),
+            ('parShotOnGround', parShotOnGround),
+            ('parShotCount', parShotCount),
+            ('parWaitBetweenShot', parWaitBetweenShot)
+        ]
+    )
+
+    SousMobile = <SousMobile>
+)
+
+template ActionAlias
+[
+    ExpectedType : string[Values = ['float', 'float3', 'float4', 'int', 'bool', 'any']] = 'any',
+    DefaultValue : TEvaluable = nil
+] is TActionAlias
+(
+    ExpectedType = <ExpectedType>
+    DefaultValue = <DefaultValue>
+)
+
+export template Template_FXFiringAndProjectile
+[
+    Firing     : TActionDescriptor = nil,
+    Projectile : TActionDescriptor = nil
+] is TSimultaneousAction
+(
+    LocalVariables =
+    [
+        private parPower            is TPinnableValue(ExpectedType = 'float'),
+        private parShotOnGround     is TPinnableValue(ExpectedType = 'bool'),
+        private parDestination      is TPinnableValue(ExpectedType = 'float3'),
+        private parTirPhysic        is TPinnableValue(ExpectedType = 'bool'),
+        private parTirTendu         is TPinnableValue(ExpectedType = 'bool'),
+        private parFluidFriction    is TPinnableValue(ExpectedType = 'float'),
+        private parInitialSpeed     is TPinnableValue(ExpectedType = 'float3'),
+        private parTravelDuration   is TPinnableValue(ExpectedType = 'float'),
+        private parShotCount        is TPinnableValue(ExpectedType = 'int'),
+        private parWaitBetweenShot  is TPinnableValue(ExpectedType = 'float'),
+        private parInitialShotDelay is TPinnableValue(ExpectedType = 'float'),
+        private parImpactOnGround   is TPinnableValue(ExpectedType = 'bool'),
+        private parTerrain          is TPinnableValue(ExpectedType = 'int')
+    ]
+    Actions =
+    // [
+    //     TRepeatSimultaneousAction
+    //     (
+    //         InfiniteLoop = true
+    //         WaitBetweenRepeats = 0.5
+    //         Actions =
+    //         [
+    //             TActionDescriptorWithTimer_OSD(DurationInSec = 0.5 Value = parDestination),
+    //         ]
+    //     ),
+    // ] +
+    (
+
+        <Projectile> != nil ?
+        [
+            TActionCall
+            (
+                Action = <Projectile>
+                NamedParams = MAP
+                [
+                    ('parDestination',      parDestination),
+                    ('parFluidFriction',    parFluidFriction),
+                    ('parFlyDuration',      parTravelDuration),
+                    ('parImpactOnGround',   parImpactOnGround),
+                    ('parInitialShotDelay', parInitialShotDelay),
+                    ('parInitialSpeed',     parInitialSpeed),
+                    ('parPower',            parPower),
+                    ('parShotCount',        parShotCount),
+                    ('parShotOnGround',     parShotOnGround),
+                    ('parTerrain',          parTerrain),
+                    ('parTirPhysic',        parTirPhysic),
+                    ('parTirTendu',         parTirTendu),
+                    ('parWaitBetweenShot',  parWaitBetweenShot)
+                ]
+            )
+        ] : []
+    )
+    +
+    (
+        <Firing> != nil ?
+        [
+            TActionCall
+            (
+                Action = <Firing>
+                NamedParams = MAP
+                [
+                    ('parPower',            parPower),
+                    ('parShotCount',        parShotCount),
+                    ('parShotOnGround',     parShotOnGround),
+                    ('parTerrain',          parTerrain),
+                    ('parWaitBetweenShot',  parWaitBetweenShot)
+                ]
+            )
+        ] : []
+    )
+)

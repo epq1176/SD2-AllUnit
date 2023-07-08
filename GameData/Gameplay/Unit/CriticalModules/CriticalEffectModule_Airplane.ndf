@@ -1,0 +1,79 @@
+
+export CriticalEffectModule_Airplane is TCriticalEffectModuleDescriptor
+(
+    Bounds = (1,400)
+    TerrainCriticalEffectTimer = 5.0
+
+    EffectsOnFront =
+    [
+        //TCriticalEffect(Roll=(1,5) Token='CRITIC101' EffectsPack=~/UnitEffect_Effet_Meurt          TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Wing ripped off -> Death
+        TCriticalEffect(Roll=(1,10)  Token='CRITIC121' EffectsPack=~/UnitEffect_Critic_Perd_1_PV     TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Wings damaged -> Loss 1 HP
+        //TCriticalEffect(Roll=(11,15) Token='CRITIC103' EffectsPack=~/UnitEffect_Effet_Meurt        TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Engine on fire -> Death
+        TCriticalEffect(Roll=(11,15) Token='CRITIC115' EffectsPack=~/UnitEffect_Critic_Perd_1_PV     TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Propeller damaged -> Loss 1 HP
+        TCriticalEffect(Roll=(16,25) Token='CRITIC111' EffectsPack=~/UnitEffect_Critic_Perd_1_PV     TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Engine damaged -> Loss 1 HP
+        TCriticalEffect(Roll=(26,30) Token='CRITIC123' EffectsPack=~/UnitEffect_Critic_Deroute      TimeOut=5   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False),   //Float carburator failure -> Loose control during 5s
+        TCriticalEffect(Roll=(31,40) Token='CRITIC114' EffectsPack=~/UnitEffect_Critic_Visee_50     TimeOut=-1  RepairCost=100  KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False),   //Oil leak -> Précision 0.5
+        TCriticalEffect(Roll=(41,45) Token='CRITIC117' EffectsPack=~/UnitEffect_Critic_Deroute      TimeOut=30  RepairCost=-1   KeepWhenLeavingTerrain=False Unique=True  DisplayOnDeath=False),   //Engine Overheating -> Falling back
+        TCriticalEffect(Roll=(46,50) Token='CRITIC122' EffectsPack=~/UnitEffect_Critic_Deroute      TimeOut=30  RepairCost=-1   KeepWhenLeavingTerrain=False Unique=True  DisplayOnDeath=False),   //Engine stalling -> Falling back
+        //TCriticalEffect(Roll=(16,20) Token='CRITIC104' EffectsPack=~/UnitEffect_Effet_Meurt        TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Fuel tank on fire -> Death
+        TCriticalEffect(Roll=(51,55) Token='CRITIC124' EffectsPack=~/UnitEffect_Critic_Perd_1_PV     TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Fuel tank leaking -> Loss 1 HP
+        TCriticalEffect(Roll=(56,60) Token='CRITIC116' EffectsPack=~/UnitEffect_Critic_Perd_1_PV     TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Radiator damaged -> Loss 1 HP
+        TCriticalEffect(Roll=(61,65) Token='CRITIC126' EffectsPack=~/UnitEffect_Critic_Deroute      TimeOut=30  RepairCost=-1   KeepWhenLeavingTerrain=False Unique=True  DisplayOnDeath=False),   //Radiator Overheating -> Falling back
+        //TCriticalEffect(Roll=(21,25) Token='CRITIC105' EffectsPack=~/UnitEffect_Effet_Meurt        TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Pilot killed -> Death
+        TCriticalEffect(Roll=(66,70) Token='CRITIC106' EffectsPack=~/UnitEffect_Critic_Deroute      TimeOut=30  RepairCost=-1   KeepWhenLeavingTerrain=False Unique=True  DisplayOnDeath=False),   //Pilot injured -> Falling back
+        TCriticalEffect(Roll=(71,75) Token='CRITIC112' EffectsPack=~/UnitEffect_Critic_Deroute      TimeOut=30  RepairCost=-1   KeepWhenLeavingTerrain=False Unique=True  DisplayOnDeath=False),   //Pilot panicked -> Falling back
+        TCriticalEffect(Roll=(76,80) Token='CRITIC109' EffectsPack=~/UnitEffect_Critic_Deroute      TimeOut=5   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False),   //Pilot unconscious  -> Loose control during 5s
+        TCriticalEffect(Roll=(81,85) Token='CRITIC107' EffectsPack=~/UnitEffect_Critic_Stop_Armes   TimeOut=-1  RepairCost=100  KeepWhenLeavingTerrain=False Unique=True  DisplayOnDeath=False),   //Weapons jammed -> No more shots
+    ]
+
+    EffectsOnSides =
+    [
+        //TCriticalEffect(Roll=(1,5) Token='CRITIC101' EffectsPack=~/UnitEffect_Effet_Meurt          TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Wing ripped off -> Death
+        TCriticalEffect(Roll=(1,5)   Token='CRITIC121' EffectsPack=~/UnitEffect_Critic_Perd_1_PV     TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Wings damaged -> Loss 1 HP
+        TCriticalEffect(Roll=(6,10)  Token='CRITIC125' EffectsPack=~/UnitEffect_Critic_Perd_1_PV     TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Aileron damaged -> Loss 1 HP
+        TCriticalEffect(Roll=(11,15) Token='CRITIC118' EffectsPack=~/UnitEffect_Critic_Perd_1_PV     TimeOut=0   RepairCost=-1  KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Landing gear damaged -> Loss 1 HP
+        //TCriticalEffect(Roll=(6,10) Token='CRITIC102' EffectsPack=~/UnitEffect_Effet_Meurt         TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Elevator ripped off -> Death
+        TCriticalEffect(Roll=(16,20) Token='CRITIC127' EffectsPack=~/UnitEffect_Critic_Perd_1_PV     TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Tail damaged -> Loss 1 HP
+        TCriticalEffect(Roll=(21,25) Token='CRITIC128' EffectsPack=~/UnitEffect_Critic_Perd_1_PV     TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Rudder damaged -> Loss 1 HP
+        //TCriticalEffect(Roll=(11,15) Token='CRITIC103' EffectsPack=~/UnitEffect_Effet_Meurt        TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Engine on fire -> Death
+        TCriticalEffect(Roll=(26,30) Token='CRITIC111' EffectsPack=~/UnitEffect_Critic_Perd_1_PV     TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Engine damaged -> Loss 1 HP
+        TCriticalEffect(Roll=(31,35) Token='CRITIC123' EffectsPack=~/UnitEffect_Critic_Deroute      TimeOut=5   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False),   //Float carburator failure -> Loose control during 5s
+        TCriticalEffect(Roll=(36,40) Token='CRITIC114' EffectsPack=~/UnitEffect_Critic_Visee_50     TimeOut=-1  RepairCost=100  KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False),   //Oil leak -> Précision 0.5
+        TCriticalEffect(Roll=(41,45) Token='CRITIC117' EffectsPack=~/UnitEffect_Critic_Deroute      TimeOut=30  RepairCost=-1   KeepWhenLeavingTerrain=False Unique=True  DisplayOnDeath=False),   //Engine Overheating -> Falling back
+        //TCriticalEffect(Roll=(16,20) Token='CRITIC104' EffectsPack=~/UnitEffect_Effet_Meurt        TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Fuel tank on fire -> Death
+        TCriticalEffect(Roll=(46,50) Token='CRITIC124' EffectsPack=~/UnitEffect_Critic_Perd_1_PV     TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False  DisplayOnDeath=True),  //Fuel tank leaking -> Loss 1 HP
+        TCriticalEffect(Roll=(51,55) Token='CRITIC116' EffectsPack=~/UnitEffect_Critic_Perd_1_PV     TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False  DisplayOnDeath=True),  //Radiator damaged -> Loss 1 HP
+        TCriticalEffect(Roll=(56,60) Token='CRITIC126' EffectsPack=~/UnitEffect_Critic_Deroute      TimeOut=30  RepairCost=-1   KeepWhenLeavingTerrain=False Unique=True  DisplayOnDeath=False),   //Radiator Overheating -> Falling back
+        //TCriticalEffect(Roll=(21,25) Token='CRITIC105' EffectsPack=~/UnitEffect_Effet_Meurt        TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Pilot killed -> Death
+        TCriticalEffect(Roll=(61,65) Token='CRITIC106' EffectsPack=~/UnitEffect_Critic_Deroute      TimeOut=30  RepairCost=-1   KeepWhenLeavingTerrain=False Unique=True  DisplayOnDeath=False),   //Pilot injured -> Falling back
+        TCriticalEffect(Roll=(66,70) Token='CRITIC112' EffectsPack=~/UnitEffect_Critic_Deroute      TimeOut=30  RepairCost=-1   KeepWhenLeavingTerrain=False Unique=True  DisplayOnDeath=False),   //Pilot panicked -> Falling back
+        TCriticalEffect(Roll=(71,75) Token='CRITIC109' EffectsPack=~/UnitEffect_Critic_Deroute      TimeOut=5   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False),   //Pilot unconscious  -> Loose control during 5s
+        TCriticalEffect(Roll=(76,80) Token='CRITIC107' EffectsPack=~/UnitEffect_Critic_Stop_Armes   TimeOut=-1  RepairCost=100  KeepWhenLeavingTerrain=False Unique=True  DisplayOnDeath=False),   //Weapons jammed -> No more shots
+    ]
+
+    EffectsOnRear =
+    [
+        //TCriticalEffect(Roll=(1,5) Token='CRITIC101' EffectsPack=~/UnitEffect_Effet_Meurt          TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Wing ripped off -> Death
+        TCriticalEffect(Roll=(1,5)   Token='CRITIC121' EffectsPack=~/UnitEffect_Critic_Perd_1_PV     TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Wings damaged -> Loss 1 HP
+        TCriticalEffect(Roll=(6,10)  Token='CRITIC125' EffectsPack=~/UnitEffect_Critic_Perd_1_PV     TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Aileron damaged -> Loss 1 HP
+        TCriticalEffect(Roll=(11,15) Token='CRITIC118' EffectsPack=~/UnitEffect_Critic_Perd_1_PV     TimeOut=0   RepairCost=-1  KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Landing gear damaged -> Loss 1 HP
+        //TCriticalEffect(Roll=(6,10) Token='CRITIC102' EffectsPack=~/UnitEffect_Effet_Meurt         TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Elevator ripped off -> Death
+        TCriticalEffect(Roll=(16,20) Token='CRITIC127' EffectsPack=~/UnitEffect_Critic_Perd_1_PV     TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Tail damaged -> Loss 1 HP
+        TCriticalEffect(Roll=(21,25) Token='CRITIC129' EffectsPack=~/UnitEffect_Critic_Perd_1_PV     TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Elevator damaged -> Loss 1 HP
+        TCriticalEffect(Roll=(26,30) Token='CRITIC128' EffectsPack=~/UnitEffect_Critic_Perd_1_PV     TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Rudder damaged -> Loss 1 HP
+        //TCriticalEffect(Roll=(11,15) Token='CRITIC103' EffectsPack=~/UnitEffect_Effet_Meurt        TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Engine on fire -> Death
+        TCriticalEffect(Roll=(31,35) Token='CRITIC111' EffectsPack=~/UnitEffect_Critic_Perd_1_PV     TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Engine damaged -> Loss 1 HP
+        TCriticalEffect(Roll=(36,40) Token='CRITIC123' EffectsPack=~/UnitEffect_Critic_Deroute      TimeOut=5   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False),   //Float carburator failure -> Loose control during 5s
+        TCriticalEffect(Roll=(41,45) Token='CRITIC114' EffectsPack=~/UnitEffect_Critic_Visee_50     TimeOut=-1  RepairCost=100  KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False),   //Oil leak -> Précision 0.5
+        TCriticalEffect(Roll=(46,50) Token='CRITIC117' EffectsPack=~/UnitEffect_Critic_Deroute      TimeOut=30  RepairCost=-1   KeepWhenLeavingTerrain=False Unique=True  DisplayOnDeath=False),   //Engine Overheating -> Falling back
+        //TCriticalEffect(Roll=(16,20) Token='CRITIC104' EffectsPack=~/UnitEffect_Effet_Meurt        TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Fuel tank on fire -> Death
+        TCriticalEffect(Roll=(51,55) Token='CRITIC124' EffectsPack=~/UnitEffect_Critic_Perd_1_PV     TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False  DisplayOnDeath=True),  //Fuel tank leaking -> Loss 1 HP
+        TCriticalEffect(Roll=(56,60) Token='CRITIC116' EffectsPack=~/UnitEffect_Critic_Perd_1_PV     TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False  DisplayOnDeath=True),  //Radiator damaged -> Loss 1 HP
+        TCriticalEffect(Roll=(61,65) Token='CRITIC126' EffectsPack=~/UnitEffect_Critic_Deroute      TimeOut=30  RepairCost=-1   KeepWhenLeavingTerrain=False Unique=True  DisplayOnDeath=False),   //Radiator Overheating -> Falling back
+        //TCriticalEffect(Roll=(21,25) Token='CRITIC105' EffectsPack=~/UnitEffect_Effet_Meurt        TimeOut=0   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True),   //Pilot killed -> Death
+        TCriticalEffect(Roll=(66,70) Token='CRITIC106' EffectsPack=~/UnitEffect_Critic_Deroute      TimeOut=30  RepairCost=-1   KeepWhenLeavingTerrain=False Unique=True  DisplayOnDeath=False),   //Pilot injured -> Falling back
+        TCriticalEffect(Roll=(71,75) Token='CRITIC112' EffectsPack=~/UnitEffect_Critic_Deroute      TimeOut=30  RepairCost=-1   KeepWhenLeavingTerrain=False Unique=True  DisplayOnDeath=False),   //Pilot panicked -> Falling back
+        TCriticalEffect(Roll=(75,76) Token='CRITIC109' EffectsPack=~/UnitEffect_Critic_Deroute      TimeOut=5   RepairCost=-1   KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=False),   //Pilot unconscious  -> Loose control during 5s
+        TCriticalEffect(Roll=(80,85) Token='CRITIC107' EffectsPack=~/UnitEffect_Critic_Stop_Armes   TimeOut=-1  RepairCost=100  KeepWhenLeavingTerrain=False Unique=True  DisplayOnDeath=False),   //Weapons jammed -> No more shots
+    ]
+)

@@ -1,0 +1,23 @@
+export ModelFile_Wurfrahmen is 'GameData:Assets\3D\Units\GER\Vehicule\Wurfrahmen_40\Wurfrahmen_40.Ase2NdfBin'
+
+Modele_Wurfrahmen is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Wurfrahmen
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Wurfrahmen_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\Wurfrahmen_40_MID\Wurfrahmen_40_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Wurfrahmen_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\LODS\Wurfrahmen_40_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+

@@ -1,0 +1,22 @@
+export ModelFile_KV_1S_FIN is 'GameData:Assets\3D\Units\FIN\Char\KV_1S_FIN\KV_1S_FIN.Ase2NdfBin'
+
+Modele_KV_1S_FIN is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_KV_1S_FIN
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_KV_1S_FIN_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Char\KV_1S_FIN_MID\KV_1S_FIN_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_KV_1S_FIN_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Char\LODS\KV_1S_FIN_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

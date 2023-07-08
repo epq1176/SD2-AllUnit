@@ -1,0 +1,22 @@
+export ModelFile_T70_FAO_76_SOV is 'GameData:Assets\3D\Units\SOV\Char\T70_CMD_SOV\T70_SOV.Ase2NdfBin'
+
+Modele_T70_FAO_76_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_T70_FAO_76_SOV
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_T70_FAO_76_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\T70_CMD_SOV_MID\T70_SOV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_T70_FAO_76_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\LODS\T70_SOV_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

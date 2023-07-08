@@ -1,0 +1,23 @@
+export ModelFile_Jeep_Vickers is 'GameData:Assets\3D\Units\UK\Vehicule\Jeep_Vickers\Jeep_Vickers.Ase2NdfBin'
+
+Modele_Jeep_Vickers is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Jeep_Vickers
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Jeep_Vickers_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Vehicule\Jeep_Vickers_MID\Jeep_Vickers_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Jeep_Vickers_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Vehicule\LODS\Jeep_Vickers_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+

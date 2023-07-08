@@ -1,0 +1,18 @@
+export DefaultStrategy is TIAGeneralStrategy
+(
+    StrategyName = "Default"
+    FirstGenerator = EmptyOpener
+)
+
+export EmptyOpener is TSequenceGeneratorDescriptor
+(
+    GeneratorList =
+    [
+        ~/test_no_mission,
+    ]
+)
+
+export test_no_mission is TMacroActionDescriptorSimpleMove
+(
+    GenerationType = 1
+)

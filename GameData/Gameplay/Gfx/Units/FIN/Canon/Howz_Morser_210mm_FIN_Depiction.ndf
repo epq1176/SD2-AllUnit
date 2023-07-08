@@ -1,0 +1,163 @@
+template TemplateMeshDescriptor_Howz_Morser_210mm_FIN [ ModelFile ] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+
+// ModelFile_Boites_Howz_Morser_210mm_GER is 'GameData:Assets\3D\Units\GER\Canon\Howz_Morser_210mm_GER\Boites_Howz_Morser_210mm_FIN.Ase2NdfBin'
+
+Gfx_Howz_Morser_210mm_FIN_1 is TDepictionTemplate //servant gauche
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Howz_Morser_210mm_FIN( ModelFile = ModelFile_Jaeger_FIN)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Howz_Morser_210mm_FIN( ModelFile = ModelFile_Jaeger_FIN_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Howz_Morser_210mm_FIN( ModelFile = ModelFile_Jaeger_FIN)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Howz_Morser_210mm_FIN( ModelFile = ModelFile_Jaeger_FIN_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Gauche
+)
+
+Gfx_Howz_Morser_210mm_FIN_2 is TDepictionTemplate //servant droite
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Howz_Morser_210mm_FIN( ModelFile = ModelFile_Jaeger_FIN_1)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Howz_Morser_210mm_FIN( ModelFile = ModelFile_Jaeger_FIN_1_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Howz_Morser_210mm_FIN( ModelFile = ModelFile_Jaeger_FIN_1)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Howz_Morser_210mm_FIN( ModelFile = ModelFile_Jaeger_FIN_1_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Droite
+)
+
+Gfx_Howz_Morser_210mm_FIN_3 is TDepictionTemplate //servant gauche supplementaire
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Howz_Morser_210mm_FIN( ModelFile = ModelFile_Jaeger_FIN)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Howz_Morser_210mm_FIN( ModelFile = ModelFile_Jaeger_FIN_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Howz_Morser_210mm_FIN( ModelFile = ModelFile_Jaeger_FIN)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Howz_Morser_210mm_FIN( ModelFile = ModelFile_Jaeger_FIN_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Gauche2
+)
+
+Gfx_Howz_Morser_210mm_FIN_4 is TDepictionTemplate //servant droite supplementaire
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Howz_Morser_210mm_FIN( ModelFile = ModelFile_Jaeger_FIN_1)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Howz_Morser_210mm_FIN( ModelFile = ModelFile_Jaeger_FIN_1_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Howz_Morser_210mm_FIN( ModelFile = ModelFile_Jaeger_FIN_1)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Howz_Morser_210mm_FIN( ModelFile = ModelFile_Jaeger_FIN_1_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Droite2
+)
+
+// private AnimationPath_Howz_Morser_210mm_FIN is 'GameData:Assets\3D\Units\GER\Canon\Howz_Morser_210mm_GER\'
+// Howz_Morser_210mm_GER_Anim_Tree is DepictionAnimationTreeNode
+// (
+//     IAStates = AnimationStateAll
+//     IAOldStates = AnimationStateAll
+//     DefaultAnimationStates = AnimationStateEngineStopping
+//     Animations =
+//     (
+//         [TemplateAnimation(Animation= 'Howz_Morser_210mm_GER_idle' + '.Ase2NdfBin' Loop=false EventAnimation=false AnimationPath = AnimationPath_Howz_Morser_210mm_FIN Mask = AnimationMask_All())]
+//     )
+
+//     Childs =
+//     [
+//         // TAnimNode(IAStates = AnimationStateInstantFire                                                                  Anim = 'Howz_Morser_210mm_GER_Fire'       Loop = false EventAnimation = true AnimationPath = AnimationPath_Howz_Morser_210mm_FIN Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStopping | AnimationStateEngineStopTurning                             Anim = 'Howz_Morser_210mm_GER_deploy'     Loop = false AnimationPath = AnimationPath_Howz_Morser_210mm_FIN Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStarting | AnimationStateEngineStartTurning                            Anim = 'Howz_Morser_210mm_GER_fold'       Loop = false AnimationPath = AnimationPath_Howz_Morser_210mm_FIN Mask = AnimationMask_All()),
+//         // TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateLeft                                           Anim = 'Howz_Morser_210mm_GER_Turn_Left'  Loop = true  AnimationPath = AnimationPath_Howz_Morser_210mm_FIN Mask = AnimationMask_All()),
+//         // TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateRight                                          Anim = 'Howz_Morser_210mm_GER_Turn_Right' Loop = true  AnimationPath = AnimationPath_Howz_Morser_210mm_FIN Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateMoving | AnimationStateEngineRunning                                         Anim = 'Howz_Morser_210mm_GER_move'       Loop = true  AnimationPath = AnimationPath_Howz_Morser_210mm_FIN Mask = AnimationMask_All()),
+//         //     Childs = [
+//                 // TAnimNode(IAStates = AnimationStateBack                                                                 Anim = 'Howz_Morser_210mm_GER_Move_Back'  Loop = true  AnimationPath = AnimationPath_Howz_Morser_210mm_FIN Mask = AnimationMask_All()),
+//         // ]),
+//     ]
+// )
+
+DepictionOperator_SkeletalAnimation_Howz_Morser_210mm_FIN is [Template_DepictionOperator_SkeletalAnimation_With_Tree_TEST(AnimationTree = Howz_Morser_210mm_GER_Anim_Tree)]
+
+Gfx_Howz_Morser_210mm_FIN_Weapon is TDepictionTemplate //arme
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = CommonDepictionSelector
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_Howz_Morser_210mm_FIN ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_Howz_Morser_210mm_FIN_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_Howz_Morser_210mm_FIN_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor =  Modele_Howz_Morser_210mm_FIN ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor =  Modele_Howz_Morser_210mm_FIN_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor =  Modele_Howz_Morser_210mm_FIN_LOW ),
+        ]
+
+        SubDepictions = []
+
+        Operators = Operators_Howz_Morser_210mm_FIN
+                  + DepictionOperator_SkeletalAnimation_Howz_Morser_210mm_FIN //à activer après avoir mis la colonne "Animated" à "oui" dans l'ods. Bien mettre cette ligne en deuxieme position pour continuer a avoir les anims procedurales en meme temps !
+                  + DepictionOperator_Chassis_MediumTank
+                  // + DepictionOperator_Propulsion_ContinuousTrack_MediumTank
+                  + DepictionOperator_Propulsion_2Wheels_Generic
+                  + [DepictionOperator_TurretRecoil(TurretNum='1')]
+
+        Actions = Weapons_Howz_Morser_210mm_FIN
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Wheeled
+    )
+
+SubDepiction_Servant_1_Howz_Morser_210mm_FIN is TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_Howz_Morser_210mm_FIN_1 )
+SubDepiction_Servant_2_Howz_Morser_210mm_FIN is TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_Howz_Morser_210mm_FIN_2 )
+SubDepiction_Servant_3_Howz_Morser_210mm_FIN is TSubDepiction( Anchor = 'servant_G2' Depiction = Gfx_Howz_Morser_210mm_FIN_3 )
+SubDepiction_Servant_4_Howz_Morser_210mm_FIN is TSubDepiction( Anchor = 'servant_D2' Depiction = Gfx_Howz_Morser_210mm_FIN_4 )
+SubDepiction_Canon_AT_Howz_Morser_210mm_FIN is TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_Howz_Morser_210mm_FIN_Weapon )
+
+Gfx_Howz_Morser_210mm_FIN is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        OverrideMeshBoundingBoxMin = [-2000,-1000,0]
+        OverrideMeshBoundingBoxMax = [ 2000, 1000,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_Howz_Morser_210mm_FIN( ModelFile = ModelFile_Boites_Howz_Morser_210mm_GER) ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_Howz_Morser_210mm_FIN( ModelFile = ModelFile_Boites_Howz_Morser_210mm_GER) ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_Howz_Morser_210mm_FIN( ModelFile = ModelFile_Boites_Howz_Morser_210mm_GER) ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_Howz_Morser_210mm_FIN( ModelFile = ModelFile_Boites_Howz_Morser_210mm_GER) ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_Howz_Morser_210mm_FIN( ModelFile = ModelFile_Boites_Howz_Morser_210mm_GER) ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_Howz_Morser_210mm_FIN( ModelFile = ModelFile_Boites_Howz_Morser_210mm_GER) ),
+        ]
+        NodeNamesForSelection = [ 'Canon_AT', 'servant_G' , 'servant_D']
+        SubDepictions = [SubDepiction_Servant_1_Howz_Morser_210mm_FIN,
+                        SubDepiction_Servant_2_Howz_Morser_210mm_FIN,
+                        SubDepiction_Servant_3_Howz_Morser_210mm_FIN,
+                        SubDepiction_Servant_4_Howz_Morser_210mm_FIN,
+                        SubDepiction_Canon_AT_Howz_Morser_210mm_FIN]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+    )
+)

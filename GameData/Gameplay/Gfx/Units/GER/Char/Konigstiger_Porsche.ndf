@@ -1,0 +1,22 @@
+export ModelFile_Konigstiger_Porsche is 'GameData:Assets\3D\Units\GER\Char\Konigstiger_P\Konigstiger_P.Ase2NdfBin'
+
+Modele_Konigstiger_Porsche is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Konigstiger_Porsche
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Konigstiger_Porsche_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\Konigstiger_P_MID\Konigstiger_P_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Konigstiger_Porsche_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\Konigstiger_P_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

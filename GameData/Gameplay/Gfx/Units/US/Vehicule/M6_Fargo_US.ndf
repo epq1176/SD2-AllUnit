@@ -1,0 +1,22 @@
+export ModelFile_M6_Fargo_US is 'GameData:Assets\3D\Units\FR\Vehicule\M6_Fargo\M6_Fargo.Ase2NdfBin'
+
+export Modele_M6_Fargo_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M6_Fargo_US
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_M6_Fargo_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Vehicule\M6_Fargo_MID\M6_Fargo_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_M6_Fargo_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Vehicule\LODS\M6_Fargo_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

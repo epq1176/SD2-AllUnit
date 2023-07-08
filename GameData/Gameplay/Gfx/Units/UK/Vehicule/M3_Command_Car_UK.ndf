@@ -1,0 +1,22 @@
+export ModelFile_M3_Command_Car_UK is 'GameData:Assets\3D\Units\SOV\Vehicule\M3_Command_Car_SOV\M3_Command_Car_SOV.Ase2NdfBin'
+
+Modele_M3_Command_Car_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M3_Command_Car_UK
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_M3_Command_Car_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Vehicule\M3_Command_Car_SOV_MID\M3_Command_Car_SOV_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_M3_Command_Car_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Vehicule\LODS\M3_Command_Car_SOV_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

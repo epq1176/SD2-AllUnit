@@ -1,0 +1,129 @@
+//---------------------------------------------------------------------
+
+BUCKSpecificHUBMultiMainComponentDescriptor is BUCKContainerDescriptor
+(
+    ElementName   = "BUCKSpecificHUBMultiMainComponent"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            TextureToken   = "OutgameTexture_outgame_sd2_Multi"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+        ),
+
+        BUCKContainerDescriptor
+        (
+            ElementName = "LobbyQuickShortcutViewContainer"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                AlignementToFather = [0.5, 0.0]
+                AlignementToAnchor = [0.5, 0.0]
+                MagnifiableOffset = [0.0, HUBFirstButtonOffset[1]]
+            )
+
+            FitStyle = ~/ContainerFitStyle/FitToContent
+        ),
+
+        HUBList
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableOffset = HUBFirstButtonOffset
+            )
+
+            ButtonList =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = HUBButton
+                    (
+                        ElementName = "HUBMultiGameButton"
+                        TextToken = "MP_NORMAL"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = HUBButton
+                    (
+                        ElementName = "HUBMultiRankedButton"
+                        TextToken = "MP_RANKED"
+
+                        HintTitleToken = "HT_RANKED"
+                        HintBodyToken = "HB_RANKED"
+                        HintExtendedToken = "HE_RANKED"
+                        HintDico = ~/LocalisationConstantes/dico_interface_outgame
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = HUBButton
+                    (
+                        ElementName = "HUBMultiUnrankedButton"
+                        TextToken = "MP_UNRANKD"
+
+                        HintTitleToken = "HT_UNRANKD"
+                        HintBodyToken = "HB_UNRANKD"
+                        HintExtendedToken = "HE_UNRANKD"
+                        HintDico = ~/LocalisationConstantes/dico_interface_outgame
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = HUBButton
+                    (
+                        ElementName = "HUBMultiLeaderboardsButton"
+                        TextToken = "MP_LB"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    // Filler
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [ 10.0, 20.0 ]
+                        )
+
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = HUBButton
+                    (
+                        ElementName = "HUBMultiLoadButton"
+                        TextToken = "AB_LOADING"
+                    )
+                ),
+            ]
+        ),
+
+        HUBLittleButton
+        (
+            ElementName = "HUBMultiReturnButton"
+            ButtonMagnifiableOffset = HUBBackButtonOffset
+            TextToken = "NV_BACK"
+            Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+        ),
+    ]
+)
+
+//---------------------------------------------------------------------
+
+UISpecificHUBMultiViewDescriptor is TUISpecificHUBMultiViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificHUBMultiMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

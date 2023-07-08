@@ -1,0 +1,317 @@
+//---------------------------------------------------------------------
+
+LobbyShortcutButton is PanelRoundedCorner
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [300.0, 150.0]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "grisFonceDivision"
+
+    Components =
+    [
+        BUCKButtonDescriptor
+        (
+            ElementName = "LobbyShortcutButton"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            Components =
+            [
+                BUCKListDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI()
+
+                    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+                    Axis = ~/ListAxis/Vertical
+
+                    FirstMargin = TRTTILength(Magnifiable = 5.0)
+                    InterItemMargin = TRTTILength(Magnifiable = 25.0)
+                    LastMargin  = TRTTILength(Magnifiable = 5.0)
+
+                    Elements =
+                    [
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKTextDescriptor
+                            (
+                                ElementName = "LobbyName"
+                                ParagraphStyle = TParagraphStyleRTTI
+                                (
+                                    Alignment = UIText_Left
+                                    VerticalAlignment = UIText_VerticalCenter
+                                    InterLine = 0.1
+                                )
+
+                                HorizontalFitStyle = ~/FitStyle/FitToContent
+                                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                                TypefaceToken = "Main"
+
+                                TextStyle = "MouseWidget/TextModule"
+                                TextColor = "MouseWidget/TextModule"
+
+                                TextSize = "BoutonHUBInfos"
+
+                                TextPadding = TRTTILength4(Magnifiable = [5.0, 0.0, 0.0, 0.0])
+                            )
+                        ),
+
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKTextDescriptor
+                            (
+                                ElementName = "PlayerNumber"
+                                ParagraphStyle = TParagraphStyleRTTI
+                                (
+                                    Alignment = UIText_Left
+                                    VerticalAlignment = UIText_VerticalCenter
+                                    InterLine = 0.1
+                                )
+
+                                HorizontalFitStyle = ~/FitStyle/FitToContent
+                                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                                TypefaceToken = "Main"
+
+                                TextToken = "QCK_PLAYN"
+
+                                TextStyle = "MouseWidget/TextModule"
+                                TextColor = "MouseWidget/TextModule"
+
+                                TextSize = "14"
+
+                                TextPadding = TRTTILength4(Magnifiable = [5.0, 0.0, 0.0, 0.0])
+                            )
+                        ),
+                    ]
+                )
+            ]
+        ),
+    ]
+)
+
+//---------------------------------------------------------------------
+private LobbyShortcutButtonRackMargin is 50.0
+
+LobbyShortcutButtonRack is BUCKRackDescriptor
+(
+    ElementName = "LobbyShortcutButtonRack"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    FirstMargin = TRTTILength(Magnifiable = LobbyShortcutButtonRackMargin)
+    InterItemMargin = TRTTILength(Magnifiable = 10.0)
+    LastMargin  = TRTTILength(Magnifiable = LobbyShortcutButtonRackMargin)
+
+    BladeDescriptor = ~/LobbyShortcutButton
+)
+
+//---------------------------------------------------------------------
+
+HUBMultiStats is BUCKListDescriptor
+(
+    ElementName = "HUBMultiStats"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToFather = [1.0, 0.0]
+        AlignementToAnchor = [1.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    InterItemMargin = TRTTILength(Magnifiable = 5.0)
+    LastMargin = TRTTILength(Magnifiable = 10.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "OnlinePlayers"
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Left
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0.1
+                )
+
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TypefaceToken = "Main"
+
+                TextStyle = "MouseWidget/TextModule"
+                TextColor = "MouseWidget/TextModule"
+
+                TextSize = "14"
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Left
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0.1
+                )
+
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TypefaceToken = "Main"
+
+                TextToken = "GI_SEPARAT"
+
+                TextStyle = "MouseWidget/TextModule"
+                TextColor = "MouseWidget/TextModule"
+
+                TextSize = "14"
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "RunningGames"
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Left
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0.1
+                )
+
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TypefaceToken = "Main"
+
+                TextStyle = "MouseWidget/TextModule"
+                TextColor = "MouseWidget/TextModule"
+
+                TextSize = "14"
+            )
+        ),
+    ]
+)
+
+//---------------------------------------------------------------------
+
+template BUCKSpecificMultiLobbyShortcutsMainComponentDescriptor
+[
+    ShowHeader : bool,
+] is BUCKListDescriptor
+(
+    ElementName = "LobbyQuickShortcutInterface"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "DarkerGray80"
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    FirstMargin = TRTTILength(Magnifiable = 10.0)
+    InterItemMargin = TRTTILength(Magnifiable = 10.0)
+    LastMargin  = TRTTILength(Magnifiable = (<ShowHeader> ? 35.0 : 10.0))
+
+    Elements =
+    (<ShowHeader> ?
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/HUBMultiStats
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "WindowTitle"
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Left
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0.1
+                )
+
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TypefaceToken = "Main"
+
+                TextToken = "GI_SERVERS"
+
+                TextStyle = "MouseWidget/TextModule"
+                TextColor = "MouseWidget/TextModule"
+
+                TextSize = "BoutonHUBLittle"
+
+                TextPadding = TRTTILength4(Magnifiable = [LobbyShortcutButtonRackMargin, 0.0, 0.0, 0.0])
+            )
+        ),
+    ] : [])
+    + [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/LobbyShortcutButtonRack
+        ),
+    ]
+)
+
+//---------------------------------------------------------------------
+
+template UISpecificMultiLobbyShortcutsViewDescriptor
+[
+    ShowHeader : bool,
+] is TUISpecificMultiLobbyShortcutsViewDescriptor
+(
+    MainComponentDescriptor = BUCKSpecificMultiLobbyShortcutsMainComponentDescriptor(ShowHeader = <ShowHeader>)
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    LobbysToDisplay =
+    [
+        TLobbyNDFDescriptor
+        (
+            NameToDisplay   = "QCK_10V10"
+            NumberOfPlayers = 20
+            InitMoney       = 500
+            UseAutofill     = false
+            CombatRule      = ~/CombatRule/CaptureTheFlag
+        ),
+        TLobbyNDFDescriptor
+        (
+            NameToDisplay = "QCK_10V10T"
+            NumberOfPlayers = 20
+            InitMoney       = 250
+            UseAutofill = false
+            CombatRule      = ~/CombatRule/CaptureTheFlag
+        ),
+    ]
+)
+
+//---------------------------------------------------------------------

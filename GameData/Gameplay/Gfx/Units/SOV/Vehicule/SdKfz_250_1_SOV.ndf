@@ -1,0 +1,22 @@
+export ModelFile_SdKfz_250_1_SOV is 'GameData:Assets\3D\Units\SOV\Vehicule\SdKfz_250_1_SOV\SdKfz_250_1_SOV.Ase2NdfBin'
+
+Modele_SdKfz_250_1_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_SdKfz_250_1_SOV
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_SdKfz_250_1_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Vehicule\SdKfz_250_1_SOV_MID\SdKfz_250_1_SOV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_SdKfz_250_1_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Vehicule\LODS\SdKfz_250_1_SOV_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

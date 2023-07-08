@@ -1,0 +1,405 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export GenericStrategy is TIAGeneralStrategy
+(
+    StrategyName = "GenericAI"
+    FirstGenerator = Gen_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    ShouldUseTaggedCorridorsForTouchDown = true
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    DefaultIncomeForDynamicBudget = 100
+    TransitionList =
+    [
+        Gen_Transition_StartToPhaseC,
+        Gen_Transition_StartToPhaseB,
+        Gen_Transition_StartToPhaseA,
+        Gen_Transition_StartToLowCost,
+        Gen_Transition_StartToGeneric,
+        Gen_Transition_DeployToPhaseA,
+        Gen_Transition_Phase_B,
+        Gen_Transition_Phase_C,
+        Gen_Transition_DeployToPhaseA_LowCost,
+        Gen_Transition_PhaseB_LowCost,
+        Gen_Transition_PhaseC_LowCost
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export Gen_Condition_GotoLowCost is TSequenceCondition_Compare
+(
+    Value1 = [TSequenceConditionValues_RessourcesPointsSharedInTeam]
+    Operator = Less
+    AddToValue2 = 501
+    ResourceType = ~/Resource_CommandPoints
+)
+//-------------------------------------------------------------------------
+export Gen_Condition_GotoGeneric is TSequenceCondition_Not
+(
+    Condition = ~/Gen_Condition_GotoLowCost
+)
+//-------------------------------------------------------------------------
+export Gen_Condition_CommandPhase is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+//-------------------------------------------------------------------------
+export Gen_Condition_PhaseB is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_B'
+)
+//-------------------------------------------------------------------------
+export Gen_Condition_PhaseC is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_C'
+)
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export Gen_Transition_StartToPhaseC is TIAGeneralStrategyTransition
+(
+    Origine = Gen_Choose_Strategy
+    Condition = Gen_Condition_PhaseC
+    Destination = Gen_Phase_C
+)
+export Gen_Transition_StartToPhaseB is TIAGeneralStrategyTransition
+(
+    Origine = Gen_Choose_Strategy
+    Condition = Gen_Condition_PhaseB
+    Destination = Gen_Phase_B
+)
+export Gen_Transition_StartToPhaseA is TIAGeneralStrategyTransition
+(
+    Origine = Gen_Choose_Strategy
+    Condition = Gen_Condition_CommandPhase
+    Destination = Gen_Phase_A
+)
+export Gen_Transition_StartToGeneric is TIAGeneralStrategyTransition
+(
+    Origine = Gen_Choose_Strategy
+    Condition = Gen_Condition_GotoGeneric
+    Destination = Gen_PhaseDeploiement
+)
+//-------------------------------------------------------------------------
+export Gen_Transition_DeployToPhaseA is TIAGeneralStrategyTransition
+(
+    Origine = Gen_PhaseDeploiement
+    Condition = Gen_Condition_CommandPhase
+    Destination = Gen_Phase_A
+)
+//-------------------------------------------------------------------------
+export Gen_Transition_Phase_B is TIAGeneralStrategyTransition
+(
+    Origine = Gen_Phase_A
+    Condition = Gen_Condition_PhaseB
+    Destination = Gen_Phase_B
+)
+//-------------------------------------------------------------------------
+export Gen_Transition_Phase_C is TIAGeneralStrategyTransition
+(
+    Origine = Gen_Phase_B
+    Condition = Gen_Condition_PhaseC
+    Destination = Gen_Phase_C
+)
+//-------------------------------------------------------------------------
+export Gen_Transition_StartToLowCost is TIAGeneralStrategyTransition
+(
+    Origine = Gen_Choose_Strategy
+    Condition = Gen_Condition_GotoLowCost
+    Destination = Gen_PhaseDeploiement_LowCost
+)
+//-------------------------------------------------------------------------
+export Gen_Transition_DeployToPhaseA_LowCost is TIAGeneralStrategyTransition
+(
+    Origine = Gen_PhaseDeploiement_LowCost
+    Condition = Gen_Condition_CommandPhase
+    Destination = Gen_Phase_A_LowCost
+)
+//-------------------------------------------------------------------------
+export Gen_Transition_PhaseB_LowCost is TIAGeneralStrategyTransition
+(
+    Origine = Gen_Phase_A_LowCost
+    Condition = Gen_Condition_PhaseB
+    Destination = Gen_Phase_B_LowCost
+)
+//-------------------------------------------------------------------------
+export Gen_Transition_PhaseC_LowCost is TIAGeneralStrategyTransition
+(
+    Origine = Gen_Phase_B_LowCost
+    Condition = Gen_Condition_PhaseC
+    Destination = Gen_Phase_C_LowCost
+)
+
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export Gen_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //~/Gen_Support_AntiTank,
+        ~/Gen_Support_Transports,
+        ~/Gen_Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export Gen_PhaseDeploiement is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Gen_Support_AntiTank,
+        ~/Gen_Support_Transports,
+
+        ~/Gen_Supply_Skirmish,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        // Grosse attaque
+        ~/Gen_Attack_Main,              // Plusieurs tanks pour un budget donné // 200 => un cmd pas cher, une reco pas cher, et le reste de tanks pour fill le budget en random.
+        ~/Gen_Artillery_Support,        // Artillerie pas chère                 //  80
+
+        // Reste du front
+        ~/Gen_Attack_Adaptive,          // ~100
+        ~/Gen_Attack_Adaptive,          // ~100
+        ~/Gen_Attack_Adaptive,          // ~100
+        ~/Gen_Attack_Filler,            // budget 40
+        ~/Gen_Reco,            // 40 par reco
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Gen_Supply_Skirmish_Allied,
+
+    ] + ~/Gen_Defenses_Airstrike_Arti_Shuffle_Deploy
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+        // Dans les difficultés supérieures il faudra surement maintenir
+        // ça avec des maintain à la phase d'après pour être sur qu'on
+        // produise de nouvelles unités
+    +   ~/Gen_Scaling
+    +   ~/Gen_Scaling
+
+)
+//-------------------------------------------------------------------------
+export Gen_Phase_A is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 3
+    GeneratorList =
+    [
+        // Même chose que la phase de déploiement mais avec les Défenses
+        // prioritaires sur les attaques. L'idée est de lancer ses attaques dès
+        // le début, mais de renforcer les backlines avant de récupérer de nos pertes
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Gen_Support_AntiTank,
+        ~/Gen_Support_Transports,
+
+        ~/Gen_Supply_Skirmish,
+        ~/Gen_Attack_Filler,
+
+        //------------------------------
+        // Défenses prioritaires
+        //------------------------------
+        // Statiques pour tenir le terrain
+        ~/Gen_Defense_Static_Adaptive, // Canon AT - Chasseur de char - ATInf - HMG - Flamer // 85
+        ~/Gen_Defense_Static_Adaptive,
+        ~/Gen_Defense_Static_AA,
+        ~/Gen_Defense_Static_Adaptive,
+
+        //------------------------------
+        // Support de la main Attack
+        //------------------------------
+        ~/Gen_Attack_MBT_Support,       // Un gros tank à voir si on le passe en phase A // DISABLE REINFORCEMENTS + TGenerationType_RestrictedNumberOfLaunch 1
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Gen_Attack_Main,              // Plusieurs tanks pour un budget donné // 200
+        ~/Gen_Artillery_Support,        // Artillerie pas chère                 //  80
+
+        ~/Gen_Attack_Adaptive,  // Faire du code pour adapater le budget en fonction de l'income
+        ~/Gen_Attack_Adaptive,
+        ~/Gen_Attack_Adaptive,
+
+        // On insère ici une attaque qui va chercher les objectifs.
+        ~/Gen_Attack_Objectives,
+
+        ~/Gen_Airstrike_Offense,
+        ~/Gen_Airstrike_Defense,
+
+        ~/Gen_SuperCommander,
+
+        ~/Gen_Reco,
+        ~/Gen_Attack_MBT, // MBT devient low prio en phase A pour éviter de pomper trop de thune
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Gen_Maintain_CorridorDefenses,
+        ~/Gen_Supply_Skirmish_Allied,
+
+    ] + ~/Gen_Airstrike_Arti_Shuffle // On sort les défenses d'ici pour les mettre plus haut dans la prio
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+        // Dans les difficultés supérieures il faudra surement maintenir
+        // ça avec des maintain à la phase d'après pour être sur qu'on
+        // produise de nouvelles unités
+    +   ~/Gen_Scaling
+    +   ~/Gen_Scaling
+)
+//-------------------------------------------------------------------------
+private template Gen_Phases_B_and_C_template
+[
+]
+is TSequenceGeneratorDescriptor
+(
+    // Les défenses prioritaires disparaissent, on lance un nouveau set d'attaques
+    // On ajoute des défenses non prioritaires dynamiques
+    NbMacroActionAllowedToProduceSimultaneous = 2
+    GeneratorList =
+    [
+        ~/Gen_Maintain_CorridorAttacks,
+        ~/Gen_Maintain_ObjectiveAttacks,
+        ~/Gen_Maintain_CorridorDefenses,
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Gen_Support_AntiTank,
+        ~/Gen_Support_Transports,
+        ~/Gen_Supply_Skirmish,
+        ~/Gen_Attack_Filler,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Gen_Attack_Objectives,
+
+        ~/Gen_Attack_Adaptive,  // Faire du code pour adapater le budget en fonction de l'income
+        ~/Gen_Attack_Adaptive,
+        ~/Gen_Attack_Adaptive,
+
+        ~/Gen_SuperCommander,
+
+        ~/Gen_Attack_Main,              // Plusieurs tanks pour un budget donné // 200
+        ~/Gen_Artillery_Support,        // Artillerie pas chère                 //  80
+
+        //------------------------------
+        // Support de la main Attack
+        //------------------------------
+        ~/Gen_Attack_MBT,       // On enlève le status support // DISABLE REINFORCEMENTS + TGenerationType_RestrictedNumberOfLaunch 1
+
+        ~/Gen_Airstrike_Offense,
+        ~/Gen_Airstrike_Defense,
+
+        // Maintien
+        ~/Gen_Reco,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Gen_Supply_Skirmish_Allied,
+
+
+    ] + ~/Gen_Defenses_Airstrike_Arti_Shuffle
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+        // Dans les difficultés supérieures il faudra surement maintenir
+        // ça avec des maintain à la phase d'après pour être sur qu'on
+        // produise de nouvelles unités
+    +   ~/Gen_Scaling
+    +   ~/Gen_Scaling
+)
+//-------------------------------------------------------------------------
+export Gen_Phase_B is Gen_Phases_B_and_C_template()
+//-------------------------------------------------------------------------
+export Gen_Phase_C is Gen_Phases_B_and_C_template()
+//-------------------------------------------------------------------------
+
+// Le concept de ces blocs de missions
+// est d'à la fois défendre ses arrières
+// mais aussi de faire usage d'unités diverses
+// (artillerie et avions) pour débloquer
+// les situations et appuyer le reste des missions
+Gen_Defenses_Airstrike_Arti_Shuffle_Deploy is
+[
+    ~/Gen_AirReco,
+    ~/Gen_Defense_Static_Adaptive,
+    ~/Gen_Airstrike_Assault,
+    ~/Gen_Artillery_Expensive,
+    ~/Gen_Defense_Static_Adaptive,
+    ~/Gen_Defense_Static_AA,
+    ~/Gen_Defense_Static_Adaptive,
+    ~/Gen_Airstrike_Offense,
+    ~/Gen_Airstrike_Defense,
+    ~/Gen_Artillery_TriggerHappy_1for4Corridors,
+
+]
+
+Gen_Defenses_Airstrike_Arti_Shuffle is
+[
+    ~/Gen_Defense_Dynamic_Adaptive,
+    ~/Gen_Airstrike_Assault,
+    ~/Gen_Artillery_Expensive,
+    ~/Gen_Defense_Dynamic_Adaptive,
+    ~/Gen_Artillery_TriggerHappy,
+    ~/Gen_Defense_Static_AA,
+    ~/Gen_Defense_Dynamic_Adaptive,
+    ~/Gen_Airstrike_Offense,
+    ~/Gen_AirReco,
+    ~/Gen_Airstrike_Defense,
+    ~/Gen_Artillery_TriggerHappy_1for4Corridors,
+    ~/Gen_Maintain_AirStrike,
+    ~/Gen_Maintain_Artillery,
+]
+
+Gen_Airstrike_Arti_Shuffle is
+[
+    ~/Gen_Airstrike_Assault,
+    ~/Gen_Artillery_Expensive,
+    ~/Gen_AirReco,
+    ~/Gen_Airstrike_Offense,
+    ~/Gen_Airstrike_Defense,
+    ~/Gen_Artillery_TriggerHappy_1for4Corridors,
+    ~/Gen_Maintain_AirStrike,
+    ~/Gen_Maintain_Artillery,
+]
+
+Gen_Scaling is
+[
+    ~/Gen_Attack_Main_Autogen,
+    ~/Gen_Attack_Adaptive_Autogen,
+    ~/Gen_Attack_Adaptive_Autogen,
+    ~/Gen_Defense_Dynamic_Adaptive_Autogen,
+    ~/Gen_Defense_Dynamic_Adaptive_Autogen,
+    ~/Gen_Airstrike_Defense_Autogen,
+    ~/Gen_Defense_Dynamic_Adaptive_Autogen,
+    ~/Gen_Defense_Static_AA_Autogen,
+    ~/Gen_Attack_MBT_Support_Autogen,
+    ~/Gen_Artillery_TriggerHappy_Autogen,
+    ~/Gen_Airstrike_Offense_Autogen,
+    ~/Gen_Artillery_TriggerHappy_Autogen,
+    ~/Gen_Attack_Objectives_Autogen,
+    ~/Gen_Artillery_Expensive_Autogen,
+    ~/Gen_Airstrike_Assault_Autogen,
+]
+

@@ -1,0 +1,409 @@
+//-------------------------------------------------------------------------
+//------------------------- MISSIONS DE DEFENSE ---------------------------
+//-------------------------------------------------------------------------
+// Parametres TMacroActionDescriptor_Common
+//-------------------------------------------------------------------------
+// GenerationType :
+// NumberOfMacro :
+// ParametresDeMission : Transport, Airstrike, Support, ArtilleryStrike
+// PoolModelList : liste des unites demandees
+// DisableReinforcement : si on recoit des renforts en cours d'attaque ou pas
+// IgnoreSafePath : Le pathfind de la mission cherche ou non à esquiver la menace
+// TuerLaMissionEnFinDeVieAuLieuDeLaRelancer : (bool)
+// LaunchASAP_RatioMin : permet de lancer l'attaque sans attendre toutes les unites requises à combiner avec ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+// MissionOmnisciente : Pas utilise dans Normandie (systeme de connaissance de zone)
+//-------------------------------------------------------------------------
+// Parametres TMacroActionDescriptor_CorridorDefense_Specific
+//-------------------------------------------------------------------------
+// ForcedCorridor : (format special ex:[1]) permet de forcer l'attaque sur un couloir.
+//
+
+// PARAMETERS
+//-------------------------------------------------------------------------
+Cheated_Scn_WeightDefensePointScoringFeatureMap is MAP
+[
+        (EDefensePointScoringFeature/DistanceBonus, 3.0),
+        (EDefensePointScoringFeature/DistanceMargin, 0.0 * Metre),
+        (EDefensePointScoringFeature/DistanceDecayLength, 2500.0 * Metre),
+        (EDefensePointScoringFeature/MalusDefaultDefensePoint, 3.0),
+]
+
+// SettingList
+//-------------------------------------------------------------------------
+Cheated_ScnDef_AvoidFillerCorridors_Defense_Settings is MAP
+[
+    (
+        ESettingType/AvoidCorridorTags,
+        TAvoidCorridorTagsSettingHolder(AvoidedCorridorTags = ["Filler"])
+    ),
+]
+
+//-------------------------------------------------------------------------
+// MAINTAINS
+//-------------------------------------------------------------------------
+export Cheated_ScnAtk_Maintain_CorridorDefenses is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    GenerationType = TGenerationType_Maintain
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnAtk_Maintain_DynamicDefenses is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    GenerationType = TGenerationType_Maintain
+)
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+private template Cheated_ScnDef_Template_Defense
+[
+    NumberOfMacro:int = 1,
+    MinimumResourceForLaunch:int = 0,
+    PoolModelList = [~/Cheated_ScnDef_Pool_AT_Defense, Cheated_ScnDef_Pool_HMG_Defense],
+    UseTaggedPool:bool = true,
+    OrderedZoneWeightList = [1, 2, 3],
+    DefensePointScoringFeatureValue = MAP[],
+]
+is TMacroActionDescriptor_Defense_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = <NumberOfMacro>
+    MinimumResourceForLaunch = <MinimumResourceForLaunch>
+    IgnoreSafePath = true //on n'esquive pas la menace sur le chemin
+    DisableReinforcement = true
+    IgnoreVisionForDefensePosition = false
+    IgnoreEnemyDirectionForDefensePosition = false
+    IgnoreDefensePositionSafety = true
+    LaunchASAP_RatioMin = 0.01
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+    OrderedZoneWeightList = <OrderedZoneWeightList>
+    DefensePointScoringFeatureValue = <DefensePointScoringFeatureValue>
+
+    PoolModelList = <PoolModelList>
+
+    TaggedPoolModelList = (
+        <UseTaggedPool> == false ? [] :
+        [
+            (["DefenseInfantry"], [~/Cheated_ScnDef_Pool_HMG_Defense]),
+            (["DefenseAA"], [~/Cheated_ScnDef_Pool_AA_Defense]),
+            (["DefenseTank"], [~/Cheated_ScnDef_Pool_AT_Defense]),
+        ]
+    )
+
+    ParametresDeMission = MAP
+    [
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/Cheated_Scn_BasicAirstrikeSupport)
+        ),
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0)
+        ),
+        (
+            ESettingType/Support,
+            TSupportSettingHolder(SettingList = [Cheated_Scn_Renfort_AT])
+        ),
+        (
+            ESettingType/Generation,
+            TGenerationSettingHolder(NumberOfCorridorsPerMission = 1 ConsiderOnlyAssignedCorridors = true)
+        ),
+    ]
+    + ~/Cheated_ScnDef_AvoidFillerCorridors_Defense_Settings
+)
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+private template Cheated_ScnDef_Template_Dynamic_Defense
+[
+    NumberOfMacro:int = 1,
+    MinimumResourceForLaunch:int = 0,
+    PoolModelList = [~/Cheated_ScnDef_Pool_AT_Defense, Cheated_ScnDef_Pool_HMG_Defense],
+    UseTaggedPool:bool = true,
+]
+is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = <NumberOfMacro>
+    MinimumResourceForLaunch = <MinimumResourceForLaunch>
+    IgnoreSafePath = true //on n'esquive pas la menace sur le chemin
+    DisableReinforcement = true
+    IgnoreVisionForDefensePosition = false
+    IgnoreEnemyDirectionForDefensePosition = false
+    IgnoreDefensePositionSafety = false
+    LaunchASAP_RatioMin = 0.01
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = <PoolModelList>
+
+    TaggedPoolModelList = (
+        <UseTaggedPool> == false ? [] :
+        [
+            (["DefenseInfantry"], [~/Cheated_ScnDef_Pool_HMG_Defense]),
+            (["DefenseAA"], [~/Cheated_ScnDef_Pool_AA_Defense]),
+            (["DefenseTank"], [~/Cheated_ScnDef_Pool_AT_Defense]),
+        ]
+    )
+
+    ParametresDeMission = MAP
+    [
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/Cheated_Scn_BasicAirstrikeSupport)
+        ),
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0)
+        ),
+        (
+            ESettingType/Support,
+            TSupportSettingHolder(SettingList = [Cheated_Scn_Renfort_AT])
+        ),
+    ]
+    + ~/Cheated_ScnDef_AvoidFillerCorridors_Defense_Settings
+)
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+private template Cheated_ScnDef_Template_Defense_Tank
+[
+    NumberOfMacro:int = 1,
+    MinimumResourceForLaunch:int = 0,
+    UseTaggedPool:bool = true,
+    OrderedZoneWeightList = [1, 2, 3],
+    DefensePointScoringFeatureValue = MAP[],
+]
+is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = <NumberOfMacro>
+    MinimumResourceForLaunch = <MinimumResourceForLaunch>
+    IgnoreSafePath = true //on n'esquive pas la menace sur le chemin
+    DisableReinforcement = true
+    IgnoreVisionForDefensePosition = false
+    IgnoreEnemyDirectionForDefensePosition = false
+    IgnoreDefensePositionSafety = false
+    PrioritizeCorridorsForTaggedPoolModels = true
+
+    OrderedZoneWeightList = <OrderedZoneWeightList>
+    DefensePointScoringFeatureValue = <DefensePointScoringFeatureValue>
+
+    LaunchASAP_RatioMin = 0.01
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [~/Cheated_ScnDef_Pool_Tank_Defense]
+
+    TaggedPoolModelList = (
+        [
+            (["MainAttack", "AttackCombined"], [~/Cheated_ScnDef_Pool_Tank_Defense]),
+        ]
+    )
+
+    ParametresDeMission = MAP
+    [
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/Cheated_Scn_BasicAirstrikeSupport)
+        ),
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0)
+        ),
+        (
+            ESettingType/Support,
+            TSupportSettingHolder(SettingList = [Cheated_Scn_Renfort_AT])
+        ),
+    ]
+    + ~/Cheated_ScnDef_AvoidFillerCorridors_Defense_Settings
+)
+//-------------------------------------------------------------------------
+// Defenses couloir classiques
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Defense_Static_Adaptive is Cheated_ScnDef_Template_Defense
+(
+    DefensePointScoringFeatureValue = ~/Cheated_Scn_WeightDefensePointScoringFeatureMap
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Defense_Static_Adaptive_WeightExtended is Cheated_ScnDef_Template_Defense
+(
+    OrderedZoneWeightList = [5, 6, 7]
+    DefensePointScoringFeatureValue = ~/Cheated_Scn_WeightDefensePointScoringFeatureMap
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Defense_Static_AA is Cheated_ScnDef_Template_Defense
+(
+    PoolModelList = [ ~/Cheated_ScnDef_Pool_AA_Defense ]
+    DefensePointScoringFeatureValue = ~/Cheated_Scn_WeightDefensePointScoringFeatureMap
+    UseTaggedPool = false
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Defense_Static_AA_WeightExtended is Cheated_ScnDef_Template_Defense
+(
+    OrderedZoneWeightList = [5, 6, 7]
+    PoolModelList = [ ~/Cheated_ScnDef_Pool_AA_Defense ]
+    DefensePointScoringFeatureValue = ~/Cheated_Scn_WeightDefensePointScoringFeatureMap
+    UseTaggedPool = false
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Defense_Dynamic_Adaptive is Cheated_ScnDef_Template_Dynamic_Defense
+(
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Defense_Static_Tank is Cheated_ScnDef_Template_Defense_Tank
+(
+    DefensePointScoringFeatureValue = ~/Cheated_Scn_WeightDefensePointScoringFeatureMap
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Defense_Static_Tank_WeightExtended is Cheated_ScnDef_Template_Defense_Tank
+(
+    OrderedZoneWeightList = [5, 6, 7]
+    DefensePointScoringFeatureValue = ~/Cheated_Scn_WeightDefensePointScoringFeatureMap
+)
+//-------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------
+// Defenses couloir autogen
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Defense_Static_Adaptive_Autogen is Cheated_ScnDef_Template_Defense
+(
+    MinimumResourceForLaunch = ~/Cheated_Scn_MinimumResourceForLaunch_Stage_1
+    DefensePointScoringFeatureValue = ~/Cheated_Scn_WeightDefensePointScoringFeatureMap
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Defense_Static_Adaptive_Autogen_WeightExtended is Cheated_ScnDef_Template_Defense
+(
+    MinimumResourceForLaunch = ~/Cheated_Scn_MinimumResourceForLaunch_Stage_1
+    DefensePointScoringFeatureValue = ~/Cheated_Scn_WeightDefensePointScoringFeatureMap
+    OrderedZoneWeightList = [5, 6, 7]
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Defense_Static_AA_Autogen is Cheated_ScnDef_Template_Defense
+(
+    PoolModelList = [ ~/Cheated_ScnDef_Pool_AA_Defense ]
+    MinimumResourceForLaunch = ~/Cheated_Scn_MinimumResourceForLaunch_Stage_1
+    DefensePointScoringFeatureValue = ~/Cheated_Scn_WeightDefensePointScoringFeatureMap
+    UseTaggedPool = false
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Defense_Static_AA_Autogen_WeightExtended is Cheated_ScnDef_Template_Defense
+(
+    PoolModelList = [ ~/Cheated_ScnDef_Pool_AA_Defense ]
+    MinimumResourceForLaunch = ~/Cheated_Scn_MinimumResourceForLaunch_Stage_1
+    DefensePointScoringFeatureValue = ~/Cheated_Scn_WeightDefensePointScoringFeatureMap
+    OrderedZoneWeightList = [5, 6, 7]
+    UseTaggedPool = false
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Defense_Dynamic_Adaptive_Autogen is Cheated_ScnDef_Template_Dynamic_Defense
+(
+    MinimumResourceForLaunch = ~/Cheated_Scn_MinimumResourceForLaunch_Stage_1
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Defense_Dynamic_Adaptive_Autogen_XL is Cheated_ScnDef_Template_Dynamic_Defense
+(
+    MinimumResourceForLaunch = ~/Cheated_Scn_MinimumResourceForLaunch_Scaling_XL
+)
+//-------------------------------------------------------------------------
+// Pool Models
+//-------------------------------------------------------------------------
+Cheated_ScnDef_ProductionFallback is [
+    "Vehicule_Appui",
+    "Infanterie_Standard",
+    "Canon_AA",
+    "Vehicule_Transport_Arme",
+    "Char"
+] // Ce fallback permet d'assurer la production d'au moins une unite pour les corridors taggués. Sinon ça bloque le couloir
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Pool_Tank_Defense is TPoolModel
+(
+    // Pas de budget, il faut quelqu'un
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{35b615a1-730f-11e9-b581-2c56dc4c150d}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Lourd",
+                "Char_Standard",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{35b615a2-730f-11e9-a619-2c56dc4c150d}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Infanterie_Standard",
+                "Infanterie_Spec_Defense",
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Pool_HMG_Defense is TPoolModel
+(
+    // Pas de budget, il faut quelqu'un
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{bf70d630-765d-11e9-b633-704d7b2c87d4}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Infanterie_Spec_Defense",
+                "Infanterie_Standard",
+                "Vehicule_Appui",
+            ]
+            +~/Cheated_ScnDef_ProductionFallback
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Pool_AT_Defense is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{bf70fd40-765d-11e9-9595-704d7b2c87d4}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Canon_AT_Lourd",
+                "ChasseurDeChar_Lourd",
+                "Canon_AT_Standard",
+                "ChasseurDeChar_Standard",
+            ]
+            +~/Cheated_ScnDef_ProductionFallback
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{bf70fd41-765d-11e9-9ddf-704d7b2c87d4}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Infanterie_Spec_Defense",
+            ]
+            +~/Cheated_ScnDef_ProductionFallback
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnDef_Pool_AA_Defense is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{bf70fd42-765d-11e9-9724-704d7b2c87d4}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Canon_AA_Standard",
+                "Canon_AA_Porte",
+            ]
+            +~/Cheated_ScnDef_ProductionFallback
+        ),
+    ]
+)
+//-------------------------------------------------------------------------

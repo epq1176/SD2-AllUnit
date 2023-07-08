@@ -1,0 +1,211 @@
+//-------------------------------------------------------------------------
+//----------------------------- MISC ---------------------------------
+//-------------------------------------------------------------------------
+export GenBTSteelmanAtk_MinimumResourceForLaunch_Stage_1 is 10
+
+//-------------------------------------------------------------------------
+//------------------------------ SUPPLY -----------------------------------
+//-------------------------------------------------------------------------
+
+// Missions
+//-------------------------------------------------------------------------
+export GenBTSteelmanAtk_Supply_Skirmish is TMacroActionDescriptor_Supply_Specific
+(
+    GenerationType = TGenerationType_BasedOnNumberOfCorridors
+
+    MinimumAmmoRatio = 0.3
+    SupplyAllies = false
+    IgnoreSafePath = false
+
+    PoolModelList = [
+        ~/GenBTSteelmanAtk_Pool_Supply_Skirmish,
+    ]
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Generation,
+            TGenerationSettingHolder(NumberOfCorridorsPerMission = 4 ConsiderOnlySameDescriptor = true)
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export GenBTSteelmanAtk_Supply_Skirmish_Allied is TMacroActionDescriptor_Supply_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    MinimumAmmoRatio = 0.2
+    SupplyAllies = true
+    IgnoreSafePath = false
+    DisableReinforcement = true
+
+    PoolModelList = [
+        ~/GenBTSteelmanAtk_Pool_Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+
+// Pool Models
+//-------------------------------------------------------------------------
+export GenBTSteelmanAtk_Pool_Supply_Skirmish is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{feaa0d9e-55e5-11e9-bf9f-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        TagsPriority = [
+            "Vehicule_Logistique",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------
+//------------------------------- RECO ------------------------------------
+//-------------------------------------------------------------------------
+
+// Missions
+//-------------------------------------------------------------------------
+export GenBTSteelmanAtk_Reco is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    GenerationType = TGenerationType_BasedOnNumberOfCorridors
+
+    IgnoreSafePath = false //on n'esquive pas la menace sur le chemin
+    DisableReinforcement = false
+
+    IgnoreVisionForDefensePosition = false
+    IgnoreEnemyDirectionForDefensePosition = true
+    IgnoreDefensePositionSafety = false
+
+    PoolModelList = [
+        ~/GenBTSteelmanAtk_Pool_Reco_Skirmish,
+    ]
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Generation,
+            TGenerationSettingHolder(NumberOfCorridorsPerMission = 4 ConsiderOnlySameDescriptor = true)
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export GenBTSteelmanAtk_AirReco is TMacroActionDescriptor_AirReco_Specific
+(
+    GenerationType = TGenerationType_FixedSizeByAlliance
+    NumberOfMacro = 1
+
+    PriorityCorridors = []
+    MaxAirplaneCountOnBattlefield = 1
+    TicksBetweenTwoLaunch = 60
+    TicksBetweenTwoMissions = 60
+
+    PoolModelList = [
+        ~/GenBTSteelmanAtk_Pool_AirReco_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+
+// Pool Models
+//-------------------------------------------------------------------------
+export GenBTSteelmanAtk_Pool_Reco_Skirmish is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{feaa0d9f-55e5-11e9-b29e-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = false // On veut le moins cher
+        PriceComparisonMethod = EPriceComparatorType/Cheapest
+        TagsPriority = [
+            "Infanterie_Reco",
+            "Vehicule_Reco",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export GenBTSteelmanAtk_Pool_AirReco_Skirmish is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{feaa0da0-55e5-11e9-a9ab-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        PriceComparisonMethod = EPriceComparatorType/Random
+        TagsPriority = [
+            "Avion_Reco",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------
+//--------------------------- SUPERCOMMANDER ------------------------------
+//-------------------------------------------------------------------------
+
+export GenBTSteelmanAtk_SuperCommander is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    IgnoreSafePath = true
+    DisableReinforcement = true
+    IgnoreVisionForDefensePosition = true
+    IgnoreEnemyDirectionForDefensePosition = true
+    IgnoreDefensePositionSafety = false
+    PrioritizeCorridorsForTaggedPoolModels = true
+
+    LaunchASAP_RatioMin = 0.01
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [~/GenBTSteelmanAtk_Pool_SuperCommander]
+
+    TaggedPoolModelList =
+    (
+        [
+            (["AttackMain"], [~/GenBTSteelmanAtk_Pool_SuperCommander]),
+        ]
+    )
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/GenBTSteelmanAtk_BasicAirstrikeSupport)
+        ),
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0)
+        ),
+        (
+            ESettingType/Support,
+            TSupportSettingHolder(SettingList = [GenBTSteelmanAtk_Renfort_AT])
+        ),
+        (
+            ESettingType/AvoidCorridorTags,
+            TAvoidCorridorTagsSettingHolder(AvoidedCorridorTags = ["Filler"])
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+
+// Pool Models
+//-------------------------------------------------------------------------
+export GenBTSteelmanAtk_Pool_SuperCommander is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{feaa34ae-55e5-11e9-a3f6-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = false
+        PriceComparisonMethod = EPriceComparatorType/Random
+        TagsPriority = [
+            "Char_SuperCMD",
+            "Vehicule_SuperCMD",
+            "Infanterie_SuperCMD",
+        ]
+    ),
+    ]
+)

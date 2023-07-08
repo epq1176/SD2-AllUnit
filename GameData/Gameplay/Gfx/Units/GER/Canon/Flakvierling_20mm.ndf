@@ -1,0 +1,22 @@
+export ModelFile_Flakvierling_20mm is 'GameData:Assets\3D\Units\GER\Canon\Flakvierling_38\Flakvierling_38.Ase2NdfBin'
+
+Modele_Flakvierling_20mm is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Flakvierling_20mm
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Flakvierling_20mm_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\Flakvierling_38_MID\Flakvierling_38_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Flakvierling_20mm_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\LODS\Flakvierling_38_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

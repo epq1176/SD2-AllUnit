@@ -1,0 +1,17 @@
+export Gfx_Bunker_MG_UK is TDepictionTemplate //arme
+(
+    RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+    Selector = CommonBunkerDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_HMG_Vickers_UK ),
+        DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_HMG_Vickers_UK_MID ),
+        DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_HMG_Vickers_UK_LOW ),
+        DepictionDescriptor_LOD_None()
+    ]
+
+    SubDepictions = []
+    Operators = Operators_HMG_Vickers_UK
+    Actions = Weapons_HMG_Vickers_UK
+)
+
+export ModelFile_Bunker_MG_UK is ~/ModelFile_HMG_Vickers_UK

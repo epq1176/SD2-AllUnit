@@ -1,0 +1,22 @@
+export ModelFile_HMG_Vickers_AB_UK is 'GameData:Assets\3D\Units\UK\Canon\Vickers_Gun\Vickers_Gun.Ase2NdfBin'
+
+Modele_HMG_Vickers_AB_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_HMG_Vickers_AB_UK
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_HMG_Vickers_AB_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Canon\Vickers_Gun_MID\Vickers_Gun_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_HMG_Vickers_AB_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Canon\LODS\Vickers_Gun_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

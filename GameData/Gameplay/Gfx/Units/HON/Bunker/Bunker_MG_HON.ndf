@@ -1,0 +1,17 @@
+export Gfx_Bunker_MG_HON is TDepictionTemplate //arme
+(
+    RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+    Selector = CommonBunkerDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_MG_Schwarloze_HON ),
+        DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_MG_Schwarloze_HON_MID ),
+        DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_MG_Schwarloze_HON_LOW ),
+        DepictionDescriptor_LOD_None()
+    ]
+
+    SubDepictions = []
+    Operators = Operators_MG_Schwarloze_HON
+    Actions = Weapons_MG_Schwarloze_HON
+)
+
+export ModelFile_Bunker_MG_HON is ~/ModelFile_MG_Schwarloze_HON

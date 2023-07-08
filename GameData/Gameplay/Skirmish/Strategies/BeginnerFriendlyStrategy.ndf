@@ -1,0 +1,388 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export BeginnerFriendlyStrategy is TIAGeneralStrategy
+(
+    StrategyName = "GenericAI"
+    FirstGenerator = BeFriend_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    ShouldUseTaggedCorridorsForTouchDown = true
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    DefaultIncomeForDynamicBudget = 100
+    TransitionList =
+    [
+        BeFriend_Transition_StartToPhaseC,
+        BeFriend_Transition_StartToPhaseB,
+        BeFriend_Transition_StartToPhaseA,
+        //BeFriend_Transition_StartToLowCost,
+        BeFriend_Transition_StartToGeneric,
+        BeFriend_Transition_DeployToPhaseA,
+        BeFriend_Transition_Phase_B,
+        BeFriend_Transition_Phase_C,
+        //BeFriend_Transition_DeployToPhaseA_LowCost,
+        //BeFriend_Transition_PhaseB_LowCost,
+        //BeFriend_Transition_PhaseC_LowCost
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+//export BeFriend_Condition_GotoLowCost is TSequenceCondition_Compare
+//(
+//    Value1 = [TSequenceConditionValues_RessourcesPointsSharedInTeam]
+//    Operator = Less
+//    AddToValue2 = 350
+//    ResourceType = ~/Resource_CommandPoints
+//)
+//-------------------------------------------------------------------------
+export BeFriend_Condition_GotoGeneric is TSequenceCondition_True
+(
+)
+//-------------------------------------------------------------------------
+export BeFriend_Condition_CommandPhase is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+//-------------------------------------------------------------------------
+export BeFriend_Condition_Wait5m is TSequenceCondition_Wait
+(
+    Time = 180 //3min
+)
+
+//-------------------------------------------------------------------------
+export BeFriend_Condition_CommandPhase_And_Wait5m is TSequenceCondition_And
+(
+    Condition1 = BeFriend_Condition_CommandPhase
+    Condition2 = BeFriend_Condition_Wait5m
+)
+//-------------------------------------------------------------------------
+export BeFriend_Condition_PhaseB is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_B'
+)
+//-------------------------------------------------------------------------
+export BeFriend_Condition_PhaseC is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_C'
+)
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export BeFriend_Transition_StartToPhaseC is TIAGeneralStrategyTransition
+(
+    Origine = BeFriend_Choose_Strategy
+    Condition = BeFriend_Condition_PhaseC
+    Destination = BeFriend_Phase_C
+)
+//-------------------------------------------------------------------------
+export BeFriend_Transition_StartToPhaseB is TIAGeneralStrategyTransition
+(
+    Origine = BeFriend_Choose_Strategy
+    Condition = BeFriend_Condition_PhaseB
+    Destination = BeFriend_Phase_B
+)
+//-------------------------------------------------------------------------
+export BeFriend_Transition_StartToPhaseA is TIAGeneralStrategyTransition
+(
+    Origine = BeFriend_Choose_Strategy
+    Condition = BeFriend_Condition_CommandPhase_And_Wait5m
+    Destination = BeFriend_Phase_A
+)
+//-------------------------------------------------------------------------
+export BeFriend_Transition_StartToGeneric is TIAGeneralStrategyTransition
+(
+    Origine = BeFriend_Choose_Strategy
+    Condition = BeFriend_Condition_GotoGeneric
+    Destination = BeFriend_PhaseDeploiement
+)
+//-------------------------------------------------------------------------
+export BeFriend_Transition_DeployToPhaseA is TIAGeneralStrategyTransition
+(
+    Origine = BeFriend_PhaseDeploiement
+    Condition = BeFriend_Condition_CommandPhase_And_Wait5m
+    Destination = BeFriend_Phase_A
+)
+//-------------------------------------------------------------------------
+export BeFriend_Transition_Phase_B is TIAGeneralStrategyTransition
+(
+    Origine = BeFriend_Phase_A
+    Condition = BeFriend_Condition_PhaseB
+    Destination = BeFriend_Phase_B
+)
+//-------------------------------------------------------------------------
+export BeFriend_Transition_Phase_C is TIAGeneralStrategyTransition
+(
+    Origine = BeFriend_Phase_B
+    Condition = BeFriend_Condition_PhaseC
+    Destination = BeFriend_Phase_C
+)
+////-------------------------------------------------------------------------
+//export BeFriend_Transition_StartToLowCost is TIAGeneralStrategyTransition
+//(
+//    Origine = BeFriend_Choose_Strategy
+//    Condition = BeFriend_Condition_GotoLowCost
+//    Destination = BeFriend_PhaseDeploiement_LowCost
+//)
+////-------------------------------------------------------------------------
+////export BeFriend_Transition_DeployToPhaseA_LowCost is TIAGeneralStrategyTransition
+//(
+//    Origine = BeFriend_PhaseDeploiement_LowCost
+//    Condition = BeFriend_Condition_CommandPhase
+//    Destination = BeFriend_Phase_A_LowCost
+//)
+////-------------------------------------------------------------------------
+//export BeFriend_Transition_PhaseB_LowCost is TIAGeneralStrategyTransition
+//(
+//    Origine = BeFriend_Phase_A_LowCost
+//    Condition = BeFriend_Condition_PhaseB
+//    Destination = BeFriend_Phase_B_LowCost
+//)
+////-------------------------------------------------------------------------
+//export BeFriend_Transition_PhaseC_LowCost is TIAGeneralStrategyTransition
+//(
+//    Origine = BeFriend_Phase_B_LowCost
+//    Condition = BeFriend_Condition_PhaseC
+//    Destination = BeFriend_Phase_C_LowCost
+//)
+
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export BeFriend_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ~/BeFriend_Support_Transports,
+        ~/BeFriend_Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export BeFriend_PhaseDeploiement is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        ~/BeFriend_Support_Transports,
+
+        ~/BeFriend_Supply_Skirmish,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+
+        // Reste du front
+        ~/BeFriend_Defense_Dynamic_MapFilling,
+
+        ~/BeFriend_Reco,            // 40 par reco
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/BeFriend_Supply_Skirmish_Allied,
+    ] + ~/BeFriend_Defenses_Airstrike_Arti_Shuffle_Deploy
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+        // Dans les difficultés supérieures il faudra surement maintenir
+        // ça avec des maintain à la phase d'après pour être sur qu'on
+        // produise de nouvelles unités
+    +   ~/BeFriend_Scaling
+    //+   ~/BeFriend_Scaling
+
+)
+//-------------------------------------------------------------------------
+export BeFriend_Phase_A is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 3
+    GeneratorList =
+    [
+        // Même chose que la phase de déploiement mais avec les Défenses
+        // prioritaires sur les attaques. L'idée est de lancer ses attaques dès
+        // le début, mais de renforcer les backl
+        // Défenses prioritairesines avant de récupérer de nos pertes
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        ~/BeFriend_Support_Transports,
+
+        ~/BeFriend_Supply_Skirmish,
+
+        //------------------------------
+        //------------------------------
+        // Statiques pour tenir le terrain
+        ~/BeFriend_Defense_Static_AA,
+
+        //------------------------------
+        // Support de la main Attack
+        //------------------------------
+        //~/BeFriend_Attack_MBT_Support,       // Un gros tank à voir si on le passe en phase A // DISABLE REINFORCEMENTS + TGenerationType_RestrictedNumberOfLaunch 1
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        //~/BeFriend_Attack_Main,              // Plusieurs tanks pour un budget donné // 200
+        //~/BeFriend_Artillery_Support,        // Artillerie pas chère                 //  80
+
+        //~/BeFriend_Attack_Adaptive,  // Faire du code pour adapater le budget en fonction de l'income
+
+        // On insère ici une attaque qui va chercher les objectifs.
+        ~/BeFriend_Attack_Objectives,
+
+        // Remplissage de la map
+        ~/BeFriend_Defense_Dynamic_MapFilling,
+        ~/BeFriend_Defense_Dynamic_MapFilling_SecondWave,
+
+        ~/BeFriend_Reco,
+        //~/BeFriend_Attack_MBT, // MBT devient low prio en phase A pour éviter de pomper trop de thune
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/BeFriend_Supply_Skirmish_Allied,
+
+    ] + ~/BeFriend_Airstrike_Arti_Shuffle // On sort les défenses d'ici pour les mettre plus haut dans la prio
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+        // Dans les difficultés supérieures il faudra surement maintenir
+        // ça avec des maintain à la phase d'après pour être sur qu'on
+        // produise de nouvelles unités
+    +   ~/BeFriend_Scaling
+    //+   ~/BeFriend_Scaling
+)
+//-------------------------------------------------------------------------
+private template BeFriend_Phases_B_and_C_template
+[
+]
+is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 3
+    GeneratorList =
+    [
+        // Même chose que la phase de déploiement mais avec les Défenses
+        // prioritaires sur les attaques. L'idée est de lancer ses attaques dès
+        // le début, mais de renforcer les backl
+        // Défenses prioritairesines avant de récupérer de nos pertes
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        ~/BeFriend_Support_Transports,
+
+        ~/BeFriend_Supply_Skirmish,
+        // Remplissage de la map
+        ~/BeFriend_Defense_Dynamic_MapFilling,
+        ~/BeFriend_Defense_Dynamic_MapFilling_SecondWave,
+        ~/BeFriend_Defense_Dynamic_MapFilling_ThirdWave,
+
+        //------------------------------
+        //------------------------------
+        // Statiques pour tenir le terrain
+        ~/BeFriend_Defense_Static_AA,
+
+
+        //------------------------------
+        // Support de la main Attack
+        //------------------------------
+        //~/BeFriend_Attack_MBT_Support,       // Un gros tank à voir si on le passe en phase A // DISABLE REINFORCEMENTS + TGenerationType_RestrictedNumberOfLaunch 1
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        //~/BeFriend_Attack_Main,              // Plusieurs tanks pour un budget donné // 200
+        //~/BeFriend_Artillery_Support,        // Artillerie pas chère                 //  80
+
+        //~/BeFriend_Attack_Adaptive,  // Faire du code pour adapater le budget en fonction de l'income
+
+        // On insère ici une attaque qui va chercher les objectifs.
+        ~/BeFriend_Attack_Objectives,
+
+        ~/BeFriend_Reco,
+        //~/BeFriend_Attack_MBT, // MBT devient low prio en phase A pour éviter de pomper trop de thune
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/BeFriend_Supply_Skirmish_Allied,
+
+    ] + ~/BeFriend_Airstrike_Arti_Shuffle // On sort les défenses d'ici pour les mettre plus haut dans la prio
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+        // Dans les difficultés supérieures il faudra surement maintenir
+        // ça avec des maintain à la phase d'après pour être sur qu'on
+        // produise de nouvelles unités
+    +   ~/BeFriend_Scaling
+    +   ~/BeFriend_Scaling
+)
+//-------------------------------------------------------------------------
+export BeFriend_Phase_B is BeFriend_Phases_B_and_C_template()
+//-------------------------------------------------------------------------
+export BeFriend_Phase_C is BeFriend_Phases_B_and_C_template()
+//-------------------------------------------------------------------------
+
+// Le concept de ces blocs de missions
+// est d'à la fois défendre ses arrières
+// mais aussi de faire usage d'unités diverses
+// (artillerie et avions) pour débloquer
+// les situations et appuyer le reste des missions
+BeFriend_Defenses_Airstrike_Arti_Shuffle_Deploy is
+[
+    ~/BeFriend_Airstrike_Defense,
+    ~/BeFriend_Artillery_Expensive,
+    ~/BeFriend_Artillery_TriggerHappy,
+    ~/BeFriend_Defense_Static_AA,
+    ~/BeFriend_AirReco,
+    ~/BeFriend_Airstrike_Defense,
+    ~/BeFriend_Maintain_AirStrike,
+    ~/BeFriend_Maintain_Artillery,
+]
+
+BeFriend_Defenses_Airstrike_Arti_Shuffle is
+[
+    ~/BeFriend_Defense_Dynamic_Adaptive,
+    ~/BeFriend_Airstrike_Assault,
+    ~/BeFriend_Artillery_TriggerHappy,
+    ~/BeFriend_Defense_Static_AA,
+    ~/BeFriend_AirReco,
+    ~/BeFriend_Airstrike_Defense,
+    ~/BeFriend_Maintain_AirStrike,
+    ~/BeFriend_Maintain_Artillery,
+]
+
+BeFriend_Airstrike_Arti_Shuffle is
+[
+    ~/BeFriend_AirReco,
+    ~/BeFriend_Airstrike_Defense,
+    ~/BeFriend_Airstrike_Defense,
+    ~/BeFriend_Artillery_TriggerHappy_1for4Corridors,
+    ~/BeFriend_Maintain_AirStrike,
+    ~/BeFriend_Maintain_Artillery,
+]
+
+BeFriend_Scaling is
+[
+    ~/BeFriend_Defense_Dynamic_Adaptive_Autogen,
+    ~/BeFriend_Defense_Dynamic_Adaptive_Autogen,
+    ~/BeFriend_Defense_Dynamic_Adaptive_Autogen,
+    ~/BeFriend_Airstrike_Defense_Autogen,
+    ~/BeFriend_Defense_Dynamic_Adaptive_Autogen,
+    ~/BeFriend_Defense_Static_AA_Autogen,
+    ~/BeFriend_Artillery_TriggerHappy_Autogen,
+    ~/BeFriend_Airstrike_Offense_Autogen,
+    ~/BeFriend_Artillery_TriggerHappy_Autogen,
+    ~/BeFriend_Attack_Objectives_Autogen,
+    ~/BeFriend_Artillery_Expensive_Autogen,
+]
+

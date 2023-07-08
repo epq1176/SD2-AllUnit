@@ -1,0 +1,236 @@
+//-------------------------------------------------------------------
+//---- Label Ruse Chrono --------------------------------------------
+
+RuseChronoLabelReferentiel is TLabelTransformationComposition
+(
+    Transformations =
+    [
+        TLabelTransformVerticalQuantizedOrientation
+        (
+            Camera = $/M3D/Camera/CameraPrincipale
+            ZOrientation = 0
+            IsLabelHorizontal = true
+
+            DynamicOrientationTimeConstante = 4
+            DynamicOrientationHysteresisFactor = 1.4
+            DynamicOrientationAnimDuration = 0.5
+        ),
+        ~/LabelTranslateForArea,
+    ]
+)
+
+// Actuellement utilisé pour l'affichage des points par zone de commandement
+RuseChronoLabelDescriptor is TRuseChronoLabelDescriptor
+(
+    UI3DLayer = $/UserInterface/UI3DLayer_General
+
+    TFSConquestModeSize is 40000 //60000.0
+    AreaNameFontSize is 35000 //40000
+    TFSConquestTextureRatioBas is 1.0
+    TFSConquestTextureRatioHautBas is 0.5
+
+    LabelReferentiel = ~/RuseChronoLabelReferentiel
+
+    //TextTypefaceName = $/M3D/Typefaces/Typeface3D_Digital_CompensatePostProcess
+    TextTypefaceName = $/M3D/Typefaces/Typeface3D_Title_CompensatePostProcess
+    ParagraphStyleName = TParagraphStyleRTTI
+    (
+        Alignment         = UIText_Center
+        VerticalAlignment = UIText_Center
+        InterLine         = 0
+        LineWidth         = 0
+    )
+    TextStyleName = TTextStyleRTTI
+    (
+        FontSize    = AreaNameFontSize
+        ColorBottom = [117, 255, 255, 255]
+        ColorUp     = [117, 255, 255, 255]
+        ColorStroke = [  0,   0,   0, 128]
+        Stroke = false
+    )
+
+    TextTypefaceTimer = $/M3D/Typefaces/Typeface3D_TitleMono_CompensatePostProcess
+    ParagraphStyleTimer = TParagraphStyleRTTI
+    (
+        Alignment         = UIText_Center
+        VerticalAlignment = UIText_Center
+        InterLine         = 0
+        LineWidth         = 0
+    )
+    TextStyleTimer = TTextStyleRTTI
+    (
+        FontSize    = 40000
+        ColorBottom = [255, 255, 255, 8]
+        ColorUp     = [255, 255, 255, 0]
+        ColorStroke = [  0,   0,   0, 8]
+        Stroke = false
+    )
+
+    VisibilityRange = $/GFX/Visibility/AllRanges/Zoom123
+    FadeDuration = 0.5
+
+    OpacityControlByFloat = $/M3D/Shader/AreaFillOpacity
+)
+
+
+
+//-------------------------------------------------------------------
+//---- Reinforcement type -------------------------------------------
+
+ReinforcementTextReferentiel is TLabelTransformationComposition
+(
+    Transformations =
+    [
+        ~/LabelTranslateForArea,
+    ]
+)
+
+// Actuellement utilisé pour donner le type de renfort arrivant par une voie terrestre
+ReinforcementTextLandLabelDescriptor is TRuseChronoLabelDescriptor
+(
+    UI3DLayer = $/UserInterface/UI3DLayer_General
+
+    ReinforcementTextFontSize is 16000
+    TFSConquestTextureRatioBas is 1.0
+
+    LabelReferentiel = ~/ReinforcementTextReferentiel
+
+    TextTypefaceName = $/M3D/Typefaces/Typeface3D_Renfort_CompensatePostProcess
+    ParagraphStyleName = TParagraphStyleRTTI
+    (
+        Alignment         = UIText_Left
+        VerticalAlignment = UIText_Bottom
+        InterLine         = 0
+        LineWidth         = 0
+    )
+    TextStyleName = TTextStyleRTTI
+    (
+        FontSize    = ReinforcementTextFontSize
+        ColorBottom = [117, 255, 255, 255]
+        ColorUp     = [117, 255, 255, 255]
+        ColorStroke = [  0,   0,   0, 128]
+        Stroke = false
+    )
+
+    TextTypefaceTimer = $/M3D/Typefaces/Typeface3D_TitleMono_CompensatePostProcess
+    ParagraphStyleTimer = TParagraphStyleRTTI
+    (
+        Alignment         = UIText_Left
+        VerticalAlignment = UIText_Bottom
+        InterLine         = 0
+        LineWidth         = 0
+    )
+    TextStyleTimer = TTextStyleRTTI
+    (
+        FontSize    = 40000
+        ColorBottom = [255, 255, 255, 8]
+        ColorUp     = [255, 255, 255, 0]
+        ColorStroke = [  0,   0,   0, 8]
+        Stroke = false
+    )
+
+    VisibilityRange = $/GFX/Visibility/AllRanges/Zoom12bis
+    FadeDuration = 0.5
+
+    OpacityControlByFloat = $/M3D/Shader/AreaFillOpacity
+)
+
+// Actuellement utilisé pour donner le type de renfort arrivant par une voie terrestre
+ReinforcementTextSeaLabelDescriptor is TRuseChronoLabelDescriptor
+(
+    UI3DLayer = $/UserInterface/UI3DLayer_General
+
+    ReinforcementTextFontSize is 16000
+    TFSConquestTextureRatioBas is 1.0
+
+    LabelReferentiel = ~/ReinforcementTextReferentiel
+
+    TextTypefaceName = $/M3D/Typefaces/Typeface3D_Renfort_CompensatePostProcess
+    ParagraphStyleName = TParagraphStyleRTTI
+    (
+        Alignment         = UIText_Left
+        VerticalAlignment = UIText_Bottom
+        InterLine         = 0
+        LineWidth         = 0
+    )
+    TextStyleName = TTextStyleRTTI
+    (
+        FontSize    = ReinforcementTextFontSize
+        ColorBottom = [117, 255, 255, 255]
+        ColorUp     = [117, 255, 255, 255]
+        ColorStroke = [  0,   0,   0, 128]
+        Stroke = false
+    )
+
+    TextTypefaceTimer = $/M3D/Typefaces/Typeface3D_TitleMono_CompensatePostProcess
+    ParagraphStyleTimer = TParagraphStyleRTTI
+    (
+        Alignment         = UIText_Left
+        VerticalAlignment = UIText_Bottom
+        InterLine         = 0
+        LineWidth         = 0
+    )
+    TextStyleTimer = TTextStyleRTTI
+    (
+        FontSize    = 40000
+        ColorBottom = [255, 255, 255, 8]
+        ColorUp     = [255, 255, 255, 0]
+        ColorStroke = [  0,   0,   0, 8]
+        Stroke = false
+    )
+
+    VisibilityRange = $/GFX/Visibility/AllRanges/Zoom12bis
+    FadeDuration = 0.5
+
+    OpacityControlByFloat = $/M3D/Shader/AreaFillOpacity
+)
+
+// Actuellement utilisé pour donner le type de renfort arrivant par une voie terrestre
+ReinforcementTextAirLabelDescriptor is TRuseChronoLabelDescriptor
+(
+    UI3DLayer = $/UserInterface/UI3DLayer_General
+
+    ReinforcementTextFontSize is 16000
+    TFSConquestTextureRatioBas is 1.0
+
+    LabelReferentiel = ~/ReinforcementTextReferentiel
+
+    TextTypefaceName = $/M3D/Typefaces/Typeface3D_Renfort_CompensatePostProcess
+    ParagraphStyleName = TParagraphStyleRTTI
+    (
+        Alignment         = UIText_Left
+        VerticalAlignment = UIText_Bottom
+        InterLine         = 0
+        LineWidth         = 0
+    )
+    TextStyleName = TTextStyleRTTI
+    (
+        FontSize    = ReinforcementTextFontSize
+        ColorBottom = [117, 255, 255, 255]
+        ColorUp     = [117, 255, 255, 255]
+        ColorStroke = [  0,   0,   0, 128]
+        Stroke = false
+    )
+
+    TextTypefaceTimer = $/M3D/Typefaces/Typeface3D_TitleMono_CompensatePostProcess
+    ParagraphStyleTimer = TParagraphStyleRTTI
+    (
+        Alignment         = UIText_Left
+        VerticalAlignment = UIText_Bottom
+        InterLine         = 0
+        LineWidth         = 0
+    )
+    TextStyleTimer = TTextStyleRTTI
+    (
+        FontSize    = 40000
+        ColorBottom = [255, 255, 255, 8]
+        ColorUp     = [255, 255, 255, 0]
+        ColorStroke = [  0,   0,   0, 8]
+        Stroke = false
+    )
+
+    VisibilityRange = $/GFX/Visibility/AllRanges/Zoom12bis
+    FadeDuration = 0.5
+
+    OpacityControlByFloat = $/M3D/Shader/AreaFillOpacity
+)

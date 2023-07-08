@@ -1,0 +1,148 @@
+Template TAnimNodeServantMortar
+[
+IAStates : integer = ~/AnimationStateAll,
+IAOldStates : integer = ~/AnimationStateAll,
+DefaultAnimationStates : integer = ~/AnimationStateAll,
+Childs             = [],
+Loop     : boolean = true,
+Top      : boolean = true,
+Bot      : boolean = true,
+Anim     : string  = '',
+Side     : string  = '',
+EventAnim : bool = false,
+] is DepictionAnimationTreeNode
+(
+    IAStates = <IAStates>
+    IAOldStates = <IAOldStates>
+    DefaultAnimationStates = <DefaultAnimationStates>
+    Childs = <Childs>
+    UsedSlots = InfantryAnimationAllSlots
+    private AnimationFileName is 'Gunner_Mortar_'+<Side>+ '_' + <Anim> + '.Ase2NdfBin'
+    Animations =
+    ( <Top> & <Bot> ?
+    [TemplateAnimationTop(Animation=AnimationFileName Loop=<Loop> EventAnimation = <EventAnim>), TemplateAnimationBottom( Animation=AnimationFileName  Loop=<Loop> EventAnimation = <EventAnim>)]
+    : ( <Top> ?
+    [TemplateAnimationTop(Animation=AnimationFileName Loop=<Loop> EventAnimation = <EventAnim>)]
+    : (<Bot> ?
+    [TemplateAnimationBottom(Animation=AnimationFileName Loop=<Loop> EventAnimation = <EventAnim>)]
+    : [] ) ) )
+)
+
+
+Template ServantMortarAnimTree
+[
+    Side : string = ''
+]
+ is TAnimNodeServantMortar
+(
+    IAStates = AnimationStateAll
+    DefaultAnimationStates = ~/AnimationStateEngineStopping
+    Childs =
+    [
+        TAnimNodeServant
+        (
+            IAStates = AnimationStateDestruction
+            Anim = 'Dead'
+            Loop = false
+            Side = <Side>
+        ),
+        TAnimNodeServantMortar
+        (
+            IAStates = AnimationStateInstantFire
+            Anim = 'Fire'
+            Loop = false
+            EventAnim = true
+            Side = <Side>
+        ),
+        TAnimNodeServantMortar
+        (
+            IAStates = AnimationStateAttacking
+            IAOldStates = AnimationStateInstantFire
+            Anim = 'Reload'
+            Loop = false
+            EventAnim = true
+            Side = <Side>
+        ),
+        TAnimNodeServantMortar
+        (
+            IAStates = AnimationStateEngineStarting
+            Anim = 'Fold'
+            Loop = false
+            Side = <Side>
+        ),
+        TAnimNodeServantMortar
+        (
+            IAStates = AnimationStateEngineRunning
+            Anim = 'Move'
+            Side = <Side>
+            Childs = [
+                TAnimNodeServantMortar
+                (
+                    IAStates = AnimationStateBack
+                    Anim = 'Move_Back'
+                    Side = <Side>
+                )
+            ]
+        ),
+        TAnimNodeServantMortar
+        (
+            IAStates = AnimationStateEngineStopping
+            Anim = 'Deploy'
+            Loop = false
+            Side = <Side>
+        ),
+        TAnimNodeServantMortar
+        (
+            IAStates = AnimationStateEngineStartTurning
+            Anim = 'Fold'
+            Loop = false
+            Side = <Side>
+        ),
+        TAnimNodeServantMortar
+        (
+            IAStates = AnimationStateEngineTurning | AnimationStateLeft
+            Anim = 'Turn_Left'
+            Side = <Side>
+        ),
+        TAnimNodeServantMortar
+        (
+            IAStates = AnimationStateEngineTurning | AnimationStateRight
+            Anim = 'Turn_Right'
+            Side = <Side>
+        ),
+        TAnimNodeServantMortar
+        (
+            IAStates = AnimationStateEngineStopTurning
+            Anim = 'Deploy'
+            Loop = false
+            Side = <Side>
+        ),
+        TAnimNodeServantMortar
+        (
+            IAStates = AnimationStateAttacking
+            Anim = 'Ready_to_Fire'
+            EventAnim = false
+            Loop = false
+            Side = <Side>
+        ),
+        TAnimNodeServantMortar
+        (
+            IAStates = AnimationStateSurrender
+            Anim = 'Idle' // A remplacer par Surrender quand l'anim aura ete produite
+            Loop = false
+            Side = <Side>
+        ),
+
+    ]
+
+    Anim = 'Idle'
+    Side = <Side>
+)
+
+
+ServantMortarAnimTreeGauche is ServantMortarAnimTree(Side = 'L')
+ServantMortarAnimTreeDroite is ServantMortarAnimTree(Side = 'R')
+
+export DepictionOperator_Animation_ServantMortar_Droite is [ Template_DepictionOperator_SkeletalAnimation_With_Tree( AnimationTree = ServantMortarAnimTreeDroite )]
+export DepictionOperator_Animation_ServantMortar_Gauche is [ Template_DepictionOperator_SkeletalAnimation_With_Tree( AnimationTree = ServantMortarAnimTreeGauche )]
+

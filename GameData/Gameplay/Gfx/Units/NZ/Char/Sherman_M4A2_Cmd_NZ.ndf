@@ -1,0 +1,22 @@
+export ModelFile_Sherman_M4A2_Cmd_NZ is 'GameData:Assets\3D\Units\NZ\Char\Sherman_M4_A2_NZ\Sherman_M4_A2_Cmd_NZ.Ase2NdfBin'
+
+export Modele_Sherman_M4A2_Cmd_NZ is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Sherman_M4A2_Cmd_NZ
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Sherman_M4A2_Cmd_NZ_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\NZ\Char\Sherman_M4_A2_NZ_MID\Sherman_M4_A2_Cmd_NZ_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Sherman_M4A2_Cmd_NZ_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\NZ\Char\LODS\Sherman_M4_A2_Cmd_NZ_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

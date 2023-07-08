@@ -1,0 +1,21 @@
+export ModelFile_Panzer_IV_J_Aufk_GER is 'GameData:Assets\3D\Units\GER\Char\Panzer_IV_J_Aufk\Panzer_IV_J_Aufk.Ase2NdfBin'
+Modele_Panzer_IV_J_Aufk_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Panzer_IV_J_Aufk_GER
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_IV_J_Aufk_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\Panzer_IV_J_Aufk_MID\Panzer_IV_J_Aufk_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_IV_J_Aufk_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\Panzer_IV_J_Aufk_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

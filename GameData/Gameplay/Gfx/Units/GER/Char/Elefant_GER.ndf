@@ -1,0 +1,22 @@
+export ModelFile_Elefant_GER is 'GameData:Assets\3D\Units\GER\Char\Elefant_GER\Elefant_GER.Ase2NdfBin'
+
+Modele_Elefant_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Elefant_GER
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Elefant_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\Elefant_GER_MID\Elefant_GER_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Elefant_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\Elefant_GER_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

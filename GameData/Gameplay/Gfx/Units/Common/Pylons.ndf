@@ -1,0 +1,78 @@
+//----------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------PYLONES D'EMPORT de ROQUETTES et MISSILES par DEFAUT-------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------
+template CommonMeshDescriptor [ ModelFile ]  is TResourceMultiMaterialMesh
+(
+    FileName = <ModelFile>
+    UsefulnessMask = CivMask/Common + TypeMask/Common
+)
+//Ci-dessous, declaration des meshes de pylones qui sont sur les avions et helicos.
+//C'est sur ces meshes que sont ensuite attaches les MISSILES et BOMBES.
+DefaultMeshDescriptor_Pylon_1 is CommonMeshDescriptor( ModelFile = 'GameData:Assets\3D\Units\Ammo\Pylones\Pylone_1.Ase2NdfBin' )
+DefaultMeshDescriptor_Pylon_2 is CommonMeshDescriptor( ModelFile = 'GameData:Assets\3D\Units\Ammo\Pylones\Pylone_2.Ase2NdfBin' )
+DefaultMeshDescriptor_Pylon_3 is CommonMeshDescriptor( ModelFile = 'GameData:Assets\3D\Units\Ammo\Pylones\Pylone_3.Ase2NdfBin' )
+DefaultMeshDescriptor_Pylon_4 is CommonMeshDescriptor( ModelFile = 'GameData:Assets\3D\Units\Ammo\Pylones\Pylone_4.Ase2NdfBin' )
+DefaultMeshDescriptor_Pylon_5 is CommonMeshDescriptor( ModelFile = 'GameData:Assets\3D\Units\Ammo\Pylones\Pylone_5.Ase2NdfBin' )
+DefaultMeshDescriptor_Pylon_6 is CommonMeshDescriptor( ModelFile = 'GameData:Assets\3D\Units\Ammo\Pylones\Pylone_6.Ase2NdfBin' )
+DefaultMeshDescriptor_Pylon_7 is CommonMeshDescriptor( ModelFile = 'GameData:Assets\3D\Units\Ammo\Pylones\Pylone_7.Ase2NdfBin' )
+
+template PylonDepictionTemplate [ MeshDescriptor ] is TDepictionTemplate
+(
+    RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+    Selector = WarGamePylonDepictionSelector
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = <MeshDescriptor> ),
+            TDepictionDescriptor( SelectorId = 'none' RequireOthersSkeleton = true),
+        ]
+)
+
+DepictionOnePylonSet_DefaultMissile is TDepictionPylonSet
+(
+    Pylons = [
+        PylonDepictionTemplate( MeshDescriptor = DefaultMeshDescriptor_Pylon_1 ),
+        PylonDepictionTemplate( MeshDescriptor = DefaultMeshDescriptor_Pylon_2 ),
+        PylonDepictionTemplate( MeshDescriptor = DefaultMeshDescriptor_Pylon_3 ),
+        PylonDepictionTemplate( MeshDescriptor = DefaultMeshDescriptor_Pylon_4 ),
+        PylonDepictionTemplate( MeshDescriptor = DefaultMeshDescriptor_Pylon_5 ),
+        PylonDepictionTemplate( MeshDescriptor = DefaultMeshDescriptor_Pylon_6 ),
+        PylonDepictionTemplate( MeshDescriptor = DefaultMeshDescriptor_Pylon_7 ),
+    ]
+)
+//Ci-dessous, declaration des meshes de pylones de ROQUETTES qui sont sur les avions et helicos.
+PodDefaultMeshDescriptor_Pylon_7 is CommonMeshDescriptor( ModelFile = 'GameData:Assets\3D\Units\Ammo\Pylones\Pylone_Roquettes_7.Ase2NdfBin' )
+PodDefaultMeshDescriptor_Pylon_14 is CommonMeshDescriptor( ModelFile = 'GameData:Assets\3D\Units\Ammo\Pylones\Pylone_Roquettes_14.Ase2NdfBin' )
+PodDefaultMeshDescriptor_Pylon_16 is CommonMeshDescriptor( ModelFile = 'GameData:Assets\3D\Units\Ammo\Pylones\Pylone_Roquettes_16.Ase2NdfBin' )
+PodDefaultMeshDescriptor_Pylon_19 is CommonMeshDescriptor( ModelFile = 'GameData:Assets\3D\Units\Ammo\Pylones\Pylone_Roquettes_19.Ase2NdfBin' )
+PodDefaultMeshDescriptor_Pylon_20 is CommonMeshDescriptor( ModelFile = 'GameData:Assets\3D\Units\Ammo\Pylones\Pylone_Roquettes_20.Ase2NdfBin' )
+PodDefaultMeshDescriptor_Pylon_32 is CommonMeshDescriptor( ModelFile = 'GameData:Assets\3D\Units\Ammo\Pylones\Pylone_Roquettes_32.Ase2NdfBin' )
+
+DepictionOnePylonSet_DefaultPod is TDepictionPylonSet
+(
+    Pylons = [
+        PylonDepictionTemplate( MeshDescriptor = PodDefaultMeshDescriptor_Pylon_7 ),
+        PylonDepictionTemplate( MeshDescriptor = PodDefaultMeshDescriptor_Pylon_14 ),
+        PylonDepictionTemplate( MeshDescriptor = PodDefaultMeshDescriptor_Pylon_16 ),
+        PylonDepictionTemplate( MeshDescriptor = PodDefaultMeshDescriptor_Pylon_19 ),
+        PylonDepictionTemplate( MeshDescriptor = PodDefaultMeshDescriptor_Pylon_20 ),
+        PylonDepictionTemplate( MeshDescriptor = PodDefaultMeshDescriptor_Pylon_32 ),
+    ]
+    IsPod = True
+)
+
+DepictionPylonSet_Default is TMultiPylonSet
+(
+    DefaultPylonSet = DepictionOnePylonSet_DefaultMissile
+    PodPylonSet = DepictionOnePylonSet_DefaultPod
+    BombPylonSet = DepictionOnePylonSet_DefaultMissile
+)
+//----------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------FIN PYLONES D'EMPORT de ROQUETTES et MISSILES par DEFAUT-----------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------PYLONES D'EMPORT de ROQUETTES et MISSILES SPECIFIQUES par UNITES------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------
+//Exemple Ajout d'un pod pour l'Apache
+// PodDefaultMeshDescriptor_Pylon_Apache is CommonMeshDescriptor( ModelFile = 'GameData:Assets\3D\Units\US\Helicos\AH-64A_Apache\Pod_Apache.Ase2NdfBin' )
+
+

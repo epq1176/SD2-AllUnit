@@ -1,0 +1,23 @@
+export ModelFile_Mortier_60mm_BRZ is 'GameData:Assets\3D\Units\USA\Canon\Mortar_81mm\Mortar_81mm.Ase2NdfBin'
+
+
+Modele_Mortier_60mm_BRZ is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Mortier_60mm_BRZ
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Mortier_60mm_BRZ_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Canon\Mortar_81mm_MID\Mortar_81mm_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Mortier_60mm_BRZ_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Canon\LODS\Mortar_81mm_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

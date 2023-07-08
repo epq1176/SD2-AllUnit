@@ -1,0 +1,109 @@
+
+// -------------------------------------------------------------------
+// ---- Warning ------------------------------------------------------
+
+
+
+
+// -------------------------------------------------------------------------------
+// Curseurs tactiques DEBUT
+// -------------------------------------------------------------------------------
+
+Texture_Tactical_Cursor_Forbidden is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask      = TypeMask/PCInterface
+    CivMask       = CivMask/Common
+    FileName      = 'Assets\2D\Interface\Common\TacticalCursors\Forbidden.png'
+)
+
+Texture_Tactical_Cursor_UnguidedMissile is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask      = TypeMask/PCInterface
+    CivMask       = CivMask/Common
+    FileName      = 'Assets\2D\Interface\Common\TacticalCursors\UnguidedMissile.png'
+)
+
+Texture_Tactical_Cursor_AirMissile is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask      = TypeMask/PCInterface
+    CivMask       = CivMask/Common
+    FileName      = 'Assets\2D\Interface\Common\TacticalCursors\AirMissile.png'
+)
+
+Texture_Tactical_Cursor_Artillery is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask      = TypeMask/PCInterface
+    CivMask       = CivMask/Common
+    FileName      = 'Assets\2D\Interface\Common\TacticalCursors\Artillery.png'
+)
+
+Texture_Tactical_Cursor_Canon is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask      = TypeMask/PCInterface
+    CivMask       = CivMask/Common
+    FileName      = 'Assets\2D\Interface\Common\TacticalCursors\Canon.png'
+)
+
+Texture_Tactical_Cursor_FastCanon is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask      = TypeMask/PCInterface
+    CivMask       = CivMask/Common
+    FileName      = 'Assets\2D\Interface\Common\TacticalCursors\FastCanon.png'
+)
+
+Texture_Tactical_Cursor_GroundMissile is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask      = TypeMask/PCInterface
+    CivMask       = CivMask/Common
+    FileName      = 'Assets\2D\Interface\Common\TacticalCursors\GroundMissile.png'
+)
+
+Texture_Tactical_Cursor_MG is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask      = TypeMask/PCInterface
+    CivMask       = CivMask/Common
+    FileName      = 'Assets\2D\Interface\Common\TacticalCursors\MG.png'
+)
+
+Texture_Tactical_Cursor_MoveAndExplode is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask      = TypeMask/PCInterface
+    CivMask       = CivMask/Common
+    FileName      = 'Assets\2D\Interface\Common\TacticalCursors\dlc_viseur.png'
+)
+
+Texture_Tactical_Cursor_SuppressFire is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask      = TypeMask/PCInterface
+    CivMask       = CivMask/Common
+    FileName      = 'Assets\2D\Interface\Common\TacticalCursors\SuppressFire.png'
+)
+
+Texture_Tactical_Cursor_SelectionPointer is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask      = TypeMask/PCInterface
+    CivMask       = CivMask/Common
+    FileName      = 'Assets\2D\Interface\Common\TacticalCursors\SelectionPointer.png'
+)
+
+Texture_Tactical_Cursor_SquarePointer is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask      = TypeMask/PCInterface
+    CivMask       = CivMask/Common
+    FileName      = 'Assets\2D\Interface\Common\TacticalCursors\SquarePointer.png'
+)
+
+// -------------------------------------------------------------------------------
+// Curseurs tactiques FIN
+// -------------------------------------------------------------------------------
+
+TextureGameplay_AdditionalTextureBank is TBUCKToolAdditionalTextureBank
+(
+    Textures = MAP
+    [
+        ("Texture_RTS_H_NATO_Unidentified",         MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_NATO_Unidentified)] ),
+        ("Texture_Test_RTS_H_NATO_Unidentified",    MAP [(~/ComponentState/Normal, ~/Texture_Test_RTS_H_NATO_Unidentified)] ),
+        ("Texture_NATO_Unidentified",               MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_NATO_Unidentified)] ),
+        ("Texture_Test_NATO_Unidentified",          MAP [(~/ComponentState/Normal, ~/Texture_Test_NATO_Unidentified)] ),
+    ]
+)

@@ -1,0 +1,535 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export CheatedStrategy is TIAGeneralStrategy
+(
+    StrategyName = "GenericAI"
+    FirstGenerator = Cheated_PhaseDeploiement
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    ShouldUseTaggedCorridorsForTouchDown = true
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    DefaultIncomeForDynamicBudget = 100
+    TransitionList =
+    [
+        Cheated_Transition_StartToPhaseC,
+        Cheated_Transition_StartToPhaseB,
+        Cheated_Transition_StartToPhaseA,
+        Cheated_Transition_DeployToPhaseA,
+        Cheated_Transition_Phase_A_2,
+        Cheated_Transition_Phase_B_1,
+        Cheated_Transition_Phase_B_2,
+        Cheated_Transition_Phase_C,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+export Cheated_Condition_CommandPhase is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+//-------------------------------------------------------------------------
+export Cheated_Condition_PhaseB is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_B'
+)
+//-------------------------------------------------------------------------
+export Cheated_Condition_PhaseC is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_C'
+)
+//-------------------------------------------------------------------------
+export Cheated_Condition_WaitFewMinutes is TSequenceCondition_Wait
+(
+    Time = 5 * 60 // 5 minutes
+)
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export Cheated_Transition_StartToPhaseC is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_Choose_Strategy
+    Condition = Cheated_Condition_PhaseC
+    Destination = Cheated_Phase_C
+)
+//-------------------------------------------------------------------------
+export Cheated_Transition_StartToPhaseB is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_Choose_Strategy
+    Condition = Cheated_BTAtk_Condition_PhaseB
+    Destination = Cheated_Phase_B_1
+)
+//-------------------------------------------------------------------------
+export Cheated_Transition_StartToPhaseA is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_Choose_Strategy
+    Condition = Cheated_Condition_CommandPhase
+    Destination = Cheated_Phase_A_1
+)
+//-------------------------------------------------------------------------
+export Cheated_Transition_DeployToPhaseA is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_PhaseDeploiement
+    Condition = Cheated_Condition_CommandPhase
+    Destination = Cheated_Phase_A_1
+)
+//-------------------------------------------------------------------------
+export Cheated_Transition_Phase_A_2 is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_Phase_A_1
+    Condition = Cheated_Condition_WaitFewMinutes
+    Destination = Cheated_Phase_A_2
+)
+//-------------------------------------------------------------------------
+export Cheated_Transition_Phase_B_1 is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_Phase_A_2
+    Condition = Cheated_Condition_PhaseB
+    Destination = Cheated_Phase_B_1
+)
+//-------------------------------------------------------------------------
+export Cheated_Transition_Phase_B_2 is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_Phase_B_1
+    Condition = Cheated_Condition_WaitFewMinutes
+    Destination = Cheated_Phase_B_2
+)
+//-------------------------------------------------------------------------
+export Cheated_Transition_Phase_C is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_Phase_B_2
+    Condition = Cheated_Condition_PhaseC
+    Destination = Cheated_Phase_C
+)
+//-------------------------------------------------------------------------
+
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+Cheated_Scaling_Phase is [
+    ~/Cheated_Attack_Main_Autogen,
+    ~/Cheated_Attack_Adaptive_Autogen,
+    ~/Cheated_Attack_Adaptive_Autogen,
+    ~/Cheated_Attack_Adaptive_Autogen,
+
+    ~/Cheated_Defense_Dynamic_Adaptive_Autogen,
+    ~/Cheated_Defense_Dynamic_Adaptive_Autogen,
+    ~/Cheated_Defense_Dynamic_Adaptive_Autogen,
+
+    ~/Cheated_Airstrike_Assault_Autogen,
+    ~/Cheated_Airstrike_Offense_Autogen,
+    ~/Cheated_Airstrike_Defense_Autogen,
+
+    ~/Cheated_Artillery_TriggerHappy_Autogen,
+]
+
+Cheated_Scaling_Phase_XL is [
+    ~/Cheated_Attack_Main_Autogen_XL,
+    ~/Cheated_Attack_Adaptive_Autogen_XL,
+    ~/Cheated_Attack_Adaptive_Autogen_XL,
+    ~/Cheated_Attack_Adaptive_Autogen_XL,
+
+    ~/Cheated_Defense_Dynamic_Adaptive_Autogen_XL,
+    ~/Cheated_Defense_Dynamic_Adaptive_Autogen_XL,
+    ~/Cheated_Defense_Dynamic_Adaptive_Autogen_XL,
+]
+
+export Cheated_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //~/Cheated_BTAtk_Support_AntiTank,
+        ~/Cheated_Support_Transports,
+        ~/Cheated_Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export Cheated_PhaseDeploiement is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_Support_AntiTank,
+        ~/Cheated_Support_Transports,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        // Grosse attaque
+        ~/Cheated_Attack_Main,
+        ~/Cheated_Attack_MBT_Support,
+        ~/Cheated_Artillery_Support,
+
+        // Reste du front
+        ~/Cheated_Attack_Adaptive,
+        ~/Cheated_Attack_Adaptive,
+        ~/Cheated_Attack_Adaptive,
+
+        ~/Cheated_Attack_Filler,
+
+        ~/Cheated_Reco,
+
+        //------------------------------
+        // Supply
+        //------------------------------
+
+        ~/Cheated_Supply_Skirmish,
+        ~/Cheated_Supply_Skirmish_Allied,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Cheated_Airstrike_Assault,
+        ~/Cheated_Defense_Static_AA,
+        ~/Cheated_Artillery_TriggerHappy_1for2Corridors,
+
+        ~/Cheated_Defense_Static_Adaptive,
+        ~/Cheated_Defense_Static_Adaptive,
+
+        ~/Cheated_AirReco,
+        ~/Cheated_Airstrike_Offense,
+        ~/Cheated_Airstrike_Defense,
+
+        ~/Cheated_Artillery_Sniper,
+        ~/Cheated_Artillery_Expensive,
+    ]
+    //------------------------------
+    // Scaling
+    //------------------------------
+    + ~/Cheated_Scaling_Phase_XL
+    + ~/Cheated_Scaling_Phase_XL
+    + ~/Cheated_Scaling_Phase_XL
+)
+//-------------------------------------------------------------------------
+export Cheated_Phase_A_1 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 5
+    GeneratorList =
+    [
+        // Même chose que la phase de déploiement mais avec les Défenses
+        // prioritaires sur les attaques. L'idée est de lancer ses attaques dès
+        // le début, mais de renforcer les backlines avant de récupérer de nos pertes
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_Support_AntiTank,
+        ~/Cheated_Support_Transports,
+
+        ~/Cheated_Supply_Skirmish,
+        ~/Cheated_Supply_Skirmish_Allied,
+
+        ~/Cheated_Attack_Filler,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Cheated_Attack_Main,
+        ~/Cheated_Attack_MBT_Support,
+        ~/Cheated_Artillery_Support,
+
+        ~/Cheated_Attack_Adaptive,  // Faire du code pour adapater le budget en fonction de l'income
+        ~/Cheated_Attack_Adaptive,
+        ~/Cheated_Attack_Adaptive,
+
+        // On insère ici une attaque qui va chercher les objectifs.
+        ~/Cheated_Attack_Objectives,
+
+        ~/Cheated_SuperCommander,
+
+        ~/Cheated_Reco,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Cheated_Airstrike_Assault,
+        ~/Cheated_Defense_Static_AA,
+        ~/Cheated_Artillery_TriggerHappy_1for2Corridors,
+
+        ~/Cheated_Defense_Static_Adaptive,
+        ~/Cheated_Defense_Static_Adaptive,
+        ~/Cheated_Defense_Static_Adaptive,
+        ~/Cheated_Defense_Dynamic_Adaptive,
+
+        ~/Cheated_AirReco,
+        ~/Cheated_Airstrike_Offense,
+        ~/Cheated_Airstrike_Defense,
+
+        ~/Cheated_Artillery_Sniper,
+        ~/Cheated_Artillery_Expensive,
+    ]
+    //------------------------------
+    // Scaling
+    //------------------------------
+    + ~/Cheated_Scaling_Phase_XL
+    + ~/Cheated_Scaling_Phase_XL
+    + ~/Cheated_Scaling_Phase_XL
+)
+export Cheated_Phase_A_2 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 5
+    GeneratorList =
+    [
+        // Même chose que la phase de déploiement mais avec les Défenses
+        // prioritaires sur les attaques. L'idée est de lancer ses attaques dès
+        // le début, mais de renforcer les backlines avant de récupérer de nos pertes
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_Support_AntiTank,
+        ~/Cheated_Support_Transports,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/Cheated_Maintain_CorridorAttacks,
+        ~/Cheated_Maintain_CorridorDefenses,
+        ~/Cheated_Maintain_DynamicDefenses,
+        ~/Cheated_Maintain_Artillery,
+        ~/Cheated_Maintain_ObjectiveAttacks,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Cheated_Attack_Main,
+        ~/Cheated_Attack_MBT_Support,
+        ~/Cheated_Artillery_Support,
+
+        ~/Cheated_Attack_Filler,
+
+        ~/Cheated_Reco,
+
+        ~/Cheated_Supply_Skirmish,
+        ~/Cheated_Supply_Skirmish_Allied,
+
+        //------------------------------
+        // Avions
+        //------------------------------
+        ~/Cheated_AirReco,
+
+        ~/Cheated_Maintain_AirStrike,
+    ]
+    //------------------------------
+    // Scaling
+    //------------------------------
+    + ~/Cheated_Scaling_Phase
+    + ~/Cheated_Scaling_Phase
+    + ~/Cheated_Scaling_Phase
+)
+//-------------------------------------------------------------------------
+export Cheated_Phase_B_1 is TSequenceGeneratorDescriptor
+(
+    // Les défenses prioritaires disparaissent, on lance un nouveau set d'attaques
+    // On ajoute des défenses non prioritaires dynamiques
+    NbMacroActionAllowedToProduceSimultaneous = 2
+    GeneratorList =
+    [
+        ~/Cheated_Maintain_CorridorDefenses,
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_Support_AntiTank,
+        ~/Cheated_Support_Transports,
+
+        ~/Cheated_Maintain_CorridorAttacks,
+        ~/Cheated_Maintain_ObjectiveAttacks,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Cheated_Attack_Main,
+        ~/Cheated_Attack_MBT_Support,
+        ~/Cheated_Artillery_Support,
+
+        ~/Cheated_Attack_Objectives,
+        ~/Cheated_Attack_Objectives,
+
+        ~/Cheated_Attack_Adaptive,
+        ~/Cheated_Attack_Adaptive,
+
+        ~/Cheated_Attack_Filler,
+
+        ~/Cheated_Supply_Skirmish,
+        ~/Cheated_Supply_Skirmish_Allied,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/Cheated_Maintain_CorridorDefenses,
+        ~/Cheated_Maintain_DynamicDefenses,
+        ~/Cheated_Maintain_Artillery,
+        ~/Cheated_Maintain_AirStrike,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Cheated_Airstrike_Assault,
+        ~/Cheated_Artillery_Expensive,
+
+        ~/Cheated_Defense_Static_Adaptive,
+        ~/Cheated_Defense_Static_AA,
+
+        ~/Cheated_SuperCommander,
+
+        ~/Cheated_Defense_Dynamic_Adaptive,
+        ~/Cheated_Defense_Dynamic_Adaptive,
+
+        ~/Cheated_Artillery_TriggerHappy_1for2Corridors,
+
+        ~/Cheated_AirReco,
+        ~/Cheated_Airstrike_Offense,
+        ~/Cheated_Airstrike_Defense,
+
+        ~/Cheated_Artillery_TriggerHappy,
+        ~/Cheated_Artillery_Sniper, //Sniper
+    ]
+    //------------------------------
+    // Scaling
+    //------------------------------
+    + ~/Cheated_Scaling_Phase_XL
+    + ~/Cheated_Scaling_Phase_XL
+    + ~/Cheated_Scaling_Phase_XL
+)
+//-------------------------------------------------------------------------
+export Cheated_Phase_B_2 is TSequenceGeneratorDescriptor
+(
+    // Les défenses prioritaires disparaissent, on lance un nouveau set d'attaques
+    // On ajoute des défenses non prioritaires dynamiques
+    NbMacroActionAllowedToProduceSimultaneous = 2
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_Support_AntiTank,
+        ~/Cheated_Support_Transports,
+
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Cheated_Maintain_CorridorAttacks,
+        ~/Cheated_Maintain_ObjectiveAttacks,
+
+        ~/Cheated_Attack_Objectives,
+        ~/Cheated_Attack_Objectives,
+
+        ~/Cheated_Attack_Adaptive,
+        ~/Cheated_Attack_Adaptive,
+
+        ~/Cheated_Attack_Filler,
+
+        ~/Cheated_Reco,
+
+        ~/Cheated_Supply_Skirmish,
+        ~/Cheated_Supply_Skirmish_Allied,
+
+        ~/Cheated_Attack_Main,
+        ~/Cheated_Artillery_Support,
+
+        // Maintien
+        ~/Cheated_Maintain_CorridorDefenses,
+        ~/Cheated_Maintain_Artillery,
+        ~/Cheated_Maintain_AirStrike,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Cheated_AirReco,
+    ]
+    //------------------------------
+    // Scaling
+    //------------------------------
+    + ~/Cheated_Scaling_Phase
+    + ~/Cheated_Scaling_Phase
+    + ~/Cheated_Scaling_Phase
+)
+export Cheated_Phase_C is TSequenceGeneratorDescriptor
+(
+    // Les défenses prioritaires disparaissent, on lance un nouveau set d'attaques
+    // On ajoute des défenses non prioritaires dynamiques
+    NbMacroActionAllowedToProduceSimultaneous = 2
+    GeneratorList =
+    [
+        ~/Cheated_Maintain_CorridorDefenses,
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_Support_AntiTank,
+        ~/Cheated_Support_Transports,
+
+        ~/Cheated_Maintain_CorridorAttacks,
+        ~/Cheated_Maintain_ObjectiveAttacks,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Cheated_Attack_Main,
+        ~/Cheated_Attack_MBT_Support,
+
+        ~/Cheated_Attack_Objectives,
+        ~/Cheated_Attack_Objectives,
+        ~/Cheated_Attack_Objectives,
+
+        ~/Cheated_Attack_Adaptive,
+
+        ~/Cheated_Attack_Filler,
+
+        ~/Cheated_Reco,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/Cheated_Maintain_CorridorDefenses,
+        ~/Cheated_Maintain_DynamicDefenses,
+        ~/Cheated_Maintain_Artillery,
+        ~/Cheated_Maintain_AirStrike,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Cheated_Airstrike_Assault,
+        ~/Cheated_Artillery_Expensive,
+
+        ~/Cheated_Defense_Static_Adaptive,
+        ~/Cheated_Defense_Static_AA,
+
+        ~/Cheated_SuperCommander,
+
+        ~/Cheated_Defense_Dynamic_Adaptive,
+        ~/Cheated_Defense_Dynamic_Adaptive,
+
+        ~/Cheated_Artillery_TriggerHappy_1for2Corridors,
+
+        ~/Cheated_AirReco,
+        ~/Cheated_Airstrike_Offense,
+        ~/Cheated_Airstrike_Defense,
+
+        ~/Cheated_Artillery_TriggerHappy,
+        ~/Cheated_Artillery_Sniper,
+    ]
+    //------------------------------
+    // Scaling
+    //------------------------------
+    + ~/Cheated_Scaling_Phase_XL
+    + ~/Cheated_Scaling_Phase_XL
+    + ~/Cheated_Scaling_Phase_XL
+    + ~/Cheated_Scaling_Phase
+    + ~/Cheated_Scaling_Phase
+    + ~/Cheated_Scaling_Phase
+    + ~/Cheated_Scaling_Phase
+    + ~/Cheated_Scaling_Phase
+    + ~/Cheated_Scaling_Phase
+)
+//-------------------------------------------------------------------------

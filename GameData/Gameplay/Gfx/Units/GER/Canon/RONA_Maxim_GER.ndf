@@ -1,0 +1,22 @@
+export ModelFile_RONA_Maxim_GER is 'GameData:Assets\3D\Units\SOV\Canon\MG_Maxim_SOV\MG_Maxim_SOV.Ase2NdfBin'
+
+Modele_RONA_Maxim_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_RONA_Maxim_GER
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_RONA_Maxim_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Canon\MG_Maxim_SOV_MID\MG_Maxim_SOV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_RONA_Maxim_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Canon\LODS\MG_Maxim_SOV_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

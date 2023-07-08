@@ -1,0 +1,52 @@
+MagnifiableActionContainerHeight is 900 //882
+MagnifiableActionContainerWidth is 1720
+
+outGameActionScreensContainerResource is TUISpecificOutGameActionScreensContainerResource
+(
+    UILayerContainer = $/UserInterface/UILayer_2DInterfaceAboveBlur_OutGame
+    UILayerEventBlocker = $/UserInterface/UILayer_2DInterfaceBlur_OutGame
+
+    ContainerDescriptor = BUCKContainerDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1,1]
+        )
+
+        Components =
+        [
+            BUCKContainerDescriptor
+            (
+                ElementName = 'ActionScreenContainer'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1, 1]
+                    AlignementToFather = [0.5, 0.5]
+                    AlignementToAnchor = [0.5, 0.5]
+                )
+
+                Components =
+                [
+                    BUCKContainerDescriptor
+                    (
+                        ElementName = 'ActionScreenInnerContainer'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [MagnifiableActionContainerWidth, MagnifiableActionContainerHeight]
+                            AlignementToFather = [0.5,0.5]
+                            AlignementToAnchor = [0.5,0.5]
+                        )
+                    ),
+                ]
+            ),
+        ]
+    )
+
+    DummyComponent = BUCKContainerDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1, 1]
+        )
+    )
+)

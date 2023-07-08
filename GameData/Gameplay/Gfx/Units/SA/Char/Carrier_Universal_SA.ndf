@@ -1,0 +1,22 @@
+export ModelFile_Carrier_Universal_SA is 'GameData:Assets\3D\Units\SA\Char\Universal_Carrier_SA\Universal_Carrier_SA.Ase2NdfBin'
+
+Modele_Carrier_Universal_SA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Carrier_Universal_SA
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_Universal_SA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SA\Char\Universal_Carrier_SA_MID\Universal_Carrier_SA_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_Universal_SA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SA\Char\LODS\Universal_Carrier_SA_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

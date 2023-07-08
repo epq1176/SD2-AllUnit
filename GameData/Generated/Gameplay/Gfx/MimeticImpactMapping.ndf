@@ -1,0 +1,1540 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+// -------------------------------------------------------------------------- //
+// --------------------------- Impact Connectors ---------------------------- //
+// -------------------------------------------------------------------------- //
+
+// ----------------- Connector Template ----------------- //
+    template ImpactConnector [ Action ]
+    is TSequencingActionHappening(
+        ActionDescriptor = TActionCall(
+            Action = <Action>
+            LocalVariables =
+            [
+                parPower is TPinnableValue(ExpectedType: float InitialValue = 5),
+                parPosition is TPinnableValue(ExpectedType: float3),
+                parDirection is TPinnableValue(ExpectedType: float3),
+                parRadiusPhysical is TPinnableValue(ExpectedType: float InitialValue = 0),
+                parRadiusSuppress is TPinnableValue(ExpectedType: float InitialValue = 0),
+                parTerrain is TPinnableValue(ExpectedType: float),
+            ]
+            NamedParams = MAP[
+                ('parPosition', parPosition),
+                ('parPower', parPower),
+                ('parDirection', parDirection),
+                ('parRadiusPhysical', parRadiusPhysical),
+                ('parRadiusSuppress', parRadiusSuppress),
+                ('parTerrain', parTerrain),
+            ]
+        )
+    )
+
+    export OrientationWrapperFxImpactBallesCal50_Connector                   is ImpactConnector( Action = ~/OrientationWrapper_Fx_impact_balles_Cal50 )
+    export OrientationWrapperFxImpactBallesCal50Eau_Connector                is ImpactConnector( Action = ~/OrientationWrapper_Fx_impact_balles_Cal50_Eau )
+    export OrientationWrapperFxImpactBallesCal50X2_Connector                 is ImpactConnector( Action = ~/OrientationWrapper_Fx_impact_balles_Cal50_x2 )
+    export OrientationWrapperFxImpactBallesCal50X2Eau_Connector              is ImpactConnector( Action = ~/OrientationWrapper_Fx_impact_balles_Cal50_x2_Eau )
+    export OrientationWrapperFxImpactBallesCal50X4_Connector                 is ImpactConnector( Action = ~/OrientationWrapper_Fx_impact_balles_Cal50_x4 )
+    export OrientationWrapperFxImpactBallesCal50X4Eau_Connector              is ImpactConnector( Action = ~/OrientationWrapper_Fx_impact_balles_Cal50_x4_Eau )
+    export OrientationWrapperFxImpactBallesCal50X8_Connector                 is ImpactConnector( Action = ~/OrientationWrapper_Fx_impact_balles_Cal50_x8 )
+    export OrientationWrapperFxImpactBallesX2_Connector                      is ImpactConnector( Action = ~/OrientationWrapper_Fx_impact_balles_x2 )
+    export OrientationWrapperFxImpactBallesX4_Connector                      is ImpactConnector( Action = ~/OrientationWrapper_Fx_impact_balles_x4 )
+    export OrientationWrapperFxImpactBalleSolTresPetitMitrailleuse_Connector is ImpactConnector( Action = ~/OrientationWrapper_fx_impact_balle_sol_tres_petit_mitrailleuse )
+    export FxImpactBombeClusterNapalm_Connector                              is ImpactConnector( Action = ~/fx_impact_Bombe_Cluster_Napalm )
+    export FxImpactBombeClusterNapalmPetit_Connector                         is ImpactConnector( Action = ~/fx_impact_Bombe_Cluster_Napalm_petit )
+    export FxImpactBombeNapalm_Connector                                     is ImpactConnector( Action = ~/fx_impact_Bombe_Napalm )
+    export FxImpactDCAAir_Connector                                          is ImpactConnector( Action = ~/fx_impact_DCA_air )
+    export FxImpactDCAAirGros_Connector                                      is ImpactConnector( Action = ~/fx_impact_DCA_air_gros )
+    export FxImpactDCAAirMoyen_Connector                                     is ImpactConnector( Action = ~/fx_impact_DCA_air_moyen )
+    export FxImpactDCAAirPetit_Connector                                     is ImpactConnector( Action = ~/fx_impact_DCA_air_petit )
+    export FxImpactDCAAirPetitRapide_Connector                               is ImpactConnector( Action = ~/fx_impact_DCA_air_petit_rapide )
+    export FxImpactLanceFlammes_Connector                                    is ImpactConnector( Action = ~/fx_impact_Lance_Flammes )
+    export FxImpactLanceFlammesPetit_Connector                               is ImpactConnector( Action = ~/fx_impact_Lance_Flammes_petit )
+    export FxImpactApVehiculeAirGros_Connector                               is ImpactConnector( Action = ~/fx_impact_ap_vehicule_air_gros )
+    export FxImpactApVehiculeAirMoyen_Connector                              is ImpactConnector( Action = ~/fx_impact_ap_vehicule_air_moyen )
+    export FxImpactApVehiculeAirPetit_Connector                              is ImpactConnector( Action = ~/fx_impact_ap_vehicule_air_petit )
+    export FxImpactAutocanonSol_Connector                                    is ImpactConnector( Action = ~/fx_impact_autocanon_sol )
+    export FxImpactBalleBatimentMoyen_Connector                              is ImpactConnector( Action = ~/fx_impact_balle_batiment_moyen )
+    export FxImpactBalleBatimentPetit_Connector                              is ImpactConnector( Action = ~/fx_impact_balle_batiment_petit )
+    export FxImpactBalleEauMoyen_Connector                                   is ImpactConnector( Action = ~/fx_impact_balle_eau_moyen )
+    export FxImpactBalleEauPetit_Connector                                   is ImpactConnector( Action = ~/fx_impact_balle_eau_petit )
+    export FxImpactBalleSolMoyen_Connector                                   is ImpactConnector( Action = ~/fx_impact_balle_sol_moyen )
+    export FxImpactBalleSolPetit_Connector                                   is ImpactConnector( Action = ~/fx_impact_balle_sol_petit )
+    export FxImpactBalleSolPetitEscouade_Connector                           is ImpactConnector( Action = ~/fx_impact_balle_sol_petit_escouade )
+    export FxImpactBalleVehiculeMoyen_Connector                              is ImpactConnector( Action = ~/fx_impact_balle_vehicule_moyen )
+    export FxImpactBalleVehiculePetit_Connector                              is ImpactConnector( Action = ~/fx_impact_balle_vehicule_petit )
+    export FxImpactBallesAirPetit_Connector                                  is ImpactConnector( Action = ~/fx_impact_balles_air_petit )
+    export FxImpactBallesAirPetitx2_Connector                                is ImpactConnector( Action = ~/fx_impact_balles_air_petitx2 )
+    export FxImpactBallesAirPetitx4_Connector                                is ImpactConnector( Action = ~/fx_impact_balles_air_petitx4 )
+    export FxImpactBallesVehiculeAirPetit_Connector                          is ImpactConnector( Action = ~/fx_impact_balles_vehicule_air_petit )
+    export FxImpactBallesVehiculeAirPetitx2_Connector                        is ImpactConnector( Action = ~/fx_impact_balles_vehicule_air_petitx2 )
+    export FxImpactBallesVehiculeAirPetitx4_Connector                        is ImpactConnector( Action = ~/fx_impact_balles_vehicule_air_petitx4 )
+    export FxImpactBatApGros_Connector                                       is ImpactConnector( Action = ~/fx_impact_bat_ap_gros )
+    export FxImpactBatApMoyen_Connector                                      is ImpactConnector( Action = ~/fx_impact_bat_ap_moyen )
+    export FxImpactBatApPetit_Connector                                      is ImpactConnector( Action = ~/fx_impact_bat_ap_petit )
+    export FxImpactBatHeGros_Connector                                       is ImpactConnector( Action = ~/fx_impact_bat_he_gros )
+    export FxImpactBatHeMoyen_Connector                                      is ImpactConnector( Action = ~/fx_impact_bat_he_moyen )
+    export FxImpactBatHePetit_Connector                                      is ImpactConnector( Action = ~/fx_impact_bat_he_petit )
+    export FxImpactBatHeTresgros_Connector                                   is ImpactConnector( Action = ~/fx_impact_bat_he_tresgros )
+    export FxImpactBatHeTresgros2_Connector                                  is ImpactConnector( Action = ~/fx_impact_bat_he_tresgros2 )
+    export FxImpactBatHeTrestresgros_Connector                               is ImpactConnector( Action = ~/fx_impact_bat_he_trestresgros )
+    export FxImpactBatimentBombGros_Connector                                is ImpactConnector( Action = ~/fx_impact_batiment_bomb_gros )
+    export FxImpactBatimentBombMoyen_Connector                               is ImpactConnector( Action = ~/fx_impact_batiment_bomb_moyen )
+    export FxImpactBatimentBombPetit_Connector                               is ImpactConnector( Action = ~/fx_impact_batiment_bomb_petit )
+    export FxImpactDestructionBatiment_Connector                             is ImpactConnector( Action = ~/fx_impact_destruction_batiment )
+    export FxImpactDestructionUnite_Connector                                is ImpactConnector( Action = ~/fx_impact_destruction_unite )
+    export FxImpactDestructionUniteRavitaillement_Connector                  is ImpactConnector( Action = ~/fx_impact_destruction_unite__ravitaillement )
+    export FxImpactDestructionUniteOld_Connector                             is ImpactConnector( Action = ~/fx_impact_destruction_unite_old )
+    export FxImpactDestructionUnitePetit_Connector                           is ImpactConnector( Action = ~/fx_impact_destruction_unite_petit )
+    export FxImpactEauHEGrand_Connector                                      is ImpactConnector( Action = ~/fx_impact_eau_HE_grand )
+    export FxImpactEauHEGros_Connector                                       is ImpactConnector( Action = ~/fx_impact_eau_HE_gros )
+    export FxImpactEauHEMoyen_Connector                                      is ImpactConnector( Action = ~/fx_impact_eau_HE_moyen )
+    export FxImpactEauHEPetit_Connector                                      is ImpactConnector( Action = ~/fx_impact_eau_HE_petit )
+    export FxImpactEauHeTresgros2_Connector                                  is ImpactConnector( Action = ~/fx_impact_eau_he_tresgros2 )
+    export FxImpactEauHeTrestresgros_Connector                               is ImpactConnector( Action = ~/fx_impact_eau_he_trestresgros )
+    export FxImpactHeVehiculeAirGros_Connector                               is ImpactConnector( Action = ~/fx_impact_he_vehicule_air_gros )
+    export FxImpactHeVehiculeAirMoyen_Connector                              is ImpactConnector( Action = ~/fx_impact_he_vehicule_air_moyen )
+    export FxImpactHeVehiculeAirPetit_Connector                              is ImpactConnector( Action = ~/fx_impact_he_vehicule_air_petit )
+    export FxImpactMissileAir_Connector                                      is ImpactConnector( Action = ~/fx_impact_missile_air )
+    export FxImpactMissileAirGros_Connector                                  is ImpactConnector( Action = ~/fx_impact_missile_air_gros )
+    export FxImpactMissileSol_Connector                                      is ImpactConnector( Action = ~/fx_impact_missile_sol )
+    export FxImpactMissileSolGros_Connector                                  is ImpactConnector( Action = ~/fx_impact_missile_sol_gros )
+    export FxImpactMissileVehiculeGros_Connector                             is ImpactConnector( Action = ~/fx_impact_missile_vehicule_gros )
+    export FxImpactMissileVehiculeMoyen_Connector                            is ImpactConnector( Action = ~/fx_impact_missile_vehicule_moyen )
+    export FxImpactMissileVehiculePetit_Connector                            is ImpactConnector( Action = ~/fx_impact_missile_vehicule_petit )
+    export FxImpactObusVehiculeGros_Connector                                is ImpactConnector( Action = ~/fx_impact_obus_vehicule_gros )
+    export FxImpactObusVehiculeMoyen_Connector                               is ImpactConnector( Action = ~/fx_impact_obus_vehicule_moyen )
+    export FxImpactObusVehiculePetit_Connector                               is ImpactConnector( Action = ~/fx_impact_obus_vehicule_petit )
+    export FxImpactSolAPGros_Connector                                       is ImpactConnector( Action = ~/fx_impact_sol_AP_gros )
+    export FxImpactSolAPMoyen_Connector                                      is ImpactConnector( Action = ~/fx_impact_sol_AP_moyen )
+    export FxImpactSolAPPetit_Connector                                      is ImpactConnector( Action = ~/fx_impact_sol_AP_petit )
+    export FxImpactSolClusterMoyen_Connector                                 is ImpactConnector( Action = ~/fx_impact_sol_Cluster_moyen )
+    export FxImpactSolClusterPetit_Connector                                 is ImpactConnector( Action = ~/fx_impact_sol_Cluster_petit )
+    export FxImpactSolHEGrand_Connector                                      is ImpactConnector( Action = ~/fx_impact_sol_HE_grand )
+    export FxImpactSolHEGros_Connector                                       is ImpactConnector( Action = ~/fx_impact_sol_HE_gros )
+    export FxImpactSolHEMoyen_Connector                                      is ImpactConnector( Action = ~/fx_impact_sol_HE_moyen )
+    export FxImpactSolHEPetit_Connector                                      is ImpactConnector( Action = ~/fx_impact_sol_HE_petit )
+    export FxImpactSolPTABPetit_Connector                                    is ImpactConnector( Action = ~/fx_impact_sol_PTAB_petit )
+    export FxImpactSolPhosphore_Connector                                    is ImpactConnector( Action = ~/fx_impact_sol_Phosphore )
+    export FxImpactSolAvion_Connector                                        is ImpactConnector( Action = ~/fx_impact_sol_avion )
+    export FxImpactSolAvionGros_Connector                                    is ImpactConnector( Action = ~/fx_impact_sol_avion_gros )
+    export FxImpactSolAvionPetit_Connector                                   is ImpactConnector( Action = ~/fx_impact_sol_avion_petit )
+    export FxImpactSolBombGros_Connector                                     is ImpactConnector( Action = ~/fx_impact_sol_bomb_gros )
+    export FxImpactSolBombMoyen_Connector                                    is ImpactConnector( Action = ~/fx_impact_sol_bomb_moyen )
+    export FxImpactSolBombPetit_Connector                                    is ImpactConnector( Action = ~/fx_impact_sol_bomb_petit )
+    export FxImpactSolHeTresgros_Connector                                   is ImpactConnector( Action = ~/fx_impact_sol_he_tresgros )
+    export FxImpactSolHeTresgros2_Connector                                  is ImpactConnector( Action = ~/fx_impact_sol_he_tresgros2 )
+    export FxImpactSolHeTrestresgros_Connector                               is ImpactConnector( Action = ~/fx_impact_sol_he_trestresgros )
+    export FxImpactSolKarl_Connector                                         is ImpactConnector( Action = ~/fx_impact_sol_karl )
+    export FxImpactVehiculePTABPetit_Connector                               is ImpactConnector( Action = ~/fx_impact_vehicule_PTAB_petit )
+    export FxImpactVehiculeAirHeTresgros2_Connector                          is ImpactConnector( Action = ~/fx_impact_vehicule_air_he_tresgros2 )
+    export FxImpactVehiculeAirHeTrestresgros_Connector                       is ImpactConnector( Action = ~/fx_impact_vehicule_air_he_trestresgros )
+    export FxImpactVehiculeHeTresgros2_Connector                             is ImpactConnector( Action = ~/fx_impact_vehicule_he_tresgros2 )
+    export FxImpactVehiculeHeTrestresgros_Connector                          is ImpactConnector( Action = ~/fx_impact_vehicule_he_trestresgros )
+    export FxMortInfanterie_Connector                                        is ImpactConnector( Action = ~/fx_mort_infanterie )
+    export FxRebondObusGros_Connector                                        is ImpactConnector( Action = ~/fx_rebond_obus_gros )
+    export FxRebondObusMoyen_Connector                                       is ImpactConnector( Action = ~/fx_rebond_obus_moyen )
+    export FxRebondObusPetit_Connector                                       is ImpactConnector( Action = ~/fx_rebond_obus_petit )
+
+// -------------------------------------------------------------------------- //
+// ---------------------------- Mimetic Mapping ----------------------------- //
+// -------------------------------------------------------------------------- //
+// ---------------------------------------------------------------- //
+// -------------------------- FX Impacts -------------------------- //
+AllImpactHappenings is TImpactHappening
+(
+    Camera = $/M3D/Camera/CameraPrincipale
+    ScaleFactor = $/GFX/Everything/ImpactScale/ScaleFactor
+    ScaleMinReferenceAltitude = $/GFX/Everything/ImpactScale/ScaleMinReferenceAltitude
+    ScaleMax = $/GFX/Everything/ImpactScale/ScaleMax
+    ScaleOption = $/GUIOption/UnitScaling
+    Happenings = MAP
+    [
+        (   TFxWeaponType_ArtillerieKarl , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolKarl_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHeTresgros2_Connector ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , FxImpactBatHeTresgros_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactSolKarl_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactDCAAirGros_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_ArtillerieGros , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolBombMoyen_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEGros_Connector ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , FxImpactBatimentBombMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactSolBombMoyen_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirGros_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_ArtillerieMarine , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHeTresgros_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHeTresgros2_Connector ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , FxImpactBatHeTresgros_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactSolHeTresgros_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactSolHeTresgros_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_ArtillerieMoyen , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolBombPetit_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEMoyen_Connector ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , FxImpactBatimentBombPetit_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactSolBombPetit_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_ArtilleriePetit , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHEGros_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEPetit_Connector ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , FxImpactBatHeGros_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactSolHEGros_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirPetit_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Autocanon20Mm200Ms , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactAutocanonSol_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEPetit_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirPetit_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHePetit_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactObusVehiculePetit_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirPetit_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Autocanon20Mm400Ms , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactAutocanonSol_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEPetit_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirPetit_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHePetit_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactObusVehiculePetit_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirPetit_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Autocanon20Mm500MsEtPlus , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactAutocanonSol_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEPetit_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirPetit_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHePetit_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactObusVehiculePetit_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirPetit_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Autocanon20MmX4 , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactAutocanonSol_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEPetit_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirPetitRapide_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatApPetit_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactObusVehiculePetit_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactApVehiculeAirPetit_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Autocanon40Mm , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHEPetit_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEPetit_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirMoyen_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatApMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactMissileVehiculeMoyen_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactApVehiculeAirGros_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Bombe100Kg , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHeTrestresgros_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHeTresgros2_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirGros_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHeTrestresgros_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactVehiculeHeTrestresgros_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactVehiculeAirHeTrestresgros_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Bombe300Kg , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHeTresgros2_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHeTresgros2_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirGros_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHeTresgros2_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactVehiculeHeTresgros2_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactVehiculeAirHeTresgros2_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Bombe500Kg , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHEGrand_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHeTrestresgros_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirGros_Connector ),
+                ( EImpactSurface/Wall          , FxImpactSolHEGrand_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactSolHEGrand_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactSolHEGrand_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeANM47A2Smoke100Lb , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolBombPetit_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEPetit_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirGros_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatimentBombPetit_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactVehiculeHeTresgros2_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactVehiculeAirHeTresgros2_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeANM57250Lb , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolBombMoyen_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHeTresgros2_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirGros_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatimentBombMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactVehiculeHeTrestresgros_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactVehiculeAirHeTrestresgros_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeANM64500Lb , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolBombGros_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHeTrestresgros_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirGros_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatimentBombGros_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactVehiculeHeTrestresgros_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactVehiculeAirHeTrestresgros_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeANM651000Lb , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHeTrestresgros_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHeTrestresgros_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirGros_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHeTrestresgros_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactVehiculeHeTrestresgros_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactVehiculeAirHeTrestresgros_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombePTAB , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolPTABPetit_Connector ),
+                ( EImpactSurface/Water         , FxImpactSolPTABPetit_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAir_Connector ),
+                ( EImpactSurface/Wall          , FxImpactVehiculePTABPetit_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactVehiculePTABPetit_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeSC1000 , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHeTrestresgros_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHeTrestresgros_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirGros_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHeTrestresgros_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactVehiculeHeTrestresgros_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactVehiculeAirHeTrestresgros_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeSC250 , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolBombMoyen_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHeTrestresgros_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirGros_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatimentBombMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactVehiculeHeTrestresgros_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactVehiculeAirHeTrestresgros_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeSC50 , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolBombPetit_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEPetit_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirGros_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatimentBombPetit_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactVehiculeHeTresgros2_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactVehiculeAirHeTresgros2_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeSC500 , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolBombGros_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHeTrestresgros_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirGros_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatimentBombGros_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactVehiculeHeTrestresgros_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactVehiculeAirHeTrestresgros_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeSD23 , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolClusterPetit_Connector ),
+                ( EImpactSurface/Water         , FxImpactSolClusterPetit_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAir_Connector ),
+                ( EImpactSurface/Wall          , FxImpactSolClusterPetit_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactSolClusterPetit_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeSD70 , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolClusterMoyen_Connector ),
+                ( EImpactSurface/Water         , FxImpactSolClusterMoyen_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirMoyen_Connector ),
+                ( EImpactSurface/Wall          , FxImpactSolClusterMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactSolClusterMoyen_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombePhosphore , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactBombeNapalm_Connector ),
+                ( EImpactSurface/Water         , FxImpactBombeNapalm_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAir_Connector ),
+                ( EImpactSurface/Wall          , FxImpactSolPhosphore_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactSolPhosphore_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombePhosphoreCluster , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactBombeClusterNapalm_Connector ),
+                ( EImpactSurface/Water         , FxImpactBombeClusterNapalm_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAir_Connector ),
+                ( EImpactSurface/Wall          , FxImpactSolPhosphore_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactSolPhosphore_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombePhosphoreClusterPetit , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactBombeClusterNapalmPetit_Connector ),
+                ( EImpactSurface/Water         , FxImpactBombeClusterNapalmPetit_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAir_Connector ),
+                ( EImpactSurface/Wall          , FxImpactSolPhosphore_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactSolPhosphore_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_CanonGrosAP , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolAPGros_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEGros_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirGros_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatApGros_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactObusVehiculeGros_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactApVehiculeAirGros_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusGros_Connector ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusGros_Connector ),
+            ]
+        ),
+        (   TFxWeaponType_CanonGrosAPCR , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolAPGros_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEGros_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirGros_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatApGros_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactObusVehiculeGros_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactApVehiculeAirGros_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusGros_Connector ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusGros_Connector ),
+            ]
+        ),
+        (   TFxWeaponType_CanonGrosAPDouille , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolAPGros_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEGros_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirGros_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatApGros_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactObusVehiculeGros_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactApVehiculeAirGros_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusGros_Connector ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusGros_Connector ),
+            ]
+        ),
+        (   TFxWeaponType_CanonGrosHE , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHEGros_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEGros_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirGros_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHeGros_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactSolHEGros_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactApVehiculeAirGros_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusGros_Connector ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusGros_Connector ),
+            ]
+        ),
+        (   TFxWeaponType_CanonGrosHEDouille , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHEGros_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEGros_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirGros_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHeGros_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactSolHEGros_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactApVehiculeAirGros_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusGros_Connector ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusGros_Connector ),
+            ]
+        ),
+        (   TFxWeaponType_CanonMoyenAP , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolAPMoyen_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEMoyen_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirMoyen_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatApMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactObusVehiculeMoyen_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactApVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusMoyen_Connector ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusMoyen_Connector ),
+            ]
+        ),
+        (   TFxWeaponType_CanonMoyenAPCR , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolAPMoyen_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEMoyen_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirMoyen_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatApMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactObusVehiculeMoyen_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactApVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusMoyen_Connector ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusMoyen_Connector ),
+            ]
+        ),
+        (   TFxWeaponType_CanonMoyenAPCRDouille , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolAPMoyen_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEMoyen_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirMoyen_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatApMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactObusVehiculeMoyen_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactApVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusMoyen_Connector ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusMoyen_Connector ),
+            ]
+        ),
+        (   TFxWeaponType_CanonMoyenAPDouille , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolAPMoyen_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEMoyen_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirMoyen_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatApMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactObusVehiculeMoyen_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactApVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusMoyen_Connector ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusMoyen_Connector ),
+            ]
+        ),
+        (   TFxWeaponType_CanonMoyenHE , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHEMoyen_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEMoyen_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirMoyen_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHeMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactSolHEMoyen_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusMoyen_Connector ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusMoyen_Connector ),
+            ]
+        ),
+        (   TFxWeaponType_CanonMoyenHEDouille , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHEMoyen_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEMoyen_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirMoyen_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHeMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactSolHEMoyen_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusMoyen_Connector ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusMoyen_Connector ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetitAP , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolAPPetit_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEPetit_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAir_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatApPetit_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactObusVehiculePetit_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusPetit_Connector ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusPetit_Connector ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetitAPCR , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolAPPetit_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEPetit_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAir_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatApPetit_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactObusVehiculePetit_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusPetit_Connector ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusPetit_Connector ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetitAPDouille , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolAPPetit_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEPetit_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAir_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatApPetit_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactObusVehiculePetit_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusPetit_Connector ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusPetit_Connector ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetitHE , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHEPetit_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEPetit_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAir_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHePetit_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactSolHEPetit_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusPetit_Connector ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusPetit_Connector ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetitHEDouille , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHEPetit_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEPetit_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirMoyen_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHePetit_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactSolHEPetit_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusPetit_Connector ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusPetit_Connector ),
+            ]
+        ),
+        (   TFxWeaponType_CanonTresGrosHE , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHeTresgros_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHeTresgros2_Connector ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , FxImpactBatHeTresgros_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactSolHeTresgros_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactSolHeTresgros_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusGros_Connector ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusGros_Connector ),
+            ]
+        ),
+        (   TFxWeaponType_CanonTresGrosHEDouille , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHeTresgros_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHeTresgros2_Connector ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , FxImpactBatHeTresgros_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactSolHeTresgros_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactSolHeTresgros_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusGros_Connector ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , FxRebondObusGros_Connector ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionInfanterie , MAP
+            [
+                ( EImpactSurface/Ground        , FxMortInfanterie_Connector ),
+                ( EImpactSurface/Water         , FxMortInfanterie_Connector ),
+                ( EImpactSurface/Air           , FxMortInfanterie_Connector ),
+                ( EImpactSurface/Wall          , FxMortInfanterie_Connector ),
+                ( EImpactSurface/Vehicle       , FxMortInfanterie_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxMortInfanterie_Connector ),
+                ( EImpactSurface/Missile       , FxMortInfanterie_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionUnite , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactDestructionUniteOld_Connector ),
+                ( EImpactSurface/Water         , FxImpactDestructionUniteOld_Connector ),
+                ( EImpactSurface/Air           , FxImpactDestructionUniteOld_Connector ),
+                ( EImpactSurface/Wall          , FxImpactDestructionUniteOld_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactDestructionUniteOld_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactDestructionUnite_Connector ),
+                ( EImpactSurface/Missile       , FxImpactDestructionUniteOld_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionUniteAvion , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolAvion_Connector ),
+                ( EImpactSurface/Water         , FxImpactSolAvion_Connector ),
+                ( EImpactSurface/Air           , FxImpactSolAvion_Connector ),
+                ( EImpactSurface/Wall          , FxImpactSolAvion_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactSolAvion_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactSolAvion_Connector ),
+                ( EImpactSurface/Missile       , FxImpactSolAvion_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionUniteAvionGros , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolAvionGros_Connector ),
+                ( EImpactSurface/Water         , FxImpactSolAvionGros_Connector ),
+                ( EImpactSurface/Air           , FxImpactSolAvionGros_Connector ),
+                ( EImpactSurface/Wall          , FxImpactSolAvionGros_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactSolAvionGros_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactSolAvionGros_Connector ),
+                ( EImpactSurface/Missile       , FxImpactSolAvionGros_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionUniteAvionPetit , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolAvionPetit_Connector ),
+                ( EImpactSurface/Water         , FxImpactSolAvionPetit_Connector ),
+                ( EImpactSurface/Air           , FxImpactSolAvionPetit_Connector ),
+                ( EImpactSurface/Wall          , FxImpactSolAvionPetit_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactSolAvionPetit_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactSolAvionPetit_Connector ),
+                ( EImpactSurface/Missile       , FxImpactSolAvionPetit_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionUniteGros , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactDestructionBatiment_Connector ),
+                ( EImpactSurface/Water         , FxImpactDestructionBatiment_Connector ),
+                ( EImpactSurface/Air           , FxImpactDestructionBatiment_Connector ),
+                ( EImpactSurface/Wall          , FxImpactDestructionBatiment_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactDestructionBatiment_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactDestructionBatiment_Connector ),
+                ( EImpactSurface/Missile       , FxImpactDestructionBatiment_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionUniteRavitaillement , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactDestructionUniteRavitaillement_Connector ),
+                ( EImpactSurface/Water         , FxImpactDestructionUniteOld_Connector ),
+                ( EImpactSurface/Air           , FxImpactDestructionUniteRavitaillement_Connector ),
+                ( EImpactSurface/Wall          , FxImpactDestructionUniteRavitaillement_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactDestructionUniteRavitaillement_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactDestructionUniteRavitaillement_Connector ),
+                ( EImpactSurface/Missile       , FxImpactDestructionUniteRavitaillement_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionUnitePetit , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactDestructionUnitePetit_Connector ),
+                ( EImpactSurface/Water         , FxImpactDestructionUnitePetit_Connector ),
+                ( EImpactSurface/Air           , FxImpactDestructionUnitePetit_Connector ),
+                ( EImpactSurface/Wall          , FxImpactDestructionUnitePetit_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactDestructionUnitePetit_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactDestructionUnitePetit_Connector ),
+                ( EImpactSurface/Missile       , FxImpactDestructionUnitePetit_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_FinalBlow , MAP
+            [
+                ( EImpactSurface/Ground        , nil ),
+                ( EImpactSurface/Water         , nil ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , nil ),
+                ( EImpactSurface/Vehicle       , nil ),
+                ( EImpactSurface/FlyingVehicle , nil ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Fusil7Mm , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactBalleSolPetitEscouade_Connector ),
+                ( EImpactSurface/Water         , FxImpactBalleEauPetit_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirPetitRapide_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBalleBatimentPetit_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactBalleSolPetitEscouade_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactBalleVehiculePetit_Connector ),
+                ( EImpactSurface/Missile       , FxImpactBalleVehiculePetit_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Fusil7MmRailgun , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactBalleSolPetit_Connector ),
+                ( EImpactSurface/Water         , FxImpactBalleEauPetit_Connector ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , FxImpactBalleBatimentPetit_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactBalleVehiculePetit_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactBalleVehiculePetit_Connector ),
+                ( EImpactSurface/Missile       , FxImpactBalleVehiculePetit_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_FusilPrecision , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactBalleSolMoyen_Connector ),
+                ( EImpactSurface/Water         , FxImpactBalleEauMoyen_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirPetitRapide_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBalleBatimentMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactBalleVehiculeMoyen_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactBalleVehiculeMoyen_Connector ),
+                ( EImpactSurface/Missile       , FxImpactBalleVehiculeMoyen_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_GrenadeMain , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHEMoyen_Connector ),
+                ( EImpactSurface/Water         , FxImpactSolHEMoyen_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirMoyen_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHeMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactMissileVehiculeMoyen_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_GrenadePineapple , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHEPetit_Connector ),
+                ( EImpactSurface/Water         , FxImpactSolHEMoyen_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirMoyen_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHeMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactMissileVehiculeMoyen_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_GrenadeANM16Smoke , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHEPetit_Connector ),
+                ( EImpactSurface/Water         , FxImpactSolHEMoyen_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirMoyen_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHeMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactMissileVehiculeMoyen_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_GrenadeGermanBundle , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHEPetit_Connector ),
+                ( EImpactSurface/Water         , FxImpactSolHEMoyen_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirMoyen_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHeMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactMissileVehiculeMoyen_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_GrenadePanzerknacker , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHEPetit_Connector ),
+                ( EImpactSurface/Water         , FxImpactSolHEMoyen_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirMoyen_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHeMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactMissileVehiculeMoyen_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_GrenadeSatchem , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHEGrand_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEGrand_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirMoyen_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHeMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactMissileVehiculeMoyen_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_GrenadeStielhandgranate , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHEPetit_Connector ),
+                ( EImpactSurface/Water         , FxImpactSolHEMoyen_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirMoyen_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHeMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactMissileVehiculeMoyen_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Lanceflamme , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactLanceFlammes_Connector ),
+                ( EImpactSurface/Water         , FxImpactLanceFlammes_Connector ),
+                ( EImpactSurface/Air           , FxImpactLanceFlammes_Connector ),
+                ( EImpactSurface/Wall          , FxImpactLanceFlammes_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactLanceFlammes_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactLanceFlammes_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_LanceflammePetit , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactLanceFlammesPetit_Connector ),
+                ( EImpactSurface/Water         , FxImpactLanceFlammesPetit_Connector ),
+                ( EImpactSurface/Air           , FxImpactLanceFlammesPetit_Connector ),
+                ( EImpactSurface/Wall          , FxImpactLanceFlammesPetit_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactLanceFlammesPetit_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactLanceFlammesPetit_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MIssileATGros , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactMissileSolGros_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEGros_Connector ),
+                ( EImpactSurface/Air           , FxImpactMissileAirGros_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHeGros_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactMissileVehiculeGros_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirGros_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MissileATPetit , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactMissileSol_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEMoyen_Connector ),
+                ( EImpactSurface/Air           , FxImpactMissileAir_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHeMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactMissileVehiculePetit_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirPetit_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Mitraillette7MmBurst , MAP
+            [
+                ( EImpactSurface/Ground        , OrientationWrapperFxImpactBalleSolTresPetitMitrailleuse_Connector ),
+                ( EImpactSurface/Water         , OrientationWrapperFxImpactBallesCal50Eau_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirPetitRapide_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBalleBatimentPetit_Connector ),
+                ( EImpactSurface/Vehicle       , OrientationWrapperFxImpactBalleSolTresPetitMitrailleuse_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactBalleVehiculePetit_Connector ),
+                ( EImpactSurface/Missile       , FxImpactBalleVehiculePetit_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Mitrailleuse14Mm , MAP
+            [
+                ( EImpactSurface/Ground        , OrientationWrapperFxImpactBallesCal50_Connector ),
+                ( EImpactSurface/Water         , OrientationWrapperFxImpactBallesCal50Eau_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirPetitRapide_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBalleBatimentMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , OrientationWrapperFxImpactBallesCal50_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactBalleVehiculeMoyen_Connector ),
+                ( EImpactSurface/Missile       , FxImpactBalleVehiculeMoyen_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Mitrailleuse7Mm , MAP
+            [
+                ( EImpactSurface/Ground        , OrientationWrapperFxImpactBalleSolTresPetitMitrailleuse_Connector ),
+                ( EImpactSurface/Water         , OrientationWrapperFxImpactBallesCal50Eau_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirPetitRapide_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBalleBatimentPetit_Connector ),
+                ( EImpactSurface/Vehicle       , OrientationWrapperFxImpactBalleSolTresPetitMitrailleuse_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactBalleVehiculePetit_Connector ),
+                ( EImpactSurface/Missile       , FxImpactBalleVehiculeMoyen_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Mitrailleuse7MmMP44 , MAP
+            [
+                ( EImpactSurface/Ground        , OrientationWrapperFxImpactBalleSolTresPetitMitrailleuse_Connector ),
+                ( EImpactSurface/Water         , OrientationWrapperFxImpactBallesCal50Eau_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirPetitRapide_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBalleBatimentPetit_Connector ),
+                ( EImpactSurface/Vehicle       , OrientationWrapperFxImpactBalleSolTresPetitMitrailleuse_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactBalleVehiculePetit_Connector ),
+                ( EImpactSurface/Missile       , FxImpactBalleVehiculeMoyen_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseCal30 , MAP
+            [
+                ( EImpactSurface/Ground        , OrientationWrapperFxImpactBalleSolTresPetitMitrailleuse_Connector ),
+                ( EImpactSurface/Water         , OrientationWrapperFxImpactBallesCal50Eau_Connector ),
+                ( EImpactSurface/Air           , FxImpactBallesAirPetit_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBalleBatimentPetit_Connector ),
+                ( EImpactSurface/Vehicle       , OrientationWrapperFxImpactBalleSolTresPetitMitrailleuse_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactBallesVehiculeAirPetit_Connector ),
+                ( EImpactSurface/Missile       , FxImpactBalleVehiculeMoyen_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseCal30Externe , MAP
+            [
+                ( EImpactSurface/Ground        , OrientationWrapperFxImpactBalleSolTresPetitMitrailleuse_Connector ),
+                ( EImpactSurface/Water         , OrientationWrapperFxImpactBallesCal50Eau_Connector ),
+                ( EImpactSurface/Air           , FxImpactBallesAirPetit_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBalleBatimentPetit_Connector ),
+                ( EImpactSurface/Vehicle       , OrientationWrapperFxImpactBalleSolTresPetitMitrailleuse_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactBallesVehiculeAirPetit_Connector ),
+                ( EImpactSurface/Missile       , FxImpactBalleVehiculeMoyen_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseCal30X2 , MAP
+            [
+                ( EImpactSurface/Ground        , OrientationWrapperFxImpactBallesX2_Connector ),
+                ( EImpactSurface/Water         , OrientationWrapperFxImpactBallesCal50X2Eau_Connector ),
+                ( EImpactSurface/Air           , FxImpactBallesAirPetitx2_Connector ),
+                ( EImpactSurface/Wall          , OrientationWrapperFxImpactBallesX2_Connector ),
+                ( EImpactSurface/Vehicle       , OrientationWrapperFxImpactBallesX2_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactBallesVehiculeAirPetitx2_Connector ),
+                ( EImpactSurface/Missile       , FxImpactBalleVehiculeMoyen_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseCal30X4 , MAP
+            [
+                ( EImpactSurface/Ground        , OrientationWrapperFxImpactBallesX4_Connector ),
+                ( EImpactSurface/Water         , OrientationWrapperFxImpactBallesCal50X4Eau_Connector ),
+                ( EImpactSurface/Air           , FxImpactBallesAirPetitx4_Connector ),
+                ( EImpactSurface/Wall          , OrientationWrapperFxImpactBallesX4_Connector ),
+                ( EImpactSurface/Vehicle       , OrientationWrapperFxImpactBallesX4_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactBallesVehiculeAirPetitx4_Connector ),
+                ( EImpactSurface/Missile       , FxImpactBalleVehiculeMoyen_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseCal50 , MAP
+            [
+                ( EImpactSurface/Ground        , OrientationWrapperFxImpactBallesCal50_Connector ),
+                ( EImpactSurface/Water         , OrientationWrapperFxImpactBallesCal50Eau_Connector ),
+                ( EImpactSurface/Air           , FxImpactBallesAirPetit_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBalleBatimentPetit_Connector ),
+                ( EImpactSurface/Vehicle       , OrientationWrapperFxImpactBallesCal50_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactBallesVehiculeAirPetit_Connector ),
+                ( EImpactSurface/Missile       , FxImpactBalleVehiculeMoyen_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseCal50Externe , MAP
+            [
+                ( EImpactSurface/Ground        , OrientationWrapperFxImpactBallesCal50_Connector ),
+                ( EImpactSurface/Water         , OrientationWrapperFxImpactBallesCal50Eau_Connector ),
+                ( EImpactSurface/Air           , FxImpactBallesAirPetit_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBalleBatimentPetit_Connector ),
+                ( EImpactSurface/Vehicle       , OrientationWrapperFxImpactBallesCal50_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactBallesVehiculeAirPetit_Connector ),
+                ( EImpactSurface/Missile       , FxImpactBalleVehiculeMoyen_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseCal50X2 , MAP
+            [
+                ( EImpactSurface/Ground        , OrientationWrapperFxImpactBallesCal50X2_Connector ),
+                ( EImpactSurface/Water         , OrientationWrapperFxImpactBallesCal50X2Eau_Connector ),
+                ( EImpactSurface/Air           , FxImpactBallesAirPetitx2_Connector ),
+                ( EImpactSurface/Wall          , OrientationWrapperFxImpactBallesCal50X2_Connector ),
+                ( EImpactSurface/Vehicle       , OrientationWrapperFxImpactBallesCal50X2_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactBallesVehiculeAirPetitx2_Connector ),
+                ( EImpactSurface/Missile       , FxImpactBalleVehiculeMoyen_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseCal50X4 , MAP
+            [
+                ( EImpactSurface/Ground        , OrientationWrapperFxImpactBallesCal50X4_Connector ),
+                ( EImpactSurface/Water         , OrientationWrapperFxImpactBallesCal50X4Eau_Connector ),
+                ( EImpactSurface/Air           , FxImpactBallesAirPetitx4_Connector ),
+                ( EImpactSurface/Wall          , OrientationWrapperFxImpactBallesCal50X4_Connector ),
+                ( EImpactSurface/Vehicle       , OrientationWrapperFxImpactBallesCal50X4_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactBallesVehiculeAirPetitx4_Connector ),
+                ( EImpactSurface/Missile       , FxImpactBalleVehiculeMoyen_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseCal50X4AAExterne , MAP
+            [
+                ( EImpactSurface/Ground        , OrientationWrapperFxImpactBallesCal50X2_Connector ),
+                ( EImpactSurface/Water         , OrientationWrapperFxImpactBallesCal50X2Eau_Connector ),
+                ( EImpactSurface/Air           , FxImpactBallesAirPetitx4_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBalleBatimentPetit_Connector ),
+                ( EImpactSurface/Vehicle       , OrientationWrapperFxImpactBallesCal50X2_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactBallesVehiculeAirPetitx4_Connector ),
+                ( EImpactSurface/Missile       , FxImpactBalleVehiculeMoyen_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseCal50X8 , MAP
+            [
+                ( EImpactSurface/Ground        , OrientationWrapperFxImpactBallesCal50X8_Connector ),
+                ( EImpactSurface/Water         , OrientationWrapperFxImpactBallesCal50X4Eau_Connector ),
+                ( EImpactSurface/Air           , FxImpactBallesAirPetitx4_Connector ),
+                ( EImpactSurface/Wall          , OrientationWrapperFxImpactBallesCal50X8_Connector ),
+                ( EImpactSurface/Vehicle       , OrientationWrapperFxImpactBallesCal50X8_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactBallesVehiculeAirPetitx4_Connector ),
+                ( EImpactSurface/Missile       , FxImpactBalleVehiculeMoyen_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseMG34 , MAP
+            [
+                ( EImpactSurface/Ground        , OrientationWrapperFxImpactBalleSolTresPetitMitrailleuse_Connector ),
+                ( EImpactSurface/Water         , OrientationWrapperFxImpactBallesCal50Eau_Connector ),
+                ( EImpactSurface/Air           , FxImpactBallesAirPetit_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBalleBatimentPetit_Connector ),
+                ( EImpactSurface/Vehicle       , OrientationWrapperFxImpactBalleSolTresPetitMitrailleuse_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactBallesVehiculeAirPetit_Connector ),
+                ( EImpactSurface/Missile       , FxImpactBalleVehiculeMoyen_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseMG34Externe , MAP
+            [
+                ( EImpactSurface/Ground        , OrientationWrapperFxImpactBalleSolTresPetitMitrailleuse_Connector ),
+                ( EImpactSurface/Water         , OrientationWrapperFxImpactBallesCal50Eau_Connector ),
+                ( EImpactSurface/Air           , FxImpactBallesAirPetit_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBalleBatimentPetit_Connector ),
+                ( EImpactSurface/Vehicle       , OrientationWrapperFxImpactBalleSolTresPetitMitrailleuse_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactBallesVehiculeAirPetit_Connector ),
+                ( EImpactSurface/Missile       , FxImpactBalleVehiculeMoyen_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseMG42 , MAP
+            [
+                ( EImpactSurface/Ground        , OrientationWrapperFxImpactBalleSolTresPetitMitrailleuse_Connector ),
+                ( EImpactSurface/Water         , OrientationWrapperFxImpactBallesCal50Eau_Connector ),
+                ( EImpactSurface/Air           , FxImpactBallesAirPetitx2_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBalleBatimentPetit_Connector ),
+                ( EImpactSurface/Vehicle       , OrientationWrapperFxImpactBalleSolTresPetitMitrailleuse_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactBallesVehiculeAirPetitx2_Connector ),
+                ( EImpactSurface/Missile       , FxImpactBalleVehiculeMoyen_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseMG42Externe , MAP
+            [
+                ( EImpactSurface/Ground        , OrientationWrapperFxImpactBalleSolTresPetitMitrailleuse_Connector ),
+                ( EImpactSurface/Water         , OrientationWrapperFxImpactBallesCal50Eau_Connector ),
+                ( EImpactSurface/Air           , FxImpactBallesAirPetitx2_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBalleBatimentPetit_Connector ),
+                ( EImpactSurface/Vehicle       , OrientationWrapperFxImpactBalleSolTresPetitMitrailleuse_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactBallesVehiculeAirPetitx2_Connector ),
+                ( EImpactSurface/Missile       , FxImpactBalleVehiculeMoyen_Connector ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_None , MAP
+            [
+                ( EImpactSurface/Ground        , nil ),
+                ( EImpactSurface/Water         , nil ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , nil ),
+                ( EImpactSurface/Vehicle       , nil ),
+                ( EImpactSurface/FlyingVehicle , nil ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Recoiless , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHEMoyen_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEMoyen_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAir_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHeGros_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactObusVehiculeGros_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirPetit_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteBazooka , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHEPetit_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEPetit_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAir_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHeMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactObusVehiculeGros_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirPetit_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteRP3HE , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolBombMoyen_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHeTrestresgros_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirGros_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatimentBombMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactVehiculeHeTrestresgros_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactVehiculeAirHeTrestresgros_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteRP3HESAP , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolBombPetit_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHeTresgros2_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirGros_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatimentBombPetit_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactVehiculeHeTresgros2_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactVehiculeAirHeTresgros2_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteRoc110Mm , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolBombMoyen_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHeTrestresgros_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirGros_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatimentBombMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactVehiculeHeTrestresgros_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactVehiculeAirHeTrestresgros_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteRoc210Mm , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolBombGros_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHeTrestresgros_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirGros_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatimentBombGros_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactVehiculeHeTrestresgros_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteRoc380MmSturmtiger , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolKarl_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHeTresgros2_Connector ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , FxImpactBatHeTresgros_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactSolKarl_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactDCAAirGros_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteRoc5In , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolBombMoyen_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEGros_Connector ),
+                ( EImpactSurface/Air           , FxImpactEauHeTresgros2_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatimentBombMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactBatHeTresgros2_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactVehiculeHeTresgros2_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteGros , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHEGros_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEGros_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirGros_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHeGros_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactMissileVehiculeGros_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirGros_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteMoyen , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHEMoyen_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEMoyen_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirMoyen_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHeMoyen_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactMissileVehiculeMoyen_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirMoyen_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquettePetit , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHEPetit_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEPetit_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAir_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHePetit_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactMissileVehiculePetit_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirPetit_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Satchel , MAP
+            [
+                ( EImpactSurface/Ground        , FxImpactSolHEGrand_Connector ),
+                ( EImpactSurface/Water         , FxImpactEauHEGrand_Connector ),
+                ( EImpactSurface/Air           , FxImpactDCAAirGros_Connector ),
+                ( EImpactSurface/Wall          , FxImpactBatHeTresgros_Connector ),
+                ( EImpactSurface/Vehicle       , FxImpactMissileVehiculeGros_Connector ),
+                ( EImpactSurface/FlyingVehicle , FxImpactHeVehiculeAirGros_Connector ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+                ( EImpactSurface/Damages       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+    ]
+)
+

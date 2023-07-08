@@ -1,0 +1,367 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export Friendly_ScnAttackModeStrategy_WeightExtended is TIAGeneralStrategy
+(
+    StrategyName = "FriScnAtk"
+    FirstGenerator = Friendly_ScnAtk_Mod_Choose_Strategy_WeightExtended
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    IgnorePlayersForCorridorRepartition = true
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    ShouldUseTaggedCorridorsForTouchDown = true
+
+    TransitionList =
+    [
+        Friendly_ScnAtk_Mod_Transition_StartToPhaseC_WeightExtended,
+        Friendly_ScnAtk_Mod_Transition_StartToPhaseB_WeightExtended,
+        Friendly_ScnAtk_Mod_Transition_StartToPhaseA_WeightExtended,
+        Friendly_ScnAtk_Mod_Transition_StartToDeploiment_WeightExtended,
+        Friendly_ScnAtk_Mod_Transition_DeployToPhaseA_WeightExtended,
+        Friendly_ScnAtk_Mod_Transition_PhaseB_WeightExtended,
+        Friendly_ScnAtk_Mod_Transition_PhaseC_WeightExtended,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_Condition_CommandPhase_WeightExtended is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_Condition_PhaseB_WeightExtended is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_B'
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_Condition_PhaseC_WeightExtended is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_C'
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_Condition_True_WeightExtended is TSequenceCondition_True
+(
+
+)
+
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_Transition_StartToPhaseC_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = Friendly_ScnAtk_Mod_Choose_Strategy_WeightExtended
+    Condition = Friendly_ScnAtk_Mod_Condition_PhaseC_WeightExtended
+    Destination = Friendly_ScnAtk_Mod_PhaseC_1_WeightExtended
+)
+export Friendly_ScnAtk_Mod_Transition_StartToPhaseB_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = Friendly_ScnAtk_Mod_Choose_Strategy_WeightExtended
+    Condition = Friendly_ScnAtk_Mod_Condition_PhaseB_WeightExtended
+    Destination = Friendly_ScnAtk_Mod_PhaseB_1_WeightExtended
+)
+export Friendly_ScnAtk_Mod_Transition_StartToPhaseA_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = Friendly_ScnAtk_Mod_Choose_Strategy_WeightExtended
+    Condition = Friendly_ScnAtk_Mod_Condition_CommandPhase_WeightExtended
+    Destination = Friendly_ScnAtk_Mod_PhaseA_1_WeightExtended
+)
+export Friendly_ScnAtk_Mod_Transition_StartToDeploiment_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = Friendly_ScnAtk_Mod_Choose_Strategy_WeightExtended
+    Condition = Friendly_ScnAtk_Mod_Condition_True_WeightExtended
+    Destination = Friendly_ScnAtk_Mod_PhaseDeploiement_1_WeightExtended
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_Transition_DeployToPhaseA_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = Friendly_ScnAtk_Mod_PhaseDeploiement_1_WeightExtended
+    Condition = Friendly_ScnAtk_Mod_Condition_CommandPhase_WeightExtended
+    Destination = Friendly_ScnAtk_Mod_PhaseA_1_WeightExtended
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_Transition_PhaseB_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = Friendly_ScnAtk_Mod_PhaseA_1_WeightExtended
+    Condition = Friendly_ScnAtk_Mod_Condition_PhaseB_WeightExtended
+    Destination = Friendly_ScnAtk_Mod_PhaseB_1_WeightExtended
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_Transition_PhaseC_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = Friendly_ScnAtk_Mod_PhaseB_1_WeightExtended
+    Condition = Friendly_ScnAtk_Mod_Condition_PhaseC_WeightExtended
+    Destination = Friendly_ScnAtk_Mod_PhaseC_1_WeightExtended
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_Choose_Strategy_WeightExtended is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Friendly_Scn_Support_AntiTank,
+        ~/Friendly_Scn_Support_Transports,
+
+        ~/Friendly_Scn_Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_PhaseDeploiement_1_WeightExtended is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Friendly_Scn_Support_AntiTank,
+        ~/Friendly_Scn_Support_Transports,
+
+        ~/Friendly_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Arti
+        //------------------------------
+        ~/Friendly_Scn_Airstrike_Assault,
+        ~/Friendly_ScnAtk_Artillery_TriggerHappy_WeightExtended,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Friendly_ScnAtk_ZoneAttack_Main_A,
+        ~/Friendly_ScnAtk_Artillery_Support_WeightExtended,
+
+        ~/Friendly_ScnAtk_ZoneAttack_Adaptive_A_WeightExtended,
+        ~/Friendly_ScnAtk_ZoneAttack_Adaptive_A_WeightExtended,
+        ~/Friendly_ScnAtk_ZoneAttack_Adaptive_A_WeightExtended,
+        ~/Friendly_Scn_Reco,
+        ~/Friendly_Scn_AirReco,
+
+        ~/Friendly_Scn_Supply_Skirmish_Allied,
+
+    ] + ~/Friendly_ScnAtk_Defenses_Airstrike_Arti_Shuffle_WeightExtended
+
+    +   ~/Friendly_ScnAtk_Scaling_A_WeightExtended
+    +   ~/Friendly_ScnAtk_Scaling_A_WeightExtended
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_PhaseA_1_WeightExtended is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Friendly_Scn_Support_AntiTank,
+        ~/Friendly_Scn_Support_Transports,
+
+        ~/Friendly_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/Friendly_Scn_Maintain_AirStrike,
+        ~/Friendly_ScnAtk_Maintain_Artillery,
+        ~/Friendly_ScnAtk_Maintain_ZoneAttacks,
+        ~/Friendly_ScnAtk_Maintain_CorridorAttacks,
+
+        //------------------------------
+        // Arti
+        //------------------------------
+        ~/Friendly_Scn_Airstrike_Assault,
+        ~/Friendly_ScnAtk_Artillery_TriggerHappy_WeightExtended,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Friendly_ScnAtk_ZoneAttack_Main_A,
+        ~/Friendly_ScnAtk_Artillery_Support_WeightExtended,
+
+        ~/Friendly_ScnAtk_ZoneAttack_Adaptive_A_WeightExtended,
+        ~/Friendly_ScnAtk_ZoneAttack_Adaptive_A_WeightExtended,
+        ~/Friendly_ScnAtk_ZoneAttack_Adaptive_A_WeightExtended,
+        ~/Friendly_Scn_Reco,
+        ~/Friendly_Scn_AirReco,
+
+        ~/Friendly_Scn_Supply_Skirmish_Allied,
+
+    ] + ~/Friendly_ScnAtk_Defenses_Airstrike_Arti_Shuffle_WeightExtended
+
+    +   ~/Friendly_ScnAtk_Scaling_A_WeightExtended
+    +   ~/Friendly_ScnAtk_Scaling_A_WeightExtended
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_PhaseB_1_WeightExtended is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 2
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Friendly_Scn_Support_AntiTank,
+        ~/Friendly_Scn_Support_Transports,
+
+        ~/Friendly_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/Friendly_Scn_Maintain_AirStrike,
+        ~/Friendly_ScnAtk_Maintain_Artillery,
+        ~/Friendly_ScnAtk_Maintain_ZoneAttacks,
+        ~/Friendly_ScnAtk_Maintain_CorridorAttacks,
+
+        //------------------------------
+        // Arti
+        //------------------------------
+        ~/Friendly_Scn_Airstrike_Assault,
+        ~/Friendly_ScnAtk_Artillery_Expensive_WeightExtended,
+        ~/Friendly_ScnAtk_Artillery_TriggerHappy_WeightExtended,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Friendly_ScnAtk_ZoneAttack_Main_B_WeightExtended,
+        ~/Friendly_ScnAtk_Artillery_Support_WeightExtended,
+
+        ~/Friendly_ScnAtk_ZoneAttack_Adaptive_B_WeightExtended,
+        ~/Friendly_ScnAtk_ZoneAttack_Adaptive_B_WeightExtended,
+        ~/Friendly_ScnAtk_ZoneAttack_Adaptive_B_WeightExtended,
+        ~/Friendly_Scn_Reco,
+        ~/Friendly_Scn_AirReco,
+
+        ~/Friendly_Scn_Supply_Skirmish_Allied,
+
+    ] + ~/Friendly_ScnAtk_Defenses_Airstrike_Arti_Shuffle_WeightExtended
+
+    +   ~/Friendly_ScnAtk_Scaling_B_WeightExtended
+    +   ~/Friendly_ScnAtk_Scaling_B_WeightExtended
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_PhaseC_1_WeightExtended is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 1
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Friendly_Scn_Support_AntiTank,
+        ~/Friendly_Scn_Support_Transports,
+
+        ~/Friendly_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/Friendly_Scn_Maintain_AirStrike,
+        ~/Friendly_ScnAtk_Maintain_Artillery,
+        ~/Friendly_ScnAtk_Maintain_ZoneAttacks,
+        ~/Friendly_ScnAtk_Maintain_CorridorAttacks,
+
+        //------------------------------
+        // Arti
+        //------------------------------
+        ~/Friendly_Scn_Airstrike_Assault,
+        ~/Friendly_ScnAtk_Artillery_Expensive_WeightExtended,
+        ~/Friendly_ScnAtk_Artillery_TriggerHappy_WeightExtended,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Friendly_ScnAtk_ZoneAttack_Main_C_WeightExtended,
+        ~/Friendly_ScnAtk_Artillery_Support_WeightExtended,
+
+        ~/Friendly_ScnAtk_ZoneAttack_Main_C_WeightExtended,
+        ~/Friendly_ScnAtk_Artillery_Support_WeightExtended,
+
+        ~/Friendly_ScnAtk_ZoneAttack_Adaptive_C_WeightExtended,
+        ~/Friendly_ScnAtk_ZoneAttack_Adaptive_C_WeightExtended,
+        ~/Friendly_Scn_Reco,
+        ~/Friendly_Scn_AirReco,
+
+        ~/Friendly_Scn_Supply_Skirmish_Allied,
+
+    ] + ~/Friendly_ScnAtk_Defenses_Airstrike_Arti_Shuffle_WeightExtended
+
+    +   ~/Friendly_ScnAtk_Scaling_C_WeightExtended
+    +   ~/Friendly_ScnAtk_Scaling_C_WeightExtended
+)
+
+Friendly_ScnAtk_Defenses_Airstrike_Arti_Shuffle_WeightExtended is
+[
+    ~/Friendly_Scn_Airstrike_Assault,
+    ~/Friendly_ScnAtk_Artillery_Expensive_WeightExtended,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_WeightExtended,
+    ~/Friendly_Scn_Airstrike_Offense,
+    ~/Friendly_Scn_Airstrike_Defense,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_1for4Corridors_WeightExtended,
+]
+
+Friendly_ScnAtk_Scaling_A_WeightExtended is
+[
+    ~/Friendly_ScnAtk_ZoneAttack_Main_A_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_ZoneAttack_Adaptive_A_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_ZoneAttack_Adaptive_A_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_ZoneAttack_Main_A_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+
+    ~/Friendly_ScnAtk_ZoneAttack_Main_A_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_ZoneAttack_Adaptive_A_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_ZoneAttack_Adaptive_A_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_ZoneAttack_Main_A_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+]
+
+Friendly_ScnAtk_Scaling_B_WeightExtended is
+[
+    ~/Friendly_ScnAtk_ZoneAttack_Main_B_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_ZoneAttack_Adaptive_B_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_ZoneAttack_Adaptive_B_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_ZoneAttack_Main_B_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+
+    ~/Friendly_ScnAtk_ZoneAttack_Main_B_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_ZoneAttack_Adaptive_B_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_ZoneAttack_Adaptive_B_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_ZoneAttack_Main_B_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+]
+
+Friendly_ScnAtk_Scaling_C_WeightExtended is
+[
+    ~/Friendly_ScnAtk_ZoneAttack_Main_C_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_ZoneAttack_Adaptive_C_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_ZoneAttack_Adaptive_C_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_ZoneAttack_Main_C_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+
+    ~/Friendly_ScnAtk_ZoneAttack_Main_C_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_ZoneAttack_Adaptive_C_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_ZoneAttack_Adaptive_C_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_ZoneAttack_Main_C_Autogen_WeightExtended,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+]

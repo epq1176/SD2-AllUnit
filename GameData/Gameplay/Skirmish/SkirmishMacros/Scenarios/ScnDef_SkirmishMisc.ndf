@@ -1,0 +1,85 @@
+//-------------------------------------------------------------------------
+//--------------------------- SUPERCOMMANDER ------------------------------
+//-------------------------------------------------------------------------
+
+private template ScnDef_Template_SuperCommander
+[
+    OrderedZoneWeightList = [1, 2, 3],
+    DefensePointScoringFeatureValue = MAP[],
+]
+is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    IgnoreSafePath = true
+    DisableReinforcement = true
+    IgnoreVisionForDefensePosition = true
+    IgnoreEnemyDirectionForDefensePosition = true
+    IgnoreDefensePositionSafety = false
+    PrioritizeCorridorsForTaggedPoolModels = true
+
+    OrderedZoneWeightList = <OrderedZoneWeightList>
+    DefensePointScoringFeatureValue = <DefensePointScoringFeatureValue>
+
+    LaunchASAP_RatioMin = 0.01
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [~/ScnDef_Pool_SuperCommander]
+
+    TaggedPoolModelList =
+    (
+        [
+            (["AttackMain"], [~/ScnDef_Pool_SuperCommander]),
+        ]
+    )
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/Scn_BasicAirstrikeSupport)
+        ),
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0)
+        ),
+        (
+            ESettingType/Support,
+            TSupportSettingHolder(SettingList = [Scn_Renfort_AT])
+        ),
+        (
+            ESettingType/AvoidCorridorTags,
+            TAvoidCorridorTagsSettingHolder(AvoidedCorridorTags = ["Filler"])
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export ScnDef_Static_SuperCommander is ScnDef_Template_SuperCommander
+(
+    DefensePointScoringFeatureValue = ~/Scn_WeightDefensePointScoringFeatureMap
+)
+//-------------------------------------------------------------------------
+export ScnDef_Static_SuperCommander_WeightExtended is ScnDef_Template_SuperCommander
+(
+    OrderedZoneWeightList = [5, 6, 7]
+    DefensePointScoringFeatureValue = ~/Scn_WeightDefensePointScoringFeatureMap
+)
+
+// Pool Models
+//-------------------------------------------------------------------------
+export ScnDef_Pool_SuperCommander is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{fe8aac11-7621-11e9-8477-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = false
+        PriceComparisonMethod = EPriceComparatorType/Random
+        TagsPriority = [
+            "Char_SuperCMD",
+            "Vehicule_SuperCMD",
+            "Infanterie_SuperCMD",
+        ]
+    ),
+    ]
+)

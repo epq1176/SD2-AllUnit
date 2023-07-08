@@ -1,0 +1,22 @@
+export ModelFile_Carrier_Wasp_UK is 'GameData:Assets\3D\Units\UK\Char\Universal_Carrier\Wasp.Ase2NdfBin'
+
+Modele_Carrier_Wasp_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Carrier_Wasp_UK
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_Wasp_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\Universal_Carrier_MID\Wasp_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_Wasp_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\LODS\Wasp_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

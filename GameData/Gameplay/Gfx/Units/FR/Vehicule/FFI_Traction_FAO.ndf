@@ -1,0 +1,22 @@
+export ModelFile_FFI_Traction_FAO is 'GameData:Assets\3D\Units\FR\Vehicule\FFI_Traction_noir\FFI_Traction_noir.Ase2NdfBin'
+
+Modele_FFI_Traction_FAO is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_FFI_Traction_FAO
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_FFI_Traction_FAO_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Vehicule\FFI_Traction_noir_MID\FFI_Traction_noir_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_FFI_Traction_FAO_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Vehicule\LODS\FFI_Traction_noir_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

@@ -1,0 +1,28 @@
+Gfx_ITPSV_FIN is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_ITPSV_FIN ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_ITPSV_FIN_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret3( MeshDescriptor = Modele_ITPSV_FIN_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_ITPSV_FIN ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_ITPSV_FIN_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret3( MeshDescriptor = Modele_ITPSV_FIN_LOW ),
+        ]
+
+        Operators = Operators_ITPSV_FIN
+                  + DepictionOperator_Chassis_MediumTank_AutoCanon
+                  + DepictionOperator_Propulsion_ContinuousTrack_MediumTank
+                  + [DepictionOperator_TurretRecoil_AutoCanon(TurretNum='1')]
+
+        Actions = Weapons_ITPSV_FIN
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = DepictionSubDepiction_Tireur_FIN
+                        + DepictionSubDepiction_Tireur2_FIN
+    )
+)

@@ -1,0 +1,22 @@
+export ModelFile_Truck_AEC_Matador_Supply_SOV is 'GameData:Assets\3D\Units\SOV\Vehicule\AEC_Matador_SOV\AEC_Matador_SOV.Ase2NdfBin'
+
+Modele_Truck_AEC_Matador_Supply_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Truck_AEC_Matador_Supply_SOV
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Truck_AEC_Matador_Supply_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Vehicule\AEC_Matador_SOV_MID\AEC_Matador_SOV_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Truck_AEC_Matador_Supply_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Vehicule\LODS\AEC_Matador_SOV_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

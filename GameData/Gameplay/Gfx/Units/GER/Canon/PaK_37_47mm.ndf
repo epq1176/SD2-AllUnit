@@ -1,0 +1,22 @@
+export ModelFile_PaK_37_47mm is 'GameData:Assets\3D\Units\GER\Canon\PaK_37r\PaK_37r.Ase2NdfBin'
+
+Modele_PaK_37_47mm is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_PaK_37_47mm
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_PaK_37_47mm_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\PaK_37r_MID\PaK_37r_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_PaK_37_47mm_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\LODS\PaK_37r_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

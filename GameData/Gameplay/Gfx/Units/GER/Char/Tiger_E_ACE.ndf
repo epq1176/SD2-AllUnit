@@ -1,0 +1,22 @@
+export ModelFile_Tiger_E_ACE is 'GameData:Assets\3D\Units\GER\Char\Tiger_E_Wittman\Tiger_E_Wittman.Ase2NdfBin'
+
+Modele_Tiger_E_ACE is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Tiger_E_ACE
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Tiger_E_ACE_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\Tiger_E_Wittman_MID\Tiger_E_Wittman_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Tiger_E_ACE_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\Tiger_E_Wittman_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

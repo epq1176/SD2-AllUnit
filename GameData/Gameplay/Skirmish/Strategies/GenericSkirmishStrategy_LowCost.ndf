@@ -1,0 +1,184 @@
+//-------------------------------------------------------------------------
+//------------------------- PHASES LOW COST -------------------------------
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+export Gen_PhaseDeploiement_LowCost is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Gen_Support_AntiTank,
+        ~/Gen_Support_Transports,
+
+        ~/Gen_Supply_Skirmish,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        // Front coherent
+        ~/Gen_Attack_Adaptive,          // ~100
+        ~/Gen_Attack_Adaptive,          // ~100
+        ~/Gen_Attack_Adaptive,          // ~100
+        ~/Gen_Attack_Filler,            // budget 40
+
+        // Grosse attaque - moins prio car moins de sous
+        ~/Gen_Attack_Objectives,
+        ~/Gen_Artillery_Support,
+        ~/Gen_Reco,            // 40 par reco
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Gen_Supply_Skirmish_Allied,
+
+    ] + ~/Gen_Defenses_Airstrike_Arti_Shuffle_Deploy
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+        // Dans les difficultés supérieures il faudra surement maintenir
+        // ça avec des maintain à la phase d'après pour être sur qu'on
+        // produise de nouvelles unités
+    +   ~/Gen_Scaling
+    +   ~/Gen_Scaling
+)
+//-------------------------------------------------------------------------
+export Gen_Phase_A_LowCost is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 3
+    GeneratorList =
+    [
+        // Même chose que la phase de déploiement mais avec les Défenses
+        // prioritaires sur les attaques. L'idée est de lancer ses attaques dès
+        // le début, mais de renforcer les backlines avant de récupérer de nos pertes
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Gen_Support_AntiTank,
+        ~/Gen_Support_Transports,
+
+        ~/Gen_Supply_Skirmish,
+        ~/Gen_Attack_Filler,
+
+        //------------------------------
+        // Défenses prioritaires
+        //------------------------------
+        // Statiques pour tenir le terrain
+        ~/Gen_Defense_Static_Adaptive, // Canon AT - Chasseur de char - ATInf - HMG - Flamer // 85
+        ~/Gen_Defense_Static_Adaptive,
+        ~/Gen_Defense_Static_AA,
+        ~/Gen_Defense_Static_Adaptive,
+
+        //------------------------------
+        // Support de la main Attack
+        //------------------------------
+        ~/Gen_Attack_MBT_Support,       // Un gros tank à voir si on le passe en phase A // DISABLE REINFORCEMENTS + TGenerationType_RestrictedNumberOfLaunch 1
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Gen_Attack_Main,              // Plusieurs tanks pour un budget donné // 200
+        ~/Gen_Artillery_Support,        // Artillerie pas chère                 //  80
+
+        ~/Gen_Attack_Adaptive,  // Faire du code pour adapater le budget en fonction de l'income
+        ~/Gen_Attack_Adaptive,
+        ~/Gen_Attack_Adaptive,
+
+        // On insère ici une attaque qui va chercher les objectifs.
+        ~/Gen_Attack_Objectives,
+
+        ~/Gen_Airstrike_Offense,
+        ~/Gen_Airstrike_Defense,
+
+        ~/Gen_SuperCommander,
+
+        ~/Gen_Reco,
+        ~/Gen_Attack_MBT, // MBT devient low prio en phase A pour éviter de pomper trop de thune
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Gen_Maintain_CorridorDefenses,
+        ~/Gen_Supply_Skirmish_Allied,
+
+    ] + ~/Gen_Airstrike_Arti_Shuffle // On sort les défenses d'ici pour les mettre plus haut dans la prio
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+        // Dans les difficultés supérieures il faudra surement maintenir
+        // ça avec des maintain à la phase d'après pour être sur qu'on
+        // produise de nouvelles unités
+    +   ~/Gen_Scaling
+    +   ~/Gen_Scaling
+)
+//-------------------------------------------------------------------------
+private template Gen_Phase_B_and_C_LowCost_template
+[
+]
+is TSequenceGeneratorDescriptor
+(
+    // Les défenses prioritaires disparaissent, on lance un nouveau set d'attaques
+    // On ajoute des défenses non prioritaires dynamiques
+    NbMacroActionAllowedToProduceSimultaneous = 2
+    GeneratorList =
+    [
+        ~/Gen_Maintain_CorridorAttacks,
+        ~/Gen_Maintain_ObjectiveAttacks,
+        ~/Gen_Maintain_CorridorDefenses,
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Gen_Support_AntiTank,
+        ~/Gen_Support_Transports,
+        ~/Gen_Supply_Skirmish,
+        ~/Gen_Attack_Filler,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Gen_Attack_Objectives,
+
+        ~/Gen_Attack_Adaptive,  // Faire du code pour adapater le budget en fonction de l'income
+        ~/Gen_Attack_Adaptive,
+        ~/Gen_Attack_Adaptive,
+
+        ~/Gen_SuperCommander,
+
+        ~/Gen_Attack_Main,              // Plusieurs tanks pour un budget donné // 200
+        ~/Gen_Artillery_Support,        // Artillerie pas chère                 //  80
+
+        //------------------------------
+        // Support de la main Attack
+        //------------------------------
+        ~/Gen_Attack_MBT,       // On enlève le status support // DISABLE REINFORCEMENTS + TGenerationType_RestrictedNumberOfLaunch 1
+
+        // Maintien
+        ~/Gen_Reco,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Gen_Supply_Skirmish_Allied,
+
+
+    ] + ~/Gen_Defenses_Airstrike_Arti_Shuffle
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+        // Dans les difficultés supérieures il faudra surement maintenir
+        // ça avec des maintain à la phase d'après pour être sur qu'on
+        // produise de nouvelles unités
+    +   ~/Gen_Scaling
+    +   ~/Gen_Scaling
+)
+//-------------------------------------------------------------------------
+export Gen_Phase_B_LowCost is Gen_Phase_B_and_C_LowCost_template()
+//-------------------------------------------------------------------------
+export Gen_Phase_C_LowCost is Gen_Phase_B_and_C_LowCost_template()
+//-------------------------------------------------------------------------

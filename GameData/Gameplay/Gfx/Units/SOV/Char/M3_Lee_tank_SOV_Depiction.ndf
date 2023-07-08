@@ -1,0 +1,26 @@
+Gfx_M3_Lee_tank_SOV is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_M3_Lee_tank_SOV ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_M3_Lee_tank_SOV_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret3( MeshDescriptor = Modele_M3_Lee_tank_SOV_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_M3_Lee_tank_SOV ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_M3_Lee_tank_SOV_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret3( MeshDescriptor = Modele_M3_Lee_tank_SOV_LOW ),
+        ]
+
+        Operators = Operators_M3_Lee_tank_SOV
+                  + DepictionOperator_Chassis_MediumTank
+                  + DepictionOperator_Propulsion_ContinuousTrack_MediumTank
+                  + [DepictionOperator_TurretRecoil(TurretNum='1')]
+                  + [DepictionOperator_TurretRecoil(TurretNum='3')]
+
+        Actions = Weapons_M3_Lee_tank_SOV
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+    )
+)

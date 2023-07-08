@@ -1,0 +1,48 @@
+
+BUCKSpecificLOSPanelMainComponentDescriptor is BUCKButtonDescriptor
+(
+    ElementName = 'LoSFeedBackButton'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [25.0, 25.0]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+
+    IsTogglable = true
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+               RelativeWidthHeight = [1.0, 1.0]
+            )
+            TextureToken = "textureLOS"
+            TextureColorToken = "SmallButtonsAboveCubeAction"
+            TextureFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1, 1]
+            )
+            Components =
+            [
+                 BUCKSpecificHintableArea
+                (
+                    DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                    HintTitleToken = "HSL_ULOSBT"
+                    HintBodyToken = "HSL_ULOSBB"
+                    HintExtendedToken = "HSL_ULOSBE"
+                )
+            ]
+
+        ),
+    ]
+
+    SpotlightComponent = SpotlightDescriptor()
+)
+
+UISpecificLOSPanelViewDescriptor is TUISpecificLOSPanelViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificLOSPanelMainComponentDescriptor
+    MainComponentContainerUniqueName = "UISpecificLOSPanelViewDescriptor"
+)

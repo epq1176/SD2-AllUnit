@@ -1,0 +1,28 @@
+export Gfx_Semovente_47_32_Comando_GER is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Semovente_47_32_Comando_GER ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Semovente_47_32_Comando_GER_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_Semovente_47_32_Comando_GER_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Semovente_47_32_Comando_GER ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Semovente_47_32_Comando_GER_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_Semovente_47_32_Comando_GER_LOW ),
+        ]
+
+        Operators = Operators_Semovente_47_32_Comando_GER
+                  + DepictionOperator_Chassis_SmallTank
+                  + DepictionOperator_Propulsion_ContinuousTrack_SmallTank
+                  + [DepictionOperator_TurretRecoilLightMachineGun(TurretNum='1') ]
+
+        Actions = Weapons_Semovente_47_32_Comando_GER
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = DepictionSubDepiction_Driver_GER
+                        + DepictionSubDepiction_Tireur_GER
+    )
+)

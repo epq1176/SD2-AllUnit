@@ -1,0 +1,351 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export SandBag_ScnDefenseModeStrategy is TIAGeneralStrategy
+(
+    StrategyName = "SBScnDef"
+    FirstGenerator = SandBag_ScnDef_Mod_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    IgnorePlayersForCorridorRepartition = true
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    ShouldUseTaggedCorridorsForTouchDown = true
+
+    TransitionList =
+    [
+        SandBag_ScnDef_Mod_Transition_StartToPhaseC,
+        SandBag_ScnDef_Mod_Transition_StartToPhaseB,
+        SandBag_ScnDef_Mod_Transition_StartToPhaseA,
+        SandBag_ScnDef_Mod_Transition_StartToDeploiment,
+        SandBag_ScnDef_Mod_Transition_DeployToPhaseA,
+        SandBag_ScnDef_Mod_Transition_PhaseB,
+        SandBag_ScnDef_Mod_Transition_PhaseC,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export SandBag_ScnDef_Mod_Condition_CommandPhase is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+//-------------------------------------------------------------------------
+export SandBag_ScnDef_Mod_Condition_PhaseB is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_B'
+)
+//-------------------------------------------------------------------------
+export SandBag_ScnDef_Mod_Condition_PhaseC is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_C'
+)
+//-------------------------------------------------------------------------
+export SandBag_ScnDef_Mod_Condition_True is TSequenceCondition_True
+(
+
+)
+
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export SandBag_ScnDef_Mod_Transition_StartToPhaseC is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_ScnDef_Mod_Choose_Strategy
+    Condition = SandBag_ScnDef_Mod_Condition_PhaseC
+    Destination = SandBag_ScnDef_Mod_PhaseC_1
+)
+export SandBag_ScnDef_Mod_Transition_StartToPhaseB is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_ScnDef_Mod_Choose_Strategy
+    Condition = SandBag_ScnDef_Mod_Condition_PhaseB
+    Destination = SandBag_ScnDef_Mod_PhaseB_1
+)
+export SandBag_ScnDef_Mod_Transition_StartToPhaseA is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_ScnDef_Mod_Choose_Strategy
+    Condition = SandBag_ScnDef_Mod_Condition_CommandPhase
+    Destination = SandBag_ScnDef_Mod_PhaseA_1
+)
+export SandBag_ScnDef_Mod_Transition_StartToDeploiment is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_ScnDef_Mod_Choose_Strategy
+    Condition = SandBag_ScnDef_Mod_Condition_True
+    Destination = SandBag_ScnDef_Mod_PhaseDeploiement_1
+)
+//-------------------------------------------------------------------------
+export SandBag_ScnDef_Mod_Transition_DeployToPhaseA is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_ScnDef_Mod_PhaseDeploiement_1
+    Condition = SandBag_ScnDef_Mod_Condition_CommandPhase
+    Destination = SandBag_ScnDef_Mod_PhaseA_1
+)
+//-------------------------------------------------------------------------
+export SandBag_ScnDef_Mod_Transition_PhaseB is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_ScnDef_Mod_PhaseA_1
+    Condition = SandBag_ScnDef_Mod_Condition_PhaseB
+    Destination = SandBag_ScnDef_Mod_PhaseB_1
+)
+//-------------------------------------------------------------------------
+export SandBag_ScnDef_Mod_Transition_PhaseC is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_ScnDef_Mod_PhaseB_1
+    Condition = SandBag_ScnDef_Mod_Condition_PhaseC
+    Destination = SandBag_ScnDef_Mod_PhaseC_1
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export SandBag_ScnDef_Mod_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/SandBag_Scn_Support_AntiTank,
+        ~/SandBag_Scn_Support_Transports,
+
+        ~/SandBag_Scn_Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_ScnDef_Mod_PhaseDeploiement_1 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/SandBag_Scn_Support_AntiTank,
+        ~/SandBag_Scn_Support_Transports,
+
+        ~/SandBag_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Arti
+        //------------------------------
+        ~/SandBag_Scn_Airstrike_Assault,
+        ~/SandBag_ScnDef_Artillery_TriggerHappy,
+
+        //------------------------------
+        // Def
+        //------------------------------
+        ~/SandBag_ScnDef_Defense_Static_Adaptive,
+        ~/SandBag_ScnDef_Defense_Static_Adaptive,
+        ~/SandBag_ScnDef_Defense_Static_Adaptive,
+        ~/SandBag_ScnDef_Defense_Static_Adaptive,
+
+        ~/SandBag_Scn_Reco,
+        ~/SandBag_Scn_AirReco,
+
+        ~/SandBag_Scn_Supply_Skirmish_Allied,
+
+    ] + ~/SandBag_ScnDef_Defenses_Airstrike_Arti_Shuffle
+
+    +   ~/SandBag_ScnDef_Scaling_A
+    +   ~/SandBag_ScnDef_Scaling_A
+)
+//-------------------------------------------------------------------------
+export SandBag_ScnDef_Mod_PhaseA_1 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/SandBag_Scn_Support_AntiTank,
+        ~/SandBag_Scn_Support_Transports,
+
+        ~/SandBag_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/SandBag_Scn_Maintain_AirStrike,
+        ~/SandBag_ScnDef_Maintain_Artillery,
+        ~/SandBag_ScnDef_Maintain_Defenses,
+
+        //------------------------------
+        // Arti
+        //------------------------------
+        ~/SandBag_Scn_Airstrike_Assault,
+        ~/SandBag_ScnDef_Artillery_TriggerHappy,
+
+        //------------------------------
+        // Def
+        //------------------------------
+        ~/SandBag_ScnDef_Defense_Static_Adaptive,
+        ~/SandBag_ScnDef_Defense_Static_Adaptive,
+        ~/SandBag_ScnDef_Defense_Static_Adaptive,
+        ~/SandBag_ScnDef_Defense_Static_Adaptive,
+
+        ~/SandBag_Scn_Supply_Skirmish_Allied,
+
+    ] + ~/SandBag_ScnDef_Defenses_Airstrike_Arti_Shuffle // On sort les défenses d'ici pour les mettre plus haut dans la prio
+
+    +   ~/SandBag_ScnDef_Scaling_A
+    +   ~/SandBag_ScnDef_Scaling_A
+)
+//-------------------------------------------------------------------------
+export SandBag_ScnDef_Mod_PhaseB_1 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 2
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/SandBag_Scn_Support_AntiTank,
+        ~/SandBag_Scn_Support_Transports,
+
+        ~/SandBag_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/SandBag_Scn_Maintain_AirStrike,
+        ~/SandBag_ScnDef_Maintain_Artillery,
+        ~/SandBag_ScnDef_Maintain_Defenses,
+
+        //------------------------------
+        // Arti
+        //------------------------------
+        ~/SandBag_Scn_Airstrike_Assault,
+        ~/SandBag_ScnDef_Artillery_TriggerHappy,
+
+        //------------------------------
+        // Def
+        //------------------------------
+        ~/SandBag_ScnDef_ZoneAttack_Main,
+        ~/SandBag_ScnDef_Artillery_Support,
+
+        ~/SandBag_ScnDef_Defense_Static_Adaptive,
+        ~/SandBag_ScnDef_Defense_Static_Adaptive,
+        ~/SandBag_ScnDef_Defense_Static_Adaptive,
+
+        ~/SandBag_Scn_Supply_Skirmish_Allied,
+
+    ] + ~/SandBag_ScnDef_Defenses_Airstrike_Arti_Shuffle
+
+    +   ~/SandBag_ScnDef_Scaling_B
+    +   ~/SandBag_ScnDef_Scaling_B
+)
+//-------------------------------------------------------------------------
+export SandBag_ScnDef_Mod_PhaseC_1 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 1
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/SandBag_Scn_Support_AntiTank,
+        ~/SandBag_Scn_Support_Transports,
+
+        ~/SandBag_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/SandBag_Scn_Maintain_AirStrike,
+        ~/SandBag_ScnDef_Maintain_Artillery,
+        ~/SandBag_ScnDef_Maintain_Defenses,
+
+        //------------------------------
+        // Arti
+        //------------------------------
+        ~/SandBag_Scn_Airstrike_Assault,
+        ~/SandBag_ScnDef_Artillery_TriggerHappy,
+
+        //------------------------------
+        // Def
+        //------------------------------
+        ~/SandBag_ScnDef_ZoneAttack_Main,
+        ~/SandBag_ScnDef_Artillery_Support,
+
+        ~/SandBag_ScnDef_ZoneAttack_Adaptive,
+        ~/SandBag_ScnDef_Defense_Static_Adaptive,
+        ~/SandBag_ScnDef_ZoneAttack_Adaptive,
+
+        ~/SandBag_Scn_Supply_Skirmish_Allied,
+
+    ] + ~/SandBag_ScnDef_Defenses_Airstrike_Arti_Shuffle
+
+    +   ~/SandBag_ScnDef_Scaling_C
+    +   ~/SandBag_ScnDef_Scaling_C
+)
+
+SandBag_ScnDef_Defenses_Airstrike_Arti_Shuffle is
+[
+    ~/SandBag_Scn_Airstrike_Assault,
+    ~/SandBag_ScnDef_Artillery_Expensive,
+    ~/SandBag_ScnDef_Artillery_TriggerHappy,
+    ~/SandBag_Scn_Airstrike_Offense,
+    ~/SandBag_Scn_Airstrike_Defense,
+    ~/SandBag_ScnDef_Artillery_TriggerHappy_1for4Corridors,
+]
+
+SandBag_ScnDef_Scaling_A is
+[
+    ~/SandBag_ScnDef_ZoneAttack_Main_Autogen,
+    ~/SandBag_ScnDef_Artillery_Expensive_Autogen,
+    ~/SandBag_ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/SandBag_ScnDef_Artillery_TriggerHappy_Autogen,
+    ~/SandBag_ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/SandBag_ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/SandBag_ScnDef_Artillery_TriggerHappy_Autogen,
+
+    ~/SandBag_ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/SandBag_ScnDef_Artillery_Expensive_Autogen,
+    ~/SandBag_ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/SandBag_ScnDef_Artillery_TriggerHappy_Autogen,
+    ~/SandBag_ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/SandBag_ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/SandBag_ScnDef_Artillery_TriggerHappy_Autogen,
+]
+
+SandBag_ScnDef_Scaling_B is
+[
+    ~/SandBag_ScnDef_ZoneAttack_Main_Autogen,
+    ~/SandBag_ScnDef_Artillery_Expensive_Autogen,
+    ~/SandBag_ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/SandBag_ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/SandBag_ScnDef_Artillery_TriggerHappy_Autogen,
+    ~/SandBag_ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/SandBag_ScnDef_Artillery_TriggerHappy_Autogen,
+
+    ~/SandBag_ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/SandBag_ScnDef_Artillery_Expensive_Autogen,
+    ~/SandBag_ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/SandBag_ScnDef_Artillery_TriggerHappy_Autogen,
+    ~/SandBag_ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/SandBag_ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/SandBag_ScnDef_Artillery_TriggerHappy_Autogen,
+]
+
+SandBag_ScnDef_Scaling_C is
+[
+    ~/SandBag_ScnDef_ZoneAttack_Main_Autogen,
+    ~/SandBag_ScnDef_Artillery_Expensive_Autogen,
+    ~/SandBag_ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/SandBag_ScnDef_Artillery_TriggerHappy_Autogen,
+    ~/SandBag_ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/SandBag_ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/SandBag_ScnDef_Artillery_TriggerHappy_Autogen,
+
+    ~/SandBag_ScnDef_ZoneAttack_Main_Autogen,
+    ~/SandBag_ScnDef_Artillery_Expensive_Autogen,
+    ~/SandBag_ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/SandBag_ScnDef_Artillery_TriggerHappy_Autogen,
+    ~/SandBag_ScnDef_Defense_Static_Adaptive_Autogen,
+    ~/SandBag_ScnDef_ZoneAttack_Adaptive_Autogen,
+    ~/SandBag_ScnDef_Artillery_TriggerHappy_Autogen,
+]

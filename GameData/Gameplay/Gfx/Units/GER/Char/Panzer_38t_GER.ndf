@@ -1,0 +1,22 @@
+export ModelFile_Panzer_38t_GER is 'GameData:Assets\3D\Units\GER\Char\Panzer_38t_Bef_GER\Panzer_38t_Bef_GER.Ase2NdfBin'
+
+Modele_Panzer_38t_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Panzer_38t_GER
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_38t_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\Panzer_38t_Bef_GER_MID\Panzer_38t_Bef_GER_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_38t_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\Panzer_38t_Bef_GER_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

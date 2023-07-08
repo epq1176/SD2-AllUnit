@@ -1,0 +1,22 @@
+export ModelFile_Flak_36_88mm_HON is 'GameData:Assets\3D\Units\GER\Canon\Flak_36_88mm\Flak_36_88mm.Ase2NdfBin'
+
+Modele_Flak_36_88mm_HON is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Flak_36_88mm_HON
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Flak_36_88mm_HON_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\Flak_36_88mm_MID\Flak_36_88mm_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Flak_36_88mm_HON_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\LODS\Flak_36_88mm_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

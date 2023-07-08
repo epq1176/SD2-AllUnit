@@ -1,0 +1,433 @@
+//-------------------------------------------------------------------------
+//----------------------------- AIRSTRIKE ---------------------------------
+//-------------------------------------------------------------------------
+
+// Missions
+//-------------------------------------------------------------------------
+export SandBag_Airstrike_Defense is TMacroActionDescriptor_AirStrike_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Defense // pas d'attaque du tout
+
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [
+        ~/SandBag_Pool_Airstrike_Defense,
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Airstrike_Offense is TMacroActionDescriptor_AirStrike_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Attack | ~/EAirStrikeRequestType/OpportunisticTargetInGroup
+
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [
+        ~/SandBag_Pool_Airstrike_Offense,
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Airstrike_Assault is TMacroActionDescriptor_AirStrike_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    AnnulerSupportSiAttaqueEchoue = true
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/OpportunisticSingleTarget
+
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [
+        ~/SandBag_Pool_Airstrike_Assault,
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Airstrike_Defense_Autogen is TMacroActionDescriptor_AirStrike_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    MinimumResourceForLaunch = 200
+
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Defense // pas d'attaque du tout
+
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [
+        ~/SandBag_Pool_Airstrike_Defense,
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Airstrike_Offense_Autogen is TMacroActionDescriptor_AirStrike_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    MinimumResourceForLaunch = 400
+
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Attack | ~/EAirStrikeRequestType/OpportunisticTargetInGroup
+
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [
+        ~/SandBag_Pool_Airstrike_Offense,
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Airstrike_Assault_Autogen is TMacroActionDescriptor_AirStrike_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    MinimumResourceForLaunch = 300
+
+    AnnulerSupportSiAttaqueEchoue = true
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/OpportunisticSingleTarget
+
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [
+        ~/SandBag_Pool_Airstrike_Assault,
+    ]
+)
+
+// Pool Models
+//-------------------------------------------------------------------------
+export SandBag_Pool_Airstrike_Defense is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{fdc3fdde-f1df-11e6-b180-4ccc6a0550f6}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        TagsPriority = [
+            "Chasseur",
+            "Chasseur_Bombardier",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Pool_Airstrike_Offense is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{fdc3fddf-f1df-11e6-9a5f-4ccc6a0550f6}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        TagsPriority = [
+            "Bombardier",
+            "Chasseur_Bombardier",
+            "Avion_Assaut"
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Pool_Airstrike_Assault is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{fdc3fde0-f1df-11e6-8558-4ccc6a0550f6}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        TagsPriority = [
+            "Avion_Assaut"
+        ]
+    ),
+    ]
+)
+// Requetes
+//-------------------------------------------------------------------------
+export SandBag_BasicAirstrikeSupport is
+[
+    (["Avion_Assaut", "Chasseur_Bombardier", "Bombardier",], 2),
+]
+//-------------------------------------------------------------------------
+
+
+//-------------------------------------------------------------------------
+//----------------------------- ARTILLERY ---------------------------------
+//-------------------------------------------------------------------------
+
+// Missions
+//-------------------------------------------------------------------------
+export SandBag_Artillery_TriggerHappy_1for2Corridors is TMacroActionDescriptor_Artillery_Specific
+(
+    GenerationType = TGenerationType_BasedOnNumberOfCorridors
+    NumberOfMacro = 1
+
+    SupportPointSafetyMargin = 1
+    MinimumThreatPerSplashForKill = 80
+    MinimumThreatPerSplashForSupport = 60
+    SupportStrikeRatio = [0.4]
+    IgnoreSafePath = true
+
+    DeployOnRoad = True
+    DistanceToOptimumStartDuringDeployment = 3000*Metre
+
+    ArtilleryStrikeThreatBonusPerTags =  // Multiplicateur appliqué lors du calcul de la menace d'unité. On applique le premier bonus qui match les tags de notre unité (1 par défaut)
+    [
+        (["Canon_AT"], 0.2),
+        (["Infanterie_Spec_Defense"], 0.5),
+        (["Infanterie"], 1.5),
+        (["Vehicule_Logistique"], 0.8),
+        (["Char"], 0.6),
+    ]
+
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [
+        ~/SandBag_Pool_Artillery_TriggerHappy,
+    ]
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Generation,
+            TGenerationSettingHolder(NumberOfCorridorsPerMission = 4 ConsiderOnlySameDescriptor = true)
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Artillery_TriggerHappy_Autogen is TMacroActionDescriptor_Artillery_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    MinimumResourceForLaunch = 200
+
+    SupportPointSafetyMargin = 1
+    MinimumThreatPerSplashForKill = 80
+    MinimumThreatPerSplashForSupport = 60
+    SupportStrikeRatio = [0.4]
+    IgnoreSafePath = true
+
+    DeployOnRoad = True
+    DistanceToOptimumStartDuringDeployment = 3000*Metre
+
+    ArtilleryStrikeThreatBonusPerTags =  // Multiplicateur appliqué lors du calcul de la menace d'unité. On applique le premier bonus qui match les tags de notre unité (1 par défaut)
+    [
+        (["Canon_AT"], 1.0),
+        (["Infanterie_Spec_Defense"], 1.5),
+        (["Infanterie"], 1.0),
+        (["Vehicule_Logistique"], 0.3),
+        (["Char"], 0.4),
+    ]
+
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [
+        ~/SandBag_Pool_Artillery_TriggerHappy,
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Artillery_Expensive is TMacroActionDescriptor_Artillery_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    SupportPointSafetyMargin = 2
+    MinimumThreatPerSplashForKill = 150
+    MinimumThreatPerSplashForSupport = 130
+    SupportStrikeRatio = [0.1]
+    IgnoreSafePath = true
+
+    DeployOnRoad = True
+    DistanceToOptimumStartDuringDeployment = 3000*Metre
+
+    ArtilleryStrikeThreatBonusPerTags =  // Multiplicateur appliqué lors du calcul de la menace d'unité. On applique le premier bonus qui match les tags de notre unité (1 par défaut)
+    [
+        (["Canon_AT"], 1.0),
+        (["Infanterie_Spec_Defense"], 1.0),
+        (["Infanterie"], 1.0),
+        (["Vehicule_Logistique"], 0.4),
+        (["Char"], 0.4),
+    ]
+
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [
+        ~/SandBag_Pool_Artillery_Expensive,
+    ]
+)
+
+// Pool Models
+//-------------------------------------------------------------------------
+export SandBag_Pool_Artillery_TriggerHappy is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{fdc3fde1-f1df-11e6-a43d-4ccc6a0550f6}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        TagsPriority = [
+            "Artillerie_Courte_Portee",
+            "Artillerie_Longue_Portee",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Pool_Artillery_Expensive is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{fdc3fde2-f1df-11e6-9f4a-4ccc6a0550f6}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = false
+        TagsPriority = [
+            "Artillerie_MLRS",
+            "Artillerie_Observateur",
+        ]
+        ForbiddenTags = [
+            "Avion",
+        ]
+    ),
+    ]
+)
+
+//-------------------------------------------------------------------------
+//----------------------------- SUPPLY ---------------------------------
+//-------------------------------------------------------------------------
+
+// Missions
+//-------------------------------------------------------------------------
+export SandBag_Supply_Skirmish is TMacroActionDescriptor_Supply_Specific
+(
+    GenerationType = TGenerationType_BasedOnNumberOfCorridors
+
+    MinimumAmmoRatio = 0.65
+    SupplyAllies = false
+    IgnoreSafePath = false
+
+    PoolModelList = [
+        ~/SandBag_Pool_Supply_Skirmish,
+    ]
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Generation,
+            TGenerationSettingHolder(NumberOfCorridorsPerMission = 4 ConsiderOnlySameDescriptor = true)
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Supply_Skirmish_Allied is TMacroActionDescriptor_Supply_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    MinimumAmmoRatio = 0.4
+    SupplyAllies = true
+    IgnoreSafePath = false
+
+    PoolModelList = [
+        ~/SandBag_Pool_Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+
+// Pool Models
+//-------------------------------------------------------------------------
+export SandBag_Pool_Supply_Skirmish is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{fdc424f0-f1df-11e6-9d01-4ccc6a0550f6}
+        Required = true
+        Nb = 1
+        TagsPriority = [
+            "Vehicule_Logistique",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------
+//------------------------------- RECO ------------------------------------
+//-------------------------------------------------------------------------
+
+// Missions
+//-------------------------------------------------------------------------
+export SandBag_Reco_Skirmish is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    GenerationType = TGenerationType_BasedOnNumberOfCorridors
+
+    IgnoreSafePath = false //on n'esquive pas la menace sur le chemin
+    DisableReinforcement = false
+    IgnoreVisionForDefensePosition = false
+    IgnoreEnemyDirectionForDefensePosition = true
+    IgnoreDefensePositionSafety = false
+
+    PoolModelList = [
+        ~/SandBag_Pool_Reco_Skirmish,
+    ]
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Generation,
+            TGenerationSettingHolder(NumberOfCorridorsPerMission = 4 ConsiderOnlySameDescriptor = true)
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_AirReco_Skirmish is TMacroActionDescriptor_AirReco_Specific
+(
+    GenerationType = TGenerationType_FixedSizeByAlliance
+    NumberOfMacro = 1
+
+    PriorityCorridors = []
+    MaxAirplaneCountOnBattlefield = 1
+    TicksBetweenTwoLaunch = 60
+    TicksBetweenTwoMissions = 60
+
+    PoolModelList = [
+        ~/SandBag_Pool_AirReco_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+
+// Pool Models
+//-------------------------------------------------------------------------
+export SandBag_Pool_Reco_Skirmish is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{fdc424f1-f1df-11e6-a60b-4ccc6a0550f6}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = false // On veut le moins cher
+        TagsPriority = [
+            "Infanterie_Reco",
+            "Char_Reco",
+            "Vehicule_Reco"
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Pool_AirReco_Skirmish is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{fdc424f2-f1df-11e6-9b3c-4ccc6a0550f6}
+        Required = true
+        Nb = 1
+        TagsPriority = [
+            "Avion_Reco",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------

@@ -1,0 +1,22 @@
+export ModelFile_Tatra_T93C_ROU is 'GameData:Assets\3D\Units\ROU\Vehicule\Tatra_T93C_ROU\Tatra_T93C_ROU.Ase2NdfBin'
+
+Modele_Tatra_T93C_ROU is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Tatra_T93C_ROU
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Tatra_T93C_ROU_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Vehicule\Tatra_T93C_ROU_MID\Tatra_T93C_ROU_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Tatra_T93C_ROU_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Vehicule\LODS\Tatra_T93C_ROU_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

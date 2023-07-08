@@ -1,0 +1,22 @@
+export ModelFile_Churchill_IV_Crocodile is 'GameData:Assets\3D\Units\UK\Char\Churchill_Crocodile\Churchill_Crocodile.Ase2NdfBin'
+
+export Modele_Churchill_IV_Crocodile is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Churchill_IV_Crocodile
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Churchill_IV_Crocodile_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\Churchill_Crocodile_MID\Churchill_Crocodile_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Churchill_IV_Crocodile_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\LODS\Churchill_Crocodile_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

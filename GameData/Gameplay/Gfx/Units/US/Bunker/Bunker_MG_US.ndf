@@ -1,0 +1,17 @@
+export Gfx_Bunker_MG_US is TDepictionTemplate //arme
+(
+    RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+    Selector = CommonBunkerDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_MMG_M1919_Rangers_US ),
+        DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_MMG_M1919_Rangers_US_MID ),
+        DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_MMG_M1919_Rangers_US_LOW ),
+        DepictionDescriptor_LOD_None()
+    ]
+
+    SubDepictions = []
+    Operators = Operators_MMG_M1919_Rangers_US
+    Actions = Weapons_MMG_M1919_Rangers_US
+)
+
+export ModelFile_Bunker_MG_US is ~/ModelFile_MMG_M1919_Rangers_US

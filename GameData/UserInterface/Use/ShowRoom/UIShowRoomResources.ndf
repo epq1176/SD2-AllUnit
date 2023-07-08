@@ -1,0 +1,70 @@
+private DummyComponentForBlur is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1, 1]
+    )
+)
+
+export ShowRoomResource is TUISpecificShowRoomResources
+(
+    UILayer                     = $/UserInterface/UILayer_2DInterface_ShowRoom
+    UILayerAboveBlur            = $/UserInterface/UILayer_2DInterfaceAboveBlur_ShowRoom
+    UILayerLDHint               = $/UserInterface/UILayer_2DInterfaceLDHint
+
+    CommonResources             = ~/UICommonResource
+    InGameResources             = ~/InGameResourceWargame2
+    OutGameResources            = ~/OutGameResourceSpecific
+    MousePointerMaskLayer       = $/UserInterface/UILayer_ShowRoomMousePointerMask
+
+    MainStyleGuides             = [
+        ~/DefaultStyleGuide,
+    ]
+
+    ViewDescriptors = MAP
+    [
+        ("UISpecificUnitInfoPanelViewDescriptor", UISpecificUnitInfoPanelViewDescriptor( MainComponentFrame = TUIFramePropertyRTTI() IsShowRoom = true )),
+    ]
+
+    GroupSelectionReminderResources = ~/GroupSelectionReminder
+    LabelResource                   = ~/SpecificInGameLabelResource
+    MainContainerResource           = ~/Wargame2ShowRoomMainContainerResource
+    MousePolicyManagerResources     = ~/MousePolicyManagerResources
+
+    LDHintResource                  = ~/SpecificInGameLDHintResource
+    WarningPanelResources           = ~/WarningPanelResources
+
+    WarnOnMultiplayerDeckNotFilled  = true
+
+    SelectionHandlerInGameResources = ~/SelectionResources
+    MagnifierMultiplier = 0.9
+
+    DummyComponentForBlur = ~/DummyComponentForBlur
+
+    ArmoryComponentDescriptor = ~/ArmoryBUCKComponentDescriptor
+    DeckCreatorScreenComponentDescriptor = ~/DeckCreatorScreenBUCKComponentDescriptor
+
+    CountriesToShow = ["SOV","US","UK","FR","CAN","POL","BEL","NZ","GRE","EST","SA","YUG","ITA","BRZ","CZ","BUL", "GER","HON","FIN","ROU","LIT","CRO","RSI"]
+    AllianceToCountriesToShow = MAP [
+        (ENationalite/Axis, ["GER","HON","FIN","ROU","LIT","CRO","RSI"]),
+        (ENationalite/Allied, ["SOV","UK","US","CAN","FR","POL","BEL","EST","NZ","GRE","ROU","SA","YUG","ITA","BRZ","CZ","BUL"])
+    ]
+    ArmoryCountryFilterButtonDescriptor = ~/ArmoryCountryFilterButtonDescriptor
+    SpecificHidingViewDescriptor = ~/UISpecificHidingViewDescriptor
+
+    ShortcutUserInputLayer      = $/M3D/Input/UserInputLayerHandler/InputLayer_InGameShortcuts
+)
+
+Wargame2ShowRoomMainContainerResource is TUICommonMainContainerResource
+(
+    RefMagnification = ~/RefMagnification
+    ContentRefSize = [ 2134 , 1440 ]
+    SafeBoxMin     = [  107 ,   80 ]
+    SafeBoxSize    = [ 1920 , 1200 ]
+
+    ForegroundComponents = BUCKContainerDescriptor
+    (
+        Components = []
+        ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+    )
+)

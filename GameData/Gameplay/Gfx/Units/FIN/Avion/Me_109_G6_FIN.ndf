@@ -1,0 +1,29 @@
+export ModelFile_Me_109_G6_FIN is 'GameData:Assets\3D\Units\FIN\Avion\Me_109G6_FIN\Me_109G6_FIN.Ase2NdfBin'
+
+Modele_Me_109_G6_FIN is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Me_109_G6_FIN
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Me_109_G6_FIN_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Avion\Me_109G6_FIN_MID\Me_109G6_FIN_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Me_109_G6_FIN_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Avion\LODS\Me_109G6_FIN_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Me_109_G6_FIN_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Avion\Me109_G6_R6\Me109_G6_R6_train.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

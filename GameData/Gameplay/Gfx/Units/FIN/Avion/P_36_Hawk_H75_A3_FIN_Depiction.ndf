@@ -1,0 +1,46 @@
+Gfx_P_36_Hawk_H75_A3_FIN is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificAirplaneDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_P_36_Hawk_H75_A3_FIN ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_P_36_Hawk_H75_A3_FIN_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_P_36_Hawk_H75_A3_FIN_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_P_36_Hawk_H75_A3_FIN ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_P_36_Hawk_H75_A3_FIN_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_P_36_Hawk_H75_A3_FIN_LOW ),
+        ]
+
+        Operators = Operators_P_36_Hawk_H75_A3_FIN
+                + DepictionOperator_Airfoil_WingsAndStabilizersAirplane
+                + DepictionOperator_Propulsion_Single_Engine_Plane
+                + DepictionOperator_Airplane
+                + DepictionOperator_Feedback_Degat_Level1
+                + DepictionOperator_Feedback_Degat_Level2
+
+        Actions = //DepictionAction_MovementFX_SingleReactorAirplane
+                 Weapons_P_36_Hawk_H75_A3_FIN
+                + DepictionAction_StressLevel_Avion_2
+                + MAP [ (['FX_Helice_1'], Template_DepictionAction_Rotor( PaleLength = 355 PaleCount = 3 SousMobile = "Bloc_Moteur_1" ))]
+
+    // SubDepictionGenerators = SubGenerators_P_36_Hawk_H75_A3_FIN
+
+    SubDepictions = [
+        TSubDepiction(
+            Anchor = "Landing Gear"
+            // Anchor = 'chassis'
+            Depiction = TDepictionTemplate(
+                RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+                Selector = WarGameShowRoomDepictionSelector
+                DepictionAlternatives = [
+                    TDepictionDescriptor( SelectorId = 'high' MeshDescriptor = Modele_P_36_Hawk_H75_A3_FIN_train ),
+                    TDepictionDescriptor( SelectorId = 'none' )
+                ]
+            )
+        )
+    ]
+    + DepictionSubDepiction_Pilote_FIN
+    )
+)

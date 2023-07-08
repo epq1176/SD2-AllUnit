@@ -1,0 +1,22 @@
+export ModelFile_Sherman_M4A4_FR is 'GameData:Assets\3D\Units\FR\Char\Sherman_M4A4_FR\Sherman_M4A4_FR.Ase2NdfBin'
+
+export Modele_Sherman_M4A4_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Sherman_M4A4_FR
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Sherman_M4A4_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Char\Sherman_M4A4_FR_MID\Sherman_M4A4_FR_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Sherman_M4A4_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Char\LODS\Sherman_M4A4_FR_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

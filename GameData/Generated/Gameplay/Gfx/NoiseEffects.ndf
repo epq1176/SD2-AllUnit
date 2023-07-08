@@ -1,0 +1,57 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+export NoiseEffect_Bruit_1 is TEffectsPackDescriptor
+(
+    DescriptorId = GUID:{ca538d8d-2f05-4d8a-aaf5-42d956ee8ddf}
+    NameForDebug = 'Bruit 1'
+    EffectsDescriptors = [
+        // BonusStealthBonus_Noise
+        TUnitEffectIncreaseStealthBonusDescriptor
+        (
+            ModifierType       = ~/ModifierType_Additionnel
+            BonusStealthBonus  = -2
+        ),
+
+        // BonusApplyStealth_Noise
+        TUnitEffectApplyStealthDescriptor
+        (
+            BonusUnitStealth = False
+        ),
+
+    ]
+)
+export NoiseEffect_Bruit_2 is TEffectsPackDescriptor
+(
+    DescriptorId = GUID:{0541d088-7611-4422-98fa-83649ae10fcf}
+    NameForDebug = 'Bruit 2'
+    EffectsDescriptors = [
+        // BonusStealthBonus_Noise
+        TUnitEffectIncreaseStealthBonusDescriptor
+        (
+            ModifierType       = ~/ModifierType_Multiplicatif
+            BonusStealthBonus  = -3
+        ),
+
+        // BonusApplyStealth_Noise
+        TUnitEffectApplyStealthDescriptor
+        (
+            BonusUnitStealth = False
+        ),
+
+    ]
+)
+export NoiseEffect_Bruit_3 is TEffectsPackDescriptor
+(
+    DescriptorId = GUID:{e1e3fa3f-15ac-4716-81ec-9b0a77b15f46}
+    NameForDebug = 'Bruit 3'
+    EffectsDescriptors = [
+        // BonusStealthBonus_Noise
+        TUnitEffectIncreaseStealthBonusDescriptor
+        (
+            ModifierType       = ~/ModifierType_Additionnel
+            BonusStealthBonus  = -1
+        ),
+
+    ]
+)

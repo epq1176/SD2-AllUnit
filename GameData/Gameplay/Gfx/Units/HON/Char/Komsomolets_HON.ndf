@@ -1,0 +1,22 @@
+export ModelFile_Komsomolets_HON is 'GameData:Assets\3D\Units\HON\Char\Komsomolets_HON\Komsomolets_HON.Ase2NdfBin'
+
+Modele_Komsomolets_HON is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Komsomolets_HON
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Komsomolets_HON_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\HON\Char\Komsomolets_HON_MID\Komsomolets_HON_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Komsomolets_HON_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\HON\Char\LODS\Komsomolets_HON_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

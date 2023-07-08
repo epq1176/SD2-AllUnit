@@ -1,0 +1,22 @@
+export ModelFile_T70_GER is 'GameData:Assets\3D\Units\GER\Char\T70_GER\T70_GER.Ase2NdfBin'
+
+Modele_T70_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_T70_GER
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_T70_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\T70_GER_MID\T70_GER_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_T70_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\T70_GER_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

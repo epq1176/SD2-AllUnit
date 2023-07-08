@@ -1,0 +1,23 @@
+export ModelFile_Jeep_MMG_NZ is 'GameData:Assets\3D\Units\USA\Vehicule\Jeep_MMG\Jeep_MMG.Ase2NdfBin'
+
+Modele_Jeep_MMG_NZ is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Jeep_MMG_NZ
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Jeep_MMG_NZ_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Vehicule\Jeep_MMG_MID\Jeep_MMG_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Jeep_MMG_NZ_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Vehicule\LODS\Jeep_MMG_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+

@@ -1,0 +1,22 @@
+export ModelFile_Sherman_IC_Firefly_CZ is 'GameData:Assets\3D\Units\CZ\Char\Sherman_IC_Firefly_CZ\Sherman_IC_FireFly_CZ.Ase2NdfBin'
+
+export Modele_Sherman_IC_Firefly_CZ is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Sherman_IC_Firefly_CZ
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Sherman_IC_Firefly_CZ_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CZ\Char\Sherman_IC_Firefly_CZ_MID\Sherman_IC_FireFly_CZ_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Sherman_IC_Firefly_CZ_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CZ\Char\LODS\Sherman_IC_FireFly_CZ_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

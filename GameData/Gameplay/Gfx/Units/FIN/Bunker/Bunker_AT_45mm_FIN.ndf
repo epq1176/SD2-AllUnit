@@ -1,0 +1,17 @@
+export Gfx_Bunker_AT_45mm_FIN is TDepictionTemplate //arme
+(
+    RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+    Selector = CommonBunkerDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_Canon_obr_42_45mmAT_SOV ),
+        DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_Canon_obr_42_45mmAT_SOV_MID ),
+        DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_Canon_obr_42_45mmAT_SOV_LOW ),
+        DepictionDescriptor_LOD_None()
+    ]
+
+    SubDepictions = []
+    Operators = Operators_Canon_obr_42_45mmAT_FIN
+    Actions = Weapons_Canon_obr_42_45mmAT_FIN
+)
+
+export ModelFile_Bunker_AT_45mm_FIN is ~/ModelFile_Canon_obr_42_45mmAT_SOV

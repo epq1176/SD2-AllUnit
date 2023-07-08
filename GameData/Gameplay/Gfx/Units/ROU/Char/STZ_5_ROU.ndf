@@ -1,0 +1,22 @@
+export ModelFile_STZ_5_ROU is 'GameData:Assets\3D\Units\SOV\Char\STZ_5_SOV\STZ_5_SOV.Ase2NdfBin'
+
+Modele_STZ_5_ROU is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_STZ_5_ROU
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_STZ_5_ROU_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\STZ_5_SOV_MID\STZ_5_SOV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_STZ_5_ROU_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\LODS\STZ_5_SOV_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

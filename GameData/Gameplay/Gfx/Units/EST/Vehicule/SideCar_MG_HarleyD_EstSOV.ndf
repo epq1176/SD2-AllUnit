@@ -1,0 +1,22 @@
+export ModelFile_SideCar_MG_HarleyD_EstSOV is 'GameData:Assets\3D\Units\SOV\Vehicule\SideCar_HarleyD_SOV\SideCar_MG_HarleyD_SOV.Ase2NdfBin'
+
+Modele_SideCar_MG_HarleyD_EstSOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_SideCar_MG_HarleyD_EstSOV
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_SideCar_MG_HarleyD_EstSOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Vehicule\SideCar_HarleyD_SOV_MID\SideCar_MG_HarleyD_SOV_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_SideCar_MG_HarleyD_EstSOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Vehicule\LODS\SideCar_MG_HarleyD_SOV_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

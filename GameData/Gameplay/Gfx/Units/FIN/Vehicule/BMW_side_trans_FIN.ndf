@@ -1,0 +1,22 @@
+export ModelFile_BMW_side_trans_FIN is 'GameData:Assets\3D\Units\FIN\Vehicule\BMW_side_trans_FIN\BMW_side_trans_FIN.Ase2NdfBin'
+
+Modele_BMW_side_trans_FIN is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_BMW_side_trans_FIN
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_BMW_side_trans_FIN_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Vehicule\BMW_side_trans_FIN_MID\BMW_side_trans_FIN_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_BMW_side_trans_FIN_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Vehicule\LODS\BMW_side_trans_FIN_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

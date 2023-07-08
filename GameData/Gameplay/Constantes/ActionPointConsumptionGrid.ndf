@@ -1,0 +1,45 @@
+export ActionPointConsumptionGridConstants is TActionPointConsumptionGridConstantsDescriptor
+(
+    //---------------------------------------------------------------------------------------//
+    //--------------------------------- REGLAGES GAMEPLAY -----------------------------------//
+    //---------------------------------------------------------------------------------------//
+    TerrainsBloquants = [
+        ~/ETerrainType/BocageLourd,
+        ~/ETerrainType/Eau,             //Rivers/Lake
+    ]
+     TerrainsRalentisseurs = [
+         //~/ETerrainType/ForetLegere,
+         //~/ETerrainType/ForetDense,
+         //~/ETerrainType/Urbain,
+         ~/ETerrainType/ChampCereales,  //Off-Road
+         ~/ETerrainType/ChampDeMineAP,  //Forêt/Marais
+         //~/ETerrainType/Eau,
+         ~/ETerrainType/Passant1,       //Marais mais DEPREC
+     ]
+     TerrainsAccelerateurs = [
+       //~/ETerrainType/BloqueConstruction,
+         ~/ETerrainType/Portail,        //Autoroute
+     ]
+
+    // Precision de la grille : Attention à l'impact sur les perfs
+    TailleDeCaseApproximative = ~/ActionPointConsumptionRefs/CaseSize // ATTENTION : modifier cette valeur dans X:\Slayer\WarGame\Data\Gameplay\Constantes\ActionPointConsumptionGridRefs.ndf
+
+    //---------------------------------------------------------------------------------------//
+    //--------------------------------- REGLAGES FEEDBACK -----------------------------------//
+    //---------------------------------------------------------------------------------------//
+    CouleurDeLaCourbe = D3DRGBA [221,96,49,200]  //[96,57,19,255]
+    EpaisseurDeLaCourbe = 2000
+    RemplirLePolygon = true
+    CouleurDuRemplissage = D3DRGBA [221,96,49,100]
+
+
+    ParametresDeCalculDeLaGeometry = InfluenceMapGeometryParameters
+    (
+        MethodeMarchingSquare = ~/EMethodeMarchingGrid/Isogrille
+        MethodeLissagePreFermeture = ~/EMethodeLissagePreFermerture/Gaussien3
+        DistanceDeLissage = 6000.0
+        DecallageCelluleVideParDefaut = -0.4
+        DoubleDensiteDePoints = true
+        LissagePostFermeture = false
+    )
+)

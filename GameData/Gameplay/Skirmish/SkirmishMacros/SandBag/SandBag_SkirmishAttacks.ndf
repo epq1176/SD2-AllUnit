@@ -1,0 +1,138 @@
+//-------------------------------------------------------------------------
+//------------------------- MISSIONS D'ATTAQUE ----------------------------
+//-------------------------------------------------------------------------
+// Parametres TMacroActionDescriptor_Common
+//-------------------------------------------------------------------------
+// GenerationType :
+// NumberOfMacro :
+// ParametresDeMission : Transport, Airstrike, Support, ArtilleryStrike
+// PoolModelList : liste des unites demandees
+// DisableReinforcement : si on recoit des renforts en cours d'attaque ou pas
+// IgnoreSafePath : Le pathfind de la mission cherche ou non à esquiver la menace
+// TuerLaMissionEnFinDeVieAuLieuDeLaRelancer : (bool)
+// LaunchASAP_RatioMin : permet de lancer l'attaque sans attendre toutes les unites requises à combiner avec ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+// MissionOmnisciente : Pas utilise dans Normandie (systeme de connaissance de zone)
+//-------------------------------------------------------------------------
+// Parametres TMacroActionDescriptor_Attack_Specific
+//-------------------------------------------------------------------------
+// RatioMinimumPourAttaquer : (float) le ratio qu'on doit posséder pour pouvoir déclencher l'attaque
+// UtiliserMenaceLaPlusProcheAuLieuDeLaPlusFaible : (bool) si on n'est pas en couloir, comment choisir la zone à attaquer
+// NePasAttaquerLesUnitesEnZoneExtended : (bool)
+// CompterLesUnitesEnZoneExtendedDansLaMenace : (bool)
+// ForceZoneAttaqueName : (string)
+// InterdireRequisition : (bool) si on utilise le systeme de Defense de base d'AoA
+//-------------------------------------------------------------------------
+// Parametres supplémentaire TMacroActionDescriptor_CorridorAttack_Specific
+//-------------------------------------------------------------------------
+// ForcedCorridor : (format special ex:[1]) permet de forcer l'attaque sur un couloir.
+//
+
+// MAINTAINS
+//-------------------------------------------------------------------------
+export SandBag_Maintain_CorridorAttacks is TMacroActionDescriptor_CorridorAttack_Specific
+(
+    GenerationType = TGenerationType_Maintain
+)
+//-------------------------------------------------------------------------
+// COULOIR
+//-------------------------------------------------------------------------
+export SandBag_Attack_MBT is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    IgnoreSafePath = true //on n'esquive pas la menace sur le chemin
+    DisableReinforcement = true
+    LaunchASAP_RatioMin = 0.1
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    TaggedPoolModelList = [
+        (["MainBattletank"], [~/SandBag_Pool_Attack_MBT]),
+    ]
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/SandBag_BasicAirstrikeSupport)
+        ),
+        (
+            ESettingType/Support,
+            TSupportSettingHolder(SettingList = [SandBag_Renfort_AT, SandBag_Renfort_AntiInfanterie, SandBag_Renfort_TransportsAbandonnes])
+        ),
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 2 OutMapArtilleryAmount = 0)
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+//---------------------------- POOL MODELS --------------------------------
+//-------------------------------------------------------------------------
+SandBag_Cheap_Price_Inf is 60
+SandBag_Cheap_Price_Mix is 60
+SandBag_Cheap_Price_Tan is 70
+SandBag_Medium_Price_Inf is 60
+SandBag_Medium_Price_Mix is 90
+SandBag_Medium_Price_Tan is 120
+SandBag_Heavy_Price_Inf is 80
+SandBag_Heavy_Price_Mix is 125
+SandBag_Heavy_Price_Tan is 400
+
+// PoolModelList
+//-------------------------------------------------------------------------
+export SandBag_Pool_Attack_MBT is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{fdc2021a-f1df-11e6-9a2d-4ccc6a0550f6}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Char_Lourd",
+                "Char_Standard",
+                "Char_CMD",
+                "Char_Reco",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{fdc2021b-f1df-11e6-9332-4ccc6a0550f6}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = false
+            TagsPriority = [
+                "Infanterie_Reco",
+                "Infanterie_Standard",
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Pool_Attack_light_MBT is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{fdc2021c-f1df-11e6-a5a8-4ccc6a0550f6}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Char_Standard",
+                "Vehicule_Appui",
+                "Char_Reco",
+                "Char_Standard"
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{fdc2021d-f1df-11e6-b8ee-4ccc6a0550f6}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = false
+            TagsPriority = [
+                "Infanterie_Reco",
+                "Infanterie_Spec_Defense",
+                "Infanterie_Standard",
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------

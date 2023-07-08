@@ -1,0 +1,907 @@
+//-------------------------------------------------------------------------
+//------------------------- MISSIONS D'ATTAQUE ----------------------------
+//-------------------------------------------------------------------------
+// Parametres TMacroActionDescriptor_Common
+//-------------------------------------------------------------------------
+// GenerationType :
+// NumberOfMacro :
+// ParametresDeMission : Transport, Airstrike, Support, ArtilleryStrike
+// PoolModelList : liste des unites demandees
+// DisableReinforcement : si on recoit des renforts en cours d'attaque ou pas
+// IgnoreSafePath : Le pathfind de la mission cherche ou non à esquiver la menace
+// TuerLaMissionEnFinDeVieAuLieuDeLaRelancer : (bool)
+// LaunchASAP_RatioMin : permet de lancer l'attaque sans attendre toutes les unites requises à combiner avec ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+// MissionOmnisciente : Pas utilise dans Normandie (systeme de connaissance de zone)
+//-------------------------------------------------------------------------
+// Parametres TMacroActionDescriptor_Attack_Specific
+//-------------------------------------------------------------------------
+// RatioMinimumPourAttaquer : (float) le ratio qu'on doit posséder pour pouvoir déclencher l'attaque
+// UtiliserMenaceLaPlusProcheAuLieuDeLaPlusFaible : (bool) si on n'est pas en couloir, comment choisir la zone à attaquer
+// NePasAttaquerLesUnitesEnZoneExtended : (bool)
+// CompterLesUnitesEnZoneExtendedDansLaMenace : (bool)
+// ForceZoneAttaqueName : (string)
+// InterdireRequisition : (bool) si on utilise le systeme de Defense de base d'AoA
+//-------------------------------------------------------------------------
+// Parametres supplémentaire TMacroActionDescriptor_CorridorAttack_Specific
+//-------------------------------------------------------------------------
+// ForcedCorridor : (format special ex:[1]) permet de forcer l'attaque sur un couloir.
+//
+
+//-------------------------------------------------------------------------
+// MAINTAINS
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Maintain_ZoneAttacks is TMacroActionDescriptor_Attack_Specific
+(
+    GenerationType = TGenerationType_Maintain
+)
+//-------------------------------------------------------------------------
+// COULOIR
+//-------------------------------------------------------------------------
+private template Friendly_ScnAtk_Template_Main_ZoneAttack
+[
+    MinimumResourceForLaunch:int = 0,
+    OrderedZoneWeightList = [3, 2, 1],
+]
+is TMacroActionDescriptor_Attack_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    MinimumResourceForLaunch = <MinimumResourceForLaunch>
+    NumberOfMacro = 1
+    CompterLesUnitesEnZoneExtendedDansLaMenace = true
+    RatioMinimumPourAttaquer = 0.25
+    RatioPourAttaquerPerduAChaqueTick = 0.0003
+    DisableReinforcement = false
+    IgnoreSafePath = false
+    MargeDeRegroupementDepuisLaLigneDeFront = 1
+    OrderedZoneWeightList = <OrderedZoneWeightList>
+
+    LaunchASAP_RatioMin = 0.01
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [
+        ~/Friendly_ScnAtk_Pool_Main_ZoneAttack,
+    ]
+
+    ParametresDeMission =
+    ~/Friendly_ScnAtk_Default_Attack_Settings
+    +
+    ~/Friendly_ScnAtk_Blitzkrieg_Attack_Settings
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_ZoneAttack_Main_A is Friendly_ScnAtk_Template_Main_ZoneAttack
+(
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_ZoneAttack_Main_A_WeightExtended is Friendly_ScnAtk_Template_Main_ZoneAttack
+(
+    OrderedZoneWeightList = [6, 5]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_ZoneAttack_Main_A_Autogen is Friendly_ScnAtk_Template_Main_ZoneAttack
+(
+    MinimumResourceForLaunch = ~/Friendly_Scn_MinimumResourceForLaunch_Stage_1
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_ZoneAttack_Main_A_Autogen_WeightExtended is Friendly_ScnAtk_Template_Main_ZoneAttack
+(
+    MinimumResourceForLaunch = ~/Friendly_Scn_MinimumResourceForLaunch_Stage_1
+    OrderedZoneWeightList = [6, 5]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_ZoneAttack_Main_B is Friendly_ScnAtk_Template_Main_ZoneAttack
+(
+    OrderedZoneWeightList = [2, 1]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_ZoneAttack_Main_B_WeightExtended is Friendly_ScnAtk_Template_Main_ZoneAttack
+(
+    OrderedZoneWeightList = [6, 5]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_ZoneAttack_Main_B_Autogen is Friendly_ScnAtk_Template_Main_ZoneAttack
+(
+    MinimumResourceForLaunch = ~/Friendly_Scn_MinimumResourceForLaunch_Stage_1
+    OrderedZoneWeightList = [2, 1]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_ZoneAttack_Main_B_Autogen_WeightExtended is Friendly_ScnAtk_Template_Main_ZoneAttack
+(
+    MinimumResourceForLaunch = ~/Friendly_Scn_MinimumResourceForLaunch_Stage_1
+    OrderedZoneWeightList = [6, 5]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_ZoneAttack_Main_C is Friendly_ScnAtk_Template_Main_ZoneAttack
+(
+    OrderedZoneWeightList = [1]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_ZoneAttack_Main_C_WeightExtended is Friendly_ScnAtk_Template_Main_ZoneAttack
+(
+    OrderedZoneWeightList = [5]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_ZoneAttack_Main_C_Autogen is Friendly_ScnAtk_Template_Main_ZoneAttack
+(
+    MinimumResourceForLaunch = ~/Friendly_Scn_MinimumResourceForLaunch_Stage_1
+    OrderedZoneWeightList = [1]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_ZoneAttack_Main_C_Autogen_WeightExtended is Friendly_ScnAtk_Template_Main_ZoneAttack
+(
+    MinimumResourceForLaunch = ~/Friendly_Scn_MinimumResourceForLaunch_Stage_1
+    OrderedZoneWeightList = [5]
+)
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+private template Friendly_ScnAtk_Template_ZoneAttack
+[
+    MinimumResourceForLaunch:int = 0,
+    RatioMinimumPourAttaquer:float = 1.0,
+    RatioPourAttaquerPerduAChaqueTick:float = 0.0005,
+    OrderedZoneWeightList = [3, 2, 1],
+]
+is TMacroActionDescriptor_Attack_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    MinimumResourceForLaunch = <MinimumResourceForLaunch>
+    UseAntiStackingForUnits = true
+    CompterLesUnitesEnZoneExtendedDansLaMenace = true
+    UtiliserMenaceLaPlusProcheAuLieuDeLaPlusFaible = true
+    RatioMinimumPourAttaquer = <RatioMinimumPourAttaquer>
+    RatioPourAttaquerPerduAChaqueTick = <RatioPourAttaquerPerduAChaqueTick>
+    DisableReinforcement = false
+    IgnoreSafePath = false
+    MargeDeRegroupementDepuisLaLigneDeFront = 1
+    OrderedZoneWeightList = <OrderedZoneWeightList>
+
+    LaunchASAP_RatioMin = 0.01
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList =
+    [
+        Friendly_ScnAtk_Pool_Default_ZoneAttack_1,
+        Friendly_ScnAtk_Pool_Default_ZoneAttack_2,
+        Friendly_ScnAtk_Pool_Default_ZoneAttack_3,
+    ]
+
+    ParametresDeMission =
+    ~/Friendly_ScnAtk_Default_Attack_Settings
+    +
+    ~/Friendly_ScnAtk_Blitzkrieg_Attack_Settings
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_ZoneAttack_Adaptive_A is Friendly_ScnAtk_Template_ZoneAttack
+(
+    RatioMinimumPourAttaquer = 0.3
+    RatioPourAttaquerPerduAChaqueTick = 0.0003
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_ZoneAttack_Adaptive_A_WeightExtended is Friendly_ScnAtk_Template_ZoneAttack
+(
+    RatioMinimumPourAttaquer = 0.3
+    RatioPourAttaquerPerduAChaqueTick = 0.0003
+    OrderedZoneWeightList = [7,6,5]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_ZoneAttack_Adaptive_A_Autogen is Friendly_ScnAtk_Template_ZoneAttack
+(
+    MinimumResourceForLaunch = ~/Friendly_Scn_MinimumResourceForLaunch_Stage_1
+    RatioMinimumPourAttaquer = 0.3
+    RatioPourAttaquerPerduAChaqueTick = 0.0003
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_ZoneAttack_Adaptive_A_Autogen_WeightExtended is Friendly_ScnAtk_Template_ZoneAttack
+(
+    MinimumResourceForLaunch = ~/Friendly_Scn_MinimumResourceForLaunch_Stage_1
+    RatioMinimumPourAttaquer = 0.3
+    RatioPourAttaquerPerduAChaqueTick = 0.0003
+    OrderedZoneWeightList = [7,6,5]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_ZoneAttack_Adaptive_B is Friendly_ScnAtk_Template_ZoneAttack
+(
+    RatioMinimumPourAttaquer = 0.3
+    RatioPourAttaquerPerduAChaqueTick = 0.0003
+    OrderedZoneWeightList = [2, 1]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_ZoneAttack_Adaptive_B_WeightExtended is Friendly_ScnAtk_Template_ZoneAttack
+(
+    RatioMinimumPourAttaquer = 0.3
+    RatioPourAttaquerPerduAChaqueTick = 0.0003
+    OrderedZoneWeightList = [6, 5]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_ZoneAttack_Adaptive_B_Autogen is Friendly_ScnAtk_Template_ZoneAttack
+(
+    MinimumResourceForLaunch = ~/Friendly_Scn_MinimumResourceForLaunch_Stage_1
+    RatioMinimumPourAttaquer = 0.3
+    RatioPourAttaquerPerduAChaqueTick = 0.0003
+    OrderedZoneWeightList = [2, 1]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_ZoneAttack_Adaptive_B_Autogen_WeightExtended is Friendly_ScnAtk_Template_ZoneAttack
+(
+    MinimumResourceForLaunch = ~/Friendly_Scn_MinimumResourceForLaunch_Stage_1
+    RatioMinimumPourAttaquer = 0.3
+    RatioPourAttaquerPerduAChaqueTick = 0.0003
+    OrderedZoneWeightList = [6, 5]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_ZoneAttack_Adaptive_C is Friendly_ScnAtk_Template_ZoneAttack
+(
+    RatioMinimumPourAttaquer = 0.3
+    RatioPourAttaquerPerduAChaqueTick = 0.0003
+    OrderedZoneWeightList = [2, 1]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_ZoneAttack_Adaptive_C_WeightExtended is Friendly_ScnAtk_Template_ZoneAttack
+(
+    RatioMinimumPourAttaquer = 0.3
+    RatioPourAttaquerPerduAChaqueTick = 0.0003
+    OrderedZoneWeightList = [6, 5]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_ZoneAttack_Adaptive_C_Autogen is Friendly_ScnAtk_Template_ZoneAttack
+(
+    MinimumResourceForLaunch = ~/Friendly_Scn_MinimumResourceForLaunch_Stage_1
+    RatioMinimumPourAttaquer = 0.3
+    RatioPourAttaquerPerduAChaqueTick = 0.0003
+    OrderedZoneWeightList = [2, 1]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_ZoneAttack_Adaptive_C_Autogen_WeightExtended is Friendly_ScnAtk_Template_ZoneAttack
+(
+    MinimumResourceForLaunch = ~/Friendly_Scn_MinimumResourceForLaunch_Stage_1
+    RatioMinimumPourAttaquer = 0.3
+    RatioPourAttaquerPerduAChaqueTick = 0.0003
+    OrderedZoneWeightList = [6, 5]
+)
+//-------------------------------------------------------------------------
+// Budgets
+//-------------------------------------------------------------------------
+Friendly_ScnAtk_Budget_Main_ZoneAttack is 200
+Friendly_ScnAtk_Budget_Default_ZoneAttack is 100
+Friendly_ScnAtk_Budget_Infantry_ZoneAttack is 80
+Friendly_ScnAtk_Budget_Tank_ZoneAttack is 100
+Friendly_ScnAtk_Budget_Combined_ZoneAttack is 100
+//-------------------------------------------------------------------------
+// PoolModelList
+//-------------------------------------------------------------------------
+// Fallback - Quelques infanteries au cas ou c'est la deche de tanks ou vehicules
+//--------------------------------------------------------------------------------
+Friendly_ScnAtk_Infantry_Fallback_ZoneAttack is [
+        TPoolElement(
+            DescriptorId = GUID:{0ca2d9f4-d795-11e8-aac5-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Infanterie_Standard",
+                "Infanterie_Spec_Attaque",
+                "Vehicule_Appui",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca30106-d795-11e8-a7ac-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Infanterie_Standard",
+                "Infanterie_Spec_Attaque",
+                "Vehicule_Appui",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca30107-d795-11e8-bc41-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Infanterie_Standard",
+                "Infanterie_Spec_Attaque",
+                "Infanterie_Spec_Defense",
+                "Vehicule_Appui",
+            ]
+        ),
+]
+
+// Fallback - Quelques véhicules ou chars au cas où ce soit la dèche d'infanteries
+//--------------------------------------------------------------------------------
+Friendly_ScnAtk_Vehicule_Fallback_ZoneAttack is [
+        TPoolElement(
+            DescriptorId = GUID:{0ca30108-d795-11e8-a207-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Vehicule_Appui",
+                "Char_Standard",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca30109-d795-11e8-b276-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Standard",
+                "Vehicule_Appui",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca3010a-d795-11e8-bd64-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Standard",
+                "Char_Lourd",
+            ]
+        ),
+]
+
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Pool_ZoneAttack_MBT is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{0ca3010b-d795-11e8-b5db-9c5c8ed10a9f}
+            Required = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/MostExpensive
+            TagsPriority = [
+                "Char_Lourd",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca3010c-d795-11e8-b7e2-9c5c8ed10a9f}
+            Required = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            IndexPriorityOverPrice = false
+            TagsPriority = [
+                "Infanterie_Spec_Defense", // Protege ton tank toi
+                "Infanterie_Spec_Attaque",
+                "Infanterie_Standard",
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Pool_Main_ZoneAttack is TPoolModel
+(
+    Budget = ~/Friendly_ScnAtk_Budget_Main_ZoneAttack
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{0ca3010d-d795-11e8-8da6-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_CMD",
+                "Vehicule_CMD",
+                "Char_Lourd",
+                "Char_Standard",
+                "Char",
+                "Vehicule_Appui"
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca3010e-d795-11e8-8e5d-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Reco",
+                "Vehicule_Reco",
+                "Infanterie_Reco",
+                "Infanterie_Standard",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca3010f-d795-11e8-a5cf-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Lourd",
+                "Char_Standard",
+                "Vehicule_Appui",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca30110-d795-11e8-adad-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Standard",
+                "Vehicule_Appui",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca30111-d795-11e8-9046-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Infanterie_Spec_Attaque",
+                "Infanterie_Standard",
+            ]
+        ),
+    ]
+    + ~/Friendly_ScnAtk_Infantry_Fallback_Attack
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Pool_Default_ZoneAttack_1 is TPoolModel
+(
+    Budget = ~/Friendly_ScnAtk_Budget_Default_ZoneAttack
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{0ca30112-d795-11e8-895c-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Vehicule_CMD",
+                "Infanterie_CMD",
+                "Vehicule_Appui"
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca30113-d795-11e8-bda0-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Standard",
+                "Char_Lourd",
+                "Vehicule_Appui",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca30114-d795-11e8-9795-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Reco",
+                "Vehicule_Reco",
+                "Infanterie_Reco"
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca30115-d795-11e8-a7f4-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Vehicule_Appui",
+                "Infanterie_Standard",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca30116-d795-11e8-8c59-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Standard",
+                "Char_Lourd",
+                "Vehicule_Appui",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca30117-d795-11e8-bec4-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Standard",
+                "Vehicule_Appui",
+            ]
+        ),
+    ]
+    + ~/Friendly_ScnAtk_Infantry_Fallback_Attack
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Pool_Default_ZoneAttack_2 is TPoolModel
+(
+    Budget = ~/Friendly_ScnAtk_Budget_Default_ZoneAttack
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{0ca32814-d795-11e8-b11d-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Char",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca32815-d795-11e8-a705-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Infanterie_Standard",
+                "Vehicule_Appui",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca32816-d795-11e8-8059-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Char_Reco",
+                "Vehicule_Reco",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca32817-d795-11e8-82dc-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Canon_AA_Porte",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca32818-d795-11e8-b079-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Standard",
+                "Vehicule_Appui",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca32819-d795-11e8-b874-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Standard",
+                "Char_Lourd",
+            ]
+        ),
+    ]
+    + ~/Friendly_ScnAtk_Infantry_Fallback_Attack
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Pool_Default_ZoneAttack_3 is TPoolModel
+(
+    Budget = ~/Friendly_ScnAtk_Budget_Default_ZoneAttack
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{0ca3281a-d795-11e8-9be5-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Infanterie_Standard",
+                "Vehicule_Appui",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca3281b-d795-11e8-9077-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Canon_AA_Porte",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca3281c-d795-11e8-b271-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Char_Standard",
+                "Char_Lourd",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca3281d-d795-11e8-9102-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Standard",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca3281e-d795-11e8-bd06-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Standard",
+                "Char_Lourd",
+            ]
+        ),
+    ]
+    + ~/Friendly_ScnAtk_Infantry_Fallback_Attack
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Pool_Tank_ZoneAttack is TPoolModel
+(
+    Budget = ~/Friendly_ScnAtk_Budget_Tank_ZoneAttack
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{0ca3281f-d795-11e8-8ca0-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Lourd",
+                "Char_Standard",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca32820-d795-11e8-affe-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Canon_AA_Porte",
+                "Char_Standard",
+                "Char_Reco",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca32821-d795-11e8-bb6a-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Vehicule_Reco",
+                "Infanterie_Reco",
+                "Infanterie_Standard",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca32822-d795-11e8-93c5-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Char_CMD",
+                "Vehicule_CMD",
+                "Char_Standard",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca32823-d795-11e8-b566-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Standard",
+                "Char_Lourd",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca32824-d795-11e8-88cb-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Standard",
+                "Char_Lourd",
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Pool_Infantry_ZoneAttack is TPoolModel
+(
+    Budget = ~/Friendly_ScnAtk_Budget_Infantry_ZoneAttack
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{0ca32825-d795-11e8-ba58-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Infanterie_CMD",
+                "Infanterie_Standard",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca32826-d795-11e8-8017-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Infanterie_Spec_Attaque",
+                "Infanterie_Standard",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca32827-d795-11e8-8d23-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Infanterie_Reco",
+                "Vehicule_Reco",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca32828-d795-11e8-b721-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Vehicule_Appui",
+                "Char_Standard",
+                "ChasseurDeChar_Standard",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca34f24-d795-11e8-b3f8-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Infanterie_Spec_Attaque",
+                "Infanterie_Standard",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca34f25-d795-11e8-861f-9c5c8ed10a9f}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Infanterie_Spec_Attaque",
+                "Infanterie_Standard",
+            ]
+        ),
+    ]
+    + ~/Friendly_ScnAtk_Vehicule_Fallback_Attack
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Pool_Combined_ZoneAttack is TPoolModel
+(
+    Budget = ~/Friendly_ScnAtk_Budget_Combined_ZoneAttack
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{0ca34f26-d795-11e8-a9da-9c5c8ed10a9f}
+
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Infanterie_CMD",
+                "Infanterie_Standard",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca34f27-d795-11e8-a7e3-9c5c8ed10a9f}
+
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Lourd",
+                "Char_Standard",
+                "Vehicule_Appui",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca34f28-d795-11e8-aacf-9c5c8ed10a9f}
+
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Infanterie_Spec_Attaque",
+                "Infanterie_Standard",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca34f29-d795-11e8-a0be-9c5c8ed10a9f}
+
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Infanterie_Reco",
+                "Vehicule_Reco",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca34f2a-d795-11e8-8ec0-9c5c8ed10a9f}
+
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Standard",
+                "Canon_AA_Porte",
+                "Vehicule_Appui",
+                "ChasseurDeChar_Standard",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca34f2b-d795-11e8-98c6-9c5c8ed10a9f}
+
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Infanterie_Spec_Attaque",
+                "Infanterie_Standard",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{0ca34f2c-d795-11e8-95e8-9c5c8ed10a9f}
+
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Infanterie_Spec_Attaque",
+                "Infanterie_Standard",
+            ]
+        ),
+    ]
+    + ~/Friendly_ScnAtk_Vehicule_Fallback_Attack
+)
+//-------------------------------------------------------------------------

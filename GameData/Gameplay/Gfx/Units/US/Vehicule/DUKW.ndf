@@ -1,0 +1,22 @@
+export ModelFile_DUKW is 'GameData:Assets\3D\Units\USA\Vehicule\DUKW\DUKW.Ase2NdfBin'
+
+Modele_DUKW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_DUKW
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_DUKW_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Vehicule\DUKW_MID\DUKW_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_DUKW_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Vehicule\LODS\DUKW_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

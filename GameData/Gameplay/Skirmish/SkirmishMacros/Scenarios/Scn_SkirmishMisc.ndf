@@ -1,0 +1,210 @@
+//-------------------------------------------------------------------------
+//----------------------------- MISC ---------------------------------
+//-------------------------------------------------------------------------
+export Scn_MinimumResourceForLaunch_Stage_1 is 200
+
+//-------------------------------------------------------------------------
+//----------------------------- SUPPLY ---------------------------------
+//-------------------------------------------------------------------------
+
+// Missions
+//-------------------------------------------------------------------------
+export Scn_Supply_Skirmish is TMacroActionDescriptor_Supply_Specific
+(
+    GenerationType = TGenerationType_BasedOnNumberOfCorridors
+
+    MinimumAmmoRatio = 0.3
+    SupplyAllies = false
+    IgnoreSafePath = false
+
+    PoolModelList = [
+        ~/Scn_Pool_Supply_Skirmish,
+    ]
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Generation,
+            TGenerationSettingHolder(NumberOfCorridorsPerMission = 4 ConsiderOnlySameDescriptor = true)
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Scn_Supply_Skirmish_Allied is TMacroActionDescriptor_Supply_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    MinimumAmmoRatio = 0.2
+    SupplyAllies = true
+    IgnoreSafePath = false
+    DisableReinforcement = true
+
+    PoolModelList = [
+        ~/Scn_Pool_Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+
+// Pool Models
+//-------------------------------------------------------------------------
+export Scn_Pool_Supply_Skirmish is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{fe913bc0-7621-11e9-80e0-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        TagsPriority = [
+            "Vehicule_Logistique",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------
+//------------------------------- RECO ------------------------------------
+//-------------------------------------------------------------------------
+
+// Missions
+//-------------------------------------------------------------------------
+export Scn_Reco is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    GenerationType = TGenerationType_BasedOnNumberOfCorridors
+
+    IgnoreSafePath = false //on n'esquive pas la menace sur le chemin
+    DisableReinforcement = false
+
+    IgnoreVisionForDefensePosition = false
+    IgnoreEnemyDirectionForDefensePosition = true
+    IgnoreDefensePositionSafety = false
+
+    PoolModelList = [
+        ~/Scn_Pool_Reco_Skirmish,
+    ]
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Generation,
+            TGenerationSettingHolder(NumberOfCorridorsPerMission = 4 ConsiderOnlySameDescriptor = true)
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Scn_AirReco is TMacroActionDescriptor_AirReco_Specific
+(
+    GenerationType = TGenerationType_FixedSizeByAlliance
+    NumberOfMacro = 1
+
+    PriorityCorridors = []
+    MaxAirplaneCountOnBattlefield = 1
+    TicksBetweenTwoLaunch = 60
+    TicksBetweenTwoMissions = 60
+
+    PoolModelList = [
+        ~/Scn_Pool_AirReco_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+
+// Pool Models
+//-------------------------------------------------------------------------
+export Scn_Pool_Reco_Skirmish is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{fe913bc1-7621-11e9-8711-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = false // On veut le moins cher
+        PriceComparisonMethod = EPriceComparatorType/Cheapest
+        TagsPriority = [
+            "Infanterie_Reco",
+            "Vehicule_Reco",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Scn_Pool_AirReco_Skirmish is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{fe913bc2-7621-11e9-b7d1-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        PriceComparisonMethod = EPriceComparatorType/Random
+        TagsPriority = [
+            "Avion_Reco",
+        ]
+    ),
+    ]
+)
+
+//-------------------------------------------------------------------------
+//--------------------------- SUPERCOMMANDER ------------------------------
+//-------------------------------------------------------------------------
+
+export Scn_SuperCommander is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    IgnoreSafePath = true
+    DisableReinforcement = true
+    IgnoreVisionForDefensePosition = true
+    IgnoreEnemyDirectionForDefensePosition = true
+    IgnoreDefensePositionSafety = false
+    PrioritizeCorridorsForTaggedPoolModels = true
+
+    LaunchASAP_RatioMin = 0.01
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [~/Scn_Pool_SuperCommander]
+
+    TaggedPoolModelList =
+    (
+        [
+            (["AttackMain"], [~/Scn_Pool_SuperCommander]),
+        ]
+    )
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/Scn_BasicAirstrikeSupport)
+        ),
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0)
+        ),
+        (
+            ESettingType/Support,
+            TSupportSettingHolder(SettingList = [Scn_Renfort_AT])
+        ),
+        (
+            ESettingType/AvoidCorridorTags,
+            TAvoidCorridorTagsSettingHolder(AvoidedCorridorTags = ["Filler"])
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+
+// Pool Models
+//-------------------------------------------------------------------------
+export Scn_Pool_SuperCommander is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{bf88a3f0-765d-11e9-9ec8-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = false
+        PriceComparisonMethod = EPriceComparatorType/Random
+        TagsPriority = [
+            "Char_SuperCMD",
+            "Vehicule_SuperCMD",
+            "Infanterie_SuperCMD",
+        ]
+    ),
+    ]
+)

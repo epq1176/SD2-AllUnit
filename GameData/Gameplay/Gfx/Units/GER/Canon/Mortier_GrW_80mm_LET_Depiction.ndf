@@ -1,0 +1,95 @@
+template TemplateMeshDescriptor_Mortier_GrW_80mm_LET [ ModelFile ] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+
+
+
+Gfx_Mortier_GrW_80mm_LET_1 is TDepictionTemplate //servant gauche
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_80mm_LET( ModelFile = ModelFile_Panzerschreck_LET)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_80mm_LET( ModelFile = ModelFile_Panzerschreck_LET_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_80mm_LET( ModelFile = ModelFile_Panzerschreck_LET)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_80mm_LET( ModelFile = ModelFile_Panzerschreck_LET_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_ServantMortar_Gauche
+)
+
+Gfx_Mortier_GrW_80mm_LET_2 is TDepictionTemplate //servant droite
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_80mm_LET( ModelFile = ModelFile_Panzerschreck_LET_Secondary)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_80mm_LET( ModelFile = ModelFile_Panzerschreck_LET_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_80mm_LET( ModelFile = ModelFile_Panzerschreck_LET_Secondary)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_80mm_LET( ModelFile = ModelFile_Panzerschreck_LET_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_ServantMortar_Droite
+)
+
+
+
+// DepictionOperator_SkeletalAnimation_Mortier_GrW_80mm_LET is [Template_DepictionOperator_SkeletalAnimation_With_Tree_TEST(AnimationTree = Mortier_GrW_80mm_Anim_Tree)]
+
+Gfx_Mortier_GrW_80mm_LET_Weapon is TDepictionTemplate //arme
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = CommonDepictionSelector
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_Mortier_GrW_80mm_LET ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_Mortier_GrW_80mm_LET_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_Mortier_GrW_80mm_LET_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor =  Modele_Mortier_GrW_80mm_LET ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor =  Modele_Mortier_GrW_80mm_LET_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor =  Modele_Mortier_GrW_80mm_LET_LOW ),
+        ]
+
+        SubDepictions = []
+        Operators = //DepictionOperator_SkeletalAnimation_Mortier_GrW_80mm_LET
+            DepictionOperatorNode_ResetUnit +
+            DepictionOperator_Carriable_Mortar
+        Actions = Weapons_Mortier_GrW_80mm_LET
+    )
+
+SubDepiction_Servant_1_Mortier_GrW_80mm_LET is TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_Mortier_GrW_80mm_LET_1 )
+SubDepiction_Servant_2_Mortier_GrW_80mm_LET is TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_Mortier_GrW_80mm_LET_2 )
+SubDepiction_Canon_AT_Mortier_GrW_80mm_LET is TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_Mortier_GrW_80mm_LET_Weapon )
+
+Gfx_Mortier_GrW_80mm_LET is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate //les boites
+    (
+        OverrideMeshBoundingBoxMin = [-500,-500,0]
+        OverrideMeshBoundingBoxMax = [ 500, 500,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_80mm_LET( ModelFile = ModelFile_Boites_GrW_34) ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_80mm_LET( ModelFile = ModelFile_Boites_GrW_34) ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_80mm_LET( ModelFile = ModelFile_Boites_GrW_34) ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_80mm_LET( ModelFile = ModelFile_Boites_GrW_34) ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_80mm_LET( ModelFile = ModelFile_Boites_GrW_34) ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_80mm_LET( ModelFile = ModelFile_Boites_GrW_34) ),
+        ]
+        NodeNamesForSelection = [ 'Canon_AT', 'servant_G' , 'servant_D']
+        SubDepictions = [SubDepiction_Servant_1_Mortier_GrW_80mm_LET,
+                        SubDepiction_Servant_2_Mortier_GrW_80mm_LET,
+                        SubDepiction_Canon_AT_Mortier_GrW_80mm_LET]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+    )
+)

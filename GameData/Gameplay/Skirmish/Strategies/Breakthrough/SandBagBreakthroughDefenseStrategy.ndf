@@ -1,0 +1,392 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export SandBagBreakthroughDefenseStrategy is TIAGeneralStrategy
+(
+    StrategyName = "GenBTDefAI"
+    FirstGenerator = SandBag_BTDef_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    ShouldUseTaggedCorridorsForTouchDown = true
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    TransitionList =
+    [
+        SandBag_BTDef_Transition_StartToDeploy,
+        SandBag_BTDef_Transition_StartToFrontLineDefense,
+        SandBag_BTDef_Transition_StartToBackLineDefense,
+        SandBag_BTDef_Transition_DeployToFrontLineDefense,
+        SandBag_BTDef_Transition_FrontLineDefenseToBackLineDefense,
+        SandBag_BTDef_Transition_BackLineDefenseToStrikeBack,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Condition_GotoGeneric is TSequenceCondition_True
+(
+)
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Condition_CommandPhase is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Condition_TriggerBackLine is TSequenceCondition_MapPossessionPerCorridor
+(
+    PossessionRatio = 0.6
+    NumberOfCorridorsNeeded = 5  //2
+)
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Condition_StrikeBack is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_C'
+)
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Transition_StartToDeploy is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_BTDef_Choose_Strategy
+    Condition = SandBag_BTDef_Condition_GotoGeneric
+    Destination = SandBag_BTDef_PhaseDeploiement
+)
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Transition_StartToFrontLineDefense is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_BTDef_Choose_Strategy
+    Condition = SandBag_BTDef_Condition_CommandPhase
+    Destination = SandBag_BTDef_Phase_FrontLineDefense
+)
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Transition_StartToBackLineDefense is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_BTDef_Choose_Strategy
+    Condition = SandBag_BTDef_Condition_TriggerBackLine
+    Destination = SandBag_BTDef_Phase_BackLineDefense
+)
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Transition_DeployToFrontLineDefense is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_BTDef_PhaseDeploiement
+    Condition = SandBag_BTDef_Condition_CommandPhase
+    Destination = SandBag_BTDef_Phase_FrontLineDefense
+)
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Transition_FrontLineDefenseToBackLineDefense is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_BTDef_Phase_FrontLineDefense
+    Condition = SandBag_BTDef_Condition_TriggerBackLine
+    Destination = SandBag_BTDef_Phase_BackLineDefense
+)
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Transition_BackLineDefenseToStrikeBack is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_BTDef_Phase_BackLineDefense
+    Condition = SandBag_BTDef_Condition_StrikeBack
+    Destination = SandBag_BTDef_Phase_StrikeBack
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //~/SandBag_BTDef_Support_AntiTank,
+        ~/SandBag_BTDef_Support_Transports,
+        ~/SandBag_BTDef_Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_BTDef_PhaseDeploiement is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        ~/SandBag_BTDef_Support_Transports,
+
+        ~/SandBag_BTDef_Supply_Skirmish,
+
+        ~/SandBag_BTDef_Defense_Static_Adaptive_FrontLane, // Canon AT - Chasseur de char - ATInf - HMG - Flamer // 85
+        ~/SandBag_BTDef_Defense_Static_Adaptive_FrontLane,
+
+        ~/SandBag_BTDef_Defense_Static_AA_FrontLane,
+        ~/SandBag_BTDef_Static_SuperCommander_FrontLane,
+
+        ~/SandBag_BTDef_Artillery_FrontLane,        // Artillerie pas chère                 //  80
+
+        ~/SandBag_BTDef_Defense_Static_Adaptive_FrontLane,  // Faire du code pour adapater le budget en fonction de l'income
+        ~/SandBag_BTDef_Defense_Static_Adaptive_FrontLane,
+
+        ~/SandBag_BTDef_Defense_Filler_FrontLane,
+
+        ~/SandBag_BTDef_Defense_Static_Adaptive_FrontLane, // Canon AT - Chasseur de char - ATInf - HMG - Flamer // 85
+        ~/SandBag_BTDef_Defense_Static_Adaptive_FrontLane,
+        ~/SandBag_BTDef_Defense_Static_Tank_FrontLane, // Mission avec un char lourd en static
+
+    ] + SandBag_BTDef_Defenses_Airstrike_Arti_Shuffle_FrontLane
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+    +   ~/SandBag_BTDef_Scaling_Defense_FrontLane
+    +   ~/SandBag_BTDef_Scaling_Defense_FrontLane
+    +   ~/SandBag_BTDef_Scaling_Defense_FrontLane
+)
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Phase_FrontLineDefense is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 3
+    GeneratorList =
+    [
+        // Ici on cherche a economiser, on ne renforce que si l'on a assez d'argent pour pouvoir fill la backline en cas de trigger
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        ~/SandBag_BTDef_Support_Transports,
+
+        ~/SandBag_BTDef_Supply_Skirmish,
+
+        //------------------------------
+        // Maitain
+        //------------------------------
+        ~/SandBag_BTDef_Maintain_CorridorDefenses,
+        ~/SandBag_BTDef_Maintain_CorridorDynamicDefenses,
+        ~/SandBag_BTDef_Maintain_AirStrike,
+        ~/SandBag_BTDef_Maintain_Artillery,
+
+        //------------------------------
+        // Priority Productions
+        //------------------------------
+        ~/SandBag_BTDef_Defense_Dynamic_FrontLane,
+        ~/SandBag_BTDef_Defense_Dynamic_FrontLane,
+    ]
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+    +   ~/SandBag_BTDef_Scaling_Defense_Economic
+    +   ~/SandBag_BTDef_Scaling_Defense_Economic
+    +   ~/SandBag_BTDef_Scaling_Defense_Economic
+)
+
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Phase_BackLineDefense is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        // Ici on cherche a economiser, on ne renforce que si l'on a assez d'argent pour pouvoir fill la backline en cas de trigger
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        ~/SandBag_BTDef_Support_Transports,
+
+        ~/SandBag_BTDef_Supply_Skirmish,
+
+        //------------------------------
+        // Maitain
+        //------------------------------
+        ~/SandBag_BTDef_Maintain_CorridorDefenses,
+        ~/SandBag_BTDef_Maintain_CorridorDynamicDefenses, //possiblement a créer
+        ~/SandBag_BTDef_Maintain_AirStrike,
+        ~/SandBag_BTDef_Maintain_Artillery,
+
+        //------------------------------
+        // Defense
+        //------------------------------
+        ~/SandBag_BTDef_Defense_Static_Adaptive_BackLane, // Canon AT - Chasseur de char - ATInf - HMG - Flamer // 85
+        ~/SandBag_BTDef_Defense_Static_Adaptive_BackLane,
+
+        ~/SandBag_BTDef_Attack_Objectives,
+
+        ~/SandBag_BTDef_Defense_Static_AA_BackLane,
+        ~/SandBag_BTDef_Static_SuperCommander_BackLane,
+
+        ~/SandBag_BTDef_Artillery_Expensive,
+
+        ~/SandBag_BTDef_Defense_Static_Adaptive_BackLane,
+        ~/SandBag_BTDef_Defense_Static_Adaptive_BackLane,
+
+        ~/SandBag_BTDef_Defense_Static_Adaptive_BackLane_Filler,
+
+        ~/SandBag_BTDef_Defense_Dynamic_Adaptive,  // Faire du code pour adapater le budget en fonction de l'income
+        ~/SandBag_BTDef_Defense_Dynamic_Adaptive,
+
+        ~/SandBag_BTDef_Attack_MBT_Support,
+
+        ~/SandBag_BTDef_Attack_Objectives,
+    ] + SandBag_BTDef_Defenses_Airstrike_Arti_Shuffle_BackLane
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+        // Dans les difficultés supérieures il faudra surement maintenir
+        // ça avec des maintain à la phase d'après pour être sur qu'on
+        // produise de nouvelles unités
+    +   ~/SandBag_BTDef_Scaling_Defense
+    +   ~/SandBag_BTDef_Scaling_Defense
+    +   ~/SandBag_BTDef_Scaling_Defense
+)
+//-------------------------------------------------------------------------
+export SandBag_BTDef_Phase_StrikeBack is TSequenceGeneratorDescriptor
+(
+    // Les défenses prioritaires disparaissent, on lance un nouveau set d'attaques
+    // On ajoute des défenses non prioritaires dynamiques
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        ~/SandBag_BTDef_Maintain_CorridorAttacks,
+        ~/SandBag_BTDef_Maintain_ObjectiveAttacks,
+        ~/SandBag_BTDef_Maintain_CorridorDefenses,
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/SandBag_BTDef_Support_AntiTank,
+        ~/SandBag_BTDef_Support_Transports,
+        ~/SandBag_BTDef_Supply_Skirmish,
+        ~/SandBag_BTDef_Attack_Filler,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/SandBag_BTDef_Attack_Objectives,
+
+        ~/SandBag_BTDef_Defense_Dynamic_Adaptive,  // Faire du code pour adapater le budget en fonction de l'income
+        ~/SandBag_BTDef_Defense_Dynamic_Adaptive,
+        ~/SandBag_BTDef_Attack_Adaptive,
+
+        ~/SandBag_BTDef_SuperCommander,
+
+        ~/SandBag_BTDef_Attack_Main,              // Plusieurs tanks pour un budget donné // 200
+        ~/SandBag_BTDef_Artillery_Support,        // Artillerie pas chère                 //  80
+
+        //------------------------------
+        // Support de la main Attack
+        //------------------------------
+        ~/SandBag_BTDef_Attack_MBT,       // On enlève le status support // DISABLE REINFORCEMENTS + TGenerationType_RestrictedNumberOfLaunch 1
+
+        // Maintien
+        ~/SandBag_BTDef_Reco,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/SandBag_BTDef_Supply_Skirmish_Allied,
+
+
+    ] + ~/SandBag_BTDef_Defenses_Airstrike_Arti_Shuffle
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+        // Dans les difficultés supérieures il faudra surement maintenir
+        // ça avec des maintain à la phase d'après pour être sur qu'on
+        // produise de nouvelles unités
+    +   ~/SandBag_BTDef_Scaling
+    +   ~/SandBag_BTDef_Scaling
+)
+
+
+
+
+
+SandBag_BTDef_Defenses_Airstrike_Arti_Shuffle_FrontLane is
+[
+    ~/SandBag_BTDef_Defense_Static_Adaptive_FrontLane,
+    ~/SandBag_BTDef_Airstrike_Defense,
+    ~/SandBag_BTDef_Artillery_Expensive,
+    ~/SandBag_BTDef_Defense_Static_Adaptive_FrontLane,
+    ~/SandBag_BTDef_Defense_Static_AA_FrontLane,
+    ~/SandBag_BTDef_Defense_Static_Adaptive_FrontLane,
+    ~/SandBag_BTDef_Maintain_AirStrike,
+    ~/SandBag_BTDef_Maintain_Artillery,
+]
+
+SandBag_BTDef_Defenses_Airstrike_Arti_Shuffle_BackLane is
+[
+    ~/SandBag_BTDef_Defense_Static_Adaptive_BackLane,
+    ~/SandBag_BTDef_Airstrike_Defense,
+    ~/SandBag_BTDef_Artillery_Expensive,
+    ~/SandBag_BTDef_Defense_Static_Adaptive_BackLane,
+    ~/SandBag_BTDef_Defense_Static_AA_BackLane,
+    ~/SandBag_BTDef_Defense_Static_Adaptive_BackLane,
+    ~/SandBag_BTDef_Maintain_AirStrike,
+    ~/SandBag_BTDef_Maintain_Artillery,
+]
+
+SandBag_BTDef_Defenses_Airstrike_Arti_Shuffle is
+[
+    ~/SandBag_BTDef_Defense_Static_Adaptive,
+    ~/SandBag_BTDef_Airstrike_Defense,
+    ~/SandBag_BTDef_Artillery_Expensive,
+    ~/SandBag_BTDef_Defense_Static_Adaptive,
+    ~/SandBag_BTDef_Defense_Static_AA,
+    ~/SandBag_BTDef_Defense_Static_Adaptive,
+    ~/SandBag_BTDef_AirReco,
+    ~/SandBag_BTDef_Maintain_AirStrike,
+    ~/SandBag_BTDef_Maintain_Artillery,
+]
+
+SandBag_BTDef_Scaling_Defense_FrontLane is
+[
+    ~/SandBag_BTDef_Defense_Static_Adaptive_Autogen_FrontLane,
+    ~/SandBag_BTDef_Defense_Static_Adaptive_Autogen_FrontLane,
+    ~/SandBag_BTDef_Airstrike_Defense_Autogen,
+    ~/SandBag_BTDef_Defense_Static_AA_Autogen,
+    ~/SandBag_BTDef_Artillery_TriggerHappy_Autogen,
+    ~/SandBag_BTDef_Airstrike_Defense_Autogen,
+    ~/SandBag_BTDef_Artillery_TriggerHappy_Autogen,
+    ~/SandBag_BTDef_Artillery_Expensive_Autogen,
+]
+
+SandBag_BTDef_Scaling_Defense is
+[
+    ~/SandBag_BTDef_Defense_Dynamic_Adaptive_Autogen,
+    ~/SandBag_BTDef_Defense_Dynamic_Adaptive_Autogen,
+    ~/SandBag_BTDef_Airstrike_Defense_Autogen,
+    ~/SandBag_BTDef_Defense_Static_AA_Autogen,
+    ~/SandBag_BTDef_Artillery_TriggerHappy_Autogen,
+    ~/SandBag_BTDef_Airstrike_Defense_Autogen,
+    ~/SandBag_BTDef_Artillery_TriggerHappy_Autogen,
+    ~/SandBag_BTDef_Artillery_Expensive_Autogen,
+]
+
+SandBag_BTDef_Scaling_Defense_Economic is
+[
+    ~/SandBag_BTDef_Defense_Dynamic_Adaptive_Autogen_Economic,
+    ~/SandBag_BTDef_Defense_Dynamic_Adaptive_Autogen_Economic,
+    ~/SandBag_BTDef_Airstrike_Defense_Autogen_Economic,
+    ~/SandBag_BTDef_Defense_Static_AA_Autogen_Economic,
+    ~/SandBag_BTDef_Artillery_TriggerHappy_Autogen_Economic,
+    ~/SandBag_BTDef_Airstrike_Defense_Autogen_Economic,
+    ~/SandBag_BTDef_Artillery_TriggerHappy_Autogen_Economic,
+    ~/SandBag_BTDef_Artillery_Expensive_Autogen_Economic,
+]
+
+SandBag_BTDef_Scaling is
+[
+    ~/SandBag_BTDef_Attack_Main_Autogen,
+    ~/SandBag_BTDef_Attack_Adaptive_Autogen,
+    ~/SandBag_BTDef_Attack_Adaptive_Autogen,
+    ~/SandBag_BTDef_Defense_Dynamic_Adaptive_Autogen,
+    ~/SandBag_BTDef_Defense_Dynamic_Adaptive_Autogen,
+    ~/SandBag_BTDef_Airstrike_Defense_Autogen,
+    ~/SandBag_BTDef_Defense_Dynamic_Adaptive_Autogen,
+    ~/SandBag_BTDef_Defense_Static_AA_Autogen,
+    ~/SandBag_BTDef_Attack_MBT_Support_Autogen,
+    ~/SandBag_BTDef_Artillery_TriggerHappy_Autogen,
+    ~/SandBag_BTDef_Airstrike_Offense_Autogen,
+    ~/SandBag_BTDef_Artillery_TriggerHappy_Autogen,
+    ~/SandBag_BTDef_Attack_Objectives_Autogen,
+    ~/SandBag_BTDef_Artillery_Expensive_Autogen,
+    ~/SandBag_BTDef_Airstrike_Assault_Autogen,
+]

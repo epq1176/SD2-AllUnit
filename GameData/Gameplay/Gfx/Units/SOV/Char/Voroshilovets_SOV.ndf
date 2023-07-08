@@ -1,0 +1,22 @@
+export ModelFile_Voroshilovets_SOV is 'GameData:Assets\3D\Units\SOV\Char\Voroshilovets_SOV\Voroshilovets_SOV.Ase2NdfBin'
+
+Modele_Voroshilovets_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Voroshilovets_SOV
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Voroshilovets_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\Voroshilovets_SOV_MID\Voroshilovets_SOV_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Voroshilovets_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\LODS\Voroshilovets_SOV_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

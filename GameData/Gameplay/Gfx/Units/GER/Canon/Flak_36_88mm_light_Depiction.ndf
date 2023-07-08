@@ -1,0 +1,69 @@
+template TemplateMeshDescriptor_Flak_36_88mm_light [ ModelFile ] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+
+DepictionOperator_SkeletalAnimation_Flak_36_88mm_light is [Template_DepictionOperator_SkeletalAnimation_With_Tree_TEST(AnimationTree = Flak_36_88mm_Anim_Tree)]
+
+Gfx_Flak_36_88mm_light_Weapon is TDepictionTemplate //arme
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = CommonDepictionSelector
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_Flak_36_88mm_light ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_Flak_36_88mm_light_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_Flak_36_88mm_light_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor =  Modele_Flak_36_88mm_light ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor =  Modele_Flak_36_88mm_light_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor =  Modele_Flak_36_88mm_light_LOW ),
+        ]
+
+        SubDepictions = []
+        Operators = DepictionOperator_SkeletalAnimation_Flak_36_88mm_light +     [TCosmeticTurretOperatorDesc
+            (
+                OperatorId = 'tourelle1'
+                ZAxisNode  = 'Tourelle_01'
+                ZAxisPhysicalPropertyName = 'tourelle1'
+                ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+                ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+                GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+                YAxisNode = 'Axe_Canon_01'
+                YAxisPhysicalPropertyName = 'tourelle1axe'
+                MinYAngle = -0.349065850399
+                MaxYAngle = 1.4835298642
+            ),]
+        Actions = Weapons_Flak_36_88mm_light
+    )
+
+// SubDepiction_Servant_1_Flak_36_88mm_light is TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_Flak_36_88mm_light_1 )
+// SubDepiction_Servant_2_Flak_36_88mm_light is TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_Flak_36_88mm_light_2 )
+SubDepiction_Canon_AT_Flak_36_88mm_light is TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_Flak_36_88mm_light_Weapon )
+
+Gfx_Flak_36_88mm_light is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate //les boites
+    (
+        OverrideMeshBoundingBoxMin = [-500,-500,0]
+        OverrideMeshBoundingBoxMax = [ 500, 500,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm_light( ModelFile = ModelFile_Boites_Flak_36_88mm) ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm_light( ModelFile = ModelFile_Boites_Flak_36_88mm) ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm_light( ModelFile = ModelFile_Boites_Flak_36_88mm) ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm_light( ModelFile = ModelFile_Boites_Flak_36_88mm) ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm_light( ModelFile = ModelFile_Boites_Flak_36_88mm) ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_Flak_36_88mm_light( ModelFile = ModelFile_Boites_Flak_36_88mm) ),
+        ]
+        NodeNamesForSelection = [ 'Canon_AT', 'servant_G' , 'servant_D' , 'servant_G2' , 'servant_D2' ]
+        SubDepictions = [SubDepiction_Servant_1_Flak_36_88mm,
+                        SubDepiction_Servant_2_Flak_36_88mm,
+                        SubDepiction_Servant_3_Flak_36_88mm,
+                        SubDepiction_Servant_4_Flak_36_88mm,
+                        SubDepiction_Canon_AT_Flak_36_88mm_light]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+    )
+)

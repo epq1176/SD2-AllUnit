@@ -1,0 +1,22 @@
+export ModelFile_SU_76M_TD_GER is 'GameData:Assets\3D\Units\SOV\Char\SU_76M_SOV\SU_76M_SOV.Ase2NdfBin'
+
+Modele_SU_76M_TD_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_SU_76M_TD_GER
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_SU_76M_TD_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\SU_76M_SOV_MID\SU_76M_SOV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_SU_76M_TD_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\LODS\SU_76M_SOV_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

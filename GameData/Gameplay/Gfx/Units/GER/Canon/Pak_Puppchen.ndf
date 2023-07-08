@@ -1,0 +1,22 @@
+export ModelFile_Pak_Puppchen is 'GameData:Assets\3D\Units\GER\Canon\Puppchen\Puppchen.Ase2NdfBin'
+
+Modele_Pak_Puppchen is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Pak_Puppchen
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Pak_Puppchen_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\Puppchen_MID\Puppchen_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Pak_Puppchen_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\LODS\Puppchen_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

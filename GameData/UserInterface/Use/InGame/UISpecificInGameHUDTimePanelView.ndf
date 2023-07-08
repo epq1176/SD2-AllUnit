@@ -1,0 +1,461 @@
+// A faire correspondre avec l'enum dans InterfaceSpecific/UISpecificInGameSpeed.h
+
+GameSpeed_BulletTime   is 0
+GameSpeed_Slow         is 1
+GameSpeed_Normal       is 2
+GameSpeed_Fast         is 3
+GameSpeed_VeryFast     is 4
+
+private GameSpeedPanelButtonWidth is 25
+private GameSpeedPanelButtonHeight is 25
+
+private GameSpeedPanelOffsetY is 7.5
+
+private ButtonManager is TBUCKRadioButtonManager()
+
+SpecificInGameHUDTimePanelViewMainComponent is BUCKContainerDescriptor
+(
+    ElementName = "InGameTimePanel"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableOffset = [0,5]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContentVertically
+    SpotlightComponent = SpotlightDescriptor()
+
+    HidePointerEvents = true
+
+    HasBackground = true
+    BackgroundBlockColorToken = "TimePanel/Background"
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+
+            ChildFitToContent = true
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "TimeText"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            MagnifiableWidthHeight = [0.0, GameSpeedPanelButtonHeight]
+                        )
+
+                        TextSize = "TimePanel/Timer/Text"
+                        TextColor = "Glacier"
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                        TypefaceToken = "Main"
+
+                        ColorMode = ~/ColorMode/Override
+
+                        BigLineAction = ~/BigLineAction/ResizeFont
+                        TextStyle = "Default"
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Center
+                            VerticalAlignment = UIText_VerticalCenter
+                        )
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    // Separator
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ElementName = "TimeSeparator"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            MagnifiableWidthHeight = [0.0, 10.0]
+                        )
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "NextActionText"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            MagnifiableWidthHeight = [0.0, GameSpeedPanelButtonHeight]
+                        )
+
+                        TextSize = "MinimapInfo/NextPhase/Text"
+                        TextColor = "MinimapInfo/NextPhase/Text"
+                        TextToken = "TXT_PHASE"
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                        TypefaceToken = "Main"
+
+                        BigLineAction = ~/BigLineAction/CutByDots
+                        TextStyle = "Default"
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Center
+                            VerticalAlignment = UIText_VerticalCenter
+                        )
+
+                        TextPadding = TRTTILength4(Magnifiable = [0.0, 0.0, 0.0, 0.0])
+
+                        Hint = BUCKSpecificHintableArea
+                        (
+                            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                            HintTitleToken = "HTP_NEXPHT"
+                            HintBodyToken = "HTP_NEXPHB"
+                            HintExtendedToken = "HTP_NEXPHE"
+                        )
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            MagnifiableWidthHeight = [0.0, GameSpeedPanelButtonHeight]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        Components =
+                        [
+                            BUCKListDescriptor
+                            (
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [0.0, 1.0]
+                                )
+
+                                Axis = ~/ListAxis/Horizontal
+
+                                Elements =
+                                [
+                                    BUCKListElementDescriptor
+                                    (
+                                        ExtendWeight = 1.0
+                                        ComponentDescriptor = BUCKTextDescriptor
+                                        (
+                                            ElementName = "NextActionTimeText"
+
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                RelativeWidthHeight = [1.0, 1.0]
+                                            )
+
+                                            TextSize = "TimePanel/Timer/Text"
+                                            TextToken = "TIME_DISPL"
+                                            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                            TypefaceToken = "Main"
+
+                                            TextColor = "Glacier"
+                                            ColorMode = ~/ColorMode/Override
+
+                                            BigLineAction = ~/BigLineAction/ResizeFont
+                                            TextStyle = "Default"
+                                            ParagraphStyle = TParagraphStyleRTTI
+                                            (
+                                                Alignment = UIText_Center
+                                                VerticalAlignment = UIText_VerticalCenter
+                                            )
+
+                                            Hint = BUCKSpecificHintableArea
+                                            (
+                                                DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                                                HintTitleToken = "HTP_TIMPHT"
+                                                HintBodyToken = "HTP_TIMPHB"
+                                                HintExtendedToken = "HTP_TIMPHE"
+                                            )
+                                        )
+                                    ),
+
+                                    BUCKListElementDescriptor
+                                    (
+                                        ComponentDescriptor = BUCKListDescriptor
+                                        (
+                                            ElementName = "InGameSpeedButtonList"
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                RelativeWidthHeight = [0.0, 1.0]
+                                            )
+
+                                            Axis = ~/ListAxis/Horizontal
+
+                                            InterItemMargin = TRTTILength(Pixel = 2.0)
+                                            LastMargin = TRTTILength(Magnifiable = 4.0)
+
+                                            Elements =
+                                            [
+                                                BUCKListElementDescriptor
+                                                (
+                                                    ComponentDescriptor = HUDButton
+                                                    (
+                                                        ElementName = "SpeedPauseButton"
+
+                                                        ComponentFrame = TUIFramePropertyRTTI
+                                                        (
+                                                            RelativeWidthHeight = [0.0, 1.0]
+                                                            MagnifiableWidthHeight = [GameSpeedPanelButtonWidth, 0.0]
+                                                        )
+
+                                                        HasBackground = false
+                                                        BackgroundColorToken = "BoutonTimePanel"
+
+                                                        Mapping = $/KeyboardOption/Mapping_SwitchBulletTime
+                                                        IsTogglable = true
+                                                        CannotDeselect = false
+                                                        RadioButtonManager = ~/ButtonManager
+
+                                                        HasBorder = false
+                                                        BorderLineColorToken = 'TimePanel/ButtonBorder'
+                                                        BorderThickness = "1"
+
+                                                        BackgroundTexture = "vitesse01"
+                                                        BackgroundTextureFrameProperty = TUIFramePropertyRTTI
+                                                        (
+                                                            RelativeWidthHeight = [1, 1]
+                                                            MagnifiableWidthHeight = [0.0, 0.0]
+                                                            AlignementToFather = [0.5, 0.5]
+                                                            AlignementToAnchor = [0.5, 0.5]
+                                                        )
+
+                                                        HintTitleToken = "HTP_SPDPAT"
+                                                        HintBodyToken = "HTP_SPDPAB"
+                                                        HintExtendedToken = "HTP_SPDPAE"
+                                                        HintDico = ~/LocalisationConstantes/dico_interface_ingame
+                                                    )
+                                                ),
+
+                                                 // Bouton décélérer
+                                                BUCKListElementDescriptor
+                                                (
+                                                    ComponentDescriptor = HUDButton
+                                                    (
+                                                        ElementName = "SpeedSlowButton"
+
+                                                        ComponentFrame = TUIFramePropertyRTTI
+                                                        (
+                                                            RelativeWidthHeight = [0.0, 1.0]
+                                                            MagnifiableWidthHeight = [GameSpeedPanelButtonWidth, 0.0]
+                                                        )
+
+                                                        HasBackground = false
+                                                        //BackgroundColorToken = "BoutonTimePanel"
+
+                                                        IsTogglable = true
+                                                        CannotDeselect = true
+                                                        RadioButtonManager = ~/ButtonManager
+
+                                                        HasBorder = false
+                                                        //BorderLineColorToken = 'TimePanel/ButtonBorder'
+                                                        //BorderThickness = "1"
+
+                                                        BackgroundTexture = "vitesse02"
+                                                        BackgroundTextureFrameProperty = TUIFramePropertyRTTI
+                                                        (
+                                                            RelativeWidthHeight = [1, 1] //RelativeWidthHeight = [0.8, 0.8]
+                                                            MagnifiableWidthHeight = [0.0, 0.0]
+                                                            AlignementToFather = [0.5, 0.5]
+                                                            AlignementToAnchor = [0.5, 0.5]
+                                                        )
+
+                                                        HintTitleToken = "HTP_SPDSLT"
+                                                        HintBodyToken = "HTP_SPDSLB"
+                                                        HintExtendedToken = "HTP_SPDSLE"
+                                                        HintDico = ~/LocalisationConstantes/dico_interface_ingame
+                                                    )
+                                                ),
+
+                                                 // Bouton lecture
+                                                BUCKListElementDescriptor
+                                                (
+                                                    ComponentDescriptor = HUDButton
+                                                    (
+                                                        ElementName = "SpeedPlayButton"
+
+                                                        ComponentFrame = TUIFramePropertyRTTI
+                                                        (
+                                                            RelativeWidthHeight = [0.0, 1.0]
+                                                            MagnifiableWidthHeight = [GameSpeedPanelButtonWidth, 0.0]
+                                                        )
+                                                        HasBackground = false
+                                                        //BackgroundColorToken = "BoutonTimePanel"
+
+                                                        IsTogglable = true
+                                                        CannotDeselect = true
+                                                        RadioButtonManager = ~/ButtonManager
+
+                                                        HasBorder = false
+                                                        //BorderLineColorToken = 'TimePanel/ButtonBorder'
+                                                        //BorderThickness = "1"
+
+                                                        BackgroundTexture = "vitesse03"
+                                                        BackgroundTextureFrameProperty = TUIFramePropertyRTTI
+                                                        (
+                                                            RelativeWidthHeight = [1, 1]
+                                                            MagnifiableWidthHeight = [0.0, 0.0]
+                                                            AlignementToFather = [0.5, 0.5]
+                                                            AlignementToAnchor = [0.5, 0.5]
+                                                        )
+
+                                                        HintTitleToken = "HTP_SPDPLT"
+                                                        HintBodyToken = "HTP_SPDPLB"
+                                                        HintExtendedToken = "HTP_SPDPLE"
+                                                        HintDico = ~/LocalisationConstantes/dico_interface_ingame
+                                                    )
+                                                ),
+
+                                                // Boutons accélérer
+                                                BUCKListElementDescriptor
+                                                (
+                                                    ComponentDescriptor = HUDButton
+                                                    (
+                                                        ElementName = "SpeedFastButton"
+
+                                                        ComponentFrame = TUIFramePropertyRTTI
+                                                        (
+                                                            RelativeWidthHeight = [0.0, 1.0]
+                                                            MagnifiableWidthHeight = [GameSpeedPanelButtonWidth, 0.0]
+                                                        )
+                                                        HasBackground = false
+                                                        //BackgroundColorToken = "BoutonTimePanel"
+
+                                                        IsTogglable = true
+                                                        CannotDeselect = true
+                                                        RadioButtonManager = ~/ButtonManager
+
+                                                        HasBorder = false
+                                                        //BorderLineColorToken = 'TimePanel/ButtonBorder'
+                                                        //BorderThickness = "1"
+
+                                                        BackgroundTexture = "vitesse04"
+                                                        BackgroundTextureFrameProperty = TUIFramePropertyRTTI
+                                                        (
+                                                            RelativeWidthHeight = [1, 1]
+                                                            MagnifiableWidthHeight = [0.0, 0.0]
+                                                            AlignementToFather = [0.5, 0.5]
+                                                            AlignementToAnchor = [0.5, 0.5]
+                                                        )
+
+                                                        HintTitleToken = "HTP_SPDFAT"
+                                                        HintBodyToken = "HTP_SPDFAB"
+                                                        HintExtendedToken = "HTP_SPDFAE"
+                                                        HintDico = ~/LocalisationConstantes/dico_interface_ingame
+                                                    )
+                                                ),
+
+                                                BUCKListElementDescriptor
+                                                (
+                                                    ComponentDescriptor = HUDButton
+                                                    (
+                                                        ElementName = "SpeedVeryFastButton"
+
+                                                        ComponentFrame = TUIFramePropertyRTTI
+                                                        (
+                                                            RelativeWidthHeight = [0.0, 1.0]
+                                                            MagnifiableWidthHeight = [GameSpeedPanelButtonWidth, 0.0]
+                                                        )
+
+                                                        HasBackground = false
+                                                        //BackgroundColorToken = "BoutonTimePanel"
+
+                                                        IsTogglable = true
+                                                        CannotDeselect = true
+                                                        RadioButtonManager = ~/ButtonManager
+
+                                                        HasBorder = false
+                                                        //BorderLineColorToken = 'TimePanel/ButtonBorder'
+                                                        //BorderThickness = "1"
+
+                                                        BackgroundTexture = "vitesse05"
+                                                        BackgroundTextureFrameProperty = TUIFramePropertyRTTI
+                                                        (
+                                                            RelativeWidthHeight = [1, 1]
+                                                            MagnifiableWidthHeight = [0.0, 0.0]
+                                                            AlignementToFather = [0.5, 0.5]
+                                                            AlignementToAnchor = [0.5, 0.5]
+                                                        )
+
+                                                        HintTitleToken = "HTP_SPVFAT"
+                                                        HintBodyToken = "HTP_SPVFAB"
+                                                        HintExtendedToken = "HTP_SPVFAE"
+                                                        HintDico = ~/LocalisationConstantes/dico_interface_ingame
+                                                    )
+                                                ),
+                                            ]
+                                        )
+                                    ),
+                                ]
+                            )
+                        ]
+                    )
+                )
+            ]
+        ),
+        OmbrePanel
+    ]
+)
+
+UISpecificInGameHUDTimePanelViewDescriptor is TUISpecificInGameHUDTimePanelViewDescriptor
+(
+    GameSpeedInfos =
+    [
+        //GameSpeed_BulletTime
+        TUIGameSpeedDescriptor(
+            GameSpeedValue = 0.001
+            GameSpeedToken = "GS_BULTIME"
+            ButtonElementName = "SpeedPauseButton"
+        ),
+        //GameSpeed_Slow
+        TUIGameSpeedDescriptor(
+            GameSpeedValue = 0.33
+            GameSpeedToken = "GS_SLOW"
+            ButtonElementName = "SpeedSlowButton"
+        ),
+        //GameSpeed_Normal
+        TUIGameSpeedDescriptor(
+            GameSpeedValue = 1.0
+            GameSpeedToken = "GS_NORMAL"
+            ButtonElementName = "SpeedNormalButton"
+        ),
+        //GameSpeed_Fast
+        TUIGameSpeedDescriptor(
+            GameSpeedValue = 2.0
+            GameSpeedToken = "GS_FAST"
+            ButtonElementName = "SpeedFastButton"
+        ),
+        //GameSpeed_VeryFast
+        TUIGameSpeedDescriptor(
+            GameSpeedValue = 3.0
+            GameSpeedToken = "GS_VFAST"
+            ButtonElementName = "SpeedVeryFastButton"
+        ),
+    ]
+
+    MainComponentDescriptor = ~/SpecificInGameHUDTimePanelViewMainComponent
+    MainComponentContainerUniqueName = "SpecificInGameHUDTimePanelViewMainContainer"
+
+    ShortcutUILayer = $/M3D/Input/UserInputLayerHandler/InputLayer_InGameShortcuts
+)
+
+

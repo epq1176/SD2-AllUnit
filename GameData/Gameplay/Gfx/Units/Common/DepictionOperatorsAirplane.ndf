@@ -1,0 +1,85 @@
+//Notation : prefix (DepictionOperator), feature (Chassis, ...), classe (small, heavy, etc)
+
+DepictionOperator_LeftWingRoll is
+[ TCosmeticHingeOperatorDesc
+    (
+        OperatorId   = 'leftWingRoll'
+        OperatedBone = 'Aileron_G'
+        Axis         = RotationAxeY_180Degree
+    )
+]
+
+DepictionOperator_RightWingRoll is
+[ TCosmeticHingeOperatorDesc
+    (
+        OperatorId   = 'rightWingRoll'
+        OperatedBone = 'Aileron_D'
+        Axis         = RotationAxeY_180Degree
+    )
+]
+
+DepictionOperator_LeftStabilizerPitch is
+[ TCosmeticHingeOperatorDesc
+    (
+        OperatorId   = 'leftStabilizerPitch'
+        OperatedBone = 'Elevator_G'
+        Axis         = RotationAxeY_180Degree
+    )
+]
+
+DepictionOperator_RightStabilizerPitch is
+[ TCosmeticHingeOperatorDesc
+    (
+        OperatorId   = 'rightStabilizerPitch'
+        OperatedBone = 'Elevator_D'
+        Axis         = RotationAxeY_180Degree
+    )
+]
+
+DepictionOperator_BackStabilizerYaw is
+[ TCosmeticHingeOperatorDesc
+    (
+        OperatorId   = 'backStabilizerYaw'
+        OperatedBone = 'Rudder'
+        Axis         = RotationAxeZ_180Degree
+    )
+]
+
+DepictionOperator_LeftBackStabilizerYaw is
+[ TCosmeticHingeOperatorDesc
+    (
+        OperatorId   = 'backStabilizerYaw'
+        OperatedBone = 'Rudder_1'
+        Axis         = RotationAxeZ_180Degree
+    )
+]
+
+DepictionOperator_RightBackStabilizerYaw is
+[ TCosmeticHingeOperatorDesc
+    (
+        OperatorId   = 'backStabilizerYaw'
+        OperatedBone = 'Rudder_2'
+        Axis         = RotationAxeZ_180Degree
+    )
+]
+
+DepictionOperator_Airfoil_WingsAndStabilizersAirplane is
+DepictionOperator_LeftWingRoll + DepictionOperator_RightWingRoll
++ DepictionOperator_LeftStabilizerPitch + DepictionOperator_RightStabilizerPitch
++ DepictionOperator_BackStabilizerYaw
+
+DepictionOperator_Airfoil_WingsAndDoubleStabilizersAirplane is
+DepictionOperator_LeftWingRoll + DepictionOperator_RightWingRoll
++ DepictionOperator_LeftStabilizerPitch + DepictionOperator_RightStabilizerPitch
++ DepictionOperator_LeftBackStabilizerYaw + DepictionOperator_RightBackStabilizerYaw
+
+// DepictionOperator_Airfoil_WingsOnlyAirplane
+
+// DepictionOperator_Airfoil_WingsAndStabilizersAirplane;
+
+// DepictionOperator_Airfoil_WingsAndForwardStabilizers;
+
+// ****************************************************************************************************************************************
+// ***** AirplaneOperator *****************************************************************************************************************
+// ****************************************************************************************************************************************
+DepictionOperator_Airplane is [TCosmeticMovementAirplaneOperatorDesc( OperatorId = 'AirplaneOperator')]

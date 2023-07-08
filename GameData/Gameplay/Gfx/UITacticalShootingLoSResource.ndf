@@ -1,0 +1,13 @@
+// Exporté par Rainbow
+export UITacticalShootingLoSResource is TUITacticalShootingLoSResource
+(
+    VisionLineBlockedColor = d3drgba[117, 255, 255, 32]
+    VisionLineInefficientColor = d3drgba[117, 255, 249, 8]
+    VisionLineOutOfRangeColor = d3drgba[117, 255, 255, 32]
+    VisionLineUnSeenColor = d3drgba[117, 255, 255, 32]
+    VisionLineVisibleAndShootableColor = d3drgba[117, 255, 255, 128]
+    //~~~~~~~~
+    DashedLineSize = 5000
+    MeshMaterialLine = $/M3D/Shader/MeshMaterialLoS
+    RenderLayerLine = $/M3D/Scene/Scene3D_AfterPostProcess/debugInfo/Render/Calque_DebugInfo_Line
+)

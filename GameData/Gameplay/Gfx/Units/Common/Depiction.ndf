@@ -1,0 +1,162 @@
+// ****************************************************************************************************************************************
+// *** missiles ***************************************************************************************************************************
+export WarGamePylonDepictionSelector is TDepictionPylonSelector
+(
+    HighLimit = High_Range * 2.5
+    Camera = $/M3D/Camera/CameraPrincipale
+    CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+)
+
+export WarGameShowRoomDepictionSelector is TDepictionShowroomSelector
+(
+)
+
+export SpecificDepictionSelectorWithScale is TWreckageAndLodSelector
+(
+    HighMidLimit = High_Range * 2.5
+    MidLowLimit = Mid_Range * 1.34
+    WreckedHighMidLimit = High_Range * 1.2
+    WreckedMidLowLimit = Mid_Range * 0.75
+    HighKey = 'high'
+    MidKey = 'mid'
+    LowKey = 'low'
+    WreckedHighKey = 'wreckedhigh'
+    WreckedMidKey = 'wreckedmid'
+    WreckedLowKey = 'wreckedlow'
+    Camera = $/M3D/Camera/CameraPrincipale
+    CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+    ScaleFactor = PixelConstantValuesSpecific/DefaultFactor
+    ScaleMax = PixelConstantValuesSpecific/DefaultScaleMax
+    ScaleMinReferenceAltitude = PixelConstantValuesSpecific/DefaultMinReferenceAltitude
+    OptionalLimit = $/GraphicOption/ModelQuality/Value
+    ScaleOption = $/GUIOption/UnitScaling
+)
+
+export SpecificAirplaneDepictionSelectorWithScale is TWreckageAndLodSelector
+(
+    HighMidLimit = High_Range * 2.5
+    MidLowLimit = Mid_Range * 1.34
+    WreckedHighMidLimit = High_Range * 1.2
+    WreckedMidLowLimit = Mid_Range * 0.75
+    HighKey = 'high'
+    MidKey = 'mid'
+    LowKey = 'low'
+    WreckedHighKey = 'wreckedhigh'
+    WreckedMidKey = 'wreckedmid'
+    WreckedLowKey = 'wreckedlow'
+    Camera = $/M3D/Camera/CameraPrincipale
+    CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+    ScaleFactor = PixelConstantValuesSpecific/AirplaneFactor
+    ScaleMax = PixelConstantValuesSpecific/AirplaneScaleMax
+    ScaleMinReferenceAltitude = PixelConstantValuesSpecific/AirplaneMinReferenceAltitude
+    OptionalLimit = $/GraphicOption/ModelQuality/Value
+    ScaleOption = $/GUIOption/UnitScaling
+)
+
+export SpecificInfantryDepictionSelectorWithScale is TLodSelector
+(
+    HighMidLimit = High_Range
+    MidLowLimit = Mid_Range * 0.5 // On affiche le low rapidement vu qu'on a pas de mid
+    LowNoneLimit = Low_Range * 0.7
+    HighKey = 'high'
+    MidKey = 'mid'
+    LowKey = 'low'
+    NoneKey = 'none'
+    Camera = $/M3D/Camera/CameraPrincipale
+    CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+    ScaleFactor = PixelConstantValuesSpecific/InfantryFactor
+    ScaleMax = PixelConstantValuesSpecific/InfantryScaleMax
+    ScaleMinReferenceAltitude = PixelConstantValuesSpecific/InfantryMinReferenceAltitude
+    OptionalLimit = $/GraphicOption/ModelQuality/Value
+    ScaleOption = $/GUIOption/UnitScaling
+)
+
+//selecteur spécial des servants des canons qui doivent avoir les mêmes clés de sélections que le canon, et ne peuvent donc pas utiliser les selectors des infanteries.
+export SpecificServantDepictionSelector is TWreckageAndLodSelector
+(
+    HighMidLimit = Mid_Range * 0.5
+    MidLowLimit = Low_Range * 0.7
+    WreckedHighMidLimit = Mid_Range * 0.5
+    WreckedMidLowLimit = Low_Range * 0.7
+    HighKey = 'high'
+    MidKey = 'mid'
+    LowKey = 'low'
+    WreckedHighKey = 'wreckedhigh'
+    WreckedMidKey = 'wreckedmid'
+    WreckedLowKey = 'wreckedlow'
+    Camera = $/M3D/Camera/CameraPrincipale
+    CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+    ScaleFactor = PixelConstantValuesSpecific/InfantryFactor
+    ScaleMax = PixelConstantValuesSpecific/InfantryScaleMax
+    ScaleMinReferenceAltitude = PixelConstantValuesSpecific/InfantryMinReferenceAltitude
+    OptionalLimit = $/GraphicOption/ModelQuality/Value
+    ScaleOption = $/GUIOption/UnitScaling
+)
+
+export TowedUnitSubDepictionSelector is TSubDepictionSelector
+(
+    HighMidLimit = High_Range * 2.5
+    MidLowLimit = Mid_Range * 1.34
+    LowNoneLimit = Low_Range * 1.88
+    Camera = $/M3D/Camera/CameraPrincipale
+    PhysicalProperty = 'towed_units'
+    Value = 0
+    ScaleFactor = PixelConstantValuesSpecific/TowedUnitFactor
+    ScaleMax = PixelConstantValuesSpecific/TowedUnitScaleMax
+    ScaleMinReferenceAltitude = PixelConstantValuesSpecific/TowedUnitMinReferenceAltitude
+    OptionalLimit = $/GraphicOption/ModelQuality/Value
+    ScaleOption = $/GUIOption/UnitScaling
+)
+
+export SocleDepictionSelectorWithScale is TWreckageAndLodSelector
+(
+    HighMidLimit = High_Range * 2.5
+    MidLowLimit = Mid_Range * 1.34
+    WreckedHighMidLimit = High_Range * 1.2
+    WreckedMidLowLimit = Mid_Range * 0.75
+    HighKey = 'high'
+    MidKey = 'mid'
+    LowKey = 'low'
+    WreckedHighKey = 'wreckedhigh'
+    WreckedMidKey = 'wreckedmid'
+    WreckedLowKey = 'wreckedlow'
+    Camera = $/M3D/Camera/CameraPrincipale
+    CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+    ScaleFactor = PixelConstantValuesSpecific/AirplaneFactor
+    ScaleMax = PixelConstantValuesSpecific/AirplaneScaleMax
+    ScaleMinReferenceAltitude = PixelConstantValuesSpecific/AirplaneMinReferenceAltitude
+    OptionalLimit = $/GraphicOption/ModelQuality/Value
+    ScaleOption = $/GUIOption/UnitScaling
+)
+
+export SoldierWeaponSubDepictionSelector is TSubDepictionSelector
+(
+    HighMidLimit = Mid_Range
+    MidLowLimit = Mid_Range
+    LowNoneLimit = Mid_Range
+    NoneActivated = true
+    Camera = $/M3D/Camera/CameraPrincipale
+    PhysicalProperty = "show_weapons"
+    Value = 0.0
+)
+
+
+// ****************************************************************************************************************************************
+// ***** Material Tags ********************************************************************************************************************
+// ****************************************************************************************************************************************
+
+
+unnamed TScaledDepictionSelectorOptionUpdater
+(
+    CommandNameWhenOptionChanges = CommandName/CommonDepictionSelectorOnOptionChange
+    DepictionSelectors =
+    [
+        CommonDepictionSelector,
+        CommonInfantryDepictionSelector,
+        SpecificDepictionSelectorWithScale,
+        SpecificAirplaneDepictionSelectorWithScale,
+        SpecificInfantryDepictionSelectorWithScale,
+        SpecificServantDepictionSelector,
+        TowedUnitSubDepictionSelector,
+    ]
+)

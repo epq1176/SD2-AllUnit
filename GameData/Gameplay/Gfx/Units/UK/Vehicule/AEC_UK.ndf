@@ -1,0 +1,25 @@
+export ModelFile_AEC_UK is 'GameData:Assets\3D\Units\UK\Vehicule\AEC_Mk_III\AEC_Mk_III.Ase2NdfBin'
+
+Modele_AEC_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_AEC_UK
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_AEC_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:Assets\3D\Units\UK\Vehicule\AEC_Mk_III_MID\AEC_Mk_III_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_AEC_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:Assets\3D\Units\UK\Vehicule\LODS\AEC_Mk_III_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+
+

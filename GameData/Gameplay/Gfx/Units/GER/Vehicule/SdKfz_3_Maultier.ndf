@@ -1,0 +1,22 @@
+export ModelFile_SdKfz_3_Maultier is 'GameData:Assets\3D\Units\GER\Vehicule\SdKfz_3\SdKfz_3.Ase2NdfBin'
+
+Modele_SdKfz_3_Maultier is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_SdKfz_3_Maultier
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_SdKfz_3_Maultier_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\SdKfz_3_MID\SdKfz_3_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_SdKfz_3_Maultier_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\LODS\SdKfz_3_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

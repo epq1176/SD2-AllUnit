@@ -1,0 +1,23 @@
+export ModelFile_U630_Pak is 'GameData:Assets\3D\Units\GER\Char\UE630_Pak\UE630_Pak.Ase2NdfBin'
+
+Modele_U630_Pak is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_U630_Pak
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_U630_Pak_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\UE630_Pak_MID\UE630_Pak_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_U630_Pak_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\UE630_Pak_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+

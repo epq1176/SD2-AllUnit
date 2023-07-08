@@ -1,0 +1,22 @@
+export ModelFile_Sexton_POL is 'GameData:Assets\3D\Units\POL\Char\Sexton\Sexton.Ase2NdfBin'
+
+Modele_Sexton_POL is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Sexton_POL
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Sexton_POL_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Char\Sexton_MID\Sexton_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Sexton_POL_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Char\LODS\Sexton_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

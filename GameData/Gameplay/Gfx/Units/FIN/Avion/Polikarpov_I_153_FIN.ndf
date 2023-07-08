@@ -1,0 +1,29 @@
+export ModelFile_Polikarpov_I_153_FIN is 'GameData:Assets\3D\Units\FIN\Avion\Polikarpov_I_153\Polikarpov_I_153.Ase2NdfBin'
+
+Modele_Polikarpov_I_153_FIN is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Polikarpov_I_153_FIN
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Polikarpov_I_153_FIN_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Avion\Polikarpov_I_153_MID\Polikarpov_I_153_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Polikarpov_I_153_FIN_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Avion\LODS\Polikarpov_I_153_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Polikarpov_I_153_FIN_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Avion\Polikarpov_I_153\Polikarpov_I_153_Train.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

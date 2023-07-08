@@ -1,0 +1,53 @@
+public coverTypeForInterface is TCoverTypeForInterface(
+    TerrainTypeToCover = MAP
+    [
+        (ETerrainType/Default                , ECoverTypeForInterface/None),
+        (ETerrainType/Tous                   , ECoverTypeForInterface/None),
+
+        (ETerrainType/Eau                    , ECoverTypeForInterface/None),
+        (ETerrainType/EauProfonde            , ECoverTypeForInterface/None),
+        (ETerrainType/Portail                , ECoverTypeForInterface/None),
+        (ETerrainType/Passant1               , ECoverTypeForInterface/None),
+        (ETerrainType/Bloqueur0              , ECoverTypeForInterface/None),
+        (ETerrainType/Bloqueur1              , ECoverTypeForInterface/None),
+        (ETerrainType/Batiment               , ECoverTypeForInterface/Heavy),
+        (ETerrainType/ForetLegere            , ECoverTypeForInterface/Light),
+        (ETerrainType/ForetDense             , ECoverTypeForInterface/Heavy),
+        (ETerrainType/Marais                 , ECoverTypeForInterface/Light),
+
+        (ETerrainType/Rocher                 , ECoverTypeForInterface/None),
+        (ETerrainType/RocherForet            , ECoverTypeForInterface/Light),
+        (ETerrainType/BocageLeger            , ECoverTypeForInterface/Light),
+        (ETerrainType/BocageLourd            , ECoverTypeForInterface/Heavy),
+        (ETerrainType/MineAlliance0          , ECoverTypeForInterface/Light),
+        (ETerrainType/ChampCereales          , ECoverTypeForInterface/Light),
+        (ETerrainType/MineAlliance1          , ECoverTypeForInterface/Light),
+        (ETerrainType/LightSmoke             , ECoverTypeForInterface/Light),
+        (ETerrainType/MediumSmoke            , ECoverTypeForInterface/Light),
+        (ETerrainType/HeavySmoke             , ECoverTypeForInterface/Heavy),
+
+        (ETerrainType/Batiment_floor1        , ECoverTypeForInterface/Light),
+        (ETerrainType/BloqueConstruction     , ECoverTypeForInterface/None),
+{        (ETerrainType/TerrainLayer0          , ECoverTypeForInterface/None),
+        (ETerrainType/TerrainLayer1          , ECoverTypeForInterface/None),
+        (ETerrainType/TerrainLayer2          , ECoverTypeForInterface/None),
+        (ETerrainType/TerrainLayer3          , ECoverTypeForInterface/None),
+        (ETerrainType/TerrainLayer4          , ECoverTypeForInterface/None),
+        (ETerrainType/TerrainLayer5          , ECoverTypeForInterface/None),}
+
+
+        (ETerrainType/Littoral               , ECoverTypeForInterface/None),
+        (ETerrainType/Barbeles               , ECoverTypeForInterface/BarbedWire),
+        (ETerrainType/Urbain                 , ECoverTypeForInterface/Light),
+        (ETerrainType/Batiment2              , ECoverTypeForInterface/None),
+        (ETerrainType/MaraisMine             , ECoverTypeForInterface/None),
+        (ETerrainType/FosseAntichar          , ECoverTypeForInterface/Heavy),
+        (ETerrainType/Tranchee               , ECoverTypeForInterface/Heavy),
+        (ETerrainType/NidMitrailleuse        , ECoverTypeForInterface/Heavy),
+        (ETerrainType/ChampDeMineAP          , ECoverTypeForInterface/MineAP),
+        (ETerrainType/ChampDeMineAT          , ECoverTypeForInterface/MineAT),
+
+    ]
+
+    CoverTypeForDistricts = ECoverTypeForInterface/Heavy
+)

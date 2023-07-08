@@ -1,0 +1,23 @@
+export ModelFile_Canon_6pdr_CAN is 'GameData:Assets\3D\Units\UK\Canon\6_pdr\6_pdr.Ase2NdfBin'
+
+Modele_Canon_6pdr_CAN is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Canon_6pdr_CAN
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Canon_6pdr_CAN_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Canon\6_pdr_MID\6_pdr_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Canon_6pdr_CAN_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Canon\LODS\6_pdr_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+

@@ -1,0 +1,22 @@
+export ModelFile_HMG_MG34_GR is 'GameData:Assets\3D\Units\GER\Canon\s_MG34\s_MG34.Ase2NdfBin'
+
+Modele_HMG_MG34_GR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_HMG_MG34_GR
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_HMG_MG34_GR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\s_MG34_MID\s_MG34_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_HMG_MG34_GR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\LODS\s_MG34_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

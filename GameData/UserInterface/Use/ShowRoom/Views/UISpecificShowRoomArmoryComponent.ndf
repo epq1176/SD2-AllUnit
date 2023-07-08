@@ -1,0 +1,1077 @@
+template UnitDeckListDummyButton
+[
+    ElementName : string = "DummyButton",
+    TextElementName : string = "SlotCostName",
+]
+is HUDButton
+(
+    ElementName = <ElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [172.0, 90.0]
+    )
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = <TextElementName>
+
+            ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+
+            ParagraphStyle = ~/CenteredParagraphStyle
+            TextStyle = "Default"
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextToken = ""
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+            TypefaceToken = "Second"
+            TextColor = "SD2_BleuVariable"
+            TextSize = "24"
+        ),
+    ]
+
+    Grayed = true
+)
+
+private template ArmoryAllianceFilterButton
+[
+    ElementNamePrefix : string = "AllianceFilter",
+    ElementName : string,
+    TextToken : string,
+    RadioButtonManager : TBUCKRadioButtonManager = nil
+]
+is BUCKButtonDescriptor
+(
+    ElementName = <ElementNamePrefix> + <ElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+        MagnifiableWidthHeight = [10.0, 0.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+
+    IsTogglable = (<RadioButtonManager> != nil)
+    RadioButtonManager = <RadioButtonManager>
+
+    CannotDeselect = (<RadioButtonManager> != nil)
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+                MagnifiableWidthHeight = [0.0, -6.0]
+                PixelWidthHeight = [0.0, -2.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            ChildFitToContent = true
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Left
+                VerticalAlignment = UIText_VerticalCenter
+                InterLine = 0
+            )
+
+            TextStyle = "Default"
+            //TextPadding = TRTTILength4( Magnifiable = [10.0, 0.0, 10.0, 0.0] )
+
+            HorizontalFitStyle = ~/FitStyle/FitToContent
+
+            TypefaceToken = "Main"
+            BigLineAction = ~/BigLineAction/CutByDots
+
+            TextSize = "18"
+            TextToken = <TextToken>
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+            TextColor = "ButtonHUD/Text4"
+
+            Components =
+            [
+                BUCKContainerDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 0.0]
+                        MagnifiableWidthHeight = [0.0, 1.0]
+                        PixelWidthHeight = [0.0, 1.0]
+                        MagnifiableOffset = [0.0, 0.0]
+                        AlignementToFather = [0.5, 1.0]
+                        AlignementToAnchor = [0.5, 1.0]
+                    )
+
+                    HasBackground = true
+                    BackgroundBlockColorToken = "Underline"
+                )
+            ]
+        ),
+    ]
+)
+
+MaxUnitsInDeckPerCategory is 10
+ArmoryCategoryButtonRadioManager is TBUCKRadioButtonManager()
+ArmoryUnitButtonRadioManager is TBUCKRadioButtonManager()
+ArmoryAllianceFilterButtonRadioManager is TBUCKRadioButtonManager()
+ArmoryCountryFilterButtonRadioManager is TBUCKRadioButtonManager()
+
+ArmoryBUCKComponentDescriptor is TUISpecificShowRoomArmoryComponentDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    UnitPackListDescriptor = BUCKListDescriptor
+    (
+        ClipContent = true
+        AssumeChildrenAreClippable = true // ClipContent = true requiert AssumeChildrenAreClippable, sinon ca asserte, dommage que ce soit pas automatique
+        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+        InterItemMargin = TRTTILength( Magnifiable = 2.0 )
+        Axis = ~/ListAxis/Horizontal
+
+        FirstMargin = TRTTILength( Magnifiable = 30.0 )
+        LastMargin = TRTTILength( Magnifiable = 30.0 )
+    )
+
+    DeckUnitButtonDummyDescriptor = UnitDeckListDummyButton()
+
+    DraggableContainerDescriptor = BUCKDraggableContainerDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [172.0, 94.0]
+        )
+
+        PointerDistanceBeforeDrag = 5.0
+    )
+
+    SkinRackComponentDescriptor = ~/UISpecificSkinRackView
+
+    UnitPackComponentDescriptor = UISpecificUnitButtonViewDescriptor
+    (
+        TextureDrawerWhenUnitNotAvailable = "ColorMultiply_Grayscale"
+        UnitNameColorWhenUnitNotAvailable = "DeckEditScreen/CouleurUniteNonDisponible"
+        UnitCostColorWhenUnitNotAvailable = "DeckEditScreen/CouleurCoutUniteNonDisponible"
+        UnitCostColorWhenUnitCannotBeBought = "DeckEditScreen/UnitCostWhenCannotBeBought"
+        UnitCostGlowColorIndexWhenUnitNotAvailable = "DeckEditScreen/UnitCostWhenNotAvailable/Glow"
+
+        AceUnitNameColor = "DeckEditScreen/Ace/UnitNameColor"
+        AceUnitBorderColorBySide =
+        [
+            (~/TBorderSide/Top | ~/TBorderSide/Left, "DeckEditScreen/Ace/UnitBorderTopAndLeftColor"),
+            (~/TBorderSide/Bottom | ~/TBorderSide/Right, "DeckEditScreen/Ace/UnitBorderBottomAndRightColor"),
+        ]
+        AceUnitBorderThickness = "DeckEditScreen/Ace/UnitBorderThickness"
+
+        OpacityPercentWhenUnitNotAvailable = 1.0
+        TimeInSecondBeforeAdditionalUnitSpecificContainerShowUp = 0.2
+
+        RadioButtonManager = ArmoryUnitButtonRadioManager
+    )
+
+    DivisionPanelDescriptor = DivisionPanelDescriptor
+    (
+        MagnifierMultiplication = 0.7
+        NeedUniqueName = true
+        UniqueNamePrefix = "DeckBuilding"
+        UseInGame = true
+    )
+
+    FactoryDisplayOrder =
+    [
+        EDefaultFactories/UniversalFactory,
+        EDefaultFactories/Recons,
+        EDefaultFactories/Infantry,
+        EDefaultFactories/Tanks,
+        EDefaultFactories/Support,
+        EDefaultFactories/AT,
+        EDefaultFactories/DCA,
+        EDefaultFactories/Art,
+        EDefaultFactories/Planes,
+    ]
+
+    ForceDisplayHideToken = "FDSPL_H"
+    ForceDisplayShowToken = "FDSPL_S"
+
+    NbUnitsInDeckPerCategory = ~/MaxUnitsInDeckPerCategory
+
+    CategoryButtonDescriptor = BUCKButtonDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [0.0, 1.0]
+            MagnifiableWidthHeight = [30.0, 0.0]
+        )
+
+        FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+
+        IsTogglable = true
+        RadioButtonManager = ArmoryCategoryButtonRadioManager
+
+        CannotDeselect = true
+
+        Components =
+        [
+            BUCKTextDescriptor
+            (
+                ElementName = "CategoryButtonTextElement"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [0.0, -6.0]
+                    PixelWidthHeight = [0.0, -2.0]
+                    AlignementToFather = [0.5, 0.5]
+                    AlignementToAnchor = [0.5, 0.5]
+                )
+
+                ChildFitToContent = true
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Left
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0
+                )
+
+                TextStyle = "Default"
+                TextPadding = TRTTILength4( Magnifiable = [0.0, 0.0, 0.0, 0.0] )
+
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                TypefaceToken = "Main"
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                TextSize = "18"
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TextColor = "ButtonHUD/Text4"
+
+                Components =
+                [
+                    BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            MagnifiableWidthHeight = [0.0, 1.0]
+                            PixelWidthHeight = [0.0, 1.0]
+                            AlignementToFather = [0.5, 1.0]
+                            AlignementToAnchor = [0.5, 1.0]
+                        )
+
+                        HasBackground = true
+                        BackgroundBlockColorToken = "Underline"
+                    )
+                ]
+            ),
+
+            BUCKSpecificHintableArea
+            (
+                ElementName = "CategoryButtonHintableArea"
+                DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            )
+        ]
+    )
+
+    ElementWidthHeight = [172.0, 94.0]
+
+    ShortcutsLayer = $/M3D/Input/UserInputLayerHandler/InputLayer_InGameShortcuts
+
+    EmblemComponentForDropDown = BUCKTextureDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [24,22]
+            MagnifiableOffset = [-15,0]
+            AlignementToFather = [1,0.5]
+            AlignementToAnchor = [1,0.5]
+        )
+
+        TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+    )
+
+    FirstMargin = TRTTILength()
+    InterItemMargin = TRTTILength()
+    LastMargin = TRTTILength()
+    Axis = ~/ListAxis/Vertical
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ElementName = 'TopPanelContainer'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                Axis = ~/ListAxis/Vertical
+                Elements =
+                [
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = AffichageCamp
+                    ),
+
+                     // pays Axe
+                    BUCKListElementDescriptor
+                    (
+                        ExtendWeight = 1.0
+                        ComponentDescriptor = AffichagePays
+                    ),
+                    // categorie
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKListDescriptor
+                        (
+                            ElementName = 'DeckCategoryList'
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                MagnifiableWidthHeight = [0,35]
+                            )
+
+                            //FirstMargin = TRTTILength( Magnifiable = 10.0 )
+                            InterItemMargin = TRTTILength( Pixel = 1.0 )
+                            Axis = ~/ListAxis/Horizontal
+                            HasBackground = false
+                            BackgroundBlockColorToken = "PanelInfoUnit_gris2"
+                        )
+                    ),
+                    // filters
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = AffichageFilter
+                    ),
+                ]
+            )
+        ),
+
+        // Middle
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ElementName = 'MiddlePanelContainer'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [300.0, -60.0]
+                    MagnifiableOffset = [10.0, 0.0]
+                    AlignementToAnchor = [0.0, 0.5]
+                    AlignementToFather = [0.0, 0.5]
+                )
+
+                Components =
+                [
+                    BUCKSpecificScrollingContainerDescriptor
+                    (
+                        ElementName = 'UnitDivisionScrollingContainer'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+                        ExternalScrollbar = true
+
+                        ScrollStepSize = [0.0, 140.0]
+                        HasVerticalScrollbar = true
+                        VerticalScrollbarComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [10.0, 0.0]
+                            MagnifiableOffset = [6.0, 0.0]
+                        )
+
+                        Components =
+                        [
+                            BUCKListDescriptor
+                            (
+                                ElementName = 'UnitDivisionGrid'
+
+                                Axis = ~/ListAxis/Vertical
+                                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+                                InterItemMargin = TRTTILength( Magnifiable = 5.0 )
+                            )
+                        ]
+                    )
+                ]
+            )
+        ),
+    ]
+
+    ForegroundComponents =
+    [
+        // UIP Containers
+        BUCKSpecificScrollingContainerDescriptor
+        (
+            ElementName = "TransportInfoPanelScrollingContainer"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [0.0, 900.0]
+                MagnifiableOffset = [0.0, 100.0]
+                RelativeWidthHeight = [1.0, 0.0]
+                AlignementToAnchor = [1.0, 0.0]
+                AlignementToFather = [1.0, 0.0]
+            )
+
+            VerticalScrollbarComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [10.0, 0.0]
+                MagnifiableOffset = [-46.0, 0.0]
+                AlignementToAnchor = [1.0, 0.0]
+                AlignementToFather = [1.0, 0.0]
+            )
+
+            ExternalScrollbar = true
+            HasVerticalScrollbar = true
+
+            Components =
+            [
+                BUCKListDescriptor
+                (
+                    ElementName = 'UnitInfoPanelList'
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableOffset = [-51.0, 0.0]
+                        AlignementToFather = [1.0, 0.0]
+                        AlignementToAnchor = [1.0, 0.0]
+                    )
+
+                    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+                    InterItemMargin = TRTTILength( Magnifiable = 35.0 )
+                    Axis = ~/ListAxis/Horizontal
+
+                    Elements =
+                    [
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKListDescriptor
+                            (
+                                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+                                InterItemMargin = TRTTILength( Magnifiable = 15.0 )
+                                Axis = ~/ListAxis/Vertical
+                                Elements =
+                                [
+                                    BUCKListElementDescriptor
+                                    (
+                                        ComponentDescriptor = BUCKContainerDescriptor
+                                        (
+                                            ElementName = 'HighlightedUnitContainer'
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                AlignementToAnchor = [1.0,0.0]
+                                                AlignementToFather = [1.0,0.0]
+                                            )
+
+                                            FitStyle = ~/ContainerFitStyle/FitToContent
+                                        )
+                                    ),
+
+                                    BUCKListElementDescriptor
+                                    (
+                                        ComponentDescriptor = BUCKContainerDescriptor
+                                        (
+                                            ElementName = 'HighlightedTransporterUnitContainer'
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                AlignementToAnchor = [1.0,0.0]
+                                                AlignementToFather = [1.0,0.0]
+                                            )
+
+                                            FitStyle = ~/ContainerFitStyle/FitToContent
+                                        )
+                                    ),
+                                ]
+                            )
+                        ),
+
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKListDescriptor
+                            (
+                                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+                                InterItemMargin = TRTTILength( Magnifiable = 15.0 )
+                                Axis = ~/ListAxis/Vertical
+                                Elements =
+                                [
+                                    BUCKListElementDescriptor
+                                    (
+                                        ComponentDescriptor = BUCKContainerDescriptor
+                                        (
+                                            ElementName = 'SelectedUnitContainer'
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                AlignementToAnchor = [1.0,0.0]
+                                                AlignementToFather = [1.0,0.0]
+                                            )
+
+                                            FitStyle = ~/ContainerFitStyle/FitToContent
+                                        )
+                                    ),
+
+                                    BUCKListElementDescriptor
+                                    (
+                                        ComponentDescriptor = BUCKContainerDescriptor
+                                        (
+                                            ElementName = 'SelectedTransporterUnitContainer'
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                AlignementToAnchor = [1.0,0.0]
+                                                AlignementToFather = [1.0,0.0]
+                                            )
+
+                                            FitStyle = ~/ContainerFitStyle/FitToContent
+                                        )
+                                    ),
+                                ]
+                            )
+                        ),
+                    ]
+
+                    ForegroundComponents =
+                    [
+                        BUCKButtonDescriptor
+                        (
+                            ElementName = 'UnitInfoPanelPinButton'
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                MagnifiableWidthHeight = [33.0, 61.0]
+                                AlignementToAnchor = [0.0, 0.0]
+                                AlignementToFather = [1.0, 0.0]
+                            )
+
+                            IsTogglable = true
+                        ),
+                    ]
+                ),
+            ]
+        ),
+
+        // Bottom
+        BUCKListDescriptor
+        (
+            ElementName = 'BottomPanelContainer'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 0.0]
+                MagnifiableOffset = [-52,-24]
+                AlignementToFather = [1.0, 1.0]
+                AlignementToAnchor = [1.0, 1.0]
+            )
+
+            InterItemMargin = TRTTILength( Magnifiable = 6.0 )
+            LastMargin = TRTTILength( Magnifiable = 6.0 )
+
+            Axis = ~/ListAxis/Vertical
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKChatToggleButtonDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [54.0, 48.0]
+                        )
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                        )
+
+                        InterItemMargin = TRTTILength( Magnifiable = 6.0 )
+
+                        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+                        Axis = ~/ListAxis/Horizontal
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = BUCKSpecificButton
+                                (
+                                    ElementName = "ForceDisplayButton"
+
+                                    IsTogglable = false
+                                    HidePointerEvents = true
+                                    TextToken = "FDSPL_S"
+                                    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                                    HintDico = ~/LocalisationConstantes/dico_interface_ingame
+                                    HintTitleToken = "HDB_FDSPLT"
+                                    HintBodyToken = "HDB_FDSPLB"
+                                    HintExtendedToken = "HDB_FDSPLE"
+                                )
+                            ),
+
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = BUCKSpecificButton
+                                (
+                                    ElementName = "HideInfoButton"
+
+                                    IsTogglable = true
+                                    TextToken = "HIINFO_BTN"
+                                    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_FR_I ) )
+
+                                    HintDico = ~/LocalisationConstantes/dico_interface_ingame
+                                    HintTitleToken = "HDB_HDINFT"
+                                    HintBodyToken = "HDB_HDINFB"
+                                    HintExtendedToken = "HDB_HDINFE"
+                                )
+                            ),
+
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = BUCKSpecificButton
+                                (
+                                    ElementName = "PornViewButton"
+
+                                    IsTogglable = true
+                                    HidePointerEvents = true
+                                    TextToken = "HIHUD_BTN"
+                                    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_FR_P ) )
+
+                                    HintDico = ~/LocalisationConstantes/dico_interface_ingame
+                                    HintTitleToken = "HDB_PRNVWT"
+                                    HintBodyToken = "HDB_PRNVWB"
+                                    HintExtendedToken = "HDB_PRNVWE"
+                                )
+                            ),
+
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = ConfirmButton
+                                (
+                                    ElementName = 'BackButton'
+
+                                    TextToken = "BACK_BTN"
+                                    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+
+                                    HintTitleToken = "HDB_BACKT"
+                                    HintBodyToken = "HDB_BACKB"
+                                    HintExtendedToken = "HDB_BACKE"
+                                    HintDico = ~/LocalisationConstantes/dico_interface_ingame
+                                )
+                            ),
+                        ]
+                    )
+                )
+            ]
+        ),
+    ]
+
+)
+
+//-------------------------------------------------------------------------------------
+private AffichagePays is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0,35]
+        MagnifiableOffset = [10,0]
+    )
+
+    //FirstMargin = TRTTILength( Magnifiable = 10.0 )
+    InterItemMargin = TRTTILength( Pixel = 1.0 )
+    Axis = ~/ListAxis/Horizontal
+
+    Elements =
+    [
+
+        BUCKListElementDescriptor
+        (
+            MinSize = TRTTILength( Magnifiable = 65.0 )
+            ComponentDescriptor = ArmoryAllianceFilterButton
+            (
+                ElementNamePrefix = "CountryFilter"
+                ElementName = "All"
+                TextToken = "ARMF_ALL"
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ElementName = "CountryFilterList"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+                Axis = ~/ListAxis/Horizontal
+                InterItemMargin = TRTTILength( Pixel = 5.0 )
+            )
+        ),
+    ]
+)
+private AffichageFilter is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 35.0]
+        MagnifiableOffset = [10,0]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "PanelInfoUnit_gris2" //"Black40"
+
+    FirstMargin = TRTTILength( Magnifiable = 10.0 )
+    InterItemMargin = TRTTILength( Magnifiable = 15.0 )
+    Axis = ~/ListAxis/Horizontal
+    Elements =
+    [
+        // filter by name
+        BUCKListElementDescriptor
+        (
+            //ExtendWeight = 0.7
+            ComponentDescriptor = BUCKSpecificEditableTextDescriptor
+
+            (
+                ElementName = 'NameFilterEditableText'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [200, 25.0]
+                    MagnifiableOffset = [0.0, -6.0]
+                    AlignementToAnchor = [0.0, 1.0]
+                    AlignementToFather = [0.0, 1.0]
+                )
+
+                HasBackground = true
+                BackgroundBlockColorToken = "Black80"
+
+                ClippingContainerFrameProperty = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                    MagnifiableWidthHeight = [-10.0, -6.0]
+                    AlignementToFather = [0.5, 0.5]
+                    AlignementToAnchor = [0.5, 0.5]
+                )
+
+                TextSizeToken = "SD2_Petit"
+                TypefaceToken = "Main"
+
+                HintComponentName = "NameFilterEditableTextHint"
+                HintComponentDescriptor = BUCKTextDescriptor
+                (
+                    ElementName = 'NameFilterEditableTextHint'
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        AlignementToFather = [0.0, 0.5]
+                        AlignementToAnchor = [0.0, 0.5]
+                    )
+
+                    ParagraphStyle = TParagraphStyleRTTI
+                    (
+                        VerticalAlignment = UIText_VerticalCenter
+                    )
+
+                    TextStyle = "Default"
+
+                    HorizontalFitStyle = ~/FitStyle/FitToContent
+                    VerticalFitStyle = ~/FitStyle/FitToContent
+
+                    TypefaceToken = "Main"
+                    BigLineAction = ~/BigLineAction/CutByDots
+
+                    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                    TextToken  = "DES_NAMEFH"
+
+                    TextColor = "SD2_Blanc184"
+                    TextSize = "SD2_Petit"
+                )
+
+                Flags = EditableTextFlag/H_LEFT + EditableTextFlag/ONE_LINE
+
+                MaxChars = 140
+
+                TextStyle = "Default"
+            )
+        ),
+        // TypeFilterDropDown
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [100, 24.0]
+                    //MagnifiableOffset = [20.0, 0.0]
+                    AlignementToFather = [0.0, 0.5]
+                    AlignementToAnchor = [0.0, 0.5]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Left
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0
+                )
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+
+                TypefaceToken = "Main"
+                TextStyle = "Default"
+                TextColor = "SD2_Blanc184"
+                TextSize = "SD2_Petit"
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextToken  = "DES_TYPEFH"
+
+
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKSpecificDropdownDescriptor
+            (
+                ElementName = "TypeFilterDropDown"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [250, 24.0]
+                    AlignementToFather = [0.0, 0.5]
+                    AlignementToAnchor = [0.0, 0.5]
+                    MagnifiableOffset = [0.0, -1.0]
+                )
+
+                ItemComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [240, 24.0]
+                )
+
+                FloatingListMagnifiableHeight = 700
+                ItemsTextSizeToken = "SD2_Petit"
+                MainTextColorToken = "SD2_Blanc184"
+                MainTextSizeToken = "SD2_Petit"
+            )
+        ),
+
+    ]
+)
+
+private AffichageCamp is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 35.0]
+        MagnifiableOffset = [10,0]
+    )
+
+    //FirstMargin = TRTTILength( Magnifiable = 10.0 )
+    InterItemMargin = TRTTILength( Magnifiable = 50.0 )
+    Axis = ~/ListAxis/Horizontal
+
+    HasBackground = false
+    BackgroundBlockColorToken = "PanelInfoUnit_gris1"
+
+    Elements =
+    [
+        // alliacne
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                //FirstMargin = TRTTILength( Magnifiable = 10.0 )
+                //InterItemMargin = TRTTILength( Pixel = 15.0 )
+                Axis = ~/ListAxis/Horizontal
+
+                Elements =
+                [
+
+                    BUCKListElementDescriptor
+                    (
+                        MinSize = TRTTILength( Magnifiable = 65.0 )
+                        ComponentDescriptor = ArmoryAllianceFilterButton
+                        (
+                            ElementName = "All"
+                            TextToken = "ARMF_ALL"
+                            RadioButtonManager = ~/ArmoryAllianceFilterButtonRadioManager
+                        )
+                    ),
+
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = ArmoryAllianceFilterButton
+                        (
+                            ElementName = "Allies"
+                            TextToken = "ARMF_ALLI"
+                            RadioButtonManager = ~/ArmoryAllianceFilterButtonRadioManager
+                        )
+                    ),
+
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = ArmoryAllianceFilterButton
+                        (
+                            ElementName = "Axis"
+                            TextToken = "ARMF_AXIS"
+                            RadioButtonManager = ~/ArmoryAllianceFilterButtonRadioManager
+                        )
+                    ),
+                ]
+            )
+        ),
+
+    ]
+)
+//-------------------------------------------------------------------------------------
+ArmoryCountryFilterButtonDescriptor is BUCKButtonDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 0.0]
+        AlignementToAnchor = [0.0, 0.5]
+        AlignementToFather = [0.0, 0.5]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContent
+
+    IsTogglable = true
+    HasBorder = false
+
+    BorderLineColorToken = "ButtonHUD/Border3"
+    BorderThicknessToken = "2"
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ElementName = "ButtonTexture"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [61.0, 35.0] //25.0
+                AlignementToAnchor = [0.5, 0.5]
+                AlignementToFather = [0.5, 0.5]
+            )
+
+            ChildFitToContent = true
+            //ResizeMode = ~/TextureResizeMode/UserDefined
+            TextureFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [61.0, 35.0]
+                //AlignementToFather = [0,0.5]
+                //AlignementToAnchor = [0,0.2]
+            )
+            ClipTextureToComponent = true
+        ),
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+            HasBackground = true
+            BackgroundBlockColorToken = "Showroom/Overlay"
+        ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// UISpecificSkinRackView
+// -------------------------------------------------------------------------------------------------
+
+UISpecificSkinRackView is TUISpecificSkinRackViewDescriptor
+(
+    MainComponentDescriptor = BUCKRackDescriptor
+    (
+        ElementName = "UnitSkinButtonRack"
+
+        Axis = ~/ListAxis/Horizontal
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [0.0, 1.0]
+        )
+
+        InterItemMargin = TRTTILength( Pixel = 2.0)
+
+        BladeDescriptor = ~/UnitSkinButton
+    )
+)
+
+// -------------------------------------------------------------------------------------------------
+// UnitSkinButton
+// -------------------------------------------------------------------------------------------------
+
+private UnitSkinButtonMagnifiableWidth is 29.0
+private UnitSkinButtonMagnifiableWithBorderWidth is 32.0
+private UnitSkinButtonMagnifiableBorderWidth is 3.0
+
+// Button for Skin Unit Icon
+UnitSkinButton is BUCKButtonDescriptor
+(
+    ElementName = 'UnitSkinButton'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [UnitSkinButtonMagnifiableWithBorderWidth, 0.0]
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+
+    IsTogglable = true
+    CannotDeselect = true
+    HidePointerEvents = false
+
+    HasBorder = true
+    BorderLineColorToken = "SkinRack/Border"
+    BorderThicknessToken = "1"
+
+    Components =
+    [
+        ~/UnitSkinButtonBigBorder,
+
+        BUCKTextureDescriptor
+        (
+            ElementName = 'UnitSkinIcon'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [UnitSkinButtonMagnifiableWidth, 0.0]
+                RelativeWidthHeight = [0.0, 1.0]
+                PixelOffset = [UnitSkinButtonMagnifiableBorderWidth, 0.0]
+            )
+
+            TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+        ),
+
+    ]
+)
+
+UnitSkinButtonBigBorder is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+        PixelWidthHeight = [UnitSkinButtonMagnifiableBorderWidth, 0.0]
+        AlignementToAnchor = [0.0, 0.5]
+        AlignementToFather = [0.0, 0.5]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "ButtonHUD/Main"
+
+    UseLocalRenderLayer = false
+    BackgroundLocalRenderLayer = 0
+)

@@ -1,0 +1,22 @@
+export ModelFile_SU_85_EstSOV is 'GameData:Assets\3D\Units\SOV\Char\SU_85_SOV\SU_85_SOV.Ase2NdfBin'
+
+Modele_SU_85_EstSOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_SU_85_EstSOV
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_SU_85_EstSOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\SU_85_SOV_MID\SU_85_SOV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_SU_85_EstSOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\LODS\SU_85_SOV_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

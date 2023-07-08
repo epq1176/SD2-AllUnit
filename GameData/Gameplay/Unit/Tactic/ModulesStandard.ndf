@@ -1,0 +1,37 @@
+
+CapturableModule is TCapturableModuleDescriptor
+(
+    RadiusCapture            =  1000.0 * Metre //2000.0 * Metre
+)
+
+GroupableUnitModuleSelector is TModuleSelector
+(
+    Default        = TGroupableUnitModuleDescriptor
+    (
+    )
+    Selection      = [~/NilDescriptorIfGhostOrCadavre]
+)
+
+OrderConfigModuleDescriptor is TOrderConfigModuleDescriptor
+(
+)
+
+PlayerMissionModuleDescriptor is TPlayerMissionModuleDescriptor
+(
+)
+
+TargetCoordinatorModuleSelector is TModuleSelector
+(
+    Default        = TTargetCoordinatorModuleDescriptor
+    (
+    )
+    Selection      = [~/NilDescriptorIfGhostOrCadavre]
+)
+
+TargetManagerModuleSelector is TModuleSelector
+(
+    Default        = TTargetManagerModuleDescriptor
+    (
+    )
+    Selection      = [~/NilDescriptorIfGhostOrCadavre]
+)

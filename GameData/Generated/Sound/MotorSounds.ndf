@@ -1,0 +1,614 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+export DepictionOperatorNode_MotorSound_Gfx_Avion_Moteur_Reaction is TCosmeticMovementSoundOperatorDesc
+(
+    OperatorId = 'Gfx_Avion_Moteur_Reaction_Sound'
+    RunInFadeVelocity = 2.000000
+    RunOutFadeVelocity = 5.000000
+    RunOutPitchToGo = 0.800000
+    VolumeIdleStop = 0.000000
+    RunOutPitchVelocity = 0.400000
+    IdleAndStopInFadeVelocity = 0.000000
+    IdleAndStopOutFadeVelocity = 2.000000
+    IdleAndStopTime = 0.000000
+    MinVolume = 0.100000
+    MaxVolume = 0.500000
+    MaxVolumeSpeed = ((80.0) * Metre)
+    FakeDoppler = True
+    Camera = $/M3D/Camera/CameraPrincipale
+    RunSounds =
+    [
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_Deplacement\Avion_Reaction_Run_Loud_2.wav'
+            )
+        ),
+    ]
+    IdleAndStopSounds = []
+)
+export DepictionOperatorNode_MotorSound_Gfx_Avion_Moteur_Reaction_JUMO is TCosmeticMovementSoundOperatorDesc
+(
+    OperatorId = 'Gfx_Avion_Moteur_Reaction_JUMO_Sound'
+    RunInFadeVelocity = 2.000000
+    RunOutFadeVelocity = 5.000000
+    RunOutPitchToGo = 0.800000
+    VolumeIdleStop = 0.000000
+    RunOutPitchVelocity = 0.400000
+    IdleAndStopInFadeVelocity = 0.000000
+    IdleAndStopOutFadeVelocity = 2.000000
+    IdleAndStopTime = 0.000000
+    MinVolume = 0.100000
+    MaxVolume = 0.500000
+    MaxVolumeSpeed = ((80.0) * Metre)
+    FakeDoppler = True
+    Camera = $/M3D/Camera/CameraPrincipale
+    RunSounds =
+    [
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_SD\moteurs\Avion_reaction_JUMO.wav'
+            )
+        ),
+    ]
+    IdleAndStopSounds = []
+)
+export DepictionOperatorNode_MotorSound_Gfx_CharLeger_Moteur is TCosmeticMovementSoundOperatorDesc
+(
+    OperatorId = 'Gfx_CharLeger_Moteur_Sound'
+    RunInFadeVelocity = 2.000000
+    RunOutFadeVelocity = 2.000000
+    RunOutPitchToGo = 0.800000
+    VolumeIdleStop = 0.800000
+    RunOutPitchVelocity = 0.400000
+    IdleAndStopInFadeVelocity = 2.000000
+    IdleAndStopOutFadeVelocity = 2.000000
+    IdleAndStopTime = 10.000000
+    MinVolume = 0.100000
+    MaxVolume = 1.000000
+    MaxVolumeSpeed = ((80.0) * Metre)
+    FakeDoppler = False
+    Camera = nil
+    RunSounds =
+    [
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_Deplacement\GE_CharLeger_Run.wav'
+            )
+        ),
+    ]
+    IdleAndStopSounds =
+    [
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_Deplacement\GE_CharLeger_IdleAndStop.wav'
+            )
+        ),
+    ]
+)
+export DepictionOperatorNode_MotorSound_Gfx_CharLourd_Moteur is TCosmeticMovementSoundOperatorDesc
+(
+    OperatorId = 'Gfx_CharLourd_Moteur_Sound'
+    RunInFadeVelocity = 2.000000
+    RunOutFadeVelocity = 2.000000
+    RunOutPitchToGo = 0.800000
+    VolumeIdleStop = 0.800000
+    RunOutPitchVelocity = 0.400000
+    IdleAndStopInFadeVelocity = 2.000000
+    IdleAndStopOutFadeVelocity = 2.000000
+    IdleAndStopTime = 10.000000
+    MinVolume = 0.100000
+    MaxVolume = 1.000000
+    MaxVolumeSpeed = ((80.0) * Metre)
+    FakeDoppler = False
+    Camera = nil
+    RunSounds =
+    [
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_Deplacement\GE_CharLourd_Run.wav'
+            )
+        ),
+    ]
+    IdleAndStopSounds =
+    [
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_Deplacement\GE_CharLourd_IdleAndStop.wav'
+            )
+        ),
+    ]
+)
+export DepictionOperatorNode_MotorSound_Gfx_CharMoyen_Moteur is TCosmeticMovementSoundOperatorDesc
+(
+    OperatorId = 'Gfx_CharMoyen_Moteur_Sound'
+    RunInFadeVelocity = 2.000000
+    RunOutFadeVelocity = 2.000000
+    RunOutPitchToGo = 0.800000
+    VolumeIdleStop = 0.800000
+    RunOutPitchVelocity = 0.400000
+    IdleAndStopInFadeVelocity = 2.000000
+    IdleAndStopOutFadeVelocity = 2.000000
+    IdleAndStopTime = 10.000000
+    MinVolume = 0.100000
+    MaxVolume = 1.000000
+    MaxVolumeSpeed = ((80.0) * Metre)
+    FakeDoppler = False
+    Camera = nil
+    RunSounds =
+    [
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_Deplacement\GE_CharMoyen_Run.wav'
+            )
+        ),
+    ]
+    IdleAndStopSounds =
+    [
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_Deplacement\GE_CharMoyen_IdleAndStop.wav'
+            )
+        ),
+    ]
+)
+export DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur is TCosmeticMovementSoundOperatorDesc
+(
+    OperatorId = 'Gfx_Infanterie_Moteur_Sound'
+    RunInFadeVelocity = 2.000000
+    RunOutFadeVelocity = 4.000000
+    RunOutPitchToGo = 0.800000
+    VolumeIdleStop = 0.000000
+    RunOutPitchVelocity = 0.400000
+    IdleAndStopInFadeVelocity = 0.000000
+    IdleAndStopOutFadeVelocity = 2.000000
+    IdleAndStopTime = 0.000000
+    MinVolume = 0.100000
+    MaxVolume = 0.500000
+    MaxVolumeSpeed = ((20.0) * Metre)
+    FakeDoppler = False
+    Camera = nil
+    RunSounds =
+    [
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_Deplacement\Infanterie_Run.wav'
+            )
+        ),
+    ]
+    IdleAndStopSounds = []
+)
+export DepictionOperatorNode_MotorSound_Gfx_Jeep_Moteur is TCosmeticMovementSoundOperatorDesc
+(
+    OperatorId = 'Gfx_Jeep_Moteur_Sound'
+    RunInFadeVelocity = 2.000000
+    RunOutFadeVelocity = 4.000000
+    RunOutPitchToGo = 0.800000
+    VolumeIdleStop = 0.000000
+    RunOutPitchVelocity = 0.400000
+    IdleAndStopInFadeVelocity = 0.000000
+    IdleAndStopOutFadeVelocity = 2.000000
+    IdleAndStopTime = 0.000000
+    MinVolume = 0.100000
+    MaxVolume = 0.500000
+    MaxVolumeSpeed = ((80.0) * Metre)
+    FakeDoppler = False
+    Camera = nil
+    RunSounds =
+    [
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_Deplacement\vehicle_loop_move_wheeled_medium.wav'
+            )
+        ),
+    ]
+    IdleAndStopSounds =
+    [
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_Deplacement\vehicle_loop_engine_idle.wav'
+            )
+        ),
+    ]
+)
+export DepictionOperatorNode_MotorSound_Gfx_SD_avion_bombardier_moteur is TCosmeticMovementSoundOperatorDesc
+(
+    OperatorId = 'Gfx_SD_avion_bombardier_moteur_Sound'
+    RunInFadeVelocity = 2.000000
+    RunOutFadeVelocity = 5.000000
+    RunOutPitchToGo = 0.800000
+    VolumeIdleStop = 0.000000
+    RunOutPitchVelocity = 0.500000
+    IdleAndStopInFadeVelocity = 0.000000
+    IdleAndStopOutFadeVelocity = 2.000000
+    IdleAndStopTime = 0.000000
+    MinVolume = 0.100000
+    MaxVolume = 0.500000
+    MaxVolumeSpeed = ((80.0) * Metre)
+    FakeDoppler = False
+    Camera = nil
+    RunSounds =
+    [
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_SD\moteurs\Avion_bombardier_01.wav'
+            )
+        ),
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_SD\moteurs\Avion_bombardier_02.wav'
+            )
+        ),
+    ]
+    IdleAndStopSounds = []
+)
+export DepictionOperatorNode_MotorSound_Gfx_SD_avion_chasseur_moteur is TCosmeticMovementSoundOperatorDesc
+(
+    OperatorId = 'Gfx_SD_avion_chasseur_moteur_Sound'
+    RunInFadeVelocity = 2.000000
+    RunOutFadeVelocity = 5.000000
+    RunOutPitchToGo = 0.800000
+    VolumeIdleStop = 0.000000
+    RunOutPitchVelocity = 0.500000
+    IdleAndStopInFadeVelocity = 0.000000
+    IdleAndStopOutFadeVelocity = 2.000000
+    IdleAndStopTime = 0.000000
+    MinVolume = 0.100000
+    MaxVolume = 0.500000
+    MaxVolumeSpeed = ((80.0) * Metre)
+    FakeDoppler = True
+    Camera = $/M3D/Camera/CameraPrincipale
+    RunSounds =
+    [
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_SD\moteurs\Avion_chasseur_01.wav'
+            )
+        ),
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_SD\moteurs\Avion_chasseur_02.wav'
+            )
+        ),
+    ]
+    IdleAndStopSounds = []
+)
+export DepictionOperatorNode_MotorSound_Gfx_SD_avion_reco_moteur is TCosmeticMovementSoundOperatorDesc
+(
+    OperatorId = 'Gfx_SD_avion_reco_moteur_Sound'
+    RunInFadeVelocity = 2.000000
+    RunOutFadeVelocity = 5.000000
+    RunOutPitchToGo = 0.800000
+    VolumeIdleStop = 0.000000
+    RunOutPitchVelocity = 0.500000
+    IdleAndStopInFadeVelocity = 0.000000
+    IdleAndStopOutFadeVelocity = 2.000000
+    IdleAndStopTime = 0.000000
+    MinVolume = 0.100000
+    MaxVolume = 0.500000
+    MaxVolumeSpeed = ((80.0) * Metre)
+    FakeDoppler = True
+    Camera = $/M3D/Camera/CameraPrincipale
+    RunSounds =
+    [
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_SD\moteurs\Avion_reco_01.wav'
+            )
+        ),
+    ]
+    IdleAndStopSounds = []
+)
+export DepictionOperatorNode_MotorSound_Gfx_SD_halftrack_moteur is TCosmeticMovementSoundOperatorDesc
+(
+    OperatorId = 'Gfx_SD_halftrack_moteur_Sound'
+    RunInFadeVelocity = 2.000000
+    RunOutFadeVelocity = 2.000000
+    RunOutPitchToGo = 0.800000
+    VolumeIdleStop = 0.800000
+    RunOutPitchVelocity = 0.500000
+    IdleAndStopInFadeVelocity = 2.000000
+    IdleAndStopOutFadeVelocity = 2.000000
+    IdleAndStopTime = 10.000000
+    MinVolume = 0.600000
+    MaxVolume = 0.800000
+    MaxVolumeSpeed = ((80.0) * Metre)
+    FakeDoppler = False
+    Camera = nil
+    RunSounds =
+    [
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_SD\moteurs\Halftracks_run_01.wav'
+            )
+        ),
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_SD\moteurs\Halftracks_run_02.wav'
+            )
+        ),
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_SD\moteurs\Halftracks_run_03.wav'
+            )
+        ),
+    ]
+    IdleAndStopSounds =
+    [
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_SD\moteurs\Halftracks_idle_01.wav'
+            )
+        ),
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_SD\moteurs\Halftracks_idle_02.wav'
+            )
+        ),
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_SD\moteurs\Halftracks_idle_03.wav'
+            )
+        ),
+    ]
+)
+export DepictionOperatorNode_MotorSound_Gfx_SD_jeep_moteur is TCosmeticMovementSoundOperatorDesc
+(
+    OperatorId = 'Gfx_SD_jeep_moteur_Sound'
+    RunInFadeVelocity = 2.000000
+    RunOutFadeVelocity = 2.000000
+    RunOutPitchToGo = 0.800000
+    VolumeIdleStop = 0.500000
+    RunOutPitchVelocity = 0.500000
+    IdleAndStopInFadeVelocity = 2.000000
+    IdleAndStopOutFadeVelocity = 2.000000
+    IdleAndStopTime = 10.000000
+    MinVolume = 0.300000
+    MaxVolume = 0.500000
+    MaxVolumeSpeed = ((80.0) * Metre)
+    FakeDoppler = False
+    Camera = nil
+    RunSounds =
+    [
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_SD\moteurs\jeep_run_01.wav'
+            )
+        ),
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_SD\moteurs\jeep_run_02.wav'
+            )
+        ),
+    ]
+    IdleAndStopSounds =
+    [
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_Deplacement\GE_Jeep_IdleAndStop.wav'
+            )
+        ),
+    ]
+)
+export DepictionOperatorNode_MotorSound_Gfx_SD_moto_moteur is TCosmeticMovementSoundOperatorDesc
+(
+    OperatorId = 'Gfx_SD_moto_moteur_Sound'
+    RunInFadeVelocity = 2.000000
+    RunOutFadeVelocity = 2.000000
+    RunOutPitchToGo = 0.800000
+    VolumeIdleStop = 0.500000
+    RunOutPitchVelocity = 0.500000
+    IdleAndStopInFadeVelocity = 2.000000
+    IdleAndStopOutFadeVelocity = 2.000000
+    IdleAndStopTime = 10.000000
+    MinVolume = 0.300000
+    MaxVolume = 0.500000
+    MaxVolumeSpeed = ((80.0) * Metre)
+    FakeDoppler = False
+    Camera = nil
+    RunSounds =
+    [
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_SD\moteurs\moto_run_01.wav'
+            )
+        ),
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_SD\moteurs\moto_run_02.wav'
+            )
+        ),
+    ]
+    IdleAndStopSounds = []
+)
+export DepictionOperatorNode_MotorSound_Gfx_SD_tank_moteur is TCosmeticMovementSoundOperatorDesc
+(
+    OperatorId = 'Gfx_SD_tank_moteur_Sound'
+    RunInFadeVelocity = 2.000000
+    RunOutFadeVelocity = 2.000000
+    RunOutPitchToGo = 0.800000
+    VolumeIdleStop = 0.800000
+    RunOutPitchVelocity = 0.500000
+    IdleAndStopInFadeVelocity = 2.000000
+    IdleAndStopOutFadeVelocity = 2.000000
+    IdleAndStopTime = 0.000000
+    MinVolume = 0.800000
+    MaxVolume = 1.000000
+    MaxVolumeSpeed = ((40.0) * Metre)
+    FakeDoppler = False
+    Camera = nil
+    RunSounds =
+    [
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_SD\moteurs\tank_run_01.wav'
+            )
+        ),
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_SD\moteurs\tank_run_02.wav'
+            )
+        ),
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_SD\moteurs\tank_run_03.wav'
+            )
+        ),
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_SD\moteurs\tank_run_04.wav'
+            )
+        ),
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_SD\moteurs\tank_run_05.wav'
+            )
+        ),
+    ]
+    IdleAndStopSounds =
+    [
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_Deplacement\GE_CharLourd_IdleAndStop.wav'
+            )
+        ),
+    ]
+)
+export DepictionOperatorNode_MotorSound_Gfx_VehiculeRoueMoyen_Moteur is TCosmeticMovementSoundOperatorDesc
+(
+    OperatorId = 'Gfx_VehiculeRoueMoyen_Moteur_Sound'
+    RunInFadeVelocity = 2.000000
+    RunOutFadeVelocity = 2.000000
+    RunOutPitchToGo = 0.800000
+    VolumeIdleStop = 0.500000
+    RunOutPitchVelocity = 0.500000
+    IdleAndStopInFadeVelocity = 2.000000
+    IdleAndStopOutFadeVelocity = 2.000000
+    IdleAndStopTime = 10.000000
+    MinVolume = 0.300000
+    MaxVolume = 0.500000
+    MaxVolumeSpeed = ((80.0) * Metre)
+    FakeDoppler = False
+    Camera = nil
+    RunSounds =
+    [
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_Deplacement\vehicle_loop_move_wheeled_light.wav'
+            )
+        ),
+    ]
+    IdleAndStopSounds =
+    [
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SFX_SoundSettings_Moteur
+            TheSoundStream = TSoundStream
+            (
+                FileName = 'GameData:Assets\Sons\SFX_Deplacement\vehicle_loop_engine_idle.wav'
+            )
+        ),
+    ]
+)

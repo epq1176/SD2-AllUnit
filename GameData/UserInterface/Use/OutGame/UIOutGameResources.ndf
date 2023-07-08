@@ -1,0 +1,132 @@
+RefMagnification is 1.
+
+MagnifiableMarginForContent is 15.0
+MagnifiableMainPanelWidth is 1323. div ~/RefMagnification //919
+MagnifiableMainPanelContentWidth is 1720//MagnifiableMainPanelWidth - 2 * MagnifiableMarginForContent
+
+private OutGameWarningPanelResources is TUICommonWarningPanelResource
+(
+    ComponentByName = MAP[
+        ( "WarningPositive", ~/WarningPositiveComponent ),
+    ]
+
+    LifeAnimDurationForTemporary = 8.0
+    FadeInDuration = 0.4
+    FadeOutDuration = 0.8
+)
+
+export OutGameResourceSpecific is TUISpecificOutGameResources
+(
+    UILayer                     = $/UserInterface/UILayer_2DInterface_OutGame
+    DragAndDropUILayer          = $/UserInterface/UILayer_DragAndDrop
+    WarningUILayer              = $/UserInterface/UILayer_2DInterface_OutGame_Warning
+    CommonResources             = ~/UICommonResource
+    OptionsManager              = $/GameOptionsInterface/GameOptionsInterfaceWrapper
+    ModdingPolice               = $/UnlockableContent/ModdingPolice
+
+    MainStyleGuides             = [
+        ~/DefaultStyleGuide,
+    ]
+
+    HUBContainerResource       = ~/outGameHUBContainerResource
+    ActionScreensContainerResource = ~/outGameActionScreensContainerResource
+
+    UserInputBinder             = $/GameOptionsInterface/UserInputBinder
+    UIOffscreenSceneFactory     = $/M3D/Scene/SceneFactory_UIOffscreen
+    LevelUpAnimResource         = ~/LevelUpAnimResourceWg2
+    WaitAnimResource            = ~/waitAnimResource
+    LoadingResource             = ~/SpecificOutGameLoadingPanelResource
+    LoginResource               = ~/LoginResource
+    LeaderboardPanelDescriptor  = ~/UISpecificLeaderboardViewDescriptor
+    EscapePanelResources        = ~/EscapePanelResource
+
+    MainPanelWidth              = ~/MagnifiableMainPanelWidth
+    MainPanelContentWidth       = ~/MagnifiableMainPanelContentWidth
+
+    GameRoomListResource        = ~/GameRoomListPanelResource
+    DeckListResource            = ~/DeckListPanelResource
+    UISpecificDivisionSelectionViewDescriptor = ~/UISpecificDivisionSelectionViewDescriptor
+    UISpecificStrategicCampaignViewDescriptor = UISpecificStrategicCampaignViewDescriptor(IsTuto = false)
+    UISpecificStrategicCampaignTutoViewDescriptor = UISpecificStrategicCampaignViewDescriptor(IsTuto = true)
+    UISpecificHistoricalBattleViewDescriptor = UISpecificHistoricalBattleViewDescriptor(IsTuto = false)
+    UISpecificTacticalTutoViewDescriptor = UISpecificHistoricalBattleViewDescriptor(IsTuto = true)
+
+    CreditsResource             = ~/SpecificCreditsResource
+    PlayerPropertyResource      = ~/specificPlayerPropertyResource
+    LobbyResource               = ~/OutGameLobbyResources
+
+    //FriendPanelResource         = ~/FriendPanelResource
+    NicknameChangeResource      = ~/NicknameChangeResource
+    ConfigPanelResource         = ~/SpecificConfigPanelResource
+    ReplayPanelDescriptor       = ~/UISpecificReplayPanelViewDescriptor
+    SaveLoadPanelDescriptor     = ~/UISpecificSaveLoadPanelViewDescriptor
+    ModaleResource              = ~/ModaleResource
+    NotificationPanelResource   = ~/NotificationPanelResource
+    WarningPanelResources       = ~/OutGameWarningPanelResources
+    DeckOverviewResources       = ~/DeckOverviewResources
+    ModCenterResources          = ~/ModCenterPanelResource
+    ModResources                = ~/ModResource
+    PingDisplayResources        = ~/UICommonHUDPingDisplayViewDescriptor
+    LobbyResources              = ~/UISpecificOutGameLobbyViewDescriptor
+
+    TutorialGuideDescriptor     = ~/TutorialGuideViewDescriptor
+
+    SceneResource               = ~/specificSceneResource
+
+    HostPanelResources          = ~/HostPanelResources
+    StatsPanelResources          = ~/StatsPanelResources
+
+    SoloScreenContent                       = ~/HUBSoloDescriptor
+    ProfilScreenContent                     = ~/HUBProfilDescriptor
+    MultiScreenViewDescriptor               = ~/UISpecificHUBMultiViewDescriptor
+    LobbyShortcutsViewDescriptor            = UISpecificMultiLobbyShortcutsViewDescriptor(ShowHeader = true)
+    LobbyShortcutsNoHeaderViewDescriptor    = UISpecificMultiLobbyShortcutsViewDescriptor(ShowHeader = false)
+    HUBBattleGroupDescriptor                = ~/HUBBattleGroupPanelViewDescriptor
+
+    AutoMatchGameSearchContent  = ~/OutGameSearchAutoMatchGameDescriptor
+
+    VersionTextContent          = ~/OutGameVersionTextDescriptor
+
+    CampaignSoloResource        = ~/CampaignSoloResources
+
+    LevelUpContent              = ~/LevelUpPanelDescriptor
+
+    GameModeResources           = ~/GameModeResources
+    CombatRuleResources         = ~/CombatRuleResources
+
+    //Sounds
+    CountDownSound              = ~/OutgameSound_WG2_CountDownSound
+    GameFoundSound              = ~/OutgameSound_WG2_GameFound
+    ProfileClickSound           = ~/OutgameSound_WG2_ProfileClick
+
+
+    IsInAutoSettingsStateNotifier = $/M3D/Scene/IsInAutoSettings //sert a notifier l'état au NDF
+
+    NewContentTagsAndDisplayCount = MAP
+    [
+        ("ChallengeUpdate",     5),
+    ]
+
+    ViewDescriptors = MAP
+    [
+        ("UIOutGameChatViewDescriptor", ~/UISpecificOutGameChatViewDescriptor),
+        ("UIOutGameMotdViewDescriptor", ~/UISpecificOutGameMotdViewDescriptor),
+        ("UIOutGameChatOneChannelViewDescriptor", ~/UISpecificOutGameChatOneChannelViewDescriptor),
+        ("UIOutGameChatChannelListViewDescriptor", ~/UISpecificOutGameChatChannelListViewDescriptor),
+        ("UIOutGameChatMessageListViewDescriptor", ~/UISpecificOutGameChatMessageListViewDescriptor),
+        ("UIOutGameChatMessageViewDescriptor", ~/UISpecificOutGameChatMessageViewDescriptor),
+
+        ("UISpecificOutGameAutoMatchViewDescriptor", ~/UISpecificOutGameAutoMatchViewDescriptor),
+        ("UISpecificOutGameStrategicLobbyViewDescriptor", ~/UISpecificOutGameStrategicLobbyViewDescriptor),
+        ("UISpecificOutGameWelcomeViewDescriptor", ~/UISpecificOutGameWelcomeViewDescriptor),
+        ("UISpecificOutGameModPanelViewDescriptor", ~/UISpecificOutGameModPanelViewDescriptor),
+
+        ("UISpecificOutGameFriendListViewDescriptor", ~/UISpecificOutGameFriendListViewDescriptor),
+        ("UIOutgameFriendLineViewDescriptor", ~/UIOutgameFriendLineViewDescriptor),
+        ("UISpecificOutGameFriendModaleViewDescriptor", ~/UISpecificOutGameFriendModaleViewDescriptor),
+        ("ScorePanelDescriptor", UISpecificStrategicScorePanelViewDescriptor(isEndgame = true)),
+        ("TacticalEndGameDescriptor", ~/UISpecificTacticalEndGameViewDescriptor),
+        ("JoinByInviteCodeModaleViewDescriptor", ~/UISpecificOutGameJoinByInviteCodeModaleViewDescriptor),
+        ("ShowInviteCodeModaleViewDescriptor", ~/UISpecificOutGameShowInviteCodeModaleViewDescriptor),
+    ]
+)

@@ -1,0 +1,402 @@
+StrategicAutoresolveConstantes is TStrategicAutoResolveConstantes
+(
+    AutoresolveUseTicketsPoints = false
+    AutoresolveTicketsPointsOnlyForPhaseA = true
+
+    DecalageRapportDeForce = MAP
+    [
+        (GameMode/ConquestGameMode,     DecalageRapportDeForceCombatTerrestre),
+        (GameMode/BreakthroughConquest, DecalageRapportDeForceCombatTerrestre),
+    ]
+
+    PertePourAttaquantSelonDecalage = MAP
+    [
+        (GameMode/ConquestGameMode,     PertePourAttaquantSelonDecalageCombatTerrestre),
+        (GameMode/BreakthroughConquest, PertePourAttaquantSelonDecalageCombatTerrestre),
+    ]
+
+    PertePourDefenseurSelonDecalage = MAP
+    [
+        (GameMode/ConquestGameMode,     PertePourDefenseurSelonDecalageCombatTerrestre),
+        (GameMode/BreakthroughConquest, PertePourDefenseurSelonDecalageCombatTerrestre),
+    ]
+
+    HorsCombatPourAttaquantSelonDecalage = MAP
+    [
+        (GameMode/ConquestGameMode,     HorsCombatPourAttaquantSelonDecalageCombatTerrestre),
+        (GameMode/BreakthroughConquest, HorsCombatPourAttaquantSelonDecalageCombatTerrestre),
+    ]
+
+    HorsCombatPourDefenseurSelonDecalage = MAP
+    [
+        (GameMode/ConquestGameMode,     HorsCombatPourDefenseurSelonDecalageCombatTerrestre),
+        (GameMode/BreakthroughConquest, HorsCombatPourDefenseurSelonDecalageCombatTerrestre),
+    ]
+
+    DecalageSelonTerrain = MAP [
+        (
+            ETerrainType/ForetLegere,
+            0
+        ),
+        (
+            ETerrainType/ForetDense,
+            0
+        ),
+        (
+            ETerrainType/Urbain,
+            0
+        ),
+    ]
+
+    DecalageSelonTerrainSurLeCheminDeLAttaquant = MAP [
+        //(
+        //    ETerrainType/SousLesPonts,
+        //    -1
+        //),
+    ]
+
+    AbsoluteMaximumForBalanceOfPower = 12
+
+    VictoryTypeByBalanceOfPower =
+    [
+        (-12,   EVictoryType/TotalDefeat),
+        (-10,    EVictoryType/MajorDefeat),
+        (-5,    EVictoryType/MinorDefeat),
+        (2,     EVictoryType/Draw),
+        (5,     EVictoryType/MinorVictory),
+        (10,     EVictoryType/MajorVictory),
+        (12,    EVictoryType/TotalVictory),
+    ]
+
+    // -------------
+    // Combat Aerien
+    // -------------
+
+    DecalageRapportDeForceCombatAerien  = DecalageRapportDeForceForCombatAerien
+    PertePourAttaquantSelonDecalageCombatAerien = PertePourAttaquantSelonDecalageForCombatAerien
+    PertePourDefenseurSelonDecalageCombatAerien = PertePourDefenseurSelonDecalageForCombatAerien
+    HorsCombatPourAttaquantSelonDecalageCombatAerien = HorsCombatPourAttaquantSelonDecalageCombatTerrestre
+    HorsCombatPourDefenseurSelonDecalageCombatAerien = HorsCombatPourDefenseurSelonDecalageCombatTerrestre
+
+    VictoryTypeByBalanceOfPowerCombatAerien =
+    [
+        ( -6,    EVictoryType/MajorDefeat),
+        ( -4,    EVictoryType/MinorDefeat),
+        ( 0,    EVictoryType/Draw),
+        ( 4,    EVictoryType/MinorVictory),
+        ( 6,    EVictoryType/MajorVictory),
+    ]
+
+
+    // -------------
+    // Combat Sol Air \ combat Attaquant Defenseur : cas où l'avion est en supériorité sur une zonee t qu'une DCA devient active (cas rare)
+    // -------------
+
+    DecalageRapportDeForceCombatSolAir  = DecalageRapportDeForceForCombatSolAir
+    PertePourAttaquantSelonDecalageCombatSolAir = PertePourAttaquantSelonDecalageForCombatSolAir
+    PertePourDefenseurSelonDecalageCombatSolAir = PertePourDefenseurSelonDecalageForCombatSolAir
+    HorsCombatPourAttaquantSelonDecalageCombatSolAir = HorsCombatPourAttaquantSelonDecalageCombatTerrestre
+    HorsCombatPourDefenseurSelonDecalageCombatSolAir = HorsCombatPourDefenseurSelonDecalageCombatTerrestre
+
+    VictoryTypeByBalanceOfPowerCombatSolAir =
+    [
+        ( 0,    EVictoryType/Draw),
+        ( 4,    EVictoryType/MinorVictory),
+        ( 6,    EVictoryType/MajorVictory),
+    ]
+
+
+    //-------------------------------------------------------------------------------------
+    // Combat Air Sol // combat attaquant defenseur : cas où l'avion entre dans le cercle d'une DCA / l'avion est attaquant et DCA
+    //-------------------------------------------------------------------------------------
+
+    DecalageRapportDeForceCombatAirSol  = DecalageRapportDeForceForCombatAirSol
+    PertePourAttaquantSelonDecalageCombatAirSol = PertePourAttaquantSelonDecalageForCombatAirSol
+    PertePourDefenseurSelonDecalageCombatAirSol = PertePourDefenseurSelonDecalageForCombatAirSol
+    HorsCombatPourAttaquantSelonDecalageCombatAirSol = HorsCombatPourAttaquantSelonDecalageCombatTerrestre
+    HorsCombatPourDefenseurSelonDecalageCombatAirSol = HorsCombatPourDefenseurSelonDecalageCombatTerrestre
+
+    VictoryTypeByBalanceOfPowerCombatAirSol =
+    [
+        ( -6,    EVictoryType/MajorDefeat),
+        ( -4,    EVictoryType/MinorDefeat),
+        ( 0,    EVictoryType/Draw),
+        ( 4,    EVictoryType/MinorVictory),
+        ( 6,    EVictoryType/MajorVictory),
+    ]
+
+    // ------------------------------------------
+    // SDDEUX-2547 Fin de bataille prématurée
+    // ------------------------------------------
+
+    ChanceDeFinDeCombat = MAP
+    [
+        (-10,   0.7),
+        (-8,   0.5),
+        //(-5,    0.33),
+
+        (0,     0.0), //Seule la clé 0 est obligatoire, toute valeur autorisée
+
+        //(5,     0.33),
+        (8,     0.5),
+        (10,    0.7)
+    ]
+
+    UnitTerrainBonusCombatTerrestreDefault = 1.0 //Si l'unité n'est pas renseignée dans UnitTerrainBonusCombatTerrestre
+    UnitTerrainBonusCombatTerrestre = MAP
+    [
+        (EUnitPowerType/Assault,
+            MAP
+            [
+                (ETerrainType/None, 1), //Default
+                (ETerrainType/ChampDeMineAP, 2),
+                (ETerrainType/Urbain, 3),
+            ]),
+        (EUnitPowerType/Armored,
+            MAP
+            [
+                (ETerrainType/None, 2), //Default
+                (ETerrainType/ChampDeMineAP, 2),
+                (ETerrainType/Urbain, 2),
+            ]),
+        (EUnitPowerType/Artillery,
+            MAP
+            [
+                (ETerrainType/None, 1), //Default
+                (ETerrainType/ChampDeMineAP, 2),
+                (ETerrainType/Urbain, 3),
+            ]),
+    ]
+)
+
+// seul décalage à être utilisé !
+DecalageRapportDeForceCombatTerrestre is TBalanceOfPowerValues
+(
+    {LimitationDecalageParTerrain =
+        MAP [
+             (ETerrainType/None,
+                MAP[
+                    (EPawnType/Armored, 9),
+                    (EPawnType/Assault, 9),
+                    (EPawnType/Armored, 9),
+            ]),
+             (ETerrainType/ChampDeMineAP,
+                MAP[
+                    (EPawnType/Armored, 9),
+                    (EPawnType/Assault, 9),
+                    (EPawnType/Armored, 9),
+            ]),
+             (ETerrainType/Urbain,
+                MAP[
+                    (EPawnType/Armored, 9),
+                    (EPawnType/Assault, 9),
+                    (EPawnType/Armored, 9),
+            ]),
+
+        ]}
+
+    DecalageMinMax = [
+        (-10, 10), //Assault
+        (-10, 10), //Armored
+        (-9, 9), //Artillery
+        (0, 0), //AntiAircraft
+        (0, 0), //Airplane
+        (0, 0), //Evasion
+    ]
+)
+
+DecalageRapportDeForceForCombatAerien  is TBalanceOfPowerValues
+(
+    DecalageMinMax = [
+        (0, 0), //Assault
+        (0, 0), //Armored
+        (0, 0), //Artillery
+        (0, 0), //AntiAircraft
+        (-99, 99), //Airplane
+        (-99, 99), //Evasion
+    ]
+)
+
+DecalageRapportDeForceForCombatAirSol  is TBalanceOfPowerValues
+(
+    DecalageMinMax = [
+        (0, 0), //Assault
+        (0, 0), //Armored
+        (0, 0), //Artillery
+        (0, 0), //AntiAircraft
+        (-99, 99), //Airplane
+        (0, 0), //Evasion
+    ]
+)
+
+DecalageRapportDeForceForCombatSolAir  is TBalanceOfPowerValues
+(
+    DecalageMinMax = [
+        (0, 0), //Assault
+        (0, 0), //Armored
+        (0, 0), //Artillery
+        (0, 0), //AntiAircraft
+        (-99, 99), //Airplane
+        (0, 0), //Evasion
+
+    ]
+)
+
+// Pertes
+private malusAttaque is 1
+PertePourAttaquantSelonDecalageCombatTerrestre is MAP
+[
+    (-12    ,    1.78),
+    (-11    ,    1.49),
+    (-10    ,    1.24),
+    (-9    ,    1.03),
+    (-8    ,    0.86),
+    (-7    ,    0.72),
+    (-6    ,    0.6),
+    (-5    ,    0.5),
+    (-4    ,    0.41),
+    (-3    ,    0.35),
+    (-2    ,    0.29),
+    (-1    ,    0.24),
+    (0    ,    0.2),
+    (1    ,    0.17),
+    (2    ,    0.14),
+    (3    ,    0.12),
+    (4    ,    0.1),
+    (5    ,    0.09),
+    (6    ,    0.08),
+    (7    ,    0.06),
+    (8    ,    0.05),
+    (9    ,    0.05),
+    (10    ,    0.04),
+    (11    ,    0.03),
+    (12    ,    0.03),
+
+]
+
+PertePourDefenseurSelonDecalageCombatTerrestre is MAP
+[
+    (12    ,    1.78),
+    (11    ,    1.49),
+    (10    ,    1.24),
+    (9    ,    1.03),
+    (8    ,    0.86),
+    (7    ,    0.72),
+    (6    ,    0.6),
+    (5    ,    0.5),
+    (4    ,    0.41),
+    (3    ,    0.35),
+    (2    ,    0.29),
+    (1    ,    0.24),
+    (0    ,    0.2),
+    (-1    ,    0.17),
+    (-2    ,    0.14),
+    (-3    ,    0.12),
+    (-4    ,    0.1),
+    (-5    ,    0.09),
+    (-6    ,    0.08),
+    (-7    ,    0.06),
+    (-8    ,    0.05),
+    (-9    ,    0.05),
+    (-10    ,    0.04),
+    (-11    ,    0.03),
+    (-12    ,    0.03),
+
+]
+
+//-------------------------------------------------------------------------------------/
+PertePourAttaquantSelonDecalageForCombatAerien is MAP
+[
+
+       (-4,    0.40),
+       (-3,    0.30),
+       (-2,    0.20),
+       (-1,    0.15),
+       (0,     0.10),
+       (1,     0.01),
+
+]
+
+PertePourDefenseurSelonDecalageForCombatAerien is MAP
+[
+        (4,     0.40),
+        (3,     0.30),
+        (2,     0.20),
+        (1,     0.15),
+        (0,     0.10),
+        (-1,    0.01),
+]
+// pertes des avions dans les combats les opposant à la dca.
+PertePourDefenseurSelonDecalageForCombatSolAir is MAP
+[
+
+       (5,     0.40),
+       (4,     0.30),
+       (3,     0.20),
+       (2,     0.15),
+       (1,     0.10),
+       (0, 0),
+]
+PertePourAttaquantSelonDecalageForCombatAirSol is MAP
+[
+
+    (-5,     0.40),
+    (-4,     0.30),
+    (-3,     0.20),
+    (-2,     0.15),
+    (-1,     0.10),
+    (0,      0.05),
+]
+
+// l'avion est le défenseur dans un combat sol air
+PertePourAttaquantSelonDecalageForCombatSolAir is MAP
+[
+    (0,     0.06),
+]
+
+PertePourDefenseurSelonDecalageForCombatAirSol is MAP
+[
+
+    (0,     0.06),
+]
+
+
+
+
+HorsCombatPourAttaquantSelonDecalageCombatTerrestre is MAP    //WIP, desactivé
+[
+    (-6, 0),
+    (-5, 0),
+    (-4, 0),
+    (-3, 0),
+    (-2, 0),
+    (-1, 0),
+    (0,  0),
+    (1,  0),
+    (2,  0),
+    (3,  0),
+    (4,  0),
+    (5,  0),
+    (6,  0),
+    (7,  0),
+    (8,  0),
+]
+
+HorsCombatPourDefenseurSelonDecalageCombatTerrestre is MAP     //WIP, desactivé
+[
+    (-6, 0),
+    (-5, 0),
+    (-4, 0),
+    (-3, 0),
+    (-2, 0),
+    (-1, 0),
+    (0,  0),
+    (1,  0),
+    (2,  0),
+    (3,  0),
+    (4,  0),
+    (5,  0),
+    (6,  0),
+    (7,  0),
+    (8,  0),
+]

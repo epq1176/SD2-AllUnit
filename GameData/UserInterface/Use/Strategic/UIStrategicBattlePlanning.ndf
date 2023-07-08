@@ -1,0 +1,53 @@
+private StrategicBattlePlanningButtons is StrategicSecondaryCubeActionPanel
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+
+        MagnifiableOffset = [0.0, -200.0]
+        AlignementToAnchor = [0.5, 1.0]
+        AlignementToFather = [0.5, 1.0]
+    )
+    ContentComponents = MAP
+    [
+        ([0, 0],
+           StrategicSecondaryCubeActionButton
+           (
+                MagnifiableWidth = 600
+                MagnifiableHeight = 50
+                ElementName = 'ValidateButton'
+
+                HintTitleToken = "BtnValPlan"
+                HintBodyToken = "BtnValPlaH"
+                HintExtendedToken = ""
+                HintDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextToken = "BtnValPlan"
+            )
+        ),
+
+
+
+
+        {([0, 1],
+            StrategicSecondaryCubeActionButton
+            (
+                ElementName = 'CancelButton'
+
+                MagnifiableOffset = [
+                    CubeActionStrategicButtonDims[0] + CubeActionStrategicButtonSpacing[0],
+                    0.0
+                ]
+
+                HintTitleToken = "BtnCanPlan"
+                HintBodyToken = "BtnCanPlaH"
+                HintExtendedToken = ""
+                HintDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextToken = "BtnCanPlan"
+            )
+        ),}
+    ]
+)
+
+StrategicBattlePlanningResources is TStrategicBattlePlanningResources
+(
+    MainComponent = ~/StrategicBattlePlanningButtons
+)

@@ -1,0 +1,40 @@
+export Gfx_Bunker_AT_Panzerstellung_S35_47mm_GER is TDepictionTemplate //arme
+(
+    RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+    Selector = CommonBunkerDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_Panzerstellung_S35_47mm_GER ),
+        DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_Panzerstellung_S35_47mm_GER_MID ),
+        DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_Panzerstellung_S35_47mm_GER_LOW ),
+        DepictionDescriptor_LOD_None()
+    ]
+
+    SubDepictions = []
+    Operators = Operators_Panther_D
+    Actions = Weapons_Panther_D
+)
+
+export ModelFile_Bunker_Panzerstellung_S35_Weapon is ~/ModelFile_Panzerstellung_S35_47mm_GER
+
+export ModelFile_Panzerstellung_S35_47mm_GER is 'GameData:Assets\3D\Units\GER\Bunker\Panzerstellung_S35_47mm_GER\Panzerstellung_S35_47mm_GER.Ase2NdfBin'
+
+Modele_Panzerstellung_S35_47mm_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Panzerstellung_S35_47mm_GER
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzerstellung_S35_47mm_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Bunker\Panzerstellung_S35_47mm_GER\Panzerstellung_S35_47mm_GER.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzerstellung_S35_47mm_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Bunker\Panzerstellung_S35_47mm_GER\Panzerstellung_S35_47mm_GER.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

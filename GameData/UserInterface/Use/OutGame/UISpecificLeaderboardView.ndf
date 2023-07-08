@@ -1,0 +1,949 @@
+private LeaderboardAddFriendButton is StandardButton
+(
+    TextToken = 'LDB_FRNDS'
+    ElementName = 'LeaderBoardAddFriendButton'
+)
+
+private LeaderboardViewProfileButton is StandardButton
+(
+    TextToken = 'LDB_PFL'
+    ElementName = 'LeaderBoardViewProfileButton'
+)
+
+private LeaderboardBackButton is CancelButton
+(
+    TextToken = 'NV_BACK'
+    ElementName = 'LeaderBoardBackButton'
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+)
+
+//-------------------------------------------------------------------------------------
+
+private template LeaderboardMultiListContent
+[
+    ElementNamePrefix : string = ""
+] is BUCKListDescriptor
+(
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 25.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    Elements =
+    [
+        // Filler
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+            )
+        ),
+        // Grade
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = <ElementNamePrefix> + "LdbGradeMultiList"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+
+                Components =
+                [
+                    BUCKSpecificRankDescriptor
+                    (
+                        ElementName = "LdbGrade"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [61.0, 29.0]
+                        )
+                    )
+                ]
+            )
+        ),
+        // Trend
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = <ElementNamePrefix> + "LdbTrendMultiList"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [61.0, 0.0]
+                )
+
+                Components =
+                [
+                    BUCKTextureDescriptor
+                    (
+                        ElementName = "LdbTrend"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [28.0, 28.0]
+                            AlignementToAnchor = [0.5, 0.5]
+                            AlignementToFather = [0.5, 0.5]
+                        )
+                    )
+                ]
+            )
+        ),
+        // Rank
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = <ElementNamePrefix> + "LdbRankMultiList"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ElementName = "LdbRank"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [100.0, 0.0]
+                            RelativeWidthHeight = [0.0, 1.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Center
+                            VerticalAlignment = UIText_VerticalCenter
+                        )
+
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextStyle = "Default"
+                        TypefaceToken = "Main"
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                        TextColor = "ButtonHUD/Text"
+                        TextSize = "16"
+
+                        TextPadding = TRTTILength4(Magnifiable = [0.0, 0.0, 0.0, 0.0])
+                    )
+                ]
+            )
+        ),
+        // Name
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = <ElementNamePrefix> + "LdbNameMultiList"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ElementName = "LdbName"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [400.0, 0.0]
+                            RelativeWidthHeight = [0.0, 1.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Center
+                            VerticalAlignment = UIText_VerticalCenter
+                        )
+
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextStyle = "Default"
+                        TypefaceToken = "Main"
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                        TextColor = "ButtonHUD/Text"
+                        TextSize = "16"
+
+                        TextPadding = TRTTILength4(Magnifiable = [0.0, 0.0, 0.0, 0.0])
+                    )
+                ]
+            )
+        ),
+        // Rating
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = <ElementNamePrefix> + "LdbRatingMultiList"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ElementName = "LdbRating"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [130.0, 0.0]
+                            RelativeWidthHeight = [0.0, 1.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Center
+                            VerticalAlignment = UIText_VerticalCenter
+                        )
+
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextStyle = "Default"
+                        TypefaceToken = "Main"
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                        TextColor = "ButtonHUD/Text"
+                        TextSize = "16"
+
+                        TextPadding = TRTTILength4(Magnifiable = [0.0, 0.0, 0.0, 0.0])
+                    )
+                ]
+            )
+        ),
+        // Victories
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = <ElementNamePrefix> + "LdbVictoriesMultiList"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ElementName = "LdbVictories"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [130.0, 0.0]
+                            RelativeWidthHeight = [0.0, 1.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Center
+                            VerticalAlignment = UIText_VerticalCenter
+                        )
+
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextStyle = "Default"
+                        TypefaceToken = "Main"
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                        TextColor = "ButtonHUD/Text"
+                        TextSize = "16"
+
+                        TextPadding = TRTTILength4(Magnifiable = [0.0, 0.0, 0.0, 0.0])
+                    )
+                ]
+            )
+        ),
+        // Defeats
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = <ElementNamePrefix> + "LdbDefeatsMultiList"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ElementName = "LdbDefeats"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [130.0, 0.0]
+                            RelativeWidthHeight = [0.0, 1.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Center
+                            VerticalAlignment = UIText_VerticalCenter
+                        )
+
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextStyle = "Default"
+                        TypefaceToken = "Main"
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                        TextColor = "ButtonHUD/Text"
+                        TextSize = "16"
+
+                        TextPadding = TRTTILength4(Magnifiable = [0.0, 0.0, 0.0, 0.0])
+                    )
+                ]
+            )
+        ),
+        // Filler
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+            )
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+LeaderboardButtonRadioManager is TBUCKRadioButtonManager()
+
+private template LeaderboardButton
+[
+    ElementNamePrefix : string = ""
+] is BUCKButtonDescriptor
+(
+    ElementName = <ElementNamePrefix> + "LeaderboardButton"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContentVertically
+
+    IsTogglable = true
+    RadioButtonManager = ~/LeaderboardButtonRadioManager
+
+    HasBackground = true
+    BackgroundBlockColorToken = "DivisionBrief/ButtonOverlay"
+
+    HidePointerEvents = false
+
+    Components =
+    [
+        LeaderboardMultiListContent(ElementNamePrefix = <ElementNamePrefix>)
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private LeaderboardContentContainer is BUCKContainerDescriptor //BUCKSpecificScrollingContainerDescriptor
+(
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        AlignementToAnchor = [0.0, 0.0]
+        AlignementToFather = [0.0, 0.0]
+    )
+
+    //HasVerticalScrollbar = true
+    FitStyle = ~/ContainerFitStyle/FitToContentVertically
+    //FitToMaximumSize = TRTTILength2(Magnifiable = [0.0, 174.0])
+    //HidePointerEvents = true
+
+    Components = [
+        BUCKRackDescriptor
+        (
+            ElementName = "LeaderboardRack"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            ChildFitToContent = true
+
+            FirstMargin = TRTTILength(Magnifiable = 2.0)
+            InterItemMargin = TRTTILength(Magnifiable = 2.0)
+            LastMargin = TRTTILength(Magnifiable = 2.0)
+
+            BladeDescriptor = LeaderboardButton()
+        ),
+        BUCKSensibleAreaDescriptor
+        (
+            ElementName = "LeaderboardContentContainer"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private LeaderboardMultiListTitle is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 25.0]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "ListeExcel/Cartouche"
+
+    Axis = ~/ListAxis/Horizontal
+
+    Elements =
+    [
+        // Filler
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+            )
+        ),
+        // Grade
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'LdbGradeMultiList'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [61.0, 0.0]
+                )
+
+                SortingType = ~/MultiListSorting/String
+
+                HidePointerEvents = true
+                Components =
+                [
+                    // Title Text
+                    BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                            MagnifiableOffset = [0.0, 0.0]
+                        )
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Center
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            BigWordAction = ~/BigWordAction/BigWordNewLine
+                        )
+                        TextStyle = 'Default'
+                        TypefaceToken = 'Main'
+                        TextSize = '14'
+                        TextColor = 'ListeExcel/Cartouche'
+                        TextToken = 'LDB_GRADE'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                    ),
+                ]
+            )
+        ),
+        // Trend
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'LdbTrendMultiList'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [61.0, 0.0]
+                )
+
+                HidePointerEvents = true
+                Components =
+                [
+                    // Title Text
+                    BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                            MagnifiableOffset = [0.0, 0.0]
+                        )
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Center
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            BigWordAction = ~/BigWordAction/BigWordNewLine
+                        )
+                        TextStyle = 'Default'
+                        TypefaceToken = 'Main'
+                        TextSize = '14'
+                        TextColor = 'ListeExcel/Cartouche'
+                        TextToken = 'LDB_TREND'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                    ),
+                ]
+            )
+        ),
+        // Rank
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'LdbRankMultiList'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [100.0, 0.0]
+                )
+
+                SortingType = ~/MultiListSorting/String
+
+                HidePointerEvents = true
+                Components =
+                [
+                    // Title Text
+                    BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Center
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            BigWordAction = ~/BigWordAction/BigWordNewLine
+                        )
+                        TextStyle = 'Default'
+                        TypefaceToken = 'Main'
+                        TextSize = '14'
+                        TextColor = 'ListeExcel/Cartouche'
+                        TextToken = 'LDB_RANK'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                    ),
+                ]
+            )
+        ),
+        // Name
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'LdbNameMultiList'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [400.0, 0.0]
+                )
+
+                SortingType = ~/MultiListSorting/String
+                HidePointerEvents = true
+                Components =
+                [
+                    // Title Text
+                    BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                            MagnifiableOffset = [0.0, 0.0]
+                        )
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Center
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            BigWordAction = ~/BigWordAction/BigWordNewLine
+                        )
+                        TextStyle = 'Default'
+                        TypefaceToken = 'Main'
+                        TextSize = '14'
+                        TextColor = 'ListeExcel/Cartouche'
+                        TextToken = 'LDB_NAME'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                    ),
+                ]
+            )
+        ),
+        // Rating
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'LdbRatingMultiList'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [130.0, 0.0]
+                )
+
+                HidePointerEvents = true
+                Components =
+                [
+                    // Title Text
+                    BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                            MagnifiableOffset = [0.0, 0.0]
+                        )
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Center
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            BigWordAction = ~/BigWordAction/BigWordNewLine
+                        )
+                        TextStyle = 'Default'
+                        TypefaceToken = 'Main'
+                        TextSize = '14'
+                        TextColor = 'ListeExcel/Cartouche'
+                        TextToken = 'LDB_POINTS'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                    ),
+                ]
+            )
+        ),
+        // Victories
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'LdbVictoriesMultiList'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [130.0, 0.0]
+                )
+
+                SortingType = ~/MultiListSorting/Integer
+                HidePointerEvents = true
+                Components =
+                [
+                    // Title Text
+                    BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                            MagnifiableOffset = [0.0, 0.0]
+                        )
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Center
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            BigWordAction = ~/BigWordAction/BigWordNewLine
+                        )
+                        TextStyle = 'Default'
+                        TypefaceToken = 'Main'
+                        TextSize = '14'
+                        TextColor = 'ListeExcel/Cartouche'
+                        TextToken = 'LDB_VCTRS'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                    ),
+                ]
+            )
+        ),
+        // Defeats
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'LdbDefeatsMultiList'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [130.0, 0.0]
+                )
+
+                SortingType = ~/MultiListSorting/Integer
+                HidePointerEvents = true
+                Components =
+                [
+                    // Title Text
+                    BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                            MagnifiableOffset = [0.0, 0.0]
+                        )
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Center
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            BigWordAction = ~/BigWordAction/BigWordNewLine
+                        )
+                        TextStyle = 'Default'
+                        TypefaceToken = 'Main'
+                        TextSize = '14'
+                        TextColor = 'ListeExcel/Cartouche'
+                        TextToken = 'LDB_DFTS'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                    ),
+                ]
+            )
+        ),
+        // Filler
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+            )
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private LeaderboardMultiList is BUCKMultiListDescriptor
+(
+    ElementName = "LeaderboardMultiList"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        //RelativeWidthHeight = [1.0, 1.0]
+        RelativeWidthHeight = [1.0, 0.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContentVertically
+
+    ColumnNames =
+    [
+        "LdbGradeMultiList",
+        "LdbTrendMultiList",
+        "LdbRankMultiList",
+        "LdbNameMultiList",
+        "LdbRatingMultiList",
+        "LdbVictoriesMultiList",
+        "LdbDefeatsMultiList",
+    ]
+
+    SortableColumnNames =
+    [
+    ]
+
+    RackName = "LeaderboardRack"
+
+    TitleDescriptor = ~/LeaderboardMultiListTitle
+    ContentDescriptor = ~/LeaderboardContentContainer
+)
+
+//-------------------------------------------------------------------------------------
+
+private LeaderboardListHeader is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 30.0]
+        AlignementToFather = [1.0, 0.0]
+        AlignementToAnchor = [1.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "PlayerNumber"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = ~/UIText_Center
+                    VerticalAlignment = ~/UIText_VerticalCenter
+                    BigWordAction = ~/BigWordAction/BigWordNewLine
+                )
+
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextStyle = 'Default'
+                TypefaceToken = 'Main'
+                TextSize = '14'
+                TextColor = 'ListeExcel/Cartouche'
+                TextToken = 'LDB_NBPLYR'
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                TextPadding = TRTTILength4(Magnifiable = [5.0, 5.0, 5.0, 5.0])
+            )
+        ),
+        {BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "Rank"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = ~/UIText_Center
+                    VerticalAlignment = ~/UIText_VerticalCenter
+                    BigWordAction = ~/BigWordAction/BigWordNewLine
+                )
+
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextStyle = 'Default'
+                TypefaceToken = 'Main'
+                TextSize = '14'
+                TextColor = 'ListeExcel/Cartouche'
+                TextToken = 'LDB_RANK'
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                TextPadding = TRTTILength4(Magnifiable = [5.0, 5.0, 5.0, 5.0])
+            )
+        ),}
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private PlayerExtraLine is LeaderboardButton
+(
+    ElementNamePrefix = "Player"
+)
+
+//-------------------------------------------------------------------------------------
+
+BUCKSpecificLeaderboardMainComponentDescriptor is WindowFrame
+(
+    ContentExtendWeight = 1.0
+    ContentRelativeWidthHeight = [1.0, 1.0]
+    TitleToken = 'T_LDB'
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/LeaderboardAddFriendButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/LeaderboardViewProfileButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/LeaderboardBackButton ),
+    ]
+
+    ContentComponents =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/LeaderboardListHeader
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/LeaderboardMultiList
+                ),
+                BUCKListElementDescriptor
+                (
+                    // Separator
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            MagnifiableWidthHeight = [0.0, 10.0]
+                        )
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/PlayerExtraLine
+                ),
+            ]
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+UISpecificLeaderboardViewDescriptor is TUISpecificLeaderboardViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificLeaderboardMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    TrendEqualTexture = "OutgameTexture_TrendEqual"
+    TrendMinusTexture = "OutgameTexture_TrendMinus"
+    TrendPlusTexture = "OutgameTexture_TrendPlus"
+    TrendUnrankedTexture = "OutgameTexture_TrendUnranked"
+
+    ShortcutsLayer = $/M3D/Input/UserInputLayerHandler/InputLayer_2DInterfaceAboveBlur_OutGame
+
+    MaxElementsInRack = 25
+)

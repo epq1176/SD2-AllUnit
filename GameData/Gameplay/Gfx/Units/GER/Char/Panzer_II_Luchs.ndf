@@ -1,0 +1,22 @@
+export ModelFile_Panzer_II_Luchs is 'GameData:Assets\3D\Units\GER\Char\Panzer_II_Luchs\Panzer_II_Luchs.Ase2NdfBin'
+
+Modele_Panzer_II_Luchs is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Panzer_II_Luchs
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_II_Luchs_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\Panzer_II_Luchs_MID\Panzer_II_Luchs_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_II_Luchs_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\Panzer_II_Luchs_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

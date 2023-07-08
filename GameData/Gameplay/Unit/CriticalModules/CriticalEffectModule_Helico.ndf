@@ -1,0 +1,51 @@
+
+export CriticalEffectModule_Helico is TCriticalEffectModuleDescriptor
+(
+    Bounds = (1,10)
+    TerrainCriticalEffectTimer = 5.0
+
+    EffectsFromTerrain = []
+
+    EffectsOnFront =
+    [
+        //TCriticalEffect(Roll=(1,5) Token='CRITIC13' EffectsPack=~/UnitEffect_Ajoute_Tag_Ennemi_Proche TimeOut=-1 RepairCost=50 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True)
+        /////////// TCriticalEffect_LimitPrecision(Token='CRITIC13' Roll=(5,6) Limitation=0.05 TimeOut=60.0),
+        /////////// TCriticalEffect_LimitPrecision(Roll=(5,6) Limitation=0.05 TimeOut=60.0 LimitOnMG=true),
+
+        /////////// TCriticalEffect_RemoveAmmo(Token='CRITIC14' Roll=(7,9) LossRatio=0.5),
+
+        /////////// TCriticalEffect_DisableShoot(Token='CRITIC15' Roll=(10,10) TimeOut=60.0),
+    ]
+
+    EffectsOnSides =
+    [
+        //TCriticalEffect(Roll=(6,10) Token='CRITIC13' EffectsPack=~/UnitEffect_Ajoute_Tag_Ennemi_Proche TimeOut=-1 RepairCost=50 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True)
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC16' Roll=(4,6) Multiplier=0.5 TimeOut=60.0),
+
+        /////////// TCriticalEffect_LoseFuel(Token='CRITIC17' Roll=(7,9) LossRatio=0.25 TimeOut=60.0),
+
+        /////////// TCriticalEffect_LoseFuel(Token='CRITIC18' Roll=(10,10) LossRatio=1.0),
+        /////////// TCriticalEffect_AddDamages(Roll=(10,10) Damages=2.0),
+    ]
+
+    EffectsOnRear =
+    [
+        /////////// TCriticalEffect_ReduceHelicoManiability(Token='CRITIC19' Roll=(3,6) Multiplier=0.25 TimeOut=60.0),
+
+        /////////// TCriticalEffect_Disrupt(Token='CRITIC20' Roll=(7,9) TimeOut=10.0),
+
+        /////////// TCriticalEffect_DieDieDie(Token='CRITIC21' Roll=(10,10)),
+    ]
+
+    EffectsOnTop = []
+
+    PierceEffectsOnFront = []
+    PierceEffectsOnSides = []
+    PierceEffectsOnRear = []
+    PierceEffectsOnTop = []
+
+    RicochetEffectsOnFront = []
+    RicochetEffectsOnSides = []
+    RicochetEffectsOnRear = []
+    RicochetEffectsOnTop = []
+)

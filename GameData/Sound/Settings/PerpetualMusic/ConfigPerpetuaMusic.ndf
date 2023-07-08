@@ -1,0 +1,39 @@
+Perpetual_Music_SD_1 is TSoundStream( FileName = 'GameData:\Assets\Sons\PerpetualMusic\ANW1216_06_Battle-Lines.wav' )
+Perpetual_Music_SD_2 is TSoundStream( FileName = 'GameData:\Assets\Sons\PerpetualMusic\ANW2800_108_Nexus-4.wav' )
+Perpetual_Music_SD_3 is TSoundStream( FileName = 'GameData:\Assets\Sons\PerpetualMusic\ANW2800_131_Supervoid-2.wav' )
+Perpetual_Music_SD_4 is TSoundStream( FileName = 'GameData:\Assets\Sons\PerpetualMusic\ANW3077_06_Nucleus-Code.wav' )
+Perpetual_Music_SD_5 is TSoundStream( FileName = 'GameData:\Assets\Sons\PerpetualMusic\ANW3141_04_Approaching-The-Summit.wav' )
+Perpetual_Music_SD_6 is TSoundStream( FileName = 'GameData:\Assets\Sons\PerpetualMusic\ANW3141_01_Reaching-Horizon.wav' )
+
+Perpetual_Music_SD_7 is TSoundStream( FileName = 'GameData:\Assets\Sons\PerpetualMusic\ANW2800_08_Radiant-Flux.wav' )
+Perpetual_Music_SD_8 is TSoundStream( FileName = 'GameData:\Assets\Sons\PerpetualMusic\ANW2422_01_Dissent.wav' )
+
+Perpetual_Music_SD_9 is TSoundStream( FileName = 'GameData:\Assets\Sons\PerpetualMusic\ANW1169_01_Fields-Of-Honour.wav' )
+Perpetual_Music_SD_10 is TSoundStream( FileName = 'GameData:\Assets\Sons\PerpetualMusic\ANW2062_08_Starquake.wav' )
+
+Playlist_SteelDivision is
+[
+    ~/Perpetual_Music_SD_1,
+    ~/Perpetual_Music_SD_2,
+    ~/Perpetual_Music_SD_3,
+    ~/Perpetual_Music_SD_4,
+    ~/Perpetual_Music_SD_5,
+    ~/Perpetual_Music_SD_6,
+    ~/Perpetual_Music_SD_7,
+    ~/Perpetual_Music_SD_8,
+    ~/Perpetual_Music_SD_9,
+    ~/Perpetual_Music_SD_10
+]
+
+Perpetual_Music is TPerpetualMusic
+(
+    PlaylistsGroups =
+    MAP[
+        (
+            "Default",
+            [
+                ~/Playlist_SteelDivision,
+            ]
+        ),
+    ]
+)

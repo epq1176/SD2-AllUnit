@@ -1,0 +1,953 @@
+private EngagementPanelWidth is CubeActionWargameWidth
+
+template EngagementButtonDescriptor
+[
+    BigLineAction : int = ~/BigLineAction/BalancedMultiline,
+    BackgroundColor : string = "ButtonHUD/Background2",
+    LineBorderColor : string = "ButtonHUD/Border",
+    BorderColor : string = "ButtonHUD/BigBorder",
+    usePercent : bool = false,
+    TextColor : string = "ButtonHUD/Text2",
+    TextSize : string = "11",
+    TextToken : string = "HUD_UNKN",
+    HintTitleToken : string = "HUD_UNKN",
+    HintBodyToken : string = "HUD_UNKN",
+    HintExtendedToken : string = "HUD_UNKN",
+    ElementName : string = "",
+    Mapping = nil,
+    RadioButtonManager = nil,
+    IsTogglable = true,
+    ComponentFrame = TUIFramePropertyRTTI(
+        MagnifiableWidthHeight = [75.0, 0.0]
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+] is TCommonInGameCubeActionButtonDescriptor
+(
+    ComponentFrame = <ComponentFrame>
+
+    RadioButtonManager = <RadioButtonManager>
+
+    ElementName = <ElementName>
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    HasBackground = true
+    BackgroundBlockColorToken = <BackgroundColor>
+
+    HasBorder = false
+    BorderThicknessToken = "1"
+    BorderLineColorToken = <LineBorderColor>
+
+    IsTogglable = <IsTogglable>
+    CannotDeselect = <IsTogglable>
+
+    MaskEvents = true
+    Mapping = <Mapping>
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                PixelWidthHeight = [-4.0, -4.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            HasBackground = true
+            BackgroundBlockColorToken = <BackgroundColor>
+        ),
+
+        BUCKTextDescriptor
+        (
+            ElementName = <ElementName> + "TextDescriptor"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                PixelWidthHeight = [-6.0, -6.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+            )
+
+            HasBackground = true
+            BackgroundBlockColorToken = <BackgroundColor>
+
+            TextStyle = "Default"
+
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+            VerticalFitStyle = ~/FitStyle/UserDefined
+
+            BigLineAction   = <BigLineAction>
+            TextColor       = <TextColor>
+            TextSize        = <TextSize>
+            TextDico        = ~/LocalisationConstantes/dico_interface_ingame
+            TextToken       = <TextToken>
+
+            TypefaceToken   = "Main"
+            UniformDrawer   = $/UserInterface/UIUniformDrawer
+        ),
+
+
+        BUCKSpecificHintableArea
+        (
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = <HintTitleToken>
+            HintBodyToken = <HintBodyToken>
+            HintExtendedToken = <HintExtendedToken>
+        ),
+
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+                PixelWidthHeight = [3.0, 0.0]
+                PixelOffset = [1.0, 0.0]
+                AlignementToAnchor = [0.0, 0.5]
+                AlignementToFather = [0.0, 0.5]
+            )
+
+            HasBackground = false
+            BackgroundBlockColorToken = <BorderColor>
+        ),
+    ]
+    // affichage %
+    + (<usePercent> == true ?
+        [
+        BUCKTextDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableOffset = [10,1]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+            )
+
+            TextStyle = "Default"
+
+            HorizontalFitStyle = ~/FitStyle/FitToContent
+            VerticalFitStyle = ~/FitStyle/FitToContent
+
+
+            TextColor       = <TextColor>
+            TextSize        = "7"
+            TextDico        = ~/LocalisationConstantes/dico_interface_ingame
+            TextToken       =  "percent"
+
+            TypefaceToken   = "Main"
+            UniformDrawer   = $/UserInterface/UIUniformDrawer
+        ),
+        ] : []
+    )
+
+)
+
+// BOUTON POUR HIDE
+hideButton is BUCKButtonDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 0.0]
+        MagnifiableWidthHeight = [20.0, 20.0]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+
+    ElementName = "EngagementRulesHideButton"
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    HasBackground = false
+    BackgroundBlockColorToken = "ButtonHUD/Background"
+
+    HasBorder = false
+    BorderThicknessToken = "1"
+    BorderLineColorToken = "ButtonHUD/Border"
+
+    IsTogglable = false
+
+    MaskEvents = true
+
+    Components =
+    [
+
+        BUCKTextureDescriptor
+        (
+            ComponentFrame =  TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            UseLocalRenderLayer = false
+            LocalRenderLayer = 0
+
+            TextureToken = "EngagementRulesHide"
+            TextureFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1, 1]
+            )
+        ),
+
+        BUCKSpecificHintableArea
+        (
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = "HNT_ENHIT"
+            HintBodyToken = "HNT_ENHIB"
+            HintExtendedToken = "HNT_ENHIE"
+        ),
+    ]
+)
+
+// BOUTON POUR Save as default
+saveAsDefaultButton is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKContainerDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [0.0, 25.0]
+            RelativeWidthHeight = [1.0, 0.0]
+        )
+
+        Components = [
+            EngagementButtonDescriptor
+            (
+                ElementName = "EngagementRulesSaveAsDefaultButton"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [150.0, 0.0]
+                    RelativeWidthHeight = [0.0, 1.0]
+                    AlignementToFather = [0.5, 0.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                )
+
+                Mapping = $/KeyboardOption/Mapping_EngagmentRules_SaveAsDefault
+                TextToken       = "ER_SAVE"
+                HintTitleToken = "HNT_ERSAVT"
+                HintBodyToken = "HNT_ERSAVB"
+                HintExtendedToken = "HNT_ERSAVE"
+                IsTogglable = false
+            )
+        ]
+    )
+)
+
+// BOUTON POUR Save as default et appliquer à toutes les unités
+saveAsDefaultAndApplyButton is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKContainerDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [0.0, 25.0]
+            RelativeWidthHeight = [1.0, 0.0]
+        )
+
+        Components = [
+            EngagementButtonDescriptor
+            (
+                ElementName = "EngagementRulesSaveAsDefaultAndApplyButton"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [150.0, 0.0]
+                    RelativeWidthHeight = [0.0, 1.0]
+                    AlignementToFather = [0.5, 0.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                )
+
+                Mapping = $/KeyboardOption/Mapping_EngagmentRules_SaveAndApply
+                TextToken       = "ER_APLE"
+                HintTitleToken = "HNT_ERAPLT"
+                HintBodyToken = "HNT_ERAPLB"
+                HintExtendedToken = "HNT_ERAPLE"
+                IsTogglable = false
+            )
+        ]
+    )
+)
+
+// ADVANCE
+private advanceButtonManager is TBUCKRadioButtonManager()
+orderConfigAdvanceElement is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKContainerDescriptor
+    (
+        ElementName = "EngagementAdvance"
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [0.0, 25.0]
+            RelativeWidthHeight = [1.0, 0.0]
+        )
+
+        Components = [
+            BUCKListDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0.0, 25.0]
+                    RelativeWidthHeight = [0.0, 0.0]
+                )
+
+                InterItemMargin = TRTTILength( Magnifiable = 1.0)
+                LastMargin = TRTTILength( Magnifiable = 5.0)
+
+                Axis = ~/ListAxis/Horizontal
+                Elements =
+                [
+                    // Title // ADVANCE
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKTextDescriptor
+                        (
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [0.0, 0.0]
+                            )
+
+                            TextPadding = TRTTILength4(Magnifiable = [10.0, 7.0, 0.0, 0.0])
+
+                            ParagraphStyle = ~/paragraphStyleTextLeftAlign
+
+                            TextStyle = "Default"
+
+                            HorizontalFitStyle = ~/FitStyle/FitToParent
+                            VerticalFitStyle = ~/FitStyle/FitToContent
+
+                            TextColor       = "SD2_Blanc184"
+                            TextSize        = "11"
+                            TextToken       = "ER_ADV"
+                            TextDico        = ~/LocalisationConstantes/dico_interface_ingame
+
+                            TypefaceToken   = "Main"
+                        )
+                        ExtendWeight = 1.0
+                    ),
+                    // Move
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = EngagementButtonDescriptor
+                        (
+                            ElementName = "EngagementAdvance_Move"
+                            RadioButtonManager = ~/advanceButtonManager
+                            TextToken       = "ER_ADVMV"
+                            HintTitleToken = "HNT_ADVMVT"
+                            HintBodyToken = "HNT_ADVMVB"
+                            HintExtendedToken = "HNT_ADVMVE"
+                        )
+                    ),
+                    // Hunt
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = EngagementButtonDescriptor
+                        (
+                            ElementName = "EngagementAdvance_Hunt"
+                            RadioButtonManager = ~/advanceButtonManager
+                            TextToken       = "ER_ADVHN"
+                            HintTitleToken = "HNT_ADVMVT"
+                            HintBodyToken = "HNT_ADVHNB"
+                            HintExtendedToken = "HNT_ADVHNE"
+                        )
+                    ),
+                ]
+            )
+        ]
+    )
+)
+
+// Use Road
+private useRoadButtonManager is TBUCKRadioButtonManager()
+orderConfigUseRoadElement is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKContainerDescriptor
+    (
+        ElementName = "EngagementUseRoad"
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [0.0, 25.0]
+            RelativeWidthHeight = [1.0, 0.0]
+        )
+
+        Components = [
+            BUCKListDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0.0, 25.0]
+                    RelativeWidthHeight = [0.0, 0.0]
+                )
+
+                InterItemMargin = TRTTILength( Magnifiable = 1.0)
+                LastMargin = TRTTILength( Magnifiable = 5.0)
+
+                Axis = ~/ListAxis/Horizontal
+                Elements =
+                [
+                    // Title // Use Road
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKTextDescriptor
+                        (
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [0.0, 0.0]
+                            )
+
+                            TextPadding = TRTTILength4(Magnifiable = [10.0, 7.0, 0.0, 0.0])
+
+                            ParagraphStyle = ~/paragraphStyleTextLeftAlign
+
+                            TextStyle = "Default"
+
+                            HorizontalFitStyle = ~/FitStyle/FitToParent
+                            VerticalFitStyle = ~/FitStyle/FitToContent
+
+                            TextColor       = "SD2_Blanc184"
+                            TextSize        = "11"
+                            TextToken       = "ER_UR"
+                            TextDico        = ~/LocalisationConstantes/dico_interface_ingame
+
+                            TypefaceToken   = "Main"
+                        )
+                        ExtendWeight = 1.0
+                    ),
+                    // fast
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = EngagementButtonDescriptor
+                        (
+                            ElementName = "EngagementUseRoad_True"
+                            RadioButtonManager = ~/useRoadButtonManager
+                            TextToken       = "ER_URFA"
+                            HintTitleToken = "HNT_URFAT"
+                            HintBodyToken = "HNT_URFAB"
+                            HintExtendedToken = "HNT_URFAE"
+                        )
+                    ),
+                    // short
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = EngagementButtonDescriptor
+                        (
+                            ElementName = "EngagementUseRoad_False"
+                            RadioButtonManager = ~/useRoadButtonManager
+                            TextToken       = "ER_URSH"
+                            HintTitleToken = "HNT_URFAT"
+                            HintBodyToken = "HNT_URSHB"
+                            HintExtendedToken = "HNT_URSHE"
+                        )
+                    ),
+                ]
+            )
+        ]
+    )
+)
+
+// EngagementSmartMove
+private SmartMoveButtonManager is TBUCKRadioButtonManager()
+orderConfigSmartMoveElement is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKContainerDescriptor
+    (
+        ElementName = "EngagementSmartMove"
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [0.0, 25.0]
+            RelativeWidthHeight = [1.0, 0.0]
+        )
+
+        Components = [
+            BUCKListDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0.0, 25.0]
+                    RelativeWidthHeight = [0.0, 0.0]
+                )
+
+                InterItemMargin = TRTTILength( Magnifiable = 1.0)
+                LastMargin = TRTTILength( Magnifiable = 5.0)
+
+                Axis = ~/ListAxis/Horizontal
+                Elements =
+                [
+                    // Title //SmartMove
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKTextDescriptor
+                        (
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [0.0, 0.0]
+                            )
+
+                            TextPadding = TRTTILength4(Magnifiable = [10.0, 7.0, 0.0, 0.0])
+
+                            ParagraphStyle = ~/paragraphStyleTextLeftAlign
+
+                            TextStyle = "Default"
+
+                            HorizontalFitStyle = ~/FitStyle/FitToParent
+                            VerticalFitStyle = ~/FitStyle/FitToContent
+
+                            TextColor       = "SD2_Blanc184"
+                            TextSize        = "11"
+                            TextToken       = "ER_SM"
+                            TextDico        = ~/LocalisationConstantes/dico_interface_ingame
+
+                            TypefaceToken   = "Main"
+                        )
+                        ExtendWeight = 1.0
+                    ),
+                    // cover
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = EngagementButtonDescriptor
+                        (
+                            ElementName = "EngagementSmartMove_True"
+                            Mapping = $/KeyboardOption/Mapping_EngagmentRules_Move
+                            RadioButtonManager = ~/SmartMoveButtonManager
+                            TextToken       = "ER_SMCO"
+                            HintTitleToken = "HNT_SMCOT"
+                            HintBodyToken = "HNT_SMCOB"
+                            HintExtendedToken = "HNT_SMCOE"
+                        )
+                    ),
+                    // short
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = EngagementButtonDescriptor
+                        (
+                            ElementName = "EngagementSmartMove_False"
+                            Mapping = $/KeyboardOption/Mapping_EngagmentRules_Move
+                            RadioButtonManager = ~/SmartMoveButtonManager
+                            TextToken       = "ER_SMSH"
+                            HintTitleToken = "HNT_SMCOT"
+                            HintBodyToken = "HNT_SMSHB"
+                            HintExtendedToken = "HNT_SMSHE"
+                        )
+                    ),
+                ]
+            )
+        ]
+    )
+)
+
+// IdleBehavior
+private IdleBehaviorButtonManager is TBUCKRadioButtonManager()
+orderConfigIdleBehaviorElement is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKContainerDescriptor
+    (
+        ElementName = "EngagementIdleBehavior"
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [0.0, 25.0]
+            RelativeWidthHeight = [1.0, 0.0]
+        )
+
+        Components = [
+            BUCKListDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0.0, 25.0]
+                    RelativeWidthHeight = [0.0, 0.0]
+                )
+
+                InterItemMargin = TRTTILength( Magnifiable = 1.0)
+                LastMargin = TRTTILength( Magnifiable = 5.0)
+
+                Axis = ~/ListAxis/Horizontal
+                Elements =
+                [
+                    // Title //IdleBehavior
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKTextDescriptor
+                        (
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [0.0, 0.0]
+                            )
+
+                            TextPadding = TRTTILength4(Magnifiable = [10.0, 7.0, 0.0, 0.0])
+
+                            ParagraphStyle = ~/paragraphStyleTextLeftAlign
+
+                            TextStyle = "Default"
+
+                            HorizontalFitStyle = ~/FitStyle/FitToParent
+                            VerticalFitStyle = ~/FitStyle/FitToContent
+
+                            TextColor       = "SD2_Blanc184"
+                            TextSize        = "11"
+                            TextToken       = "ER_ID"
+                            TextDico        = ~/LocalisationConstantes/dico_interface_ingame
+
+                            TypefaceToken   = "Main"
+                        )
+                        ExtendWeight = 1.0
+                    ),
+                    // Nothing
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = EngagementButtonDescriptor
+                        (
+                            ElementName = "EngagementIdleBehavior_Nothing"
+                            RadioButtonManager = ~/IdleBehaviorButtonManager
+                            TextToken       = "ER_IDNO"
+                            HintTitleToken = "HNT_IDCOT"
+                            HintBodyToken = "HNT_IDNOB"
+                            HintExtendedToken = "HNT_IDNOE"
+                        )
+                    ),
+                    // Cover
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = EngagementButtonDescriptor
+                        (
+                            ElementName = "EngagementIdleBehavior_AutoCover"
+                            RadioButtonManager = ~/IdleBehaviorButtonManager
+                            TextToken       = "ER_IDCO"
+                            HintTitleToken = "HNT_IDCOT"
+                            HintBodyToken = "HNT_IDCOB"
+                            HintExtendedToken = "HNT_IDCOE"
+                        )
+                    ),
+                    // Hold
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = EngagementButtonDescriptor
+                        (
+                            ElementName = "EngagementIdleBehavior_Hold"
+                            RadioButtonManager = ~/IdleBehaviorButtonManager
+                            TextToken       = "ER_IDHO"
+                            HintTitleToken = "HNT_IDCOT"
+                            HintBodyToken = "HNT_IDHOB"
+                            HintExtendedToken = "HNT_AIDEF"
+                        )
+                    ),
+                ]
+            )
+        ]
+    )
+)
+
+shotOnTargetButtonW is 35.0
+// SmartHoldFirePenetrationMinIndex
+private SmartHoldFirePenetrationMinIndexButtonManager is TBUCKRadioButtonManager()
+orderConfigSmartHoldFirePenetrationMinIndexElement is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKContainerDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [0.0, 25.0]
+            RelativeWidthHeight = [1.0, 0.0]
+        )
+        ElementName = "EngagementSmartHoldFirePenetrationMinIndex"
+
+        Components = [
+            BUCKListDescriptor
+            (
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0.0, 25.0]
+                    RelativeWidthHeight = [0.0, 0.0]
+                )
+
+                InterItemMargin = TRTTILength( Magnifiable = 1.0)
+                LastMargin = TRTTILength( Magnifiable = 5.0)
+
+                Axis = ~/ListAxis/Horizontal
+                Elements =
+                [
+                    // Title //SmartHoldFirePenetrationMinIndex
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKTextDescriptor
+                        (
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [0.0, 0.0]
+                            )
+
+                            TextPadding = TRTTILength4(Magnifiable = [10.0, 7.0, 0.0, 0.0])
+
+                            ParagraphStyle = ~/paragraphStyleTextLeftAlign
+
+                            TextStyle = "Default"
+
+                            HorizontalFitStyle = ~/FitStyle/FitToParent
+                            VerticalFitStyle = ~/FitStyle/FitToContent
+
+                            TextColor       = "SD2_Blanc184"
+                            TextSize        = "11"
+                            TextToken       = "ORD_SMHFR"
+                            TextDico        = ~/LocalisationConstantes/dico_interface_ingame
+
+                            TypefaceToken   = "Main"
+                        )
+                        ExtendWeight = 1.0
+                    ),
+                    // 0%
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = EngagementButtonDescriptor
+                        (
+                            ElementName = "EngagementSmartHoldFirePenetrationMin_0"
+                            RadioButtonManager = ~/SmartHoldFirePenetrationMinIndexButtonManager
+                            TextToken       = "ER_ES0"
+                            HintTitleToken = "HNT_EST"
+                            HintBodyToken = "HNT_ESB"
+                            HintExtendedToken = "HNT_ESE"
+                            TextSize = "8"
+                            BackgroundColor = "ButtonHUD/BackgroundSmartHoldFirePenetrationMinButton"
+                            ComponentFrame = TUIFramePropertyRTTI(
+                                MagnifiableWidthHeight = [shotOnTargetButtonW, 0.0]
+                                RelativeWidthHeight = [0.0, 1.0]
+                            )
+                        )
+                    ),
+                    // 25%
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = EngagementButtonDescriptor
+                        (
+                            ElementName = "EngagementSmartHoldFirePenetrationMin_1"
+                            RadioButtonManager = ~/SmartHoldFirePenetrationMinIndexButtonManager
+                            usePercent = true
+                            TextToken       = "ER_ESX"
+                            HintTitleToken = "HNT_EST"
+                            HintBodyToken = "HNT_ESB"
+                            HintExtendedToken = "HNT_ESE"
+                            BackgroundColor = "ButtonHUD/BackgroundSmartHoldFirePenetrationMinButton"
+                            ComponentFrame = TUIFramePropertyRTTI(
+                                MagnifiableWidthHeight = [shotOnTargetButtonW, 0.0]
+                                RelativeWidthHeight = [0.0, 1.0]
+                            )
+                        )
+                    ),
+                    // 50%
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = EngagementButtonDescriptor
+                        (
+                            ElementName = "EngagementSmartHoldFirePenetrationMin_2"
+                            RadioButtonManager = ~/SmartHoldFirePenetrationMinIndexButtonManager
+                            usePercent = true
+                            TextToken       = "ER_ESX"
+                            HintTitleToken = "HNT_EST"
+                            HintBodyToken = "HNT_ESB"
+                            HintExtendedToken = "HNT_ESE"
+                            BackgroundColor = "ButtonHUD/BackgroundSmartHoldFirePenetrationMinButton"
+                            ComponentFrame = TUIFramePropertyRTTI(
+                                MagnifiableWidthHeight = [shotOnTargetButtonW, 0.0]
+                                RelativeWidthHeight = [0.0, 1.0]
+                            )
+                        )
+                    ),
+                    // 75%
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = EngagementButtonDescriptor
+                        (
+                            ElementName = "EngagementSmartHoldFirePenetrationMin_3"
+                            RadioButtonManager = ~/SmartHoldFirePenetrationMinIndexButtonManager
+                            TextToken       = "ER_ESX"
+                            usePercent = true
+                            HintTitleToken = "HNT_EST"
+                            HintBodyToken = "HNT_ESB"
+                            HintExtendedToken = "HNT_ESE"
+                            BackgroundColor = "ButtonHUD/BackgroundSmartHoldFirePenetrationMinButton"
+                            ComponentFrame = TUIFramePropertyRTTI(
+                                MagnifiableWidthHeight = [shotOnTargetButtonW, 0.0]
+                                RelativeWidthHeight = [0.0, 1.0]
+                            )
+                        )
+                    ),
+                    // 100%
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = EngagementButtonDescriptor
+                        (
+                            ElementName = "EngagementSmartHoldFirePenetrationMin_4"
+                            RadioButtonManager = ~/SmartHoldFirePenetrationMinIndexButtonManager
+                            TextToken       = "ER_ESX"
+                            usePercent = true
+                            HintTitleToken = "HNT_EST"
+                            HintBodyToken = "HNT_ESB"
+                            HintExtendedToken = "HNT_ESE"
+                            BackgroundColor = "ButtonHUD/BackgroundSmartHoldFirePenetrationMinButton"
+                            ComponentFrame = TUIFramePropertyRTTI(
+                                MagnifiableWidthHeight = [shotOnTargetButtonW, 0.0]
+                                RelativeWidthHeight = [0.0, 1.0]
+                            )
+                        )
+                    ),
+
+                ]
+            )
+        ]
+    )
+)
+
+//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+- //
+
+
+EngagementRulesPanel is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [~/EngagementPanelWidth, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+    HasBackground = true
+    BackgroundBlockColorToken = "Black80"
+
+    Elements =
+    [
+        ///////////////////////////////////////////////////////////////////////
+        // Regles d'engagement
+        ///////////////////////////////////////////////////////////////////////
+
+        BUCKListElementDescriptor
+        (
+            ////////////////////
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0.0, 25.0]
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                Components =
+                [
+                    BUCKListDescriptor
+                    (
+                        ElementName = "EngagmentTitleList"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [0.0, 25.0]
+                            RelativeWidthHeight = [0.0, 0.0]
+                        )
+
+                        InterItemMargin = TRTTILength( Magnifiable = 5.0)
+                        LastMargin = TRTTILength( Magnifiable = 5.0)
+
+                        Axis = ~/ListAxis/Horizontal
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                // Title // ENGAGEMENT RULES
+                                ExtendWeight = 1.0
+                                ComponentDescriptor = BUCKTextDescriptor
+                                (
+                                    ElementName = "EngagmentTitleText"
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        AlignementToFather = [0.0, 0.0]
+                                        AlignementToAnchor = [0.0, 0.0]
+                                        RelativeWidthHeight = [1.0, 1.0]
+                                    )
+                                    TextPadding = TRTTILength4(Magnifiable = [6.0, 0.0, 6.0, 0.0])
+
+                                    ParagraphStyle = ~/paragraphStyleTextLeftAlign
+
+                                    TextStyle = "Default"
+
+                                    HorizontalFitStyle = ~/FitStyle/UserDefined
+                                    VerticalFitStyle = ~/FitStyle/UserDefined
+
+                                    TextColor       = "SD2_Blanc184"
+                                    TextSize        = "16"
+                                    TextToken       = "ER_TITLE"
+                                    TextDico        = ~/LocalisationConstantes/dico_interface_ingame
+
+                                    TypefaceToken   = "MainBold"
+                                )
+                            ),
+
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = hideButton
+                            )
+                        ]
+                    )
+                ]
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ElementName = "EngagmentButtonList"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                Axis = ~/ListAxis/Vertical
+                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+                FirstMargin = TRTTILength( Magnifiable = 5.0)
+                InterItemMargin = TRTTILength( Magnifiable = 5.0)
+                LastMargin = TRTTILength( Magnifiable = 5.0)
+
+
+                Elements =
+                [
+                    orderConfigAdvanceElement,
+                    orderConfigUseRoadElement,
+                    orderConfigSmartMoveElement,
+                    orderConfigIdleBehaviorElement,
+                    orderConfigSmartHoldFirePenetrationMinIndexElement,
+                    saveAsDefaultButton,
+                    saveAsDefaultAndApplyButton,
+                ]
+            )
+        ),
+    ]
+
+    BackgroundComponents =
+    [
+        OmbrePanel
+    ]
+
+    SpotlightComponent = SpotlightDescriptor()
+)
+
+
+private UISpecificTacticEngagementRulesViewDescriptor is TUISpecificEngagementRulesViewDescriptor
+(
+    MainComponentDescriptor = ~/EngagementRulesPanel
+    MainComponentContainerUniqueName = "UISpecificTacticEngagementRulesViewDescriptor"
+
+    ShortcutUILayer = $/M3D/Input/UserInputLayerHandler/InputLayer_InGameShortcuts
+    IdleMapping = $/KeyboardOption/Mapping_AutoCover
+)

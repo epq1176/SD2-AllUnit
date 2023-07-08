@@ -1,0 +1,22 @@
+export ModelFile_Truck_Bedford_UK is 'GameData:Assets\3D\Units\UK\Vehicule\Bedford_QLD_3ton\Bedford_QLD_3ton.Ase2NdfBin'
+
+Modele_Truck_Bedford_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Truck_Bedford_UK
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Truck_Bedford_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Vehicule\Bedford_QLD_3ton_MID\Bedford_QLD_3ton_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Truck_Bedford_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Vehicule\LODS\Bedford_QLD_3ton_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

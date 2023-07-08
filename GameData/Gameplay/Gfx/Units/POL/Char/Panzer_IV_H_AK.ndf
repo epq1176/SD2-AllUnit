@@ -1,0 +1,22 @@
+export ModelFile_Panzer_IV_H_AK is 'GameData:Assets\3D\Units\POL\Char\Panzer_IV_H_AK\Panzer_IV_H_AK.Ase2NdfBin'
+
+Modele_Panzer_IV_H_AK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Panzer_IV_H_AK
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_IV_H_AK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Char\Panzer_IV_H_AK_MID\Panzer_IV_H_AK_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_IV_H_AK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Char\LODS\Panzer_IV_H_AK_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

@@ -1,0 +1,22 @@
+export ModelFile_SOD is 'GameData:Assets\3D\Units\UK\Vehicule\SOD\SOD.Ase2NdfBin'
+
+Modele_SOD is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_SOD
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_SOD_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Vehicule\SOD_MID\SOD_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_SOD_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Vehicule\LODS\SOD_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

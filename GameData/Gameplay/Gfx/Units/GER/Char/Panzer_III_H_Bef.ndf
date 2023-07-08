@@ -1,0 +1,22 @@
+export ModelFile_Panzer_III_H_Bef is 'GameData:Assets\3D\Units\GER\Char\Panzer_III_H_Bef\Panzer_III_H_Bef.Ase2NdfBin'
+
+Modele_Panzer_III_H_Bef is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Panzer_III_H_Bef
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_III_H_Bef_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\Panzer_III_H_Bef_MID\Panzer_III_H_Bef_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_III_H_Bef_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\Panzer_III_H_Bef_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

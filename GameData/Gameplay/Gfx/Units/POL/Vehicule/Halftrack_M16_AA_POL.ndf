@@ -1,0 +1,23 @@
+export ModelFile_Halftrack_M16_AA_POL is 'GameData:Assets\3D\Units\POL\Vehicule\M16_MGMC\M16_MGMC.Ase2NdfBin'
+
+Modele_Halftrack_M16_AA_POL is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Halftrack_M16_AA_POL
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Halftrack_M16_AA_POL_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Vehicule\M16_MGMC_MID\M16_MGMC_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Halftrack_M16_AA_POL_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Vehicule\LODS\M16_MGMC_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+

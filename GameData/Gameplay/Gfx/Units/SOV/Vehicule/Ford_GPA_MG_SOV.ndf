@@ -1,0 +1,22 @@
+export ModelFile_Ford_GPA_MG_SOV is 'GameData:Assets\3D\Units\SOV\Vehicule\Ford_GPA_MG_SOV\Ford_GPA_MG_SOV.Ase2NdfBin'
+
+Modele_Ford_GPA_MG_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Ford_GPA_MG_SOV
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Ford_GPA_MG_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Vehicule\Ford_GPA_MG_SOV_MID\Ford_GPA_MG_SOV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Ford_GPA_MG_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Vehicule\LODS\Ford_GPA_MG_SOV_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

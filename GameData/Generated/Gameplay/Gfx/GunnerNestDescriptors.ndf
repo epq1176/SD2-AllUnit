@@ -1,0 +1,237 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+export Descriptor_Unit_Gunner_Nest is TEntityDescriptor
+(
+    DescriptorId = GUID:{8466909a-38e3-4df2-943b-7ad9bb2efa48}
+    ClassNameForDebug = 'Gunner_Nest'
+    Modules = [
+        // DefenseModule
+        TDefenseModuleDescriptor(
+            DefenseType                    = ~/EDefenseType/GunnerNest
+            Amount                         = 1
+            Angle                          = 0.00
+            Radius                         = 150.00 * Metre
+            ClearMeshesRadius              = 100.00 * Metre
+            PlacementConstraints           = [
+                ~/DefensePlacementConstraint_EnoughAvailableUnits,
+                ~/DefensePlacementConstraint_EnoughCurrency,
+                ~/DefensePlacementConstraint_IsInPlayableZone,
+                ~/DefensePlacementConstraint_IsInDeploymentZone,
+                ~/DefensePlacementConstraint_CheckAllowedTerrain,
+                ~/DefensePlacementConstraint_TerrainDrop,
+            ]
+            AppliedTerrain                 = ETerrainType/NidMitrailleuse
+            PatternName                    = 'Defense_MG_nest'
+            ExtremityPatternName           = ''
+        ),
+
+        // ApparenceModelModule
+        ApparenceModel is TModuleSelector
+        (
+            Default        = TApparenceModelModuleDescriptor
+            (
+                PickableObject                        = True
+                HideInNoFow                           = False
+                CreateTimelyChannelOnlyOnFirstSight   = False
+                Depiction = TTimelyReceiverFactoryCarrier
+                (
+                    DepictionTemplate = nil
+                    ModifyLB                         = TemplateTimelyDescriptorBatimentWithLevelDesignPattern_OnlyLevelBuild
+                    (
+                        SceneryDescriptorName      = 'Defense_MG_nest'
+                        LevelBuildDescriptor       = ~/DefenseUnitLevelBuildViewDescriptor
+                        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+                    )
+                )
+            )
+            Selection      =
+            [
+                TModuleSelectorFilter
+                (
+                    Condition  = TModuleSelectorCondition_ParamEquals_Integer(ParamId=~/Parameter_ModuleCreationSelectionFilter  ParamValue=~/ModuleCreationFilter_Ghost)
+                    Descriptor = TApparenceModelModuleDescriptor
+                    (
+                        PickableObject = True
+                        Depiction = TTimelyReceiverFactoryCarrier
+                        (
+                            DepictionTemplate = nil
+                            ModifyLB  = TemplateTimelyDescriptorBatimentWithLevelDesignPattern_OnlyLevelBuild
+                            (
+                                SceneryDescriptorName = 'Defense_MG_nest'
+                                LevelBuildDescriptor  = ~/DefenseUnitLevelBuildViewDescriptor
+                                RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+                            )
+                        )
+                    )
+                ),
+                ~/NilDescriptorIfCadavre
+            ]
+        ),
+
+        // TypeUnitModule
+        TTypeUnitModuleDescriptor
+        (
+            TypeUnitValue                    = ETypeUnit/Undef
+            MotherCountry                    = 'GER'
+        ),
+
+        // Debug
+            ~/DebugModuleDescriptor,
+
+        // Flags
+            TFlagsModuleDescriptor
+            (
+                InitialFlagSet =
+                [
+                    Flag_Detectable,
+                    Flag_Selectionnable,
+                    Flag_Batiment,
+                    Flag_Highlightable,
+                    Flag_Target,
+                    Flag_CannotBeTargeted,
+                ]
+            ),
+
+        // GhostModule
+            TModuleSelector
+            (
+                Default        = nil
+                Selection      = [
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer(ParamId=~/Parameter_ModuleCreationSelectionFilter  ParamValue=~/ModuleCreationFilter_Ghost)
+                        Descriptor = TGhostModuleDescriptor
+                        (
+                            TerrainsAndColorsForPlacementGhostFeedback = [
+                            ]
+                        )
+                    )
+                ]
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurBatiment
+                Radius                     = ((100) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // BuildingDescription
+        TBuildingDescriptionModuleDescriptor
+        (
+            SymbolName                    = 'Defense_MG_nest'
+            LevelBuildSymbolDatabaseProxy = $/M3D/Scene/LevelBuildSymbolDatabaseProxy
+            Height                        = 10 * Metre
+        ),
+
+        // Selection
+        ~/TemplateSelectionModule,
+
+        // UnitUI
+            TModuleSelector
+            (
+                Default = TUnitUIModuleDescriptor
+                (
+                    SpecialtiesList = [
+                    ]
+                    NameToken = 'None'
+                    InfoPanelConfigurationToken = 'Default'
+                    TypeSpecificToken = ''
+                    ShowInMenu = False
+                    IsAce = False
+                    GenerateName = true
+                    TopViewTexture = 'Texture_Unit_TopView_Gunner_Nest'
+                    MenuIconTexture = 'Texture_RTS_H_Non_identifiee_Bunker'
+                    ButtonTexture = 'Texture_Button_Unit_Gunner_Nest'
+                    CountryTexture = 'CommonTexture_MotherCountryFlag_GER'
+                    TypeStrategicCount = ETypeStrategicCount/NotCounted
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId = ~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue = ~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TUnitUIModuleDescriptor
+                        (
+                            NameToken = 'None'
+                            InfoPanelConfigurationToken = 'Default'
+                            TypeSpecificToken = ''
+                            TopViewTexture = 'Texture_Unit_TopView_Gunner_Nest'
+                            MenuIconTexture = 'Texture_RTS_H_Non_identifiee_Bunker'
+                            ButtonTexture = 'Texture_Button_Unit_Gunner_Nest'
+                            CountryTexture = 'CommonTexture_MotherCountryFlag_GER'
+                            TypeStrategicCount = ETypeStrategicCount/NotCounted
+                        )
+                    )
+                ]
+            ),
+
+        // SnapUnit
+        TSnapUnitModuleDescriptor
+        (
+            NbSlots                         = 1
+            TerrainRadius                         = 150.00 * Metre
+        ),
+
+        // VisibilityModule
+        TModuleSelector
+        (
+            Default        = TVisibilityModuleDescriptor
+            (
+                AutoRevealType                  = EAutoRevealType/AutoRevealAllies
+                UnitConcealmentBonus            = 1.0
+                VisionUnitType                  = EVisionUnitType/AlwaysOnGround
+                VisionObstructionType           = EVisionObstructionType/Vehicle
+                GroundDissimulationModifierType = EGroundDissumulationModifierType/Ground
+            )
+            Selection = [~/NilDescriptorIfGhostOrCadavre]
+        ),
+
+        // PackSignaux
+            ~/PackSignauxModuleSelector,
+
+        // Scanner
+            TModuleSelector
+            (
+                Default        = TReverseScannerWithIdentificationDescriptor
+                (
+                    VisibilityRollRule = TModernWarfareVisibilityRollRule
+                    (
+                        IdentifyBaseProbability     = 0.0
+                        TimeBetweenEachIdentifyRoll = 0.0
+                        VisibilityRuleDescriptor    = ~/StandardWargameVisibilityRollRule
+                        DistanceMultiplierRule      = TModernWarfareDistanceMultiplierRollRuleDescriptor
+                        (
+                            MultiplicateurAPorteeMaximale            = DefaultMultiplicateurAPorteeMaximale
+                            MultiplicateurAPorteeMinimale            = DefaultMultiplicateurAPorteeMinimale
+                            Exposant                                 = DefaultExposant
+                            MultiplicateurAPorteeMaximaleEnMouvement = DefaultMultiplicateurAPorteeMaximaleEnMouvement
+                            MultiplicateurAPorteeMinimaleEnMouvement = DefaultMultiplicateurAPorteeMinimaleEnMouvement
+                            ExposantEnMouvement                      = DefaultExposantEnMouvement
+                        )
+                    )
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+    ]
+)

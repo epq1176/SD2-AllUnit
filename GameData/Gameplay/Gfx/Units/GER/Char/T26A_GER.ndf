@@ -1,0 +1,22 @@
+export ModelFile_T26A_GER is 'GameData:Assets\3D\Units\GER\Char\T26A_GER\T26A_GER.Ase2NdfBin'
+
+Modele_T26A_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_T26A_GER
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_T26A_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\T26A_GER_MID\T26A_GER_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_T26A_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\T26A_GER_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

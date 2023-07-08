@@ -1,0 +1,22 @@
+export ModelFile_SU_85_GER is 'GameData:Assets\3D\Units\GER\Char\SU_85_GER\SU_85_GER.Ase2NdfBin'
+
+Modele_SU_85_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_SU_85_GER
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_SU_85_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\SU_85_GER_MID\SU_85_GER_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_SU_85_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\SU_85_GER_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

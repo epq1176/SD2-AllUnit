@@ -1,0 +1,22 @@
+export ModelFile_PaK_40_75mm_ROU is 'GameData:Assets\3D\Units\GER\Canon\PaK_40\PaK_40.Ase2NdfBin'
+
+Modele_PaK_40_75mm_ROU is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_PaK_40_75mm_ROU
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_PaK_40_75mm_ROU_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\PaK_40_MID\PaK_40_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_PaK_40_75mm_ROU_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\LODS\PaK_40_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

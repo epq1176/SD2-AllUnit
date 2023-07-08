@@ -1,0 +1,17 @@
+export Gfx_Bunker_ATR_AK is TDepictionTemplate //arme
+(
+    RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+    Selector = CommonBunkerDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_PaK_Gerlich ),
+        DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_PaK_Gerlich_MID ),
+        DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_PaK_Gerlich_LOW ),
+        DepictionDescriptor_LOD_None()
+    ]
+
+    SubDepictions = []
+    Operators = Operators_PaK_Gerlich
+    Actions = Weapons_PaK_Gerlich
+)
+
+export ModelFile_Bunker_ATR_AK is ~/ModelFile_PaK_Gerlich

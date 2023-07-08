@@ -1,0 +1,17 @@
+export Gfx_Bunker_AT_6pdr_UK is TDepictionTemplate //arme
+(
+    RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+    Selector = CommonBunkerDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_PaK_36 ),
+        DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_PaK_36_MID ),
+        DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_PaK_36_LOW ),
+        DepictionDescriptor_LOD_None()
+    ]
+
+    SubDepictions = []
+    Operators = Operators_PaK_36
+    Actions = Weapons_PaK_36
+)
+
+export ModelFile_Bunker_AT_6pdr_UK is ~/ModelFile_PaK_36

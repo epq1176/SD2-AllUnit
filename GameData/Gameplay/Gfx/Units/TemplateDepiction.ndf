@@ -1,0 +1,495 @@
+
+private DisabledOperatorMid is [
+    'weapon_effet_tag1_physic_fire_effect',
+    'weapon_effet_tag2_physic_fire_effect',
+    'weapon_effet_tag3_physic_fire_effect',
+    'weapon_effet_tag4_physic_fire_effect',
+    'ikchain1',
+    'WaterRotors',
+]
+
+private EmptyAdditionalMaterialTags is TAdditionalMaterialTags(Tags=[])
+
+private DisabledOperatorLow is DisabledOperatorMid + [
+    'Chassis',
+    'radar',
+    'tourelle_canon',
+    'Tracks',
+    'Wheels',
+]
+
+template DepictionDescriptor_LOD_High
+[
+    MeshDescriptor,
+    MaterialTags = ~/EmptyAdditionalMaterialTags,
+    MaterialParameters = MAP[]
+]
+is TDepictionDescriptor
+(
+    SelectorId = 'high'
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalMaterialTags = <MaterialTags>
+)
+
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_Mid
+[
+    MeshDescriptor,
+    MaterialTags = ~/EmptyAdditionalMaterialTags,
+    MaterialParameters = MAP[]
+]
+is TDepictionDescriptor
+(
+    SelectorId = 'mid'
+    MeshDescriptor = <MeshDescriptor>
+    DisabledOperators = DisabledOperatorMid
+    AdditionalMaterialTags = <MaterialTags>
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_Mid_NoTurret1
+[
+    MeshDescriptor,
+    MaterialTags = ~/EmptyAdditionalMaterialTags,
+    MaterialParameters = MAP[]
+]
+is TDepictionDescriptor
+(
+    SelectorId = 'mid'
+    MeshDescriptor = <MeshDescriptor>
+    DisabledOperators = DisabledOperatorMid + ['tourelle1', 'tourelle1axe', 'tourelle1_canon']
+    AdditionalMaterialTags = <MaterialTags>
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_Low
+[
+    MeshDescriptor,
+    MaterialTags = ~/EmptyAdditionalMaterialTags,
+    MaterialParameters = MAP[]
+]
+is TDepictionDescriptor
+(
+    SelectorId = 'low'
+    MeshDescriptor = <MeshDescriptor>
+    DisabledOperators = DisabledOperatorLow
+    AdditionalMaterialTags = <MaterialTags>
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_Low_NoTurret1
+[
+    MeshDescriptor,
+    MaterialTags = ~/EmptyAdditionalMaterialTags,
+    MaterialParameters = MAP[]
+]
+is TDepictionDescriptor
+(
+    SelectorId = 'low'
+    MeshDescriptor = <MeshDescriptor>
+    DisabledOperators = DisabledOperatorLow + ['tourelle1', 'tourelle1axe', 'tourelle1_canon']
+    AdditionalMaterialTags = <MaterialTags>
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_Low_NoTurret2
+[
+    MeshDescriptor,
+    MaterialTags = ~/EmptyAdditionalMaterialTags,
+    MaterialParameters = MAP[]
+]
+is TDepictionDescriptor
+(
+    SelectorId = 'low'
+    MeshDescriptor = <MeshDescriptor>
+    DisabledOperators = DisabledOperatorLow + ['tourelle2', 'tourelle2axe', 'tourelle2_canon']
+    AdditionalMaterialTags = <MaterialTags>
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_Low_NoTurret3
+[
+    MeshDescriptor,
+    MaterialTags = ~/EmptyAdditionalMaterialTags,
+    MaterialParameters = MAP[]
+]
+is TDepictionDescriptor
+(
+    SelectorId = 'low'
+    MeshDescriptor = <MeshDescriptor>
+    DisabledOperators = DisabledOperatorLow + ['tourelle3', 'tourelle3axe', 'tourelle3_canon']
+    AdditionalMaterialTags = <MaterialTags>
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_Low_NoTurret4
+[
+    MeshDescriptor,
+    MaterialTags = ~/EmptyAdditionalMaterialTags,
+    MaterialParameters = MAP[]
+]
+is TDepictionDescriptor
+(
+    SelectorId = 'low'
+    MeshDescriptor = <MeshDescriptor>
+    DisabledOperators = DisabledOperatorLow + ['tourelle4', 'tourelle4axe', 'tourelle4_canon']
+    AdditionalMaterialTags = <MaterialTags>
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_Low_NoTurret12
+[
+    MeshDescriptor,
+    MaterialTags = ~/EmptyAdditionalMaterialTags,
+    MaterialParameters = MAP[]
+]
+is TDepictionDescriptor
+(
+    SelectorId = 'low'
+    MeshDescriptor = <MeshDescriptor>
+    DisabledOperators = DisabledOperatorLow + ['tourelle1', 'tourelle1axe', 'tourelle1_canon', 'tourelle2', 'tourelle2axe', 'tourelle2_canon']
+    AdditionalMaterialTags = <MaterialTags>
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_Low_NoTurret13
+[
+    MeshDescriptor,
+    MaterialTags = ~/EmptyAdditionalMaterialTags,
+    MaterialParameters = MAP[]
+]
+is TDepictionDescriptor
+(
+    SelectorId = 'low'
+    MeshDescriptor = <MeshDescriptor>
+    DisabledOperators = DisabledOperatorLow + ['tourelle1', 'tourelle1axe', 'tourelle1_canon', 'tourelle3', 'tourelle3axe', 'tourelle3_canon']
+    AdditionalMaterialTags = <MaterialTags>
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_Low_NoTurret14
+[
+    MeshDescriptor,
+    MaterialTags = ~/EmptyAdditionalMaterialTags,
+    MaterialParameters = MAP[]
+]
+is TDepictionDescriptor
+(
+    SelectorId = 'low'
+    MeshDescriptor = <MeshDescriptor>
+    DisabledOperators = DisabledOperatorLow + ['tourelle1', 'tourelle1axe', 'tourelle1_canon', 'tourelle4', 'tourelle4axe', 'tourelle4_canon']
+    AdditionalMaterialTags = <MaterialTags>
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_Low_NoTurret23
+[
+    MeshDescriptor,
+    MaterialTags = ~/EmptyAdditionalMaterialTags,
+    MaterialParameters = MAP[]
+]
+is TDepictionDescriptor
+(
+    SelectorId = 'low'
+    MeshDescriptor = <MeshDescriptor>
+    DisabledOperators = DisabledOperatorLow + ['tourelle2', 'tourelle2axe', 'tourelle2_canon', 'tourelle3', 'tourelle3axe', 'tourelle3_canon']
+    AdditionalMaterialTags = <MaterialTags>
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_Low_NoTurret24
+[
+    MeshDescriptor,
+    MaterialTags = ~/EmptyAdditionalMaterialTags,
+    MaterialParameters = MAP[]
+]
+is TDepictionDescriptor
+(
+    SelectorId = 'low'
+    MeshDescriptor = <MeshDescriptor>
+    DisabledOperators = DisabledOperatorLow + ['tourelle2', 'tourelle2axe', 'tourelle2_canon', 'tourelle4', 'tourelle4axe', 'tourelle4_canon']
+    AdditionalMaterialTags = <MaterialTags>
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_Low_NoTurret34
+[
+    MeshDescriptor,
+    MaterialTags = ~/EmptyAdditionalMaterialTags,
+    MaterialParameters = MAP[]
+]
+is TDepictionDescriptor
+(
+    SelectorId = 'low'
+    MeshDescriptor = <MeshDescriptor>
+    DisabledOperators = DisabledOperatorLow + ['tourelle3', 'tourelle3axe', 'tourelle3_canon', 'tourelle4', 'tourelle4axe', 'tourelle4_canon']
+    AdditionalMaterialTags = <MaterialTags>
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_Low_NoTurret123
+[
+    MeshDescriptor,
+    MaterialTags = ~/EmptyAdditionalMaterialTags,
+    MaterialParameters = MAP[]
+]
+is TDepictionDescriptor
+(
+    SelectorId = 'low'
+    MeshDescriptor = <MeshDescriptor>
+    DisabledOperators = DisabledOperatorLow + ['tourelle1', 'tourelle1axe', 'tourelle1_canon', 'tourelle2', 'tourelle2axe', 'tourelle2_canon', 'tourelle3', 'tourelle3axe', 'tourelle3_canon']
+    AdditionalMaterialTags = <MaterialTags>
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_Low_NoTurret124
+[
+    MeshDescriptor,
+    MaterialTags = ~/EmptyAdditionalMaterialTags,
+    MaterialParameters = MAP[]
+]
+is TDepictionDescriptor
+(
+    SelectorId = 'low'
+    MeshDescriptor = <MeshDescriptor>
+    DisabledOperators = DisabledOperatorLow + ['tourelle1', 'tourelle1axe', 'tourelle1_canon', 'tourelle2', 'tourelle2axe', 'tourelle2_canon', 'tourelle4', 'tourelle4axe', 'tourelle4_canon']
+    AdditionalMaterialTags = <MaterialTags>
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_Low_NoTurret134
+[
+    MeshDescriptor,
+    MaterialTags = ~/EmptyAdditionalMaterialTags,
+    MaterialParameters = MAP[]
+]
+is TDepictionDescriptor
+(
+    SelectorId = 'low'
+    MeshDescriptor = <MeshDescriptor>
+    DisabledOperators = DisabledOperatorLow + ['tourelle1', 'tourelle1axe', 'tourelle1_canon', 'tourelle3', 'tourelle3axe', 'tourelle3_canon', 'tourelle4', 'tourelle4axe', 'tourelle4_canon']
+    AdditionalMaterialTags = <MaterialTags>
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_Low_NoTurret234
+[
+    MeshDescriptor,
+    MaterialTags = ~/EmptyAdditionalMaterialTags,
+    MaterialParameters = MAP[]
+]
+is TDepictionDescriptor
+(
+    SelectorId = 'low'
+    MeshDescriptor = <MeshDescriptor>
+    DisabledOperators = DisabledOperatorLow + ['tourelle2', 'tourelle2axe', 'tourelle2_canon', 'tourelle3', 'tourelle3axe', 'tourelle3_canon', 'tourelle4', 'tourelle4axe', 'tourelle4_canon']
+    AdditionalMaterialTags = <MaterialTags>
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_Low_Empty [ ] is TDepictionDescriptor
+(
+    SelectorId = 'low'
+    RequireOthersSkeleton = true
+    DisabledOperators = DisabledOperatorLow
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_Wrecked
+[
+    MeshDescriptor,
+    SelectorId,
+    AdditionalDisabledOperators = [],
+    MaterialTags = ~/EmptyAdditionalMaterialTags,
+    MaterialParameters = MAP[],
+    RequireOthersSkeleton = false
+]
+is TDepictionDescriptor
+(
+    SelectorId = <SelectorId>
+    MeshDescriptor = <MeshDescriptor>
+    DisabledOperators = DisabledOperatorLow + <AdditionalDisabledOperators>
+    AdditionalMaterialTags = <MaterialTags>
+    RequireOthersSkeleton = <RequireOthersSkeleton>
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_WreckedHigh
+[
+    MeshDescriptor,
+    MaterialTags = ~/EmptyAdditionalMaterialTags,
+    MaterialParameters = MAP[]
+]
+is DepictionDescriptor_LOD_Wrecked
+(
+    SelectorId = 'wreckedhigh'
+    MeshDescriptor = <MeshDescriptor>
+    MaterialTags = <MaterialTags>
+    MaterialParameters = <MaterialParameters>
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_WreckedMid
+[
+    MeshDescriptor,
+    AdditionalDisabledOperators = [],
+    MaterialTags = ~/EmptyAdditionalMaterialTags,
+    MaterialParameters = MAP[]
+]
+is DepictionDescriptor_LOD_Wrecked
+(
+    SelectorId = 'wreckedmid'
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalDisabledOperators = <AdditionalDisabledOperators>
+    MaterialTags = <MaterialTags>
+    MaterialParameters = <MaterialParameters>
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_WreckedLow
+[
+    MeshDescriptor,
+    AdditionalDisabledOperators = [],
+    MaterialTags = ~/EmptyAdditionalMaterialTags,
+    MaterialParameters = MAP[]
+]
+is DepictionDescriptor_LOD_Wrecked
+(
+    SelectorId = 'wreckedlow'
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalDisabledOperators = <AdditionalDisabledOperators>
+    MaterialTags = <MaterialTags>
+    MaterialParameters = <MaterialParameters>
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_WreckedLow_Empty [ ] is DepictionDescriptor_LOD_Wrecked
+(
+    SelectorId = 'wreckedlow'
+    MeshDescriptor = nil
+    RequireOthersSkeleton = true
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_WreckedMid_NoTurret1 [ MeshDescriptor ] is DepictionDescriptor_LOD_WreckedMid
+(
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalDisabledOperators = ['tourelle1', 'tourelle1axe', 'tourelle1_canon']
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_WreckedLow_NoTurret1 [ MeshDescriptor ] is DepictionDescriptor_LOD_WreckedLow
+(
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalDisabledOperators = ['tourelle1', 'tourelle1axe', 'tourelle1_canon']
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_WreckedLow_NoTurret2 [ MeshDescriptor ] is DepictionDescriptor_LOD_WreckedLow
+(
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalDisabledOperators = ['tourelle2', 'tourelle2axe', 'tourelle2_canon']
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_WreckedLow_NoTurret3 [ MeshDescriptor ] is DepictionDescriptor_LOD_WreckedLow
+(
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalDisabledOperators = ['tourelle3', 'tourelle3axe', 'tourelle3_canon']
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_WreckedLow_NoTurret4 [ MeshDescriptor ] is DepictionDescriptor_LOD_WreckedLow
+(
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalDisabledOperators = ['tourelle4', 'tourelle4axe', 'tourelle4_canon']
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_WreckedLow_NoTurret12 [ MeshDescriptor ] is DepictionDescriptor_LOD_WreckedLow
+(
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalDisabledOperators = ['tourelle1', 'tourelle1axe', 'tourelle1_canon', 'tourelle2', 'tourelle2axe', 'tourelle2_canon']
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_WreckedLow_NoTurret13 [ MeshDescriptor ] is DepictionDescriptor_LOD_WreckedLow
+(
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalDisabledOperators = ['tourelle1', 'tourelle1axe', 'tourelle1_canon', 'tourelle3', 'tourelle3axe', 'tourelle3_canon']
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_WreckedLow_NoTurret14 [ MeshDescriptor ] is DepictionDescriptor_LOD_WreckedLow
+(
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalDisabledOperators = ['tourelle1', 'tourelle1axe', 'tourelle1_canon', 'tourelle4', 'tourelle4axe', 'tourelle4_canon']
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_WreckedLow_NoTurret23 [ MeshDescriptor ] is DepictionDescriptor_LOD_WreckedLow
+(
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalDisabledOperators = ['tourelle2', 'tourelle2axe', 'tourelle2_canon', 'tourelle3', 'tourelle3axe', 'tourelle3_canon']
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_WreckedLow_NoTurret24 [ MeshDescriptor ] is DepictionDescriptor_LOD_WreckedLow
+(
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalDisabledOperators = ['tourelle2', 'tourelle2axe', 'tourelle2_canon', 'tourelle4', 'tourelle4axe', 'tourelle4_canon']
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_WreckedLow_NoTurret34 [ MeshDescriptor ] is DepictionDescriptor_LOD_WreckedLow
+(
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalDisabledOperators = ['tourelle3', 'tourelle3axe', 'tourelle3_canon', 'tourelle4', 'tourelle4axe', 'tourelle4_canon']
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_WreckedLow_NoTurret123 [ MeshDescriptor ] is DepictionDescriptor_LOD_WreckedLow
+(
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalDisabledOperators = ['tourelle1', 'tourelle1axe', 'tourelle1_canon', 'tourelle2', 'tourelle2axe', 'tourelle2_canon', 'tourelle3', 'tourelle3axe', 'tourelle3_canon']
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_WreckedLow_NoTurret124 [ MeshDescriptor ] is DepictionDescriptor_LOD_WreckedLow
+(
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalDisabledOperators = ['tourelle1', 'tourelle1axe', 'tourelle1_canon', 'tourelle2', 'tourelle2axe', 'tourelle2_canon', 'tourelle4', 'tourelle4axe', 'tourelle4_canon']
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_WreckedLow_NoTurret134 [ MeshDescriptor ] is DepictionDescriptor_LOD_WreckedLow
+(
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalDisabledOperators = ['tourelle1', 'tourelle1axe', 'tourelle1_canon', 'tourelle3', 'tourelle3axe', 'tourelle3_canon', 'tourelle4', 'tourelle4axe', 'tourelle4_canon']
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_WreckedLow_NoTurret234 [ MeshDescriptor ] is DepictionDescriptor_LOD_WreckedLow
+(
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalDisabledOperators = ['tourelle2', 'tourelle2axe', 'tourelle2_canon', 'tourelle3', 'tourelle3axe', 'tourelle3_canon', 'tourelle4', 'tourelle4axe', 'tourelle4_canon']
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_None [ ] is TDepictionDescriptor
+(
+    SelectorId = 'none'
+    RequireOthersSkeleton = true
+    DisabledOperators = DisabledOperatorLow
+)
+// ****************************************************************************************************************************************
+// *** infantrie **************************************************************************************************************************
+
+template DepictionDescriptor_LOD_InfantryHigh
+[
+    MeshDescriptor,
+    MaterialTags = ~/EmptyAdditionalMaterialTags,
+    MaterialParameters = MAP[]
+]
+is TDepictionDescriptor
+(
+    SelectorId = 'high'
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalMaterialTags = <MaterialTags>
+)
+
+template DepictionDescriptor_LOD_InfantryMid
+[
+    MeshDescriptor,
+    MaterialTags = ~/EmptyAdditionalMaterialTags,
+    MaterialParameters = MAP[]
+]
+is TDepictionDescriptor
+(
+    SelectorId = 'mid'
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalMaterialTags = <MaterialTags>
+)
+
+template DepictionDescriptor_LOD_InfantryLow
+[
+    MeshDescriptor,
+    MaterialTags = ~/EmptyAdditionalMaterialTags,
+    MaterialParameters = MAP[]
+]
+is TDepictionDescriptor
+(
+    SelectorId = 'low'
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalMaterialTags = <MaterialTags>
+)
+
+template Template_DepictionOperator_SkeletalAnimation_With_Tree_TEST [AnimationTree = nil, CameraDistanceOptimization = false] is TCosmeticSkeletalAnimationOperatorDesc
+(
+    OperatorId = 'biped'
+    Camera = $/M3D/Camera/CameraPrincipale //ca va poser des problème pour les depictions dans l'outgame mais vu que j'ai toujours pas de nouvelles, et que réarchitecturer tout ca va me prendre un temps fou, je me contente de ça pour le moment
+    AnimationTree = <AnimationTree> // Mettre un arbre ici si vous voulez utiliser le nouveau système d'anim
+    CameraDistanceOptimization = <CameraDistanceOptimization> //par défaut c'est à false pour les unités qui ont d'autres operateurs qui agissent sur les bones, cas dans la plupart des fois ou ce template est utilisé. L'opti est fait directement sur le applychangeon comme les operateurs habituellement
+)

@@ -1,0 +1,107 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export SandBagBreakthroughStrategy is TIAGeneralStrategy
+(
+    StrategyName = "GenBTAI"
+    FirstGenerator = SandBag_BT_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    ShouldUseTaggedCorridorsForTouchDown = true
+    DefaultIncomeForDynamicBudget = 100
+    TransitionList =
+    [
+        SandBag_BT_Transition_DefMod,
+        SandBag_BT_Transition_AtkMod,
+
+        SandBag_BTDef_Transition_StartToDeploy,
+        SandBag_BTDef_Transition_StartToFrontLineDefense,
+        SandBag_BTDef_Transition_StartToBackLineDefense,
+        SandBag_BTDef_Transition_DeployToFrontLineDefense,
+        SandBag_BTDef_Transition_FrontLineDefenseToBackLineDefense,
+        SandBag_BTDef_Transition_BackLineDefenseToStrikeBack,
+
+        SandBag_BTAtk_Transition_StartToPhaseC,
+        SandBag_BTAtk_Transition_StartToPhaseB,
+        SandBag_BTAtk_Transition_StartToPhaseA,
+        SandBag_BTAtk_Transition_StartToLowCost,
+        SandBag_BTAtk_Transition_StartToGeneric,
+        SandBag_BTAtk_Transition_DeployToPhaseA,
+        SandBag_BTAtk_Transition_Phase_B,
+        SandBag_BTAtk_Transition_Phase_C,
+        SandBag_BTAtk_Transition_DeployToPhaseA_LowCost,
+        SandBag_BTAtk_Transition_PhaseB_LowCost,
+        SandBag_BTAtk_Transition_PhaseC_LowCost,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export SandBag_BT_Condition_GotoDefMod is TSequenceCondition_MapPossession
+(
+    PossessionRatio = 0.6
+)
+
+export SandBag_BT_Condition_GotoAtkMod is TSequenceCondition_Not
+(
+    Condition = ~/SandBag_BT_Condition_GotoDefMod
+)
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export SandBag_BT_Transition_DefMod is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_BT_Choose_Strategy
+    Condition = SandBag_BT_Condition_GotoDefMod
+    Destination = SandBag_BTDef_Choose_Strategy
+)
+
+export SandBag_BT_Transition_AtkMod is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_BT_Choose_Strategy
+    Condition = SandBag_BT_Condition_GotoAtkMod
+    Destination = SandBag_BTAtk_Choose_Strategy
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export SandBag_BT_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ~/SandBag_BT_FakeSupport,
+    ]
+)
+
+//-------------------------------------------------------------------------
+export SandBag_BT_FakeSupport is TMacroActionDescriptor_Support_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    TagDeContre = "ThisUnitDoesNotExist"
+
+    PoolModelList = [
+        ~/SandBag_BT_FakePool,
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_BT_FakePool is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b701e7cf-6a89-11e9-9995-704d7b2c87d4}
+            Required = true
+            Nb = 1
+            TagsPriority = [
+                "ThisUnitDoesNotExist",
+            ]
+        ),
+    ]
+)

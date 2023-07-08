@@ -1,0 +1,22 @@
+export ModelFile_M3_Lee_SOV is 'GameData:Assets\3D\Units\SOV\Char\M3M_Lee_SOV\M3M_Lee_SOV.Ase2NdfBin'
+
+export Modele_M3_Lee_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M3_Lee_SOV
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_M3_Lee_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\M3M_Lee_SOV_MID\M3M_Lee_SOV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_M3_Lee_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\LODS\M3M_Lee_SOV_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

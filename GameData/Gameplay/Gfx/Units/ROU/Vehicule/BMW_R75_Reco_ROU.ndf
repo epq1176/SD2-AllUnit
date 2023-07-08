@@ -1,0 +1,22 @@
+export ModelFile_BMW_R75_Reco_ROU is 'GameData:Assets\3D\Units\ROU\Vehicule\BMW_R75\BMW_R75.Ase2NdfBin'
+
+Modele_BMW_R75_Reco_ROU is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_BMW_R75_Reco_ROU
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_BMW_R75_Reco_ROU_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Vehicule\BMW_R75_MID\BMW_R75_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_BMW_R75_Reco_ROU_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Vehicule\LODS\BMW_R75_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

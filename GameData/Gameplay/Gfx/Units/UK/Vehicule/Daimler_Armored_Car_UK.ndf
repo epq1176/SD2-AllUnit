@@ -1,0 +1,22 @@
+export ModelFile_Daimler_Armored_Car_UK is 'GameData:Assets\3D\Units\UK\Vehicule\Daimler_Armored_Car\Daimler_Armored_Car.Ase2NdfBin'
+
+Modele_Daimler_Armored_Car_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Daimler_Armored_Car_UK
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Daimler_Armored_Car_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Vehicule\Daimler_Armored_Car_MID\Daimler_Armored_Car_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Daimler_Armored_Car_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Vehicule\LODS\Daimler_Armored_Car_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

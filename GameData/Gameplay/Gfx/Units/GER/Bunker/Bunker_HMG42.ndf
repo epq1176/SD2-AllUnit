@@ -1,0 +1,17 @@
+export Gfx_Bunker_HMG42 is TDepictionTemplate //arme
+(
+    RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+    Selector = CommonBunkerDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_HMG_MG42 ),
+        DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_HMG_MG42_MID ),
+        DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_HMG_MG42_LOW ),
+        DepictionDescriptor_LOD_None()
+    ]
+
+    SubDepictions = []
+    Operators = Operators_HMG_MG42
+    Actions = Weapons_HMG_MG42
+)
+
+export ModelFile_Bunker_MG34_Weapon is ~/ModelFile_HMG_MG42

@@ -1,0 +1,195 @@
+
+HUBListHorizontale is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToFather = [0.5,0.5]
+        AlignementToAnchor = [0.5,0.5]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    InterItemMargin = TRTTILength( Magnifiable = 10.0)
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = HUBBouton
+            (
+                ElementName = "HUB_BG_DivisionButton"
+                TextToken = "AB_DIVIS"
+                TextureToken = "OutgameTexture_DivisionsMenuIcon"
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = HUBBouton
+            (
+                ElementName = "HUB_BG_BattleGroupButton"
+                TextToken = "AB_DECK"
+                TextureToken = "OutgameTexture_BattlegroupMenuIcon"
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = HUBBouton
+            (
+                ElementName = "HUB_BG_ArmoryButton"
+                TextToken = "AB_ARMORY"
+                TextureToken = "OutgameTexture_ArmoryMenuIcon"
+            )
+        ),
+    ]
+
+)
+
+template HUBBouton
+[
+    UniqueName : string = '',
+    ElementName : string = '',
+    TextureToken : string = '',
+    TextToken : string = '',
+]
+is BUCKButtonDescriptor
+(
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [341.0, 524.0]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "Noir50"
+
+    HasBorder = true
+    BorderLineColorToken = "SD2_Blanc184_2"
+    BorderThicknessToken = "1"
+
+    {HoverSound = ProfileClickSound
+        ClickSound = ~/ProfileClickSound}
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1,0]
+                MagnifiableWidthHeight = [0,113]
+                MagnifiableOffset = [0,148]
+
+            )
+            TextureToken = <TextureToken>
+            TextureFrame = TUIFramePropertyRTTI
+            (
+                AlignementToAnchor = [0.5,0]
+                AlignementToFather = [0.5,0]
+            )
+
+            ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+        ),
+
+        BUCKTextDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [341,100]
+                MagnifiableOffset = [0,386]
+                AlignementToFather = [0.5,0]
+                AlignementToAnchor = [0.5,0]
+            )
+
+            ParagraphStyle = ~/paragraphStyleTextCenter
+            TextStyle = "Default"
+            TypefaceToken = "MainBold"
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+
+            TextToken = <TextToken>
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+            TextColor = "SD2_Blanc184"
+            TextSize = "30"
+
+            ChildFitToContent = true
+        ),
+        SmallOmbrePanel
+    ]
+)
+
+HUBBattleGroupPanelViewMainComponent is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            TextureToken   = "OutgameTexture_outgame_sd2_Battlegroups"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [ 1.0, 1.0 ]
+                AlignementToFather = [ 0.5, 0.5 ]
+                AlignementToAnchor = [ 0.5, 0.5 ]
+            )
+            TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.])
+        ),
+        //HUBListHorizontale,
+        HUBList
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableOffset = HUBFirstButtonOffset
+            )
+
+            ButtonList =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = HUBButton
+                    (
+                        ElementName = "HUB_BG_DivisionButton"
+                        TextToken = "AB_DIVIS"
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = HUBButton
+                    (
+                        ElementName = "HUB_BG_BattleGroupButton"
+                        TextToken = "AB_DECK"
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = HUBButton
+                    (
+                        ElementName = "HUB_BG_ArmoryButton"
+                        TextToken = "AB_ARMORY"
+                    )
+                ),
+            ]
+        ),
+
+        HUBLittleButton
+        (
+            ElementName = "HUB_BG_BackButton"
+            ButtonMagnifiableOffset = HUBBackButtonOffset
+            TextToken = "NV_BACK"
+            Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+        ),
+    ]
+)
+
+HUBBattleGroupPanelViewDescriptor is TUISpecificOutGameHUBBattleGroupViewDescriptor
+(
+    MainComponentDescriptor = ~/HUBBattleGroupPanelViewMainComponent
+)
+

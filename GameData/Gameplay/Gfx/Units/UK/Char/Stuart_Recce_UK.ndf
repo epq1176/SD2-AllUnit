@@ -1,0 +1,22 @@
+export ModelFile_Stuart_Recce_UK is 'GameData:Assets\3D\Units\UK\Char\Stuart_Recce\Stuart_Recce.Ase2NdfBin'
+
+Modele_Stuart_Recce_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Stuart_Recce_UK
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Stuart_Recce_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\Stuart_Recce_MID\Stuart_Recce_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Stuart_Recce_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\LODS\Stuart_Recce_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

@@ -1,0 +1,730 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+export Descriptor_Unit_Borne is TEntityDescriptor
+(
+    DescriptorId       = GUID:{4b52810e-7e4c-4609-bc4a-f3e368c72615}
+    ClassNameForDebug  = 'Pawn_Borne'
+    Modules            = [
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/MBT
+                    Nationalite                      = ENationalite/Allied
+                    MotherCountry                    = 'HON'
+                    AcknowUnitType                   = ~/TAcknowUnitType_Tank
+                    TypeUnitFormation                = 'Building'
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId=~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue=~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TTypeUnitModuleDescriptor
+                        (
+                            MotherCountry                    = 'HON'
+                            Nationalite                      = ENationalite/Allied
+                            TypeUnitValue                    = ETypeUnit/MBT
+                        )
+                    )
+                ]
+            ),
+
+        // Flags
+            TFlagsModuleDescriptor
+            (
+                InitialFlagSet =
+                [
+                    Flag_Detectable,
+                    Flag_LdDetectable,
+                    Flag_Blessable,
+                    Flag_DEPRECATED_NePasUtiliser_OnlyForBriquePython_UniteDeCommandement,
+                ]
+            ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurBatiment
+                Radius                     = ((30) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // InfluenceMap
+             TModuleSelector
+             (
+                 Default = TInfluenceMapModuleDescriptor
+                 (
+                     InfluenceStrength = 0.8
+                     MinimumInfluenceStrength = 0
+                     StrengthDecayPerSecond = 1
+                     PreventsDecayInZone = False
+                 )
+                 Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // InfluencePosition
+        ~/InfluencePositionModuleDescriptor,
+
+        // InfluenceMap
+             ~/InfluenceDataModuleSelector,
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+                TagSet = [
+                    "AllUnits",
+                    "Unite",
+                    "UNITE_Borne",
+                ]
+            ),
+
+        // IAStrat
+            TModuleSelector
+            (
+                Default        = TIAStratModuleDescriptor
+                (
+                    DatabaseId = 1
+                    GameplayBehavior = EGameplayBehavior/Nothing
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // Debug
+            ~/DebugModuleDescriptor,
+
+        // EffectApplier
+            ~/EffectApplierModuleSelector,
+
+        // PackSignaux
+            ~/PackSignauxModuleSelector,
+
+        // Visibility
+            TModuleSelector
+            (
+                Default        = TVisibilityModuleDescriptor
+                (
+                    AutoRevealType       = EAutoRevealType/AutoRevealAllies
+                    UnitConcealmentBonus = 1.0
+                    VisionUnitType       = EVisionUnitType/Undefined
+                    AlwaysComputeLoS     = False
+                    UnitIsStealth        = False
+                    HideFromDebug        = False
+                    VisionObstructionType = EVisionObstructionType/Vehicle
+                    GroundDissimulationModifierType = EGroundDissumulationModifierType/Ground
+                )
+                Selection = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // ScannerConfiguration
+            TModuleSelector
+            (
+                Default        = TScannerConfigurationDescriptor
+                (
+                    OpticsAltitudeConfig = ~/EVisionOpticsAltitudeConfig/DontUse
+                    DoesNotCountInScannerAbsoluteMaxRange = False
+                    PorteeVisionTBA = ((0.0) * Metre)
+                    PorteeVisionFOW = ((0.0) * Metre)
+                    DetectionTBA = ((1000) * Metre)
+                    PorteeVision = ((1000) * Metre)
+                    PorteeIdentification = 0.0
+                    OpticalStrength = 120
+                    OpticalStrengthAltitude = 60
+                    UnitDetectStealthUnit = False
+                    SpecializedDetections = MAP [
+                        ( EVisionUnitType/AlwaysInHighAltitude, 2000.0 * Metre ),
+                    ]
+                    SpecializedOpticalStrengths = MAP [
+                    ]
+                    IgnoreObstacles = MAP []
+                )
+                Selection = [ ~/NilDescriptorIfCadavre ]
+            ),
+
+        // Scanner
+            TModuleSelector
+            (
+                Default        = TReverseScannerWithIdentificationDescriptor
+                (
+                    VisibilityRollRule = TModernWarfareVisibilityRollRule
+                    (
+                        IdentifyBaseProbability     = 1.0
+                        TimeBetweenEachIdentifyRoll = 0.0
+                        VisibilityRuleDescriptor    = ~/StandardWargameVisibilityRollRule
+                        DistanceMultiplierRule      = TModernWarfareDistanceMultiplierRollRuleDescriptor
+                        (
+                            MultiplicateurAPorteeMaximale            = DefaultMultiplicateurAPorteeMaximale
+                            MultiplicateurAPorteeMinimale            = DefaultMultiplicateurAPorteeMinimale
+                            Exposant                                 = DefaultExposant
+                            MultiplicateurAPorteeMaximaleEnMouvement = DefaultMultiplicateurAPorteeMaximaleEnMouvement
+                            MultiplicateurAPorteeMinimaleEnMouvement = DefaultMultiplicateurAPorteeMinimaleEnMouvement
+                            ExposantEnMouvement                      = DefaultExposantEnMouvement
+                        )
+                    )
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // BuildingDescription
+            TBuildingDescriptionModuleDescriptor
+            (
+                SymbolName                    = "BaseBuilding_Depot_Placeholder"
+                LevelBuildSymbolDatabaseProxy = $/M3D/Scene/LevelBuildSymbolDatabaseProxy
+                Height                        = 10 * Metre
+            ),
+
+        // PawnUI
+        TPawnUIModuleDescriptor
+        (
+            HintToken = 'MBT'
+            NameToken = TBUCKToolAlternativeValues_TLocalisationStringTokenFromTEugBMutableBoolean
+             (
+                 CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromStrategicPawnName
+                 Alterator = $/GUIOption/StrategicPawnName
+                 Values =
+                 [
+                     (~/LocalisationConstantes/dico_unites, ""),
+                     (~/LocalisationConstantes/dico_unites, "TAirport"),
+                 ]
+             )
+            ProdMenuTexture = 'Texture_Button_Pawn_Borne'
+            CountryTexture = 'CommonTexture_MotherCountryFlag_HON'
+        ),
+
+    ]
+)
+export Descriptor_Unit_TestAirport is TEntityDescriptor
+(
+    DescriptorId       = GUID:{4be95910-89a5-4339-8697-315d25ad3c6d}
+    ClassNameForDebug  = 'Pawn_TestAirport'
+    Modules            = [
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/MBT
+                    Nationalite                      = ENationalite/Allied
+                    MotherCountry                    = 'HON'
+                    AcknowUnitType                   = ~/TAcknowUnitType_Tank
+                    TypeUnitFormation                = 'Building'
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId=~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue=~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TTypeUnitModuleDescriptor
+                        (
+                            MotherCountry                    = 'HON'
+                            Nationalite                      = ENationalite/Allied
+                            TypeUnitValue                    = ETypeUnit/MBT
+                        )
+                    )
+                ]
+            ),
+
+        // Flags
+            TFlagsModuleDescriptor
+            (
+                InitialFlagSet =
+                [
+                    Flag_Detectable,
+                    Flag_LdDetectable,
+                    Flag_Blessable,
+                    Flag_DEPRECATED_NePasUtiliser_OnlyForBriquePython_UniteDeCommandement,
+                ]
+            ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurBatiment
+                Radius                     = ((30) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // InfluenceMap
+             TModuleSelector
+             (
+                 Default = TInfluenceMapModuleDescriptor
+                 (
+                     InfluenceStrength = 1
+                     MinimumInfluenceStrength = 1
+                     StrengthDecayPerSecond = 0
+                     PreventsDecayInZone = True
+                 )
+                 Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // InfluencePosition
+        ~/InfluencePositionModuleDescriptor,
+
+        // InfluenceMap
+             ~/InfluenceDataModuleSelector,
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+                TagSet = [
+                    "AllUnits",
+                    "Unite",
+                    "UNITE_TestAirport",
+                ]
+            ),
+
+        // IAStrat
+            TModuleSelector
+            (
+                Default        = TIAStratModuleDescriptor
+                (
+                    DatabaseId = 1
+                    GameplayBehavior = EGameplayBehavior/Nothing
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // Debug
+            ~/DebugModuleDescriptor,
+
+        // EffectApplier
+            ~/EffectApplierModuleSelector,
+
+        // StrategicSupplier
+        TModuleSelector
+        (
+            Default = TStrategicSupplierModuleDescriptor
+            (
+                SupplyActionPoint = -1
+            )
+            Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+         ),
+
+        // PackSignaux
+            ~/PackSignauxModuleSelector,
+
+        // Visibility
+            TModuleSelector
+            (
+                Default        = TVisibilityModuleDescriptor
+                (
+                    AutoRevealType       = EAutoRevealType/AutoRevealAllies
+                    UnitConcealmentBonus = 1.0
+                    VisionUnitType       = EVisionUnitType/Undefined
+                    AlwaysComputeLoS     = False
+                    UnitIsStealth        = False
+                    HideFromDebug        = False
+                    VisionObstructionType = EVisionObstructionType/Vehicle
+                    GroundDissimulationModifierType = EGroundDissumulationModifierType/Ground
+                )
+                Selection = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // ScannerConfiguration
+            TModuleSelector
+            (
+                Default        = TScannerConfigurationDescriptor
+                (
+                    OpticsAltitudeConfig = ~/EVisionOpticsAltitudeConfig/DontUse
+                    DoesNotCountInScannerAbsoluteMaxRange = False
+                    PorteeVisionTBA = ((0.0) * Metre)
+                    PorteeVisionFOW = ((0.0) * Metre)
+                    DetectionTBA = ((1000) * Metre)
+                    PorteeVision = ((1000) * Metre)
+                    PorteeIdentification = 0.0
+                    OpticalStrength = 120
+                    OpticalStrengthAltitude = 60
+                    UnitDetectStealthUnit = False
+                    SpecializedDetections = MAP [
+                        ( EVisionUnitType/AlwaysInHighAltitude, 2000.0 * Metre ),
+                    ]
+                    SpecializedOpticalStrengths = MAP [
+                    ]
+                    IgnoreObstacles = MAP []
+                )
+                Selection = [ ~/NilDescriptorIfCadavre ]
+            ),
+
+        // Scanner
+            TModuleSelector
+            (
+                Default        = TReverseScannerWithIdentificationDescriptor
+                (
+                    VisibilityRollRule = TModernWarfareVisibilityRollRule
+                    (
+                        IdentifyBaseProbability     = 1.0
+                        TimeBetweenEachIdentifyRoll = 0.0
+                        VisibilityRuleDescriptor    = ~/StandardWargameVisibilityRollRule
+                        DistanceMultiplierRule      = TModernWarfareDistanceMultiplierRollRuleDescriptor
+                        (
+                            MultiplicateurAPorteeMaximale            = DefaultMultiplicateurAPorteeMaximale
+                            MultiplicateurAPorteeMinimale            = DefaultMultiplicateurAPorteeMinimale
+                            Exposant                                 = DefaultExposant
+                            MultiplicateurAPorteeMaximaleEnMouvement = DefaultMultiplicateurAPorteeMaximaleEnMouvement
+                            MultiplicateurAPorteeMinimaleEnMouvement = DefaultMultiplicateurAPorteeMinimaleEnMouvement
+                            ExposantEnMouvement                      = DefaultExposantEnMouvement
+                        )
+                    )
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // BuildingDescription
+            TBuildingDescriptionModuleDescriptor
+            (
+                SymbolName                    = "BaseBuilding_Aeroport"
+                LevelBuildSymbolDatabaseProxy = $/M3D/Scene/LevelBuildSymbolDatabaseProxy
+                Height                        = 10 * Metre
+            ),
+
+        // StrategicAirport
+        TStrategicAirportModuleDescriptor
+        (
+        ),
+
+        // PawnUI
+        TPawnUIModuleDescriptor
+        (
+            HintToken = 'MBT'
+            NameToken = TBUCKToolAlternativeValues_TLocalisationStringTokenFromTEugBMutableBoolean
+             (
+                 CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromStrategicPawnName
+                 Alterator = $/GUIOption/StrategicPawnName
+                 Values =
+                 [
+                     (~/LocalisationConstantes/dico_unites, ""),
+                     (~/LocalisationConstantes/dico_unites, "TAirport"),
+                 ]
+             )
+            ProdMenuTexture = 'Texture_Button_Pawn_TestAirport'
+            CountryTexture = 'CommonTexture_MotherCountryFlag_HON'
+        ),
+
+        // StrategicPosition
+        TStrategicPositionModuleDescriptor
+        (
+            PositionDescriptorList = [
+                TStrategicPositionDescriptor
+                (
+                    RelativePosition = [0,0]
+                    Layer = ~/EStrategicLayer/StrategicLayerGround
+                ),
+                TStrategicPositionDescriptor
+                (
+                    RelativePosition = [-1,-1]
+                    Layer = ~/EStrategicLayer/StrategicLayerAir
+                ),
+                TStrategicPositionDescriptor
+                (
+                    RelativePosition = [-1,0]
+                    Layer = ~/EStrategicLayer/StrategicLayerAir
+                ),
+                TStrategicPositionDescriptor
+                (
+                    RelativePosition = [-1,1]
+                    Layer = ~/EStrategicLayer/StrategicLayerAir
+                ),
+                TStrategicPositionDescriptor
+                (
+                    RelativePosition = [0,-1]
+                    Layer = ~/EStrategicLayer/StrategicLayerAir
+                ),
+                TStrategicPositionDescriptor
+                (
+                    RelativePosition = [0,0]
+                    Layer = ~/EStrategicLayer/StrategicLayerAir
+                ),
+                TStrategicPositionDescriptor
+                (
+                    RelativePosition = [0,1]
+                    Layer = ~/EStrategicLayer/StrategicLayerAir
+                ),
+                TStrategicPositionDescriptor
+                (
+                    RelativePosition = [1,-1]
+                    Layer = ~/EStrategicLayer/StrategicLayerAir
+                ),
+                TStrategicPositionDescriptor
+                (
+                    RelativePosition = [1,0]
+                    Layer = ~/EStrategicLayer/StrategicLayerAir
+                ),
+                TStrategicPositionDescriptor
+                (
+                    RelativePosition = [1,1]
+                    Layer = ~/EStrategicLayer/StrategicLayerAir
+                ),
+            ]
+        ),
+
+    ]
+)
+export Descriptor_Unit_TestDepotRavitaillement is TEntityDescriptor
+(
+    DescriptorId       = GUID:{a3f2f2f7-397c-47fe-8d78-f84fe14dec02}
+    ClassNameForDebug  = 'Pawn_TestDepotRavitaillement'
+    Modules            = [
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/MBT
+                    Nationalite                      = ENationalite/Allied
+                    MotherCountry                    = 'HON'
+                    AcknowUnitType                   = ~/TAcknowUnitType_Tank
+                    TypeUnitFormation                = 'Building'
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId=~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue=~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TTypeUnitModuleDescriptor
+                        (
+                            MotherCountry                    = 'HON'
+                            Nationalite                      = ENationalite/Allied
+                            TypeUnitValue                    = ETypeUnit/MBT
+                        )
+                    )
+                ]
+            ),
+
+        // Flags
+            TFlagsModuleDescriptor
+            (
+                InitialFlagSet =
+                [
+                    Flag_Detectable,
+                    Flag_LdDetectable,
+                    Flag_Blessable,
+                    Flag_DEPRECATED_NePasUtiliser_OnlyForBriquePython_UniteDeCommandement,
+                ]
+            ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurBatiment
+                Radius                     = ((30) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // InfluenceMap
+             TModuleSelector
+             (
+                 Default = TInfluenceMapModuleDescriptor
+                 (
+                     InfluenceStrength = 0.3
+                     MinimumInfluenceStrength = 0
+                     StrengthDecayPerSecond = 0.3
+                     PreventsDecayInZone = True
+                 )
+                 Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // InfluencePosition
+        ~/InfluencePositionModuleDescriptor,
+
+        // InfluenceMap
+             ~/InfluenceDataModuleSelector,
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+                TagSet = [
+                    "AllUnits",
+                    "Unite",
+                    "UNITE_TestDepotRavitaillement",
+                ]
+            ),
+
+        // IAStrat
+            TModuleSelector
+            (
+                Default        = TIAStratModuleDescriptor
+                (
+                    DatabaseId = 1
+                    GameplayBehavior = EGameplayBehavior/Nothing
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // Debug
+            ~/DebugModuleDescriptor,
+
+        // EffectApplier
+            ~/EffectApplierModuleSelector,
+
+        // StrategicSupplier
+        TModuleSelector
+        (
+            Default = TStrategicSupplierModuleDescriptor
+            (
+                SupplyActionPoint = -1
+            )
+            Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+         ),
+
+        // PackSignaux
+            ~/PackSignauxModuleSelector,
+
+        // Visibility
+            TModuleSelector
+            (
+                Default        = TVisibilityModuleDescriptor
+                (
+                    AutoRevealType       = EAutoRevealType/AutoRevealAllies
+                    UnitConcealmentBonus = 1.0
+                    VisionUnitType       = EVisionUnitType/Undefined
+                    AlwaysComputeLoS     = False
+                    UnitIsStealth        = False
+                    HideFromDebug        = False
+                    VisionObstructionType = EVisionObstructionType/Vehicle
+                    GroundDissimulationModifierType = EGroundDissumulationModifierType/Ground
+                )
+                Selection = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // ScannerConfiguration
+            TModuleSelector
+            (
+                Default        = TScannerConfigurationDescriptor
+                (
+                    OpticsAltitudeConfig = ~/EVisionOpticsAltitudeConfig/DontUse
+                    DoesNotCountInScannerAbsoluteMaxRange = False
+                    PorteeVisionTBA = ((0.0) * Metre)
+                    PorteeVisionFOW = ((0.0) * Metre)
+                    DetectionTBA = ((1000) * Metre)
+                    PorteeVision = ((1000) * Metre)
+                    PorteeIdentification = 0.0
+                    OpticalStrength = 120
+                    OpticalStrengthAltitude = 60
+                    UnitDetectStealthUnit = False
+                    SpecializedDetections = MAP [
+                        ( EVisionUnitType/AlwaysInHighAltitude, 2000.0 * Metre ),
+                    ]
+                    SpecializedOpticalStrengths = MAP [
+                    ]
+                    IgnoreObstacles = MAP []
+                )
+                Selection = [ ~/NilDescriptorIfCadavre ]
+            ),
+
+        // Scanner
+            TModuleSelector
+            (
+                Default        = TReverseScannerWithIdentificationDescriptor
+                (
+                    VisibilityRollRule = TModernWarfareVisibilityRollRule
+                    (
+                        IdentifyBaseProbability     = 1.0
+                        TimeBetweenEachIdentifyRoll = 0.0
+                        VisibilityRuleDescriptor    = ~/StandardWargameVisibilityRollRule
+                        DistanceMultiplierRule      = TModernWarfareDistanceMultiplierRollRuleDescriptor
+                        (
+                            MultiplicateurAPorteeMaximale            = DefaultMultiplicateurAPorteeMaximale
+                            MultiplicateurAPorteeMinimale            = DefaultMultiplicateurAPorteeMinimale
+                            Exposant                                 = DefaultExposant
+                            MultiplicateurAPorteeMaximaleEnMouvement = DefaultMultiplicateurAPorteeMaximaleEnMouvement
+                            MultiplicateurAPorteeMinimaleEnMouvement = DefaultMultiplicateurAPorteeMinimaleEnMouvement
+                            ExposantEnMouvement                      = DefaultExposantEnMouvement
+                        )
+                    )
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // BuildingDescription
+            TBuildingDescriptionModuleDescriptor
+            (
+                SymbolName                    = "BaseBuilding_Aeroport"
+                LevelBuildSymbolDatabaseProxy = $/M3D/Scene/LevelBuildSymbolDatabaseProxy
+                Height                        = 10 * Metre
+            ),
+
+        // PawnUI
+        TPawnUIModuleDescriptor
+        (
+            HintToken = 'MBT'
+            NameToken = TBUCKToolAlternativeValues_TLocalisationStringTokenFromTEugBMutableBoolean
+             (
+                 CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromStrategicPawnName
+                 Alterator = $/GUIOption/StrategicPawnName
+                 Values =
+                 [
+                     (~/LocalisationConstantes/dico_unites, ""),
+                     (~/LocalisationConstantes/dico_unites, "TAirport"),
+                 ]
+             )
+            ProdMenuTexture = 'Texture_Button_Pawn_TestDepotRavitaillement'
+            CountryTexture = 'CommonTexture_MotherCountryFlag_HON'
+        ),
+
+        // StrategicPosition
+        TStrategicPositionModuleDescriptor
+        (
+            PositionDescriptorList = [
+                TStrategicPositionDescriptor
+                (
+                    RelativePosition = [0,0]
+                    Layer = ~/EStrategicLayer/StrategicLayerGround
+                ),
+            ]
+        ),
+
+    ]
+)

@@ -1,0 +1,29 @@
+export Gfx_Kubelwagen_LET is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Kubelwagen_LET ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Kubelwagen_LET_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_Kubelwagen_LET_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Kubelwagen_LET ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Kubelwagen_LET_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_Kubelwagen_LET_LOW ),
+        ]
+
+        Operators = Operators_Kubelwagen_LET
+                  + DepictionOperator_Chassis_Vehicle
+                  + DepictionOperator_Propulsion_4Wheels_Jeep
+
+
+        Actions = Weapons_Kubelwagen_LET
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Wheeled
+
+        SubDepictions = DepictionSubDepiction_Driver_GER
+                        + [ SubDepictionTowedUnit ]
+                        + SittingSoldierSubDepictions2
+    )
+)

@@ -1,0 +1,22 @@
+export ModelFile_NAG_Flak_37mm_GER is 'GameData:Assets\3D\Units\GER\Vehicule\NAG_Flak_37mm\NAG_Flak_37mm.Ase2NdfBin'
+
+Modele_NAG_Flak_37mm_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_NAG_Flak_37mm_GER
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_NAG_Flak_37mm_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\NAG_Flak_37mm_MID\NAG_Flak_37mm_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_NAG_Flak_37mm_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\LODS\NAG_Flak_37mm_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

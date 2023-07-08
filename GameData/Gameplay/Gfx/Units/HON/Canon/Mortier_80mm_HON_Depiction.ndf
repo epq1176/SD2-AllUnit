@@ -1,0 +1,91 @@
+template TemplateMeshDescriptor_Mortier_80mm_HON [ ModelFile ] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+
+export ModelFile_Boites_Mortier_80mm_HON is 'GameData:Assets\3D\Units\HON\Canon\Mortier_80mm_HON\Boites_Mortier_80mm_HON.Ase2NdfBin'
+
+Gfx_Mortier_80mm_HON_1 is TDepictionTemplate //servant gauche
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Mortier_80mm_HON( ModelFile = ModelFile_Kanonier_HON)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Mortier_80mm_HON( ModelFile = ModelFile_Kanonier_HON_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Mortier_80mm_HON( ModelFile = ModelFile_Kanonier_HON)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Mortier_80mm_HON( ModelFile = ModelFile_Kanonier_HON_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_ServantMortar_Gauche
+)
+
+Gfx_Mortier_80mm_HON_2 is TDepictionTemplate //servant droite
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Mortier_80mm_HON( ModelFile = ModelFile_Kanonier_HON_2)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Mortier_80mm_HON( ModelFile = ModelFile_Kanonier_HON_2_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Mortier_80mm_HON( ModelFile = ModelFile_Kanonier_HON_2)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Mortier_80mm_HON( ModelFile = ModelFile_Kanonier_HON_2_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_ServantMortar_Droite
+)
+
+Gfx_Mortier_80mm_HON_Weapon is TDepictionTemplate //arme
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = CommonDepictionSelector
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_Mortier_80mm_HON ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_Mortier_80mm_HON_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_Mortier_80mm_HON_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor =  Modele_Mortier_80mm_HON ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor =  Modele_Mortier_80mm_HON_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor =  Modele_Mortier_80mm_HON_LOW ),
+        ]
+
+        SubDepictions = []
+        Operators = //DepictionOperator_SkeletalAnimation_Mortier_107mm_US
+            DepictionOperatorNode_ResetUnit +
+            DepictionOperator_Carriable_Mortar
+        Actions = Weapons_Mortier_80mm_HON
+    )
+
+SubDepiction_Servant_1_Mortier_80mm_HON is TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_Mortier_80mm_HON_1 )
+SubDepiction_Servant_2_Mortier_80mm_HON is TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_Mortier_80mm_HON_2 )
+SubDepiction_Canon_AT_Mortier_80mm_HON is TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_Mortier_80mm_HON_Weapon )
+
+Gfx_Mortier_80mm_HON is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate //les boites
+    (
+        OverrideMeshBoundingBoxMin = [-500,-500,0]
+        OverrideMeshBoundingBoxMax = [ 500, 500,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_Mortier_80mm_HON( ModelFile = ModelFile_Boites_Mortier_80mm_HON) ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_Mortier_80mm_HON( ModelFile = ModelFile_Boites_Mortier_80mm_HON) ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_Mortier_80mm_HON( ModelFile = ModelFile_Boites_Mortier_80mm_HON) ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_Mortier_80mm_HON( ModelFile = ModelFile_Boites_Mortier_80mm_HON) ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_Mortier_80mm_HON( ModelFile = ModelFile_Boites_Mortier_80mm_HON) ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_Mortier_80mm_HON( ModelFile = ModelFile_Boites_Mortier_80mm_HON) ),
+        ]
+        NodeNamesForSelection = [ 'Canon_AT', 'servant_G' , 'servant_D']
+        SubDepictions = [SubDepiction_Servant_1_Mortier_80mm_HON,
+                        SubDepiction_Servant_2_Mortier_80mm_HON,
+                        SubDepiction_Canon_AT_Mortier_80mm_HON]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+    )
+)

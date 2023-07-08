@@ -1,0 +1,29 @@
+export Gfx_Jeep_AWP is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Jeep_AWP ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Jeep_AWP_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_Jeep_AWP_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Jeep_AWP ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Jeep_AWP_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_Jeep_AWP_LOW ),
+        ]
+
+        Operators = Operators_Jeep_AWP
+                  + DepictionOperator_Chassis_Vehicle
+                  + DepictionOperator_Propulsion_4Wheels_Jeep
+
+
+        Actions = Weapons_Jeep_AWP
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Wheeled
+
+        SubDepictions = DepictionSubDepiction_Driver_AWP
+                        + [ SubDepictionTowedUnit ]
+                        + SittingSoldierSubDepictions2
+    )
+)

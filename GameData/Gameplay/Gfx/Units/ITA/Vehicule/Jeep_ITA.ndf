@@ -1,0 +1,22 @@
+export ModelFile_Jeep_ITA is 'GameData:Assets\3D\Units\ITA\Vehicule\Jeep_ITA\Jeep_ITA.Ase2NdfBin'
+
+Modele_Jeep_ITA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Jeep_ITA
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Jeep_ITA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ITA\Vehicule\Jeep_ITA_MID\Jeep_ITA_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Jeep_ITA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ITA\Vehicule\LODS\Jeep_ITA_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

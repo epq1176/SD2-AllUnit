@@ -1,0 +1,22 @@
+export ModelFile_Carrier_Recce_AWP is 'GameData:Assets\3D\Units\AWP\Char\Carrier_Recce_AWP\Carrier_Recce_AWP.Ase2NdfBin'
+
+Modele_Carrier_Recce_AWP is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Carrier_Recce_AWP
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_Recce_AWP_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\AWP\Char\Carrier_Recce_AWP_MID\Carrier_Recce_AWP_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_Recce_AWP_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\AWP\Char\LODS\Carrier_Recce_AWP_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

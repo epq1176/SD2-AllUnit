@@ -1,0 +1,22 @@
+export ModelFile_Carrier_Loyd_POL is 'GameData:Assets\3D\Units\POL\Vehicule\Loyd_Carrier\Loyd_Carrier.Ase2NdfBin'
+
+Modele_Carrier_Loyd_POL is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Carrier_Loyd_POL
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_Loyd_POL_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Vehicule\Loyd_Carrier_MID\Loyd_Carrier_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_Loyd_POL_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Vehicule\LODS\Loyd_Carrier_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

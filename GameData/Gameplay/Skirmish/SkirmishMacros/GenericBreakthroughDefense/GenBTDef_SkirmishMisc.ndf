@@ -1,0 +1,277 @@
+//-------------------------------------------------------------------------
+//----------------------------- MISC ---------------------------------
+//-------------------------------------------------------------------------
+export GenBTDef_MinimumResourceForLaunch_Stage_1 is 200
+export GenBTDef_MinimumResourceForLaunch_Economic is 500
+
+//-------------------------------------------------------------------------
+//------------------------------ SUPPLY -----------------------------------
+//-------------------------------------------------------------------------
+
+// Missions
+//-------------------------------------------------------------------------
+export GenBTDef_Supply_Skirmish is TMacroActionDescriptor_Supply_Specific
+(
+    GenerationType = TGenerationType_BasedOnNumberOfCorridors
+
+    MinimumAmmoRatio = 0.3
+    SupplyAllies = false
+    IgnoreSafePath = false
+
+    PoolModelList = [
+        ~/GenBTDef_Pool_Supply_Skirmish,
+    ]
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Generation,
+            TGenerationSettingHolder(NumberOfCorridorsPerMission = 4 ConsiderOnlySameDescriptor = true)
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Supply_Skirmish_Allied is TMacroActionDescriptor_Supply_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    MinimumAmmoRatio = 0.2
+    SupplyAllies = true
+    IgnoreSafePath = false
+    DisableReinforcement = true
+
+    PoolModelList = [
+        ~/GenBTDef_Pool_Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+
+// Pool Models
+//-------------------------------------------------------------------------
+export GenBTDef_Pool_Supply_Skirmish is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{b6ac9be1-6a89-11e9-ae8f-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        TagsPriority = [
+            "Vehicule_Logistique",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------
+//------------------------------- RECO ------------------------------------
+//-------------------------------------------------------------------------
+
+// Missions
+//-------------------------------------------------------------------------
+export GenBTDef_Reco is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    GenerationType = TGenerationType_BasedOnNumberOfCorridors
+
+    IgnoreSafePath = false //on n'esquive pas la menace sur le chemin
+    DisableReinforcement = false
+
+    IgnoreVisionForDefensePosition = false
+    IgnoreEnemyDirectionForDefensePosition = true
+    IgnoreDefensePositionSafety = false
+
+    PoolModelList = [
+        ~/GenBTDef_Pool_Reco_Skirmish,
+    ]
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Generation,
+            TGenerationSettingHolder(NumberOfCorridorsPerMission = 4 ConsiderOnlySameDescriptor = true)
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export GenBTDef_AirReco is TMacroActionDescriptor_AirReco_Specific
+(
+    GenerationType = TGenerationType_FixedSizeByAlliance
+    NumberOfMacro = 1
+
+    PriorityCorridors = []
+    MaxAirplaneCountOnBattlefield = 1
+    TicksBetweenTwoLaunch = 60
+    TicksBetweenTwoMissions = 60
+
+    PoolModelList = [
+        ~/GenBTDef_Pool_AirReco_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+
+// Pool Models
+//-------------------------------------------------------------------------
+export GenBTDef_Pool_Reco_Skirmish is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{b6ac9be2-6a89-11e9-9720-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = false // On veut le moins cher
+        PriceComparisonMethod = EPriceComparatorType/Cheapest
+        TagsPriority = [
+            "Infanterie_Reco",
+            "Vehicule_Reco",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Pool_AirReco_Skirmish is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{b6ac9be3-6a89-11e9-a1bc-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        PriceComparisonMethod = EPriceComparatorType/Random
+        TagsPriority = [
+            "Avion_Reco",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------
+//--------------------------- SUPERCOMMANDER ------------------------------
+//-------------------------------------------------------------------------
+
+export GenBTDef_SuperCommander is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    IgnoreSafePath = true
+    DisableReinforcement = true
+    IgnoreVisionForDefensePosition = true
+    IgnoreEnemyDirectionForDefensePosition = true
+    IgnoreDefensePositionSafety = false
+    PrioritizeCorridorsForTaggedPoolModels = true
+
+    LaunchASAP_RatioMin = 0.01
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [~/GenBTDef_Pool_SuperCommander]
+
+    TaggedPoolModelList =
+    (
+        [
+            (["AttackMain"], [~/GenBTDef_Pool_SuperCommander]),
+        ]
+    )
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/GenBTDef_BasicAirstrikeSupport)
+        ),
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0)
+        ),
+        (
+            ESettingType/Support,
+            TSupportSettingHolder(SettingList = [GenBTDef_Renfort_AT])
+        ),
+        (
+            ESettingType/AvoidCorridorTags,
+            TAvoidCorridorTagsSettingHolder(AvoidedCorridorTags = ["Filler"])
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+private template GenBTDef_Template_Static_SuperCommander
+[
+    OrderedZoneWeightList = [],
+    DefensePointScoringFeatureValue = MAP[],
+]
+is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    IgnoreSafePath = true //on n'esquive pas la menace sur le chemin
+    DisableReinforcement = true
+    IgnoreVisionForDefensePosition = false
+    IgnoreEnemyDirectionForDefensePosition = false
+    IgnoreDefensePositionSafety = false
+    PrioritizeCorridorsForTaggedPoolModels = true
+    OrderedZoneWeightList = <OrderedZoneWeightList>
+    DefensePointScoringFeatureValue = <DefensePointScoringFeatureValue>
+
+    LaunchASAP_RatioMin = 0.01
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [~/GenBTDef_Pool_SuperCommander]
+
+    TaggedPoolModelList =
+    (
+        [
+            (["AttackMain"], [~/GenBTDef_Pool_SuperCommander]),
+        ]
+    )
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/GenBTDef_BasicAirstrikeSupport)
+        ),
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0)
+        ),
+        (
+            ESettingType/Support,
+            TSupportSettingHolder(SettingList = [GenBTDef_Renfort_AT])
+        ),
+        (
+            ESettingType/AvoidCorridorTags,
+            TAvoidCorridorTagsSettingHolder(AvoidedCorridorTags = ["Filler"])
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------
+export GenBTDef_Static_SuperCommander_FrontLane is GenBTDef_Template_Static_SuperCommander
+(
+    OrderedZoneWeightList = [1]
+    DefensePointScoringFeatureValue = ~/Gen_WeightDefensePointScoringFeatureMap
+)
+
+//-------------------------------------------------------------------------
+export GenBTDef_Static_SuperCommander_BackLane is GenBTDef_Template_Static_SuperCommander
+(
+    OrderedZoneWeightList = [2]
+    DefensePointScoringFeatureValue = ~/Gen_WeightDefensePointScoringFeatureMap
+)
+
+//-------------------------------------------------------------------------
+
+// Pool Models
+//-------------------------------------------------------------------------
+export GenBTDef_Pool_SuperCommander is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{b6acc2f0-6a89-11e9-8b2e-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = false
+        PriceComparisonMethod = EPriceComparatorType/Random
+        TagsPriority = [
+            "Char_SuperCMD",
+            "Vehicule_SuperCMD",
+            "Infanterie_SuperCMD",
+        ]
+    ),
+    ]
+)

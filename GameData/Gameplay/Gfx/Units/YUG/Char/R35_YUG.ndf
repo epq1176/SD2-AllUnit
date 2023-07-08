@@ -1,0 +1,22 @@
+export ModelFile_R35_YUG is 'GameData:Assets\3D\Units\YUG\Char\Beutepanzer_35R\Beutepanzer_35R.Ase2NdfBin'
+
+Modele_R35_YUG is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_R35_YUG
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_R35_YUG_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\YUG\Char\Beutepanzer_35R_MID\Beutepanzer_35R_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_R35_YUG_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\YUG\Char\LODS\Beutepanzer_35R_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

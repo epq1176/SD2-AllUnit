@@ -1,0 +1,74 @@
+
+
+HUBProfilDescriptor is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            TextureToken   = "OutgameTexture_outgame_sd2_desk"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [ 1.0, 1.0 ]
+                AlignementToFather = [ 0.5, 0.5 ]
+                AlignementToAnchor = [ 0.5, 0.5 ]
+            )
+            TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.])
+        ),
+
+        HUBList
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableOffset = HUBFirstButtonOffset
+            )
+
+            ButtonList =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = HUBButton
+                    (
+                        ElementName = "HUBProfilFriendsButton"
+                        TextToken = "AB_FRIENDS"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = HUBButton
+                    (
+                        ElementName = "HUBProfilStatsButton"
+                        TextToken = "AB_STATS"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = HUBButton
+                    (
+                        ElementName = "HUBProfilReplaysButton"
+                        TextToken = "AB_REPL"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = HUBButton
+                    (
+                        ElementName = "HUBProfilChangePseudoButton"
+                        TextToken = "AB_CHGPSE"
+                    )
+                ),
+            ]
+        ),
+
+        HUBLittleButton
+        (
+            ElementName = "HUBProfilBackButton"
+            ButtonMagnifiableOffset = HUBBackButtonOffset
+            TextToken = "AB_BACK"
+            Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+        ),
+
+    ]
+)

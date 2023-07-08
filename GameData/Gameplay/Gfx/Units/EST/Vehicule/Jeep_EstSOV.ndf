@@ -1,0 +1,22 @@
+export ModelFile_Jeep_EstSOV is 'GameData:Assets\3D\Units\SOV\Vehicule\Jeep_Villis_SOV\Jeep_Villis_SOV.Ase2NdfBin'
+
+Modele_Jeep_EstSOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Jeep_EstSOV
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Jeep_EstSOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Vehicule\Jeep_Villis_SOV_MID\Jeep_Villis_SOV_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Jeep_EstSOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Vehicule\LODS\Jeep_Villis_SOV_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

@@ -1,0 +1,22 @@
+export ModelFile_StuG_III_G_Fu_HON is 'GameData:Assets\3D\Units\HON\Char\Stug_III_G_Fu_HON\Stug_III_G_Fu_HON.Ase2NdfBin'
+
+Modele_StuG_III_G_Fu_HON is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_StuG_III_G_Fu_HON
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_StuG_III_G_Fu_HON_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\HON\Char\Stug_III_G_Fu_HON_MID\Stug_III_G_Fu_HON_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_StuG_III_G_Fu_HON_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\HON\Char\LODS\Stug_III_G_Fu_HON_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

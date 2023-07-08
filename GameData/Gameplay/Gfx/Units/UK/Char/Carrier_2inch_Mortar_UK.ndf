@@ -1,0 +1,22 @@
+export ModelFile_Carrier_2inch_Mortar_UK is 'GameData:Assets\3D\Units\UK\Char\Universal_Carrier\Mortar_Carrier_2inch.Ase2NdfBin'
+
+Modele_Carrier_2inch_Mortar_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Carrier_2inch_Mortar_UK
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_2inch_Mortar_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\Universal_Carrier_MID\Mortar_Carrier_2inch_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_2inch_Mortar_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\LODS\Mortar_Carrier_2inch_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

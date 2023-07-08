@@ -1,0 +1,256 @@
+private UnitButtonWidth is 75
+private UnitButtonHeight is  38
+
+template BUCKSpecificSelectionPanelPawnUnitMainComponentDescriptor
+[
+    UnitUniqueSelectionMode : bool = false,
+    RadioButtonManager : TBUCKRadioButtonManager = nil,
+    IsClickable : bool = true,
+] is BUCKContainerDescriptor
+(
+    ElementName = 'PanelPawnUnitMainComponent'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [UnitButtonWidth, UnitButtonHeight]
+    )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ElementName = 'MainList'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [UnitButtonWidth, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    // A decommenter si on réutilise la selection d'unité, en attendant ça complexifie mon debug
+                    ComponentDescriptor = {BUCKContainerDescriptor
+                    (
+                        ElementName = 'UnitContainer'
+
+                        ComponentFrame = TUIFramePropertyRTTI()
+                        FitStyle = ~/ContainerFitStyle/FitToContent
+
+                        Components =
+                        [}
+                            BUCKButtonDescriptor
+                            (
+                                ElementName = 'UnitButton'
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [UnitButtonWidth, UnitButtonHeight]
+                                )
+                                HasBackground = true
+                                BackgroundBlockColorToken = "grisUnite"
+
+                                HasBorder = false
+                                BorderThicknessToken = '1'
+                                BorderLineColorToken = 'SD2_Stroke_Bouton2a'
+
+                                HidePointerEvents = true
+
+                                ChildFitToContent = true
+
+                                IsTogglable = <UnitUniqueSelectionMode> ? false : true
+                                RadioButtonManager = <RadioButtonManager>
+
+                                Grayed = !<IsClickable>
+
+                                Components =
+                                [
+                                    BUCKTextureDescriptor
+                                    (
+                                        ElementName = 'UnitPortrait'
+
+                                        ComponentFrame = TUIFramePropertyRTTI
+                                        (
+                                            RelativeWidthHeight = [0.7, 0.7]
+                                            AlignementToFather = [0.5, 0.9]
+                                            AlignementToAnchor = [0.5, 0.9]
+                                        )
+
+                                        ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+
+                                        TextureFrame = TUIFramePropertyRTTI
+                                        (
+                                            AlignementToFather = [0.5, 0.5]
+                                            AlignementToAnchor = [0.5, 0.5]
+                                        )
+                                    ),
+                                    BUCKTextDescriptor
+                                    (
+                                        ElementName = 'UnitCount'
+
+                                        ComponentFrame = TUIFramePropertyRTTI
+                                        (
+                                            MagnifiableWidthHeight = [0.0, 0.0]
+                                            MagnifiableOffset = [1.0, 0.0]
+                                            AlignementToFather = [0.0, 0.5]
+                                            AlignementToAnchor = [0.0, 0.5]
+                                        )
+
+                                        ParagraphStyle = TParagraphStyleRTTI
+                                        (
+                                            Alignment = ~/UIText_Center
+                                            VerticalAlignment = ~/UIText_VerticalCenter
+                                        )
+
+                                        HasBackground = true
+
+                                        TextPadding = TRTTILength4(Magnifiable = [2.0, 2.0, 2.0, 2.0])
+                                        HorizontalFitStyle = ~/FitStyle/FitToContent
+                                        VerticalFitStyle = ~/FitStyle/FitToContent
+
+                                        TextStyle = 'Default'
+                                        TypefaceToken = 'Main'
+                                        TextSize = 'SD2_Petit'
+                                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                        TextColor = 'SD2_Noir'
+                                    ),
+                                    BUCKRackDescriptor
+                                    (
+                                        ElementName = 'ExperienceRack'
+
+                                        ComponentFrame = TUIFramePropertyRTTI
+                                        (
+                                            AlignementToAnchor = [0.5, 0.0]
+                                            AlignementToFather = [0.5, 0.0]
+                                        )
+
+                                        Axis = ~/ListAxis/Horizontal
+
+                                        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                                        BladeDescriptor = BUCKTextureDescriptor
+                                        (
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                MagnifiableWidthHeight = [12.0, 12.0]
+                                            )
+
+                                            TextureFrame = TUIFramePropertyRTTI
+                                            (
+                                                RelativeWidthHeight = [1.0, 1.0]
+                                            )
+
+                                            TextureToken = "CommonTexture_Etoile_Grande"
+                                        )
+                                    )
+                                ]
+                            )
+                            // A decommenter si on réutilise la selection d'unité, en attendant ça complexifie mon debug
+                            {, BUCKContainerDescriptor
+                            (
+                                ElementName = 'UnitButtonSelectedContour'
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                )
+
+                                HasBorder = true
+                                BorderThicknessToken = '2'
+                                BorderLineColorToken = 'PawnSelection/UnitUniqueSelection'
+                            ),
+                        ]
+                    )}
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKButtonDescriptor
+                    (
+                        ElementName = 'UnitSecondaryInfo'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [UnitButtonWidth div 2, UnitButtonHeight div 2]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        HidePointerEvents = true
+
+                        HasBorder = true
+                        BorderThicknessToken = '1'
+                        BorderLineColorToken = 'PawnSelection/Unit'
+
+                        HasBackground = true
+                        BackgroundBlockColorToken = "grisUnite"
+
+                        IsTogglable = <UnitUniqueSelectionMode> ? false : true
+                        RadioButtonManager = <RadioButtonManager>
+
+                        Components =
+                        [
+                            BUCKTextureDescriptor
+                            (
+                                ElementName = 'UnitSecondaryInfoTexture'
+
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                )
+
+                                ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+
+                                TextureFrame = TUIFramePropertyRTTI
+                                (
+                                    AlignementToFather = [0.5, 0.0]
+                                    AlignementToAnchor = [0.5, 0.0]
+                                )
+                            ),
+                        ]
+                    )
+                )
+            ]
+        )
+    ]
+)
+
+template UISpecificSelectionPanelPawnUnitViewDescriptor
+[
+    UnitUniqueSelectionMode : bool = false,
+    RadioButtonManager : TBUCKRadioButtonManager = nil,
+    IsClickable : bool = true,
+]is TUISpecificSelectionPanelPawnUnitViewDescriptor
+(
+    MainComponentDescriptor = BUCKSpecificSelectionPanelPawnUnitMainComponentDescriptor
+    (
+        UnitUniqueSelectionMode = <UnitUniqueSelectionMode>
+        RadioButtonManager = <RadioButtonManager>
+        IsClickable = <IsClickable>
+    )
+
+    UniqueSelectionMode = <UnitUniqueSelectionMode>
+
+    AllowedPowerTypes =
+    [
+        EUnitPowerType/Assault,
+        EUnitPowerType/Armored,
+        EUnitPowerType/Artillery,
+    ]
+    StrategicTypeToUse = MAP
+    [
+        (
+            ETypeStrategicCount/Soldier,
+            "Strategic/PawnPower/AssaultTop"
+        ),
+        (
+            ETypeStrategicCount/Tank,
+            "Strategic/PawnPower/ArmoredTop"
+        ),
+        (
+            ETypeStrategicCount/Artillery,
+            "Strategic/PawnPower/ArtilleryTop"
+        ),
+        (
+            ETypeStrategicCount/Plane,
+            "Strategic/PawnPower/AirplaneTop"
+        ),
+    ]
+)

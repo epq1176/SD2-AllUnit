@@ -1,0 +1,22 @@
+export ModelFile_Canon_76mm_US is 'GameData:Assets\3D\Units\USA\Canon\M5_76mm\M5_76mm.Ase2NdfBin'
+
+Modele_Canon_76mm_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Canon_76mm_US
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Canon_76mm_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Canon\M5_76mm_MID\M5_76mm_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Canon_76mm_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Canon\LODS\M5_76mm_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

@@ -1,0 +1,122 @@
+// Missions
+//-------------------------------------------------------------------------
+export SandBag_Scn_Support_AntiTank is TMacroActionDescriptor_Support_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    TagDeContre = "Anti_Char_Mobile"
+
+    PoolModelList = [
+        ~/SandBag_Scn_Pool_Support_AntiTank,
+    ]
+)
+//-------------------------------------------------------------------------
+// AT POUR LES MISSIONS DE DEFENSE
+//-------------------------------------------------------------------------
+export SandBag_Scn_Support_AntiInfanterie is TMacroActionDescriptor_Support_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    TagDeContre = "Anti_Infanterie_Mobile" // Pas de tags corrects pour permettre d'autoriser ça, tant pis c'est pas hyper important
+
+    PoolModelList = [
+        ~/SandBag_Scn_Pool_Support_AntiInfanterie,
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Scn_Support_Transports is TMacroActionDescriptor_Support_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    TagDeContre = "AllUnits"
+
+    PoolModelList = [
+        ~/SandBag_Scn_Pool_Support_Transports,
+    ]
+)
+//-------------------------------------------------------------------------
+
+// Pool Models
+//-------------------------------------------------------------------------
+export SandBag_Scn_Pool_Support_AntiTank is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{892f208f-7563-11e9-a05e-704d7b2c87d4}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "ChasseurDeChar_Lourd",
+                "Char_Lourd",
+                "Anti_Char_Mobile" // Il faut un truc par pitié
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+// Pool Models
+//-------------------------------------------------------------------------
+export SandBag_Scn_Pool_Support_AntiInfanterie is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{892f2090-7563-11e9-89eb-704d7b2c87d4}
+            Required = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Anti_Infanterie_Mobile",
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_Scn_Pool_Support_Transports is TPoolModel
+(
+    Budget = 1
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{892f2091-7563-11e9-aa25-704d7b2c87d4}
+            Required = true
+            Nb = 1
+            TagsPriority = [
+                "Vehicule_Transport_Arme"
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+
+//Settings
+//-------------------------------------------------------------------------
+// pour l'AT les missions support changent au cours de la partie mais pas le setting
+export SandBag_Scn_Renfort_AT is TSupportSetting
+(
+    TagDeContre = "Anti_Char_Mobile"
+    TagAContrer = "Char"
+    VerifierEnnemiesDansLesZonesVoisines = true
+    Ratio = 0.01 // Un seul AT du coup
+    NecessaireAuLancement = false // La mission ne lancera sont attaque que si le ratio est respecté au point de regroupement
+)
+//-------------------------------------------------------------------------
+export SandBag_Scn_Renfort_AntiInfanterie is TSupportSetting
+(
+    TagDeContre = "Anti_Infanterie_Mobile"
+    TagAContrer = "Infanterie"
+    Ratio = 0.2
+    NecessaireAuLancement = false // La mission ne lancera sont attaque que si le ratio est respecté au point de regroupement
+)
+//-------------------------------------------------------------------------
+export SandBag_Scn_Renfort_TransportsAbandonnes is TSupportSetting
+(
+    TagDeContre = "AllUnits"
+    TagAContrer = "AllUnits"
+    Ratio = 0.8 // on veut utiliser le plus de transports possible
+    NecessaireAuLancement = false // La mission ne lancera sont attaque que si le ratio est respecté au point de regroupement
+)
+

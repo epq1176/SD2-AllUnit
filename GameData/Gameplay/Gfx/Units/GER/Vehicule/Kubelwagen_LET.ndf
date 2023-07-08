@@ -1,0 +1,22 @@
+export ModelFile_Kubelwagen_LET is 'GameData:Assets\3D\Units\GER\Vehicule\Kubelwagen\Kubelwagen.Ase2NdfBin'
+
+Modele_Kubelwagen_LET is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Kubelwagen_LET
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Kubelwagen_LET_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\Kubelwagen_MID\Kubelwagen_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Kubelwagen_LET_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\LODS\Kubelwagen_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

@@ -1,0 +1,143 @@
+//-------------------------------------------------------------------------
+//----------------------------- AIRSTRIKE ---------------------------------
+//-------------------------------------------------------------------------
+
+// Maintains
+//-------------------------------------------------------------------------
+export Cheated_Scn_Maintain_AirStrike is TMacroActionDescriptor_AirStrike_Specific
+(
+    GenerationType = TGenerationType_Maintain
+)
+//-------------------------------------------------------------------------
+// Template
+//-------------------------------------------------------------------------
+private template Cheated_Scn_Template_Airstrike
+[
+    MinimumResourceForLaunch:int = 0,
+    AnnulerSupportSiAttaqueEchoue:bool = false,
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/All,
+    PoolModel = ~/Cheated_Scn_Pool_Airstrike_Defense
+]
+is TMacroActionDescriptor_AirStrike_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    MinimumResourceForLaunch = <MinimumResourceForLaunch>
+    NumberOfMacro = 1
+
+    AnnulerSupportSiAttaqueEchoue = <AnnulerSupportSiAttaqueEchoue>
+    TypesDeRequetesAcceptees = <TypesDeRequetesAcceptees>
+
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [
+        <PoolModel>,
+    ]
+)
+//-------------------------------------------------------------------------
+// Missions
+//-------------------------------------------------------------------------
+export Cheated_Scn_Airstrike_Defense is Cheated_Scn_Template_Airstrike
+(
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Defense // pas d'attaque du tout
+    PoolModel = ~/Cheated_Scn_Pool_Airstrike_Defense
+)
+//-------------------------------------------------------------------------
+export Cheated_Scn_Airstrike_Offense is Cheated_Scn_Template_Airstrike
+(
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Attack | ~/EAirStrikeRequestType/OpportunisticTargetInGroup
+    PoolModel = ~/Cheated_Scn_Pool_Airstrike_Offense
+)
+//-------------------------------------------------------------------------
+export Cheated_Scn_Airstrike_Assault is Cheated_Scn_Template_Airstrike
+(
+    AnnulerSupportSiAttaqueEchoue = true
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/OpportunisticSingleTarget
+    PoolModel = ~/Cheated_Scn_Pool_Airstrike_Assault
+)
+//-------------------------------------------------------------------------
+// Autogens
+//-------------------------------------------------------------------------
+export Cheated_Scn_Airstrike_Defense_Autogen is Cheated_Scn_Template_Airstrike
+(
+    MinimumResourceForLaunch = ~/Cheated_Scn_MinimumResourceForLaunch_Stage_1
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Defense // pas d'attaque du tout
+    PoolModel = ~/Cheated_Scn_Pool_Airstrike_Defense
+)
+//-------------------------------------------------------------------------
+export Cheated_Scn_Airstrike_Offense_Autogen is Cheated_Scn_Template_Airstrike
+(
+    MinimumResourceForLaunch = ~/Cheated_Scn_MinimumResourceForLaunch_Stage_1
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Attack | ~/EAirStrikeRequestType/OpportunisticTargetInGroup
+    PoolModel = ~/Cheated_Scn_Pool_Airstrike_Offense
+)
+//-------------------------------------------------------------------------
+export Cheated_Scn_Airstrike_Assault_Autogen is Cheated_Scn_Template_Airstrike
+(
+    MinimumResourceForLaunch = ~/Cheated_Scn_MinimumResourceForLaunch_Stage_1
+    AnnulerSupportSiAttaqueEchoue = true
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/OpportunisticSingleTarget
+    PoolModel = ~/Cheated_Scn_Pool_Airstrike_Assault
+)
+
+// Pool Models
+//-------------------------------------------------------------------------
+export Cheated_Scn_Pool_Airstrike_Defense is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{bf75df40-765d-11e9-b4cd-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        TagsPriority = [
+            "Avion_Chasseur",
+            "Avion_Chasseur_Bombardier",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Cheated_Scn_Pool_Airstrike_Offense is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{bf76064f-765d-11e9-a0a0-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        TagsPriority = [
+            "Avion_Bombardier",
+            "Avion_Chasseur_Bombardier",
+            "Avion_Assaut",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Cheated_Scn_Pool_Airstrike_Assault is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{bf760650-765d-11e9-a9aa-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        TagsPriority = [
+            "Avion_AT",
+            "Avion_Assaut",
+        ]
+    ),
+    ]
+)
+// Requetes
+//-------------------------------------------------------------------------
+export Cheated_Scn_BasicAirstrikeSupport is
+[
+    (["Avion_Chasseur_Bombardier", "Avion_Bombardier", "Avion_Assaut", "Avion_AT"], 2),
+]
+//-------------------------------------------------------------------------
+

@@ -1,0 +1,22 @@
+export ModelFile_Panhard_178_MG_GER is 'GameData:Assets\3D\Units\GER\Vehicule\Panhard_178_MG\Panhard_178_MG.Ase2NdfBin'
+
+Modele_Panhard_178_MG_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Panhard_178_MG_GER
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Panhard_178_MG_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\Panhard_178_MG_MID\Panhard_178_MG_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Panhard_178_MG_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\LODS\Panhard_178_MG_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

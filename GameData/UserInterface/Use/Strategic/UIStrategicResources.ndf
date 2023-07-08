@@ -1,0 +1,1072 @@
+//RefMagnification is 4. div 3.
+
+private MouseCurseur_AssaultPossible is TMouseCursorAnimation
+(
+    HotSpotX           = 16
+    HotSpotY           = 16
+    AnimationCycleTime = 1
+    TextureList = TResourceDescriptorTextureAnimation
+    (
+        UsefulnessMask = CivMask/Common + TypeMask/PCInterface
+        FileNameList =
+        [
+            "GameData:Assets/2D/Cursors/OrderCursorGreen.png",
+        ]
+    )
+)
+
+private MouseCurseur_AssaultImpossible is TMouseCursorAnimation
+(
+    HotSpotX           = 16
+    HotSpotY           = 16
+    AnimationCycleTime = 1
+    TextureList = TResourceDescriptorTextureAnimation
+    (
+        UsefulnessMask = CivMask/Common + TypeMask/PCInterface
+        FileNameList =
+        [
+            "GameData:Assets/2D/Cursors/OrderCursorRed.png",
+        ]
+    )
+)
+
+private MouseCurseur_MultiselectionStrategic is TMouseCursorAnimation
+(
+    HotSpotX           = 0
+    HotSpotY           = 0
+    AnimationCycleTime = 1
+    TextureList = TResourceDescriptorTextureAnimation
+    (
+        UsefulnessMask = CivMask/Common + TypeMask/PCInterface
+        FileNameList =
+        [
+            "GameData:Assets/2D/Cursors/CursorDefault.png",
+        ]
+    )
+)
+
+private MouseWidget_AssaultPossible is Template_HardwareMouseWidgetResource
+(
+    HardwareMouseCursorAnimation    = ~/MouseCurseur_AssaultPossible
+)
+
+private MouseWidget_AssaultImpossible is Template_HardwareMouseWidgetResource
+(
+    HardwareMouseCursorAnimation    = ~/MouseCurseur_AssaultImpossible
+)
+
+private MouseWidget_MultiSelectionStrategic is Template_HardwareMouseWidgetResource
+(
+    HardwareMouseCursorAnimation    = ~/MouseCurseur_MultiselectionStrategic
+)
+
+MouseWidget_StrategicSelectNeutralLand is Template_HardwareMouseWidgetResource_WithTerrainHint
+(
+    StillTimeBeforeHintAppearance = 2
+
+    TerrainTypeToHintContent = MAP
+    [
+        (
+            ~/ETerrainType/Urbain, // ville
+            THintContentHolder
+            (
+                TitleToken = "TERR_06T"
+                BodyToken = "TERR_06B"
+                ExtendedToken = "TERR_06E"
+            )
+        ),
+        (
+            ~/ETerrainType/ChampCereales, // terrain dégagé
+            THintContentHolder
+            (
+                TitleToken = "terr_rout"
+                //BodyToken = "terr_roub"
+                //ExtendedToken = "terr_roue"
+            )
+        ),
+        (
+            ~/ETerrainType/ChampDeMineAP, // forêt
+            THintContentHolder
+            (
+                TitleToken = "terr_fort"
+                //BodyToken = "terr_forb"
+                //ExtendedToken = "terr_fore" //TERR_04E"
+
+            )
+        ),
+        (
+            ~/ETerrainType/Portail, // autoroute
+            THintContentHolder
+            (
+                TitleToken = "terr_autt"
+                //BodyToken = "terr_autb"
+                //ExtendedToken = "terr_aute" //TERR_02E"
+            )
+        ),
+
+        (
+            ~/ETerrainType/BloqueConstruction, // route
+            THintContentHolder
+            (
+                TitleToken = "terr_rout"
+                //BodyToken = "terr_roub"
+                //ExtendedToken = "terr_roue"
+            )
+        ),
+        (
+            ~/ETerrainType/BocageLourd, // impassable
+            THintContentHolder
+            (
+                TitleToken = "TERR_05T"
+                //BodyToken = "TERR_05B"
+                //ExtendedToken = "TERR_05E"
+            )
+        ),
+        (
+            ~/ETerrainType/Eau, // impassable
+            THintContentHolder
+            (
+                TitleToken = "TERR_05T"
+                //BodyToken = "TERR_05B"
+                //ExtendedToken = "TERR_05E"
+            )
+        ),
+
+    ]
+)
+
+private PANumberMouseCursor is BUCKTextDescriptor
+(
+    ElementName = 'ActionPoints'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+    )
+
+    HasBackground = false
+
+    HasBorder = false
+    BorderLineColorToken = "PawnLabel/ActionPoints"
+    BorderThicknessToken = "PawnLabel/ActionPoints"
+
+    TextStyle = "Default"
+    TextPadding = TRTTILength4(Pixel = [1.0, 1.0, 1.0, 1.0] Magnifiable = [2.0, 2.0, 2.0, 2.0])
+
+    HorizontalFitStyle = ~/FitStyle/FitToContent
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    TypefaceToken = "Main"
+    BigLineAction = ~/BigLineAction/CutByDots
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+    TextColor = "PawnLabel/ActionPoints"
+    TextSize = "PawnLabel/ActionPoints"
+)
+
+
+PAComponentMouseCursor is BUCKSimpleGaugeDescriptor
+(
+    ElementName = 'ActionPointsGauge'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToFather = [0.5, 0]
+        AlignementToAnchor = [0.5, 0]
+        MagnifiableWidthHeight = [20.0, 20.0] // Width de l'etiquette
+    )
+
+    HasBackground = true
+    HasBorder = true
+    BorderLineColorToken = "PawnLabel/ActionPoints"
+    BorderThicknessToken = "PawnLabel/ActionPoints"
+    BackgroundBlockColorToken = "GrisLabelStrat"
+
+    DurationForGaugeFullChange = 0.20
+    GaugeMax = 8
+
+    GaugeComponentName = 'ActionPointGaugeComponent'
+
+    Components =
+    [
+        BUCKSimpleGaugeValueDescriptor
+        (
+            ElementName = 'ActionPointGaugeComponent'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight    = [0.0, 1.0]
+                AlignementToFather     = [0.0, 0.5]
+                AlignementToAnchor     = [0.0, 0.5]
+            )
+
+            ValueContainerName = 'ActionPointGaugeContainer'
+
+            ValueContainerComponent = BUCKContainerDescriptor
+            (
+                ElementName = 'ActionPointGaugeContainer'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                HasBackground = true
+                BackgroundBlockColorToken = "LightGray80"
+
+                HasBorder = false
+                BorderLineColorToken = "PawnLabel/ActionPoints"
+                BorderThicknessToken = "PawnLabel/ActionPoints"
+            )
+        ),
+        PANumberMouseCursor,
+    ]
+)
+
+MouseWidget_StrategicOrderNeutralLand is Template_HardwareMouseWidgetResource_WithBUCK
+(
+    BUCKDescriptor = BUCKContainerDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [100, 75]
+        )
+
+        Components =
+        [
+            BUCKListDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                    AlignementToAnchor = [0.5, 1.0]
+                    AlignementToFather = [0.0, 1.0]
+                )
+
+                Axis = ~/ListAxis/Vertical
+
+                Elements =
+                [
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKTextDescriptor
+                        (
+                            ElementName = 'Kilometers'
+
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [1.0, 0.0]
+                            )
+
+                            ParagraphStyle = TParagraphStyleRTTI
+                            (
+                                Alignment = UIText_Center
+                                VerticalAlignment = UIText_VerticalCenter
+                            )
+
+                            TextStyle = "Default"
+
+                            VerticalFitStyle = ~/FitStyle/FitToContent
+
+                            TypefaceToken = "Main"
+                            BigLineAction = ~/BigLineAction/CutByDots
+
+                            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                            TextColor = "SD2_Noir"
+                            TextSize = "18"
+
+                            {Components =
+                                                        [
+
+                                                        ]}
+                        )
+                    ),
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKTextureDescriptor
+                        (
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                MagnifiableWidthHeight = [0.0, 10.0]
+                                RelativeWidthHeight = [1.0, 0.0]
+                            )
+
+                            TextureToken = "UseStrategic_MapScaleIcon"
+                            TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+                        )
+                    ),
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = PAComponentMouseCursor
+                    )
+
+                ]
+            ),
+        ]
+    )
+
+    PointerFollowingProperties = TPointerFollowingPropertiesRTTI
+    (
+        MagnifiableOffset = [0.0, 0.0]
+        HorizontalPlacement = HorizontalPlacement/Right
+        VerticalPlacement = VerticalPlacement/Down
+        OutOfBorderHorizontalAction = OutOfBorderAction/StickToBorder
+        OutOfBorderVerticalAction = OutOfBorderAction/StickToBorder
+    )
+)
+
+//--------------------------------------------------------
+// Strategic Orders
+//--------------------------------------------------------
+private MouseCurseur_TransferOrder is TMouseCursorAnimation
+(
+    HotSpotX           = 0
+    HotSpotY           = 0
+    AnimationCycleTime = 1
+    TextureList = TResourceDescriptorTextureAnimation
+    (
+        UsefulnessMask = CivMask/Common + TypeMask/PCInterface
+        FileNameList =
+        [
+            "GameData:Assets/2D/Cursors/curseur_transfer.png",
+        ]
+    )
+)
+
+private MouseCurseur_DefaultOrder is TMouseCursorAnimation
+(
+    HotSpotX           = 0
+    HotSpotY           = 0
+    AnimationCycleTime = 1
+    TextureList = TResourceDescriptorTextureAnimation
+    (
+        UsefulnessMask = CivMask/Common + TypeMask/PCInterface
+        FileNameList =
+        [
+            "GameData:Assets/2D/Cursors/curseur_steelman_deny.png",
+        ]
+    )
+)
+
+private MouseCurseur_RecoOrder is TMouseCursorAnimation
+(
+    HotSpotX           = 0
+    HotSpotY           = 0
+    AnimationCycleTime = 1
+    TextureList = TResourceDescriptorTextureAnimation
+    (
+        UsefulnessMask = CivMask/Common + TypeMask/PCInterface
+        FileNameList =
+        [
+            "GameData:Assets/2D/Cursors/curseur_steelman_reco.png",
+        ]
+    )
+)
+
+private MouseCurseur_InvalidOrder is TMouseCursorAnimation
+(
+    HotSpotX           = 0
+    HotSpotY           = 0
+    AnimationCycleTime = 1
+    TextureList = TResourceDescriptorTextureAnimation
+    (
+        UsefulnessMask = CivMask/Common + TypeMask/PCInterface
+        FileNameList =
+        [
+            "GameData:Assets/2D/Cursors/curseur_invalide.png",
+        ]
+    )
+)
+
+private TextComponentStrategicOrder is TextComponentWithGradientBackground
+(
+    PaddingX = 20
+    TextSize = "MouseWidget/TextModule"
+)
+
+private MouseWidget_TransferOrder is Template_SoftwareMouseWidgetResource
+(
+    TextDescriptor                  = ~/TextComponentStrategicOrder
+    HardwareMouseCursorAnimation    = ~/MouseCurseur_TransferOrder
+)
+private MouseWidget_DefaultOrder is Template_SoftwareMouseWidgetResource
+(
+    TextDescriptor                  = ~/TextComponentStrategicOrder
+    HardwareMouseCursorAnimation    = ~/MouseCurseur_DefaultOrder
+)
+private MouseWidget_RecoOrder is Template_SoftwareMouseWidgetResource
+(
+    TextDescriptor                  = ~/TextComponentStrategicOrder
+    HardwareMouseCursorAnimation    = ~/MouseCurseur_RecoOrder
+)
+private MouseWidget_InvalidOrder is Template_SoftwareMouseWidgetResource
+(
+    TextDescriptor                  = ~/TextComponentStrategicOrder
+    HardwareMouseCursorAnimation    = ~/MouseCurseur_InvalidOrder
+)
+
+private StrategicMouseWidgetSelector_Default is TUIStrategicMouseWidgetSelectorDefault
+(
+    MouseWidgetList = MAP
+    [
+        (Cursor_Default          , ~/DefaultMouseWidget),
+        (Cursor_None             , ~/MouseWidget_Blank),
+        (Cursor_OrderAlly        , ~/MouseWidget_StrategicOrderNeutralLand),
+        (Cursor_OrderPlayer      , ~/MouseWidget_MultiSelectionStrategic),
+        (Cursor_OrderEnemy       , ~/MouseWidget_AssaultPossible),
+        (Cursor_OrderInvalid     , ~/MouseWidget_AssaultImpossible),
+        (Cursor_OrderNeutralLand , ~/MouseWidget_StrategicOrderNeutralLand),
+        (Cursor_SelectNeutralLand, ~/MouseWidget_StrategicSelectNeutralLand),
+    ]
+
+    TypeFace = "Main"
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 1
+    )
+
+    WritingDuration = 2.0
+
+    TextStyleList = MAP
+    [
+        (TextStyle_Bonus        , "Strategic/WidgetSelector/Bonus"),
+        (TextStyle_WithinRange  , "Strategic/WidgetSelector/WithinRange"),
+        (TextStyle_OutOfRange   , "Strategic/WidgetSelector/OutOfRange"),
+        (TextStyle_Unseen       , "Strategic/WidgetSelector/Unseen"),
+        (TextStyle_Blocked      , "Strategic/WidgetSelector/Blocked"),
+        (TextStyle_Invalid      , "Strategic/WidgetSelector/Invalid"),
+    ]
+
+    TooCloseToken   = "MP_TOOCL"
+    OutOfRangeToken = "MP_OORANGE"
+    KilometersToken = "RANGE_KM"
+)
+
+export StrategicMouseWidgetSelector_DenyOrder is TUIStrategicMouseWidgetSelectorOrder
+(
+    MouseWidgetList = MAP
+    [
+        (Cursor_None             , ~/MouseWidget_Blank),
+        (Cursor_Default          , ~/MouseWidget_DefaultOrder),
+        (Cursor_OrderInvalid     , ~/MouseWidget_InvalidOrder),
+    ]
+
+    TypeFace = "Main"
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 1
+    )
+
+    WritingDuration = 2.0
+
+    TextStyleList = MAP
+    [
+        (TextStyle_WithinRange  , "Strategic/WidgetSelector/WithinRange"),
+        (TextStyle_OutOfRange   , "Strategic/WidgetSelector/OutOfRange"),
+        (TextStyle_Invalid      , "Strategic/WidgetSelector/Invalid"),
+    ]
+
+    ValidOrderToken = "CUR_DENVAL"
+    InvalidOrderToken = "CUR_DENINV"
+
+    SignpostTitleToken = "SIG_DENTIT"
+    SignpostBodyToken = "SIG_DENBOD"
+)
+
+export StrategicMouseWidgetSelector_RecoOrder is TUIStrategicMouseWidgetSelectorOrder
+(
+    MouseWidgetList = MAP
+    [
+        (Cursor_None             , ~/MouseWidget_Blank),
+        (Cursor_Default          , ~/MouseWidget_RecoOrder),
+        (Cursor_OrderInvalid     , ~/MouseWidget_InvalidOrder),
+    ]
+
+    TypeFace = "Main"
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 1
+    )
+
+    WritingDuration = 2.0
+
+    TextStyleList = MAP
+    [
+        (TextStyle_WithinRange  , "Strategic/WidgetSelector/WithinRange"),
+        (TextStyle_OutOfRange   , "Strategic/WidgetSelector/OutOfRange"),
+        (TextStyle_Invalid      , "Strategic/WidgetSelector/Invalid"),
+    ]
+
+    ValidOrderToken = "CUR_RECVAL"
+    InvalidOrderToken = "CUR_RECINV"
+
+    SignpostTitleToken = "SIG_RECTIT"
+    SignpostBodyToken = "SIG_RECBOD"
+)
+
+export StrategicMouseWidgetSelector_BoxingOrder is TUIStrategicMouseWidgetSelectorOrder
+(
+    MouseWidgetList = MAP
+    [
+        (Cursor_None             , ~/MouseWidget_Blank),
+        (Cursor_Default          , ~/MouseWidget_DefaultOrder),
+        (Cursor_OrderInvalid     , ~/MouseWidget_InvalidOrder),
+    ]
+
+    TypeFace = "Main"
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 1
+    )
+
+    WritingDuration = 2.0
+
+    TextStyleList = MAP
+    [
+        (TextStyle_WithinRange  , "Strategic/WidgetSelector/WithinRange"),
+        (TextStyle_OutOfRange   , "Strategic/WidgetSelector/OutOfRange"),
+        (TextStyle_Invalid      , "Strategic/WidgetSelector/Invalid"),
+    ]
+
+    ValidOrderToken = "CUR_BOXVAL"
+    InvalidOrderToken = "CUR_BOXINV"
+
+    SignpostTitleToken = "SIG_BOXTIT"
+    SignpostBodyToken = "SIG_BOXBOD"
+)
+
+export StrategicMouseWidgetSelector_BombOrder is TUIStrategicMouseWidgetSelectorOrder
+(
+    MouseWidgetList = MAP
+    [
+        (Cursor_None             , ~/MouseWidget_Blank),
+        (Cursor_Default          , ~/MouseWidget_DefaultOrder),
+        (Cursor_OrderInvalid     , ~/MouseWidget_InvalidOrder),
+    ]
+
+    TypeFace = "Main"
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 1
+    )
+
+    WritingDuration = 2.0
+
+    TextStyleList = MAP
+    [
+        (TextStyle_WithinRange  , "Strategic/WidgetSelector/WithinRange"),
+        (TextStyle_OutOfRange   , "Strategic/WidgetSelector/OutOfRange"),
+        (TextStyle_Invalid      , "Strategic/WidgetSelector/Invalid"),
+    ]
+
+    ValidOrderToken = "CUR_BOMVAL"
+    InvalidOrderToken = "CUR_BOMINV"
+
+    SignpostTitleToken = "SIG_BOMTIT"
+    SignpostBodyToken = "SIG_BOMBOD"
+)
+
+export StrategicMouseWidgetSelector_TransferOrder is TUIStrategicMouseWidgetSelectorOrder
+(
+    MouseWidgetList = MAP
+    [
+        (Cursor_None             , ~/MouseWidget_Blank),
+        (Cursor_Default          , ~/MouseWidget_TransferOrder),
+        (Cursor_OrderInvalid     , ~/MouseWidget_InvalidOrder),
+    ]
+
+    TypeFace = "Main"
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 1
+    )
+
+    WritingDuration = 2.0
+
+    TextStyleList = MAP
+    [
+        (TextStyle_WithinRange  , "Strategic/WidgetSelector/WithinRange"),
+        (TextStyle_OutOfRange   , "Strategic/WidgetSelector/OutOfRange"),
+        (TextStyle_Invalid      , "Strategic/WidgetSelector/Invalid"),
+    ]
+
+    ValidOrderToken = "CUR_TRAVAL"
+    InvalidOrderToken = "CUR_TRAINV"
+
+    SignpostTitleToken = "SIG_TRATIT"
+    SignpostBodyToken = "SIG_TRABOD"
+)
+
+private StrategicMousePolicyManagerResources is TUIStrategicMousePolicyManagerResources
+(
+    KeyBoardPresetUpdater   = $/KeyboardPreset/KeyboardPresetUpdater
+    Camera                  = $/M3D/Camera/CameraPrincipale
+    World3D                 = $/M3D/Scene/DefaultWorld
+    Scene3D                 = $/M3D/Scene/Scene_2D_Interface
+
+    DefaultMouseWidgetSelector = StrategicMouseWidgetSelector_Default
+)
+
+export StrategicResource is TUISpecificStrategicResources
+(
+    UILayer                     = $/UserInterface/UILayer_2DInterface_InGame
+    UILayerLDHint               = $/UserInterface/UILayer_2DInterfaceLDHint
+    CommonResources             = ~/UICommonResource
+
+    MainStyleGuides             = [
+        ~/DefaultStyleGuide,
+    ]
+
+    ViewDescriptors = MAP
+    [
+        ("UISpecificLossesStateViewDescriptor", ~/UISpecificLossesStateViewDescriptor),
+        ("UISpecificUnitInfoPanelViewDescriptor", UISpecificUnitInfoPanelViewDescriptor(MainComponentContainerUniqueName = "BUCKSpecificUnitInfoPanelMainComponentContainer" UseForStrategic = True)),
+        ("UISpecificStrategicDateViewDescriptor", ~/UISpecificStrategicDateViewDescriptor),
+        ("UISpecificSelectionPanelPawnViewDescriptor", UISpecificSelectionPanelPawnViewDescriptorTemplate(MainComponentContainerUniqueName = "BUCKSpecificSelectionPanelPawnMainComponentContainer" IsForSelection = true)),
+        ("UISpecificStrategicSpawnPointViewDescriptor", ~/UISpecificStrategicSpawnPointViewDescriptor),
+        ("UIUnitLabelAggregateContainerDescriptor", ~/UISpecificStrategicUnitLabelAggregateContainerDescriptor),
+        ("UICommonFlarePanelViewDescriptor", ~/UICommonFlarePanelViewDescriptor),
+        ("MenuButtonDescriptor", ~/UISpecificMenuButtonViewDescriptor),
+        ("ScorePanelDescriptor", UISpecificStrategicScorePanelViewDescriptor(isEndgame = false)),
+        ("UISpecificStrategicCubeActionViewDescriptor", ~/UISpecificStrategicCubeActionViewDescriptor),
+        ("UISpecificStrategicBattleOrderPanelViewDescriptor", ~/UISpecificStrategicBattleOrderPanelViewDescriptor),
+        ("StrategicProductionMenu", ~/UIStrategicProductionMenuViewDescriptor),
+        ("StrategicPawnLabel", ~/UISpecificStrategicPawnLabelViewDescriptor),
+        ("StrategicPawnAggregationLabel", ~/UISpecificStrategicPawnLabelAggregationViewDescriptor),
+        ("StrategicTacticalPreparation", ~/UISpecificStrategicTacticalPreparationViewDescriptor),
+        ("StrategicConnectedPlayersDescriptor", ~/UISpecificStrategicConnectedPlayersViewDescriptor),
+        ("UICommonHUDPingDisplayViewDescriptor", ~/UICommonHUDPingDisplayViewDescriptor),
+    ]
+
+    MainContainerResource       = ~/StrategicMainContainerResource
+
+    CommonHUDResources          = ~/InGameHUDResource
+    ChatResource                = ~/GameplayChatResources
+    LabelResource               = ~/SpecificInGameLabelResource
+    LDHintResource              = ~/SpecificInGameLDHintResource
+    SignpostDescriptor          = ~/UISpecificSignpostViewDescriptor
+    GabaritResources            = ~/CommonGabaritResources
+    ZoCResources                = ~/CommonZoCResources
+    WarningPanelResources       = ~/WarningPanelResources
+    LabelsOnMapResources        = ~/labelsOnMapResources
+    ObjectivesResource          = ~/StrategicObjectivesResources
+    UnitLabelResource           = ~/SpecificStrategicUnitLabelResources
+    FlareLabelResources         = ~/CommonFlareLabelResources
+
+    SelectionHandlerInGameResources = ~/SelectionResources
+    GroupSelectionReminderResources = ~/GroupSelectionReminder
+    MousePolicyManagerResources = ~/StrategicMousePolicyManagerResources
+    OptionsManager              = $/GameOptionsInterface/GameOptionsInterfaceWrapper
+
+    SubtitleLayer               = $/UserInterface/UILayer_HintsAndSubtitles
+    ShortcutUserInputLayer      = $/M3D/Input/UserInputLayerHandler/InputLayer_InGameShortcuts
+    DisplayAllOrdersMapping     = $/KeyboardOption/Mapping_DisplayAllOrders
+
+    OrderDisplayResources       = ~/UIOrderDisplayResources
+    StrategicOrderDisplayResources = ~/StrategicOrderDisplayResources
+
+    EndTurnResources            = ~/StrategicEndTurnResources
+    HeaderResources             = ~/SpecificStrategicHUDHeaderViewResources
+    AutoResolveResources        = ~/UISpecificStrategicAutoResolveViewDescriptor
+    AutoResolveSummaryResources = ~/UISpecificStrategicAutoResolveSummaryViewDescriptor
+    StartBattleResources        = ~/UISpecificStrategicStartBattleViewDescriptor
+    BattlePlanningResources     = ~/StrategicBattlePlanningResources
+    ConnectedPlayersResources   = ~/UISpecificStrategicConnectedPlayersViewDescriptor
+
+    PlayerNameDisplayDescriptor = ~/UISpecificStrategicPlayerNameDisplayViewDescriptor
+    StrategicObjectiveBriefViewDescriptor = ~/UISpecificStrategicObjectiveBriefViewDescriptor
+    StrategicBattleResources    = ~/StrategicBattleResources
+
+    PlayerTurnCheckerResources = ~/StrategicPlayerTurnCheckerResources
+)
+
+//------------------------------------------------------------------------------------
+
+private StrategicBottomScreen is BUCKListDescriptor
+(
+    ElementName = 'StrategicBottomScreen'
+    UniqueName = 'StrategicBottomScreenUniqueName'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToAnchor = [0.0, 1.0]
+        AlignementToFather = [0.0, 1.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    FirstMargin = TRTTILength(Magnifiable =  10.0)
+    InterItemMargin = TRTTILength(Magnifiable =  10.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ElementName = 'PanneauInfoPion'
+                UniqueName = 'PanneauInfoPionUniqueName'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToAnchor = [0.0, 1.0]
+                    AlignementToFather = [0.0, 1.0]
+                )
+
+                Axis = ~/ListAxis/Vertical
+                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                LastMargin = TRTTILength(Magnifiable =  4.0)
+
+                Elements =
+                [
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKContainerDescriptor
+                        (
+                            UniqueName = "BUCKSpecificSelectionPanelPawnMainComponentContainer"
+                            ComponentFrame = TUIFramePropertyRTTI ()
+                            FitStyle = ~/ContainerFitStyle/FitToContent
+                        )
+                    ),
+
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKContainerDescriptor
+                        (
+                            UniqueName = "SpecificStrategicCubeActionViewMainContainer"
+                            ComponentFrame = TUIFramePropertyRTTI ()
+                            FitStyle = ~/ContainerFitStyle/FitToContent
+                        )
+                    ),
+                ]
+            )
+        ),
+        // affichage groupé du panel inof unité et préparation combat pour des raisons de placement
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ElementName = "listePourAfficherPanelInfoEtPreparationCombat"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToAnchor = [0.0, 1.0]
+                    AlignementToFather = [0.0, 1.0]
+                )
+
+                Axis = ~/ListAxis/Vertical
+                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                InterItemMargin = TRTTILength( Magnifiable = 5.0 )
+
+                Elements =
+                [
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKContainerDescriptor
+                        (
+                            UniqueName = "BUCKSpecificUnitInfoPanelMainComponentContainer"
+                            ComponentFrame = TUIFramePropertyRTTI()
+                            FitStyle = ~/ContainerFitStyle/FitToContent
+                        )
+                    ),
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKContainerDescriptor
+                        (
+                            UniqueName = "PourPlacerPanneauPreparationCombat"
+                            ComponentFrame = TUIFramePropertyRTTI()
+                            FitStyle = ~/ContainerFitStyle/FitToContent
+                        )
+                    ),
+                ]
+            )
+        ),
+    ]
+
+)
+
+//------------------------------------------------------------------------------------
+
+private StrategicMainContainerResource is TUICommonMainContainerResource
+(
+    RefMagnification = ~/RefMagnification
+    ContentRefSize = [ 2134 , 1440 ]
+    SafeBoxMin     = [  107 ,   80 ]
+    SafeBoxSize    = [ 1920 , 1200 ]
+
+    ForegroundComponents = BUCKContainerDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+
+        Components =
+        [
+            BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                Components =
+                [
+
+                    BUCKContainerDescriptor
+                    (
+                        UniqueName = "StrategicMenuPanelContainer"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+                    ),
+                    BUCKContainerDescriptor
+                    (
+                        UniqueName = "StrategicGlobalObjectivesContainer"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [400.0, 0.0]
+                            MagnifiableOffset = [0.0, 50.0]
+                            AlignementToFather = [1.0, 0.0]
+                            AlignementToAnchor = [1.0, 0.0]
+                        )
+
+                        FitStyle = ~/ContainerFitStyle/FitToContentVertically
+                    ),
+                    BUCKContainerDescriptor
+                    (
+                        UniqueName = "BUCKSpecificConnectedPlayersPanel"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToAnchor = [1.0, 0.0]
+                            AlignementToFather = [1.0, 0.0]
+                            MagnifiableOffset = [-5.0, 125.0]
+                        )
+
+                        FitStyle = ~/ContainerFitStyle/FitToContent
+                    ),
+                    BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                        )
+
+                        Axis = ~/ListAxis/Vertical
+                        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+                        InterItemMargin = TRTTILength( Magnifiable = 5.0 )
+                        LastMargin = TRTTILength( Magnifiable = 0.0 )
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = BUCKContainerDescriptor
+                                (
+                                    UniqueName = "SpecificStrategicHUDHeaderViewMainContainer"
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [1.0, 0.0]
+                                    )
+
+                                    FitStyle = ~/ContainerFitStyle/FitToContentVertically
+                                )
+                            ),
+
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = BUCKContainerDescriptor
+                                (
+                                    UniqueName = "StrategicProductionUnitContainerListScrollingContainer"
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [1.0, 0.0]
+                                    )
+                                    FitStyle = ~/ContainerFitStyle/FitToContentVertically
+                                )
+                            ),
+
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = BUCKContainerDescriptor
+                                (
+                                    UniqueName = "StrategicProductionBattalionRackScrollingContainer"
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        MagnifiableOffset = [10.0, 0.0]
+                                    )
+                                    FitStyle = ~/ContainerFitStyle/FitToContent
+                                )
+                            ),
+                            BUCKListElementDescriptor
+                            (
+                                ExtendWeight = 1.0
+                                ComponentDescriptor = BUCKContainerDescriptor(ComponentFrame = TUIFramePropertyRTTI())
+                            ),
+                        ]
+                    ),
+
+                    //-------------------------------------------------------------------------------------
+
+                    BUCKContainerDescriptor
+                    (
+                        UniqueName = "BUCKMainComponentScreenWideContainer"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        Components =
+                        [
+                            BUCKContainerDescriptor
+                            (
+                                UniqueName = "SpecificSignpostViewMainContainer"
+
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [337.0, 78.0]
+                                    AlignementToAnchor = [1.0, 1.0]
+                                    AlignementToFather = [1.0, 1.0]
+                                    MagnifiableOffset = [0.0, -150.0]
+                                )
+                            )
+                        ]
+                    ),
+
+                    BUCKContainerDescriptor
+                    (
+                        UniqueName = "BUCKSpecificAutoresolveUnitSelectorViewContainer"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToAnchor = [1.0, 0.0]
+                            AlignementToFather = [1.0, 0.0]
+                        )
+
+                        FitStyle = ~/ContainerFitStyle/FitToContent
+                    ),
+                    BUCKContainerDescriptor
+                    (
+                        UniqueName = "SpecificAutoresolveViewDescriptor"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                            AlignementToAnchor = [0.5, 0.5]
+                            AlignementToFather = [0.5, 0.5]
+                        )
+                    ),
+
+                    //-------------------------------------------------------------------------------------
+
+                    ~/StrategicBottomScreen,
+                ]
+            )
+        ]
+    )
+)
+
+private StrategicOrderDisplayResources is TStrategicOrderDisplayResources
+(
+    Camera                      = $/M3D/Camera/CameraPrincipale
+    OrderDisplayUserInputLayer  = $/M3D/Input/UserInputLayerHandler/InputLayer_OrderDisplay
+    OrderDisplayDrawer          = ~/StrategicOrderDisplayDrawer
+
+    PhaseLabelDescriptor = ~/StrategicLabelDescriptor
+)
+
+private StrategicLabelDescriptor is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContent
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = 'PhaseText'
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+            )
+
+            HasBorder = true
+            BorderLineColorToken = "PawnLabel/ActionPoints"
+            BorderThicknessToken = "PawnLabel/ActionPoints"
+
+            TextStyle = "Default"
+            TextPadding = TRTTILength4(Magnifiable = [5, 5, 5, 5])
+
+            HorizontalFitStyle = ~/FitStyle/FitToContent
+            VerticalFitStyle = ~/FitStyle/FitToContent
+
+            TypefaceToken = "Main"
+            BigLineAction = ~/BigLineAction/CutByDots
+
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+            TextColor = "PawnLabel/ActionPoints"
+            TextSize = "PawnLabel/ActionPoints"
+        )
+    ]
+)
+
+private StrategicOrderDisplayDrawer is TStrategicOrderDisplayDrawer
+(
+    DefaultOrderDisplayDrawInfo = TStrategicOrderDisplayDrawInfo
+    (
+        //TOrderDisplayDrawInfo
+        OrderToken                  = ""
+        LineThickness               = 2000
+        UseArrowFeedback = true
+        ArrowLength = 5000
+        ArrowWidth = 3000
+        ArrowLineWidthStart = 3000
+        ArrowLineWidthEnd = 1000
+        ArrowFadeLength = 3000
+        ArrowColorBorder            = [221, 96, 49,180] //[75, 112, 127, 255]
+        ArrowColorFill              = [200,195,177,180] //[150, 225, 255, 255]
+        HideNextOrders              = true
+        //--------------------------------
+
+        // TStrategicOrderDisplayDrawInfo
+        ColorCirclePhasePoints      = [150, 225, 255, 255]
+        CirclePhasePointsRadius     = 400.0
+        DisplayPhasePoints          = true
+        //--------------------------------
+    )
+)
+
+private UISpecificStrategicCubeActionViewDescriptor is TUISpecificCubeActionViewDescriptor
+(
+    MainComponentDescriptor = ~/StrategicCubeAction
+    MainComponentContainerUniqueName = "SpecificStrategicCubeActionViewMainContainer"
+
+    ButtonTemplateDescriptorMap       = MAP
+    [
+        (~/StrategicCubeActionFunctionType/Orders, CubeActionButton(BigLineAction = ~/BigLineAction/ResizeFont)),
+        (~/StrategicCubeActionFunctionType/TogglableOrders, CubeActionToggleButton(BigLineAction = ~/BigLineAction/ResizeFont)),
+    ]
+    EmptyButtonTemplateDescriptor  = ~/CubeActionEmptyButton
+)

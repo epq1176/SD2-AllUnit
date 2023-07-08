@@ -1,0 +1,239 @@
+//-------------------------------------------------------------------------
+//------------------------- MISSIONS DE DEFENSE ---------------------------
+//-------------------------------------------------------------------------
+// Parametres TMacroActionDescriptor_Common
+//-------------------------------------------------------------------------
+// GenerationType :
+// NumberOfMacro :
+// ParametresDeMission : Transport, Airstrike, Support, ArtilleryStrike
+// PoolModelList : liste des unites demandees
+// DisableReinforcement : si on recoit des renforts en cours d'attaque ou pas
+// IgnoreSafePath : Le pathfind de la mission cherche ou non à esquiver la menace
+// TuerLaMissionEnFinDeVieAuLieuDeLaRelancer : (bool)
+// LaunchASAP_RatioMin : permet de lancer l'attaque sans attendre toutes les unites requises à combiner avec ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+// MissionOmnisciente : Pas utilise dans Normandie (systeme de connaissance de zone)
+//-------------------------------------------------------------------------
+// Parametres TMacroActionDescriptor_CorridorDefense_Specific
+//-------------------------------------------------------------------------
+// ForcedCorridor : (format special ex:[1]) permet de forcer l'attaque sur un couloir.
+//
+
+// MAINTAINS
+//-------------------------------------------------------------------------
+export GenBTAtk_Maintain_CorridorDefenses is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    GenerationType = TGenerationType_Maintain
+)
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+private template GenBTAtk_Template_Defense_Corridor
+[
+    NumberOfMacro:int = 1,
+    MinimumResourceForLaunch:int = 0,
+    PoolModelList = [~/GenBTAtk_Pool_AT_Defense, GenBTAtk_Pool_HMG_Defense],
+    UseTaggedPool:bool = true
+]
+is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = <NumberOfMacro>
+    MinimumResourceForLaunch = <MinimumResourceForLaunch>
+    IgnoreSafePath = true //on n'esquive pas la menace sur le chemin
+    DisableReinforcement = true
+    IgnoreVisionForDefensePosition = false
+    IgnoreEnemyDirectionForDefensePosition = false
+    IgnoreDefensePositionSafety = false
+
+    LaunchASAP_RatioMin = 0.01
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = <PoolModelList>
+
+    TaggedPoolModelList = (
+        <UseTaggedPool> == false ? [] :
+        [
+            (["DefenseInfantry"], [~/GenBTAtk_Pool_HMG_Defense]),
+            (["DefenseAA"], [~/GenBTAtk_Pool_AA_Defense]),
+            (["DefenseTank"], [~/GenBTAtk_Pool_AT_Defense]),
+        ]
+    )
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/GenBTAtk_BasicAirstrikeSupport)
+        ),
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0)
+        ),
+        (
+            ESettingType/Support,
+            TSupportSettingHolder(SettingList = [GenBTAtk_Renfort_AT])
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+private template GenBTAtk_Template_Dynamic_Defense_Corridor
+[
+    NumberOfMacro:int = 1,
+    MinimumResourceForLaunch:int = 0,
+    PoolModelList = [~/GenBTAtk_Pool_AT_Defense, GenBTAtk_Pool_HMG_Defense],
+    UseTaggedPool:bool = true
+]
+is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = <NumberOfMacro>
+    MinimumResourceForLaunch = <MinimumResourceForLaunch>
+    IgnoreSafePath = true //on n'esquive pas la menace sur le chemin
+    DisableReinforcement = true
+    IgnoreVisionForDefensePosition = false
+    IgnoreEnemyDirectionForDefensePosition = false
+    IgnoreDefensePositionSafety = false
+
+    LaunchASAP_RatioMin = 0.01
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = <PoolModelList>
+
+    TaggedPoolModelList = (
+        <UseTaggedPool> == false ? [] :
+        [
+            (["DefenseInfantry"], [~/GenBTAtk_Pool_HMG_Defense]),
+            (["DefenseAA"], [~/GenBTAtk_Pool_AA_Defense]),
+            (["DefenseTank"], [~/GenBTAtk_Pool_AT_Defense]),
+        ]
+    )
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/GenBTAtk_BasicAirstrikeSupport)
+        ),
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0)
+        ),
+        (
+            ESettingType/Support,
+            TSupportSettingHolder(SettingList = [GenBTAtk_Renfort_AT])
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+// Defenses couloir classiques
+//-------------------------------------------------------------------------
+export GenBTAtk_Defense_Static_Adaptive is GenBTAtk_Template_Defense_Corridor
+(
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Defense_Static_AA is GenBTAtk_Template_Defense_Corridor
+(
+    PoolModelList = [ ~/GenBTAtk_Pool_AA_Defense ]
+    UseTaggedPool = false
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Defense_Dynamic_Adaptive is GenBTAtk_Template_Dynamic_Defense_Corridor
+(
+)
+//-------------------------------------------------------------------------
+// Defenses couloir autogen
+//-------------------------------------------------------------------------
+export GenBTAtk_Defense_Static_Adaptive_Autogen is GenBTAtk_Template_Defense_Corridor
+(
+    MinimumResourceForLaunch = ~/GenBTAtk_MinimumResourceForLaunch_Stage_1
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Defense_Static_AA_Autogen is GenBTAtk_Template_Defense_Corridor
+(
+    PoolModelList = [ ~/GenBTAtk_Pool_AA_Defense ]
+    MinimumResourceForLaunch = ~/GenBTAtk_MinimumResourceForLaunch_Stage_1
+    UseTaggedPool = false
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Defense_Dynamic_Adaptive_Autogen is GenBTAtk_Template_Dynamic_Defense_Corridor
+(
+    MinimumResourceForLaunch = ~/GenBTAtk_MinimumResourceForLaunch_Stage_1
+)
+//-------------------------------------------------------------------------
+// Pool Models
+//-------------------------------------------------------------------------
+GenBTAtk_ProductionFallback is [
+    "Vehicule_Appui",
+    "Infanterie_Standard",
+    "Canon_AA",
+    "Vehicule_Transport_Arme",
+    "Char"
+] // Ce fallback permet d'assurer la production d'au moins une unite pour les corridors taggués. Sinon ça bloque le couloir
+//-------------------------------------------------------------------------
+export GenBTAtk_Pool_HMG_Defense is TPoolModel
+(
+    // Pas de budget, il faut quelqu'un
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b6a262b0-6a89-11e9-8ad0-704d7b2c87d4}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Infanterie_Spec_Defense",
+                "Infanterie_Standard",
+                "Vehicule_Appui",
+            ]
+            +~/GenBTAtk_ProductionFallback
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Pool_AT_Defense is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b6a262b1-6a89-11e9-9bfd-704d7b2c87d4}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Canon_AT_Lourd",
+                "ChasseurDeChar_Lourd",
+                "Canon_AT_Standard",
+                "ChasseurDeChar_Standard",
+            ]
+            +~/GenBTAtk_ProductionFallback
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{b6a262b2-6a89-11e9-955e-704d7b2c87d4}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Infanterie_Spec_Defense",
+            ]
+            +~/GenBTAtk_ProductionFallback
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Pool_AA_Defense is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b6a262b3-6a89-11e9-b43a-704d7b2c87d4}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Canon_AA_Standard",
+                "Canon_AA_Porte",
+            ]
+            +~/GenBTAtk_ProductionFallback
+        ),
+    ]
+)
+//-------------------------------------------------------------------------

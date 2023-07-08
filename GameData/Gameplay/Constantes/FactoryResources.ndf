@@ -1,0 +1,129 @@
+FactoryResources is TSpecificFactoryResources
+(
+    FactoryDisplayOrder =
+    [
+        EDefaultFactories/Recons,
+        EDefaultFactories/Infantry,
+        EDefaultFactories/Tanks,
+        EDefaultFactories/Support,
+        EDefaultFactories/AT,
+        EDefaultFactories/DCA,
+        EDefaultFactories/Art,
+        EDefaultFactories/Planes,
+        EDefaultFactories/Defense,
+    ]
+
+    FactoryDescriptions = MAP
+    [
+        (
+            EDefaultFactories/Support,
+            TSpecificFactoryDescription
+            (
+                FactoryName = "SUPPORT"
+                FactoryShortName = "HPD_SUPC"
+                FactoryHintTitle = "HPD_SUPT"
+                FactoryHintBody = "HPD_SUPB"
+                FactoryHintExtended = "HPD_SUPE"
+            )
+        ),
+        (
+            EDefaultFactories/Infantry,
+            TSpecificFactoryDescription
+            (
+                FactoryName = "INFANTRY"
+                FactoryShortName = "HPD_INFC"
+                FactoryHintTitle = "HPD_INFT"
+                FactoryHintBody = "HPD_INFB"
+                FactoryHintExtended = "HPD_INFE"
+            )
+        ),
+        (
+            EDefaultFactories/Art,
+            TSpecificFactoryDescription
+            (
+                FactoryName = "ARTILLERY"
+                FactoryShortName = "HPD_ARTC"
+                FactoryHintTitle = "HPD_ARTT"
+                FactoryHintBody = "HPD_ARTB"
+                FactoryHintExtended = "HPD_ARTE"
+            )
+        ),
+        (
+            EDefaultFactories/Tanks,
+            TSpecificFactoryDescription
+            (
+                FactoryName = "TANK"
+                FactoryShortName = "HPD_TNKC"
+                FactoryHintTitle = "HPD_TNKT"
+                FactoryHintBody = "HPD_TNKB"
+                FactoryHintExtended = "HPD_TNKE"
+            )
+        ),
+        (
+            EDefaultFactories/Recons,
+            TSpecificFactoryDescription
+            (
+                FactoryName = "RECON"
+                FactoryShortName = "HPD_RECOC"
+                FactoryHintTitle = "HPD_RECOT"
+                FactoryHintBody = "HPD_RECOB"
+                FactoryHintExtended = "HPD_RECOE"
+            )
+        ),
+        (
+            EDefaultFactories/AT,
+            TSpecificFactoryDescription
+            (
+                FactoryName = "AT"
+                FactoryShortName = "HPD_ATC"
+                FactoryHintTitle = "HPD_ATT"
+                FactoryHintBody = "HPD_ATB"
+                FactoryHintExtended = "HPD_ATE"
+            )
+        ),
+        (
+            EDefaultFactories/DCA,
+            TSpecificFactoryDescription
+            (
+                FactoryName = "DCA"
+                FactoryShortName = "HPD_DCAC"
+                FactoryHintTitle = "HPD_DCAT"
+                FactoryHintBody = "HPD_DCAB"
+                FactoryHintExtended = "HPD_DCAE"
+            )
+        ),
+        (
+            EDefaultFactories/Planes,
+            TSpecificFactoryDescription
+            (
+                FactoryName = "AIR"
+                FactoryShortName = "HPD_AIRC"
+                FactoryHintTitle = "HPD_AIRT"
+                FactoryHintBody = "HPD_AIRB"
+                FactoryHintExtended = "HPD_AIRE"
+            )
+        ),
+        (
+            EDefaultFactories/Defense,
+            TSpecificFactoryDescription
+            (
+                FactoryName = "DEFENSE"
+                FactoryShortName = "HPD_DEFC"
+                FactoryHintTitle = "HPD_DEFT"
+                FactoryHintBody = "HPD_DEFB"
+                FactoryHintExtended = "HPD_DEFE"
+            )
+        ),
+        (
+            EDefaultFactories/UniversalFactory,
+            TSpecificFactoryDescription
+            (
+                FactoryName = "ALL"
+                FactoryShortName = "HPD_ALL"
+                FactoryHintTitle = "HPD_ALLT"
+                FactoryHintBody = "HPD_ALLB"
+                FactoryHintExtended = "HPD_ALLE"
+            )
+        ),
+    ]
+)

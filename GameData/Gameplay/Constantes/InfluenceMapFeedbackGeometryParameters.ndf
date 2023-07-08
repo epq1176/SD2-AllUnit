@@ -1,0 +1,39 @@
+// A maitenir synchro avec Engine\Code\Eugen\CPP\EugIA_Common\InfluenceMapConstantes.h
+EMethodeMarchingGrid is TBaseClass
+(
+    Isoligne is 0
+    Isogrille is 1
+)
+
+// A maitenir synchro avec Engine\Code\Eugen\CPP\EugIA_Common\InfluenceMapConstantes.h
+EMethodeLissagePreFermerture is TBaseClass
+(
+    Aucun is 0
+    Gaussien3 is 1
+    Gaussien5 is 2
+    GaussienDependantDeLaDistance is 3
+)
+
+
+template InfluenceMapGeometryParameters
+[
+    MethodeMarchingSquare : int = ~/EMethodeMarchingGrid/Isoligne,
+    MethodeLissagePreFermeture : int = ~/EMethodeLissagePreFermerture/Aucun,
+    DistanceDeLissage : float = 10000.0,
+    DecallageCelluleVideParDefaut : float = -0.2,
+    DoubleDensiteDePoints : bool = false,
+    DoubleLissagePreFermeture : bool = false,
+    LissagePostFermeture : bool = true,
+]
+is TInfluenceMapGeometryParameters
+(
+    MarchingSquaresMethod = <MethodeMarchingSquare>
+    PreCloseSmoothingMethod = <MethodeLissagePreFermeture>
+
+    SmoothDistance  = <DistanceDeLissage>
+    EmptyCellDefaultOffset = <DecallageCelluleVideParDefaut>
+
+    DoublePointsDensity = <DoubleDensiteDePoints>
+    PostCloseSmoothing = <LissagePostFermeture>
+    DoublePreCloseSmoothing = <DoubleLissagePreFermeture>
+)

@@ -1,0 +1,52 @@
+Gfx_Panzer_IV_H is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionSkins =
+        [
+            // Reprise de l'existant pour créer la skin par défaut
+            TSkinDescriptor(
+                SkinName = "default"
+                ChoiceTexture = "CommonTexture_Camo"
+                DepictionAlternatives = [
+                    DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Panzer_IV_H ),
+                    DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Panzer_IV_H_MID ),
+                    DepictionDescriptor_LOD_Low_NoTurret3( MeshDescriptor = Modele_Panzer_IV_H_LOW ),
+                    DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Panzer_IV_H ),
+                    DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Panzer_IV_H_MID ),
+                    DepictionDescriptor_LOD_WreckedLow_NoTurret3( MeshDescriptor = Modele_Panzer_IV_H_LOW ),
+        ]
+            ),
+
+            // nouvelle skin
+            TSkinDescriptor(
+                SkinName = "Camo1"
+                DescriptorId = GUID:{311f91f4-3c84-4881-92db-ce75db03ba14}
+                ChoiceTexture = "CommonTexture_Camo"
+                DepictionAlternatives = [
+                    DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Panzer_IV_H_Camo1 ),
+                    DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Panzer_IV_H_Camo1_MID ),
+                    DepictionDescriptor_LOD_Low_NoTurret3( MeshDescriptor = Modele_Panzer_IV_H_Camo1_LOW ),
+                    DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Panzer_IV_H_Camo1 ),
+                    DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Panzer_IV_H_Camo1_MID ),
+                    DepictionDescriptor_LOD_WreckedLow_NoTurret3( MeshDescriptor = Modele_Panzer_IV_H_Camo1_LOW ),
+                ]
+            ),
+        ]
+
+        Operators = Operators_Panzer_IV_H
+                  + DepictionOperator_Chassis_MediumTank
+                  + DepictionOperator_Propulsion_ContinuousTrack_MediumTank
+                  + [DepictionOperator_TurretRecoil(TurretNum='1')]
+                  // + [DepictionOperator_TurretRecoilLightMachineGun(TurretNum='2') ]
+
+        Actions = Weapons_Panzer_IV_H
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        // SubDepictions = [ SubDepictionTireurIK_GER ]
+    )
+)
+

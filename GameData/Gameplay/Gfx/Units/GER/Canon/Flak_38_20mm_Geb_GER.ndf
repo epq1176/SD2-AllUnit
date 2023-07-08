@@ -1,0 +1,22 @@
+export ModelFile_Flak_38_20mm_Geb_GER is 'GameData:Assets\3D\Units\GER\Canon\Flak_38_20mm\Flak_38_20mm_Geb.Ase2NdfBin'
+
+Modele_Flak_38_20mm_Geb_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Flak_38_20mm_Geb_GER
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Flak_38_20mm_Geb_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\Flak_38_20mm_MID\Flak_38_20mm_Geb_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Flak_38_20mm_Geb_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\LODS\Flak_38_20mm_Geb_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

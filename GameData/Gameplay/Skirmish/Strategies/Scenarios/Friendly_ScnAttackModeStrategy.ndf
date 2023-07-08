@@ -1,0 +1,367 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export Friendly_ScnAttackModeStrategy is TIAGeneralStrategy
+(
+    StrategyName = "FriScnAtk"
+    FirstGenerator = Friendly_ScnAtk_Mod_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    IgnorePlayersForCorridorRepartition = true
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    ShouldUseTaggedCorridorsForTouchDown = true
+
+    TransitionList =
+    [
+        Friendly_ScnAtk_Mod_Transition_StartToPhaseC,
+        Friendly_ScnAtk_Mod_Transition_StartToPhaseB,
+        Friendly_ScnAtk_Mod_Transition_StartToPhaseA,
+        Friendly_ScnAtk_Mod_Transition_StartToDeploiment,
+        Friendly_ScnAtk_Mod_Transition_DeployToPhaseA,
+        Friendly_ScnAtk_Mod_Transition_PhaseB,
+        Friendly_ScnAtk_Mod_Transition_PhaseC,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_Condition_CommandPhase is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_Condition_PhaseB is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_B'
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_Condition_PhaseC is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_C'
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_Condition_True is TSequenceCondition_True
+(
+
+)
+
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_Transition_StartToPhaseC is TIAGeneralStrategyTransition
+(
+    Origine = Friendly_ScnAtk_Mod_Choose_Strategy
+    Condition = Friendly_ScnAtk_Mod_Condition_PhaseC
+    Destination = Friendly_ScnAtk_Mod_PhaseC_1
+)
+export Friendly_ScnAtk_Mod_Transition_StartToPhaseB is TIAGeneralStrategyTransition
+(
+    Origine = Friendly_ScnAtk_Mod_Choose_Strategy
+    Condition = Friendly_ScnAtk_Mod_Condition_PhaseB
+    Destination = Friendly_ScnAtk_Mod_PhaseB_1
+)
+export Friendly_ScnAtk_Mod_Transition_StartToPhaseA is TIAGeneralStrategyTransition
+(
+    Origine = Friendly_ScnAtk_Mod_Choose_Strategy
+    Condition = Friendly_ScnAtk_Mod_Condition_CommandPhase
+    Destination = Friendly_ScnAtk_Mod_PhaseA_1
+)
+export Friendly_ScnAtk_Mod_Transition_StartToDeploiment is TIAGeneralStrategyTransition
+(
+    Origine = Friendly_ScnAtk_Mod_Choose_Strategy
+    Condition = Friendly_ScnAtk_Mod_Condition_True
+    Destination = Friendly_ScnAtk_Mod_PhaseDeploiement_1
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_Transition_DeployToPhaseA is TIAGeneralStrategyTransition
+(
+    Origine = Friendly_ScnAtk_Mod_PhaseDeploiement_1
+    Condition = Friendly_ScnAtk_Mod_Condition_CommandPhase
+    Destination = Friendly_ScnAtk_Mod_PhaseA_1
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_Transition_PhaseB is TIAGeneralStrategyTransition
+(
+    Origine = Friendly_ScnAtk_Mod_PhaseA_1
+    Condition = Friendly_ScnAtk_Mod_Condition_PhaseB
+    Destination = Friendly_ScnAtk_Mod_PhaseB_1
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_Transition_PhaseC is TIAGeneralStrategyTransition
+(
+    Origine = Friendly_ScnAtk_Mod_PhaseB_1
+    Condition = Friendly_ScnAtk_Mod_Condition_PhaseC
+    Destination = Friendly_ScnAtk_Mod_PhaseC_1
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Friendly_Scn_Support_AntiTank,
+        ~/Friendly_Scn_Support_Transports,
+
+        ~/Friendly_Scn_Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_PhaseDeploiement_1 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Friendly_Scn_Support_AntiTank,
+        ~/Friendly_Scn_Support_Transports,
+
+        ~/Friendly_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Arti
+        //------------------------------
+        ~/Friendly_Scn_Airstrike_Assault,
+        ~/Friendly_ScnAtk_Artillery_TriggerHappy,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Friendly_ScnAtk_ZoneAttack_Main_A,
+        ~/Friendly_ScnAtk_Artillery_Support,
+
+        ~/Friendly_ScnAtk_ZoneAttack_Adaptive_A,
+        ~/Friendly_ScnAtk_ZoneAttack_Adaptive_A,
+        ~/Friendly_ScnAtk_ZoneAttack_Adaptive_A,
+        ~/Friendly_Scn_Reco,
+        ~/Friendly_Scn_AirReco,
+
+        ~/Friendly_Scn_Supply_Skirmish_Allied,
+
+    ] + ~/Friendly_ScnAtk_Defenses_Airstrike_Arti_Shuffle
+
+    +   ~/Friendly_ScnAtk_Scaling_A
+    +   ~/Friendly_ScnAtk_Scaling_A
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_PhaseA_1 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Friendly_Scn_Support_AntiTank,
+        ~/Friendly_Scn_Support_Transports,
+
+        ~/Friendly_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/Friendly_Scn_Maintain_AirStrike,
+        ~/Friendly_ScnAtk_Maintain_Artillery,
+        ~/Friendly_ScnAtk_Maintain_ZoneAttacks,
+        ~/Friendly_ScnAtk_Maintain_CorridorAttacks,
+
+        //------------------------------
+        // Arti
+        //------------------------------
+        ~/Friendly_Scn_Airstrike_Assault,
+        ~/Friendly_ScnAtk_Artillery_TriggerHappy,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Friendly_ScnAtk_ZoneAttack_Main_A,
+        ~/Friendly_ScnAtk_Artillery_Support,
+
+        ~/Friendly_ScnAtk_ZoneAttack_Adaptive_A,
+        ~/Friendly_ScnAtk_ZoneAttack_Adaptive_A,
+        ~/Friendly_ScnAtk_ZoneAttack_Adaptive_A,
+        ~/Friendly_Scn_Reco,
+        ~/Friendly_Scn_AirReco,
+
+        ~/Friendly_Scn_Supply_Skirmish_Allied,
+
+    ] + ~/Friendly_ScnAtk_Defenses_Airstrike_Arti_Shuffle
+
+    +   ~/Friendly_ScnAtk_Scaling_A
+    +   ~/Friendly_ScnAtk_Scaling_A
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_PhaseB_1 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 2
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Friendly_Scn_Support_AntiTank,
+        ~/Friendly_Scn_Support_Transports,
+
+        ~/Friendly_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/Friendly_Scn_Maintain_AirStrike,
+        ~/Friendly_ScnAtk_Maintain_Artillery,
+        ~/Friendly_ScnAtk_Maintain_ZoneAttacks,
+        ~/Friendly_ScnAtk_Maintain_CorridorAttacks,
+
+        //------------------------------
+        // Arti
+        //------------------------------
+        ~/Friendly_Scn_Airstrike_Assault,
+        ~/Friendly_ScnAtk_Artillery_Expensive,
+        ~/Friendly_ScnAtk_Artillery_TriggerHappy,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Friendly_ScnAtk_ZoneAttack_Main_B,
+        ~/Friendly_ScnAtk_Artillery_Support,
+
+        ~/Friendly_ScnAtk_ZoneAttack_Adaptive_B,
+        ~/Friendly_ScnAtk_ZoneAttack_Adaptive_B,
+        ~/Friendly_ScnAtk_ZoneAttack_Adaptive_B,
+        ~/Friendly_Scn_Reco,
+        ~/Friendly_Scn_AirReco,
+
+        ~/Friendly_Scn_Supply_Skirmish_Allied,
+
+    ] + ~/Friendly_ScnAtk_Defenses_Airstrike_Arti_Shuffle
+
+    +   ~/Friendly_ScnAtk_Scaling_B
+    +   ~/Friendly_ScnAtk_Scaling_B
+)
+//-------------------------------------------------------------------------
+export Friendly_ScnAtk_Mod_PhaseC_1 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 1
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Friendly_Scn_Support_AntiTank,
+        ~/Friendly_Scn_Support_Transports,
+
+        ~/Friendly_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Maintain
+        //------------------------------
+        ~/Friendly_Scn_Maintain_AirStrike,
+        ~/Friendly_ScnAtk_Maintain_Artillery,
+        ~/Friendly_ScnAtk_Maintain_ZoneAttacks,
+        ~/Friendly_ScnAtk_Maintain_CorridorAttacks,
+
+        //------------------------------
+        // Arti
+        //------------------------------
+        ~/Friendly_Scn_Airstrike_Assault,
+        ~/Friendly_ScnAtk_Artillery_Expensive,
+        ~/Friendly_ScnAtk_Artillery_TriggerHappy,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Friendly_ScnAtk_ZoneAttack_Main_C,
+        ~/Friendly_ScnAtk_Artillery_Support,
+
+        ~/Friendly_ScnAtk_ZoneAttack_Main_C,
+        ~/Friendly_ScnAtk_Artillery_Support,
+
+        ~/Friendly_ScnAtk_ZoneAttack_Adaptive_C,
+        ~/Friendly_ScnAtk_ZoneAttack_Adaptive_C,
+        ~/Friendly_Scn_Reco,
+        ~/Friendly_Scn_AirReco,
+
+        ~/Friendly_Scn_Supply_Skirmish_Allied,
+
+    ] + ~/Friendly_ScnAtk_Defenses_Airstrike_Arti_Shuffle
+
+    +   ~/Friendly_ScnAtk_Scaling_C
+    +   ~/Friendly_ScnAtk_Scaling_C
+)
+
+Friendly_ScnAtk_Defenses_Airstrike_Arti_Shuffle is
+[
+    ~/Friendly_Scn_Airstrike_Assault,
+    ~/Friendly_ScnAtk_Artillery_Expensive,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy,
+    ~/Friendly_Scn_Airstrike_Offense,
+    ~/Friendly_Scn_Airstrike_Defense,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_1for4Corridors,
+]
+
+Friendly_ScnAtk_Scaling_A is
+[
+    ~/Friendly_ScnAtk_ZoneAttack_Main_A_Autogen,
+    ~/Friendly_ScnAtk_Artillery_Expensive_Autogen,
+    ~/Friendly_ScnAtk_ZoneAttack_Adaptive_A_Autogen,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen,
+    ~/Friendly_ScnAtk_ZoneAttack_Adaptive_A_Autogen,
+    ~/Friendly_ScnAtk_ZoneAttack_Main_A_Autogen,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen,
+
+    ~/Friendly_ScnAtk_ZoneAttack_Main_A_Autogen,
+    ~/Friendly_ScnAtk_Artillery_Expensive_Autogen,
+    ~/Friendly_ScnAtk_ZoneAttack_Adaptive_A_Autogen,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen,
+    ~/Friendly_ScnAtk_ZoneAttack_Adaptive_A_Autogen,
+    ~/Friendly_ScnAtk_ZoneAttack_Main_A_Autogen,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen,
+]
+
+Friendly_ScnAtk_Scaling_B is
+[
+    ~/Friendly_ScnAtk_ZoneAttack_Main_B_Autogen,
+    ~/Friendly_ScnAtk_Artillery_Expensive_Autogen,
+    ~/Friendly_ScnAtk_ZoneAttack_Adaptive_B_Autogen,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen,
+    ~/Friendly_ScnAtk_ZoneAttack_Adaptive_B_Autogen,
+    ~/Friendly_ScnAtk_ZoneAttack_Main_B_Autogen,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen,
+
+    ~/Friendly_ScnAtk_ZoneAttack_Main_B_Autogen,
+    ~/Friendly_ScnAtk_Artillery_Expensive_Autogen,
+    ~/Friendly_ScnAtk_ZoneAttack_Adaptive_B_Autogen,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen,
+    ~/Friendly_ScnAtk_ZoneAttack_Adaptive_B_Autogen,
+    ~/Friendly_ScnAtk_ZoneAttack_Main_B_Autogen,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen,
+]
+
+Friendly_ScnAtk_Scaling_C is
+[
+    ~/Friendly_ScnAtk_ZoneAttack_Main_C_Autogen,
+    ~/Friendly_ScnAtk_Artillery_Expensive_Autogen,
+    ~/Friendly_ScnAtk_ZoneAttack_Adaptive_C_Autogen,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen,
+    ~/Friendly_ScnAtk_ZoneAttack_Adaptive_C_Autogen,
+    ~/Friendly_ScnAtk_ZoneAttack_Main_C_Autogen,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen,
+
+    ~/Friendly_ScnAtk_ZoneAttack_Main_C_Autogen,
+    ~/Friendly_ScnAtk_Artillery_Expensive_Autogen,
+    ~/Friendly_ScnAtk_ZoneAttack_Adaptive_C_Autogen,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen,
+    ~/Friendly_ScnAtk_ZoneAttack_Adaptive_C_Autogen,
+    ~/Friendly_ScnAtk_ZoneAttack_Main_C_Autogen,
+    ~/Friendly_ScnAtk_Artillery_TriggerHappy_Autogen,
+]

@@ -1,0 +1,22 @@
+export ModelFile_Turan_2_ROU is 'GameData:Assets\3D\Units\ROU\Char\Turan_2_ROU\Turan_2_ROU.Ase2NdfBin'
+
+Modele_Turan_2_ROU is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Turan_2_ROU
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Turan_2_ROU_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Char\Turan_2_ROU_MID\Turan_2_ROU_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Turan_2_ROU_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Char\LODS\Turan_2_ROU_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

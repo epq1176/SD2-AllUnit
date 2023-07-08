@@ -1,0 +1,17 @@
+
+template BUCKChatToggleButtonDescriptor
+[
+    UniqueName : string = "",
+    ComponentFrame : TUIFramePropertyRTTI,
+]
+is ImageButton
+(
+    UniqueName = <UniqueName>
+    ElementName = 'ChatButton'
+
+    ComponentFrame = <ComponentFrame>
+
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+    BackgroundTextureToken = "OutgameTexture_WG2_BgOutGame_ToggleChat_Button"
+    HintableAreaElementName = "ChatToggleButtonHintableArea"
+)

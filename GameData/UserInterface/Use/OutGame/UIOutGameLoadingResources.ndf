@@ -1,0 +1,3337 @@
+
+SpecificOutGameLoadingPanelResource is TUISpecificOutGameLoadingPanelResource
+(
+    LoadingText = BUCKTypingTextDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [0.0, 40.0]
+            AlignementToFather = [1.0, 1.0]
+            AlignementToAnchor = [1.0, 1.0]
+        )
+
+        ParagraphStyle = TParagraphStyleRTTI
+        (
+            Alignment         = UIText_Right
+            VerticalAlignment = UIText_VerticalCenter
+        )
+
+        TextStyle = "DefaultSubtitle"
+
+        HorizontalFitStyle = ~/FitStyle/FitToContent
+        VerticalFitStyle = ~/FitStyle/UserDefined
+
+        TypefaceToken = "Subtitles"
+        BigLineAction = ~/BigLineAction/MultiLine
+
+        UniformDrawer = $/UserInterface/UIUniformDrawer
+
+        TextColor = "SD2_BleuVariable"
+        TextSize = "18"
+        TextToken = "M_LOADING"
+        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+        AnimDuration = 4.5
+        AnimTextInSec = 0.7
+        AnimCursorPulseCount = 6.0
+    )
+
+    UserInputLayer =  $/M3D/Input/UserInputLayerHandler/InputLayer_Loading
+
+
+    DevHints = [
+        "HNT_DT001",
+        "HNT_DT002",
+    ]
+
+    CommonHints = [
+// Hints ShortKeys //
+        "Hint1_1",
+        "Hint1_2",
+        "Hint1_3",
+        "Hint1_4",
+        "Hint1_5",
+        "Hint1_6",
+        "Hint1_7",
+        "Hint1_8",
+        "Hint1_9",
+        "Hint1_10",
+        "Hint1_11",
+// Hints User Interface //
+        "Hint2_1",
+        "Hint2_2",
+        "Hint2_3",
+        "Hint2_4",
+        "Hint2_5",
+        "Hint2_6",
+        "Hint2_7",
+// Hints Gameplay Tips //
+        "Hint3_1",
+        "Hint3_2",
+        "Hint3_3",
+        "Hint3_4",
+        //"Hint3_5",
+        "Hint3_6",
+        "Hint3_7",
+        "Hint3_8",
+        "Hint3_9",
+        //"Hint3_10",
+        "Hint3_11",
+        "Hint3_12",
+        "Hint3_13",
+        "Hint3_14",
+        "Hint3_15",
+        //"Hint3_16",
+        "Hint3_17",
+        "Hint3_18",
+        "Hint3_19",
+        "Hint3_20",
+        "Hint3_21",
+        "Hint3_22",
+        "Hint3_23",
+        "Hint3_24",
+        "Hint3_25",
+        "Hint3_26",
+
+// Hints Tactical Tips //
+        "Hint4_1",
+        "Hint4_2",
+        "Hint4_3",
+        "Hint4_4",
+        "Hint4_5",
+        "Hint4_6",
+        "Hint4_7",
+        "Hint4_8",
+        "Hint4_9",
+        "Hint4_10",
+        "Hint4_11",
+        "Hint4_12",
+        "Hint4_13",
+        //"Hint4_14",
+        //"Hint4_15",
+        "Hint4_16",
+        //"Hint4_17",
+        "Hint4_18",
+        "Hint4_19",
+        "Hint4_20",
+        "Hint4_21",
+        "Hint4_22",
+
+// Hints Steelman //
+
+
+    ]
+
+    LoadingComponents = BUCKContainerDescriptor
+    (
+        Components =
+        [
+            BUCKRandomContainerDescriptor
+            (
+                ElementName = "OutGameLoadingRandomContainer"
+
+                CacheComponentsForReuse = True
+                CreateAllComponentsAtInit = True
+
+                ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+
+                PossibleDescriptors =
+                [
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_2"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_3"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_4"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_6"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_7"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_8"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_9"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_10"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_11"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_12"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_13"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_14"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_15"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_16"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_17"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_18"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_19"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_20"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_21"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_22"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_23"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_24"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_25"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_26"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_27"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    //BUCKTextureDescriptor
+                    //(
+                    //    TextureToken        = "OutgameTexture_Bagration_Mood_28"
+
+                    //    ComponentFrame = TUIFramePropertyRTTI
+                    //    (
+                    //        MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                    //        MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                    //        AlignementToFather = [ 0.5, 0.5 ]
+                    //        AlignementToAnchor = [ 0.5, 0.5 ]
+                    //    )
+                    //    TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    //),
+                    //BUCKTextureDescriptor
+                    //(
+                    //    TextureToken        = "OutgameTexture_Bagration_Mood_29"
+
+                    //    ComponentFrame = TUIFramePropertyRTTI
+                    //    (
+                    //        MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                    //        MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                    //        AlignementToFather = [ 0.5, 0.5 ]
+                    //        AlignementToAnchor = [ 0.5, 0.5 ]
+                    //    )
+                    //    TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    //),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_30"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_31"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_32"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_33"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_34"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_35"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_36"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_37"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_38"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_39"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_40"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_41"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_42"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_43"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_44"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_45"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_46"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_47"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_48"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_49"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_50"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_51"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_52"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_53"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_54"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_55"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_56"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_57"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_58"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_59"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_60"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_61"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_62"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_63"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_64"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_65"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_66"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_67"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_68"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_69"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_70"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_71"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_72"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_73"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_74"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_75"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_76"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_77"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_78"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_79"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_80"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_81"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_82"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_83"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_84"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_85"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_86"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_87"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_88"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_89"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_90"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_91"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_92"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_93"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_94"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_95"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_96"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_96"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_96"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_97"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_98"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_99"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_100"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_101"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_102"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_103"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_104"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_105"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_106"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_107"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_108"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_109"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_110"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_111"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_112"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_113"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_114"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_115"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_116"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_117"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_118"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_119"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_120"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_121"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_122"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_123"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_124"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_125"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_126"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_127"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_128"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_129"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_130"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_131"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_132"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_133"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_134"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_135"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_136"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_137"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_138"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_139"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_140"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_141"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_142"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_143"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_144"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_145"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_146"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_147"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_148"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_149"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_150"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_151"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_152"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_153"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_154"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_155"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_156"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_157"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_158"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_159"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_160"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_161"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_162"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_163"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_164"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_165"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_166"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_167"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_168"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_169"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_170"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_171"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_172"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_173"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_174"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_175"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_176"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_177"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_178"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_179"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_180"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_181"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_182"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_183"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_184"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_185"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_186"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_187"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_188"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_189"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_190"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_191"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_192"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_193"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_194"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_195"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_196"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_197"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_198"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_199"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_200"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_201"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+                    //BUCKTextureDescriptor
+                    //(
+                    //    TextureToken        = "OutgameTexture_Bagration_Mood_202"
+
+                    //    ComponentFrame = TUIFramePropertyRTTI
+                    //    (
+                    //        MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                    //        MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                    //        AlignementToFather = [ 0.5, 0.5 ]
+                    //        AlignementToAnchor = [ 0.5, 0.5 ]
+                    //    )
+                    //    TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    //),
+
+                    //BUCKTextureDescriptor
+                    //(
+                    //    TextureToken        = "OutgameTexture_Bagration_Mood_203"
+
+                    //    ComponentFrame = TUIFramePropertyRTTI
+                    //    (
+                    //        MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                    //        MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                    //        AlignementToFather = [ 0.5, 0.5 ]
+                    //        AlignementToAnchor = [ 0.5, 0.5 ]
+                    //    )
+                    //    TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    //),
+
+                    //BUCKTextureDescriptor
+                    //(
+                    //    TextureToken        = "OutgameTexture_Bagration_Mood_204"
+
+                    //    ComponentFrame = TUIFramePropertyRTTI
+                    //    (
+                    //        MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                    //        MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                    //        AlignementToFather = [ 0.5, 0.5 ]
+                    //        AlignementToAnchor = [ 0.5, 0.5 ]
+                    //    )
+                    //    TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    //),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_205"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_206"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_207"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_208"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_209"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_210"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_211"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_212"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_213"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_214"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_215"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_216"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_217"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_218"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_219"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_220"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_221"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_222"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_223"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_224"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_225"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_226"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_227"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_228"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_229"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_230"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_231"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_232"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_233"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_234"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_235"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_236"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_237"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_238"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_239"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        TextureToken        = "OutgameTexture_Bagration_Mood_240"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableOffset = [ 0, 0 div ~/RefMagnification ]
+                            MagnifiableWidthHeight = [ 1920. div ~/RefMagnification , 1080. div ~/RefMagnification ]
+                            AlignementToFather = [ 0.5, 0.5 ]
+                            AlignementToAnchor = [ 0.5, 0.5 ]
+                        )
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.] )
+                    ),
+
+
+
+
+
+                ]
+            ),
+            BUCKTextDescriptor
+            (
+                ElementName = "OutGameLoadingHint"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [1080, 65]
+                    AlignementToFather = [0.5, 1.0]
+                    AlignementToAnchor = [0.5, 1.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Center
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0.1
+                )
+
+                TextStyle = "DefaultSubtitle"
+
+                BigLineAction = ~/BigLineAction/MultiLine
+                VerticalFitStyle = ~/FitStyle/MaxBetweenUserDefinedAndContent
+
+                TextColor = "Subtitle/Text"
+                TextSize = "32" //"Subtitle/Text"
+
+
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                TypefaceToken = "Subtitles"
+                UniformDrawer = $/UserInterface/UIUniformDrawer
+            ),
+        ]
+        ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+    )
+)
+

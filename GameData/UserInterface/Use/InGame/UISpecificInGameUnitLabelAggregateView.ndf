@@ -1,0 +1,44 @@
+
+BUCKSpecificInGameUnitLabelAggregateMainComponentDescriptor is BUCKListDescriptor
+(
+    ElementName = "AggregateList"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableOffset = [0, -25]
+        AlignementToFather = [0.5, 0.5]
+        AlignementToAnchor = [0.5, 0.5]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    Elements =
+    [
+    ]
+
+    BackgroundComponents =
+    [
+        BUCKTextureDescriptor
+        (
+            ElementName = "DistrictIcon"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [53.0, 55.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            TextureToken = "UseInGame_District"
+            TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+        )
+    ]
+)
+
+UISpecificInGameUnitLabelAggregateViewDescriptor is TUISpecificInGameUnitLabelAggregateViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificInGameUnitLabelAggregateMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    UnitLabelResources = ~/SpecificInGameUnitLabelResources
+)

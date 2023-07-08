@@ -1,0 +1,22 @@
+export ModelFile_M18_Hellcat_US is 'GameData:Assets\3D\Units\USA\Char\M18_Hellcat\M18_Hellcat.Ase2NdfBin'
+
+Modele_M18_Hellcat_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M18_Hellcat_US
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_M18_Hellcat_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Char\M18_Hellcat_MID\M18_Hellcat_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_M18_Hellcat_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Char\LODS\M18_Hellcat_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

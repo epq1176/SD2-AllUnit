@@ -1,0 +1,22 @@
+export ModelFile_Mort_120mm_ROU is 'GameData:Assets\3D\Units\GER\Canon\sGrW_42\sGrW_42.Ase2NdfBin'
+
+Modele_Mort_120mm_ROU is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Mort_120mm_ROU
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Mort_120mm_ROU_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\sGrW_42_MID\sGrW_42_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Mort_120mm_ROU_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\LODS\sGrW_42_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

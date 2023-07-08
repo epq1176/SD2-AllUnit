@@ -1,0 +1,22 @@
+export ModelFile_Latil_M2TL6_FIN is 'GameData:Assets\3D\Units\FIN\Vehicule\Latil_M2TL6\Latil_M2TL6.Ase2NdfBin'
+
+Modele_Latil_M2TL6_FIN is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Latil_M2TL6_FIN
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Latil_M2TL6_FIN_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Vehicule\Latil_M2TL6_MID\Latil_M2TL6_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Latil_M2TL6_FIN_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Vehicule\LODS\Latil_M2TL6_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

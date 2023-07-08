@@ -1,0 +1,30 @@
+Gfx_AS42_20mm_RSI is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_AS42_20mm_RSI ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_AS42_20mm_RSI_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_AS42_20mm_RSI_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_AS42_20mm_RSI ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_AS42_20mm_RSI_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_AS42_20mm_RSI_LOW ),
+        ]
+
+        Operators = Operators_AS42_20mm_RSI
+                  + DepictionOperator_Chassis_MediumTank
+                  + DepictionOperator_Propulsion_6Wheels_Generic_MediumVehicleSound
+
+
+        Actions = Weapons_AS42_20mm_RSI
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Wheeled
+
+        SubDepictions = DepictionSubDepiction_Driver_1_GNR
+                      + DepictionSubDepiction_Tireur_GNR
+                      + DepictionSubDepiction_TireurDebout_GNR
+                      // + [ SubDepictionTowedUnit ]
+    )
+)

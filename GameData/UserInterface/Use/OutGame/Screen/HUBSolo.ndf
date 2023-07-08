@@ -1,0 +1,102 @@
+
+
+HUBSoloDescriptor is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            TextureToken   = "OutgameTexture_outgame_sd2_Solo"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [ 1.0, 1.0 ]
+                AlignementToFather = [ 0.5, 0.5 ]
+                AlignementToAnchor = [ 0.5, 0.5 ]
+            )
+            TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0,1.0])
+        ),
+
+        HUBList
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableOffset = HUBFirstButtonOffset
+            )
+
+            ButtonList =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = HUBButton
+                    (
+                        ElementName = "HUBSoloTacticalTutoButton"
+                        TextToken = "TACT_TUTO"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = HUBButton
+                    (
+                        ElementName = "HUBSoloStrategicTutoButton"
+                        TextToken = "AG_TUTO"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    // Filler
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [ 10.0, 20.0 ]
+                        )
+
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = HUBButton
+                    (
+                        ElementName = "HUBSoloSkirmishButton"
+                        TextToken = "AB_SKIRM"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = HUBButton
+                    (
+                        ElementName = "HUBSoloChallengeButton"
+                        TextToken = "new_HB"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = HUBButton
+                    (
+                        ElementName = "HUBSoloStrategicButton"
+                        TextToken = "new_AG"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = HUBButton
+                    (
+                        ElementName = "HUBSoloLoadButton"
+                        TextToken = "AB_LOADING"
+                    )
+                ),
+            ]
+        ),
+
+        HUBLittleButton
+        (
+            ElementName = "HUBSoloBackButton"
+            ButtonMagnifiableOffset = HUBBackButtonOffset
+            TextToken = "AB_BACK"
+            Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+        ),
+
+    ]
+)

@@ -1,0 +1,186 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export SandBagStrategy is TIAGeneralStrategy
+(
+    StrategyName = "BeFriendAI"
+    FirstGenerator = SandBag_Phase_Deploiement
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    DefaultIncomeForDynamicBudget = 100
+    TransitionList =
+    [
+        SandBag_Transition_DeployToPhaseAPassive,
+        SandBag_Transition_PhaseB,
+        SandBag_Transition_PhaseC,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export SandBag_Condition_CommandPhase is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+//-------------------------------------------------------------------------
+export SandBag_Condition_WaitedFewMinutes is TSequenceCondition_Wait
+(
+    Time = 60 * 5 //5 minutes
+)
+//-------------------------------------------------------------------------
+export SandBag_Condition_PhaseB is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_B'
+)
+//-------------------------------------------------------------------------
+export SandBag_Condition_PhaseC is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_C'
+)
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export SandBag_Transition_DeployToPhaseAPassive is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_Phase_Deploiement
+    Condition = SandBag_Condition_CommandPhase
+    Destination = SandBag_PhaseA_Passive
+)
+//-------------------------------------------------------------------------
+export SandBag_Transition_PhaseB is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_PhaseA_Passive
+    Condition = SandBag_Condition_PhaseB
+    Destination = SandBag_PhaseB_1
+)
+//-------------------------------------------------------------------------
+export SandBag_Transition_PhaseC is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_PhaseB_1
+    Condition = SandBag_Condition_PhaseC
+    Destination = SandBag_PhaseC_1
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+ // Easy : On desactive les supports. Faudrait pas trop stresser le joueur.
+ //        On garde les transports pour pas les abandonner sur la map.
+
+
+export SandBag_Phase_Deploiement is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ~/SandBag_Support_Transports,
+
+        ~/SandBag_Supply_Skirmish,
+
+        ~/SandBag_Defense_light_MBT,
+
+        ~/SandBag_Reco_Skirmish,
+        ~/SandBag_AirReco_Skirmish,
+    ]
+)
+
+export SandBag_PhaseA_Passive is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 5
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        ~/SandBag_Support_Transports,
+        ~/SandBag_Supply_Skirmish,
+        ~/SandBag_AirReco_Skirmish,
+
+        //------------------------------
+        // Attaques principales (defense dans cette phase. Transformées plus tard eventuellement)
+        //------------------------------
+        ~/SandBag_Defense_light_MBT,
+        ~/SandBag_Reco_Skirmish,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/SandBag_Supply_Skirmish_Allied,
+
+        ~/SandBag_Defense_Filler,
+    ]
+)
+
+export SandBag_PhaseB_1 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 2
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        ~/SandBag_Support_Transports,
+        ~/SandBag_Supply_Skirmish,
+        ~/SandBag_AirReco_Skirmish,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        // On rajoute une attaque
+        ~/SandBag_Defense_light_MBT,
+        ~/SandBag_Reco_Skirmish,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/SandBag_Supply_Skirmish_Allied,
+
+        ~/SandBag_Defense_Filler,
+        ~/SandBag_Defense_Backliner_AT,
+
+        ~/SandBag_Artillery_TriggerHappy_1for2Corridors,
+        // Generateur Arti si thune avec limite 1
+
+        ~/SandBag_Airstrike_Defense,
+    ]
+)
+
+export SandBag_PhaseC_1 is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 1
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        ~/SandBag_Support_Transports,
+        ~/SandBag_Supply_Skirmish,
+        ~/SandBag_AirReco_Skirmish,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        // On transforme une des defense en attaque
+        ~/SandBag_Attack_MBT,
+        ~/SandBag_Reco_Skirmish,
+        ~/SandBag_Defense_MBT,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/SandBag_Supply_Skirmish_Allied,
+
+        ~/SandBag_Defense_Filler,
+        ~/SandBag_Defense_Backliner_AT,
+        ~/SandBag_Defense_Backliner_AA,
+
+        ~/SandBag_Artillery_TriggerHappy_1for2Corridors,
+        // Generateur Arti si thune avec limite 1
+
+        ~/SandBag_Airstrike_Defense,
+        ~/SandBag_AirReco_Skirmish,
+    ]
+)

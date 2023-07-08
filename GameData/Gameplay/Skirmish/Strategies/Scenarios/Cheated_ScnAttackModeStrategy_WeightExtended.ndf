@@ -1,0 +1,426 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export Cheated_ScnAttackModeStrategy_WeightExtended is TIAGeneralStrategy
+(
+    StrategyName = "IAScnAtk"
+    FirstGenerator = Cheated_ScnAtk_Mod_Choose_Strategy_WeightExtended
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    IgnorePlayersForCorridorRepartition = true
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    ShouldUseTaggedCorridorsForTouchDown = true
+
+    TransitionList =
+    [
+        Cheated_ScnAtk_Mod_Transition_StartToPhaseC_WeightExtended,
+        Cheated_ScnAtk_Mod_Transition_StartToPhaseB_WeightExtended,
+        Cheated_ScnAtk_Mod_Transition_StartToPhaseA_WeightExtended,
+        Cheated_ScnAtk_Mod_Transition_StartToDeploiment_WeightExtended,
+        Cheated_ScnAtk_Mod_Transition_DeployToPhaseA_WeightExtended,
+        Cheated_ScnAtk_Mod_Transition_PhaseB_WeightExtended,
+        Cheated_ScnAtk_Mod_Transition_PhaseC_WeightExtended,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export Cheated_ScnAtk_Mod_Condition_CommandPhase_WeightExtended is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnAtk_Mod_Condition_PhaseB_WeightExtended is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_B'
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnAtk_Mod_Condition_PhaseC_WeightExtended is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_C'
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnAtk_Mod_Condition_True_WeightExtended is TSequenceCondition_True
+(
+
+)
+
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export Cheated_ScnAtk_Mod_Transition_StartToPhaseC_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_ScnAtk_Mod_Choose_Strategy_WeightExtended
+    Condition = Cheated_ScnAtk_Mod_Condition_PhaseC_WeightExtended
+    Destination = Cheated_ScnAtk_Mod_PhaseC_1_WeightExtended
+)
+export Cheated_ScnAtk_Mod_Transition_StartToPhaseB_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_ScnAtk_Mod_Choose_Strategy_WeightExtended
+    Condition = Cheated_ScnAtk_Mod_Condition_PhaseB_WeightExtended
+    Destination = Cheated_ScnAtk_Mod_PhaseB_1_WeightExtended
+)
+export Cheated_ScnAtk_Mod_Transition_StartToPhaseA_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_ScnAtk_Mod_Choose_Strategy_WeightExtended
+    Condition = Cheated_ScnAtk_Mod_Condition_CommandPhase_WeightExtended
+    Destination = Cheated_ScnAtk_Mod_PhaseA_1_WeightExtended
+)
+export Cheated_ScnAtk_Mod_Transition_StartToDeploiment_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_ScnAtk_Mod_Choose_Strategy_WeightExtended
+    Condition = Cheated_ScnAtk_Mod_Condition_True_WeightExtended
+    Destination = Cheated_ScnAtk_Mod_PhaseDeploiement_1_WeightExtended
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnAtk_Mod_Transition_DeployToPhaseA_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_ScnAtk_Mod_PhaseDeploiement_1_WeightExtended
+    Condition = Cheated_ScnAtk_Mod_Condition_CommandPhase_WeightExtended
+    Destination = Cheated_ScnAtk_Mod_PhaseA_1_WeightExtended
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnAtk_Mod_Transition_PhaseB_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_ScnAtk_Mod_PhaseA_1_WeightExtended
+    Condition = Cheated_ScnAtk_Mod_Condition_PhaseB_WeightExtended
+    Destination = Cheated_ScnAtk_Mod_PhaseB_1_WeightExtended
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnAtk_Mod_Transition_PhaseC_WeightExtended is TIAGeneralStrategyTransition
+(
+    Origine = Cheated_ScnAtk_Mod_PhaseB_1_WeightExtended
+    Condition = Cheated_ScnAtk_Mod_Condition_PhaseC_WeightExtended
+    Destination = Cheated_ScnAtk_Mod_PhaseC_1_WeightExtended
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export Cheated_ScnAtk_Mod_Choose_Strategy_WeightExtended is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_Scn_Support_AntiTank,
+        ~/Cheated_Scn_Support_Transports,
+
+        ~/Cheated_Scn_Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnAtk_Mod_PhaseDeploiement_1_WeightExtended is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_Scn_Support_AntiTank,
+        ~/Cheated_Scn_Support_Transports,
+
+        ~/Cheated_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        // Grosse attaque
+        ~/Cheated_ScnAtk_ZoneAttack_Main_A_WeightExtended,      // Plusieurs tanks pour un budget donné // 200 => un cmd pas cher, une reco pas cher, et le reste de tanks pour fill le budget en random.
+        ~/Cheated_ScnAtk_Artillery_Support_WeightExtended,      // Artillerie pas chère                 //  80
+        ~/Cheated_ScnAtk_Artillery_TriggerHappy_1for4Corridors_WeightExtended,
+
+        // Reste du front
+        ~/Cheated_ScnAtk_ZoneAttack_Adaptive_A_WeightExtended,  // ~100
+        ~/Cheated_ScnAtk_ZoneAttack_Adaptive_A_WeightExtended,  // ~100
+        ~/Cheated_ScnAtk_ZoneAttack_Adaptive_A_WeightExtended,  // ~100
+        ~/Cheated_ScnAtk_ZoneAttack_Adaptive_A_WeightExtended,  // ~100
+
+        ~/Cheated_ScnAtk_Artillery_Sniper,
+        ~/Cheated_ScnAtk_Artillery_Expensive,
+
+        ~/Cheated_Scn_Reco,            // 40 par reco
+        ~/Cheated_Scn_AirReco,
+        ~/Cheated_Scn_Reco,            // 40 par reco
+
+        ~/Cheated_Scn_Supply_Skirmish_Allied,
+
+    ] + ~/Cheated_ScnAtk_Defenses_Airstrike_Arti_Shuffle_WeightExtended
+
+    +   ~/Cheated_ScnAtk_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_A_WeightExtended
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnAtk_Mod_PhaseA_1_WeightExtended is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_Scn_Support_AntiTank,
+        ~/Cheated_Scn_Support_Transports,
+        ~/Cheated_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Support de la main Attack
+        //------------------------------
+        ~/Cheated_ScnAtk_Attack_MBT_Support,
+        ~/Cheated_ScnAtk_Artillery_TriggerHappy_1for4Corridors_WeightExtended,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Cheated_ScnAtk_ZoneAttack_Main_A_WeightExtended,      // Plusieurs tanks pour un budget donné // 200
+        ~/Cheated_ScnAtk_Artillery_Support_WeightExtended,      // Artillerie pas chère                 //  80
+        ~/Cheated_ScnAtk_Artillery_Expensive_WeightExtended,
+
+        ~/Cheated_ScnAtk_ZoneAttack_Adaptive_A_WeightExtended,
+        ~/Cheated_ScnAtk_ZoneAttack_Adaptive_A_WeightExtended,
+        ~/Cheated_ScnAtk_ZoneAttack_Adaptive_A_WeightExtended,
+
+        ~/Cheated_ScnAtk_Artillery_Sniper,
+        ~/Cheated_ScnAtk_Artillery_Expensive,
+
+        // On insère ici une attaque qui va chercher les objectifs.
+        ~/Cheated_ScnAtk_Attack_Objectives,
+
+        ~/Cheated_Scn_Airstrike_Offense,
+        ~/Cheated_Scn_Airstrike_Defense,
+
+        ~/Cheated_Scn_SuperCommander,
+
+        ~/Cheated_Scn_Reco,
+        ~/Cheated_ScnAtk_Attack_MBT, // MBT devient low prio en phase A pour éviter de pomper trop de thune
+
+        ~/Cheated_ScnAtk_Artillery_Sniper,
+        ~/Cheated_ScnAtk_Artillery_Expensive,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        //~/Cheated_ScnAtk_Maintain_CorridorDefenses,
+        ~/Cheated_Scn_Supply_Skirmish_Allied,
+
+    ] + ~/Cheated_ScnAtk_Defenses_Airstrike_Arti_Shuffle_WeightExtended
+
+    +   ~/Cheated_ScnAtk_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_A_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_A_WeightExtended
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnAtk_Mod_PhaseB_1_WeightExtended is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 2
+    GeneratorList =
+    [
+        ~/Cheated_ScnAtk_Maintain_ZoneAttacks,
+        ~/Cheated_ScnAtk_Maintain_CorridorAttacks,
+        ~/Cheated_ScnAtk_Maintain_ObjectiveAttacks,
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_ScnAtk_Support_AntiTank,
+        ~/Cheated_Scn_Support_Transports,
+        ~/Cheated_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Cheated_ScnAtk_Attack_Objectives,
+
+        ~/Cheated_ScnAtk_ZoneAttack_Adaptive_B_WeightExtended,
+        ~/Cheated_ScnAtk_ZoneAttack_Adaptive_B_WeightExtended,
+        ~/Cheated_ScnAtk_ZoneAttack_Adaptive_B_WeightExtended,
+
+        ~/Cheated_Scn_SuperCommander,
+
+        ~/Cheated_ScnAtk_Artillery_TriggerHappy,
+        ~/Cheated_ScnAtk_Artillery_Sniper,
+
+        ~/Cheated_ScnAtk_ZoneAttack_Main_B_WeightExtended,      // Plusieurs tanks pour un budget donné // 200
+        ~/Cheated_ScnAtk_Artillery_Support_WeightExtended,      // Artillerie pas chère                 //  80
+        ~/Cheated_ScnAtk_Artillery_Expensive_WeightExtended,
+
+        //------------------------------
+        // Support de la main Attack
+        //------------------------------
+        ~/Cheated_ScnAtk_Attack_MBT,
+
+        ~/Cheated_Scn_Airstrike_Offense,
+        ~/Cheated_Scn_Airstrike_Defense,
+
+        // Maintien
+        ~/Cheated_Scn_Reco,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Cheated_Scn_Supply_Skirmish_Allied,
+
+    ] + ~/Cheated_ScnAtk_Defenses_Airstrike_Arti_Shuffle_WeightExtended
+
+    +   ~/Cheated_ScnAtk_Scaling_B_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_B_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_B_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_B_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_B_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_B_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_B_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_B_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_B_WeightExtended
+)
+//-------------------------------------------------------------------------
+export Cheated_ScnAtk_Mod_PhaseC_1_WeightExtended is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 1
+    GeneratorList =
+    [
+        ~/Cheated_ScnAtk_Maintain_ZoneAttacks,
+        ~/Cheated_ScnAtk_Maintain_CorridorAttacks,
+        ~/Cheated_ScnAtk_Maintain_ObjectiveAttacks,
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Cheated_ScnAtk_Support_AntiTank,
+        ~/Cheated_Scn_Support_Transports,
+        ~/Cheated_Scn_Supply_Skirmish,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Cheated_ScnAtk_Attack_Objectives,
+
+        ~/Cheated_ScnAtk_ZoneAttack_Adaptive_C_WeightExtended,
+        ~/Cheated_ScnAtk_ZoneAttack_Adaptive_C_WeightExtended,
+        ~/Cheated_ScnAtk_ZoneAttack_Adaptive_C_WeightExtended,
+
+        ~/Cheated_ScnAtk_Artillery_TriggerHappy,
+        ~/Cheated_ScnAtk_Artillery_Sniper,
+
+        ~/Cheated_Scn_SuperCommander,
+
+        ~/Cheated_ScnAtk_ZoneAttack_Main_C_WeightExtended,      // Plusieurs tanks pour un budget donné // 200
+        ~/Cheated_ScnAtk_Artillery_Support_WeightExtended,      // Artillerie pas chère                 //  80
+        ~/Cheated_ScnAtk_Artillery_Expensive_WeightExtended,
+
+        //------------------------------
+        // Support de la main Attack
+        //------------------------------
+        ~/Cheated_ScnAtk_Attack_MBT,
+
+        ~/Cheated_Scn_Airstrike_Offense,
+        ~/Cheated_Scn_Airstrike_Defense,
+
+        // Maintien
+        ~/Cheated_Scn_Reco,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Cheated_Scn_Supply_Skirmish_Allied,
+
+    ] + ~/Cheated_ScnAtk_Defenses_Airstrike_Arti_Shuffle_WeightExtended
+
+    +   ~/Cheated_ScnAtk_Scaling_C_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_C_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_C_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_C_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_C_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_C_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_C_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_C_WeightExtended
+    +   ~/Cheated_ScnAtk_Scaling_C_WeightExtended
+)
+
+Cheated_ScnAtk_Defenses_Airstrike_Arti_Shuffle_WeightExtended is
+[
+    ~/Cheated_Scn_Airstrike_Assault,
+    ~/Cheated_ScnAtk_Artillery_Expensive_WeightExtended,
+    ~/Cheated_Scn_Airstrike_Offense,
+    ~/Cheated_ScnAtk_Artillery_TriggerHappy_WeightExtended,
+    ~/Cheated_Scn_AirReco,
+    ~/Cheated_Scn_Airstrike_Defense,
+    ~/Cheated_ScnAtk_Artillery_TriggerHappy_1for4Corridors_WeightExtended,
+    ~/Cheated_Scn_Maintain_AirStrike,
+    ~/Cheated_ScnAtk_Maintain_Artillery,
+]
+
+Cheated_ScnAtk_Scaling_A_WeightExtended is
+[
+    ~/Cheated_ScnAtk_ZoneAttack_Main_A_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_Artillery_Expensive_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_ZoneAttack_Adaptive_A_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_ZoneAttack_Adaptive_A_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_ZoneAttack_Main_A_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+
+    ~/Cheated_ScnAtk_ZoneAttack_Main_A_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_Artillery_Expensive_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_ZoneAttack_Adaptive_A_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_ZoneAttack_Adaptive_A_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_ZoneAttack_Main_A_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+]
+
+Cheated_ScnAtk_Scaling_B_WeightExtended is
+[
+    ~/Cheated_ScnAtk_ZoneAttack_Main_B_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_Artillery_Expensive_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_ZoneAttack_Adaptive_B_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_ZoneAttack_Adaptive_B_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_ZoneAttack_Main_B_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+
+    ~/Cheated_ScnAtk_ZoneAttack_Main_B_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_Artillery_Expensive_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_ZoneAttack_Adaptive_B_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_ZoneAttack_Adaptive_B_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_ZoneAttack_Main_B_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+]
+
+Cheated_ScnAtk_Scaling_C_WeightExtended is
+[
+    ~/Cheated_ScnAtk_ZoneAttack_Main_C_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_Artillery_Expensive_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_ZoneAttack_Adaptive_C_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_ZoneAttack_Adaptive_C_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_ZoneAttack_Main_C_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+
+    ~/Cheated_ScnAtk_ZoneAttack_Main_C_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_Artillery_Expensive_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_ZoneAttack_Adaptive_C_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_ZoneAttack_Adaptive_C_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_ZoneAttack_Main_C_Autogen_WeightExtended,
+    ~/Cheated_ScnAtk_Artillery_TriggerHappy_Autogen_WeightExtended,
+]

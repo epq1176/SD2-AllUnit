@@ -1,0 +1,23 @@
+export ModelFile_Jeep_HMG_US is 'GameData:Assets\3D\Units\USA\Vehicule\Jeep_M2\Jeep_M2_HMG.Ase2NdfBin'
+
+Modele_Jeep_HMG_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Jeep_HMG_US
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Jeep_HMG_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Vehicule\Jeep_M2_MID\Jeep_M2_HMG_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Jeep_HMG_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Vehicule\LODS\Jeep_M2_HMG_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+

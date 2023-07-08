@@ -1,0 +1,22 @@
+export ModelFile_BeoPanzer_II_C_GER is 'GameData:Assets\3D\Units\GER\Char\BeoPanzer_II_C_GER\BeoPanzer_II_C_GER.Ase2NdfBin'
+
+Modele_BeoPanzer_II_C_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_BeoPanzer_II_C_GER
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_BeoPanzer_II_C_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\BeoPanzer_II_C_GER_MID\BeoPanzer_II_C_GER_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_BeoPanzer_II_C_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\BeoPanzer_II_C_GER_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

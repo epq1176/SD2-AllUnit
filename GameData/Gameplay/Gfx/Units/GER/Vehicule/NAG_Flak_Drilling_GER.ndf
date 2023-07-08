@@ -1,0 +1,22 @@
+export ModelFile_NAG_Flak_Drilling_GER is 'GameData:Assets\3D\Units\GER\Vehicule\NAG_Flak_Drilling\NAG_Flak_Drilling.Ase2NdfBin'
+
+Modele_NAG_Flak_Drilling_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_NAG_Flak_Drilling_GER
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_NAG_Flak_Drilling_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\NAG_Flak_Drilling_MID\NAG_Flak_Drilling_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_NAG_Flak_Drilling_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\LODS\NAG_Flak_Drilling_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

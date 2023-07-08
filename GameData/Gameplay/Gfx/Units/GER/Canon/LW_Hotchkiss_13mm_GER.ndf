@@ -1,0 +1,22 @@
+export ModelFile_LW_Hotchkiss_13mm_GER is 'GameData:Assets\3D\Units\GER\Canon\Hotchkiss_M1914\Hotchkiss_M1914.Ase2NdfBin'
+
+Modele_LW_Hotchkiss_13mm_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_LW_Hotchkiss_13mm_GER
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_LW_Hotchkiss_13mm_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\Hotchkiss_M1914_MID\Hotchkiss_M1914_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_LW_Hotchkiss_13mm_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\LODS\Hotchkiss_M1914_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

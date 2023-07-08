@@ -1,0 +1,122 @@
+template TemplateMeshDescriptor_sPz_41_GER [ ModelFile ] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+
+ModelFile_Boites_sPz_41_GER is 'GameData:Assets\3D\Units\GER\Canon\sPz_41_GER\Boites_sPz_41_GER.Ase2NdfBin'
+
+Gfx_sPz_41_GER_1 is TDepictionTemplate //servant gauche
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_sPz_41_GER( ModelFile = ModelFile_Servant_AT_GER)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_sPz_41_GER( ModelFile = ModelFile_Servant_AT_GER_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_sPz_41_GER( ModelFile = ModelFile_Servant_AT_GER)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_sPz_41_GER( ModelFile = ModelFile_Servant_AT_GER_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Gauche
+)
+
+Gfx_sPz_41_GER_2 is TDepictionTemplate //servant droite
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_sPz_41_GER( ModelFile = ModelFile_Servant_AT_GER_Secondary)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_sPz_41_GER( ModelFile = ModelFile_Servant_AT_GER_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_sPz_41_GER( ModelFile = ModelFile_Servant_AT_GER_Secondary)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_sPz_41_GER( ModelFile = ModelFile_Servant_AT_GER_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_Servant_Droite
+)
+
+//Arme
+// private AnimationPath_sPz_41_GER is 'GameData:Assets\3D\Units\GER\Canon\sPz_41_GER\'
+// sPz_41_GER_Anim_Tree is DepictionAnimationTreeNode
+// (
+//     IAStates = AnimationStateAll
+//     IAOldStates = AnimationStateAll
+//     DefaultAnimationStates = AnimationStateEngineStopping
+//     Animations =
+//     (
+//         [TemplateAnimation(Animation= 'sPz_41_GER_Idle' + '.Ase2NdfBin' Loop=false EventAnimation=false AnimationPath = AnimationPath_sPz_41_GER Mask = AnimationMask_All())]
+//     )
+
+//     Childs =
+//     [
+//         TAnimNode(IAStates = AnimationStateInstantFire                                                                  Anim = 'sPz_41_GER_Fire'       Loop = false EventAnimation = true AnimationPath = AnimationPath_sPz_41_GER Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStopping | AnimationStateEngineStopTurning                             Anim = 'sPz_41_GER_Deploy'     Loop = false AnimationPath = AnimationPath_sPz_41_GER Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStarting | AnimationStateEngineStartTurning                            Anim = 'sPz_41_GER_Fold'       Loop = false AnimationPath = AnimationPath_sPz_41_GER Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateLeft                                           Anim = 'sPz_41_GER_Turn_Left'  Loop = true  AnimationPath = AnimationPath_sPz_41_GER Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateRight                                          Anim = 'sPz_41_GER_Turn_Right' Loop = true  AnimationPath = AnimationPath_sPz_41_GER Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateMoving | AnimationStateEngineRunning                                         Anim = 'sPz_41_GER_Move'       Loop = true  AnimationPath = AnimationPath_sPz_41_GER Mask = AnimationMask_All()
+//             Childs = [
+//                 TAnimNode(IAStates = AnimationStateBack                                                                 Anim = 'sPz_41_GER_Move_Back'  Loop = true  AnimationPath = AnimationPath_sPz_41_GER Mask = AnimationMask_All()),
+//         ]),
+//     ]
+// )
+
+// DepictionOperator_SkeletalAnimation_sPz_41_GER is [Template_DepictionOperator_SkeletalAnimation_With_Tree_TEST(AnimationTree = sPz_41_GER_Anim_Tree)]
+
+Gfx_sPz_41_GER_Weapon is TDepictionTemplate //arme
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = CommonDepictionSelector
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_sPz_41_GER ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_sPz_41_GER_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_sPz_41_GER_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_sPz_41_GER ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_sPz_41_GER_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_sPz_41_GER_LOW ),
+        ]
+
+        SubDepictions = []
+        Operators = //DepictionOperator_SkeletalAnimation_Canon_ZIS2_57mmAT_SOV +
+            DepictionOperatorNode_ResetUnit +
+            DepictionOperatorNode_Propulsion_2Wheels_Canon +
+            DepictionOperator_Carriable_Canon +
+            DepictionOperator_TurretAim_Canon +
+            DepictionOperator_TurretRecoil_Canon
+        Actions = Weapons_sPz_41_GER
+    )
+
+SubDepiction_Servant_1_sPz_41_GER is TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_sPz_41_GER_1 )
+SubDepiction_Servant_2_sPz_41_GER is TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_sPz_41_GER_2 )
+SubDepiction_Canon_AT_sPz_41_GER is TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_sPz_41_GER_Weapon )
+
+Gfx_sPz_41_GER is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate //les boites
+    (
+        OverrideMeshBoundingBoxMin = [-500,-500,0]
+        OverrideMeshBoundingBoxMax = [ 500, 500,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_sPz_41_GER( ModelFile = ModelFile_Boites_sPz_41_GER) ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_sPz_41_GER( ModelFile = ModelFile_Boites_sPz_41_GER) ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_sPz_41_GER( ModelFile = ModelFile_Boites_sPz_41_GER) ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_sPz_41_GER( ModelFile = ModelFile_Boites_sPz_41_GER) ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_sPz_41_GER( ModelFile = ModelFile_Boites_sPz_41_GER) ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_sPz_41_GER( ModelFile = ModelFile_Boites_sPz_41_GER) ),
+        ]
+        NodeNamesForSelection = [ 'Canon_AT', 'servant_G' , 'servant_D']
+        SubDepictions = [SubDepiction_Servant_1_sPz_41_GER,
+                        SubDepiction_Servant_2_sPz_41_GER,
+                        SubDepiction_Canon_AT_sPz_41_GER]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+    )
+)

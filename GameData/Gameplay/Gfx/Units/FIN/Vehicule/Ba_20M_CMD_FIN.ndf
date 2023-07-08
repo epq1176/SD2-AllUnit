@@ -1,0 +1,22 @@
+export ModelFile_Ba_20M_CMD_FIN is 'GameData:Assets\3D\Units\FIN\Vehicule\BA_20M_CMD_FIN\BA_20M_CMD_FIN.Ase2NdfBin'
+
+Modele_Ba_20M_CMD_FIN is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_Ba_20M_CMD_FIN
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Ba_20M_CMD_FIN_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:Assets\3D\Units\FIN\Vehicule\BA_20M_CMD_FIN_MID\BA_20M_CMD_FIN_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Ba_20M_CMD_FIN_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:Assets\3D\Units\FIN\Vehicule\LODS\BA_20M_CMD_FIN_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

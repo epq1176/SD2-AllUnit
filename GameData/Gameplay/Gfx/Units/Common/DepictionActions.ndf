@@ -1,0 +1,366 @@
+//Notation : prefix (DepictionOperator), feature (Chassis, ...), classe (small, heavy, etc)
+// AVEC DES UNDERSCORE SEPARATEURS
+
+// ****************************************************************************************************************************************
+// *** StressLevel ************************************************************************************************************************
+// ****************************************************************************************************************************************
+template StressFumeeBateau
+[
+    SousMobile = ''
+] is TOnMobileHappening
+(
+    ActionDescriptor = TActionCall
+    (
+        LocalVariables =
+        [
+            private parScale is TPinnableValue(InitialValue = 1.0),
+        ]
+        Action =  FX_Binder_Degats_Bateaux
+        NamedParams = MAP
+        [
+            ( 'parScale', parScale ),
+        ]
+    )
+    SousMobile = <SousMobile>
+)
+
+template StressFumeeNoire
+[
+    SousMobile = ''
+] is TOnMobileHappening
+(
+    ActionDescriptor = TActionCall
+    (
+        LocalVariables =
+        [
+            private parScale is TPinnableValue(InitialValue = 1.0),
+        ]
+        Action = FX_Binder_Degats
+        NamedParams = MAP
+        [
+            ('parScale', parScale),
+        ]
+    )
+    SousMobile = <SousMobile>
+)
+
+template FxCadavre
+[
+    SousMobile = '',
+    Fx,
+    PlaySoundFX = false,
+] is TCompositeHappening
+(
+    SubHappenings =
+    [
+        TOnMobileHappening
+        (
+            ActionDescriptor = TActionCall
+            (
+                LocalVariables =
+                [
+                    private parScale is TPinnableValue(InitialValue = 1.0),
+                ]
+                Action = <Fx>
+                NamedParams = MAP
+                [
+                    ('parScaleFactor', parScale),
+                ]
+            )
+            SousMobile = <SousMobile>
+        ),
+    ] +(
+    <PlaySoundFX> ?
+    [
+        TSoundHappening
+        (
+            SoundDesc = Template_SoundDescriptor_Incendie
+            (
+                UseSpecialLoop = True
+            )
+            RepetitionCount = 150
+            RepetitionPeriod = 4
+            Volume = 0.8
+        ),
+    ] : [])
+)
+
+DepictionAction_Wrecked_Common is MAP[
+    ( ['Fx_Cadavre_OnCrash'],  TSequencingActionHappening( ActionDescriptor = FX_Vehicule_Dest02_Leger )),
+    ( ['Fx_Cadavre_Sticker'], TSequencingActionHappening( ActionDescriptor = FX_Vehicule_CadavreSticker)),
+]
+DepictionAction_Wrecked_1 is DepictionAction_Wrecked_Common + MAP[
+    ( ['Fx_Cadavre_Fire'], FxCadavre(SousMobile = "FX_Stress_01" Fx = FX_Vehicule_Dest02_Fire PlaySoundFX = true)),
+]
+
+DepictionAction_Wrecked_2 is DepictionAction_Wrecked_Common + MAP[
+    ( ['Fx_Cadavre_Fire'], TCompositeHappening
+    (
+        SubHappenings =
+        [
+            FxCadavre(SousMobile = "FX_Stress_01" Fx = FX_Vehicule_Dest02_Fire PlaySoundFX = true),
+            FxCadavre(SousMobile = "FX_Stress_02" Fx = FX_Vehicule_Dest02_Fire),
+        ]
+    )),
+]
+
+DepictionAction_Wrecked_Avion_1 is DepictionAction_Wrecked_Common + MAP[
+    ( ['Fx_Cadavre_Fire'], FxCadavre(SousMobile = "FX_Stress_01" Fx = FX_Vehicule_Dest02_Fire PlaySoundFX = true)),
+    ( ['Fx_Cadavre_Crashing'], TCompositeHappening
+    (
+        SubHappenings =
+        [
+            TOnMobileHappening(SousMobile = "FX_Stress_01" ActionDescriptor = TActionCall(Action = fx_crash_avion)),
+            TSoundHappening
+            (
+                SoundDesc = Template_SoundDescriptor_CrashAvion
+                (
+                    UseSpecialLoop = False
+                )
+                Volume = 2
+            ),
+        ]
+    )),
+]
+
+DepictioncAtion_Wrecked_Avion_2 is DepictionAction_Wrecked_Common + MAP[
+    ( ['Fx_Cadavre_Fire'], TCompositeHappening
+    (
+        SubHappenings =
+        [
+            FxCadavre(SousMobile = "FX_Stress_01" Fx = FX_Vehicule_Dest02_Fire_Avion PlaySoundFX = true),
+            FxCadavre(SousMobile = "FX_Stress_02" Fx = FX_Vehicule_Dest02_Fire_Avion),
+        ]
+    )),
+    ( ['Fx_Cadavre_Crashing'], TCompositeHappening
+    (
+        SubHappenings =
+        [
+            TOnMobileHappening(SousMobile = "FX_Stress_01" ActionDescriptor = TActionCall(Action = fx_crash_avion)),
+            TSoundHappening
+            (
+                SoundDesc = Template_SoundDescriptor_CrashAvion
+                (
+                    UseSpecialLoop = False
+                )
+                Volume = 2
+            ),
+        ]
+    )),
+]
+
+Stress_1 is MAP
+[
+    ( ['Stress_1', 'fumee_bateau'], StressFumeeBateau( SousMobile = 'Fx_Stress_01' ) ),
+    ( ['Stress_1', 'fumee_noire'  ], StressFumeeNoire  ( SousMobile = 'Fx_Stress_01' )),
+]
+
+Stress_2 is Stress_1 + MAP
+[
+    ( ['Stress_2', 'fumee_bateau'], StressFumeeBateau( SousMobile = 'Fx_Stress_02' ) ),
+    ( ['Stress_2', 'fumee_noire'  ], StressFumeeNoire  ( SousMobile = 'Fx_Stress_02' )),
+]
+
+DepictionAction_StressLevel_1 is DepictionAction_Wrecked_1 + Stress_1
+DepictionAction_StressLevel_2 is DepictionAction_Wrecked_2 + Stress_2
+
+DepictionAction_StressLevel_Avion_1 is DepictionAction_Wrecked_Avion_1 + Stress_1
+DepictionAction_StressLevel_Avion_2 is DepictioncAtion_Wrecked_Avion_2 + Stress_2
+
+// ****************************************************************************************************************************************
+// *** MovementFX *************************************************************************************************************************
+// ****************************************************************************************************************************************
+
+{
+    cours d'anglais :
+    Tracked = chenillé
+    Wheeled = équippé de roues
+}
+
+
+DepictionAction_MovementFX_Wheeled is MAP[
+    (
+        ['fx_deplacement'],
+        TCompositeHappening
+        (
+            SubHappenings =
+            [
+                TOnMobileHappening
+                (
+                    ActionDescriptor = fx_binder_deplacement_roues_gauche
+                    SousMobile = "FX_Fumee_Roue_G1"
+                ),
+                TOnMobileHappening
+                (
+                    ActionDescriptor = fx_binder_deplacement_roues_droite
+                    SousMobile = "FX_Fumee_Roue_D1"
+                )
+            ]
+        )
+    )
+]
+
+DepictionAction_MovementFX_Tracked is MAP[
+    (
+        ['fx_deplacement'],
+        TCompositeHappening
+        (
+            SubHappenings =
+            [
+                TOnMobileHappening
+                (
+                    ActionDescriptor = fx_binder_deplacement_chenilles_gauche
+                    SousMobile = "FX_Fumee_Chenille_G1"
+                ),
+                TOnMobileHappening
+                (
+                    ActionDescriptor = fx_binder_deplacement_chenilles_droite
+                    SousMobile = "FX_Fumee_Chenille_G1"
+                ),
+            ]
+        )
+    ),
+]
+
+
+DepictionAction_SplashFX_Amphibious is MAP
+[
+    (
+        ['fx_Amphibious_Splash'],
+        TOnMobileHappening
+        (
+            ActionDescriptor = TActionCall
+            (
+                LocalVariables =
+                [
+                    private parVehicleWidth is TPinnableValue(InitialValue = 0),
+                    private parVehicleLength is TPinnableValue(InitialValue = 0),
+                ]
+                Action = Fx_Amphibie_Splash
+                NamedParams = MAP
+                [
+                    ('parVehicleWidth' , parVehicleWidth ),
+                    ('parVehicleLength', parVehicleLength)
+                ]
+            )
+            SousMobile = 'Fx_Eau'
+        )
+    ),
+]
+
+
+DepictionAction_MovementFX_Amphibious is MAP
+[
+    (
+        ['fx_deplacement_Amphibious'],
+        TOnMobileHappening
+        (
+            ActionDescriptor = TActionCall
+            (
+                LocalVariables =
+                [
+                    private parVehicleWidth is TPinnableValue(InitialValue = 0),
+                    private parVehicleLength is TPinnableValue(InitialValue = 0),
+                ]
+                Action = Fx_Deplacement_Amphibie_NoPropulsion
+                NamedParams = MAP
+                [
+                    ('parVehicleWidth' , parVehicleWidth ),
+                    ('parVehicleLength', parVehicleLength)
+                ]
+            )
+            SousMobile = 'Fx_Eau'
+        )
+    ),
+]
+
+
+
+// propulsion arrière centrale
+
+// autre types de propulsion pour le moment
+DepictionAction_FX_Amphibious_NoPropulsion is DepictionAction_SplashFX_Amphibious + DepictionAction_MovementFX_Amphibious
+
+
+
+template Template_DepictionAction_Rotor
+[
+    PaleLength = 1000,
+    PaleCount = 3,
+    SousMobile = ''
+] is TOnMobileHappening
+(
+    ActionDescriptor = TActionCall
+    (
+        Action = FX_Binder_Rotor
+        NamedParams = MAP[ ('parPaleLength', <PaleLength>),
+                           ('parPaleCount', <PaleCount>) ]
+    )
+    SousMobile = <SousMobile>
+)
+// ****************************************************************************************************************************************
+// *** Chaleur ****************************************************************************************************************************
+// ****************************************************************************************************************************************
+
+
+
+
+// ****************************************************************************************************************************************
+// *** Avions *****************************************************************************************************************************
+// ****************************************************************************************************************************************
+
+template template_Happening_SingleReactorAirplane
+[
+    Action,
+] is TCompositeHappening
+(
+    SubHappenings =
+    [
+        TOnMobileHappening(SousMobile = 'FX_Reacteur_1' {TODO mettre une boite prévue pour les réacteurs} ActionDescriptor = <Action>),
+    ]
+)
+
+template template_Happening_DoubleReactorAirplane
+[
+    Action,
+] is TCompositeHappening
+(
+    SubHappenings =
+    [
+        TOnMobileHappening(SousMobile = 'FX_Reacteur_1' {TODO mettre une boite prévue pour les réacteurs} ActionDescriptor = <Action>),
+        TOnMobileHappening(SousMobile = 'FX_Reacteur_2' {TODO mettre une boite prévue pour les réacteurs} ActionDescriptor = <Action>),
+    ]
+)
+
+DepictionAction_SingleReactorAirplane is MAP [( ['reactor'], template_Happening_SingleReactorAirplane (Action = FX_Binder_Avion_Reacteur) )]
+DepictionAction_DoubleReactorAirplane is MAP [( ['reactor'], template_Happening_DoubleReactorAirplane (Action = FX_Binder_Avion_Reacteur) )]
+
+
+
+DepictionAction_Flare_Simple is MAP
+[
+    ( ['fx_flare'], TOnMobileHappening
+        (
+            ActionDescriptor = TActionCall
+            (
+                LocalVariables =
+                [
+                    parIntensite        is TPinnableValue ( ExpectedType : float    InitialValue = 1      ),
+                    parTaille           is TPinnableValue ( ExpectedType : float    InitialValue = 1      ),
+                    parInitialSpeed     is TPinnableValue ( ExpectedType : float3   InitialValue = [0,0,0]),
+                    parTimeBetweenFlare is TPinnableValue ( ExpectedType : float    InitialValue = 0.5    ),
+                    parSweepAngle       is TPinnableValue ( ExpectedType : float    InitialValue = 0      ),
+                ]
+                NamedParams = MAP[  ('parIntensite',        parIntensite),
+                                    ('parTaille',           parTaille),
+                                    ('parInitialSpeed',     parInitialSpeed),
+                                    ('parSweepAngle',       parSweepAngle),
+                                    ('parTimeBetweenFlare', parTimeBetweenFlare),]
+                Action = Fx_Flare
+            )
+            SousMobile = 'fx_leurre'
+        )
+    )
+]
+
+

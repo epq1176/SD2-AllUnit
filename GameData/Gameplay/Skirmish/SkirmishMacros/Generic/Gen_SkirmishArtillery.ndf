@@ -1,0 +1,242 @@
+//-------------------------------------------------------------------------
+//----------------------------- ARTILLERY ---------------------------------
+//-------------------------------------------------------------------------
+// Maintains
+//-------------------------------------------------------------------------
+export Gen_Maintain_Artillery is TMacroActionDescriptor_Artillery_Specific
+(
+    GenerationType = TGenerationType_Maintain
+)
+// Missions
+//-------------------------------------------------------------------------
+private template Gen_Template_Artillery_TriggerHappy
+[
+    GenerationType = TGenerationType_FixedSize,
+    NumberOfMacro:int = 0,
+    MinimumResourceForLaunch:int = 0,
+    ParametresDeMission = MAP[],
+]
+is TMacroActionDescriptor_Artillery_Specific
+(
+    GenerationType = <GenerationType>
+    NumberOfMacro = <NumberOfMacro>
+    MinimumResourceForLaunch = <MinimumResourceForLaunch>
+
+    SupportPointSafetyMargin = 1
+    MinimumThreatPerSplashForKill = 30 //45
+    MinimumThreatPerSplashForSupport = 20 //30
+    SupportStrikeRatio = [0.25]
+    ArtilleryPositionOffset = 12500 * Metre // 2500m ingame
+    OutMapArtilleryPositionOffset = 7000 * Metre
+    ArtilleryUpdateOffset = 3750 * Metre
+    ThreatThresholdValue = 10
+    MoveOutThreatProbability = 0.1
+    IgnoreSafePath = true //on n'esquive pas la menace sur le chemin
+
+    DeployOnRoad = True
+    DistanceToOptimumStartDuringDeployment = 3000*Metre
+
+    ArtilleryStrikeThreatBonusPerTags =  // Multiplicateur appliqué lors du calcul de la menace d'unité. On applique le premier bonus qui match les tags de notre unité (1 par défaut)
+    [
+        (["Canon_AT"], 2.0),
+        (["Canon_AA"], 1.5),
+        (["Infanterie_Standard"], 1.5),
+        (["Infanterie_SuperCMD"], 3.0),
+        (["Infanterie_Spec_Defense"], 2.0),
+        (["Artillerie"], 2.0),
+        (["Vehicule_Logistique"], 2.0),
+        (["Vehicule_SuperCMD"], 2.0),
+        (["Infanterie"], 1.5),
+        (["Vehicule"], 0.5),
+        (["Char"], 0.3),
+        (["Char_SuperCMD"], 0.5),
+    ]
+
+    PoolModelList = [
+        ~/Gen_Pool_Artillery_TriggerHappy,
+    ]
+
+    ParametresDeMission = <ParametresDeMission>
+)
+//-------------------------------------------------------------------------
+export Gen_Artillery_TriggerHappy_1for4Corridors is Gen_Template_Artillery_TriggerHappy
+(
+    GenerationType = TGenerationType_BasedOnNumberOfCorridors
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Generation,
+            TGenerationSettingHolder(NumberOfCorridorsPerMission = 4 ConsiderOnlySameDescriptor = true)
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Gen_Artillery_TriggerHappy is Gen_Template_Artillery_TriggerHappy
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+)
+//-------------------------------------------------------------------------
+export Gen_Artillery_TriggerHappy_Autogen is Gen_Template_Artillery_TriggerHappy
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    MinimumResourceForLaunch = ~/Gen_MinimumResourceForLaunch_Stage_1
+)
+//-------------------------------------------------------------------------
+export Gen_Artillery_Support is TMacroActionDescriptor_Artillery_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    SupportPointSafetyMargin = 1
+    MinimumThreatPerSplashForKill = 20 //30
+    MinimumThreatPerSplashForSupport = 15 //30
+    SupportStrikeRatio = [0.1]
+
+    ArtilleryPositionOffset = 10000 * Metre //2000m in game
+    OutMapArtilleryPositionOffset = 7000 * Metre
+    ArtilleryUpdateOffset = 3750 * Metre
+    ThreatThresholdValue = 10
+    MoveOutThreatProbability = 0.1
+    IgnoreSafePath = true //on n'esquive pas la menace sur le chemin
+
+    DeployOnRoad = True
+    DistanceToOptimumStartDuringDeployment = 3000*Metre
+
+    ArtilleryStrikeThreatBonusPerTags =  // Multiplicateur appliqué lors du calcul de la menace d'unité. On applique le premier bonus qui match les tags de notre unité (1 par défaut)
+    [
+        (["Canon_AT"], 2.0),
+        (["Canon_AA"], 1.5),
+        (["Infanterie_Standard"], 2.5),
+        (["Infanterie_Spec_Defense"], 2.5),
+        (["Infanterie"], 2.0),
+        (["Artillerie"], 1.5),
+        (["Vehicule_Logistique"], 0.5),
+        (["Vehicule"], 1.0),
+        (["Char"], 0.5),
+    ]
+
+    PoolModelList = [
+        ~/Gen_Pool_Artillery_Support,
+    ]
+
+    ParametresDeMission = MAP
+    [
+        (
+            ESettingType/Coordination,
+            TCoordinationSettingHolder(CoordinationType = ESupportingStatus/IsSupport)
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+private template Gen_Template_Artillery_Expensive
+[
+    MinimumResourceForLaunch:int = 0,
+]
+is TMacroActionDescriptor_Artillery_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+    MinimumResourceForLaunch = <MinimumResourceForLaunch>
+
+    SupportPointSafetyMargin = 1
+    MinimumThreatPerSplashForKill = 55
+    MinimumThreatPerSplashForSupport = 999
+    SupportStrikeRatio = [0.0]
+    ArtilleryPositionOffset = 6000 * Metre
+    OutMapArtilleryPositionOffset = 6000 * Metre
+    ArtilleryUpdateOffset = 0 * Metre
+    ThreatThresholdValue = 10
+    MoveOutThreatProbability = 0.1
+    IgnoreSafePath = true //on n'esquive pas la menace sur le chemin
+
+    DeployOnRoad = True
+    DistanceToOptimumStartDuringDeployment = 3000*Metre
+
+    ArtilleryStrikeThreatBonusPerTags =  // Multiplicateur appliqué lors du calcul de la menace d'unité. On applique le premier bonus qui match les tags de notre unité (1 par défaut)
+    [
+        (["Canon_AT"], 1.0),
+        (["Canon_AA"], 1.0),
+        (["Infanterie_Standard"], 2.5),
+        (["Infanterie_Spec_Defense"], 2.5),
+        (["Infanterie"], 2.0),
+        (["Artillerie"], 3.0),
+        (["Vehicule_Logistique"], 0.5),
+        (["Vehicule"], 0.5),
+        (["Char"], 0.5),
+    ]
+
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [
+        ~/Gen_Pool_Artillery_Expensive,
+    ]
+)
+//-------------------------------------------------------------------------
+export Gen_Artillery_Expensive is Gen_Template_Artillery_Expensive
+(
+)
+//-------------------------------------------------------------------------
+export Gen_Artillery_Expensive_Autogen is Gen_Template_Artillery_Expensive
+(
+    MinimumResourceForLaunch = ~/Gen_MinimumResourceForLaunch_Stage_1
+)
+
+
+// Pool Models
+//-------------------------------------------------------------------------
+export Gen_Pool_Artillery_TriggerHappy is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{80abfc9e-d931-11e8-975b-2c56dc4c150d}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        PriceComparisonMethod = EPriceComparatorType/Random
+        TagsPriority = [
+            "Artillerie_Longue_Portee",
+            "Artillerie_Courte_Portee",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Gen_Pool_Artillery_Support is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{80abfc9f-d931-11e8-a532-2c56dc4c150d}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        PriceComparisonMethod = EPriceComparatorType/Cheapest
+        TagsPriority = [
+            "Artillerie_Courte_Portee",
+            "Artillerie_Longue_Portee",
+            "Artillerie_Observateur",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Gen_Pool_Artillery_Expensive is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{80abfca0-d931-11e8-a4d2-2c56dc4c150d}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = false
+        PriceComparisonMethod = EPriceComparatorType/Random
+        TagsPriority = [
+            "Artillerie_MLRS",
+            "Artillerie_Observateur",
+        ]
+        ForbiddenTags = [
+            "Avion",
+        ]
+    ),
+    ]
+)
+

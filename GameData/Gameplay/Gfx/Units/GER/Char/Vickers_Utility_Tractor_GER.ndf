@@ -1,0 +1,22 @@
+export ModelFile_Vickers_Utility_Tractor_GER is 'GameData:Assets\3D\Units\GER\Char\Vickers_Utility_Tractor_GER\Vickers_Utility_Tractor_GER.Ase2NdfBin'
+
+Modele_Vickers_Utility_Tractor_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Vickers_Utility_Tractor_GER
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Vickers_Utility_Tractor_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\Vickers_Utility_Tractor_GER_MID\Vickers_Utility_Tractor_GER_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Vickers_Utility_Tractor_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\Vickers_Utility_Tractor_GER_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

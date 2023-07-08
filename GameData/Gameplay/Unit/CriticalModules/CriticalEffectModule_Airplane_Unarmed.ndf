@@ -1,0 +1,39 @@
+
+export CriticalEffectModule_Airplane_Unarmed is TCriticalEffectModuleDescriptor
+(
+    Bounds = (1,100)
+    TerrainCriticalEffectTimer = 5.0
+
+    EffectsOnFront =
+    [
+        TCriticalEffect(Roll=(1,10) Token='CRITIC101' EffectsPack=~/UnitEffect_Effet_Meurt TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True), // Wing ripped off -> mort
+        TCriticalEffect(Roll=(11,20) Token='CRITIC102' EffectsPack=~/UnitEffect_Effet_Meurt TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True), // Elevator ripped off -> mort
+        TCriticalEffect(Roll=(21,30) Token='CRITIC103' EffectsPack=~/UnitEffect_Effet_Meurt TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True), // Engine on fire -> mort
+        TCriticalEffect(Roll=(31,40) Token='CRITIC104' EffectsPack=~/UnitEffect_Effet_Meurt TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True), // Fuel tank on fire -> mort
+        TCriticalEffect(Roll=(41,50) Token='CRITIC105' EffectsPack=~/UnitEffect_Effet_Meurt TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True), // Pilot killed -> mort
+        TCriticalEffect(Roll=(51,60) Token='CRITIC106' EffectsPack=~/UnitEffect_Critic_Deroute TimeOut=30 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Pilot injured -> Deroute
+        TCriticalEffect(Roll=(61,70) Token='CRITIC112' EffectsPack=~/UnitEffect_Critic_Deroute TimeOut=30 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Pilot Panicked -> Deroute
+    ]
+
+    EffectsOnSides =
+    [
+        TCriticalEffect(Roll=(1,10) Token='CRITIC101' EffectsPack=~/UnitEffect_Effet_Meurt TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True), // Wing ripped off -> mort
+        TCriticalEffect(Roll=(11,20) Token='CRITIC102' EffectsPack=~/UnitEffect_Effet_Meurt TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True), // Elevator ripped off -> mort
+        TCriticalEffect(Roll=(21,30) Token='CRITIC103' EffectsPack=~/UnitEffect_Effet_Meurt TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True), // Engine on fire -> mort
+        TCriticalEffect(Roll=(31,40) Token='CRITIC104' EffectsPack=~/UnitEffect_Effet_Meurt TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True), // Fuel tank on fire -> mort
+        TCriticalEffect(Roll=(41,50) Token='CRITIC105' EffectsPack=~/UnitEffect_Effet_Meurt TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True), // Pilot killed -> mort
+        TCriticalEffect(Roll=(51,60) Token='CRITIC106' EffectsPack=~/UnitEffect_Critic_Deroute TimeOut=30 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Pilot injured -> Deroute
+        TCriticalEffect(Roll=(61,70) Token='CRITIC112' EffectsPack=~/UnitEffect_Critic_Deroute TimeOut=30 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Pilot Panicked -> Deroute
+    ]
+
+    EffectsOnRear =
+    [
+        TCriticalEffect(Roll=(1,10) Token='CRITIC101' EffectsPack=~/UnitEffect_Effet_Meurt TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True), // Wing ripped off -> mort
+        TCriticalEffect(Roll=(11,20) Token='CRITIC102' EffectsPack=~/UnitEffect_Effet_Meurt TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True), // Elevator ripped off -> mort
+        TCriticalEffect(Roll=(21,30) Token='CRITIC103' EffectsPack=~/UnitEffect_Effet_Meurt TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True), // Engine on fire -> mort
+        TCriticalEffect(Roll=(31,40) Token='CRITIC104' EffectsPack=~/UnitEffect_Effet_Meurt TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True), // Fuel tank on fire -> mort
+        TCriticalEffect(Roll=(41,50) Token='CRITIC105' EffectsPack=~/UnitEffect_Effet_Meurt TimeOut=0 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=False DisplayOnDeath=True), // Pilot killed -> mort
+        TCriticalEffect(Roll=(51,60) Token='CRITIC106' EffectsPack=~/UnitEffect_Critic_Deroute TimeOut=30 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Pilot injured -> Deroute
+        TCriticalEffect(Roll=(61,70) Token='CRITIC112' EffectsPack=~/UnitEffect_Critic_Deroute TimeOut=30 RepairCost=-1 KeepWhenLeavingTerrain=False Unique=True DisplayOnDeath=False), // Pilot Panicked -> Deroute
+    ]
+)

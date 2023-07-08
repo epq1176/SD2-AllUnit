@@ -1,0 +1,22 @@
+export ModelFile_M10_Achilles_POL is 'GameData:Assets\3D\Units\POL\Char\Achilles\Achilles.Ase2NdfBin'
+
+Modele_M10_Achilles_POL is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M10_Achilles_POL
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_M10_Achilles_POL_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Char\Achilles_MID\Achilles_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_M10_Achilles_POL_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Char\LODS\Achilles_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

@@ -1,0 +1,22 @@
+export ModelFile_Renault_UE_ROU is 'GameData:Assets\3D\Units\ROU\Char\UE630\UE630.Ase2NdfBin'
+
+Modele_Renault_UE_ROU is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Renault_UE_ROU
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Renault_UE_ROU_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Char\UE630_MID\UE630_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Renault_UE_ROU_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Char\LODS\UE630_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

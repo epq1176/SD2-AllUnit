@@ -1,0 +1,17 @@
+export Gfx_Bunker_HMG_US is TDepictionTemplate //arme
+(
+    RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+    Selector = CommonBunkerDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_HMG_M2HB_US ),
+        DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_HMG_M2HB_US_MID ),
+        DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_HMG_M2HB_US_LOW ),
+        DepictionDescriptor_LOD_None()
+    ]
+
+    SubDepictions = []
+    Operators = Operators_HMG_M2HB_US
+    Actions = Weapons_HMG_M2HB_US
+)
+
+export ModelFile_Bunker_HMG_US is ~/ModelFile_HMG_M2HB_US

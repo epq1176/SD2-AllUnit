@@ -1,0 +1,22 @@
+export ModelFile_Konigstiger_Henshel is 'GameData:Assets\3D\Units\GER\Char\Konigstiger_H\Konigstiger_H.Ase2NdfBin'
+
+Modele_Konigstiger_Henshel is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Konigstiger_Henshel
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Konigstiger_Henshel_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\Konigstiger_H_MID\Konigstiger_H_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Konigstiger_Henshel_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\Konigstiger_H_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

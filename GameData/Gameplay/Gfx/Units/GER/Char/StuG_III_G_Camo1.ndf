@@ -1,0 +1,22 @@
+export ModelFile_StuG_III_G_Camo1 is 'GameData:Assets\3D\Units\GER\Char\StuG_III_G_Camo1\StuG_III_G_Camo1.Ase2NdfBin'
+
+Modele_StuG_III_G_Camo1 is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_StuG_III_G_Camo1
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_StuG_III_G_Camo1_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\StuG_III_G_Camo1_MID\StuG_III_G_Camo1_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_StuG_III_G_Camo1_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\StuG_III_G_Camo1_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

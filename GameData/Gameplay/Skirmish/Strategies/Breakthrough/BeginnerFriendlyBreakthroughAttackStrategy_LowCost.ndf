@@ -1,0 +1,181 @@
+//-------------------------------------------------------------------------
+//------------------------- PHASES LOW COST -------------------------------
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+export BeFriend_BTAtk_PhaseDeploiement_LowCost is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/BeFriend_BTAtk_Support_AntiTank,
+        ~/BeFriend_BTAtk_Support_Transports,
+
+        ~/BeFriend_BTAtk_Supply_Skirmish,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        // Front coherent
+        ~/BeFriend_BTAtk_Attack_Adaptive,          // ~100
+        ~/BeFriend_BTAtk_Attack_Adaptive,          // ~100
+        ~/BeFriend_BTAtk_Attack_Adaptive,          // ~100
+        ~/BeFriend_BTAtk_Attack_Filler,            // budget 40
+
+        // Grosse attaque - moins prio car moins de sous
+        ~/BeFriend_BTAtk_Attack_Objectives,
+        ~/BeFriend_BTAtk_Artillery_Support,
+        ~/BeFriend_BTAtk_Reco,            // 40 par reco
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/BeFriend_BTAtk_Supply_Skirmish_Allied,
+
+    ] + ~/BeFriend_BTAtk_Defenses_Airstrike_Arti_Shuffle_Deploy
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+        // Dans les difficultés supérieures il faudra surement maintenir
+        // ça avec des maintain à la phase d'après pour être sur qu'on
+        // produise de nouvelles unités
+    +   ~/BeFriend_BTAtk_Scaling
+    +   ~/BeFriend_BTAtk_Scaling
+)
+//-------------------------------------------------------------------------
+export BeFriend_BTAtk_Phase_A_LowCost is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 3
+    GeneratorList =
+    [
+        // Même chose que la phase de déploiement mais avec les Défenses
+        // prioritaires sur les attaques. L'idée est de lancer ses attaques dès
+        // le début, mais de renforcer les backlines avant de récupérer de nos pertes
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/BeFriend_BTAtk_Support_AntiTank,
+        ~/BeFriend_BTAtk_Support_Transports,
+
+        ~/BeFriend_BTAtk_Supply_Skirmish,
+        ~/BeFriend_BTAtk_Attack_Filler,
+
+        //------------------------------
+        // Défenses prioritaires
+        //------------------------------
+        // Statiques pour tenir le terrain
+        ~/BeFriend_BTAtk_Defense_Static_Adaptive, // Canon AT - Chasseur de char - ATInf - HMG - Flamer // 85
+        ~/BeFriend_BTAtk_Defense_Static_Adaptive,
+        ~/BeFriend_BTAtk_Defense_Static_AA,
+        ~/BeFriend_BTAtk_Defense_Static_Adaptive,
+
+        //------------------------------
+        // Support de la main Attack
+        //------------------------------
+        ~/BeFriend_BTAtk_Attack_MBT_Support,       // Un gros tank à voir si on le passe en phase A // DISABLE REINFORCEMENTS + TGenerationType_RestrictedNumberOfLaunch 1
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/BeFriend_BTAtk_Attack_Main,              // Plusieurs tanks pour un budget donné // 200
+        ~/BeFriend_BTAtk_Artillery_Support,        // Artillerie pas chère                 //  80
+
+        ~/BeFriend_BTAtk_Attack_Adaptive,  // Faire du code pour adapater le budget en fonction de l'income
+        ~/BeFriend_BTAtk_Attack_Adaptive,
+        ~/BeFriend_BTAtk_Attack_Adaptive,
+
+        // On insère ici une attaque qui va chercher les objectifs.
+        ~/BeFriend_BTAtk_Attack_Objectives,
+
+        ~/BeFriend_BTAtk_SuperCommander,
+
+        ~/BeFriend_BTAtk_Reco,
+        ~/BeFriend_BTAtk_Attack_MBT, // MBT devient low prio en phase A pour éviter de pomper trop de thune
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/BeFriend_BTAtk_Maintain_CorridorDefenses,
+        ~/BeFriend_BTAtk_Supply_Skirmish_Allied,
+
+    ] + ~/BeFriend_BTAtk_Airstrike_Arti_Shuffle // On sort les défenses d'ici pour les mettre plus haut dans la prio
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+        // Dans les difficultés supérieures il faudra surement maintenir
+        // ça avec des maintain à la phase d'après pour être sur qu'on
+        // produise de nouvelles unités
+    +   ~/BeFriend_BTAtk_Scaling
+    +   ~/BeFriend_BTAtk_Scaling
+)
+//-------------------------------------------------------------------------
+private template BeFriend_BTAtk_Phase_B_and_C_LowCost_template
+[
+]
+is TSequenceGeneratorDescriptor
+(
+    // Les défenses prioritaires disparaissent, on lance un nouveau set d'attaques
+    // On ajoute des défenses non prioritaires dynamiques
+    NbMacroActionAllowedToProduceSimultaneous = 2
+    GeneratorList =
+    [
+        ~/BeFriend_BTAtk_Maintain_CorridorAttacks,
+        ~/BeFriend_BTAtk_Maintain_ObjectiveAttacks,
+        ~/BeFriend_BTAtk_Maintain_CorridorDefenses,
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/BeFriend_BTAtk_Support_AntiTank,
+        ~/BeFriend_BTAtk_Support_Transports,
+        ~/BeFriend_BTAtk_Supply_Skirmish,
+        ~/BeFriend_BTAtk_Attack_Filler,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/BeFriend_BTAtk_Attack_Objectives,
+
+        ~/BeFriend_BTAtk_Attack_Adaptive,  // Faire du code pour adapater le budget en fonction de l'income
+        ~/BeFriend_BTAtk_Attack_Adaptive,
+        ~/BeFriend_BTAtk_Attack_Adaptive,
+
+        ~/BeFriend_BTAtk_SuperCommander,
+
+        ~/BeFriend_BTAtk_Attack_Main,              // Plusieurs tanks pour un budget donné // 200
+        ~/BeFriend_BTAtk_Artillery_Support,        // Artillerie pas chère                 //  80
+
+        //------------------------------
+        // Support de la main Attack
+        //------------------------------
+        ~/BeFriend_BTAtk_Attack_MBT,       // On enlève le status support // DISABLE REINFORCEMENTS + TGenerationType_RestrictedNumberOfLaunch 1
+
+        // Maintien
+        ~/BeFriend_BTAtk_Reco,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/BeFriend_BTAtk_Supply_Skirmish_Allied,
+
+
+    ] + ~/BeFriend_BTAtk_Defenses_Airstrike_Arti_Shuffle
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+        // Dans les difficultés supérieures il faudra surement maintenir
+        // ça avec des maintain à la phase d'après pour être sur qu'on
+        // produise de nouvelles unités
+    +   ~/BeFriend_BTAtk_Scaling
+    +   ~/BeFriend_BTAtk_Scaling
+)
+//-------------------------------------------------------------------------
+export BeFriend_BTAtk_Phase_B_LowCost is BeFriend_BTAtk_Phase_B_and_C_LowCost_template()
+//-------------------------------------------------------------------------
+export BeFriend_BTAtk_Phase_C_LowCost is BeFriend_BTAtk_Phase_B_and_C_LowCost_template()
+//-------------------------------------------------------------------------

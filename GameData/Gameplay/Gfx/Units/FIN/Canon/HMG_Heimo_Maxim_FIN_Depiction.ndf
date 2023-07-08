@@ -1,0 +1,123 @@
+template TemplateMeshDescriptor_HMG_Heimo_Maxim_FIN [ ModelFile ] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+
+// export ModelFile_Boites_MG_Maxim_SOV is 'GameData:Assets\3D\Units\SOV\Canon\MG_Maxim_SOV\Boites_HMG_Heimo_Maxim_FIN.Ase2NdfBin'
+
+Gfx_HMG_Heimo_Maxim_FIN_1 is TDepictionTemplate //servant gauche
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_HMG_Heimo_Maxim_FIN( ModelFile = ModelFile_Jaeger_FIN)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_HMG_Heimo_Maxim_FIN( ModelFile = ModelFile_Jaeger_FIN_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_HMG_Heimo_Maxim_FIN( ModelFile = ModelFile_Jaeger_FIN)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_HMG_Heimo_Maxim_FIN( ModelFile = ModelFile_Jaeger_FIN_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_ServantMG_Browning_Gauche
+    // Actions = Weapons_Mortar
+)
+
+Gfx_HMG_Heimo_Maxim_FIN_2 is TDepictionTemplate //servant droite
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_HMG_Heimo_Maxim_FIN( ModelFile = ModelFile_Jaeger_FIN_1)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_HMG_Heimo_Maxim_FIN( ModelFile = ModelFile_Jaeger_FIN_1_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_HMG_Heimo_Maxim_FIN( ModelFile = ModelFile_Jaeger_FIN_1)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_HMG_Heimo_Maxim_FIN( ModelFile = ModelFile_Jaeger_FIN_1_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_ServantMG_Browning_Droite
+    // Actions = Weapons_Mortar
+)
+
+//Arme
+// private AnimationPath_HMG_Heimo_Maxim_FIN is 'GameData:Assets\3D\Units\SOV\Canon\MG_Maxim_SOV\'
+// export MG_Maxim_SOV_Anim_Tree is DepictionAnimationTreeNode
+// (
+//     IAStates = AnimationStateAll
+//     IAOldStates = AnimationStateAll
+//     DefaultAnimationStates = AnimationStateEngineStopping
+//     Animations =
+//     (
+//         [TemplateAnimation(Animation= 'MG_Maxim_SOV' + '.Ase2NdfBin' Loop=false EventAnimation=false AnimationPath = AnimationPath_HMG_Heimo_Maxim_FIN Mask = AnimationMask_All())]
+//     )
+
+//     Childs =
+//     [
+//         TAnimNode(IAStates = AnimationStateContinuousFire                                                               Anim = 'MG_Maxim_SOV_Fire'       Loop = true  AnimationPath = AnimationPath_HMG_Heimo_Maxim_FIN Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStopping | AnimationStateEngineStopTurning                             Anim = 'MG_Maxim_SOV_Deploy'     Loop = false AnimationPath = AnimationPath_HMG_Heimo_Maxim_FIN Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStarting | AnimationStateEngineStartTurning                            Anim = 'MG_Maxim_SOV_Fold'       Loop = false AnimationPath = AnimationPath_HMG_Heimo_Maxim_FIN Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateLeft                                           Anim = 'MG_Maxim_SOV_Turn_Left'  Loop = true  AnimationPath = AnimationPath_HMG_Heimo_Maxim_FIN Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateRight                                          Anim = 'MG_Maxim_SOV_Turn_Right' Loop = true  AnimationPath = AnimationPath_HMG_Heimo_Maxim_FIN Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateMoving | AnimationStateEngineRunning                                         Anim = 'MG_Maxim_SOV_Move'       Loop = true  AnimationPath = AnimationPath_HMG_Heimo_Maxim_FIN Mask = AnimationMask_All()
+//             Childs = [
+//                 TAnimNode(IAStates = AnimationStateBack                                                                 Anim = 'MG_Maxim_SOV_Move_Back'  Loop = true  AnimationPath = AnimationPath_HMG_Heimo_Maxim_FIN Mask = AnimationMask_All()),
+//         ]),
+//     ]
+// )
+
+// DepictionOperator_SkeletalAnimation_HMG_Heimo_Maxim_FIN is [Template_DepictionOperator_SkeletalAnimation_With_Tree_TEST(AnimationTree = MG_Maxim_SOV_Anim_Tree)]
+
+Gfx_HMG_Heimo_Maxim_FIN_Weapon is TDepictionTemplate //arme
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = CommonDepictionSelector
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_HMG_Heimo_Maxim_FIN ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_HMG_Heimo_Maxim_FIN_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_HMG_Heimo_Maxim_FIN_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_HMG_Heimo_Maxim_FIN ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_HMG_Heimo_Maxim_FIN_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_HMG_Heimo_Maxim_FIN_LOW ),
+        ]
+
+        SubDepictions = []
+        Operators = //DepictionOperator_SkeletalAnimation_MMG_M1919_Rangers_US +
+            DepictionOperatorNode_ResetUnit +
+            DepictionOperator_Carriable_MMG +
+            DepictionOperator_TurretAim_MMG +
+            DepictionOperator_TurretRecoil_MMG
+        Actions = Weapons_HMG_Heimo_Maxim_FIN
+    )
+
+SubDepiction_Servant_1_HMG_Heimo_Maxim_FIN is TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_HMG_Heimo_Maxim_FIN_1 )
+SubDepiction_Servant_2_HMG_Heimo_Maxim_FIN is TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_HMG_Heimo_Maxim_FIN_2 )
+SubDepiction_Canon_AT_HMG_Heimo_Maxim_FIN is TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_HMG_Heimo_Maxim_FIN_Weapon )
+
+Gfx_HMG_Heimo_Maxim_FIN is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate //les boites
+    (
+        OverrideMeshBoundingBoxMin = [-500,-500,0]
+        OverrideMeshBoundingBoxMax = [ 500, 500,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_HMG_Heimo_Maxim_FIN( ModelFile = ModelFile_Boites_MG_Maxim_SOV) ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_HMG_Heimo_Maxim_FIN( ModelFile = ModelFile_Boites_MG_Maxim_SOV) ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_HMG_Heimo_Maxim_FIN( ModelFile = ModelFile_Boites_MG_Maxim_SOV) ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_HMG_Heimo_Maxim_FIN( ModelFile = ModelFile_Boites_MG_Maxim_SOV) ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_HMG_Heimo_Maxim_FIN( ModelFile = ModelFile_Boites_MG_Maxim_SOV) ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_HMG_Heimo_Maxim_FIN( ModelFile = ModelFile_Boites_MG_Maxim_SOV) ),
+        ]
+        NodeNamesForSelection = [ 'Canon_AT', 'servant_G' , 'servant_D']
+        SubDepictions = [SubDepiction_Servant_1_HMG_Heimo_Maxim_FIN,
+                        SubDepiction_Servant_2_HMG_Heimo_Maxim_FIN,
+                        SubDepiction_Canon_AT_HMG_Heimo_Maxim_FIN]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+    )
+)

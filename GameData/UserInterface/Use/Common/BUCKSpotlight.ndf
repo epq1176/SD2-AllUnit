@@ -1,0 +1,14 @@
+template SpotlightDescriptor
+[
+    ElementName : string = "",
+]
+is AuraDescriptor
+(
+    ElementName = <ElementName>
+    VerticalTextureToken = "CommonTexture_Spotlight_VerticalTileTexture"
+    HorizontalTextureToken = "CommonTexture_Spotlight_HorizontalTileTexture"
+    TopLeftTexture = "CommonTexture_Spotlight_CornerTexture_TopLeft"
+    TopRightTexture = "CommonTexture_Spotlight_CornerTexture_TopRight"
+    BottomRightTexture = "CommonTexture_Spotlight_CornerTexture_BottomRight"
+    BottomLeftTexture = "CommonTexture_Spotlight_CornerTexture_BottomLeft"
+)

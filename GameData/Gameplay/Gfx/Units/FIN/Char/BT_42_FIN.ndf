@@ -1,0 +1,22 @@
+export ModelFile_BT_42_FIN is 'GameData:Assets\3D\Units\FIN\Char\BT_42\BT_42.Ase2NdfBin'
+
+Modele_BT_42_FIN is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_BT_42_FIN
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_BT_42_FIN_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Char\BT_42_MID\BT_42_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_BT_42_FIN_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Char\LODS\BT_42_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

@@ -1,0 +1,22 @@
+export ModelFile_Partisan_MG_Maxim_SOV is 'GameData:Assets\3D\Units\GER\Canon\I_MG42\I_MG42.Ase2NdfBin'
+
+Modele_Partisan_MG_Maxim_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Partisan_MG_Maxim_SOV
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Partisan_MG_Maxim_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\I_MG42_MID\I_MG42_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Partisan_MG_Maxim_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\LODS\I_MG42_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

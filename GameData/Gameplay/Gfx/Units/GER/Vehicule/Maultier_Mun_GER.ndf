@@ -1,0 +1,22 @@
+export ModelFile_Maultier_Mun_GER is 'GameData:Assets\3D\Units\GER\Vehicule\Maultier_Mun\Maultier_Mun.Ase2NdfBin'
+
+Modele_Maultier_Mun_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Maultier_Mun_GER
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Maultier_Mun_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\Maultier_Mun_MID\Maultier_Mun_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Maultier_Mun_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\LODS\Maultier_Mun_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

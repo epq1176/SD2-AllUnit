@@ -1,0 +1,332 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+export Descriptor_Trait_Aerial_AutoResolve is TEntityDescriptor
+(
+    DescriptorId      = GUID:{a19a9b84-1542-4223-9289-47e64dc7ba1c}
+    ClassNameForDebug = 'Trait_Aerial_AutoResolve'
+    Modules           = [
+        // TraitUI
+        TTraitUIModuleDescriptor
+        (
+            TokenName = ''
+            TokenDescription = ''
+        ),
+
+        // TraitUnitPowerModifier
+        TTraitUnitPowerModifierModuleDescriptor
+        (
+            UnitPowerType =
+            [
+                EUnitPowerType/Assault,
+                EUnitPowerType/Armored,
+                EUnitPowerType/Artillery,
+                EUnitPowerType/AntiAirplane,
+            ]
+            UnitPowerBonusModifierType = ~/ModifierType_Multiplicatif
+            UnitPowerBonusValue = 0
+        ),
+
+    ]
+)
+export Descriptor_Trait_Bombed_Unit is TEntityDescriptor
+(
+    DescriptorId      = GUID:{3fa4714e-82b2-4cd5-8f4f-c5e4994a4250}
+    ClassNameForDebug = 'Trait_Bombed_Unit'
+    Modules           = [
+        // TraitUI
+        TTraitUIModuleDescriptor
+        (
+            TokenName = ''
+            TokenDescription = ''
+        ),
+
+        // TraitBombed
+        TTraitUnitBombedModuleDescriptor
+        (
+        ),
+
+    ]
+)
+export Descriptor_Trait_Defense_Allied is TEntityDescriptor
+(
+    DescriptorId      = GUID:{f96d06f0-353a-47c2-b6d3-32a564d632d0}
+    ClassNameForDebug = 'Trait_Defense_Allied'
+    Modules           = [
+        // TraitBattleAdditionalUnits
+        TTraitBattleAdditionalUnitsModuleDescriptor
+        (
+            TacticalAdditionalUnits = 'DeckDefenseAllies'
+        ),
+
+        // TraitResourceModifier
+        TTraitBattleResourceModifierModuleDescriptor
+        (
+            TicketPointsBonus = 0
+            TicketPointsBonusAddingType = AddingType/Max
+            TicketPointsBonusAddingTag = 'Defense'
+            IncomeBonus = 0
+            IncomeBonusAddingType = AddingType/None
+            IncomeBonusAddingTag = ''
+        ),
+
+        // TraitUI
+        TTraitUIModuleDescriptor
+        (
+            TokenName = ''
+            TokenDescription = ''
+        ),
+
+    ]
+)
+export Descriptor_Trait_Defense_Axis is TEntityDescriptor
+(
+    DescriptorId      = GUID:{7c1358d4-0b0e-4ae3-a611-e4e23167f95f}
+    ClassNameForDebug = 'Trait_Defense_Axis'
+    Modules           = [
+        // TraitBattleAdditionalUnits
+        TTraitBattleAdditionalUnitsModuleDescriptor
+        (
+            TacticalAdditionalUnits = 'DeckDefenseAxis'
+        ),
+
+        // TraitResourceModifier
+        TTraitBattleResourceModifierModuleDescriptor
+        (
+            TicketPointsBonus = 0
+            TicketPointsBonusAddingType = AddingType/Max
+            TicketPointsBonusAddingTag = 'Defense'
+            IncomeBonus = 0
+            IncomeBonusAddingType = AddingType/None
+            IncomeBonusAddingTag = ''
+        ),
+
+        // TraitUI
+        TTraitUIModuleDescriptor
+        (
+            TokenName = ''
+            TokenDescription = ''
+        ),
+
+    ]
+)
+export Descriptor_Trait_Defense_FIN is TEntityDescriptor
+(
+    DescriptorId      = GUID:{bb577b2b-1fe8-4ec8-940a-73ab8869c45f}
+    ClassNameForDebug = 'Trait_Defense_FIN'
+    Modules           = [
+        // TraitBattleAdditionalUnits
+        TTraitBattleAdditionalUnitsModuleDescriptor
+        (
+            TacticalAdditionalUnits = 'DeckDefenseFIN'
+        ),
+
+        // TraitResourceModifier
+        TTraitBattleResourceModifierModuleDescriptor
+        (
+            TicketPointsBonus = 0
+            TicketPointsBonusAddingType = AddingType/Max
+            TicketPointsBonusAddingTag = 'Defense'
+            IncomeBonus = 0
+            IncomeBonusAddingType = AddingType/None
+            IncomeBonusAddingTag = ''
+        ),
+
+        // TraitUI
+        TTraitUIModuleDescriptor
+        (
+            TokenName = ''
+            TokenDescription = ''
+        ),
+
+    ]
+)
+export Descriptor_Trait_Defense_FrontFort is TEntityDescriptor
+(
+    DescriptorId      = GUID:{c867c654-1149-445c-b5bc-790614002c3b}
+    ClassNameForDebug = 'Trait_Defense_FrontFort'
+    Modules           = [
+        // TraitBattleAdditionalUnits
+        TTraitBattleAdditionalUnitsModuleDescriptor
+        (
+            TacticalAdditionalUnits = 'DeckDefense_FrontFort'
+        ),
+
+        // TraitResourceModifier
+        TTraitBattleResourceModifierModuleDescriptor
+        (
+            TicketPointsBonus = 0
+            TicketPointsBonusAddingType = AddingType/Max
+            TicketPointsBonusAddingTag = 'Defense'
+            IncomeBonus = 0
+            IncomeBonusAddingType = AddingType/None
+            IncomeBonusAddingTag = ''
+        ),
+
+        // TraitUI
+        TTraitUIModuleDescriptor
+        (
+            TokenName = ''
+            TokenDescription = ''
+        ),
+
+    ]
+)
+export Descriptor_Trait_Defense_HON is TEntityDescriptor
+(
+    DescriptorId      = GUID:{49a21acc-a7bb-4bdc-9155-012df33b21f7}
+    ClassNameForDebug = 'Trait_Defense_HON'
+    Modules           = [
+        // TraitBattleAdditionalUnits
+        TTraitBattleAdditionalUnitsModuleDescriptor
+        (
+            TacticalAdditionalUnits = 'DeckDefense_HON'
+        ),
+
+        // TraitResourceModifier
+        TTraitBattleResourceModifierModuleDescriptor
+        (
+            TicketPointsBonus = 0
+            TicketPointsBonusAddingType = AddingType/Max
+            TicketPointsBonusAddingTag = 'Defense'
+            IncomeBonus = 0
+            IncomeBonusAddingType = AddingType/None
+            IncomeBonusAddingTag = ''
+        ),
+
+        // TraitUI
+        TTraitUIModuleDescriptor
+        (
+            TokenName = ''
+            TokenDescription = ''
+        ),
+
+    ]
+)
+export Descriptor_Trait_Defense_ROU2 is TEntityDescriptor
+(
+    DescriptorId      = GUID:{1cdaa644-1ba1-45e6-a9e1-c7b2d80b9123}
+    ClassNameForDebug = 'Trait_Defense_ROU2'
+    Modules           = [
+        // TraitBattleAdditionalUnits
+        TTraitBattleAdditionalUnitsModuleDescriptor
+        (
+            TacticalAdditionalUnits = 'DeckDefense_ROU2'
+        ),
+
+        // TraitResourceModifier
+        TTraitBattleResourceModifierModuleDescriptor
+        (
+            TicketPointsBonus = 0
+            TicketPointsBonusAddingType = AddingType/Max
+            TicketPointsBonusAddingTag = 'Defense'
+            IncomeBonus = 0
+            IncomeBonusAddingType = AddingType/None
+            IncomeBonusAddingTag = ''
+        ),
+
+        // TraitUI
+        TTraitUIModuleDescriptor
+        (
+            TokenName = ''
+            TokenDescription = ''
+        ),
+
+    ]
+)
+export Descriptor_Trait_Deployed is TEntityDescriptor
+(
+    DescriptorId      = GUID:{600ebe4b-c6c9-417f-a964-f4762b6cbd7e}
+    ClassNameForDebug = 'Trait_Deployed'
+    Modules           = [
+        // TraitAutoresolveBalanceOfPowerBonusModifier
+        TTraitAutoresolveBalanceOfPowerBonusModifierModuleDescriptor
+        (
+            BalanceOfPowerBonus = 2
+        ),
+
+        // TraitUI
+        TTraitUIModuleDescriptor
+        (
+            TokenName = ''
+            TokenDescription = ''
+        ),
+
+    ]
+)
+export Descriptor_Trait_Ground_AutoResolve is TEntityDescriptor
+(
+    DescriptorId      = GUID:{ec8e7bd4-5950-42ce-a3e2-501a99129bbe}
+    ClassNameForDebug = 'Trait_Ground_AutoResolve'
+    Modules           = [
+        // TraitLimitAerialCasualties
+        TTraitLimitAerialCasualtiesDescriptor
+        (
+        ),
+
+        // TraitUI
+        TTraitUIModuleDescriptor
+        (
+            TokenName = ''
+            TokenDescription = ''
+        ),
+
+        // TraitUnitPowerModifier
+        TTraitUnitPowerModifierModuleDescriptor
+        (
+            UnitPowerType =
+            [
+                EUnitPowerType/Aircraft,
+                EUnitPowerType/Evasion,
+            ]
+            UnitPowerBonusModifierType = ~/ModifierType_Multiplicatif
+            UnitPowerBonusValue = 0
+        ),
+
+    ]
+)
+export Descriptor_Trait_HQ_AdditionalPawn is TEntityDescriptor
+(
+    DescriptorId      = GUID:{5429df1b-65bf-4397-b6e9-3c853724009d}
+    ClassNameForDebug = 'Trait_HQ_AdditionalPawn'
+    Modules           = [
+        // TraitBattlePawnNumberModifier
+        TTraitBattlePawnNumberModifierModuleDescriptor
+        (
+            TacticalAdditionalPawn = 2
+        ),
+
+        // TraitUI
+        TTraitUIModuleDescriptor
+        (
+            TokenName = ''
+            TokenDescription = ''
+        ),
+
+    ]
+)
+export Descriptor_Trait_HQ_Resource is TEntityDescriptor
+(
+    DescriptorId      = GUID:{0e7e9b86-10ec-4663-9877-264f2a6c0990}
+    ClassNameForDebug = 'Trait_HQ_Resource'
+    Modules           = [
+        // TraitResourceModifier
+        TTraitBattleResourceModifierModuleDescriptor
+        (
+            TicketPointsBonus = 30
+            TicketPointsBonusAddingType = AddingType/Add
+            TicketPointsBonusAddingTag = ''
+            IncomeBonus = 6
+            IncomeBonusAddingType = AddingType/Add
+            IncomeBonusAddingTag = ''
+        ),
+
+        // TraitUI
+        TTraitUIModuleDescriptor
+        (
+            TokenName = ''
+            TokenDescription = ''
+        ),
+
+    ]
+)

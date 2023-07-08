@@ -1,0 +1,481 @@
+export DevOnly_TestStrategy is TIAGeneralStrategy
+(
+    StrategyName = "Test"
+    FirstGenerator = DevOpener
+    TransitionList =
+    [
+        Transition_Dev,
+    ]
+)
+
+export DevOnly_IdleStrategy is TIAGeneralStrategy
+(
+    StrategyName = "Idle"
+    FirstGenerator = DevIdle
+    TransitionList =
+    [
+    ]
+)
+
+export Transition_Dev is TIAGeneralStrategyTransition
+(
+    Origine = DevOpener
+    Condition = DevCondition
+    Destination = DevFinisher
+)
+
+export DevCondition is TSequenceCondition_Wait
+(
+    Time = 30
+)
+
+export DevOpener is TSequenceGeneratorDescriptor
+(
+    GeneratorList =
+    [
+        //~/Dev_Defense_simple,
+        ~/Dev_Reco,
+        ~/Dev_Attack_simple,
+        //~/Dev_Attack_with_transports,
+        //~/Dev_Airstrike,
+    ]
+)
+
+export DevIdle is TSequenceGeneratorDescriptor
+(
+    GeneratorList =
+    [
+        //~/Dev_Defense_simple,
+        ~/Dev_Reco,
+    ]
+)
+
+export DevFinisher is TSequenceGeneratorDescriptor
+(
+    GeneratorList =
+    [
+        ~/Dev_Defense_simple,
+        ~/Dev_Reco,
+        ~/Dev_Attack_simple,
+        ~/Dev_Attack_WithPricePool,
+        ~/Dev_Attack_with_transports,
+        ~/Dev_Airstrike,
+        ~/Dev_mission_renfort_AT,
+        //~/Dev_mission_renfort_Arti,
+        ~/Dev_Supply,
+        ~/Dev_Artillery,
+    ]
+)
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Macro Actions
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+export Dev_Reco is TMacroActionDescriptor_Reco_Common
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 2
+
+    IgnoreSafePath = false
+    PoolModelList = [
+        ~/Dev_poolModelReco,
+    ]
+)
+
+export Dev_Reco_Aerienne is TMacroActionDescriptor_AirReco_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    MaxAirplaneCountOnBattlefield = 2
+    TicksBetweenTwoMissions = 25
+    TicksBetweenTwoLaunch = 10
+
+    PoolModelList = [
+        ~/Dev_poolModelAerialReco,
+    ]
+)
+
+export Dev_Attack_simple is TMacroActionDescriptor_Attack_Common
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    UtiliserMenaceLaPlusProcheAuLieuDeLaPlusFaible = true
+    DisableReinforcement = false
+    LaunchASAP_RatioMin = 1.0
+    RatioMinimumPourAttaquer = 0.1
+    IgnoreSafePath = true
+
+    PoolModelList = [
+        ~/Dev_poolModelAttackSimple,
+    ]
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/Dev_SupportAirSolSimple)
+        ),
+    ]
+)
+
+export Dev_Defense_simple is TMacroActionDescriptor_Defense_Common
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    PoolModelList = [
+        ~/Dev_poolModelDefense,
+    ]
+)
+
+export Dev_Attack_with_transports is TMacroActionDescriptor_Attack_Common
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    UtiliserMenaceLaPlusProcheAuLieuDeLaPlusFaible = true
+    DisableReinforcement = true
+    LaunchASAP_RatioMin = 0.1
+    RatioMinimumPourAttaquer = 0.1
+    IgnoreSafePath = true
+
+    PoolModelList = [
+        ~/Dev_poolModelAttack_w_Transport,
+    ]
+
+
+    ParametresDeMission = MAP[
+        (
+            ESettingType/Airstrike,
+            TAirStrikeSettingHolder(Setting = ~/Dev_SupportAirSolSimple)
+        ),
+        (
+            ESettingType/Support,
+            TSupportSettingHolder(SettingList = [Dev_RenfortAntiTank, Dev_RenfortAntiCanonAT, Dev_RenfortAntiArtillerie])
+        ),
+        (
+            ESettingType/ArtilleryStrike,
+            TArtilleryStrikeSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 1)
+        ),
+    ]
+)
+
+export Dev_Attack_WithPricePool is TMacroActionDescriptor_Attack_Common
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    UtiliserMenaceLaPlusProcheAuLieuDeLaPlusFaible = true
+    DisableReinforcement = true
+    LaunchASAP_RatioMin = 0.1
+    RatioMinimumPourAttaquer = 0.1
+    IgnoreSafePath = true
+
+    PoolModelList = [
+        ~/Dev_poolModelAttack_Price,
+    ]
+)
+
+export Dev_Airstrike is TMacroActionDescriptor_AirStrike_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 2 // Pour tester les multi macros
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Attack
+
+    ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+
+    PoolModelList = [
+        ~/Dev_poolModelAirstrike,
+    ]
+)
+
+export Dev_mission_renfort_AT is TMacroActionDescriptor_Support
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    TagDeContre = "Canon_AT"
+
+    PoolModelList = [
+        ~/Dev_poolModelAntiTank,
+    ]
+)
+
+export Dev_mission_renfort_Arti is TMacroActionDescriptor_Support
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    TagDeContre = "Artillerie"
+
+    PoolModelList = [
+        ~/Dev_poolModelArtillerie,
+    ]
+)
+
+export Dev_Supply is TMacroActionDescriptor_Supply_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    MinimumAmmoRatio = 0.75
+    SupplyAllies = true
+    IgnoreSafePath = false
+
+    PoolModelList = [
+        ~/Dev_poolModelSupply,
+    ]
+)
+
+export Dev_Artillery is TMacroActionDescriptor_Artillery_Specific
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberOfMacro = 1
+
+    SupportPointSafetyMargin = 1
+    MinimumThreatPerSplashForKill = 30
+    MinimumThreatPerSplashForSupport = 40
+
+    PoolModelList = [
+        ~/Dev_poolModelArtillerie,
+    ]
+)
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Pool Models Examples
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+export Dev_poolModelReco is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b28e14ee-07c0-11e6-b9b7-305a3ae065c1}
+            Required = True
+            Nb = 1
+            TagsPriority = [
+                "UNITE_Jeep_MMG_US",
+            ]
+        ),
+    ]
+)
+
+export Dev_poolModelAerialReco is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{28fdef2e-acd9-11e6-8a09-d43d7ebc8ab8}
+            Required = true
+            Nb = 2
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Avion_Reco",
+            ]
+        ),
+    ]
+)
+
+export Dev_poolModelAttackSimple is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b28eff4f-07c0-11e6-8a97-305a3ae065c1}
+            Required = True
+            Nb = 2
+            TagsPriority = [
+                //"UNITE_Stuart_M5A1_US",
+                //"UNITE_Sherman_M4A1_Cmd",
+                "UNITE_Stuart_M5A1_Command_US",
+
+            ]
+        ),
+    ]
+)
+
+export Dev_poolModelAttack_w_Transport is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b28eff50-07c0-11e6-a8a5-305a3ae065c1}
+            Required = True
+            Nb = 2
+            TagsPriority = [
+                "UNITE_Flamethrower_US",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{b28eff51-07c0-11e6-9cef-305a3ae065c1}
+            Required = True
+            Nb = 2
+            TagsPriority = [
+                "UNITE_Jeep_US",
+            ]
+        ),
+    ]
+)
+
+export Dev_poolModelAttack_Price is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b28eff52-07c0-11e6-a6f2-305a3ae065c1}
+            Required = True
+            TotalPrice = 60
+            AllowUnitMixing = True
+            TagsPriority = [
+                "UNITE_Canon_37mmAT_US",
+                "UNITE_Flamethrower_US",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{b28eff53-07c0-11e6-88ed-305a3ae065c1}
+            Required = False
+            TotalPrice = 180
+            AllowUnitMixing = True
+            TagsPriority = [
+                "UNITE_Halftrack_M16_AA_US",
+                "UNITE_Flamethrower_US",
+                "UNITE_Engineer_Ldr_US",
+            ]
+        ),
+    ]
+)
+
+export Dev_poolModelAirstrike is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b28eff54-07c0-11e6-a095-305a3ae065c1}
+            Required = True
+            Nb = 1
+            TagsPriority = [
+                "UNITE_Marauder_B26B_110_US",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{b28eff55-07c0-11e6-bf6d-305a3ae065c1}
+            Required = False
+            Nb = 4
+            TagsPriority = [
+                "UNITE_Marauder_B26B_110_US",
+            ]
+        )
+    ]
+)
+
+export Dev_poolModelDefense is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b28eff56-07c0-11e6-986b-305a3ae065c1}
+            Required = True
+            Nb = 2
+            TagsPriority = [
+                "UNITE_Stuart_M5A1_Command_US",
+            ]
+        ),
+    ]
+)
+
+export Dev_poolModelAntiTank is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b28eff57-07c0-11e6-9f1b-305a3ae065c1}
+            Required = true
+            Nb = 1
+            TagsPriority = [
+                "Canon_AT",
+            ]
+        ),
+    ]
+)
+export Dev_poolModelArtillerie is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b28eff58-07c0-11e6-831f-305a3ae065c1}
+            Required = true
+            Nb = 1
+            TagsPriority = [
+                "Artillerie",
+            ]
+        ),
+    ]
+)
+export Dev_poolModelSupply is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{a6444be1-2284-11e6-8026-14dda9ec0b69}
+            Required = true
+            Nb = 1
+            TagsPriority = [
+                "Vehicule_Logistique",
+            ]
+        ),
+    ]
+)
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Transport Examples
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+export Dev_TransportPourInfanterie is
+(
+    [
+        "UNITE_Flamethrower_US",
+        "UNITE_Engineer_Ldr_US",
+    ]
+    ,
+    [
+        ("UNITE_Jeep_US", Transport_Attacker),
+    ]
+)
+
+export Dev_TransportPourCanon is
+(
+    [
+        "UNITE_Canon_37mmAT_US",
+    ]
+    ,
+    [
+        ("UNITE_Jeep_US", Transport_Attacker),
+    ]
+)
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Air Support Examples
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+export Dev_SupportAirSolSimple is
+[
+    (["UNITE_Marauder_B26B_110_US"], 2), //US
+]
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Renforts Examples
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+export Dev_RenfortAntiTank is TSupportSetting
+(
+    TagDeContre = "Canon_AT"
+    TagAContrer = "Char_Lourd"
+    Ratio = 2.0
+    NecessaireAuLancement = false
+)
+
+export Dev_RenfortAntiCanonAT is TSupportSetting
+(
+    TagDeContre = "Artillerie"
+    TagAContrer = "Canon_AT"
+    Ratio = 1.0
+    NecessaireAuLancement = true
+)
+
+export Dev_RenfortAntiArtillerie is TSupportSetting
+(
+    TagDeContre = "Infanterie"
+    TagAContrer = "Artillerie"
+    Ratio = 1.0
+    NecessaireAuLancement = true
+)

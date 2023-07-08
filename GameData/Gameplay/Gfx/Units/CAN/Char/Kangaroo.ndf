@@ -1,0 +1,22 @@
+export ModelFile_Kangaroo is 'GameData:Assets\3D\Units\CAN\Char\Kangaroo\Kangaroo.Ase2NdfBin'
+
+Modele_Kangaroo is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Kangaroo
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Kangaroo_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CAN\Char\Kangaroo_MID\Kangaroo_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Kangaroo_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CAN\Char\LODS\Kangaroo_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

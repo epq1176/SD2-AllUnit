@@ -1,0 +1,26 @@
+export Gfx_Stuart_M5A1_US is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Stuart_M5A1_US ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Stuart_M5A1_US_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_Stuart_M5A1_US_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Stuart_M5A1_US ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Stuart_M5A1_US_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_Stuart_M5A1_US_LOW ),
+        ]
+
+        Operators = Operators_Stuart_M5A1_US
+                  + DepictionOperator_Chassis_SmallTank
+                  + DepictionOperator_Propulsion_ContinuousTrack_SmallTank
+                  + [DepictionOperator_TurretRecoil(TurretNum='1')]
+                  + [DepictionOperator_TurretRecoilLightMachineGun(TurretNum='2') ]
+
+        Actions = Weapons_Stuart_M5A1_US
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+    )
+)

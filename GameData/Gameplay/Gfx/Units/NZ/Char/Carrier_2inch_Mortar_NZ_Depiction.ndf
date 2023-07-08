@@ -1,0 +1,29 @@
+Gfx_Carrier_2inch_Mortar_NZ is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Carrier_2inch_Mortar_NZ ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Carrier_2inch_Mortar_NZ_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret3( MeshDescriptor = Modele_Carrier_2inch_Mortar_NZ_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Carrier_2inch_Mortar_NZ ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Carrier_2inch_Mortar_NZ_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret3( MeshDescriptor = Modele_Carrier_2inch_Mortar_NZ_LOW ),
+        ]
+
+        Operators = Operators_Carrier_2inch_Mortar_NZ
+                  + DepictionOperator_Chassis_SmallTank
+                  + DepictionOperator_Propulsion_ContinuousTrack_SmallTank
+                  + [DepictionOperator_TurretRecoil(TurretNum='1')]
+                  + [DepictionOperator_TurretRecoilLightMachineGun(TurretNum='2') ]
+
+        Actions = Weapons_Carrier_2inch_Mortar_NZ
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = DepictionSubDepiction_Driver_NZ
+                        + DepictionSubDepiction_Tireur_NZ
+    )
+)

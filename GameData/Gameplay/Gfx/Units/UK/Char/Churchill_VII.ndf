@@ -1,0 +1,22 @@
+export ModelFile_Churchill_VII is 'GameData:Assets\3D\Units\UK\Char\Churchill_VII\Churchill_VII.Ase2NdfBin'
+
+Modele_Churchill_VII is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Churchill_VII
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Churchill_VII_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\Churchill_VII_MID\Churchill_VII_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Churchill_VII_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\LODS\Churchill_VII_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

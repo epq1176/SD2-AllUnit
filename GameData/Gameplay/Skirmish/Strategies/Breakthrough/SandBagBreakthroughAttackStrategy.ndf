@@ -1,0 +1,402 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export SandBagBreakthroughAttackStrategy is TIAGeneralStrategy
+(
+    StrategyName = "GenBTAtkAI"
+    FirstGenerator = SandBag_BTAtk_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    ShouldUseTaggedCorridorsForTouchDown = true
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    TransitionList =
+    [
+        SandBag_BTAtk_Transition_StartToPhaseC,
+        SandBag_BTAtk_Transition_StartToPhaseB,
+        SandBag_BTAtk_Transition_StartToPhaseA,
+        SandBag_BTAtk_Transition_StartToLowCost,
+        SandBag_BTAtk_Transition_StartToGeneric,
+        SandBag_BTAtk_Transition_DeployToPhaseA,
+        SandBag_BTAtk_Transition_Phase_B,
+        SandBag_BTAtk_Transition_Phase_C,
+        SandBag_BTAtk_Transition_DeployToPhaseA_LowCost,
+        SandBag_BTAtk_Transition_PhaseB_LowCost,
+        SandBag_BTAtk_Transition_PhaseC_LowCost
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export SandBag_BTAtk_Condition_GotoLowCost is TSequenceCondition_Compare
+(
+    Value1 = [TSequenceConditionValues_RessourcesPointsSharedInTeam]
+    Operator = Less
+    AddToValue2 = 501
+    ResourceType = ~/Resource_CommandPoints
+)
+//-------------------------------------------------------------------------
+export SandBag_BTAtk_Condition_GotoGeneric is TSequenceCondition_Not
+(
+    Condition = ~/SandBag_BTAtk_Condition_GotoLowCost
+)
+//-------------------------------------------------------------------------
+export SandBag_BTAtk_Condition_CommandPhase is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+//-------------------------------------------------------------------------
+export SandBag_BTAtk_Condition_PhaseB is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_B'
+)
+//-------------------------------------------------------------------------
+export SandBag_BTAtk_Condition_PhaseC is TSequenceCondition_DeckPhase
+(
+    PhaseName = 'PHASE_C'
+)
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export SandBag_BTAtk_Transition_StartToPhaseC is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_BTAtk_Choose_Strategy
+    Condition = SandBag_BTAtk_Condition_PhaseC
+    Destination = SandBag_BTAtk_Phase_C
+)
+export SandBag_BTAtk_Transition_StartToPhaseB is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_BTAtk_Choose_Strategy
+    Condition = SandBag_BTAtk_Condition_PhaseB
+    Destination = SandBag_BTAtk_Phase_B
+)
+export SandBag_BTAtk_Transition_StartToPhaseA is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_BTAtk_Choose_Strategy
+    Condition = SandBag_BTAtk_Condition_CommandPhase
+    Destination = SandBag_BTAtk_Phase_A
+)
+export SandBag_BTAtk_Transition_StartToGeneric is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_BTAtk_Choose_Strategy
+    Condition = SandBag_BTAtk_Condition_GotoGeneric
+    Destination = SandBag_BTAtk_PhaseDeploiement
+)
+//-------------------------------------------------------------------------
+export SandBag_BTAtk_Transition_DeployToPhaseA is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_BTAtk_PhaseDeploiement
+    Condition = SandBag_BTAtk_Condition_CommandPhase
+    Destination = SandBag_BTAtk_Phase_A
+)
+//-------------------------------------------------------------------------
+export SandBag_BTAtk_Transition_Phase_B is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_BTAtk_Phase_A
+    Condition = SandBag_BTAtk_Condition_PhaseB
+    Destination = SandBag_BTAtk_Phase_B
+)
+//-------------------------------------------------------------------------
+export SandBag_BTAtk_Transition_Phase_C is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_BTAtk_Phase_B
+    Condition = SandBag_BTAtk_Condition_PhaseC
+    Destination = SandBag_BTAtk_Phase_C
+)
+//-------------------------------------------------------------------------
+export SandBag_BTAtk_Transition_StartToLowCost is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_BTAtk_Choose_Strategy
+    Condition = SandBag_BTAtk_Condition_GotoLowCost
+    Destination = SandBag_BTAtk_PhaseDeploiement_LowCost
+)
+//-------------------------------------------------------------------------
+export SandBag_BTAtk_Transition_DeployToPhaseA_LowCost is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_BTAtk_PhaseDeploiement_LowCost
+    Condition = SandBag_BTAtk_Condition_CommandPhase
+    Destination = SandBag_BTAtk_Phase_A_LowCost
+)
+//-------------------------------------------------------------------------
+export SandBag_BTAtk_Transition_PhaseB_LowCost is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_BTAtk_Phase_A_LowCost
+    Condition = SandBag_BTAtk_Condition_PhaseB
+    Destination = SandBag_BTAtk_Phase_B_LowCost
+)
+//-------------------------------------------------------------------------
+export SandBag_BTAtk_Transition_PhaseC_LowCost is TIAGeneralStrategyTransition
+(
+    Origine = SandBag_BTAtk_Phase_B_LowCost
+    Condition = SandBag_BTAtk_Condition_PhaseC
+    Destination = SandBag_BTAtk_Phase_C_LowCost
+)
+
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export SandBag_BTAtk_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //~/SandBag_BTAtk_Support_AntiTank,
+        ~/SandBag_BTAtk_Support_Transports,
+        ~/SandBag_BTAtk_Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export SandBag_BTAtk_PhaseDeploiement is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/SandBag_BTAtk_Support_AntiTank,
+        ~/SandBag_BTAtk_Support_Transports,
+
+        ~/SandBag_BTAtk_Supply_Skirmish,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        // Grosse attaque
+        ~/SandBag_BTAtk_Attack_Main,              // Plusieurs tanks pour un budget donné // 200 => un cmd pas cher, une reco pas cher, et le reste de tanks pour fill le budget en random.
+        ~/SandBag_BTAtk_Artillery_Support,        // Artillerie pas chère                 //  80
+
+        // Reste du front
+        ~/SandBag_BTAtk_Attack_Adaptive,          // ~100
+        ~/SandBag_BTAtk_Attack_Adaptive,          // ~100
+        ~/SandBag_BTAtk_Attack_Adaptive,          // ~100
+        ~/SandBag_BTAtk_Attack_Filler,            // budget 40
+        ~/SandBag_BTAtk_Reco,            // 40 par reco
+        ~/SandBag_BTAtk_AirReco,
+        ~/SandBag_BTAtk_Reco,            // 40 par reco
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/SandBag_BTAtk_Supply_Skirmish_Allied,
+
+    ] + ~/SandBag_BTAtk_Defenses_Airstrike_Arti_Shuffle_Deploy
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+        // Dans les difficultés supérieures il faudra surement maintenir
+        // ça avec des maintain à la phase d'après pour être sur qu'on
+        // produise de nouvelles unités
+    +   ~/SandBag_BTAtk_Scaling
+    +   ~/SandBag_BTAtk_Scaling
+
+)
+//-------------------------------------------------------------------------
+export SandBag_BTAtk_Phase_A is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 3
+    GeneratorList =
+    [
+        // Même chose que la phase de déploiement mais avec les Défenses
+        // prioritaires sur les attaques. L'idée est de lancer ses attaques dès
+        // le début, mais de renforcer les backlines avant de récupérer de nos pertes
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/SandBag_BTAtk_Support_AntiTank,
+        ~/SandBag_BTAtk_Support_Transports,
+
+        ~/SandBag_BTAtk_Supply_Skirmish,
+        ~/SandBag_BTAtk_Attack_Filler,
+
+        //------------------------------
+        // Défenses prioritaires
+        //------------------------------
+        // Statiques pour tenir le terrain
+        ~/SandBag_BTAtk_Defense_Dynamic_Adaptive, // Canon AT - Chasseur de char - ATInf - HMG - Flamer // 85
+        ~/SandBag_BTAtk_Defense_Dynamic_Adaptive,
+        ~/SandBag_BTAtk_Defense_Static_AA,
+        ~/SandBag_BTAtk_Defense_Dynamic_Adaptive,
+
+        //------------------------------
+        // Support de la main Attack
+        //------------------------------
+        ~/SandBag_BTAtk_Attack_MBT_Support,       // Un gros tank à voir si on le passe en phase A // DISABLE REINFORCEMENTS + TGenerationType_RestrictedNumberOfLaunch 1
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/SandBag_BTAtk_Attack_Main,              // Plusieurs tanks pour un budget donné // 200
+        ~/SandBag_BTAtk_Artillery_Support,        // Artillerie pas chère                 //  80
+
+        ~/SandBag_BTAtk_Attack_Adaptive,  // Faire du code pour adapater le budget en fonction de l'income
+        ~/SandBag_BTAtk_Attack_Adaptive,
+        ~/SandBag_BTAtk_Attack_Adaptive,
+
+        // On insère ici une attaque qui va chercher les objectifs.
+        ~/SandBag_BTAtk_Attack_Objectives,
+
+        ~/SandBag_BTAtk_Airstrike_Offense,
+        ~/SandBag_BTAtk_Airstrike_Defense,
+
+        ~/SandBag_BTAtk_SuperCommander,
+
+        ~/SandBag_BTAtk_Reco,
+        ~/SandBag_BTAtk_Attack_MBT, // MBT devient low prio en phase A pour éviter de pomper trop de thune
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/SandBag_BTAtk_Maintain_CorridorDefenses,
+        ~/SandBag_BTAtk_Supply_Skirmish_Allied,
+
+    ] + ~/SandBag_BTAtk_Airstrike_Arti_Shuffle // On sort les défenses d'ici pour les mettre plus haut dans la prio
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+        // Dans les difficultés supérieures il faudra surement maintenir
+        // ça avec des maintain à la phase d'après pour être sur qu'on
+        // produise de nouvelles unités
+    +   ~/SandBag_BTAtk_Scaling
+    +   ~/SandBag_BTAtk_Scaling
+)
+//-------------------------------------------------------------------------
+private template SandBag_BTAtk_Phases_B_and_C_template
+[
+]
+is TSequenceGeneratorDescriptor
+(
+    // Les défenses prioritaires disparaissent, on lance un nouveau set d'attaques
+    // On ajoute des défenses non prioritaires dynamiques
+    NbMacroActionAllowedToProduceSimultaneous = 2
+    GeneratorList =
+    [
+        ~/SandBag_BTAtk_Maintain_CorridorAttacks,
+        ~/SandBag_BTAtk_Maintain_ObjectiveAttacks,
+        ~/SandBag_BTAtk_Maintain_CorridorDefenses,
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/SandBag_BTAtk_Support_AntiTank,
+        ~/SandBag_BTAtk_Support_Transports,
+        ~/SandBag_BTAtk_Supply_Skirmish,
+        ~/SandBag_BTAtk_Attack_Filler,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/SandBag_BTAtk_Attack_Objectives,
+
+        ~/SandBag_BTAtk_Attack_Adaptive,  // Faire du code pour adapater le budget en fonction de l'income
+        ~/SandBag_BTAtk_Attack_Adaptive,
+        ~/SandBag_BTAtk_Attack_Adaptive,
+
+        ~/SandBag_BTAtk_SuperCommander,
+
+        ~/SandBag_BTAtk_Attack_Main,              // Plusieurs tanks pour un budget donné // 200
+        ~/SandBag_BTAtk_Artillery_Support,        // Artillerie pas chère                 //  80
+
+        //------------------------------
+        // Support de la main Attack
+        //------------------------------
+        ~/SandBag_BTAtk_Attack_MBT,       // On enlève le status support // DISABLE REINFORCEMENTS + TGenerationType_RestrictedNumberOfLaunch 1
+
+        ~/SandBag_BTAtk_Airstrike_Offense,
+        ~/SandBag_BTAtk_Airstrike_Defense,
+
+        // Maintien
+        ~/SandBag_BTAtk_Reco,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/SandBag_BTAtk_Supply_Skirmish_Allied,
+
+
+    ] + ~/SandBag_BTAtk_Defenses_Airstrike_Arti_Shuffle
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+        // Dans les difficultés supérieures il faudra surement maintenir
+        // ça avec des maintain à la phase d'après pour être sur qu'on
+        // produise de nouvelles unités
+    +   ~/SandBag_BTAtk_Scaling
+    +   ~/SandBag_BTAtk_Scaling
+)
+//-------------------------------------------------------------------------
+export SandBag_BTAtk_Phase_B is SandBag_BTAtk_Phases_B_and_C_template()
+//-------------------------------------------------------------------------
+export SandBag_BTAtk_Phase_C is SandBag_BTAtk_Phases_B_and_C_template()
+//-------------------------------------------------------------------------
+
+// Le concept de ces blocs de missions
+// est d'à la fois défendre ses arrières
+// mais aussi de faire usage d'unités diverses
+// (artillerie et avions) pour débloquer
+// les situations et appuyer le reste des missions
+SandBag_BTAtk_Defenses_Airstrike_Arti_Shuffle_Deploy is
+[
+    ~/SandBag_BTAtk_Airstrike_Assault,
+    ~/SandBag_BTAtk_Artillery_Expensive,
+    ~/SandBag_BTAtk_Defense_Static_AA,
+    ~/SandBag_BTAtk_Airstrike_Offense,
+    ~/SandBag_BTAtk_AirReco,
+    ~/SandBag_BTAtk_Airstrike_Defense,
+    ~/SandBag_BTAtk_Artillery_TriggerHappy_1for4Corridors,
+]
+
+SandBag_BTAtk_Defenses_Airstrike_Arti_Shuffle is
+[
+    ~/SandBag_BTAtk_Defense_Dynamic_Adaptive,
+    ~/SandBag_BTAtk_Airstrike_Assault,
+    ~/SandBag_BTAtk_Artillery_Expensive,
+    ~/SandBag_BTAtk_Defense_Dynamic_Adaptive,
+    ~/SandBag_BTAtk_Artillery_TriggerHappy,
+    ~/SandBag_BTAtk_Defense_Static_AA,
+    ~/SandBag_BTAtk_Defense_Dynamic_Adaptive,
+    ~/SandBag_BTAtk_Airstrike_Offense,
+    ~/SandBag_BTAtk_AirReco,
+    ~/SandBag_BTAtk_Airstrike_Defense,
+    ~/SandBag_BTAtk_Artillery_TriggerHappy_1for4Corridors,
+    ~/SandBag_BTAtk_Maintain_AirStrike,
+    ~/SandBag_BTAtk_Maintain_Artillery,
+]
+
+SandBag_BTAtk_Airstrike_Arti_Shuffle is
+[
+    ~/SandBag_BTAtk_Airstrike_Assault,
+    ~/SandBag_BTAtk_Artillery_Expensive,
+    ~/SandBag_BTAtk_Airstrike_Offense,
+    ~/SandBag_BTAtk_AirReco,
+    ~/SandBag_BTAtk_Airstrike_Defense,
+    ~/SandBag_BTAtk_Artillery_TriggerHappy_1for4Corridors,
+    ~/SandBag_BTAtk_Maintain_AirStrike,
+    ~/SandBag_BTAtk_Maintain_Artillery,
+]
+
+SandBag_BTAtk_Scaling is
+[
+    ~/SandBag_BTAtk_Attack_Main_Autogen,
+    ~/SandBag_BTAtk_Attack_Adaptive_Autogen,
+    ~/SandBag_BTAtk_Attack_Adaptive_Autogen,
+    ~/SandBag_BTAtk_Defense_Dynamic_Adaptive_Autogen,
+    ~/SandBag_BTAtk_Defense_Dynamic_Adaptive_Autogen,
+    ~/SandBag_BTAtk_Airstrike_Defense_Autogen,
+    ~/SandBag_BTAtk_Defense_Dynamic_Adaptive_Autogen,
+    ~/SandBag_BTAtk_Defense_Static_AA_Autogen,
+    ~/SandBag_BTAtk_Attack_MBT_Support_Autogen,
+    ~/SandBag_BTAtk_Artillery_TriggerHappy_Autogen,
+    ~/SandBag_BTAtk_Airstrike_Offense_Autogen,
+    ~/SandBag_BTAtk_Artillery_TriggerHappy_Autogen,
+    ~/SandBag_BTAtk_Attack_Objectives_Autogen,
+    ~/SandBag_BTAtk_Artillery_Expensive_Autogen,
+    ~/SandBag_BTAtk_Airstrike_Assault_Autogen,
+]
+

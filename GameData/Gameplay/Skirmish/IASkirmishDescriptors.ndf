@@ -1,0 +1,197 @@
+
+private MapTerrestre            is 0
+private MapMixte                is 1
+private MapMarine               is 2
+
+private DefaultStrategyList is
+[
+    ~/GenericStrategy,
+]
+
+private VeryEasyStrategyList is
+[
+    ~/SandBagStrategy,
+]
+
+private EasyStrategyList is
+[
+    ~/BeginnerFriendlyStrategy,
+]
+
+private VeryHardStrategyList is
+[
+    ~/CheatedStrategy,
+]
+
+private VeryEasyBreakthroughStrategyList is
+[
+    ~/SandBagBreakthroughStrategy,
+]
+
+private EasyBreakthroughStrategyList is
+[
+    ~/BeginnerFriendlyBreakthroughStrategy,
+]
+
+private DefaultBreakthroughStrategyList is
+[
+    ~/GenericBreakthroughStrategy,
+]
+
+private VeryHardBreakthroughStrategyList is
+[
+    ~/CheatedBreakthroughStrategy,
+]
+
+private DefaultSteelmanStrategyList is
+[
+    ~/GenericSteelmanStrategy,
+]
+
+private DefaultBreakthroughSteelmanStrategyList is
+[
+    ~/GenericBreakthroughSteelmanStrategy
+]
+
+private SkirmishList is TIASkirmishList_Specific
+(
+    // Stratégies disponibles pour l'auto-deploiement
+    IAStrategyForAutoDeploy = MAP
+    [
+        (GameMode/BreakthroughConquest, ~/AutoDeployBreakthroughStrategy),
+        (GameMode/NotSpecified, ~/AutoDeployStrategy),
+    ]
+
+    // Stratégies disponibles pour tous les battlegroups de la campagne solo
+    // Ces stratégies doivent pouvoir se jouer avec tous les decks de battlegroups
+    IAStrategyListForSoloCampaign =
+    [
+        ~/SkirmishStrategy,
+    ]
+
+    //Choix de la strategie suivant le mode de jeu et le type de map en skirmish/multi
+    IAStrategyConfiguration = MAP
+    [
+        (IADifficulty/TresFacile, MAP
+        [
+            (GameMode/BreakthroughConquest, ~/VeryEasyBreakthroughStrategyList),
+            (GameMode/NotSpecified, ~/VeryEasyStrategyList),
+        ]),
+        (IADifficulty/Facile, MAP
+        [
+            (GameMode/BreakthroughConquest, ~/EasyBreakthroughStrategyList),
+            (GameMode/NotSpecified, ~/EasyStrategyList),
+        ]),
+        (IADifficulty/Normal, MAP
+        [
+            (GameMode/BreakthroughConquest, ~/EasyBreakthroughStrategyList),
+            (GameMode/NotSpecified, ~/EasyStrategyList),
+        ]),
+        (IADifficulty/Difficile, MAP
+        [
+            (GameMode/BreakthroughConquest, ~/DefaultBreakthroughStrategyList),
+            (GameMode/NotSpecified, ~/DefaultStrategyList),
+        ]),
+        (IADifficulty/TresDifficile, MAP
+        [
+            (GameMode/BreakthroughConquest, ~/DefaultBreakthroughStrategyList),
+            (GameMode/NotSpecified, ~/DefaultStrategyList),
+        ]),
+        (IADifficulty/PlusDifficile, MAP
+        [
+            (GameMode/BreakthroughConquest, ~/VeryHardBreakthroughStrategyList),
+            (GameMode/NotSpecified, ~/VeryHardStrategyList),
+        ]),
+        (IADifficulty/AnyDifficulty, MAP
+        [
+            (GameMode/BreakthroughConquest, ~/EasyBreakthroughStrategyList),
+            (GameMode/NotSpecified, ~/EasyStrategyList),
+        ])
+    ]
+
+    IAStrategyOverrideByMap = MAP
+    [
+        //(GUID:{00000000-0000-0000-0000-000000000000}, MAP[(~/GameMode/NotSpecified, [~/Strategie_pour_cette_map])]), <-stratégie unique pour cette map
+    ]
+
+    //Prioritaire par rapport a l'override
+    IAStrategyOverrideForTicketsEconomy = MAP
+    [
+        (IADifficulty/AnyDifficulty, MAP
+        [
+            (GameMode/BreakthroughConquest, ~/DefaultBreakthroughSteelmanStrategyList),
+            (GameMode/NotSpecified, ~/DefaultSteelmanStrategyList),
+        ]),
+    ]
+)
+
+export AutoDeploy_Strategy_Seletor is TIAGeneralStrategySelector
+(
+    IAStrategyConfiguration = MAP
+    [
+        (IADifficulty/AnyDifficulty, ~/AutoDeployStrategy),
+    ]
+)
+export Colonel_Tutorial_Strategy_Selector is TIAGeneralStrategySelector
+(
+    IAStrategyConfiguration = MAP
+    [
+        (IADifficulty/AnyDifficulty, ~/ColonelTutorialStrategy),
+    ]
+)
+
+export Scn_Attack_Strategy_Selector is TIAGeneralStrategySelector
+(
+    IAStrategyConfiguration = MAP
+    [
+        (IADifficulty/TresFacile, ~/SandBag_ScnAttackModeStrategy),
+        (IADifficulty/Facile, ~/Friendly_ScnAttackModeStrategy),
+        (IADifficulty/Normal, ~/ScnAttackModeStrategy),
+        (IADifficulty/Difficile, ~/ScnAttackModeStrategy),
+        (IADifficulty/TresDifficile, ~/Cheated_ScnAttackModeStrategy),
+        (IADifficulty/PlusDifficile, ~/Cheated_ScnAttackModeStrategy),
+        (IADifficulty/AnyDifficulty, ~/ScnAttackModeStrategy),
+    ]
+)
+
+export Scn_Defense_Strategy_Selector is TIAGeneralStrategySelector
+(
+    IAStrategyConfiguration = MAP
+    [
+        (IADifficulty/TresFacile, ~/SandBag_ScnDefenseModeStrategy),
+        (IADifficulty/Facile, ~/Friendly_ScnDefenseModeStrategy),
+        (IADifficulty/Normal, ~/ScnDefenseModeStrategy),
+        (IADifficulty/Difficile, ~/ScnDefenseModeStrategy),
+        (IADifficulty/TresDifficile, ~/Cheated_ScnDefenseModeStrategy),
+        (IADifficulty/PlusDifficile, ~/Cheated_ScnDefenseModeStrategy),
+        (IADifficulty/AnyDifficulty, ~/ScnDefenseModeStrategy),
+    ]
+)
+
+export Scn_Attack_Weight_Extended_Strategy_Selector is TIAGeneralStrategySelector
+(
+    IAStrategyConfiguration = MAP
+    [
+        (IADifficulty/TresFacile, ~/SandBag_ScnAttackModeStrategy_WeightExtended),
+        (IADifficulty/Facile, ~/Friendly_ScnAttackModeStrategy_WeightExtended),
+        (IADifficulty/Normal, ~/ScnAttackModeStrategy_WeightExtended),
+        (IADifficulty/Difficile, ~/ScnAttackModeStrategy_WeightExtended),
+        (IADifficulty/TresDifficile, ~/Cheated_ScnAttackModeStrategy_WeightExtended),
+        (IADifficulty/PlusDifficile, ~/Cheated_ScnAttackModeStrategy_WeightExtended),
+        (IADifficulty/AnyDifficulty, ~/ScnAttackModeStrategy_WeightExtended),
+    ]
+)
+
+export Scn_Defense_Weight_Extended_Strategy_Selector is TIAGeneralStrategySelector
+(
+    IAStrategyConfiguration = MAP
+    [
+        (IADifficulty/TresFacile, ~/SandBag_ScnDefenseModeStrategy_WeightExtended),
+        (IADifficulty/Facile, ~/Friendly_ScnDefenseModeStrategy_WeightExtended),
+        (IADifficulty/Normal, ~/ScnDefenseModeStrategy_WeightExtended),
+        (IADifficulty/Difficile, ~/ScnDefenseModeStrategy_WeightExtended),
+        (IADifficulty/TresDifficile, ~/Cheated_ScnDefenseModeStrategy_WeightExtended),
+        (IADifficulty/PlusDifficile, ~/Cheated_ScnDefenseModeStrategy_WeightExtended),
+        (IADifficulty/AnyDifficulty, ~/ScnDefenseModeStrategy_WeightExtended),
+    ]
+)

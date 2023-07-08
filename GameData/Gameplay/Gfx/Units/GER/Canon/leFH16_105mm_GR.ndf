@@ -1,0 +1,22 @@
+export ModelFile_leFH16_105mm_GR is 'GameData:Assets\3D\Units\GER\Canon\leFH16\leFH16.Ase2NdfBin'
+
+Modele_leFH16_105mm_GR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_leFH16_105mm_GR
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_leFH16_105mm_GR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\leFH16_MID\leFH16_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_leFH16_105mm_GR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\LODS\leFH16_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

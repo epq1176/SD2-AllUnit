@@ -1,0 +1,236 @@
+//enum à synchro avec TRenderStyleState dans RenderStyleWrapper.h
+RenderStateAll              is 0x00000000 // Etat initial
+RenderStateInvisible        is 0x00000001 // (0) On ne voit pas l'unité
+RenderStateGhost            is 0x00000002 // (1) L'unité est un ghost
+RenderStateStealth          is 0x00000004 // (2) l'unité est camouflée
+RenderStateOnWater          is 0x00000008 // (3) L'unité est sur l'eau
+RenderStatePinned           is 0x00000010 // (4) l'unité est stressé au max
+RenderStateSpotted          is 0x00000020 // (5)
+RenderStateBuilding         is 0x00000040 // (6)
+RenderStateBlocked          is 0x00000080 // (7)
+RenderStateDead             is 0x00000100 // (8)
+RenderStateHovered          is 0x00000200 // (9)
+RenderStateSelected         is 0x00000400 // (10)
+RenderStateOccupied         is 0x00000800 // (11)
+RenderStateCapturable       is 0x00001000 // (12)
+RenderStateHighlighted      is 0x00002000 // (13)
+RenderStateShortage         is 0x00004000 // (14) Hors fonction
+export RenderStatePawn             is 0x00008000 // (15) unité Pawn
+RenderStateShadingDisabled  is 0x00010000 // (16) Désactivation de tout les shaders parameters
+
+couleurCampShaderModifier is TShaderParamDescriptor
+(
+    Key = 'CouleurCamp'
+    ColorStart = TParamShaderModifierValueFloat4( PropertyName = 'team_color' )
+    Priority = 0
+    ValueSize = 4
+)
+
+damageRatioShaderModifier is TShaderParamDescriptor
+(
+    Key = 'NiveauDegat'
+    ColorStart = TParamShaderModifierValueFloat4( PropertyName = 'DamageRatio' )
+    Priority = 1
+    ValueSize = 1
+    IsSingleFloatHack = true //Francis (3/5/19) quickfix pour faire passer les tests autos (refacto en cours)
+)
+
+ghostColorShaderModifier is TShaderParamDescriptor
+(
+    Key = 'GhostColor'
+    ColorStart = TParamShaderModifierValueFloat4( PropertyName = 'GhostColor' )
+    Priority = 0
+    ValueSize = 4
+)
+
+ghostColor2ShaderModifier is TShaderParamDescriptor
+(
+    Key = 'GhostColor2'
+    ColorStart = TParamShaderModifierValueFloat4( PropertyName = 'GhostColor2' )
+    Priority = 0
+    ValueSize = 4
+)
+
+ghostAlphaShaderModifier is TShaderParamDescriptor
+(
+    Key = 'GhostAlpha'
+    ColorStart = TParamShaderModifierValueFloat4( PropertyName = 'GhostAlpha' )
+    Priority = 0
+    ValueSize = 1
+    IsSingleFloatHack = true
+)
+
+ghostAlpha2ShaderModifier is TShaderParamDescriptor
+(
+    Key = 'GhostAlpha2'
+    ColorStart = TParamShaderModifierValueFloat4( PropertyName = 'GhostAlpha2' )
+    Priority = 0
+    ValueSize = 1
+    IsSingleFloatHack = true
+)
+
+pbrBaseColorShaderModifier is TShaderParamDescriptor
+(
+    Key = 'BaseColor'
+    ColorStart = TParamShaderModifierValueFloat4( PropertyName = 'BaseColor' )
+    Priority = 0
+    ValueSize = 3
+)
+
+pbrMetallicShaderModifier is TShaderParamDescriptor
+(
+    Key = 'Metallic'
+    ColorStart = TParamShaderModifierValueFloat4( PropertyName = 'Metallic' )
+    Priority = 0
+    ValueSize = 1
+)
+
+pbrRoughnessShaderModifier is TShaderParamDescriptor
+(
+    Key = 'Roughness'
+    ColorStart = TParamShaderModifierValueFloat4( PropertyName = 'Roughness' )
+    Priority = 0
+    ValueSize = 1
+)
+
+MaterialTags is TBaseClass
+(
+    Damage      is 'DamageTag'
+    Ghost       is 'GhostTag'
+    Selected    is 'SelectedTag'
+    Hovered     is 'HoveredTag'
+    Dead        is 'DeadTag'
+    Building    is 'BuildingTag'
+    Occupied    is 'OccupiedTag'
+    Spotted     is 'SpottedTag'
+    Pawn        is 'Pawn'
+)
+//------------------------------------------------------------------------------
+//******************************************************************************
+//------------------------------------------------------------------------------
+export DefaultRenderStyleProvider is TRenderStyleProviderDescriptor
+(
+    RenderStateToShaderModifiers = MAP
+    [
+        (RenderStateAll, [couleurCampShaderModifier, damageRatioShaderModifier]),
+        (RenderStateGhost, [ghostColorShaderModifier, ghostColor2ShaderModifier, ghostAlphaShaderModifier, ghostAlpha2ShaderModifier]),
+    ]
+
+    RenderStateToMaterialTags = MAP
+    [
+        (RenderStateAll,            [ MaterialTags/Damage      ]),
+        (RenderStateGhost,          [ MaterialTags/Ghost       ]),
+        (RenderStateSelected,       [ MaterialTags/Selected    ]),
+        (RenderStateHovered,        [ MaterialTags/Hovered     ]),
+        (RenderStateSpotted,        [ MaterialTags/Spotted     ]),
+        (RenderStateDead,           [ MaterialTags/Dead        ]),
+    ]
+
+    DefaultMultiRenderTypeMaterialPack = ~/DepictionUnitsMultiRenderTypeMaterialPack
+    RenderLayerSelector = ~/DefaultRenderLayerSelector
+    ShootVideoMode = $/M3D/Scene/ShootVideoMode
+)
+//------------------------------------------------------------------------------
+//******************************************************************************
+//------------------------------------------------------------------------------
+export DefaultInfantryRenderStyleProvider is TRenderStyleProviderDescriptor
+(
+    RenderStateToShaderModifiers = MAP
+    [
+        (RenderStateAll,  [couleurCampShaderModifier]),
+        (RenderStateGhost, [ghostColorShaderModifier, ghostColor2ShaderModifier, ghostAlphaShaderModifier, ghostAlpha2ShaderModifier]),
+    ]
+
+    RenderStateToMaterialTags = MAP
+    [
+        (RenderStateAll,         [ MaterialTags/Damage      ]),
+        (RenderStateGhost,       [ MaterialTags/Ghost       ]),
+        (RenderStateSelected,    [ MaterialTags/Selected    ]),
+        (RenderStateHovered,     [ MaterialTags/Hovered     ]),
+        (RenderStateSpotted,     [ MaterialTags/Spotted     ]),
+        (RenderStateDead,        [ MaterialTags/Dead        ]),
+    ]
+
+    DefaultMultiRenderTypeMaterialPack = ~/DepictionInfantryMultiRenderTypeMaterialPack
+    RenderLayerSelector = ~/DefaultRenderLayerSelector
+    ShootVideoMode = $/M3D/Scene/ShootVideoMode
+)
+//------------------------------------------------------------------------------
+//******************************************************************************
+//------------------------------------------------------------------------------
+export DefaultMapBuildingRenderStyleProvider is TRenderStyleProviderDescriptor
+(
+    RenderStateToShaderModifiers = MAP
+    [
+        (RenderStateAll, [couleurCampShaderModifier, damageRatioShaderModifier]),
+    ]
+
+    RenderStateToMaterialTags = MAP
+    [
+        (RenderStateAll,         [ MaterialTags/Damage, MaterialTags/Building ]),
+        (RenderStateSelected,    [ MaterialTags/Selected    ]),
+        (RenderStateHovered,     [ MaterialTags/Hovered     ]),
+        (RenderStateOccupied,    [ MaterialTags/Occupied    ])
+    ]
+
+    DefaultMultiRenderTypeMaterialPack = ~/DepictionUnitsMultiRenderTypeMaterialPack
+    RenderLayerSelector = ~/DefaultRenderLayerSelector
+    ShootVideoMode = $/M3D/Scene/ShootVideoMode
+)
+//------------------------------------------------------------------------------
+//******************************************************************************
+//------------------------------------------------------------------------------
+export StrategicRenderStyleProvider is TRenderStyleProviderDescriptor
+(
+    RenderStateToShaderModifiers = MAP
+    [
+        (RenderStateAll, [couleurCampShaderModifier, damageRatioShaderModifier]),
+        (RenderStateGhost, [ghostColorShaderModifier, ghostColor2ShaderModifier, ghostAlphaShaderModifier, ghostAlpha2ShaderModifier]),
+        (RenderStatePawn, [pbrBaseColorShaderModifier, pbrMetallicShaderModifier, pbrRoughnessShaderModifier]),
+    ]
+
+    RenderStateToMaterialTags = MAP
+    [
+        (RenderStateAll,            [ MaterialTags/Damage      ]),
+        (RenderStateGhost,          [ MaterialTags/Ghost       ]),
+        (RenderStateSelected,       [ MaterialTags/Selected    ]),
+        (RenderStateHovered,        [ MaterialTags/Hovered     ]),
+        (RenderStateSpotted,        [ MaterialTags/Spotted     ]),
+        (RenderStateDead,           [ MaterialTags/Dead        ]),
+        (RenderStatePawn,           [ MaterialTags/Pawn        ]),
+    ]
+
+    DefaultMultiRenderTypeMaterialPack = ~/DepictionUnitsMultiRenderTypeMaterialPack
+    RenderLayerSelector = ~/DefaultRenderLayerSelector
+    ShootVideoMode = $/M3D/Scene/ShootVideoMode
+)
+//------------------------------------------------------------------------------
+//******************************************************************************
+//------------------------------------------------------------------------------
+export StrategicInfantryRenderStyleProvider is TRenderStyleProviderDescriptor
+(
+    RenderStateToShaderModifiers = MAP
+    [
+        (RenderStateAll,  [couleurCampShaderModifier]),
+        (RenderStateGhost, [ghostColorShaderModifier, ghostColor2ShaderModifier, ghostAlphaShaderModifier, ghostAlpha2ShaderModifier]),
+        (RenderStatePawn, [pbrBaseColorShaderModifier, pbrMetallicShaderModifier, pbrRoughnessShaderModifier]),
+    ]
+
+    RenderStateToMaterialTags = MAP
+    [
+        (RenderStateAll,         [ MaterialTags/Damage      ]),
+        (RenderStateGhost,       [ MaterialTags/Ghost       ]),
+        (RenderStateSelected,    [ MaterialTags/Selected    ]),
+        (RenderStateHovered,     [ MaterialTags/Hovered     ]),
+        (RenderStateSpotted,     [ MaterialTags/Spotted     ]),
+        (RenderStateDead,        [ MaterialTags/Dead        ]),
+        (RenderStatePawn,        [ MaterialTags/Pawn        ]),
+    ]
+
+    DefaultMultiRenderTypeMaterialPack = ~/DepictionInfantryMultiRenderTypeMaterialPack
+    RenderLayerSelector = ~/DefaultRenderLayerSelector
+    ShootVideoMode = $/M3D/Scene/ShootVideoMode
+)
+//------------------------------------------------------------------------------
+//******************************************************************************
+//------------------------------------------------------------------------------

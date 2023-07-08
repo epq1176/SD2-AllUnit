@@ -1,0 +1,22 @@
+export ModelFile_Crusader_AA_Polsten_POL is 'GameData:Assets\3D\Units\POL\Char\Crusader_AA_Polsten\Crusader_AA_Polsten.Ase2NdfBin'
+
+export Modele_Crusader_AA_Polsten_POL is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Crusader_AA_Polsten_POL
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Crusader_AA_Polsten_POL_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Char\Crusader_AA_Polsten_MID\Crusader_AA_Polsten_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Crusader_AA_Polsten_POL_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Char\LODS\Crusader_AA_Polsten_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

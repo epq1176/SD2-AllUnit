@@ -1,0 +1,18 @@
+export WeaponConstantes is TWeaponConstantsDescriptor
+(
+    PrioriteDAlignement = PrioriteDAlignement
+
+    //---------------------------------------------------------------------------------------//
+    //------------------------------------- Constantes --------------------------------------//
+    //---------------------------------------------------------------------------------------//
+
+    MultiplicateurPorteeMaxPourSelectionDeCible = 1.2
+)
+
+//-------------------------------------------------------
+// AlignmentValidators
+//-------------------------------------------------------
+export DefaultAlignmentValidator   is TDefaultAlignmentValidator()  // Renvoie systématiquement true -> Outmap
+export AngularAlignementValidator  is TAngularAlignmentValidator()  // Vérifie que les angles de la tourelles correspondent aux angles vers la cible -> OneAxis, TwoAxis, Unit
+export InfantryAlignmentValidator  is TInfantryAlignmentValidator() // Vérifie que le TGroupCombaTModule puisse tirer -> Infantry
+export BombAlignmentValidator      is TBombAlignmentValidator()   // Vérifie que l'impact soit sur la cible -> Bombardier

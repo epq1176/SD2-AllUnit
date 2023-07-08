@@ -1,0 +1,22 @@
+export ModelFile_Hetzer_AK is 'GameData:Assets\3D\Units\POL\Char\Hetzer_AK\Hetzer_AK.Ase2NdfBin'
+
+Modele_Hetzer_AK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Hetzer_AK
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Hetzer_AK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Char\Hetzer_AK_MID\Hetzer_AK_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Hetzer_AK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Char\LODS\Hetzer_AK_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

@@ -1,0 +1,91 @@
+template TemplateMeshDescriptor_Mortar_81mm_Nisei_USA [ ModelFile ] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+
+export ModelFile_Boites_Mortar_81mm_Nisei_USA is 'GameData:Assets\3D\Units\USA\Canon\Mortar_81mm\Boites_Mortar_81mm.Ase2NdfBin'
+
+Gfx_Mortar_81mm_Nisei_USA_1 is TDepictionTemplate //servant gauche
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Mortar_81mm_Nisei_USA( ModelFile = ModelFile_Rifles_Nisei_US)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Mortar_81mm_Nisei_USA( ModelFile = ModelFile_Rifles_Nisei_US)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Mortar_81mm_Nisei_USA( ModelFile = ModelFile_Rifles_Nisei_US)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Mortar_81mm_Nisei_USA( ModelFile = ModelFile_Rifles_Nisei_US)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_ServantMortar_Gauche
+)
+
+Gfx_Mortar_81mm_Nisei_USA_2 is TDepictionTemplate //servant droite
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Mortar_81mm_Nisei_USA( ModelFile = ModelFile_Rifles_Nisei_US_Secondary)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Mortar_81mm_Nisei_USA( ModelFile = ModelFile_Rifles_Nisei_US_Secondary)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Mortar_81mm_Nisei_USA( ModelFile = ModelFile_Rifles_Nisei_US_Secondary)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Mortar_81mm_Nisei_USA( ModelFile = ModelFile_Rifles_Nisei_US_Secondary)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_ServantMortar_Droite
+)
+
+Gfx_Mortar_81mm_Nisei_USA_Weapon is TDepictionTemplate //arme
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = CommonDepictionSelector
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_Mortar_81mm_Nisei_USA ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_Mortar_81mm_Nisei_USA_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_Mortar_81mm_Nisei_USA_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor =  Modele_Mortar_81mm_Nisei_USA ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor =  Modele_Mortar_81mm_Nisei_USA_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor =  Modele_Mortar_81mm_Nisei_USA_LOW ),
+        ]
+
+        SubDepictions = []
+        Operators = //DepictionOperator_SkeletalAnimation_Mortar_81mm_Nisei_USA
+            DepictionOperatorNode_ResetUnit +
+            DepictionOperator_Carriable_Mortar
+        Actions = Weapons_Mortar_81mm_Nisei_USA
+    )
+
+SubDepiction_Servant_1_Mortar_81mm_Nisei_USA is TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_Mortar_81mm_Nisei_USA_1 )
+SubDepiction_Servant_2_Mortar_81mm_Nisei_USA is TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_Mortar_81mm_Nisei_USA_2 )
+SubDepiction_Canon_AT_Mortar_81mm_Nisei_USA is TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_Mortar_81mm_Nisei_USA_Weapon )
+
+Gfx_Mortar_81mm_Nisei_USA is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate //les boites
+    (
+        OverrideMeshBoundingBoxMin = [-500,-500,0]
+        OverrideMeshBoundingBoxMax = [ 500, 500,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_Mortar_81mm_Nisei_USA( ModelFile = ModelFile_Boites_Mortar_81mm) ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_Mortar_81mm_Nisei_USA( ModelFile = ModelFile_Boites_Mortar_81mm) ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_Mortar_81mm_Nisei_USA( ModelFile = ModelFile_Boites_Mortar_81mm) ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_Mortar_81mm_Nisei_USA( ModelFile = ModelFile_Boites_Mortar_81mm) ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_Mortar_81mm_Nisei_USA( ModelFile = ModelFile_Boites_Mortar_81mm) ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_Mortar_81mm_Nisei_USA( ModelFile = ModelFile_Boites_Mortar_81mm) ),
+        ]
+        NodeNamesForSelection = [ 'Canon_AT', 'servant_G' , 'servant_D']
+        SubDepictions = [SubDepiction_Servant_1_Mortar_81mm_Nisei_USA,
+                        SubDepiction_Servant_2_Mortar_81mm_Nisei_USA,
+                        SubDepiction_Canon_AT_Mortar_81mm_Nisei_USA]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+    )
+)

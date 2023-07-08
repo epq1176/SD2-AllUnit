@@ -1,0 +1,29 @@
+export ModelFile_Mosquito_110_UK is 'GameData:Assets\3D\Units\UK\Avion\DH98_Mosquito\DH98_Mosquito_Bombx6.Ase2NdfBin'
+
+Modele_Mosquito_110_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Mosquito_110_UK
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Mosquito_110_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Avion\DH98_Mosquito_MID\DH98_Mosquito_Bombx6_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Mosquito_110_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Avion\LODS\DH98_Mosquito_Bombx6_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Mosquito_110_UK_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Avion\DH98_Mosquito\DH98_Mosquito_train.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

@@ -1,0 +1,434 @@
+GameplayChatResources is TUISpecificGameplayChatResource
+(
+    OpenAllCommandName = InGameKeyCommands/OpenChat_All
+    OpenTeamCommandName = InGameKeyCommands/OpenChat_Team
+
+    ChatPanelComponent = ~/ChatPanelComponent
+
+    MessageDurationWhenClosed = 6.0
+    MessageFadeDurationWhenClosed = 2.0
+
+    UserInputLayer = $/M3D/Input/UserInputLayerHandler/InputLayer_InGameChat
+
+    ChatMessageComponent = ~/ChatLogMessage
+    ChatLogContentLeftMagnifiableMargin = 15.0
+
+    ChatLogScrollingContainer = ~/ChatLogScrollingContainer
+
+    ChatList = BUCKListDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1.0, 0.0]
+            AlignementToFather = [0.0, 1.0]
+            AlignementToAnchor = [0.0, 1.0]
+        )
+
+        Axis = ~/ListAxis/Vertical
+
+        ClipContent = true
+    )
+)
+
+private DropDownWidth is 400
+private ChatClearAllButtonWidth is ChatButtonStandardWidth + 50.0
+private ChatPanelWidth is 3 * ChatButtonStandardWidth + DropDownWidth + 2 * ChatButtonChangeFontSizeWidth + ChatClearAllButtonWidth
+private ChatPanelTotalHeight is ChatLogHeight + ChatEditableTextHeight + ChatButtonAndDropDownHeight
+private ChatLogHeight is 204.0
+private ChatEditableTextHeight is 42.0
+private ChatButtonAndDropDownHeight is 42.0
+private ChatButtonStandardWidth is 130.0
+private ChatButtonChangeFontSizeWidth is 42.0
+
+private ChatPanelComponent is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [ChatPanelWidth, ChatPanelTotalHeight]
+        RelativeWidthHeight = [0.0, 0.0]
+        PixelWidthHeight = [0.0, 0.0]
+        MagnifiableOffset = [0.0, -330.0]
+        AlignementToFather = [0.5, 1.0]
+        AlignementToAnchor = [0.5, 1.0]
+    )
+
+    Components =
+    [
+        ~/ChatLogComponent,
+        ~/ChatBarComponent,
+    ]
+)
+
+private ChatLogComponent is BUCKContainerDescriptor
+(
+    ElementName = "ChatLog"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, ChatLogHeight]
+        RelativeWidthHeight = [1.0, 0.0]
+        PixelWidthHeight = [0.0, 0.0]
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [0.0, 0.0]
+    )
+
+    Components =
+    [
+    ]
+)
+
+private ChatBarComponent is BUCKContainerDescriptor
+(
+    ElementName = "ChatBar"
+
+    HidePointerEvents = true
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, ChatEditableTextHeight + ChatButtonAndDropDownHeight]
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableOffset = [0.0, ChatLogHeight]
+    )
+
+    Components =
+    [
+        BUCKEditableTextDescriptor
+        (
+            ElementName = 'ChatBarEditableText'
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [0.0, ChatEditableTextHeight]
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            TypefaceToken = "Main"
+            TextSizeToken = "Chat/EditableText"
+            TextColorToken = "Chat/EditableText/Normal"
+
+            SelectionColorToken = "Chat/EditableText/Selected"
+
+            HasBorder = true
+            BorderLineColorToken = "Chat/EditableText/Outline"
+            BorderThicknessToken = "Chat/EditableText/Outline"
+
+            HasBackground = true
+            BackgroundBlockColorToken = "Chat/EditableText/Fond"
+
+            ClippingContainerFrameProperty = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [-6.0, -6.0]
+                RelativeWidthHeight = [1.0, 1.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            MaxChars = 140
+
+            TextStyle = "Chat"
+        ),
+
+        BUCKListDescriptor
+        (
+            ElementName = 'ChatBarButtonList'
+
+            ComponentFrame = TUIFramePropertyRTTI(
+                MagnifiableWidthHeight = [0.0, ChatButtonAndDropDownHeight]
+                RelativeWidthHeight = [0.0, 0.0]
+                MagnifiableOffset = [0.0, ChatEditableTextHeight]
+                AlignementToFather = [0.0, 0.0]
+                AlignementToAnchor = [0.0, 0.0]
+            )
+
+            HasBackground = true
+            BackgroundBlockColorToken = "Black80"
+
+            Axis = ~/ListAxis/Horizontal
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+            InterItemMargin = TRTTILength( Magnifiable = 0.0 )
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/ChatButtonSelectAll
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/ChatButtonSelectAlly
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/ChatButtonSelectContacts
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/ChatSelectFriendDropDown
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/ChatButtonClearAll
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/ChatButtonDecreaseFontSize
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/ChatButtonIncreaseFontSize
+                ),
+            ]
+        ),
+    ]
+)
+
+private ChatButtonSelectAll is BUCKSpecificButton
+(
+    ElementName = 'ButtonAll'
+
+    ButtonMagnifiableWidthHeight = [ChatButtonStandardWidth, ChatButtonAndDropDownHeight]
+    ButtonMagnifiableOffset = [0.0, 0.0]
+    ButtonAlignementToFather = [0.0, 0.0]
+    ButtonAlignementToAnchor = [0.0, 0.0]
+
+    HidePointerEvents = true
+
+    TextParagraphStyle = ~/ChatParagraphStyleCentered
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TextStyle = "Default"
+    TextSizeToken = "Chat/Button"
+    TextToken = "C_ALL"
+
+    IsTogglable = true
+    HintTitleToken = "HCT_ALLBUT"
+    HintBodyToken = "HCT_ALLBUB"
+    HintExtendedToken = "HCT_ALLBUE"
+    HintDico = ~/LocalisationConstantes/dico_interface_ingame
+)
+
+
+private ChatButtonSelectAlly is BUCKSpecificButton
+(
+    ElementName = "ButtonAlly"
+
+    ButtonMagnifiableWidthHeight = [ChatButtonStandardWidth, ChatButtonAndDropDownHeight]
+    ButtonMagnifiableOffset = [0.0, 0.0]
+    ButtonAlignementToFather = [0.0, 0.0]
+    ButtonAlignementToAnchor = [0.0, 0.0]
+
+    HasText = true
+    TextParagraphStyle = ~/ChatParagraphStyleCentered
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TextStyle = "Default"
+    TextSizeToken = "Chat/Button"
+    TextToken = "C_TEAM"
+
+    HidePointerEvents = true
+
+    IsTogglable = true
+    HintTitleToken = "HCT_ALYBUT"
+    HintBodyToken = "HCT_ALYBUB"
+    HintExtendedToken = "HCT_ALYBUE"
+    HintDico = ~/LocalisationConstantes/dico_interface_ingame
+)
+
+
+
+private ChatButtonSelectContacts is BUCKSpecificButton
+(
+    ElementName = 'ButtonContacts'
+
+    ButtonMagnifiableWidthHeight = [ChatButtonStandardWidth, ChatButtonAndDropDownHeight]
+    ButtonMagnifiableOffset = [0.0, 0.0]
+    ButtonAlignementToFather = [0.0, 0.0]
+    ButtonAlignementToAnchor = [0.0, 0.0]
+
+    HasText = true
+    TextParagraphStyle = ~/ChatParagraphStyleCentered
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TextStyle = "Default"
+    TextSizeToken = "Chat/Button"
+    TextToken = "C_CTACT"
+
+    HidePointerEvents = true
+
+    IsTogglable = true
+    HintTitleToken = "HCT_CONBUT"
+    HintBodyToken = "HCT_CONBUB"
+    HintExtendedToken = "HCT_CONBUE"
+    HintDico = ~/LocalisationConstantes/dico_interface_ingame
+)
+
+private ChatSelectFriendDropDown is BUCKSpecificDropdownDescriptor
+(
+    ElementName = 'DropDownSelectFriend'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [400, ChatButtonAndDropDownHeight]
+    )
+
+    ItemComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [400, 40]
+    )
+)
+
+private ChatButtonClearAll is BUCKSpecificButton
+(
+    ElementName = 'ButtonClear'
+
+    ButtonMagnifiableWidthHeight = [ChatClearAllButtonWidth, ChatButtonAndDropDownHeight]
+    ButtonMagnifiableOffset = [0.0, 0.0]
+    ButtonAlignementToFather = [0.0, 0.0]
+    ButtonAlignementToAnchor = [0.0, 0.0]
+
+    HasText = true
+    TextParagraphStyle = ~/ChatParagraphStyleCentered
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TextStyle = "Default"
+    TextSizeToken = "Chat/Button"
+    TextToken = "C_CLEARH"
+
+    HidePointerEvents = true
+
+    HintTitleToken = "HCT_CLRBUT"
+    HintBodyToken = "HCT_CLRBUB"
+    HintExtendedToken = "HCT_CLRBUE"
+    HintDico = ~/LocalisationConstantes/dico_interface_ingame
+)
+
+private ChatButtonDecreaseFontSize is BUCKSpecificButton
+(
+    ElementName = 'ButtonDecreaseFontSize'
+
+    ButtonMagnifiableWidthHeight = [ChatButtonChangeFontSizeWidth, ChatButtonAndDropDownHeight]
+    ButtonMagnifiableOffset = [0.0, 0.0]
+    ButtonAlignementToFather = [0.0, 0.0]
+    ButtonAlignementToAnchor = [0.0, 0.0]
+
+    HasText = true
+    TextParagraphStyle = ~/ChatParagraphStyleCentered
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TextStyle = "Default"
+    TextSizeToken = "Chat/Button"
+    TextToken = "CHAT_MINUS"
+
+    HidePointerEvents = true
+
+    HintTitleToken = "HCT_DFTSIT"
+    HintBodyToken = "HCT_DFTSIB"
+    HintExtendedToken = "HCT_DFTSIE"
+    HintDico = ~/LocalisationConstantes/dico_interface_ingame
+)
+
+private ChatButtonIncreaseFontSize is BUCKSpecificButton
+(
+    ElementName = 'ButtonIncreaseFontSize'
+
+    ButtonMagnifiableWidthHeight = [ChatButtonChangeFontSizeWidth, ChatButtonAndDropDownHeight]
+    ButtonMagnifiableOffset = [0.0, 0.0]
+    ButtonAlignementToFather = [0.0, 0.0]
+    ButtonAlignementToAnchor = [0.0, 0.0]
+
+    HasText = true
+    TextParagraphStyle = ~/ChatParagraphStyleCentered
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TextStyle = "Default"
+    TextSizeToken = "Chat/Button"
+    TextToken = "CHAT_PLUS"
+
+    HidePointerEvents = true
+
+    HintTitleToken = "HCT_IFTSIT"
+    HintBodyToken = "HCT_IFTSIB"
+    HintExtendedToken = "HCT_IFTSIE"
+    HintDico = ~/LocalisationConstantes/dico_interface_ingame
+)
+
+private ChatLogMessage is BUCKTextDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 0.0]
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [0.0, 0.0]
+    )
+
+    ParagraphStyle = ~/ChatParagraphStyleTopLeft
+    TextStyle = "ChatLogMessage"
+
+    HorizontalFitStyle = ~/FitStyle/UserDefined
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    TypefaceToken = "Main"
+    BigLineAction = ~/BigLineAction/MultiLine
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TextColor = "Chat/Log/Text"
+    TextSize = "Chat/Log/Text"
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TextFormatScript = ~/ChatTextFormatScript
+)
+
+private ChatParagraphStyleCentered is TParagraphStyleRTTI
+(
+    Alignment = UIText_Center
+    VerticalAlignment = UIText_VerticalCenter
+    InterLine = 0
+)
+
+private ChatParagraphStyleTopLeft is TParagraphStyleRTTI
+(
+    Alignment = UIText_Left
+    VerticalAlignment = UIText_Up
+    InterLine = 0
+    BigWordAction = ~/BigWordAction/BigWordNewLine
+)
+
+private ChatLogScrollingContainer is BUCKSpecificScrollingContainerDescriptor
+(
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, ChatLogHeight]
+    )
+
+    ExternalScrollbar = false
+    HasVerticalScrollbar = true
+    VerticalScrollbarComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [10.0, 0.0]
+        AlignementToAnchor = [1.0, 0.0]
+        AlignementToFather = [1.0, 0.0]
+        MagnifiableOffset = [-6.0, 0.0]
+    )
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ElementName = 'ScrollingContent'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                AlignementToFather = [0.0, 1.0]
+                AlignementToAnchor = [0.0, 1.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+            AssumeChildrenAreClippable = true
+        )
+    ]
+)

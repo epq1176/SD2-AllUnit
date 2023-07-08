@@ -1,0 +1,22 @@
+export ModelFile_Carrier_OP_CZ is 'GameData:Assets\3D\Units\CAN\Char\Universal_Carrier\AOP_Carrier.Ase2NdfBin'
+
+Modele_Carrier_OP_CZ is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Carrier_OP_CZ
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_OP_CZ_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CAN\Char\Universal_Carrier_MID\AOP_Carrier_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_OP_CZ_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CAN\Char\LODS\AOP_Carrier_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

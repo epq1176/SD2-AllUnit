@@ -1,0 +1,22 @@
+export ModelFile_Tetrarch is 'GameData:Assets\3D\Units\UK\Char\Tetrarch\Tetrarch.Ase2NdfBin'
+
+Modele_Tetrarch is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Tetrarch
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Tetrarch_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\Tetrarch_MID\Tetrarch_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Tetrarch_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\LODS\Tetrarch_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

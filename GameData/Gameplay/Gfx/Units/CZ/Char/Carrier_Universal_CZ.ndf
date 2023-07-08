@@ -1,0 +1,22 @@
+export ModelFile_Carrier_Universal_CZ is 'GameData:Assets\3D\Units\CZ\Char\Universal_Carrier_CZ\Universal_Carrier_CZ.Ase2NdfBin'
+
+Modele_Carrier_Universal_CZ is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Carrier_Universal_CZ
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_Universal_CZ_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CZ\Char\Universal_Carrier_CZ_MID\Universal_Carrier_CZ_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Carrier_Universal_CZ_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CZ\Char\LODS\Universal_Carrier_CZ_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

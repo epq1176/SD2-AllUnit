@@ -1,0 +1,38 @@
+MimeticWorld is TMimeticWorldDescriptor
+(
+    World = $/M3D/Scene/DefaultWorld
+    Happenings = MAP[
+
+        (["Bushmaster"], TContinuousSoundImpactHappening
+            (
+                SoundDescHighCadence   = TemplateBushmaster ( SoundFileName = 'Bushmaster\SFX_Impact_Bushmaster.wav' )
+                SoundDescHighCadenceLR = TemplateBushmaster ( SoundFileName = 'Bushmaster\SFX_Impact_Bushmaster.wav' )
+                SoundDescLowCadence    = TemplateBushmaster ( SoundFileName = 'Canon\SFX_Impact_Ground_Autocannon_1.wav' )
+                SoundDescLowCadenceLR  = TemplateBushmaster ( SoundFileName = 'Canon\SFX_Impact_Ground_Autocannon_2.wav' )
+                SoundDescWaterHighCadence   = nil
+                SoundDescWaterHighCadenceLR = nil
+                SoundDescWaterLowCadence    = nil
+                SoundDescWaterLowCadenceLR  = nil
+                WaitBetweenShotLimit = 60. div 500. //500 coups par minute
+            ))
+        ,
+        (["Mitrailleuse"], TContinuousSoundImpactHappening
+            (
+                SoundDescHighCadence    = TemplateBushmaster ( SoundFileName = 'Bullet\SFX_Impact_Ground_Bullet_1_01.wav' )
+                SoundDescHighCadenceLR  = TemplateBushmaster ( SoundFileName = 'Bullet\SFX_Impact_Ground_Bullet_1_01.wav' )
+                SoundDescLowCadence     = TemplateBushmaster ( SoundFileName = 'Bullet\SFX_Impact_Ground_Bullet_1_01.wav' )
+                SoundDescLowCadenceLR   = TemplateBushmaster ( SoundFileName = 'Bullet\SFX_Impact_Ground_Bullet_1_01.wav' )
+                SoundDescWaterHighCadence   = nil
+                SoundDescWaterHighCadenceLR = nil
+                SoundDescWaterLowCadence    = nil
+                SoundDescWaterLowCadenceLR  = nil
+                WaitBetweenShotLimit = 60. div 500. //500 coups par minute
+            ))
+        ,
+
+        (["impact"], TCompositeHappening( SubHappenings = [ AllImpactHappenings, AllImpactSoundHappenings ] )),
+        (["impactWithoutSound"], AllImpactHappenings)
+    ]
+
+    CameraMoverProxyForDebug = $/M3D/Scene/IngameCameraMoverHelperProxy
+)

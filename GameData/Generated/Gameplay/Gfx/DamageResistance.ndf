@@ -1,0 +1,46 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+private DamageResistanceParams is TGameplayDamageResistanceContainer
+(
+
+    ResistanceFamilies = [
+        "armure_1",
+        "armure_2",
+        "bouclier_1",
+        "bouclier_2",
+        "invincible",
+        "typeresistance",
+    ]
+
+    DamageFamilies = [
+        "Epee_1",
+        "Epee_2",
+        "Magie_1",
+        "Magie_2",
+    ]
+
+    Values = MAP
+    [
+        (~/PhysicalState_mana,
+        [
+            1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+            1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+            1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+            1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+        ]),
+        (~/PhysicalState_moral,
+        [
+            0.75, 0.5, 1.0, 1.0, 0.0, 1.0,
+            1.0, 0.75, 1.0, 1.0, 0.0, 3.0,
+            1.0, 1.0, 0.75, 0.5, 0.0, 5.0,
+            1.0, 1.0, 1.0, 0.75, 0.0, 8.0,
+        ]),
+        (~/PhysicalState_sante,
+        [
+            0.75, 0.5, 1.0, 1.0, 0.0, 1.0,
+            1.0, 0.75, 1.0, 1.0, 0.0, 3.0,
+            1.0, 1.0, 0.75, 0.5, 0.0, 5.0,
+            1.0, 1.0, 1.0, 0.75, 0.0, 8.0,
+        ]),
+    ]
+)

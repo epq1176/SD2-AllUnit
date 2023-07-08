@@ -1,0 +1,22 @@
+export ModelFile_Horch_108_ROU is 'GameData:Assets\3D\Units\ROU\Vehicule\Horch_108_ROU\Horch_108_ROU.Ase2NdfBin'
+
+Modele_Horch_108_ROU is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Horch_108_ROU
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Horch_108_ROU_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Vehicule\Horch_108_ROU_MID\Horch_108_ROU_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Horch_108_ROU_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\ROU\Vehicule\LODS\Horch_108_ROU_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

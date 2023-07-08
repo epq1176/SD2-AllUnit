@@ -1,0 +1,91 @@
+template TemplateMeshDescriptor_Mortier_3inch_CZ [ ModelFile ] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+
+// ModelFile_Boites_Mortar_81mm is 'GameData:Assets\3D\Units\UK\Canon\6_pdr\Boites_6_pdr.Ase2NdfBin'
+
+Gfx_Mortier_3inch_CZ_1 is TDepictionTemplate //servant gauche
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Mortier_3inch_CZ( ModelFile = ModelFile_Combat_Patrol_CZ)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Mortier_3inch_CZ( ModelFile = ModelFile_Combat_Patrol_CZ_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Mortier_3inch_CZ( ModelFile = ModelFile_Combat_Patrol_CZ)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Mortier_3inch_CZ( ModelFile = ModelFile_Combat_Patrol_CZ_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_ServantMortar_Gauche
+)
+
+Gfx_Mortier_3inch_CZ_2 is TDepictionTemplate //servant droite
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Mortier_3inch_CZ( ModelFile = ModelFile_Combat_Patrol_CZ_Secondary)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Mortier_3inch_CZ( ModelFile = ModelFile_Combat_Patrol_CZ_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Mortier_3inch_CZ( ModelFile = ModelFile_Combat_Patrol_CZ_Secondary)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Mortier_3inch_CZ( ModelFile = ModelFile_Combat_Patrol_CZ_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_ServantMortar_Droite
+)
+
+Gfx_Mortier_3inch_CZ_Weapon is TDepictionTemplate //arme
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = CommonDepictionSelector
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_Mortier_3inch_CZ ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_Mortier_3inch_CZ_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_Mortier_3inch_CZ_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor =  Modele_Mortier_3inch_CZ ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor =  Modele_Mortier_3inch_CZ_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor =  Modele_Mortier_3inch_CZ_LOW ),
+        ]
+
+        SubDepictions = []
+        Operators = //DepictionOperator_SkeletalAnimation_Mortier_3inch_CZ
+            DepictionOperatorNode_ResetUnit +
+            DepictionOperator_Carriable_Mortar
+        Actions = Weapons_Mortier_3inch_CZ
+    )
+
+SubDepiction_Servant_1_Mortier_3inch_CZ is TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_Mortier_3inch_CZ_1 )
+SubDepiction_Servant_2_Mortier_3inch_CZ is TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_Mortier_3inch_CZ_2 )
+SubDepiction_Canon_AT_Mortier_3inch_CZ is TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_Mortier_3inch_CZ_Weapon )
+
+Gfx_Mortier_3inch_CZ is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate //les boites
+    (
+        OverrideMeshBoundingBoxMin = [-500,-500,0]
+        OverrideMeshBoundingBoxMax = [ 500, 500,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_Mortier_3inch_CZ( ModelFile = ModelFile_Boites_Mortar_81mm) ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_Mortier_3inch_CZ( ModelFile = ModelFile_Boites_Mortar_81mm) ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_Mortier_3inch_CZ( ModelFile = ModelFile_Boites_Mortar_81mm) ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_Mortier_3inch_CZ( ModelFile = ModelFile_Boites_Mortar_81mm) ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_Mortier_3inch_CZ( ModelFile = ModelFile_Boites_Mortar_81mm) ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_Mortier_3inch_CZ( ModelFile = ModelFile_Boites_Mortar_81mm) ),
+        ]
+        NodeNamesForSelection = [ 'Canon_AT', 'servant_G' , 'servant_D']
+        SubDepictions = [SubDepiction_Servant_1_Mortier_3inch_CZ,
+                        SubDepiction_Servant_2_Mortier_3inch_CZ,
+                        SubDepiction_Canon_AT_Mortier_3inch_CZ]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+    )
+)

@@ -1,0 +1,22 @@
+export ModelFile_T28E_FIN is 'GameData:Assets\3D\Units\FIN\Char\T28_E\T28_E.Ase2NdfBin'
+
+Modele_T28E_FIN is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_T28E_FIN
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_T28E_FIN_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Char\T28_E_MID\T28_E_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_T28E_FIN_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FIN\Char\LODS\T28_E_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

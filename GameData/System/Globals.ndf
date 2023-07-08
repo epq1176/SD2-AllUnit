@@ -1,0 +1,96 @@
+
+OneMeterInGameUnits is 215
+
+//-----------------------------------------------------------------------------
+// Transition visuelle entre le ghost de production
+// en fonction de la progression de la construction [0 = début ; 1 = fin]
+// nb : dès 0, côté IA, le bâtiment n'est plus considéré comme un ghost de production
+GhostToBuildTransitionInFuncOfBuildProgression is 0.3
+
+//-----------------------------------------------------------------------------
+// terrains
+// ATTENTION : si on veut supprimer/modifier des masques de terrain, gérer la rétrocompatibilité dans
+// ZonesLoader.cpp & mettre à jour le numéro de version du Zones.mesh dans ZonesLoader.cpp & LoadSaveZones.cpp
+
+NAMask_Terrain is TBaseClass
+(
+    None                    is 0
+    Default                 is 2    // 00000010 // WARGAME
+    BocageLeger             is 6    // 00000110 // WARGAME
+    BocageMoyen             is 10   // 00001010 // WARGAME
+    BocageLourd             is 14   // 00001110 // WARGAME
+    ChampCultures           is 18   // 00010010 // WARGAME
+    Littoral                is 22   // 00010010 // WARGAME
+    ChampCereales           is 26   // 00011010 // WARGAME
+    ChampFriche             is 30   // 00011110 // WARGAME
+    Urbain                  is 34   // 00100010 // WARGAME
+    EauProfonde             is 38   // 00100110 // WARGAME
+    ForetDense              is 42   // 00101010 // WARGAME
+    Batiment                is 46   // 00101110 // WARGAME
+    Barbeles                is 50   // 00110010 // WARGAME
+    Eau                     is 54   // 00110110 // WARGAME
+    Rocher                  is 58   // 00111010 // WARGAME
+    Batiment2               is 62   // 00111110 // WARGAME
+    MaraisMine              is 66   // 01000010 // WARGAME
+    FosseAntichar           is 70   // 01000110 // WARGAME
+    Tranchee                is 74   // 01001010 // WARGAME
+    RocherForet             is 78   // 01001110 // WARGAME
+    Portail                 is 82   // 01010010 // WARGAME
+    Passant1                is 86   // 01010110
+    Bloqueur0               is 90   // 01011010
+    Bloqueur1               is 94   // 01011110
+    Marais                  is 98   // 01100010
+    ForetLegere             is 102  // 01100110
+    NidMitrailleuse         is 106  // 01101010
+    ChampDeMineAT           is 110  // 01101110
+    BloqueConstruction      is 114  // 01110010
+    Layer0                  is 130  // 10000010
+    Layer1                  is 134  // 10000110
+    Layer2                  is 138  // 10001010
+    Layer3                  is 142  // 10001110
+    Layer4                  is 150  // 10010110
+    Layer5                  is 152  // 10011000
+    LightSmoke              is 132  // 10000100
+    MediumSmoke             is 140  // 10001100
+    HeavySmoke              is 148  // 10010100
+)
+
+//-----------------------------------------------------------------------------
+// Game Design Aspect Sub Types
+SDGameDesignAspect_PointDeTir is 1
+SDGameDesignAspect_ObstacleZone is 2
+
+//-----------------------------------------------------------------------------
+// Mouvement
+public Movement is TBaseClass
+(
+    ObstacleMobileCellSize is 190 * OneMeterInGameUnits
+    ObstacleStaticPolygonalCellSize is 40 * OneMeterInGameUnits
+)
+
+SpecificCommandName is TBaseClass
+(
+    UpdateGUIFromLabelStyles            is "GUI::UpdateGUIFromLabelStyles"
+    UpdateGUIFromLabelMerging           is "GUI::UpdateGUIFromLabelMerging"
+    UpdateGUIFromIconType               is "GUI::UpdateGUIFromIconType"
+    UpdateGUIFromStrategicIconType      is "GUI::UpdateGUIFromStrategicIconType"
+    UpdateGUIFromStrategicPawnPower     is "GUI::UpdateGUIFromStrategicPawnPower"
+    UpdateGUIFromStrategicPawnName      is "GUI::UpdateGUIFromStrategicPawnName"
+    UpdateGUIFromIconTypeForUnitInfos   is "GUI::UpdateGUIFromIconTypeForUnitInfos"
+    UpdateGUIFromUnitsPerCompany        is "GUI::UpdateGUIFromUnitsPerCompany"
+    UpdateGUIFromMultipleSelection      is "GUI::UpdateGUIFromMultipleSelection"
+    UpdateGUIFromHUDSize                is "InGameMainContainer::UpdateGUIFromHUDSize"
+    UpdateGUIFromMinimapDisplay         is "GUI::UpdateGUIFromMinimapDisplay"
+    UpdateGUIFromProdMenuBehavior       is "GUI::UpdateGUIFromProdMenuBehavior"
+    UpdateGUIFromUnitViewBehavior       is "GUI::UpdateGUIFromUnitViewBehavior"
+    UpdateGUIFromLowViolence            is "GUI::UpdateGUIFromLowViolence"
+    UpdateGUIFromShowTutorial           is "GUI::UpdateGUIFromShowTutorial"
+    UpdateGUIFromShowNonAcquiredDLC     is "GUI::UpdateGUIFromShowNonAcquiredDLC"
+    UpdateGUIFromShowAutoDeploy         is "GUI::UpdateGUIFromShowAutoDeploy"
+)
+
+//-----------------------------------------------------------------------------
+// Terrains a ignorer (utiles pour les bateaux)
+// A garder a jour avec MouvementHandlerEnums.h
+TerrainToIgnoreMask_Littoral     is 2 // 1 << 1, pour le littoral
+TerrainToIgnoreMask_Beach        is 16 // 1 << 4 pour les plages.

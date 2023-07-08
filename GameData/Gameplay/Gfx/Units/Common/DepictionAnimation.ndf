@@ -1,0 +1,1062 @@
+
+Template Template_DepictionOperator_SkeletalAnimation [ TorsoBone = '', AnimationTree = nil, AnimationTransitionsManager = nil] is TCosmeticSkeletalAnimationOperatorDesc
+(
+    OperatorId = 'biped'
+    TorsoBone = <TorsoBone> // Mettez le bone du torse pour les infanteries que vous voulez capable de tourner le torse indépendamment de leurs animations.
+    Camera = $/M3D/Camera/CameraPrincipale //ca va poser des problème pour les depictions dans l'outgame mais vu que j'ai toujours pas de nouvelles, et que réarchitecturer tout ca va me prendre un temps fou, je me contente de ça pour le moment
+    public AnimTree is <AnimationTree>
+    AnimationTree = <AnimationTree> // Mettre un arbre ici si vous voulez utiliser le nouveau système d'anim
+    AnimationTransitionsManager = <AnimationTransitionsManager> // Mettre ici une liste des transitions d'animations à gérer si il y en a.
+    CameraDistanceOptimization = true
+)
+
+template template_DepictionAnimationTreeNode
+[
+    IAStates                : integer     = 0,
+    IAOldStates             : integer     = 0,
+    DefaultAnimationStates  : integer     = 0,
+    Animation                             = nil,
+    Childs                                = [],
+    UsedSlots                             = InfantryAnimationAllSlots,
+    TerrainType             : integer     = ~/ETerrainType/Tous,
+] is TDepictionAnimationTreeNode
+(
+    IAStates = <IAStates>
+    IAOldStates = <IAOldStates>
+    DefaultAnimationStates = <DefaultAnimationStates>
+    Childs = <Childs>
+    TerrainType = <TerrainType>
+    UsedSlots = <UsedSlots>
+    Animation = <Animation>
+)
+
+template DepictionAnimationTreeNode
+[
+    IAStates                : integer     = 0,
+    IAOldStates             : integer     = 0,
+    DefaultAnimationStates  : integer     = 0,
+    Animations                            = [],
+    Childs                                = [],
+    UsedSlots                             = [AnimationDefaultSlot],
+    TerrainType             : integer     = ~/ETerrainType/Tous,
+] is TDepictionAnimationTreeNode
+(
+    IAStates = <IAStates>
+    IAOldStates = <IAOldStates>
+    DefaultAnimationStates = <DefaultAnimationStates>
+    Childs = <Childs>
+    TerrainType = <TerrainType>
+    UsedSlots = <UsedSlots>
+    Animation = TDepictionAnimation
+    (
+        Animations = <Animations>
+    )
+)
+
+DepictionAnimation_TorsoBone is 'Bip01 Spine'
+
+Template Template_DepictionOperator_SkeletalAnimation_With_Tree [AnimationTree = nil, AnimationTransitionsManager = nil, CameraDistanceOptimization = false] is TCosmeticSkeletalAnimationOperatorDesc
+(
+    OperatorId = 'skeletal'
+    Camera = $/M3D/Camera/CameraPrincipale //ca va poser des problème pour les depictions dans l'outgame mais vu que j'ai toujours pas de nouvelles, et que réarchitecturer tout ca va me prendre un temps fou, je me contente de ça pour le moment
+    AnimationTree = <AnimationTree> // Mettre un arbre ici si vous voulez utiliser le nouveau système d'anim
+    AnimationTransitionsManager = <AnimationTransitionsManager> // Mettre ici une liste des transitions d'animations à gérer si il y en a.
+    CameraDistanceOptimization = <CameraDistanceOptimization> //par défaut c'est à false pour les unités qui ont d'autres operateurs qui agissent sur les bones, cas dans la plupart des fois ou ce template est utilisé. L'opti est fait directement sur le applychangeon comme les operateurs habituellement
+)
+
+Template TAnimNode
+[
+IAStates : integer     = 0,
+IAOldStates : integer     = 0,
+Childs                 = [],
+Loop     : boolean     = true,
+Anim     : string      = '',
+AnimationPath : string = '',
+StartDelay  = 0,
+Mask = nil,
+UsedSlots = [AnimationDefaultSlot],
+EventAnimation = false,
+TerrainType : integer  = ~/ETerrainType/Tous,
+] is TDepictionAnimationTreeNode
+(
+    IAStates = <IAStates>
+    IAOldStates = <IAOldStates>
+    TerrainType = <TerrainType>
+    Childs = <Childs>
+    UsedSlots = <UsedSlots>
+    Animation = TDepictionAnimation
+    (
+        Animations =
+        [
+            TemplateAnimation(Animation=<Anim> + '.Ase2NdfBin' Loop=<Loop> AnimationPath = <AnimationPath> Mask = <Mask> EventAnimation = <EventAnimation> StartDelay  = <StartDelay>)
+        ]
+    )
+)
+
+
+
+//Infanterie
+// À maintenir synchro avec IA::TGdcAnimationState::Type dans StateUnite_Gdc.h
+InfanterieStateDie          is 0x00000001
+InfanterieStateToSpecial    is 0x00000002
+InfanterieStateFromSpecial  is 0x00000004
+InfanterieStateHit          is 0x00000008
+InfanterieStateReload       is 0x00000010
+InfanterieStateFire         is 0x00000020
+InfanterieStatePinned       is 0x00000040
+InfanterieStateSuppr        is 0x00000080
+InfanterieStateCower        is 0x00000100
+InfanterieStateCrouch       is 0x00000200
+InfanterieStateStunned      is 0x00000400
+InfanterieStateSeFire       is 0x00000800
+InfanterieStateLook         is 0x00001000
+InfanterieStateViolence     is 0x00002000
+InfanterieStateExplosion    is 0x00004000
+InfanterieStateSpecial      is 0x00008000
+InfanterieStateDos          is 0x00010000
+InfanterieStateDroite       is 0x00020000
+InfanterieStateGauche       is 0x00040000
+InfanterieStateArriere      is 0x00080000
+InfanterieStateVise         is 0x00100000
+InfanterieStateStand        is 0x00200000
+InfanterieStateRun          is 0x00400000
+InfanterieStateFlee         is 0x00800000
+InfanterieStateBlocked      is 0x01000000
+InfanterieStateCapturing    is 0x02000000
+InfanterieStateCaptured     is 0x04000000
+InfanterieStateShowRoom     is 0x08000000
+InfanterieStateAll          is 0x00000000
+
+
+template template_DepictionAnimation
+[
+    FileName   : string,
+    Loop       : boolean,
+    Final      : boolean = false,
+    Duree      : float = 0,
+    NbVariantes: int = 1
+] is TDepictionAnimation
+(
+    private IsEventAnimation is !<Loop> & !<Final>
+
+    Name = <FileName>
+    Animations =
+    [
+        TemplateAnimationTop(   Animation=<FileName> + '.Ase2NdfBin' Loop=<Loop> Duree = <Duree> EventAnimation = IsEventAnimation),
+        TemplateAnimationBottom(Animation=<FileName> + '.Ase2NdfBin' Loop=<Loop> Duree = <Duree> EventAnimation = IsEventAnimation)
+    ]
+     + ((<NbVariantes> >= 2) ?
+    [
+        TemplateAnimationTop(   Animation=<FileName> + '2.Ase2NdfBin' Loop=<Loop> Duree = <Duree> EventAnimation = IsEventAnimation),
+        TemplateAnimationBottom(Animation=<FileName> + '2.Ase2NdfBin' Loop=<Loop> Duree = <Duree> EventAnimation = IsEventAnimation)
+    ] : [])
+     + ((<NbVariantes> >= 3) ?
+    [
+        TemplateAnimationTop(   Animation=<FileName> + '3.Ase2NdfBin' Loop=<Loop> Duree = <Duree> EventAnimation = IsEventAnimation),
+        TemplateAnimationBottom(Animation=<FileName> + '3.Ase2NdfBin' Loop=<Loop> Duree = <Duree> EventAnimation = IsEventAnimation)
+    ] : [])
+     + ((<NbVariantes> >= 4) ?
+    [
+        TemplateAnimationTop(   Animation=<FileName> + '4.Ase2NdfBin' Loop=<Loop> Duree = <Duree> EventAnimation = IsEventAnimation),
+        TemplateAnimationBottom(Animation=<FileName> + '4.Ase2NdfBin' Loop=<Loop> Duree = <Duree> EventAnimation = IsEventAnimation)
+    ] : [])
+     + ((<NbVariantes> >= 5) ?
+    [
+        TemplateAnimationTop(   Animation=<FileName> + '5.Ase2NdfBin' Loop=<Loop> Duree = <Duree> EventAnimation = IsEventAnimation),
+        TemplateAnimationBottom(Animation=<FileName> + '5.Ase2NdfBin' Loop=<Loop> Duree = <Duree> EventAnimation = IsEventAnimation)
+    ] : [])
+     + ((<NbVariantes> >= 6) ?
+    [
+        TemplateAnimationTop(   Animation=<FileName> + '6.Ase2NdfBin' Loop=<Loop> Duree = <Duree> EventAnimation = IsEventAnimation),
+        TemplateAnimationBottom(Animation=<FileName> + '6.Ase2NdfBin' Loop=<Loop> Duree = <Duree> EventAnimation = IsEventAnimation)
+    ] : [])
+     + ((<NbVariantes> >= 7) ?
+    [
+        TemplateAnimationTop(   Animation=<FileName> + '7.Ase2NdfBin' Loop=<Loop> Duree = <Duree> EventAnimation = IsEventAnimation),
+        TemplateAnimationBottom(Animation=<FileName> + '7.Ase2NdfBin' Loop=<Loop> Duree = <Duree> EventAnimation = IsEventAnimation)
+    ] : [])
+     + ((<NbVariantes> >= 8) ?
+    [
+        TemplateAnimationTop(   Animation=<FileName> + '8.Ase2NdfBin' Loop=<Loop> Duree = <Duree> EventAnimation = IsEventAnimation),
+        TemplateAnimationBottom(Animation=<FileName> + '8.Ase2NdfBin' Loop=<Loop> Duree = <Duree> EventAnimation = IsEventAnimation)
+    ] : [])
+     + ((<NbVariantes> >= 9) ?
+    [
+        TemplateAnimationTop(   Animation=<FileName> + '9.Ase2NdfBin' Loop=<Loop> Duree = <Duree> EventAnimation = IsEventAnimation),
+        TemplateAnimationBottom(Animation=<FileName> + '9.Ase2NdfBin' Loop=<Loop> Duree = <Duree> EventAnimation = IsEventAnimation)
+    ] : [])
+     + ((<NbVariantes> >= 10) ?
+    [
+        TemplateAnimationTop(   Animation=<FileName> + '10.Ase2NdfBin' Loop=<Loop> Duree = <Duree> EventAnimation = IsEventAnimation),
+        TemplateAnimationBottom(Animation=<FileName> + '10.Ase2NdfBin' Loop=<Loop> Duree = <Duree> EventAnimation = IsEventAnimation)
+    ] : [])
+)
+
+//templates pour anim d'infanterie
+Template TInfanterieAnimNode
+[
+    IAStates   : integer = 0,
+    IAOldStates: integer = ~/InfanterieStateAll,
+    Childs               = [],
+    Top        : boolean = false,
+    Bot        : boolean = false,
+    Anim       : TDepictionAnimation = nil,
+    TerrainType: int = ~/ETerrainType/Tous,
+    ForbiddenTerrainType    : int = ~/ETerrainType/None,
+] is TDepictionAnimationTreeNode
+(
+    IsEventAnimation is !<Loop> & !<Final>
+    AllowedTerrainType is (<TerrainType> == ~/ETerrainType/Tous)
+        ? ~/ETerrainType/Tous - <ForbiddenTerrainType>
+        : <TerrainType>
+    IAStates = <IAStates>
+    IAOldStates = <IAOldStates>
+    TerrainType = AllowedTerrainType
+    Animation = <Anim>
+    Childs = <Childs>
+    UsedSlots = []
+    + (<Top> ? [InfantryAnimationTopSlot] : [])
+    + (<Bot> ? [InfantryAnimationBottomSlot] : [])
+)
+
+// Animations des infanteries
+Fusilier_Aiming is template_DepictionAnimation
+(
+    FileName = 'Fusilier_Aiming'
+    Loop = true
+)
+Fusilier_Aiming_MMG is template_DepictionAnimation
+(
+    FileName = 'Fusilier_Aiming_MMG'
+    Loop = true
+)
+Fusilier_Aiming_SMG is template_DepictionAnimation
+(
+    FileName = 'Fusilier_Aiming_SMG'
+    Loop = true
+)
+Fusilier_Aiming_Flamer is template_DepictionAnimation
+(
+    FileName = 'Fusilier_Aiming_Flamer'
+    Loop = true
+)
+Fusilier_bazooka_vise is template_DepictionAnimation
+(
+    FileName = 'Fusilier_bazooka_vise'
+    Loop = true
+)
+Fusilier_bazooka_tir is template_DepictionAnimation
+(
+    FileName = 'Fusilier_bazooka_tir'
+    Loop = false
+)
+Fusilier_Crawl is template_DepictionAnimation
+(
+    FileName = 'Fusilier_Crawl'
+    Loop = true
+)
+Fusilier_Eau is template_DepictionAnimation
+(
+    FileName = 'Fusilier_Eau'
+    Loop = true
+)
+Fusilier_course_arriere is template_DepictionAnimation
+(
+    FileName = 'Fusilier_course_arriere'
+    Loop = true
+)
+Fusilier_course_droite is template_DepictionAnimation
+(
+    FileName = 'Fusilier_course_droite'
+    Loop = true
+)
+Fusilier_course_gauche is template_DepictionAnimation
+(
+    FileName = 'Fusilier_course_gauche'
+    Loop = true
+)
+Fusilier_Crouch is template_DepictionAnimation
+(
+    FileName = 'Fusilier_Crouch'
+    Loop = true
+    NbVariantes = 2
+)
+Fusilier_Deroute is template_DepictionAnimation
+(
+    FileName = 'Fusilier_Deroute'
+    Loop = true
+    NbVariantes = 3
+)
+Fusilier_Fire is template_DepictionAnimation
+(
+    FileName = 'Fusilier_Fire'
+    Loop = false
+)
+Fusilier_Fire_MMG is template_DepictionAnimation
+(
+    FileName = 'Fusilier_Fire_MMG'
+    Loop = false
+)
+Fusilier_Fire_Flamer is template_DepictionAnimation
+(
+    FileName = 'Fusilier_Fire_Flamer'
+    Loop = false
+)
+Fusilier_Fire_SMG is template_DepictionAnimation
+(
+    FileName = 'Fusilier_Fire_SMG'
+    Loop = false
+)
+Fusilier_Get_Up is template_DepictionAnimation
+(
+    FileName = 'Fusilier_Get_Up'
+    Loop = false
+)
+Fusilier_hit is template_DepictionAnimation
+(
+    FileName = 'Fusilier_hit'
+    Loop = false
+)
+Fusilier_hit_dos is template_DepictionAnimation
+(
+    FileName = 'Fusilier_hit_dos'
+    Loop = false
+)
+Fusilier_hit_explosion is template_DepictionAnimation
+(
+    FileName = 'Fusilier_hit_explosion'
+    Loop = false
+)
+Fusilier_Idle is template_DepictionAnimation
+(
+    FileName = 'Fusilier_Idle'
+    Loop = true
+    NbVariantes = 2
+)
+Fusilier_Idle_MMG is template_DepictionAnimation
+(
+    FileName = 'Fusilier_Idle_MMG'
+    Loop = true
+    NbVariantes = 2
+)
+Fusilier_Idle_SMG is template_DepictionAnimation
+(
+    FileName = 'Fusilier_Idle_SMG'
+    Loop = true
+    NbVariantes = 2
+)
+Fusilier_Idle_Special is template_DepictionAnimation // Ne sert plus à rien en fait... Vu que les infanteries avec un bazooka utilisent les mêmes anims Idle que tout le monde.
+(
+    FileName = 'Fusilier_Idle_Special'
+    Loop = true
+)
+Fusilier_Kneel is template_DepictionAnimation
+(
+    FileName = 'Fusilier_Kneel'
+    Loop = false
+)
+Fusilier_look_around is template_DepictionAnimation
+(
+    FileName = 'Fusilier_look_around'
+    Loop = false
+)
+Fusilier_Marche is template_DepictionAnimation
+(
+    FileName = 'Fusilier_Marche'
+    Loop = false
+)
+Fusilier_mort_balle is template_DepictionAnimation
+(
+    FileName = 'Fusilier_mort_balle'
+    Loop = false
+    Final = true
+)
+Fusilier_mort_balle_dos is template_DepictionAnimation
+(
+    FileName = 'Fusilier_mort_balle_dos'
+    Loop = false
+    Final = true
+)
+Fusilier_mort_balle_violente is template_DepictionAnimation
+(
+    FileName = 'Fusilier_mort_balle_violente'
+    Loop = false
+    Final = true
+)
+Fusilier_mort_explosion is template_DepictionAnimation
+(
+    FileName = 'Fusilier_mort_explosion'
+    Loop = false
+    Final = true
+)
+Fusilier_mort_explosion_dos is template_DepictionAnimation
+(
+    FileName = 'Fusilier_mort_explosion_dos'
+    Loop = false
+    Final = true
+)
+Fusilier_Reload is template_DepictionAnimation
+(
+    FileName = 'Fusilier_Reload'
+    Loop = false
+)
+Fusilier_Run is template_DepictionAnimation
+(
+    FileName = 'Fusilier_Run'
+    Loop = true
+    NbVariantes = 3
+)
+Fusilier_Run_Aim is template_DepictionAnimation
+(
+    FileName = 'Fusilier_Run_Aim'
+    Loop = true
+)
+Fusilier_Run_MMG is template_DepictionAnimation
+(
+    FileName = 'Fusilier_Run_MMG'
+    Loop = true
+)
+Fusilier_Run_SMG is template_DepictionAnimation
+(
+    FileName = 'Fusilier_Run_SMG'
+    Loop = true
+)
+Fusilier_stand_pinned is template_DepictionAnimation
+(
+    FileName = 'Fusilier_stand_pinned'
+    Loop = true
+    NbVariantes = 1
+)
+Fusilier_Start is template_DepictionAnimation
+(
+    FileName = 'Fusilier_Start'
+    Loop = false
+)
+Fusilier_Stop is template_DepictionAnimation
+(
+    FileName = 'Fusilier_Stop'
+    Loop = false
+)
+Fusilier_tir is template_DepictionAnimation
+(
+    FileName = 'Fusilier_tir'
+    Loop = false
+)
+Unarmed_capture is template_DepictionAnimation
+(
+    FileName = 'Unarmed_capture'
+    Loop = false
+    Final = true
+)
+
+//Templates qui représentes des noeuds qui reviennent souvent
+
+//Noeud de Mort
+Template DeathNode
+[
+IAStates = 0,
+Top = false,
+Bot = false,
+] is TInfanterieAnimNode
+(
+    Childs =
+    [
+        TInfanterieAnimNode
+        (
+            IAStates = InfanterieStateExplosion
+            Anim = Fusilier_mort_explosion
+            Bot = <Bot>
+            Top = <Top>
+            Childs =
+            [
+                TInfanterieAnimNode( IAStates = InfanterieStateDos Anim = Fusilier_mort_explosion_dos Bot = <Bot> Top = <Top>)
+            ]
+        )
+        ,
+        TInfanterieAnimNode(IAStates = InfanterieStateDos Anim = Fusilier_mort_balle_dos Bot = <Bot> Top = <Top>),
+        TInfanterieAnimNode(IAStates = InfanterieStateViolence Anim = Fusilier_mort_balle_violente Bot = <Bot> Top = <Top>),
+    ]
+    IAStates = <IAStates>
+    Anim = Fusilier_mort_balle
+    Bot = <Bot>
+    Top = <Top>
+)
+
+//Noeud "touché"
+Template THitNode
+[
+Top = false,
+Bot = false,
+] is TInfanterieAnimNode
+(
+    Childs =
+    [
+            TInfanterieAnimNode(IAStates = InfanterieStateDos Anim = Fusilier_hit_dos Bot = <Bot> Top = <Top>),
+            TInfanterieAnimNode(IAStates = InfanterieStateExplosion Anim = Fusilier_hit_explosion Bot = <Bot> Top = <Top>),
+            TInfanterieAnimNode(IAStates = InfanterieStateHit Anim = Fusilier_hit Bot = <Bot> Top = <Top>),
+    ]
+    IAStates = InfanterieStateAll
+    Top = false
+    Bot = false
+)
+
+//Noeud de tir
+Template TFireNode
+[
+Top = false,
+Bot = false,
+Anim,
+]
+is TInfanterieAnimNode
+(
+    Childs =
+    [
+        TInfanterieAnimNode
+        (
+            IAStates = InfanterieStateFire
+            Anim = <Anim>
+            Bot = <Bot> Top = <Top>
+        ),
+        TInfanterieAnimNode
+        (
+            IAStates = InfanterieStateSeFire
+            Anim = <Anim>
+            Bot = <Bot> Top = <Top>
+        ),
+        TInfanterieAnimNode
+        (
+            IAStates = InfanterieStateReload
+            Anim = Fusilier_Reload
+            Bot = <Bot> Top = <Top>
+        ),
+    ]
+    IAStates = InfanterieStateAll
+    Bot = false
+    Top = false
+)
+
+template ShowRoomStates
+[
+    AnimAiming,
+    AnimIdle,
+
+] is TInfanterieAnimNode
+(
+    IAStates = InfanterieStateShowRoom
+    Childs =
+    [
+        TInfanterieAnimNode
+        (
+            IAStates = InfanterieStateVise
+            Anim = <AnimAiming>
+            Top = true
+        ),
+        TInfanterieAnimNode
+        (
+            IAStates = InfanterieStateCrouch
+            Anim = Fusilier_Crouch
+            Top = true
+            Bot = true
+        ),
+        TInfanterieAnimNode
+        (
+            IAStates = InfanterieStateStand
+            Anim = <AnimIdle>
+            Top = true
+            Bot = true
+        ),
+
+
+    ]
+    Anim = <AnimIdle>
+    Top = true
+    Bot = true
+)
+//------------------------------------------------------------------------------------------
+//-------------------------Arbre anims principal/fusil/SMG/MMG------------------------------
+//------------------------------------------------------------------------------------------
+template
+InfanterieBaseTree
+[
+    AnimAiming,
+    AnimTir,
+    AnimIdle,
+    AnimRun,
+
+] is template_DepictionAnimationTreeNode
+(
+    IAStates = InfanterieStateAll
+    IAOldStates = InfanterieStateAll
+    DefaultAnimationStates = InfanterieStateStand
+    Childs =
+    [
+    ShowRoomStates (AnimAiming = <AnimAiming> AnimIdle = <AnimIdle>),
+    template_DepictionAnimationTreeNode
+    (
+        IAStates = InfanterieStateCaptured
+        Animation = Unarmed_capture
+    ),
+    template_DepictionAnimationTreeNode
+    (
+        IAStates = InfanterieStateFromSpecial
+        Animation = TDepictionAnimation
+        (
+            Animations = [TemplateAnimationTop(Animation='Fusilier_bazooka_transition2.Ase2NdfBin' Loop = false)]
+        )
+    ),
+    template_DepictionAnimationTreeNode
+    (
+        IAStates = InfanterieStateToSpecial
+        Animation = TDepictionAnimation
+        (
+            Animations = [TemplateAnimationTop(Animation='Fusilier_bazooka_transition1.Ase2NdfBin' Loop = false)]
+        )
+    ),
+    template_DepictionAnimationTreeNode
+    (
+        IAStates = InfanterieStateCapturing
+        Animation = TDepictionAnimation
+        (
+            Animations = [TemplateAnimationTop( Animation='Fusilier_stand_vise.Ase2NdfBin' Loop = false)]
+        )
+    ),
+    DeathNode( IAStates = InfanterieStateDie Top = true Bot = true),
+    TInfanterieAnimNode
+    (
+        IAStates = InfanterieStateStunned
+        ForbiddenTerrainType = ~/ETerrainType/Eau | ~/ETerrainType/Marais
+        Anim = Fusilier_stand_pinned
+        Top = true
+        Bot = true
+    ),
+    TInfanterieAnimNode
+    (
+        IAStates = InfanterieStateBlocked
+        ForbiddenTerrainType = ~/ETerrainType/Eau | ~/ETerrainType/Marais
+        Anim = Fusilier_stand_pinned
+        Top = true
+        Bot = true
+    ),
+    TInfanterieAnimNode
+    (
+        IAStates = InfanterieStateSpecial
+        Childs =
+        [
+            TInfanterieAnimNode
+            (
+                IAStates = InfanterieStateVise
+                Anim = Fusilier_bazooka_vise
+                Top = true
+            ),
+            TFireNode( Top = true Bot = true Anim = Fusilier_bazooka_tir ),
+        ]
+    ),
+    TInfanterieAnimNode
+    (
+        IAStates = InfanterieStateVise
+        Childs =
+        [
+            TFireNode( Top = true Anim = <AnimTir> ),
+            TInfanterieAnimNode
+            (
+                IAStates = InfanterieStateStand
+                ForbiddenTerrainType = ~/ETerrainType/Eau | ~/ETerrainType/Marais | ~/ETerrainType/Tranchee
+                Anim = Fusilier_Crouch
+                Bot = true
+            ),
+            TInfanterieAnimNode
+            (
+                IAStates = InfanterieStateCrouch
+                ForbiddenTerrainType = ~/ETerrainType/Eau | ~/ETerrainType/Marais | ~/ETerrainType/Tranchee
+                Anim = Fusilier_Crouch
+                Bot = true
+            ),
+        ]
+        Anim = <AnimAiming>
+        Top = true
+    ),
+    TInfanterieAnimNode
+    (
+        IAStates = InfanterieStateCrouch
+        ForbiddenTerrainType = ~/ETerrainType/Eau | ~/ETerrainType/Marais
+        Childs =
+        [
+            TInfanterieAnimNode
+            (
+                IAStates = InfanterieStateStunned
+                ForbiddenTerrainType = ~/ETerrainType/Eau | ~/ETerrainType/Marais
+                Anim = Fusilier_stand_pinned
+                Top = true
+                Bot = true
+            ),
+            TInfanterieAnimNode
+            (
+                IAStates = InfanterieStateCower
+                ForbiddenTerrainType = ~/ETerrainType/Eau | ~/ETerrainType/Marais
+                Anim = Fusilier_stand_pinned
+                Top = true
+                Bot = true
+            ),
+            TInfanterieAnimNode
+            (
+                IAStates = InfanterieStateAll
+                TerrainType = ~/ETerrainType/Barbeles
+                Anim = Fusilier_stand_pinned
+                Top = true
+                Bot = true
+            ),
+            THitNode( Top = true ),
+            TInfanterieAnimNode
+            (
+                IAStates = InfanterieStateVise
+                Anim = <AnimAiming>
+                Childs =
+                [
+                    TFireNode( Top = true Anim = <AnimTir> ),
+                    TInfanterieAnimNode
+                    (
+                        IAStates = InfanterieStateVise
+                        TerrainType = ~/ETerrainType/Tranchee
+                        Anim = <AnimIdle>
+                        Bot = true
+                    ),
+                ]
+                Top = true
+            ),
+            TInfanterieAnimNode
+            (
+                IAStates = InfanterieStateLook
+                Anim = Fusilier_look_around
+                Top = true
+            )
+        ]
+        Anim = Fusilier_Crouch
+        Top = true
+        Bot = true
+    ),
+    TInfanterieAnimNode
+    (
+        IAStates = InfanterieStateRun
+        Anim = <AnimRun>
+        Top = true
+        Bot = true
+        Childs =
+        [
+            TInfanterieAnimNode
+            (
+                IAStates = InfanterieStateAll
+                TerrainType = ~/ETerrainType/Barbeles
+                Anim = Fusilier_Crawl
+                Top = true
+                Bot = true
+            ),
+            TInfanterieAnimNode
+            (
+                IAStates = InfanterieStateFlee
+                Anim = Fusilier_Deroute
+                Top = true
+                Bot = true
+            ),
+            TInfanterieAnimNode
+            (
+                IAStates = InfanterieStateAll
+                TerrainType = ~/ETerrainType/Eau | ~/ETerrainType/Marais
+                Anim = Fusilier_Eau
+                Top = true
+                Bot = true
+            ),
+            TInfanterieAnimNode
+            (
+                IAStates = InfanterieStateCower
+                ForbiddenTerrainType = ~/ETerrainType/Eau | ~/ETerrainType/Marais
+                Anim = Fusilier_Crawl
+                Top = true
+                Bot = true
+            ),
+            TInfanterieAnimNode
+            (
+                IAStates = InfanterieStateStunned
+                Anim = Fusilier_Deroute
+                Top = true
+            ),
+            THitNode( Top = true ),
+            TInfanterieAnimNode
+            (
+                IAStates = InfanterieStateVise
+                Anim = Fusilier_Run_Aim
+                Childs =
+                [
+                    TFireNode( Top = true Anim=<AnimTir>),
+                ]
+                Top = true
+            ),
+            TInfanterieAnimNode
+            (
+                IAStates = InfanterieStateGauche
+                Anim = Fusilier_course_gauche
+                Bot = true
+            ),
+
+            TInfanterieAnimNode
+            (
+                IAStates = InfanterieStateDroite
+                Anim = Fusilier_course_droite
+                Bot = true
+            ),
+            TInfanterieAnimNode
+            (
+                IAStates = InfanterieStateArriere
+                Anim = Fusilier_course_arriere
+                Bot = true
+            ),
+        ]
+    ),
+    TInfanterieAnimNode
+    (
+        IAStates = InfanterieStateStand
+        Childs =
+        [
+            TInfanterieAnimNode
+            (
+                IAStates = InfanterieStateAll
+                Childs =
+                [
+                    TInfanterieAnimNode
+                    (
+                        IAStates = InfanterieStateStunned
+                        ForbiddenTerrainType = ~/ETerrainType/Eau | ~/ETerrainType/Marais
+                        Anim = Fusilier_stand_pinned
+                        Top = true
+                        Bot = true
+                    ),
+                    TInfanterieAnimNode
+                    (
+                        IAStates = InfanterieStateCower
+                        ForbiddenTerrainType = ~/ETerrainType/Eau | ~/ETerrainType/Marais
+                        Anim = Fusilier_stand_pinned
+                        Top = true
+                        Bot = true
+                    ),
+                    THitNode( Top = true Bot = true),
+                    TInfanterieAnimNode
+                    (
+                        IAStates = InfanterieStateAll
+                        TerrainType = ~/ETerrainType/Barbeles
+                        Anim = Fusilier_stand_pinned
+                        Top = true
+                        Bot = true
+                    ),
+                    TInfanterieAnimNode
+                    (
+                        IAStates = InfanterieStateVise
+                        Anim = <AnimAiming>
+                        Childs =
+                        [
+                            TFireNode( Top = true  Anim=<AnimTir>),
+                        ]
+                        Top = true
+                        Bot = true
+                    ),
+                    TInfanterieAnimNode
+                    (
+                        IAStates = InfanterieStatePinned
+                        ForbiddenTerrainType = ~/ETerrainType/Eau | ~/ETerrainType/Marais
+                        Anim = Fusilier_Crouch
+                        Top = true
+                        Bot = true
+                    ),
+                    TInfanterieAnimNode
+                    (
+                        IAStates = InfanterieStateSuppr
+                        ForbiddenTerrainType = ~/ETerrainType/Eau | ~/ETerrainType/Marais
+                        Anim = Fusilier_Crouch
+                        Top = true
+                        Bot = true
+                    ),
+                    TInfanterieAnimNode
+                    (
+                        IAStates = InfanterieStateAll
+                        TerrainType = ~/ETerrainType/Tranchee
+                        Anim = Fusilier_Crouch
+                        Top = true
+                        Bot = true
+                    ),
+                ]
+                Top = false
+                Bot = false
+            ),
+            TInfanterieAnimNode
+            (
+                IAStates = InfanterieStateLook
+                Anim = Fusilier_look_around
+                Top = true
+            ),
+        ]
+        Bot = true
+        Top = true
+        Anim = <AnimIdle>
+    ),
+
+    ]
+    Animation = <AnimIdle>
+)
+
+template template_InfanterieMainTransitionsManager
+[
+    AnimIdle   : string,
+    AnimRun    : string,
+    AnimCrouch : string,
+]
+is TDepictionAnimationTransitionsManager
+(
+    Transitions =
+    [
+        TDepictionAnimationTransition
+        (
+            Source = <AnimIdle>
+            Destination = <AnimRun>
+            // Animation = Fusilier_Marche
+            Animation = Fusilier_Start
+        ),
+        TDepictionAnimationTransition
+        (
+            Source = <AnimRun>
+            Destination = <AnimIdle>
+            Animation = Fusilier_Marche
+            // Animation = Fusilier_Stop
+        ),
+        TDepictionAnimationTransition
+        (
+            Source = <AnimCrouch>
+            Destination = <AnimRun>
+            // Animation = Fusilier_Marche
+            Animation = Fusilier_Start
+        ),
+        TDepictionAnimationTransition
+        (
+            Source = <AnimRun>
+            Destination = <AnimCrouch>
+            Animation = Fusilier_Marche
+            // Animation = Fusilier_Stop
+        ),
+        TDepictionAnimationTransition
+        (
+            Source = <AnimIdle>
+            Destination = <AnimCrouch>
+            Animation = Fusilier_Kneel
+        ),
+        TDepictionAnimationTransition
+        (
+            Source = <AnimCrouch>
+            Destination = <AnimIdle>
+            Animation = Fusilier_Get_Up
+        ),
+    ]
+)
+
+private InfanterieMainTree is InfanterieBaseTree
+(
+    AnimAiming = Fusilier_Aiming
+    AnimTir = Fusilier_Fire
+    AnimIdle = Fusilier_Idle
+    AnimRun = Fusilier_Run
+)
+private InfanterieMainTransitionsManager is template_InfanterieMainTransitionsManager
+(
+    AnimIdle = "Fusilier_Idle"
+    AnimRun = "Fusilier_Run"
+    AnimCrouch = "Fusilier_Crouch"
+)
+
+private InfanterieSMGTree is InfanterieBaseTree
+(
+    AnimAiming = Fusilier_Aiming_SMG
+    AnimTir = Fusilier_Fire_SMG
+    AnimIdle = Fusilier_Idle_SMG
+    AnimRun = Fusilier_Run_SMG
+)
+private InfanterieSMGTransitionsManager is template_InfanterieMainTransitionsManager
+(
+    AnimIdle = "Fusilier_Idle_SMG"
+    AnimRun = "Fusilier_Run_SMG"
+    AnimCrouch = "Fusilier_Crouch"
+)
+
+private InfanterieMMGTree is InfanterieBaseTree
+(
+    AnimAiming = Fusilier_Aiming_MMG
+    AnimTir = Fusilier_Fire_MMG
+    AnimIdle = Fusilier_Idle_MMG
+    AnimRun = Fusilier_Run_MMG
+)
+private InfanterieMMGTransitionsManager is template_InfanterieMainTransitionsManager
+(
+    AnimIdle = "Fusilier_Idle_MMG"
+    AnimRun = "Fusilier_Run_MMG"
+    AnimCrouch = "Fusilier_Crouch"
+)
+
+private InfanterieFlamerTree is InfanterieBaseTree
+(
+    AnimAiming = Fusilier_Aiming_Flamer
+    AnimTir = Fusilier_Fire_Flamer
+    AnimIdle = Fusilier_Idle
+    AnimRun = Fusilier_Run
+)
+private InfanterieFlamerTransitionsManager is template_InfanterieMainTransitionsManager
+(
+    AnimIdle = "Fusilier_Idle"
+    AnimRun = "Fusilier_Run"
+    AnimCrouch = "Fusilier_Crouch"
+)
+
+DepictionOperator_SkeletalAnimation_Default is Template_DepictionOperator_SkeletalAnimation( TorsoBone = DepictionAnimation_TorsoBone AnimationTree = InfanterieMainTree AnimationTransitionsManager = InfanterieMainTransitionsManager )
+DepictionOperator_SkeletalAnimation_OneShot is Template_DepictionOperator_SkeletalAnimation( TorsoBone = DepictionAnimation_TorsoBone AnimationTree = InfanterieMainTree AnimationTransitionsManager = InfanterieMainTransitionsManager )
+
+DepictionOperator_SkeletalAnimation_SMG     is Template_DepictionOperator_SkeletalAnimation( TorsoBone = DepictionAnimation_TorsoBone AnimationTree = InfanterieSMGTree AnimationTransitionsManager = InfanterieSMGTransitionsManager )
+DepictionOperator_SkeletalAnimation_Rifle is Template_DepictionOperator_SkeletalAnimation( TorsoBone = DepictionAnimation_TorsoBone AnimationTree = InfanterieMainTree AnimationTransitionsManager = InfanterieMainTransitionsManager )
+DepictionOperator_SkeletalAnimation_MMG is Template_DepictionOperator_SkeletalAnimation( TorsoBone = DepictionAnimation_TorsoBone AnimationTree = InfanterieMMGTree AnimationTransitionsManager = InfanterieMMGTransitionsManager )
+DepictionOperator_SkeletalAnimation_Flame is Template_DepictionOperator_SkeletalAnimation( TorsoBone = DepictionAnimation_TorsoBone AnimationTree = InfanterieFlamerTree AnimationTransitionsManager = InfanterieFlamerTransitionsManager )
+
+
+template template_CanonAnimationTree
+[
+    UnitName      : string,
+    AnimationPath : string
+]
+is DepictionAnimationTreeNode
+(
+    IAStates = AnimationStateAll
+    IAOldStates = AnimationStateAll
+    DefaultAnimationStates = AnimationStateEngineStopping
+    Animations =
+    (
+        [TemplateAnimation(Animation= <UnitName> + '.Ase2NdfBin' Loop = false EventAnimation = false AnimationPath = <AnimationPath> Mask = AnimationMask_All())]
+    )
+
+    Childs =
+    [
+        TAnimNode(IAStates = AnimationStateInstantFire                                                                  Anim = <UnitName> + '_Fire'       Loop = false EventAnimation = true AnimationPath = <AnimationPath> Mask = AnimationMask_All()),
+        TAnimNode(IAStates = AnimationStateEngineStopping | AnimationStateEngineStopTurning                             Anim = <UnitName> + '_Deploy'     Loop = false AnimationPath = <AnimationPath> Mask = AnimationMask_All()),
+        TAnimNode(IAStates = AnimationStateEngineStarting | AnimationStateEngineStartTurning                            Anim = <UnitName> + '_Fold'       Loop = false AnimationPath = <AnimationPath> Mask = AnimationMask_All()),
+        TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateLeft                                           Anim = <UnitName> + '_Turn_Left'  Loop = true  AnimationPath = <AnimationPath> Mask = AnimationMask_All()),
+        TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateRight                                          Anim = <UnitName> + '_Turn_Right' Loop = true  AnimationPath = <AnimationPath> Mask = AnimationMask_All()),
+        TAnimNode(IAStates = AnimationStateMoving | AnimationStateEngineRunning                                         Anim = <UnitName> + '_Move'       Loop = true  AnimationPath = <AnimationPath> Mask = AnimationMask_All()
+            Childs = [
+                TAnimNode(IAStates = AnimationStateBack                                                                 Anim = <UnitName> + '_Move_Back'  Loop = true  AnimationPath = <AnimationPath> Mask = AnimationMask_All()),
+        ]),
+    ]
+)
+
+template Template_DepictionOperator_SkeletalAnimation_CarriableUnit
+[
+    UnitName      : string,
+    AnimationPath : string
+]
+is TCosmeticSkeletalAnimationOperatorDesc
+(
+    OperatorId = 'biped'
+    Camera = $/M3D/Camera/CameraPrincipale
+    AnimationTree = template_CanonAnimationTree( UnitName = <UnitName> AnimationPath = <AnimationPath> )
+    CameraDistanceOptimization = false // Par défaut c'est à false pour les unités qui ont d'autres operateurs qui agissent sur les bones.
+)

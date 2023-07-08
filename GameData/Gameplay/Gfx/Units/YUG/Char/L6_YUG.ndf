@@ -1,0 +1,22 @@
+export ModelFile_L6_YUG is 'GameData:Assets\3D\Units\YUG\Char\Beutepanzer_L6\Beutepanzer_L6.Ase2NdfBin'
+
+Modele_L6_YUG is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_L6_YUG
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_L6_YUG_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\YUG\Char\Beutepanzer_L6_MID\Beutepanzer_L6_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_L6_YUG_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\YUG\Char\LODS\Beutepanzer_L6_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

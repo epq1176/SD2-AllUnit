@@ -1,0 +1,22 @@
+export ModelFile_Humber_Mk3_GR is 'GameData:Assets\3D\Units\GER\Vehicule\Dingo\Dingo.Ase2NdfBin'
+
+Modele_Humber_Mk3_GR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Humber_Mk3_GR
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Humber_Mk3_GR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\Dingo_MID\Dingo_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Humber_Mk3_GR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Vehicule\LODS\Dingo_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

@@ -1,0 +1,116 @@
+template TemplateMeshDescriptor_Mortier_GrW_50mm_LET [ ModelFile ] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+
+// export ModelFile_Boites_GrW_36 is 'GameData:Assets\3D\Units\GER\Canon\GrW_36\Boites_GrW_36.Ase2NdfBin'
+
+Gfx_Mortier_GrW_50mm_LET_1 is TDepictionTemplate //servant gauche
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_50mm_LET( ModelFile = ModelFile_Panzerschreck_LET)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_50mm_LET( ModelFile = ModelFile_Panzerschreck_LET_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_50mm_LET( ModelFile = ModelFile_Panzerschreck_LET)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_50mm_LET( ModelFile = ModelFile_Panzerschreck_LET_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_ServantMortar_Gauche
+)
+
+Gfx_Mortier_GrW_50mm_LET_2 is TDepictionTemplate //servant droite
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_50mm_LET( ModelFile = ModelFile_Panzerschreck_LET_Secondary)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_50mm_LET( ModelFile = ModelFile_Panzerschreck_LET_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_50mm_LET( ModelFile = ModelFile_Panzerschreck_LET_Secondary)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_50mm_LET( ModelFile = ModelFile_Panzerschreck_LET_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    SubDepictions = []
+    Operators = DepictionOperator_Animation_ServantMortar_Droite
+)
+
+//Arme
+// private AnimationPath_Mortier_GrW_50mm_LET is 'GameData:Assets\3D\Units\GER\Canon\GrW_36\'
+// export Mortier_GrW_50mm_Anim_Tree is DepictionAnimationTreeNode
+// (
+//     IAStates = AnimationStateAll
+//     IAOldStates = AnimationStateAll
+//     Animations =
+//     (
+//         [TemplateAnimation(Animation= 'GrW_36_Idle' + '.Ase2NdfBin' Loop=false EventAnimation=false AnimationPath = AnimationPath_Mortier_GrW_50mm_LET Mask = AnimationMask_All())]
+//     )
+
+//     Childs =
+//     [
+//         TAnimNode(IAStates = AnimationStateInstantFire                                                                  Anim = 'GrW_36_Fire'       Loop = false EventAnimation = true AnimationPath = AnimationPath_Mortier_GrW_50mm_LET Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStopping | AnimationStateEngineStopTurning                             Anim = 'GrW_36_Deploy'     Loop = false AnimationPath = AnimationPath_Mortier_GrW_50mm_LET Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineStarting | AnimationStateEngineStartTurning                            Anim = 'GrW_36_Fold'       Loop = false AnimationPath = AnimationPath_Mortier_GrW_50mm_LET Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateLeft                                           Anim = 'GrW_36_Turn_Left'  Loop = true  AnimationPath = AnimationPath_Mortier_GrW_50mm_LET Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateRight                                          Anim = 'GrW_36_Turn_Right' Loop = true  AnimationPath = AnimationPath_Mortier_GrW_50mm_LET Mask = AnimationMask_All()),
+//         TAnimNode(IAStates = AnimationStateMoving | AnimationStateEngineRunning                                         Anim = 'GrW_36_Move'       Loop = true  AnimationPath = AnimationPath_Mortier_GrW_50mm_LET Mask = AnimationMask_All()
+//             Childs = [
+//                 TAnimNode(IAStates = AnimationStateBack                                                                 Anim = 'GrW_36_Move_Back'  Loop = true  AnimationPath = AnimationPath_Mortier_GrW_50mm_LET Mask = AnimationMask_All()),
+//         ]),
+//     ]
+// )
+
+DepictionOperator_SkeletalAnimation_Mortier_GrW_50mm_LET is [Template_DepictionOperator_SkeletalAnimation_With_Tree_TEST(AnimationTree = Mortier_GrW_50mm_Anim_Tree)]
+
+Gfx_Mortier_GrW_50mm_LET_Weapon is TDepictionTemplate //arme
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = CommonDepictionSelector
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor =  Modele_Mortier_GrW_50mm_LET ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor =  Modele_Mortier_GrW_50mm_LET_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor =  Modele_Mortier_GrW_50mm_LET_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor =  Modele_Mortier_GrW_50mm_LET ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor =  Modele_Mortier_GrW_50mm_LET_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor =  Modele_Mortier_GrW_50mm_LET_LOW ),
+        ]
+
+        SubDepictions = []
+        Operators = DepictionOperator_SkeletalAnimation_Mortier_GrW_50mm_LET
+        Actions = Weapons_Mortier_GrW_50mm_LET
+    )
+
+SubDepiction_Servant_1_Mortier_GrW_50mm_LET is TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_Mortier_GrW_50mm_LET_1 )
+SubDepiction_Servant_2_Mortier_GrW_50mm_LET is TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_Mortier_GrW_50mm_LET_2 )
+SubDepiction_Canon_AT_Mortier_GrW_50mm_LET is TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_Mortier_GrW_50mm_LET_Weapon )
+
+Gfx_Mortier_GrW_50mm_LET is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate //les boites
+    (
+        OverrideMeshBoundingBoxMin = [-500,-500,0]
+        OverrideMeshBoundingBoxMax = [ 500, 500,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_50mm_LET( ModelFile = ModelFile_Boites_GrW_36) ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_50mm_LET( ModelFile = ModelFile_Boites_GrW_36) ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_50mm_LET( ModelFile = ModelFile_Boites_GrW_36) ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_50mm_LET( ModelFile = ModelFile_Boites_GrW_36) ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_50mm_LET( ModelFile = ModelFile_Boites_GrW_36) ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_Mortier_GrW_50mm_LET( ModelFile = ModelFile_Boites_GrW_36) ),
+        ]
+        NodeNamesForSelection = [ 'Canon_AT', 'servant_G' , 'servant_D']
+        SubDepictions = [SubDepiction_Servant_1_Mortier_GrW_50mm_LET,
+                        SubDepiction_Servant_2_Mortier_GrW_50mm_LET,
+                        SubDepiction_Canon_AT_Mortier_GrW_50mm_LET]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+    )
+)

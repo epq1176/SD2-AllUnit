@@ -1,0 +1,23 @@
+export ModelFile_Marder_III_H_GER is 'GameData:Assets\3D\Units\GER\Char\Marder_III_H\Marder_III_H.Ase2NdfBin'
+
+Modele_Marder_III_H_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Marder_III_H_GER
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Marder_III_H_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\Marder_III_H_MID\Marder_III_H_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_Marder_III_H_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\Marder_III_H_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+

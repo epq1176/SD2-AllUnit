@@ -1,0 +1,22 @@
+export ModelFile_Truck_Morris_Bofors_POL is 'GameData:Assets\3D\Units\POL\Vehicule\Morris_C9B_Bofor\Morris_C9B_Bofor.Ase2NdfBin'
+
+Modele_Truck_Morris_Bofors_POL is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Truck_Morris_Bofors_POL
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Truck_Morris_Bofors_POL_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Vehicule\Morris_C9B_Bofor_MID\Morris_C9B_Bofor_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Truck_Morris_Bofors_POL_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\POL\Vehicule\LODS\Morris_C9B_Bofor_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

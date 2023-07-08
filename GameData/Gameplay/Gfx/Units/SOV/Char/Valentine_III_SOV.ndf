@@ -1,0 +1,22 @@
+export ModelFile_Valentine_III_SOV is 'GameData:Assets\3D\Units\SOV\Char\Valentine_III_SOV\Valentine_III_SOV.Ase2NdfBin'
+
+Modele_Valentine_III_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Valentine_III_SOV
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Valentine_III_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\Valentine_III_SOV_MID\Valentine_III_SOV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Valentine_III_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\LODS\Valentine_III_SOV_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
