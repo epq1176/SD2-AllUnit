@@ -1,0 +1,29 @@
+export ModelFile_Lysander_FR is 'GameData:Assets\3D\Units\FR\Avion\Westland_Lysander\Westland_Lysander.Ase2NdfBin'
+
+Modele_Lysander_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Lysander_FR
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Lysander_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Avion\Westland_Lysander_MID\Westland_Lysander_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Lysander_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Avion\LODS\Westland_Lysander_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Lysander_FR_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Avion\Westland_Lysander\Westland_Lysander_train.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

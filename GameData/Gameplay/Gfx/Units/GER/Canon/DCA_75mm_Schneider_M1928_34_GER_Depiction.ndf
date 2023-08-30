@@ -5,7 +5,7 @@ template TemplateMeshDescriptor_DCA_75mm_Schneider_M1928_34_GER [ ModelFile ] is
     TypeMask = TypeMask/Infanterie
 )
 
-ModelFile_Boites_DCA_75mm_Schneider_M1928_34_GER is 'GameData:Assets\3D\Units\GER\Canon\DCA_75mm\Boites_DCA_75mm.Ase2NdfBin'
+ModelFile_Boites_DCA_75mm_Schneider_M1928_34_GER is 'GameData:Assets\3D\Units\GER\Canon\DCA_75mm_Schneider_M1928_34\Boites_DCA_75mm_Schneider_M1928_34.Ase2NdfBin'
 
 Gfx_DCA_75mm_Schneider_M1928_34_GER_1 is TDepictionTemplate //servant gauche
 (
@@ -76,33 +76,33 @@ Gfx_DCA_75mm_Schneider_M1928_34_GER_4 is TDepictionTemplate //servant droite sup
 )
 
 //Arme
-// private AnimationPath_DCA_75mm_Schneider_M1928_34_GER is 'GameData:Assets\3D\Units\GER\Canon\DCA_75mm\'
-// DCA_75mm_GER_Anim_Tree is DepictionAnimationTreeNode
-// (
-//     IAStates = AnimationStateAll
-//     IAOldStates = AnimationStateAll
-//     DefaultAnimationStates = AnimationStateEngineStopping
-//     Animations =
-//     (
-//         [TemplateAnimation(Animation= 'DCA_75mm_Idle' + '.Ase2NdfBin' Loop=false EventAnimation=false AnimationPath = AnimationPath_DCA_75mm_Schneider_M1928_34_GER Mask = AnimationMask_All())]
-//     )
+private AnimationPath_DCA_75mm_Schneider_M1928_34_GER is 'GameData:Assets\3D\Units\GER\Canon\DCA_75mm_Schneider_M1928_34\'
+DCA_75mm_Schneider_M1928_34_GER_Anim_Tree is DepictionAnimationTreeNode
+(
+    IAStates = AnimationStateAll
+    IAOldStates = AnimationStateAll
+    DefaultAnimationStates = AnimationStateEngineStopping
+    Animations =
+    (
+        [TemplateAnimation(Animation= 'DCA_75mm_Schneider_M1928_34_idle' + '.Ase2NdfBin' Loop=false EventAnimation=false AnimationPath = AnimationPath_DCA_75mm_Schneider_M1928_34_GER Mask = AnimationMask_All())]
+    )
 
-//     Childs =
-//     [
-//         TAnimNode(IAStates = AnimationStateInstantFire                                                                  Anim = 'DCA_75mm_Fire'       Loop = false EventAnimation = true AnimationPath = AnimationPath_DCA_75mm_Schneider_M1928_34_GER Mask = AnimationMask_All()),
-//         TAnimNode(IAStates = AnimationStateEngineStopping | AnimationStateEngineStopTurning                             Anim = 'DCA_75mm_Deploy'     Loop = false AnimationPath = AnimationPath_DCA_75mm_Schneider_M1928_34_GER Mask = AnimationMask_All()),
-//         TAnimNode(IAStates = AnimationStateEngineStarting | AnimationStateEngineStartTurning                            Anim = 'DCA_75mm_Fold'       Loop = false AnimationPath = AnimationPath_DCA_75mm_Schneider_M1928_34_GER Mask = AnimationMask_All()),
-//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateLeft                                           Anim = 'DCA_75mm_Turn_Left'  Loop = true  AnimationPath = AnimationPath_DCA_75mm_Schneider_M1928_34_GER Mask = AnimationMask_All()),
-//         TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateRight                                          Anim = 'DCA_75mm_Turn_Right' Loop = true  AnimationPath = AnimationPath_DCA_75mm_Schneider_M1928_34_GER Mask = AnimationMask_All()),
-//         TAnimNode(IAStates = AnimationStateMoving | AnimationStateEngineRunning                                         Anim = 'DCA_75mm_Move'       Loop = true  AnimationPath = AnimationPath_DCA_75mm_Schneider_M1928_34_GER Mask = AnimationMask_All()
-//            Childs = [
-//                TAnimNode(IAStates = AnimationStateBack                                                                  Anim = 'DCA_75mm_Move_Back'  Loop = true  AnimationPath = AnimationPath_DCA_75mm_Schneider_M1928_34_GER Mask = AnimationMask_All()),
-//            ]
-//         ),
-//     ]
-// )
+    Childs =
+    [
+        TAnimNode(IAStates = AnimationStateInstantFire                                                                  Anim = 'DCA_75mm_Schneider_M1928_34_fire'       Loop = false EventAnimation = true AnimationPath = AnimationPath_DCA_75mm_Schneider_M1928_34_GER Mask = AnimationMask_All()),
+        TAnimNode(IAStates = AnimationStateEngineStopping | AnimationStateEngineStopTurning                             Anim = 'DCA_75mm_Schneider_M1928_34_deploy'     Loop = false AnimationPath = AnimationPath_DCA_75mm_Schneider_M1928_34_GER Mask = AnimationMask_All()),
+        TAnimNode(IAStates = AnimationStateEngineStarting | AnimationStateEngineStartTurning                            Anim = 'DCA_75mm_Schneider_M1928_34_fold'       Loop = false AnimationPath = AnimationPath_DCA_75mm_Schneider_M1928_34_GER Mask = AnimationMask_All()),
+        TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateLeft                                           Anim = 'DCA_75mm_Schneider_M1928_34_move'  Loop = true  AnimationPath = AnimationPath_DCA_75mm_Schneider_M1928_34_GER Mask = AnimationMask_All()),
+        TAnimNode(IAStates = AnimationStateEngineTurning | AnimationStateRight                                          Anim = 'DCA_75mm_Schneider_M1928_34_move' Loop = true  AnimationPath = AnimationPath_DCA_75mm_Schneider_M1928_34_GER Mask = AnimationMask_All()),
+        TAnimNode(IAStates = AnimationStateMoving | AnimationStateEngineRunning                                         Anim = 'DCA_75mm_Schneider_M1928_34_move'       Loop = true  AnimationPath = AnimationPath_DCA_75mm_Schneider_M1928_34_GER Mask = AnimationMask_All()
+           Childs = [
+               TAnimNode(IAStates = AnimationStateBack                                                                  Anim = 'DCA_75mm_Schneider_M1928_34_move_back'  Loop = true  AnimationPath = AnimationPath_DCA_75mm_Schneider_M1928_34_GER Mask = AnimationMask_All()),
+           ]
+        ),
+    ]
+)
 
-DepictionOperator_SkeletalAnimation_DCA_75mm_Schneider_M1928_34_GER is [Template_DepictionOperator_SkeletalAnimation_With_Tree_TEST(AnimationTree = DCA_75mm_GER_Anim_Tree)]
+DepictionOperator_SkeletalAnimation_DCA_75mm_Schneider_M1928_34_GER is [Template_DepictionOperator_SkeletalAnimation_With_Tree_TEST(AnimationTree = DCA_75mm_Schneider_M1928_34_GER_Anim_Tree)]
 
 Gfx_DCA_75mm_Schneider_M1928_34_GER_Weapon is TDepictionTemplate //arme
     (

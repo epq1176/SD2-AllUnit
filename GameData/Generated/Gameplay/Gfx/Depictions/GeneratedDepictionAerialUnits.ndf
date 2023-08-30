@@ -2835,6 +2835,58 @@ Gfx_He_46_GER_Autogen is TTimelyReceiverFactoryCarrier
     )
 )
 
+// Train d'attérissage de l'unité Hellcat_I_Bomb110_UK.
+Gfx_Hellcat_I_Bomb110_UK_LandingGear is TSubDepiction
+(
+    Anchor = "Landing Gear"
+    Depiction = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = WarGameShowRoomDepictionSelector
+        DepictionAlternatives = [
+            TDepictionDescriptor( SelectorId = 'high' MeshDescriptor = Modele_Hellcat_I_Bomb110_UK_train ),
+            TDepictionDescriptor( SelectorId = 'none' )
+        ]
+    )
+)
+
+// Dépiction de l'unité Hellcat_I_Bomb110_UK
+Gfx_Hellcat_I_Bomb110_UK_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificAirplaneDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Hellcat_I_Bomb110_UK ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Hellcat_I_Bomb110_UK_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_Hellcat_I_Bomb110_UK_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Hellcat_I_Bomb110_UK ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Hellcat_I_Bomb110_UK_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_Hellcat_I_Bomb110_UK_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Hellcat_I_Bomb110_UK
+                  + DepictionOperator_Airfoil_WingsAndStabilizersAirplane
+                  + DepictionOperator_Propulsion_Single_Engine_Plane
+                  + DepictionOperator_Airplane
+                  + DepictionOperator_Feedback_Degat_Level1
+                  + DepictionOperator_Feedback_Degat_Level2
+
+        Actions = MAP []
+                + Weapons_Hellcat_I_Bomb110_UK
+                + DepictionAction_StressLevel_Avion_2
+                + MAP [ (['FX_Helice_1'], Template_DepictionAction_Rotor( PaleLength = 350 PaleCount = 4 SousMobile = "Bloc_Moteur_1" ))]
+
+        SubDepictions = []
+                      + [ Gfx_Hellcat_I_Bomb110_UK_LandingGear ]
+                      + [ SubDepiction_Pilote1(MeshDescriptorHigh = MeshDescriptor_Pilote_US MeshDescriptorMid = MeshDescriptor_Pilote_US_LOW) ]
+
+        SubDepictionGenerators = SubGenerators_Hellcat_I_Bomb110_UK
+    )
+)
+
 // Train d'attérissage de l'unité Hellcat_I_Bomb230_UK.
 Gfx_Hellcat_I_Bomb230_UK_LandingGear is TSubDepiction
 (
@@ -2884,6 +2936,110 @@ Gfx_Hellcat_I_Bomb230_UK_Autogen is TTimelyReceiverFactoryCarrier
                       + [ SubDepiction_Pilote1(MeshDescriptorHigh = MeshDescriptor_Pilote_US MeshDescriptorMid = MeshDescriptor_Pilote_US_LOW) ]
 
         SubDepictionGenerators = SubGenerators_Hellcat_I_Bomb230_UK
+    )
+)
+
+// Train d'attérissage de l'unité Hellcat_I_Bomb450_UK.
+Gfx_Hellcat_I_Bomb450_UK_LandingGear is TSubDepiction
+(
+    Anchor = "Landing Gear"
+    Depiction = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = WarGameShowRoomDepictionSelector
+        DepictionAlternatives = [
+            TDepictionDescriptor( SelectorId = 'high' MeshDescriptor = Modele_Hellcat_I_Bomb450_UK_train ),
+            TDepictionDescriptor( SelectorId = 'none' )
+        ]
+    )
+)
+
+// Dépiction de l'unité Hellcat_I_Bomb450_UK
+Gfx_Hellcat_I_Bomb450_UK_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificAirplaneDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Hellcat_I_Bomb450_UK ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Hellcat_I_Bomb450_UK_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_Hellcat_I_Bomb450_UK_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Hellcat_I_Bomb450_UK ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Hellcat_I_Bomb450_UK_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_Hellcat_I_Bomb450_UK_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Hellcat_I_Bomb450_UK
+                  + DepictionOperator_Airfoil_WingsAndStabilizersAirplane
+                  + DepictionOperator_Propulsion_Single_Engine_Plane
+                  + DepictionOperator_Airplane
+                  + DepictionOperator_Feedback_Degat_Level1
+                  + DepictionOperator_Feedback_Degat_Level2
+
+        Actions = MAP []
+                + Weapons_Hellcat_I_Bomb450_UK
+                + DepictionAction_StressLevel_Avion_2
+                + MAP [ (['FX_Helice_1'], Template_DepictionAction_Rotor( PaleLength = 350 PaleCount = 4 SousMobile = "Bloc_Moteur_1" ))]
+
+        SubDepictions = []
+                      + [ Gfx_Hellcat_I_Bomb450_UK_LandingGear ]
+                      + [ SubDepiction_Pilote1(MeshDescriptorHigh = MeshDescriptor_Pilote_US MeshDescriptorMid = MeshDescriptor_Pilote_US_LOW) ]
+
+        SubDepictionGenerators = SubGenerators_Hellcat_I_Bomb450_UK
+    )
+)
+
+// Train d'attérissage de l'unité Hellcat_I_Rockets_UK.
+Gfx_Hellcat_I_Rockets_UK_LandingGear is TSubDepiction
+(
+    Anchor = "Landing Gear"
+    Depiction = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = WarGameShowRoomDepictionSelector
+        DepictionAlternatives = [
+            TDepictionDescriptor( SelectorId = 'high' MeshDescriptor = Modele_Hellcat_I_Rockets_UK_train ),
+            TDepictionDescriptor( SelectorId = 'none' )
+        ]
+    )
+)
+
+// Dépiction de l'unité Hellcat_I_Rockets_UK
+Gfx_Hellcat_I_Rockets_UK_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificAirplaneDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Hellcat_I_Rockets_UK ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Hellcat_I_Rockets_UK_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_Hellcat_I_Rockets_UK_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Hellcat_I_Rockets_UK ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Hellcat_I_Rockets_UK_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_Hellcat_I_Rockets_UK_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Hellcat_I_Rockets_UK
+                  + DepictionOperator_Airfoil_WingsAndStabilizersAirplane
+                  + DepictionOperator_Propulsion_Single_Engine_Plane
+                  + DepictionOperator_Airplane
+                  + DepictionOperator_Feedback_Degat_Level1
+                  + DepictionOperator_Feedback_Degat_Level2
+
+        Actions = MAP []
+                + Weapons_Hellcat_I_Rockets_UK
+                + DepictionAction_StressLevel_Avion_2
+                + MAP [ (['FX_Helice_1'], Template_DepictionAction_Rotor( PaleLength = 350 PaleCount = 4 SousMobile = "Bloc_Moteur_1" ))]
+
+        SubDepictions = []
+                      + [ Gfx_Hellcat_I_Rockets_UK_LandingGear ]
+                      + [ SubDepiction_Pilote1(MeshDescriptorHigh = MeshDescriptor_Pilote_US MeshDescriptorMid = MeshDescriptor_Pilote_US_LOW) ]
+
+        SubDepictionGenerators = SubGenerators_Hellcat_I_Rockets_UK
     )
 )
 
@@ -7578,6 +7734,59 @@ Gfx_La_7_x2_50_SOV_Autogen is TTimelyReceiverFactoryCarrier
                       + [ SubDepiction_Pilote1(MeshDescriptorHigh = MeshDescriptor_Pilote_GER MeshDescriptorMid = MeshDescriptor_Pilote_GER_LOW) ]
 
         SubDepictionGenerators = SubGenerators_La_7_x2_50_SOV
+    )
+)
+
+// Train d'attérissage de l'unité Lysander_FR.
+Gfx_Lysander_FR_LandingGear is TSubDepiction
+(
+    Anchor = "Landing Gear"
+    Depiction = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = WarGameShowRoomDepictionSelector
+        DepictionAlternatives = [
+            TDepictionDescriptor( SelectorId = 'high' MeshDescriptor = Modele_Lysander_FR_train ),
+            TDepictionDescriptor( SelectorId = 'none' )
+        ]
+    )
+)
+
+// Dépiction de l'unité Lysander_FR
+Gfx_Lysander_FR_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificAirplaneDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Lysander_FR ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Lysander_FR_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_Lysander_FR_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Lysander_FR ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Lysander_FR_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_Lysander_FR_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Lysander_FR
+                  + DepictionOperator_Airfoil_WingsAndStabilizersAirplane
+                  + DepictionOperator_Propulsion_Single_Engine_Plane
+                  + DepictionOperator_Airplane
+                  + DepictionOperator_Feedback_Degat_Level1
+                  + DepictionOperator_Feedback_Degat_Level2
+
+        Actions = MAP []
+                + Weapons_Lysander_FR
+                + DepictionAction_StressLevel_Avion_2
+                + MAP [ (['FX_Helice_1'], Template_DepictionAction_Rotor( PaleLength = 380 PaleCount = 3 SousMobile = "Bloc_Moteur_1" ))]
+
+        SubDepictions = []
+                      + [ Gfx_Lysander_FR_LandingGear ]
+                      + [ SubDepiction_Pilote2(MeshDescriptorHigh = MeshDescriptor_Pilote_FR MeshDescriptorMid = MeshDescriptor_Pilote_FR_LOW) ]
+                      + [ SubDepiction_Pilote1(MeshDescriptorHigh = MeshDescriptor_Pilote_FR MeshDescriptorMid = MeshDescriptor_Pilote_FR_LOW) ]
+
+        SubDepictionGenerators = SubGenerators_Lysander_FR
     )
 )
 

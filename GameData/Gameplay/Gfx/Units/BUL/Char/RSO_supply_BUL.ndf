@@ -1,0 +1,22 @@
+export ModelFile_RSO_supply_BUL is 'GameData:Assets\3D\Units\BUL\Char\RSO_Supply_BUL\RSO_Supply_BUL.Ase2NdfBin'
+
+Modele_RSO_supply_BUL is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_RSO_supply_BUL
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_RSO_supply_BUL_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\BUL\Char\RSO_Supply_BUL_MID\RSO_Supply_BUL_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_RSO_supply_BUL_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\BUL\Char\LODS\RSO_Supply_BUL_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

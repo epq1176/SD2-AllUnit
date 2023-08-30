@@ -1,11 +1,6 @@
 //------------------------------------------------------------------------------
 // Armes
 //------------------------------------------------------------------------------
-
-//------------------------------------------------------------------------------
-//----------------------------------ARMES NORMANDIE-----------------------------
-//------------------------------------------------------------------------------
-
 //-----------------------------------Armes USA----------------------------------
 export ModelFile_GarandM1   is 'GameData:Assets\3D\Units\Ammo\Armes\USA\M1_Garand.Ase2NdfBin'
 export ModelFile_Thompson   is 'GameData:Assets\3D\Units\Ammo\Armes\USA\M1A1_Thompson.Ase2NdfBin'
@@ -19,6 +14,7 @@ export ModelFile_M2Flame     is 'GameData:Assets\3D\Units\Ammo\Armes\USA\M2_Flam
 // export ModelFile_MAS_38     is 'GameData:Assets\3D\Units\Ammo\Armes\USA\MAS_38.Ase2NdfBin'
 // export ModelFile_FM2429     is 'GameData:Assets\3D\Units\Ammo\Armes\USA\FM_2429.Ase2NdfBin'
 export ModelFile_P17_Enfield is 'GameData:Assets\3D\Units\Ammo\Armes\USA\P17_Enfield.Ase2NdfBin'
+export ModelFile_Johnson is 'GameData:Assets\3D\Units\Ammo\Armes\USA\Johnson_LMG.Ase2NdfBin'
 
 //-----------------------------------Armes GER----------------------------------
 export ModelFile_Mp40 is 'GameData:Assets\3D\Units\Ammo\Armes\GER\MP40.Ase2NdfBin'
@@ -64,6 +60,10 @@ export ModelFile_44M_Pancelrem   is 'GameData:Assets\3D\Units\Ammo\Armes\HON\44M
 export ModelFile_Chauchat   is 'GameData:Assets\3D\Units\Ammo\Armes\HON\Chauchat.Ase2NdfBin'
 export ModelFile_Erma_EMP   is 'GameData:Assets\3D\Units\Ammo\Armes\HON\Erma_EMP.Ase2NdfBin'
 export ModelFile_FEG_35M_scope   is 'GameData:Assets\3D\Units\Ammo\Armes\HON\FEG_35M_scope.Ase2NdfBin'
+//non branchés
+export ModelFile_Mannlicher_Carbine is 'GameData:Assets\3D\Units\Ammo\Armes\HON\Mannlicher_Carbine.Ase2NdfBin'
+export ModelFile_Mannlicher_Rifle is 'GameData:Assets\3D\Units\Ammo\Armes\HON\Mannlicher_Rifle_HON.Ase2NdfBin'
+//non branchés
 
 //-----------------------------------Armes FR----------------------------------
 export ModelFile_MAS_36 is 'GameData:Assets\3D\Units\Ammo\Armes\FR\MAS_36.Ase2NdfBin'
@@ -94,12 +94,6 @@ export ModelFile_SVT40 is 'GameData:Assets\3D\Units\Ammo\Armes\SOV\SVT_40_SOV.As
 export ModelFile_MadsenLMG is 'GameData:Assets\3D\Units\Ammo\Armes\SOV\Madsen_LMG_HON.Ase2NdfBin'
 export ModelFile_Thompson_M1928A1 is 'GameData:Assets\3D\Units\Ammo\Armes\SOV\Thompson_M1928A1.Ase2NdfBin'
 export ModelFile_DT is 'GameData:Assets\3D\Units\Ammo\Armes\SOV\DT.Ase2NdfBin'
-
-//-----------------------------------Armes HON----------------------------------
-//non branchés
-export ModelFile_Mannlicher_Carbine_HON is 'GameData:Assets\3D\Units\Ammo\Armes\SOV\Mannlicher_Carbine_HON.Ase2NdfBin'
-export ModelFile_Mannlicher_Rifle_HON is 'GameData:Assets\3D\Units\Ammo\Armes\SOV\Mannlicher_Rifle_HON.Ase2NdfBin'
-//non branchés
 
 //-----------------------------------Armes POL----------------------------------
 export ModelFile_Blyskawica   is 'GameData:Assets\3D\Units\Ammo\Armes\POL\Blyskawica.Ase2NdfBin'
@@ -158,7 +152,48 @@ export ModelFile_lMG81x2   is 'GameData:Assets\3D\Units\Ammo\Armes\CZ\MG_81.Ase2
 // 'GameData:Assets\3D\Units\USA\Infanterie\Rifleman\Officer.Ase2NdfBin'
 // 'GameData:Assets\3D\Units\USA\Infanterie\Rifleman\MG_Gunner.Ase2NdfBin'
 // 'GameData:Assets\3D\Units\USA\Infanterie\Rifleman\Flamethrower.Ase2NdfBin'
+// 'GameData:Assets\3D\Units\USA\Infanterie\509PIB\509PIB_1.Ase2NdfBin'
+// 'GameData:Assets\3D\Units\USA\Infanterie\509PIB\509PIB_2.Ase2NdfBin'
+// 'GameData:Assets\3D\Units\USA\Infanterie\509PIB\509PIB_NCO.Ase2NdfBin'
+// 'GameData:Assets\3D\Units\USA\Infanterie\Pathfinders\Pathfinder_1.Ase2NdfBin'
+// 'GameData:Assets\3D\Units\USA\Infanterie\Pathfinders\Pathfinder_Officer.Ase2NdfBin'
 //------------------------------------------------------------------------------
+
+//Pathfinder_AB_US
+export ModelFile_Pathfinder_AB_US is 'GameData:Assets\3D\Units\USA\Infanterie\Airborne\Airborne.Ase2NdfBin'
+export ModelFile_Pathfinder_AB_US_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\LODS\Airborne_LOW.Ase2NdfBin'
+export ModelFile_Pathfinder_AB_US_Secondary is 'GameData:Assets\3D\Units\USA\Infanterie\Airborne\AB_NCO.Ase2NdfBin'
+export ModelFile_Pathfinder_AB_US_Secondary_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\LODS\AB_NCO_LOW.Ase2NdfBin'
+export ModelFile_Pathfinder_AB_US_1 is 'GameData:Assets\3D\Units\USA\Infanterie\Airborne\Airborne_2.Ase2NdfBin'
+export ModelFile_Pathfinder_AB_US_1_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\LODS\Airborne_2_LOW.Ase2NdfBin'
+export ModelFile_Pathfinder_AB_US_2 is 'GameData:Assets\3D\Units\USA\Infanterie\Airborne\AB_NCO_2.Ase2NdfBin'
+export ModelFile_Pathfinder_AB_US_2_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\LODS\AB_NCO_2_LOW.Ase2NdfBin'
+export ModelFile_Pathfinder_AB_US_3 is 'GameData:Assets\3D\Units\USA\Infanterie\Airborne\Airborne_2.Ase2NdfBin'
+export ModelFile_Pathfinder_AB_US_3_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\LODS\Airborne_2_LOW.Ase2NdfBin'
+export ModelFile_Pathfinder_AB_US_4 is 'GameData:Assets\3D\Units\USA\Infanterie\Airborne\Airborne_2.Ase2NdfBin'
+export ModelFile_Pathfinder_AB_US_4_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\LODS\Airborne_2_LOW.Ase2NdfBin'
+
+//Pathfinder_AB_1ATF_US
+export ModelFile_Pathfinder_AB_1ATF_US is 'GameData:Assets\3D\Units\USA\Infanterie\Pathfinders\Pathfinder_1.Ase2NdfBin'
+export ModelFile_Pathfinder_AB_1ATF_US_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\Pathfinders\Pathfinder_1.Ase2NdfBin'
+export ModelFile_Pathfinder_AB_1ATF_US_Secondary is 'GameData:Assets\3D\Units\USA\Infanterie\Pathfinders\Pathfinder_Officer.Ase2NdfBin'
+export ModelFile_Pathfinder_AB_1ATF_US_Secondary_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\Pathfinders\Pathfinder_Officer.Ase2NdfBin'
+export ModelFile_Pathfinder_AB_1ATF_US_1 is 'GameData:Assets\3D\Units\USA\Infanterie\Pathfinders\Pathfinder_Officer.Ase2NdfBin'
+export ModelFile_Pathfinder_AB_1ATF_US_1_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\Pathfinders\Pathfinder_Officer.Ase2NdfBin'
+
+//Assault_509PIB_AB_US
+export ModelFile_Assault_509PIB_AB_US is 'GameData:Assets\3D\Units\USA\Infanterie\509PIB\509PIB_1.Ase2NdfBin'
+export ModelFile_Assault_509PIB_AB_US_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\509PIB\509PIB_1.Ase2NdfBin'
+export ModelFile_Assault_509PIB_AB_US_Secondary is 'GameData:Assets\3D\Units\USA\Infanterie\509PIB\509PIB_2.Ase2NdfBin'
+export ModelFile_Assault_509PIB_AB_US_Secondary_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\509PIB\509PIB_2.Ase2NdfBin'
+export ModelFile_Assault_509PIB_AB_US_1 is 'GameData:Assets\3D\Units\USA\Infanterie\509PIB\509PIB_NCO.Ase2NdfBin'
+export ModelFile_Assault_509PIB_AB_US_1_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\509PIB\509PIB_NCO.Ase2NdfBin'
+export ModelFile_Assault_509PIB_AB_US_2 is 'GameData:Assets\3D\Units\USA\Infanterie\509PIB\509PIB_1.Ase2NdfBin'
+export ModelFile_Assault_509PIB_AB_US_2_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\509PIB\509PIB_1.Ase2NdfBin'
+export ModelFile_Assault_509PIB_AB_US_3 is 'GameData:Assets\3D\Units\USA\Infanterie\509PIB\509PIB_1.Ase2NdfBin'
+export ModelFile_Assault_509PIB_AB_US_3_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\509PIB\509PIB_1.Ase2NdfBin'
+export ModelFile_Assault_509PIB_AB_US_4 is 'GameData:Assets\3D\Units\USA\Infanterie\509PIB\509PIB_NCO.Ase2NdfBin'
+export ModelFile_Assault_509PIB_AB_US_4_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\509PIB\509PIB_NCO.Ase2NdfBin'
 
 //ConvertedGunners_US
 export ModelFile_ConvertedGunners_US is 'GameData:Assets\3D\Units\USA\Infanterie\Rifleman\Rifleman.Ase2NdfBin'
@@ -244,18 +279,6 @@ export ModelFile_Rifle_Glider_US is 'GameData:Assets\3D\Units\USA\Infanterie\Air
 export ModelFile_Rifle_Glider_US_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\LODS\Airborne_LOW.Ase2NdfBin'
 export ModelFile_Rifle_Glider_US_Secondary is 'GameData:Assets\3D\Units\USA\Infanterie\Airborne\AB_NCO.Ase2NdfBin'
 export ModelFile_Rifle_Glider_US_Secondary_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\LODS\AB_NCO_LOW.Ase2NdfBin'
-
-//Pathfinder_AB_1ATF_US
-export ModelFile_Pathfinder_AB_1ATF_US is 'GameData:Assets\3D\Units\USA\Infanterie\Airborne\Airborne.Ase2NdfBin'
-export ModelFile_Pathfinder_AB_1ATF_US_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\LODS\Airborne_LOW.Ase2NdfBin'
-export ModelFile_Pathfinder_AB_1ATF_US_Secondary is 'GameData:Assets\3D\Units\USA\Infanterie\Airborne\AB_NCO.Ase2NdfBin'
-export ModelFile_Pathfinder_AB_1ATF_US_Secondary_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\LODS\AB_NCO_LOW.Ase2NdfBin'
-
-//Assault_509PIB_AB_US
-export ModelFile_Assault_509PIB_AB_US is 'GameData:Assets\3D\Units\USA\Infanterie\Airborne\Airborne.Ase2NdfBin'
-export ModelFile_Assault_509PIB_AB_US_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\LODS\Airborne_LOW.Ase2NdfBin'
-export ModelFile_Assault_509PIB_AB_US_Secondary is 'GameData:Assets\3D\Units\USA\Infanterie\Airborne\AB_NCO.Ase2NdfBin'
-export ModelFile_Assault_509PIB_AB_US_Secondary_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\LODS\AB_NCO_LOW.Ase2NdfBin'
 
 //Scout_AB_US
 export ModelFile_Scout_AB_US is 'GameData:Assets\3D\Units\USA\Infanterie\Airborne\Airborne.Ase2NdfBin'
@@ -734,20 +757,6 @@ export ModelFile_Bazooka_US_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\LODS
 export ModelFile_Bazooka_US_Secondary is 'GameData:Assets\3D\Units\USA\Infanterie\Ranger\Ranger.Ase2NdfBin'
 export ModelFile_Bazooka_US_Secondary_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\LODS\Ranger_LOW.Ase2NdfBin'
 
-//Pathfinder_AB_US
-export ModelFile_Pathfinder_AB_US is 'GameData:Assets\3D\Units\USA\Infanterie\Airborne\Airborne.Ase2NdfBin'
-export ModelFile_Pathfinder_AB_US_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\LODS\Airborne_LOW.Ase2NdfBin'
-export ModelFile_Pathfinder_AB_US_Secondary is 'GameData:Assets\3D\Units\USA\Infanterie\Airborne\AB_NCO.Ase2NdfBin'
-export ModelFile_Pathfinder_AB_US_Secondary_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\LODS\AB_NCO_LOW.Ase2NdfBin'
-export ModelFile_Pathfinder_AB_US_1 is 'GameData:Assets\3D\Units\USA\Infanterie\Airborne\Airborne_2.Ase2NdfBin'
-export ModelFile_Pathfinder_AB_US_1_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\LODS\Airborne_2_LOW.Ase2NdfBin'
-export ModelFile_Pathfinder_AB_US_2 is 'GameData:Assets\3D\Units\USA\Infanterie\Airborne\AB_NCO_2.Ase2NdfBin'
-export ModelFile_Pathfinder_AB_US_2_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\LODS\AB_NCO_2_LOW.Ase2NdfBin'
-export ModelFile_Pathfinder_AB_US_3 is 'GameData:Assets\3D\Units\USA\Infanterie\Airborne\Airborne_2.Ase2NdfBin'
-export ModelFile_Pathfinder_AB_US_3_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\LODS\Airborne_2_LOW.Ase2NdfBin'
-export ModelFile_Pathfinder_AB_US_4 is 'GameData:Assets\3D\Units\USA\Infanterie\Airborne\Airborne_2.Ase2NdfBin'
-export ModelFile_Pathfinder_AB_US_4_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\LODS\Airborne_2_LOW.Ase2NdfBin'
-
 //Rangers_Sup_US
 export ModelFile_Rangers_Sup_US is 'GameData:Assets\3D\Units\USA\Infanterie\Ranger\Ranger.Ase2NdfBin'
 export ModelFile_Rangers_Sup_US_LOW is 'GameData:Assets\3D\Units\USA\Infanterie\LODS\Ranger_LOW.Ase2NdfBin'
@@ -1037,7 +1046,74 @@ export ModelFile_Assault_Pionier_GRE_4_LOW is 'GameData:Assets\3D\Units\GRE\Infa
 // 'GameData:Assets\3D\Units\CAN\Infanterie\Canadian_Rifle\Canadian_NCO_2.Ase2NdfBin'
 // 'GameData:Assets\3D\Units\CAN\Infanterie\Canadian_Rifle\Canadian_Officer.Ase2NdfBin'
 // 'GameData:Assets\3D\Units\CAN\Infanterie\Canadian_Rifle\Canadian_Officer_2.Ase2NdfBin'
+// 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_1.Ase2NdfBin'
+// 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_2.Ase2NdfBin'
+// 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_3.Ase2NdfBin'
+// 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_NCO.Ase2NdfBin'
+// 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_Ace.Ase2NdfBin'
+// 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_Officer.Ase2NdfBin'
+
 //------------------------------------------------------------------------------
+
+//Devils_Scout_ACE_Prince_CAN
+export ModelFile_Devils_Scout_ACE_Prince_CAN is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_3.Ase2NdfBin'
+export ModelFile_Devils_Scout_ACE_Prince_CAN_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_3.Ase2NdfBin'
+export ModelFile_Devils_Scout_ACE_Prince_CAN_Secondary is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_Ace.Ase2NdfBin'
+export ModelFile_Devils_Scout_ACE_Prince_CAN_Secondary_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_Ace.Ase2NdfBin'
+export ModelFile_Devils_Scout_ACE_Prince_CAN_1 is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_2.Ase2NdfBin'
+export ModelFile_Devils_Scout_ACE_Prince_CAN_1_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_2.Ase2NdfBin'
+export ModelFile_Devils_Scout_ACE_Prince_CAN_2 is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_NCO.Ase2NdfBin'
+export ModelFile_Devils_Scout_ACE_Prince_CAN_2_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_NCO.Ase2NdfBin'
+export ModelFile_Devils_Scout_ACE_Prince_CAN_3 is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_1.Ase2NdfBin'
+export ModelFile_Devils_Scout_ACE_Prince_CAN_3_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_1.Ase2NdfBin'
+
+//Devils_Scout_CAN
+export ModelFile_Devils_Scout_CAN is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_1.Ase2NdfBin'
+export ModelFile_Devils_Scout_CAN_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_1.Ase2NdfBin'
+export ModelFile_Devils_Scout_CAN_Secondary is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_1.Ase2NdfBin'
+export ModelFile_Devils_Scout_CAN_Secondary_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_1.Ase2NdfBin'
+export ModelFile_Devils_Scout_CAN_1 is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_2.Ase2NdfBin'
+export ModelFile_Devils_Scout_CAN_1_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_2.Ase2NdfBin'
+export ModelFile_Devils_Scout_CAN_2 is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_NCO.Ase2NdfBin'
+export ModelFile_Devils_Scout_CAN_2_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_NCO.Ase2NdfBin'
+export ModelFile_Devils_Scout_CAN_3 is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_1.Ase2NdfBin'
+export ModelFile_Devils_Scout_CAN_3_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_1.Ase2NdfBin'
+
+//Devils_Ldr_CAN
+export ModelFile_Devils_Ldr_CAN is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_1.Ase2NdfBin'
+export ModelFile_Devils_Ldr_CAN_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_1.Ase2NdfBin'
+export ModelFile_Devils_Ldr_CAN_Secondary is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_NCO.Ase2NdfBin'
+export ModelFile_Devils_Ldr_CAN_Secondary_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_NCO.Ase2NdfBin'
+export ModelFile_Devils_Ldr_CAN_1 is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_Officer.Ase2NdfBin'
+export ModelFile_Devils_Ldr_CAN_1_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_Officer.Ase2NdfBin'
+
+//Devils_US
+export ModelFile_Devils_US is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_1.Ase2NdfBin'
+export ModelFile_Devils_US_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_1.Ase2NdfBin'
+export ModelFile_Devils_US_Secondary is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_2.Ase2NdfBin'
+export ModelFile_Devils_US_Secondary_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_2.Ase2NdfBin'
+export ModelFile_Devils_US_1 is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_2.Ase2NdfBin'
+export ModelFile_Devils_US_1_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_2.Ase2NdfBin'
+export ModelFile_Devils_US_2 is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_3.Ase2NdfBin'
+export ModelFile_Devils_US_2_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_3.Ase2NdfBin'
+export ModelFile_Devils_US_3 is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_NCO.Ase2NdfBin'
+export ModelFile_Devils_US_3_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_NCO.Ase2NdfBin'
+export ModelFile_Devils_US_4 is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_3.Ase2NdfBin'
+export ModelFile_Devils_US_4_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_3.Ase2NdfBin'
+
+//Devils_CAN
+export ModelFile_Devils_CAN is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_1.Ase2NdfBin'
+export ModelFile_Devils_CAN_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_1.Ase2NdfBin'
+export ModelFile_Devils_CAN_Secondary is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_2.Ase2NdfBin'
+export ModelFile_Devils_CAN_Secondary_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_2.Ase2NdfBin'
+export ModelFile_Devils_CAN_1 is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_2.Ase2NdfBin'
+export ModelFile_Devils_CAN_1_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_2.Ase2NdfBin'
+export ModelFile_Devils_CAN_2 is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_3.Ase2NdfBin'
+export ModelFile_Devils_CAN_2_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_3.Ase2NdfBin'
+export ModelFile_Devils_CAN_3 is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_NCO.Ase2NdfBin'
+export ModelFile_Devils_CAN_3_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_NCO.Ase2NdfBin'
+export ModelFile_Devils_CAN_4 is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_3.Ase2NdfBin'
+export ModelFile_Devils_CAN_4_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\Devil\Devil_3.Ase2NdfBin'
 
 //Gun_Crew_CAN
 export ModelFile_Gun_Crew_CAN is 'GameData:Assets\3D\Units\CAN\Infanterie\Canadian_Rifle\Canadian_Rifle_2.Ase2NdfBin'
@@ -1126,12 +1202,6 @@ export ModelFile_Servant_AT_CAN is 'GameData:Assets\3D\Units\CAN\Infanterie\Cana
 export ModelFile_Servant_AT_CAN_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\LODS\Canadian_Rifle_LOW.Ase2NdfBin'
 export ModelFile_Servant_AT_CAN_Secondary is 'GameData:Assets\3D\Units\CAN\Infanterie\Canadian_Rifle\Canadian_Rifle_2.Ase2NdfBin'
 export ModelFile_Servant_AT_CAN_Secondary_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\LODS\Canadian_Rifle_2_LOW.Ase2NdfBin'
-
-//Devils_Scout_CAN
-export ModelFile_Devils_Scout_CAN is 'GameData:Assets\3D\Units\CAN\Infanterie\Canadian_Rifle\Canadian_Rifle.Ase2NdfBin'
-export ModelFile_Devils_Scout_CAN_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\LODS\Canadian_Rifle_LOW.Ase2NdfBin'
-export ModelFile_Devils_Scout_CAN_Secondary is 'GameData:Assets\3D\Units\CAN\Infanterie\Canadian_Rifle\Canadian_NCO_2.Ase2NdfBin'
-export ModelFile_Devils_Scout_CAN_Secondary_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\LODS\Canadian_NCO_2_LOW.Ase2NdfBin'
 
 //Scout_CAN
 export ModelFile_Scout_CAN is 'GameData:Assets\3D\Units\CAN\Infanterie\Canadian_Rifle\Canadian_Rifle.Ase2NdfBin'
@@ -1230,18 +1300,6 @@ export ModelFile_Defence_Group_CAN is 'GameData:Assets\3D\Units\CAN\Infanterie\C
 export ModelFile_Defence_Group_CAN_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\LODS\Canadian_Rifle_LOW.Ase2NdfBin'
 export ModelFile_Defence_Group_CAN_Secondary is 'GameData:Assets\3D\Units\CAN\Infanterie\Canadian_Rifle\Canadian_NCO.Ase2NdfBin'
 export ModelFile_Defence_Group_CAN_Secondary_LOW is 'GameData:Assets\3D\Units\CAN\Infanterie\LODS\Canadian_NCO_LOW.Ase2NdfBin'
-
-//Devils_US
-export ModelFile_Devils_US is 'GameData:Assets\3D\Units\UK\Infanterie\Paratrooper\Paratrooper.Ase2NdfBin'
-export ModelFile_Devils_US_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Paratrooper_LOW.Ase2NdfBin'
-export ModelFile_Devils_US_Secondary is 'GameData:Assets\3D\Units\UK\Infanterie\Paratrooper\Paratrooper_2.Ase2NdfBin'
-export ModelFile_Devils_US_Secondary_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Paratrooper_2_LOW.Ase2NdfBin'
-
-//Devils_CAN
-export ModelFile_Devils_CAN is 'GameData:Assets\3D\Units\UK\Infanterie\Paratrooper\Paratrooper.Ase2NdfBin'
-export ModelFile_Devils_CAN_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Paratrooper_LOW.Ase2NdfBin'
-export ModelFile_Devils_CAN_Secondary is 'GameData:Assets\3D\Units\UK\Infanterie\Paratrooper\Paratrooper_2.Ase2NdfBin'
-export ModelFile_Devils_CAN_Secondary_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Paratrooper_2_LOW.Ase2NdfBin'
 
 //Rifle_Paratrooper_CAN
 export ModelFile_Rifle_Paratrooper_CAN is 'GameData:Assets\3D\Units\UK\Infanterie\Paratrooper\Paratrooper.Ase2NdfBin'
@@ -1804,7 +1862,7 @@ export ModelFile_Scout_Small_POL_Secondary_LOW is 'GameData:Assets\3D\Units\POL\
 // 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_3.Ase2NdfBin'
 // 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_4.Ase2NdfBin'
 // 'GameData:Assets\3D\Units\FR\Infanterie\CmdoAf\CmdoAf.Ase2NdfBin'
-// 'GameData:Assets\3D\Units\FR\Infanterie\ChassAlpin\ParaChoc.Ase2NdfBin'
+// 'GameData:Assets\3D\Units\FR\Infanterie\ParaChoc\ParaChoc.Ase2NdfBin'
 // 'GameData:Assets\3D\Units\FR\Infanterie\LEGION\Legion_1.Ase2NdfBin'
 // 'GameData:Assets\3D\Units\FR\Infanterie\LEGION\Legion_2.Ase2NdfBin'
 // 'GameData:Assets\3D\Units\FR\Infanterie\LEGION\Legion_Gunner.Ase2NdfBin'
@@ -1908,8 +1966,8 @@ export ModelFile_Montagnards_Sapeurs_FR_3 is 'GameData:Assets\3D\Units\FR\Infant
 export ModelFile_Montagnards_Sapeurs_FR_3_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_4.Ase2NdfBin'
 export ModelFile_Montagnards_Sapeurs_FR_4 is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_2.Ase2NdfBin'
 export ModelFile_Montagnards_Sapeurs_FR_4_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_2.Ase2NdfBin'
-export ModelFile_Montagnards_Sapeurs_FR_5 is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_Gunner.Ase2NdfBin'
-export ModelFile_Montagnards_Sapeurs_FR_5_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_Gunner.Ase2NdfBin'
+export ModelFile_Montagnards_Sapeurs_FR_5 is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_3.Ase2NdfBin'
+export ModelFile_Montagnards_Sapeurs_FR_5_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_3.Ase2NdfBin'
 
 //Montagnards_Sapeurs_Flam_FR
 export ModelFile_Montagnards_Sapeurs_Flam_FR is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_3.Ase2NdfBin'
@@ -1938,8 +1996,8 @@ export ModelFile_Montagnards_Sapeurs_Ldr_FR_1_LOW is 'GameData:Assets\3D\Units\F
 //Tirailleurs_Ldr_FR
 export ModelFile_Tirailleurs_Ldr_FR is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_2.Ase2NdfBin'
 export ModelFile_Tirailleurs_Ldr_FR_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_2.Ase2NdfBin'
-export ModelFile_Tirailleurs_Ldr_FR_Secondary is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_Gunner.Ase2NdfBin'
-export ModelFile_Tirailleurs_Ldr_FR_Secondary_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_Gunner.Ase2NdfBin'
+export ModelFile_Tirailleurs_Ldr_FR_Secondary is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_4.Ase2NdfBin'
+export ModelFile_Tirailleurs_Ldr_FR_Secondary_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_4.Ase2NdfBin'
 export ModelFile_Tirailleurs_Ldr_FR_1 is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_2.Ase2NdfBin'
 export ModelFile_Tirailleurs_Ldr_FR_1_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_2.Ase2NdfBin'
 export ModelFile_Tirailleurs_Ldr_FR_2 is 'GameData:Assets\3D\Units\FR\Infanterie\RMT\RMT_Officer.Ase2NdfBin'
@@ -2161,7 +2219,6 @@ export ModelFile_Legion_Sapeurs_FR_7_LOW is 'GameData:Assets\3D\Units\FR\Infante
 export ModelFile_Legion_Sapeurs_FR_8 is 'GameData:Assets\3D\Units\FR\Infanterie\LEGION\Legion_Pionnier_1.Ase2NdfBin'
 export ModelFile_Legion_Sapeurs_FR_8_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\LEGION\Legion_Pionnier_1.Ase2NdfBin'
 
-
 //Cmdo_Afrique_FR
 export ModelFile_Cmdo_Afrique_FR is 'GameData:Assets\3D\Units\FR\Infanterie\CmdoAf\CmdoAf.Ase2NdfBin'
 export ModelFile_Cmdo_Afrique_FR_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\CmdoAf\CmdoAf.Ase2NdfBin'
@@ -2235,8 +2292,8 @@ export ModelFile_Chasseurs_RCP_FR_4 is 'GameData:Assets\3D\Units\FR\Infanterie\C
 export ModelFile_Chasseurs_RCP_FR_4_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\ChassPara\ChassPara_NCO.Ase2NdfBin'
 
 //Para_Choc_FR
-export ModelFile_Para_Choc_FR is 'GameData:Assets\3D\Units\FR\Infanterie\ChassPara\ChassPara_2.Ase2NdfBin'
-export ModelFile_Para_Choc_FR_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\ChassPara\ChassPara_2.Ase2NdfBin'
+export ModelFile_Para_Choc_FR is 'GameData:Assets\3D\Units\FR\Infanterie\ParaChoc\ParaChoc.Ase2NdfBin'
+export ModelFile_Para_Choc_FR_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\ParaChoc\ParaChoc.Ase2NdfBin'
 export ModelFile_Para_Choc_FR_Secondary is 'GameData:Assets\3D\Units\FR\Infanterie\ChassPara\ChassPara_NCO.Ase2NdfBin'
 export ModelFile_Para_Choc_FR_Secondary_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\ChassPara\ChassPara_NCO.Ase2NdfBin'
 
@@ -2385,30 +2442,22 @@ export ModelFile_Ldr_FFI_FR_2 is 'GameData:Assets\3D\Units\FR\Infanterie\RMT\RMT
 export ModelFile_Ldr_FFI_FR_2_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\LODS\RMT_NCO_2_LOW.Ase2NdfBin'
 
 //Sapeurs_Tir_FR
-export ModelFile_Sapeurs_Tir_FR is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_1.Ase2NdfBin'
-export ModelFile_Sapeurs_Tir_FR_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_1.Ase2NdfBin'
-export ModelFile_Sapeurs_Tir_FR_Secondary is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AEF_2.Ase2NdfBin'
-export ModelFile_Sapeurs_Tir_FR_Secondary_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AEF_2.Ase2NdfBin'
-export ModelFile_Sapeurs_Tir_FR_1 is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_Gunner.Ase2NdfBin'
-export ModelFile_Sapeurs_Tir_FR_1_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_Gunner.Ase2NdfBin'
-export ModelFile_Sapeurs_Tir_FR_2 is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_Gunner.Ase2NdfBin'
-export ModelFile_Sapeurs_Tir_FR_2_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_Gunner.Ase2NdfBin'
-export ModelFile_Sapeurs_Tir_FR_3 is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_Gunner.Ase2NdfBin'
-export ModelFile_Sapeurs_Tir_FR_3_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_Gunner.Ase2NdfBin'
-export ModelFile_Sapeurs_Tir_FR_4 is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_Gunner.Ase2NdfBin'
-export ModelFile_Sapeurs_Tir_FR_4_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_Gunner.Ase2NdfBin'
+export ModelFile_Sapeurs_Tir_FR is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_4.Ase2NdfBin'
+export ModelFile_Sapeurs_Tir_FR_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_4.Ase2NdfBin'
+export ModelFile_Sapeurs_Tir_FR_Secondary is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_2.Ase2NdfBin'
+export ModelFile_Sapeurs_Tir_FR_Secondary_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_2.Ase2NdfBin'
+export ModelFile_Sapeurs_Tir_FR_1 is 'GameData:Assets\3D\Units\FR\Infanterie\RMT\RMT_Officer.Ase2NdfBin'
+export ModelFile_Sapeurs_Tir_FR_1_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\RMT\RMT_Officer.Ase2NdfBin'
+export ModelFile_Sapeurs_Tir_FR_2 is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_2.Ase2NdfBin'
+export ModelFile_Sapeurs_Tir_FR_2_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_2.Ase2NdfBin'
 
 //Pioniers_Tir_FR
-export ModelFile_Pioniers_Tir_FR is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AEF_1.Ase2NdfBin'
-export ModelFile_Pioniers_Tir_FR_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AEF_1.Ase2NdfBin'
-export ModelFile_Pioniers_Tir_FR_Secondary is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_Gunner.Ase2NdfBin'
-export ModelFile_Pioniers_Tir_FR_Secondary_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_Gunner.Ase2NdfBin'
-export ModelFile_Pioniers_Tir_FR_1 is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_Gunner.Ase2NdfBin'
-export ModelFile_Pioniers_Tir_FR_1_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_Gunner.Ase2NdfBin'
-export ModelFile_Pioniers_Tir_FR_2 is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_Gunner.Ase2NdfBin'
-export ModelFile_Pioniers_Tir_FR_2_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_Gunner.Ase2NdfBin'
-export ModelFile_Pioniers_Tir_FR_3 is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AEF_2.Ase2NdfBin'
-export ModelFile_Pioniers_Tir_FR_3_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AEF_2.Ase2NdfBin'
+export ModelFile_Pioniers_Tir_FR is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_4.Ase2NdfBin'
+export ModelFile_Pioniers_Tir_FR_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_4.Ase2NdfBin'
+export ModelFile_Pioniers_Tir_FR_Secondary is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_2.Ase2NdfBin'
+export ModelFile_Pioniers_Tir_FR_Secondary_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_2.Ase2NdfBin'
+export ModelFile_Pioniers_Tir_FR_1 is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_2.Ase2NdfBin'
+export ModelFile_Pioniers_Tir_FR_1_LOW is 'GameData:Assets\3D\Units\FR\Infanterie\Tirailleurs\Tir_AFN_2.Ase2NdfBin'
 
 //Sapeurs_Assaut_FR
 export ModelFile_Sapeurs_Assaut_FR is 'GameData:Assets\3D\Units\FR\Infanterie\RMT\RMT.Ase2NdfBin'
@@ -2730,12 +2779,6 @@ export ModelFile_AB_Commander_UK_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\
 export ModelFile_AB_Commander_UK_Secondary is 'GameData:Assets\3D\Units\UK\Infanterie\British_Officer\British_Officer.Ase2NdfBin'
 export ModelFile_AB_Commander_UK_Secondary_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\British_Officer_LOW.Ase2NdfBin'
 
-//Devils_Ldr_CAN
-export ModelFile_Devils_Ldr_CAN is 'GameData:Assets\3D\Units\UK\Infanterie\Paratrooper\Paratrooper.Ase2NdfBin'
-export ModelFile_Devils_Ldr_CAN_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Paratrooper_LOW.Ase2NdfBin'
-export ModelFile_Devils_Ldr_CAN_Secondary is 'GameData:Assets\3D\Units\UK\Infanterie\Paratrooper\Paratrooper_2.Ase2NdfBin'
-export ModelFile_Devils_Ldr_CAN_Secondary_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Paratrooper_2_LOW.Ase2NdfBin'
-
 //Airborne_Leader_CAN
 export ModelFile_Airborne_Leader_CAN is 'GameData:Assets\3D\Units\UK\Infanterie\Paratrooper\Paratrooper.Ase2NdfBin'
 export ModelFile_Airborne_Leader_CAN_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Paratrooper_LOW.Ase2NdfBin'
@@ -2768,16 +2811,6 @@ export ModelFile_Gun_Crew_AB_UK is 'GameData:Assets\3D\Units\UK\Infanterie\Parat
 export ModelFile_Gun_Crew_AB_UK_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Paratrooper_Officer_LOW.Ase2NdfBin'
 export ModelFile_Gun_Crew_AB_UK_Secondary is 'GameData:Assets\3D\Units\UK\Infanterie\Paratrooper\Paratrooper_NCO.Ase2NdfBin'
 export ModelFile_Gun_Crew_AB_UK_Secondary_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Paratrooper_NCO_LOW.Ase2NdfBin'
-
-//Commando_Leader_UK
-export ModelFile_Commando_Leader_UK is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando.Ase2NdfBin'
-export ModelFile_Commando_Leader_UK_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_LOW.Ase2NdfBin'
-export ModelFile_Commando_Leader_UK_Secondary is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando_2.Ase2NdfBin'
-export ModelFile_Commando_Leader_UK_Secondary_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_2_LOW.Ase2NdfBin'
-export ModelFile_Commando_Leader_UK_1 is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando_NCO_2.Ase2NdfBin'
-export ModelFile_Commando_Leader_UK_1_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_NCO_2_LOW.Ase2NdfBin'
-export ModelFile_Commando_Leader_UK_2 is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando_Officer.Ase2NdfBin'
-export ModelFile_Commando_Leader_UK_2_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_Officer_LOW.Ase2NdfBin'
 
 //Motor_Rifle_Leader_UK
 export ModelFile_Motor_Rifle_Leader_UK is 'GameData:Assets\3D\Units\UK\Infanterie\Tommy\Tommy_2.Ase2NdfBin'
@@ -2990,6 +3023,50 @@ export ModelFile_Bren_Group_UK_2 is 'GameData:Assets\3D\Units\UK\Infanterie\Tomm
 export ModelFile_Bren_Group_UK_2_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Tommy_LOW.Ase2NdfBin'
 export ModelFile_Bren_Group_UK_3 is 'GameData:Assets\3D\Units\UK\Infanterie\Tommy\Tommy.Ase2NdfBin'
 export ModelFile_Bren_Group_UK_3_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Tommy_LOW.Ase2NdfBin'
+
+//Commando_Leader_UK
+export ModelFile_Commando_Leader_UK is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando.Ase2NdfBin'
+export ModelFile_Commando_Leader_UK_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_LOW.Ase2NdfBin'
+export ModelFile_Commando_Leader_UK_Secondary is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando_2.Ase2NdfBin'
+export ModelFile_Commando_Leader_UK_Secondary_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_2_LOW.Ase2NdfBin'
+export ModelFile_Commando_Leader_UK_1 is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando_NCO_2.Ase2NdfBin'
+export ModelFile_Commando_Leader_UK_1_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_NCO_2_LOW.Ase2NdfBin'
+export ModelFile_Commando_Leader_UK_2 is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando_NCO.Ase2NdfBin'
+export ModelFile_Commando_Leader_UK_2_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_NCO_LOW.Ase2NdfBin'
+export ModelFile_Commando_Leader_UK_3 is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando_2.Ase2NdfBin'
+export ModelFile_Commando_Leader_UK_3_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_2_LOW.Ase2NdfBin'
+export ModelFile_Commando_Leader_UK_4 is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando_Officer.Ase2NdfBin'
+export ModelFile_Commando_Leader_UK_4_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_Officer_LOW.Ase2NdfBin'
+
+//Commander_Cmdo_UK
+export ModelFile_Commander_Cmdo_UK is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando_NCO.Ase2NdfBin'
+export ModelFile_Commander_Cmdo_UK_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_NCO_LOW.Ase2NdfBin'
+export ModelFile_Commander_Cmdo_UK_Secondary is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando_Officer.Ase2NdfBin'
+export ModelFile_Commander_Cmdo_UK_Secondary_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_Officer_LOW.Ase2NdfBin'
+
+//Commando_Sniper
+export ModelFile_Commando_Sniper is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando.Ase2NdfBin'
+export ModelFile_Commando_Sniper_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_LOW.Ase2NdfBin'
+export ModelFile_Commando_Sniper_Secondary is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando_2.Ase2NdfBin'
+export ModelFile_Commando_Sniper_Secondary_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_2_LOW.Ase2NdfBin'
+
+//3_Cdo_UK
+export ModelFile_3_Cdo_UK is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando.Ase2NdfBin'
+export ModelFile_3_Cdo_UK_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_LOW.Ase2NdfBin'
+export ModelFile_3_Cdo_UK_Secondary is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando_2.Ase2NdfBin'
+export ModelFile_3_Cdo_UK_Secondary_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_2_LOW.Ase2NdfBin'
+
+//6_Cdo_UK
+export ModelFile_6_Cdo_UK is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando.Ase2NdfBin'
+export ModelFile_6_Cdo_UK_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_LOW.Ase2NdfBin'
+export ModelFile_6_Cdo_UK_Secondary is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando_2.Ase2NdfBin'
+export ModelFile_6_Cdo_UK_Secondary_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_2_LOW.Ase2NdfBin'
+export ModelFile_6_Cdo_UK_1 is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando_NCO.Ase2NdfBin'
+export ModelFile_6_Cdo_UK_1_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_NCO_LOW.Ase2NdfBin'
+export ModelFile_6_Cdo_UK_2 is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando_2.Ase2NdfBin'
+export ModelFile_6_Cdo_UK_2_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_2_LOW.Ase2NdfBin'
+export ModelFile_6_Cdo_UK_3 is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando_2.Ase2NdfBin'
+export ModelFile_6_Cdo_UK_3_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_2_LOW.Ase2NdfBin'
 
 //Cdo_Assault_UK
 export ModelFile_Cdo_Assault_UK is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando.Ase2NdfBin'
@@ -4151,12 +4228,6 @@ export ModelFile_Panzerschreck_disheart_GER is 'GameData:Assets\3D\Units\GER\Inf
 export ModelFile_Panzerschreck_disheart_GER_LOW is 'GameData:Assets\3D\Units\GER\Infanterie\LODS\Grenadier_2_LOW.Ase2NdfBin'
 export ModelFile_Panzerschreck_disheart_GER_Secondary is 'GameData:Assets\3D\Units\GER\Infanterie\Grenadier\Grenadier_NCO\Grenadier_NCO.Ase2NdfBin'
 export ModelFile_Panzerschreck_disheart_GER_Secondary_LOW is 'GameData:Assets\3D\Units\GER\Infanterie\LODS\Grenadier_NCO_LOW.Ase2NdfBin'
-
-//Panzerschreck_BUL
-export ModelFile_Panzerschreck_BUL is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_1.Ase2NdfBin'
-export ModelFile_Panzerschreck_BUL_LOW is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_1.Ase2NdfBin'
-export ModelFile_Panzerschreck_BUL_Secondary is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_2.Ase2NdfBin'
-export ModelFile_Panzerschreck_BUL_Secondary_LOW is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_2.Ase2NdfBin'
 
 //Panzerschreck_GR
 export ModelFile_Panzerschreck_GR is            'GameData:Assets\3D\Units\GER\Infanterie\Grenadier\Grenadier_2\Grenadier_2.Ase2NdfBin'
@@ -5945,6 +6016,52 @@ export ModelFile_DP28_crew_SOV_Secondary_LOW is 'GameData:Assets\3D\Units\SOV\In
 // 'GameData:Assets\3D\Units\ITA\Infanterie\MaroCIL\MaroCIL_1.Ase2NdfBin'
 // 'GameData:Assets\3D\Units\ITA\Infanterie\MaroCIL\MaroCIL_2.Ase2NdfBin'
 // 'GameData:Assets\3D\Units\ITA\Infanterie\MaroCIL\MaroCIL_NCO.Ase2NdfBin'
+// 'GameData:Assets\3D\Units\ITA\Infanterie\Partigiani\Partigiani_1.Ase2NdfBin'
+// 'GameData:Assets\3D\Units\ITA\Infanterie\Partigiani\Partigiani_2.Ase2NdfBin'
+// 'GameData:Assets\3D\Units\ITA\Infanterie\Partigiani\Partigiani_NCO.Ase2NdfBin'
+// 'GameData:Assets\3D\Units\RSI\Infanterie\DecimasMas\DecimaMas_1.Ase2NdfBin'
+// 'GameData:Assets\3D\Units\RSI\Infanterie\DecimasMas\DecimaMas_2.Ase2NdfBin'
+// 'GameData:Assets\3D\Units\RSI\Infanterie\DecimasMas\DecimaMas_3.Ase2NdfBin'
+// 'GameData:Assets\3D\Units\RSI\Infanterie\DecimasMas\DecimaMas_NCO.Ase2NdfBin'
+// 'GameData:Assets\3D\Units\RSI\Infanterie\DecimasMas\DecimaMas_Officer.Ase2NdfBin'
+
+//Partisans_ITA
+export ModelFile_Partisans_ITA is 'GameData:Assets\3D\Units\ITA\Infanterie\Partigiani\Partigiani_1.Ase2NdfBin'
+export ModelFile_Partisans_ITA_LOW is 'GameData:Assets\3D\Units\ITA\Infanterie\Partigiani\Partigiani_1.Ase2NdfBin'
+export ModelFile_Partisans_ITA_Secondary is 'GameData:Assets\3D\Units\ITA\Infanterie\Partigiani\Partigiani_NCO.Ase2NdfBin'
+export ModelFile_Partisans_ITA_Secondary_LOW is 'GameData:Assets\3D\Units\ITA\Infanterie\Partigiani\Partigiani_NCO.Ase2NdfBin'
+export ModelFile_Partisans_ITA_1 is 'GameData:Assets\3D\Units\ITA\Infanterie\Partigiani\Partigiani_2.Ase2NdfBin'
+export ModelFile_Partisans_ITA_1_LOW is 'GameData:Assets\3D\Units\ITA\Infanterie\Partigiani\Partigiani_2.Ase2NdfBin'
+export ModelFile_Partisans_ITA_2 is 'GameData:Assets\3D\Units\ITA\Infanterie\Partigiani\Partigiani_2.Ase2NdfBin'
+export ModelFile_Partisans_ITA_2_LOW is 'GameData:Assets\3D\Units\ITA\Infanterie\Partigiani\Partigiani_2.Ase2NdfBin'
+export ModelFile_Partisans_ITA_3 is 'GameData:Assets\3D\Units\ITA\Infanterie\Partigiani\Partigiani_2.Ase2NdfBin'
+export ModelFile_Partisans_ITA_3_LOW is 'GameData:Assets\3D\Units\ITA\Infanterie\Partigiani\Partigiani_2.Ase2NdfBin'
+export ModelFile_Partisans_ITA_4 is 'GameData:Assets\3D\Units\ITA\Infanterie\Partigiani\Partigiani_NCO.Ase2NdfBin'
+export ModelFile_Partisans_ITA_4_LOW is 'GameData:Assets\3D\Units\ITA\Infanterie\Partigiani\Partigiani_NCO.Ase2NdfBin'
+
+//Decima_Mas_RSI
+export ModelFile_Decima_Mas_RSI is 'GameData:Assets\3D\Units\RSI\Infanterie\DecimasMas\DecimaMas_1.Ase2NdfBin'
+export ModelFile_Decima_Mas_RSI_LOW is 'GameData:Assets\3D\Units\RSI\Infanterie\DecimasMas\DecimaMas_1.Ase2NdfBin'
+export ModelFile_Decima_Mas_RSI_Secondary is 'GameData:Assets\3D\Units\RSI\Infanterie\DecimasMas\DecimaMas_NCO.Ase2NdfBin'
+export ModelFile_Decima_Mas_RSI_Secondary_LOW is 'GameData:Assets\3D\Units\RSI\Infanterie\DecimasMas\DecimaMas_NCO.Ase2NdfBin'
+
+//Decima_Mas_SMG_RSI
+export ModelFile_Decima_Mas_SMG_RSI is 'GameData:Assets\3D\Units\RSI\Infanterie\DecimasMas\DecimaMas_2.Ase2NdfBin'
+export ModelFile_Decima_Mas_SMG_RSI_LOW is 'GameData:Assets\3D\Units\RSI\Infanterie\DecimasMas\DecimaMas_2.Ase2NdfBin'
+export ModelFile_Decima_Mas_SMG_RSI_Secondary is 'GameData:Assets\3D\Units\RSI\Infanterie\DecimasMas\DecimaMas_NCO.Ase2NdfBin'
+export ModelFile_Decima_Mas_SMG_RSI_Secondary_LOW is 'GameData:Assets\3D\Units\RSI\Infanterie\DecimasMas\DecimaMas_NCO.Ase2NdfBin'
+
+//Decima_Mas_Scout_RSI
+export ModelFile_Decima_Mas_Scout_RSI is 'GameData:Assets\3D\Units\RSI\Infanterie\DecimasMas\DecimaMas_3.Ase2NdfBin'
+export ModelFile_Decima_Mas_Scout_RSI_LOW is 'GameData:Assets\3D\Units\RSI\Infanterie\DecimasMas\DecimaMas_3.Ase2NdfBin'
+export ModelFile_Decima_Mas_Scout_RSI_Secondary is 'GameData:Assets\3D\Units\RSI\Infanterie\DecimasMas\DecimaMas_NCO.Ase2NdfBin'
+export ModelFile_Decima_Mas_Scout_RSI_Secondary_LOW is 'GameData:Assets\3D\Units\RSI\Infanterie\DecimasMas\DecimaMas_NCO.Ase2NdfBin'
+
+//Decima_Mas_CMD_RSI
+export ModelFile_Decima_Mas_CMD_RSI is 'GameData:Assets\3D\Units\RSI\Infanterie\DecimasMas\DecimaMas_1.Ase2NdfBin'
+export ModelFile_Decima_Mas_CMD_RSI_LOW is 'GameData:Assets\3D\Units\RSI\Infanterie\DecimasMas\DecimaMas_1.Ase2NdfBin'
+export ModelFile_Decima_Mas_CMD_RSI_Secondary is 'GameData:Assets\3D\Units\RSI\Infanterie\DecimasMas\DecimaMas_Officer.Ase2NdfBin'
+export ModelFile_Decima_Mas_CMD_RSI_Secondary_LOW is 'GameData:Assets\3D\Units\RSI\Infanterie\DecimasMas\DecimaMas_Officer.Ase2NdfBin'
 
 //SanMarco_ITA
 export ModelFile_SanMarco_ITA is 'GameData:Assets\3D\Units\ITA\Infanterie\MaroCIL\MaroCIL_1.Ase2NdfBin'
@@ -7546,12 +7663,6 @@ export ModelFile_Partisans_AK_3_LOW is 'GameData:Assets\3D\Units\POL\Infanterie\
 export ModelFile_Partisans_AK_4 is 'GameData:Assets\3D\Units\POL\Infanterie\POL_1939_2\POL_1939_2.Ase2NdfBin'
 export ModelFile_Partisans_AK_4_LOW is 'GameData:Assets\3D\Units\POL\Infanterie\LODS\POL_1939_2_LOW.Ase2NdfBin'
 
-//Partisans_ITA
-export ModelFile_Partisans_ITA is 'GameData:Assets\3D\Units\SOV\Infanterie\Partisan\Partisan_01.Ase2NdfBin'
-export ModelFile_Partisans_ITA_LOW is 'GameData:Assets\3D\Units\SOV\Infanterie\LODS\Partisan_01_LOW.Ase2NdfBin'
-export ModelFile_Partisans_ITA_Secondary is 'GameData:Assets\3D\Units\SOV\Infanterie\Partisan\Partisan_02.Ase2NdfBin'
-export ModelFile_Partisans_ITA_Secondary_LOW is 'GameData:Assets\3D\Units\SOV\Infanterie\LODS\Partisan_02_LOW.Ase2NdfBin'
-
 //Partisans_SOV
 export ModelFile_Partisans_SOV is 'GameData:Assets\3D\Units\SOV\Infanterie\Partisan\Partisan_01.Ase2NdfBin'
 export ModelFile_Partisans_SOV_LOW is 'GameData:Assets\3D\Units\SOV\Infanterie\LODS\Partisan_01_LOW.Ase2NdfBin'
@@ -8081,8 +8192,8 @@ export ModelFile_Szekely_HON_5_LOW is 'GameData:Assets\3D\Units\HON\Infanterie\B
 //Assault_Pionier_BUL
 export ModelFile_Assault_Pionier_BUL is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_1.Ase2NdfBin'
 export ModelFile_Assault_Pionier_BUL_LOW is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_1.Ase2NdfBin'
-export ModelFile_Assault_Pionier_BUL_Secondary is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_NCO.Ase2NdfBin'
-export ModelFile_Assault_Pionier_BUL_Secondary_LOW is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_NCO.Ase2NdfBin'
+export ModelFile_Assault_Pionier_BUL_Secondary is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_Flamer.Ase2NdfBin'
+export ModelFile_Assault_Pionier_BUL_Secondary_LOW is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_Flamer.Ase2NdfBin'
 export ModelFile_Assault_Pionier_BUL_1 is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_2.Ase2NdfBin'
 export ModelFile_Assault_Pionier_BUL_1_LOW is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_2.Ase2NdfBin'
 
@@ -8110,6 +8221,26 @@ export ModelFile_Pionier_CMD_BUL_1_LOW is 'GameData:Assets\3D\Units\BUL\Infanter
 export ModelFile_Pionier_CMD_BUL_2 is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_2.Ase2NdfBin'
 export ModelFile_Pionier_CMD_BUL_2_LOW is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_2.Ase2NdfBin'
 
+//Commander_BUL
+export ModelFile_Commander_BUL is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_Officer.Ase2NdfBin'
+export ModelFile_Commander_BUL_LOW is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_Officer.Ase2NdfBin'
+export ModelFile_Commander_BUL_Secondary is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_NCO.Ase2NdfBin'
+export ModelFile_Commander_BUL_Secondary_LOW is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_NCO.Ase2NdfBin'
+export ModelFile_Commander_BUL_1 is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_2.Ase2NdfBin'
+export ModelFile_Commander_BUL_1_LOW is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_2.Ase2NdfBin'
+
+//Artillery_Cmdr_BUL
+export ModelFile_Artillery_Cmdr_BUL is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_1.Ase2NdfBin'
+export ModelFile_Artillery_Cmdr_BUL_LOW is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_1.Ase2NdfBin'
+export ModelFile_Artillery_Cmdr_BUL_Secondary is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_NCO.Ase2NdfBin'
+export ModelFile_Artillery_Cmdr_BUL_Secondary_LOW is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_NCO.Ase2NdfBin'
+export ModelFile_Artillery_Cmdr_BUL_1 is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_Officer.Ase2NdfBin'
+export ModelFile_Artillery_Cmdr_BUL_1_LOW is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_Officer.Ase2NdfBin'
+export ModelFile_Artillery_Cmdr_BUL_2 is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_2.Ase2NdfBin'
+export ModelFile_Artillery_Cmdr_BUL_2_LOW is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_2.Ase2NdfBin'
+export ModelFile_Artillery_Cmdr_BUL_3 is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_Officer.Ase2NdfBin'
+export ModelFile_Artillery_Cmdr_BUL_3_LOW is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_Officer.Ase2NdfBin'
+
 //Rifles_CMD_BUL
 export ModelFile_Rifles_CMD_BUL is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_1.Ase2NdfBin'
 export ModelFile_Rifles_CMD_BUL_LOW is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_1.Ase2NdfBin'
@@ -8125,6 +8256,12 @@ export ModelFile_Scout_BUL is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian
 export ModelFile_Scout_BUL_LOW is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_Scout.Ase2NdfBin'
 export ModelFile_Scout_BUL_Secondary is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_1.Ase2NdfBin'
 export ModelFile_Scout_BUL_Secondary_LOW is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_1.Ase2NdfBin'
+
+//Gun_Crew_BUL
+export ModelFile_Gun_Crew_BUL is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_Scout.Ase2NdfBin'
+export ModelFile_Gun_Crew_BUL_LOW is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_Scout.Ase2NdfBin'
+export ModelFile_Gun_Crew_BUL_Secondary is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_Scout.Ase2NdfBin'
+export ModelFile_Gun_Crew_BUL_Secondary_LOW is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_Scout.Ase2NdfBin'
 
 //Scout_crew_BUL
 export ModelFile_Scout_crew_BUL is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_Scout.Ase2NdfBin'
@@ -8179,6 +8316,12 @@ export ModelFile_Rifles_BUL_4 is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgar
 export ModelFile_Rifles_BUL_4_LOW is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_NCO.Ase2NdfBin'
 export ModelFile_Rifles_BUL_5 is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_1.Ase2NdfBin'
 export ModelFile_Rifles_BUL_5_LOW is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_1.Ase2NdfBin'
+
+//Panzerschreck_BUL
+export ModelFile_Panzerschreck_BUL is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_1.Ase2NdfBin'
+export ModelFile_Panzerschreck_BUL_LOW is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_1.Ase2NdfBin'
+export ModelFile_Panzerschreck_BUL_Secondary is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_2.Ase2NdfBin'
+export ModelFile_Panzerschreck_BUL_Secondary_LOW is 'GameData:Assets\3D\Units\BUL\Infanterie\Bulgarian\Bulgarian_2.Ase2NdfBin'
 
 //Rifles_HON
 export ModelFile_Rifles_HON is 'GameData:Assets\3D\Units\HON\Infanterie\Rifle_1\Rifle_1.Ase2NdfBin'
@@ -9328,7 +9471,6 @@ export ModelFile_Cavalry_Scouts_US_3_LOW is 'GameData:Assets\3D\Units\USA\Infant
 
 //------------------------------------------------------------------------------
 // Soldats UK
-//------------------------------------------------------------------------------
 //Scout_30AU_UK
 export ModelFile_Scout_30AU_UK is 'GameData:Assets\3D\Units\UK\Infanterie\30AU_Rifle_1\30AU_Rifle_1.Ase2NdfBin'
 export ModelFile_Scout_30AU_UK_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\30AU_Rifle_1_LOW.Ase2NdfBin'
@@ -9348,24 +9490,6 @@ export ModelFile_RM_Cdo_UK is 'GameData:Assets\3D\Units\UK\Infanterie\Cmdo_RM\Cm
 export ModelFile_RM_Cdo_UK_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Cmdo_RM_LOW.Ase2NdfBin'
 export ModelFile_RM_Cdo_UK_Secondary is 'GameData:Assets\3D\Units\UK\Infanterie\Cmdo_RM\Cmdo_RM.Ase2NdfBin'
 export ModelFile_RM_Cdo_UK_Secondary_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Cmdo_RM_LOW.Ase2NdfBin'
-
-//3_Cdo_UK
-export ModelFile_3_Cdo_UK is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando.Ase2NdfBin'
-export ModelFile_3_Cdo_UK_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_LOW.Ase2NdfBin'
-export ModelFile_3_Cdo_UK_Secondary is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando_2.Ase2NdfBin'
-export ModelFile_3_Cdo_UK_Secondary_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_2_LOW.Ase2NdfBin'
-
-//6_Cdo_UK
-export ModelFile_6_Cdo_UK is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando.Ase2NdfBin'
-export ModelFile_6_Cdo_UK_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_LOW.Ase2NdfBin'
-export ModelFile_6_Cdo_UK_Secondary is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando_2.Ase2NdfBin'
-export ModelFile_6_Cdo_UK_Secondary_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_2_LOW.Ase2NdfBin'
-export ModelFile_6_Cdo_UK_1 is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando_NCO.Ase2NdfBin'
-export ModelFile_6_Cdo_UK_1_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_NCO_LOW.Ase2NdfBin'
-export ModelFile_6_Cdo_UK_2 is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando_2.Ase2NdfBin'
-export ModelFile_6_Cdo_UK_2_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_2_LOW.Ase2NdfBin'
-export ModelFile_6_Cdo_UK_3 is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando_2.Ase2NdfBin'
-export ModelFile_6_Cdo_UK_3_LOW is 'GameData:Assets\3D\Units\UK\Infanterie\LODS\Commando_2_LOW.Ase2NdfBin'
 
 //Double_PIAT_CDO_UK
 export ModelFile_Double_PIAT_CDO_UK is 'GameData:Assets\3D\Units\UK\Infanterie\Commando\Commando.Ase2NdfBin' //Not the good 3D model
@@ -10425,12 +10549,6 @@ export ModelFile_GNR_Ldr_RSI_Secondary_LOW is 'GameData:Assets\3D\Units\RSI\Infa
 export ModelFile_GNR_Ldr_RSI_1 is 'GameData:Assets\3D\Units\RSI\Infanterie\GNR\GNR_Officer.Ase2NdfBin'
 export ModelFile_GNR_Ldr_RSI_1_LOW is 'GameData:Assets\3D\Units\RSI\Infanterie\GNR\GNR_Officer.Ase2NdfBin'
 
-//Decima_Mas_RSI
-export ModelFile_Decima_Mas_RSI is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_1.Ase2NdfBin'
-export ModelFile_Decima_Mas_RSI_LOW is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_1.Ase2NdfBin'
-export ModelFile_Decima_Mas_RSI_Secondary is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_2.Ase2NdfBin'
-export ModelFile_Decima_Mas_RSI_Secondary_LOW is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_2.Ase2NdfBin'
-
 //Paracadusti_RSI
 export ModelFile_Paracadusti_RSI is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_1.Ase2NdfBin'
 export ModelFile_Paracadusti_RSI_LOW is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_1.Ase2NdfBin'
@@ -10447,12 +10565,6 @@ export ModelFile_Paracadusti_RSI_4_LOW is 'GameData:Assets\3D\Units\RSI\Infanter
 export ModelFile_Paracadusti_RSI_5 is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_NCO.Ase2NdfBin'
 export ModelFile_Paracadusti_RSI_5_LOW is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_NCO.Ase2NdfBin'
 
-//Decima_Mas_SMG_RSI
-export ModelFile_Decima_Mas_SMG_RSI is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_1.Ase2NdfBin'
-export ModelFile_Decima_Mas_SMG_RSI_LOW is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_1.Ase2NdfBin'
-export ModelFile_Decima_Mas_SMG_RSI_Secondary is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_2.Ase2NdfBin'
-export ModelFile_Decima_Mas_SMG_RSI_Secondary_LOW is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_2.Ase2NdfBin'
-
 //Paracadusti_SMG_RSI
 export ModelFile_Paracadusti_SMG_RSI is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_1.Ase2NdfBin'
 export ModelFile_Paracadusti_SMG_RSI_LOW is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_1.Ase2NdfBin'
@@ -10462,12 +10574,6 @@ export ModelFile_Paracadusti_SMG_RSI_1 is 'GameData:Assets\3D\Units\RSI\Infanter
 export ModelFile_Paracadusti_SMG_RSI_1_LOW is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_2.Ase2NdfBin'
 export ModelFile_Paracadusti_SMG_RSI_2 is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_NCO.Ase2NdfBin'
 export ModelFile_Paracadusti_SMG_RSI_2_LOW is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_NCO.Ase2NdfBin'
-
-//Decima_Mas_Scout_RSI
-export ModelFile_Decima_Mas_Scout_RSI is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_2.Ase2NdfBin'
-export ModelFile_Decima_Mas_Scout_RSI_LOW is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_2.Ase2NdfBin'
-export ModelFile_Decima_Mas_Scout_RSI_Secondary is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_NCO.Ase2NdfBin'
-export ModelFile_Decima_Mas_Scout_RSI_Secondary_LOW is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_NCO.Ase2NdfBin'
 
 //Paracadutisti_Scout_RSI
 export ModelFile_Paracadutisti_Scout_RSI is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_2.Ase2NdfBin'
@@ -10502,12 +10608,6 @@ export ModelFile_Guastatori_Para_RSI_3 is 'GameData:Assets\3D\Units\RSI\Infanter
 export ModelFile_Guastatori_Para_RSI_3_LOW is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_2.Ase2NdfBin'
 export ModelFile_Guastatori_Para_RSI_4 is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_2.Ase2NdfBin'
 export ModelFile_Guastatori_Para_RSI_4_LOW is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_2.Ase2NdfBin'
-
-//Decima_Mas_CMD_RSI
-export ModelFile_Decima_Mas_CMD_RSI is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_2.Ase2NdfBin'
-export ModelFile_Decima_Mas_CMD_RSI_LOW is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_2.Ase2NdfBin'
-export ModelFile_Decima_Mas_CMD_RSI_Secondary is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_1.Ase2NdfBin'
-export ModelFile_Decima_Mas_CMD_RSI_Secondary_LOW is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_1.Ase2NdfBin'
 
 //Paracadusti_Ldr_RSI
 export ModelFile_Paracadusti_Ldr_RSI is 'GameData:Assets\3D\Units\RSI\Infanterie\ParaRSI\ParaRSI_2.Ase2NdfBin'

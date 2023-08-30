@@ -1,0 +1,22 @@
+export ModelFile_Sherman_Firefly_UK is 'GameData:Assets\3D\Units\UK\Char\Sherman_Vc_Firefly\Sherman_Vc_Firefly.Ase2NdfBin'
+
+export Modele_Sherman_Firefly_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Sherman_Firefly_UK
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Sherman_Firefly_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\Sherman_Vc_Firefly_MID\Sherman_Vc_Firefly_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Sherman_Firefly_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\LODS\Sherman_Vc_Firefly_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

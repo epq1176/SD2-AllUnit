@@ -12,6 +12,10 @@ export Texture_Portrait_GER_Servant is TUIResourceTexture_InGame
 (
     FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Portraits/GER_Servant.png"
 )
+export Texture_Portrait_UK_Commando is TUIResourceTexture_InGame
+(
+    FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Portraits/UK_Commando.png"
+)
 export Texture_Portrait_GER_Tankiste is TUIResourceTexture_InGame
 (
     FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Portraits/GER_Tankiste.png"
@@ -52,6 +56,10 @@ export Texture_Portrait_UK_Soldat is TUIResourceTexture_InGame
 (
     FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Portraits/UK_Soldat.png"
 )
+export Texture_Portrait_US_Soldat is TUIResourceTexture_InGame
+(
+    FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Portraits/US_Soldat.png"
+)
 export Texture_Portrait_CAN_Soldat is TUIResourceTexture_InGame
 (
     FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Portraits/CAN_Soldat.png"
@@ -59,10 +67,6 @@ export Texture_Portrait_CAN_Soldat is TUIResourceTexture_InGame
 export Texture_Portrait_POL_Soldat is TUIResourceTexture_InGame
 (
     FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Portraits/POL_Soldat.png"
-)
-export Texture_Portrait_US_Soldat is TUIResourceTexture_InGame
-(
-    FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Portraits/US_Soldat.png"
 )
 export Texture_Portrait_FR_Soldat is TUIResourceTexture_InGame
 (
@@ -79,10 +83,6 @@ export Texture_Portrait_US_Tankiste is TUIResourceTexture_InGame
 export Texture_Portrait_UK_Servant is TUIResourceTexture_InGame
 (
     FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Portraits/UK_Servant.png"
-)
-export Texture_Portrait_UK_Commando is TUIResourceTexture_InGame
-(
-    FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Portraits/UK_Commando.png"
 )
 export Texture_Portrait_FR_Servant is TUIResourceTexture_InGame
 (
@@ -103,6 +103,10 @@ export Texture_Portrait_POL_Servant is TUIResourceTexture_InGame
 export Texture_Portrait_POL_Tankiste is TUIResourceTexture_InGame
 (
     FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Portraits/POL_Tankiste.png"
+)
+export Texture_Portrait_FR_Spahis is TUIResourceTexture_InGame
+(
+    FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Portraits/FR_Spahis.png"
 )
 export Texture_Portrait_FR_SAS is TUIResourceTexture_InGame
 (
@@ -131,10 +135,6 @@ export Texture_Portrait_FR_Tankiste is TUIResourceTexture_InGame
 export Texture_Portrait_Kurt_Knispel is TUIResourceTexture_InGame
 (
     FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Portraits/Kurt_Knispel.png"
-)
-export Texture_Portrait_FR_Spahis is TUIResourceTexture_InGame
-(
-    FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Portraits/FR_Spahis.png"
 )
 export Texture_Portrait_leo_major is TUIResourceTexture_InGame
 (
@@ -198,6 +198,7 @@ UnitPortraitAdditionalTextureBank is TBUCKToolAdditionalTextureBank
     Textures = MAP
     [
         ("Texture_Portrait_GER_Servant", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_GER_Servant)]),
+        ("Texture_Portrait_UK_Commando", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_UK_Commando)]),
         ("Texture_Portrait_GER_Tankiste", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_GER_Tankiste)]),
         ("Texture_Portrait_US_Para", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_US_Para)]),
         ("Texture_Portrait_UK_Commandant", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_UK_Commandant)]),
@@ -208,19 +209,19 @@ UnitPortraitAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_Portrait_GER_Commandant", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_GER_Commandant)]),
         ("Texture_Portrait_GER_Soldat", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_GER_Soldat)]),
         ("Texture_Portrait_UK_Soldat", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_UK_Soldat)]),
+        ("Texture_Portrait_US_Soldat", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_US_Soldat)]),
         ("Texture_Portrait_CAN_Soldat", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_CAN_Soldat)]),
         ("Texture_Portrait_POL_Soldat", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_POL_Soldat)]),
-        ("Texture_Portrait_US_Soldat", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_US_Soldat)]),
         ("Texture_Portrait_FR_Soldat", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_FR_Soldat)]),
         ("Texture_Portrait_FR_Commandant", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_FR_Commandant)]),
         ("Texture_Portrait_US_Tankiste", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_US_Tankiste)]),
         ("Texture_Portrait_UK_Servant", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_UK_Servant)]),
-        ("Texture_Portrait_UK_Commando", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_UK_Commando)]),
         ("Texture_Portrait_FR_Servant", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_FR_Servant)]),
         ("Texture_Portrait_CAN_Tankiste", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_CAN_Tankiste)]),
         ("Texture_Portrait_CAN_Servant", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_CAN_Servant)]),
         ("Texture_Portrait_POL_Servant", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_POL_Servant)]),
         ("Texture_Portrait_POL_Tankiste", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_POL_Tankiste)]),
+        ("Texture_Portrait_FR_Spahis", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_FR_Spahis)]),
         ("Texture_Portrait_FR_SAS", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_FR_SAS)]),
         ("Texture_Portrait_FR_FFI", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_FR_FFI)]),
         ("Texture_Portrait_CAN_Commandant", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_CAN_Commandant)]),
@@ -228,7 +229,6 @@ UnitPortraitAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_Portrait_POL_Commandant", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_POL_Commandant)]),
         ("Texture_Portrait_FR_Tankiste", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_FR_Tankiste)]),
         ("Texture_Portrait_Kurt_Knispel", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_Kurt_Knispel)]),
-        ("Texture_Portrait_FR_Spahis", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_FR_Spahis)]),
         ("Texture_Portrait_leo_major", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_leo_major)]),
         ("Texture_Portrait_Lafayette_Pool", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_Lafayette_Pool)]),
         ("Texture_Portrait_Creighton_Abrams", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_Creighton_Abrams)]),

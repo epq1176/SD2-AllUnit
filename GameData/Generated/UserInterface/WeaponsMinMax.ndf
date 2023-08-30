@@ -32,7 +32,7 @@ MinMaxValuesInterfaceHelper is TWeaponsMinMaxValuesInterfaceHelper
                )
                AimTime = TMinMaxValue (
                        Min = 3 // TACAM_F22_AP
-                       Max = 40 // Howz B4 203mm
+                       Max = 40 // Howz 8 pouces203mm
                )
                ReloadTime = TMinMaxValue (
                        Min = 5 // Howz 15 35M 75mm Direct
@@ -40,7 +40,7 @@ MinMaxValuesInterfaceHelper is TWeaponsMinMaxValuesInterfaceHelper
                )
                TurretSpeed = TMinMaxValue (
                        Min = 10 // TACAM_F22_AP
-                       Max = 360 // Howz B4 203mm Direct
+                       Max = 360 // Howz 8 pouces 203mm Direct
                )
                RateOfFire = TMinMaxValue (
                        Min = 3 // Howz Schneider 220mm
@@ -127,20 +127,20 @@ MinMaxValuesInterfaceHelper is TWeaponsMinMaxValuesInterfaceHelper
                        Max = 56 * Metre // Maxton 12 7mm x4
                )
                MaxRange = TMinMaxValue (
-                       Min = 0 // DSHk 12 7mm vehicule AA
+                       Min = 500 // Thompson_x2
                        Max = 6250 // sMG42
                )
                AimTime = TMinMaxValue (
-                       Min = 0 // DSHk 12 7mm vehicule AA
-                       Max = 4 // Canon Boys 14mm AP Recce
+                       Min = 1 // Thompson_x2
+                       Max = 4 // Boys_ATR
                )
                ReloadTime = TMinMaxValue (
-                       Min = 2 // MG Ckm wz 30
+                       Min = 2 // Bren LMGx2
                        Max = 14 // G43 Scope
                )
                TurretSpeed = TMinMaxValue (
                        Min = 10 // Breda Model 31 13 2mm vehicule
-                       Max = 360 // Sten_x2
+                       Max = 360 // Thompson_x2
                )
                Accuracy = TMinMaxValue (
                        Min = 5 // MG Ckm wz 30
@@ -148,15 +148,65 @@ MinMaxValuesInterfaceHelper is TWeaponsMinMaxValuesInterfaceHelper
                )
                RateOfFire = TMinMaxValue (
                        Min = 10 // ATR PTRD 41 14_5mm AP
-                       Max = 3086 // PPsh41_x10
+                       Max = 2897 // PPsh41_x10
                )
                Range = TMinMaxValue (
-                       Min = 0 // DSHk 12 7mm vehicule AA
+                       Min = 500 // Thompson_x2
                        Max = 6250 // sMG42
                )
                Penetration = TMinMaxValue (
-                       Min = 4 // Canon Boys 14mm AP Recce
+                       Min = 4 // Boys_ATR
                        Max = 12 // GrB 39
+              )
+         )
+       ),
+
+        ( MinMax_Grenade
+        , TWeaponMinMaxValues
+          (
+               PhysicalDamages = TMinMaxValue (
+                       Min = 0 // RDG_Smoke_Grenade
+                       Max = 10 // Gammon Bombs
+               )
+               SuppressDamages = TMinMaxValue (
+                       Min = 0 // RDG_Smoke_Grenade
+                       Max = 600 // Explosif US
+               )
+               SplashDamageRadius = TMinMaxValue (
+                       Min = 1 * Metre // Gammon Bombs
+                       Max = 223 * Metre // Partop N808 explosive Direct
+               )
+               MaxRange = TMinMaxValue (
+                       Min = 300 // Grenade US mk2
+                       Max = 1000 // Partop N808 explosive Direct
+               )
+               AimTime = TMinMaxValue (
+                       Min = 0 // Gammon Bombs
+                       Max = 5 // Explosif US
+               )
+               ReloadTime = TMinMaxValue (
+                       Min = 3 // Grenade US mk2
+                       Max = 30 // Explosif US
+               )
+               TurretSpeed = TMinMaxValue (
+                       Min = 45 // Partop N808 explosive Direct
+                       Max = 360 // Grenade US mk2
+               )
+               RateOfFire = TMinMaxValue (
+                       Min = 2 // Explosif US
+                       Max = 20 // Grenade US mk2
+               )
+               Range = TMinMaxValue (
+                       Min = 300 // Grenade US mk2
+                       Max = 1000 // Partop N808 explosive Direct
+               )
+               Accuracy = TMinMaxValue (
+                       Min = 30 // Partop N808 explosive Direct
+                       Max = 80 // Panzerknacker
+               )
+               Penetration = TMinMaxValue (
+                       Min = 60 // Gammon Bombs
+                       Max = 60 // Gammon Bombs
               )
          )
        ),
@@ -253,61 +303,11 @@ MinMaxValuesInterfaceHelper is TWeaponsMinMaxValuesInterfaceHelper
          )
        ),
 
-        ( MinMax_Grenade
-        , TWeaponMinMaxValues
-          (
-               PhysicalDamages = TMinMaxValue (
-                       Min = 0 // RDG_Smoke_Grenade
-                       Max = 10 // Gammon Bombs
-               )
-               SuppressDamages = TMinMaxValue (
-                       Min = 0 // RDG_Smoke_Grenade
-                       Max = 600 // Explosif US
-               )
-               SplashDamageRadius = TMinMaxValue (
-                       Min = 1 * Metre // Gammon Bombs
-                       Max = 223 * Metre // Partop N808 explosive Direct
-               )
-               MaxRange = TMinMaxValue (
-                       Min = 300 // Grenade UK M36
-                       Max = 1000 // Partop N808 explosive Direct
-               )
-               AimTime = TMinMaxValue (
-                       Min = 0 // Gammon Bombs
-                       Max = 5 // Explosif US
-               )
-               ReloadTime = TMinMaxValue (
-                       Min = 3 // Grenade UK M36
-                       Max = 30 // Explosif US
-               )
-               TurretSpeed = TMinMaxValue (
-                       Min = 45 // Partop N808 explosive Direct
-                       Max = 360 // Gammon Bombs
-               )
-               Accuracy = TMinMaxValue (
-                       Min = 30 // Partop N808 explosive Direct
-                       Max = 80 // Panzerknacker
-               )
-               RateOfFire = TMinMaxValue (
-                       Min = 2 // Explosif US
-                       Max = 20 // Grenade UK M36
-               )
-               Range = TMinMaxValue (
-                       Min = 300 // Grenade UK M36
-                       Max = 1000 // Partop N808 explosive Direct
-               )
-               Penetration = TMinMaxValue (
-                       Min = 60 // Gammon Bombs
-                       Max = 60 // Gammon Bombs
-              )
-         )
-       ),
-
         ( MinMax_AUTOCANAIR
         , TWeaponMinMaxValues
           (
                PhysicalDamages = TMinMaxValue (
-                       Min = 0 // Quad Maxim_AA
+                       Min = 0 // DSHk 12 7mm vehicule AA
                        Max = 5 // ShVAK 20mm x4 Nose AirAir
                )
                SuppressDamages = TMinMaxValue (
@@ -319,11 +319,11 @@ MinMaxValuesInterfaceHelper is TWeaponsMinMaxValuesInterfaceHelper
                        Max = 129 * Metre // ShVAK 20mm x4 Nose AirSol
                )
                MaxRange = TMinMaxValue (
-                       Min = 0 // Hotchkiss 13mm x2 AA
+                       Min = 0 // DSHk 12 7mm vehicule AA
                        Max = 7500 // Erdkampflafette 43 HE
                )
                AimTime = TMinMaxValue (
-                       Min = 0 // Hotchkiss 13mm x2 AA
+                       Min = 0 // DSHk 12 7mm vehicule AA
                        Max = 4 // Breda mod 35 20mm HE Vehicle
                )
                ReloadTime = TMinMaxValue (
@@ -335,7 +335,7 @@ MinMaxValuesInterfaceHelper is TWeaponsMinMaxValuesInterfaceHelper
                        Max = 360 // Hispano II 20mm Nose AirSol
                )
                Accuracy = TMinMaxValue (
-                       Min = 5 // Hotchkiss 13mm x2 AA
+                       Min = 5 // Quad Maxim_AA
                        Max = 75 // AT_25mm_Puteaux
                )
                RateOfFire = TMinMaxValue (
@@ -343,7 +343,7 @@ MinMaxValuesInterfaceHelper is TWeaponsMinMaxValuesInterfaceHelper
                        Max = 16363 // MG81 7 92mm x12 Gunpod AirAir
                )
                Range = TMinMaxValue (
-                       Min = 0 // Hotchkiss 13mm x2 AA
+                       Min = 0 // DSHk 12 7mm vehicule AA
                        Max = 7500 // Erdkampflafette 43 HE
                )
                Penetration = TMinMaxValue (
@@ -357,11 +357,11 @@ MinMaxValuesInterfaceHelper is TWeaponsMinMaxValuesInterfaceHelper
         , TWeaponMinMaxValues
           (
                PhysicalDamages = TMinMaxValue (
-                       Min = 0 // Canon Bofors wz36 37mm HE
+                       Min = 0 // CanonTracte M1 57mmL HE
                        Max = 12 // Rkt Puppchen 88mm
                )
                SuppressDamages = TMinMaxValue (
-                       Min = 62 // Pak 97 38 75mm AP
+                       Min = 50 // KPUV wz34 37mm AP
                        Max = 358 // Pak43 88mmL AP
                )
                SplashDamageRadius = TMinMaxValue (
@@ -397,7 +397,7 @@ MinMaxValuesInterfaceHelper is TWeaponsMinMaxValuesInterfaceHelper
                        Max = 10000 // CanonTracte 17pdr AP
                )
                Penetration = TMinMaxValue (
-                       Min = 12 // Pak 97 38 75mm AP
+                       Min = 8 // KPUV wz34 37mm AP
                        Max = 49 // Pak41 75mmL Gerlich
               )
          )
@@ -407,7 +407,7 @@ MinMaxValuesInterfaceHelper is TWeaponsMinMaxValuesInterfaceHelper
         , TWeaponMinMaxValues
           (
                PhysicalDamages = TMinMaxValue (
-                       Min = 8 // Faustpatrone
+                       Min = 1 // M1A1 Bazooka Rocketgun
                        Max = 12 // PIAT
                )
                SuppressDamages = TMinMaxValue (
@@ -416,7 +416,7 @@ MinMaxValuesInterfaceHelper is TWeaponsMinMaxValuesInterfaceHelper
                )
                SplashDamageRadius = TMinMaxValue (
                        Min = 1 * Metre // Panzerfaust 30
-                       Max = 1 * Metre // Panzerfaust 30
+                       Max = 80 * Metre // M1A1 Bazooka Rocketgun
                )
                MaxRange = TMinMaxValue (
                        Min = 600 // Panzerfaust 30
@@ -528,7 +528,7 @@ MinMaxValuesInterfaceHelper is TWeaponsMinMaxValuesInterfaceHelper
                )
                TurretSpeed = TMinMaxValue (
                        Min = 0 // 150mm RP3 HESAP Rocket x8
-                       Max = 360 // 82mm RBS82 AP Rocket x6
+                       Max = 360 // 150mm RP3 HESAP Rocket x8
                )
                RateOfFire = TMinMaxValue (
                        Min = 1 // Sprengranate 280mm Napalm x6
@@ -608,7 +608,7 @@ MinMaxValuesInterfaceHelper is TWeaponsMinMaxValuesInterfaceHelper
                )
                MaxRange = TMinMaxValue (
                        Min = 2500 // Canon Spigot 290mm direct
-                       Max = 10000 // Canon L22 95mm HE
+                       Max = 35000 // Canon L22 95mm indirect
                )
                AimTime = TMinMaxValue (
                        Min = 3 // Canon M1897A4 75mm AP
@@ -632,7 +632,7 @@ MinMaxValuesInterfaceHelper is TWeaponsMinMaxValuesInterfaceHelper
                )
                Range = TMinMaxValue (
                        Min = 2500 // Canon Spigot 290mm direct
-                       Max = 10000 // Canon L22 95mm HE
+                       Max = 35000 // Canon L22 95mm indirect
                )
                Penetration = TMinMaxValue (
                        Min = 11 // KwK 37L24 75mm AP
@@ -658,7 +658,7 @@ MinMaxValuesInterfaceHelper is TWeaponsMinMaxValuesInterfaceHelper
                )
                MaxRange = TMinMaxValue (
                        Min = 0 // 28 39M 80mm AA
-                       Max = 10000 // DCA 90L53 90mm HE
+                       Max = 10000 // Flak M39 88mm HE
                )
                AimTime = TMinMaxValue (
                        Min = 1 // 28 39M 80mm AA
@@ -682,7 +682,7 @@ MinMaxValuesInterfaceHelper is TWeaponsMinMaxValuesInterfaceHelper
                )
                Range = TMinMaxValue (
                        Min = 0 // 28 39M 80mm AA
-                       Max = 10000 // DCA 90L53 90mm HE
+                       Max = 10000 // Flak M39 88mm HE
               )
          )
        ),
@@ -741,11 +741,11 @@ MinMaxValuesInterfaceHelper is TWeaponsMinMaxValuesInterfaceHelper
                        Max = 18 // Bomb FAB1000 1000kg x1
                )
                SuppressDamages = TMinMaxValue (
-                       Min = 150 // Bomb AJ 2 x180
+                       Min = 130 // Bomb AN M41 9kg x12 Lysanders
                        Max = 1600 // Bomb FAB1000 1000kg x1
                )
                SplashDamageRadius = TMinMaxValue (
-                       Min = 100 * Metre // Bomb AB 250 3 2kg x108
+                       Min = 50 * Metre // Bomb AN M41 9kg x12 Lysanders
                        Max = 650 * Metre // Bomb FAB1000 1000kg x1
                )
                MaxRange = TMinMaxValue (

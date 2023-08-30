@@ -1,0 +1,22 @@
+export ModelFile_Panzer_IV_G_BUL is 'GameData:Assets\3D\Units\BUL\Char\Panzer_IV_G_BUL\Panzer_IV_G_BUL.Ase2NdfBin'
+
+Modele_Panzer_IV_G_BUL is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Panzer_IV_G_BUL
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_IV_G_BUL_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\BUL\Char\Panzer_IV_G_BUL_MID\Panzer_IV_G_BUL_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_IV_G_BUL_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\BUL\Char\LODS\Panzer_IV_G_BUL_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

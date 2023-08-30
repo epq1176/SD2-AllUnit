@@ -1,0 +1,23 @@
+export ModelFile_Jeep_SAS_FR is 'GameData:Assets\3D\Units\FR\Vehicule\Jeep_SAS_FR\Jeep_SAS_FR.Ase2NdfBin'
+
+Modele_Jeep_SAS_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Jeep_SAS_FR
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Jeep_SAS_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Vehicule\Jeep_SAS_FR_MID\Jeep_SAS_FR_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Jeep_SAS_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Vehicule\LODS\Jeep_SAS_FR_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+

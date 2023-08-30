@@ -7957,6 +7957,210 @@ export Descriptor_ProductionCadavre_Bunker_HMG42_AK is TEntityDescriptor
 
     ]
 )
+export Descriptor_ProductionCadavre_Bunker_HMG42_BUL is TEntityDescriptor
+(
+    DescriptorId = GUID:{852654bf-85e5-47b8-85bd-dc34c361e902}
+    ClassNameForDebug = 'CadavreBunker_HMG42_BUL'
+    Modules = [
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/Undef
+                    MotherCountry                    = 'BUL'
+                )
+                Selection = [ ~/NilDescriptorIfCadavre ]
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+                TagSet = [
+                    "Standard",
+                ]
+            ),
+
+        // Flags
+            TFlagsModuleDescriptor
+            (
+                InitialFlagSet =
+                [
+                    Flag_Detectable,
+                    Flag_Selectionnable,
+                    Flag_Batiment,
+                    Flag_Highlightable,
+                    Flag_Target,
+                    Flag_Blessable,
+                ]
+            ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = False
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurBatiment
+                Radius                     = ((100) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Cadavre
+            TCadavreModuleDescriptor
+            (
+                ExplodeAtEnd = False
+                KillAsVehicule = False
+                KillAsInfanterie = False
+                KillAsHelico = False
+                KillAsAirplane = False
+                KillAsBatiment = True
+                FollowVisibilityRules = False
+                CadavreDuration = 10*3600
+                DisappearanceDuration = ($/GFX/Everything/CadavreDurationApresFeu_Batiment - 5)
+                CadavreFireDuration = $/GFX/Everything/CadavrePeriodEnFeu_Batiment
+                FxBinderStartCrashing = ""
+                FxBinderOnCrash = ""
+                FxBinderBurning = ""
+                FadingDuration = 6
+                DamageRatio = 1.
+                DeathExplosionAmmo = nil
+                SecondaryDeathExplosionAmmo = nil
+                InvulnerablePeriod = $/GFX/Everything/CadavreInvulnerablePeriode
+                ModuleDescriptorsToSteal =
+                [
+                   $/GFX/Everything/Descriptor_Unit_Bunker_HMG42_BUL/ApparenceModel,
+                ]
+            ),
+            $/GFX/Everything/Descriptor_Unit_Bunker_HMG42_BUL/ApparenceModel,
+
+        // Label
+        TModuleSelector
+        (
+            Default        = TWargameLabelModuleDescriptor
+            (
+                IsBuilding           = False
+                IsCommandementUnit   = False
+                UnitName             = 'FRZYUWRGEL'
+                HintToken            = 'Bunker'
+                IdentifiedTexture    = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+                (
+                    CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                    Alterator = $/GUIOption/IconType
+                    Values =
+                    [
+                        "Texture_RTS_H_Bunker_HMG",
+                        "Texture_Non_identifiee_Defense",
+                    ]
+                )
+                UnidentifiedTexture  = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+                (
+                    CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                    Alterator = $/GUIOption/IconType
+                    Values =
+                    [
+                        "Texture_RTS_H_Non_identifiee_Bunker",
+                        "Texture_Non_identifiee_Defense",
+                    ]
+                )
+                PositionHeightOffset = 1000.0
+                PlatingValue         = 0
+                APValue              = 0
+                APValueBazooka       = False
+                NbSoldiers           = 0
+                IsParachutist        = False
+            )
+            Selection      = [  ]
+        ),
+
+        // Debug
+            ~/DebugModuleDescriptor,
+
+        // IAStrat
+            TModuleSelector
+            (
+                Default        = TIAStratModuleDescriptor
+                (
+                    DatabaseId = 2
+                    GameplayBehavior = EGameplayBehavior/Nothing
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // VisibilityModule
+        TModuleSelector
+        (
+            Default        = TVisibilityModuleDescriptor
+            (
+                AutoRevealType                  = EAutoRevealType/AutoRevealAllies
+                UnitConcealmentBonus            = 0.0
+                VisionUnitType                  = EVisionUnitType/AlwaysOnGround
+                VisionObstructionType           = EVisionObstructionType/Vehicle
+                GroundDissimulationModifierType = EGroundDissumulationModifierType/Ground
+            )
+            Selection = []
+        ),
+
+        // PackSignaux
+            ~/PackSignauxModuleSelector,
+
+        // UnitUI
+            TModuleSelector
+            (
+                Default = TUnitUIModuleDescriptor
+                (
+                    HintToken = 'Bunker'
+                    SpecialtiesList = [
+                    ]
+                    NameToken = 'FRZYUWRGEL'
+                    InfoPanelConfigurationToken = 'Default'
+                    TypeSpecificToken = ''
+                    ShowInMenu = True
+                    IsAce = False
+                    GenerateName = true
+                    TopViewTexture = 'Texture_Unit_TopView_Bunker_HMG42_BUL'
+                    MenuIconTexture = 'Texture_RTS_H_Bunker_HMG'
+                    ButtonTexture = 'Texture_Button_Unit_Bunker_HMG42_BUL'
+                    CountryTexture = 'CommonTexture_MotherCountryFlag_BUL'
+                    TypeStrategicCount = ETypeStrategicCount/NotCounted
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId = ~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue = ~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TUnitUIModuleDescriptor
+                        (
+                            HintToken = 'Bunker'
+                            NameToken = 'FRZYUWRGEL'
+                            InfoPanelConfigurationToken = 'Default'
+                            TypeSpecificToken = ''
+                            TopViewTexture = 'Texture_Unit_TopView_Bunker_HMG42_BUL'
+                            MenuIconTexture = 'Texture_RTS_H_Bunker_HMG'
+                            ButtonTexture = 'Texture_Button_Unit_Bunker_HMG42_BUL'
+                            CountryTexture = 'CommonTexture_MotherCountryFlag_BUL'
+                            TypeStrategicCount = ETypeStrategicCount/NotCounted
+                        )
+                    )
+                ]
+            ),
+
+    ]
+)
 export Descriptor_ProductionCadavre_Bunker_HMG42_ROU is TEntityDescriptor
 (
     DescriptorId = GUID:{f39adc7d-5370-4d8c-b5fe-0b502a40e04a}

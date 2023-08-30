@@ -1707,14 +1707,14 @@ template Gfx_Erma_EMP
 )
 
 
-template TemplateMeshDescriptor_Kar98k [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
+template TemplateMeshDescriptor_Mannlicher_Carbine [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
 (
     FileName = <ModelFile>
     CivMask = <CivMask>
     TypeMask = TypeMask/Infanterie
 )
 
-template Gfx_Kar98k
+template Gfx_Mannlicher_Carbine
 [
     Actions = [],
     CivMask
@@ -1724,13 +1724,44 @@ template Gfx_Kar98k
     Selector = $/GFX/Everything/SoldierWeaponSubDepictionSelector
     DepictionAlternatives = [
                 DepictionDescriptor_LOD_InfantryHigh(
-                    MeshDescriptor = TemplateMeshDescriptor_Kar98k( ModelFile = ModelFile_Kar98k CivMask = <CivMask> )
+                    MeshDescriptor = TemplateMeshDescriptor_Mannlicher_Carbine( ModelFile = ModelFile_Mannlicher_Carbine CivMask = <CivMask> )
                 ),
                 DepictionDescriptor_LOD_InfantryMid(
-                    MeshDescriptor = TemplateMeshDescriptor_Kar98k( ModelFile = ModelFile_Kar98k CivMask = <CivMask> )
+                    MeshDescriptor = TemplateMeshDescriptor_Mannlicher_Carbine( ModelFile = ModelFile_Mannlicher_Carbine CivMask = <CivMask> )
                 ),
                 DepictionDescriptor_LOD_InfantryLow(
-                    MeshDescriptor = TemplateMeshDescriptor_Kar98k( ModelFile = ModelFile_Kar98k CivMask = <CivMask> )
+                    MeshDescriptor = TemplateMeshDescriptor_Mannlicher_Carbine( ModelFile = ModelFile_Mannlicher_Carbine CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryNone
+            ]
+    Actions = <Actions>
+)
+
+
+template TemplateMeshDescriptor_Mannlicher_Rifle [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = <CivMask>
+    TypeMask = TypeMask/Infanterie
+)
+
+template Gfx_Mannlicher_Rifle
+[
+    Actions = [],
+    CivMask
+] is TDepictionTemplate
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = $/GFX/Everything/SoldierWeaponSubDepictionSelector
+    DepictionAlternatives = [
+                DepictionDescriptor_LOD_InfantryHigh(
+                    MeshDescriptor = TemplateMeshDescriptor_Mannlicher_Rifle( ModelFile = ModelFile_Mannlicher_Rifle CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryMid(
+                    MeshDescriptor = TemplateMeshDescriptor_Mannlicher_Rifle( ModelFile = ModelFile_Mannlicher_Rifle CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryLow(
+                    MeshDescriptor = TemplateMeshDescriptor_Mannlicher_Rifle( ModelFile = ModelFile_Mannlicher_Rifle CivMask = <CivMask> )
                 ),
                 DepictionDescriptor_LOD_InfantryNone
             ]
@@ -2041,6 +2072,68 @@ template Gfx_GrB_39
                 ),
                 DepictionDescriptor_LOD_InfantryLow(
                     MeshDescriptor = TemplateMeshDescriptor_GrB_39( ModelFile = ModelFile_GrB_39 CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryNone
+            ]
+    Actions = <Actions>
+)
+
+
+template TemplateMeshDescriptor_Johnson [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = <CivMask>
+    TypeMask = TypeMask/Infanterie
+)
+
+template Gfx_Johnson
+[
+    Actions = [],
+    CivMask
+] is TDepictionTemplate
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = $/GFX/Everything/SoldierWeaponSubDepictionSelector
+    DepictionAlternatives = [
+                DepictionDescriptor_LOD_InfantryHigh(
+                    MeshDescriptor = TemplateMeshDescriptor_Johnson( ModelFile = ModelFile_Johnson CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryMid(
+                    MeshDescriptor = TemplateMeshDescriptor_Johnson( ModelFile = ModelFile_Johnson CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryLow(
+                    MeshDescriptor = TemplateMeshDescriptor_Johnson( ModelFile = ModelFile_Johnson CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryNone
+            ]
+    Actions = <Actions>
+)
+
+
+template TemplateMeshDescriptor_Kar98k [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = <CivMask>
+    TypeMask = TypeMask/Infanterie
+)
+
+template Gfx_Kar98k
+[
+    Actions = [],
+    CivMask
+] is TDepictionTemplate
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = $/GFX/Everything/SoldierWeaponSubDepictionSelector
+    DepictionAlternatives = [
+                DepictionDescriptor_LOD_InfantryHigh(
+                    MeshDescriptor = TemplateMeshDescriptor_Kar98k( ModelFile = ModelFile_Kar98k CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryMid(
+                    MeshDescriptor = TemplateMeshDescriptor_Kar98k( ModelFile = ModelFile_Kar98k CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryLow(
+                    MeshDescriptor = TemplateMeshDescriptor_Kar98k( ModelFile = ModelFile_Kar98k CivMask = <CivMask> )
                 ),
                 DepictionDescriptor_LOD_InfantryNone
             ]

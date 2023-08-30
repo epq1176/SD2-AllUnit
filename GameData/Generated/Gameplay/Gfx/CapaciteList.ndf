@@ -1110,6 +1110,59 @@ export Capacite_Reddition is TCapaciteDescriptor
         ~/ConditionTagRaisedInUnit_Ennemi_Proche_1,
     ]
 )
+export Capacite_Shock is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{c89f94c6-61c2-4fca-83ba-fa1e711b8603}
+    Name             = "Shock"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_oui
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_unite
+    TargetTeamFilter     = ~/CapaciteTargetFilter_ennemi
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_circulaire
+    ActionRadiusWithBoundingBox = False
+    Radius              = 300.00 * Metre
+    Range               = 900.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 1.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = True
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Placebo
+    TargetEffectDuration = 1.00
+    SelfEffect       = ~/UnitEffect_shock
+    SelfEffectDuration   = 1.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = -1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = True
+    TargetInTransport      = True
+    TargetInSelf           = True
+    TargetMySelf           = True
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never
+    DisplayRangeColor      = D3DRGBA[0,0,0,0]
+    DisplayRangeThickness  = 0.00
+    DisplayRadius             = False
+    DisplayRadiusONColor      = D3DRGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = D3DRGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+        "GroundUnits",
+    ]
+    Conditions = [
+    ]
+)
 export Capacite_Soutien_Allie_Proche is TCapaciteDescriptor
 (
     DescriptorId     = GUID:{0ae3c415-c84f-4093-ab92-8ccf4ace32f4}
@@ -1521,6 +1574,212 @@ export Capacite_Tank_Dissimule is TCapaciteDescriptor
     DisplayRadiusOFFThickness = 0.00
     Price = MAP[]
     TagsCiblePossible = [
+    ]
+    Conditions = [
+    ]
+)
+export Capacite_artillery_leader is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{32688f7d-3546-47b8-9664-dc5d78aff1a3}
+    Name             = "artillery_leader"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_unite
+    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_circulaire
+    ActionRadiusWithBoundingBox = False
+    Radius              = 500.00 * Metre
+    Range               = 1250.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 1.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = False
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_artillery_leader
+    TargetEffectDuration = 1.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = -1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = True
+    TargetInTransport      = True
+    TargetInSelf           = True
+    TargetMySelf           = True
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_selected | ~/CapaciteFeedbackActivationMask_anyalliance
+    DisplayRangeColor      = D3DRGBA[255,255,255,255]
+    DisplayRangeThickness  = 0.80
+    DisplayRadius             = False
+    DisplayRadiusONColor      = D3DRGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = D3DRGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+        "Artillerie_Longue_Portee",
+    ]
+    Conditions = [
+    ]
+)
+export Capacite_bouclier_stress is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{5cbb2b12-efec-4d1e-98e6-54f26fd477e0}
+    Name             = "bouclier_stress"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_soi
+    TargetTeamFilter     = ~/CapaciteTargetFilter_tout
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_soi
+    ActionRadiusWithBoundingBox = False
+    Radius              = 1.00 * Metre
+    Range               = 1.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 1.00
+    Cooldown            = 0.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = False
+    CanBeCastFromTransport  = True
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_tank_rider
+    TargetEffectDuration = 1.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = 1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = True
+    TargetInTransport      = True
+    TargetInSelf           = True
+    TargetMySelf           = True
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never
+    DisplayRangeColor      = D3DRGBA[0,0,0,0]
+    DisplayRangeThickness  = 0.00
+    DisplayRadius             = False
+    DisplayRadiusONColor      = D3DRGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = D3DRGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+    ]
+    Conditions = [
+    ]
+)
+export Capacite_security is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{ec7c84b0-2a8c-456d-a6bd-11f43412b983}
+    Name             = "security"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_soi
+    TargetTeamFilter     = ~/CapaciteTargetFilter_tout
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_soi
+    ActionRadiusWithBoundingBox = False
+    Radius              = 1.00 * Metre
+    Range               = 1.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 1.00
+    Cooldown            = 0.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = False
+    CanBeCastFromTransport  = True
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_security
+    TargetEffectDuration = 1.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = 1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = True
+    TargetInTransport      = True
+    TargetInSelf           = True
+    TargetMySelf           = True
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never
+    DisplayRangeColor      = D3DRGBA[0,0,0,0]
+    DisplayRangeThickness  = 0.00
+    DisplayRadius             = False
+    DisplayRadiusONColor      = D3DRGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = D3DRGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+    ]
+    Conditions = [
+    ]
+)
+export Capacite_tank_rider is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{78841d64-ab67-4b9b-a31d-015b4869fdad}
+    Name             = "tank_rider"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_unite
+    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_circulaire
+    ActionRadiusWithBoundingBox = False
+    Radius              = 500.00 * Metre
+    Range               = 1250.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 1.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = False
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_tank_rider
+    TargetEffectDuration = 1.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = -1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = True
+    TargetInTransport      = True
+    TargetInSelf           = True
+    TargetMySelf           = True
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_selected | ~/CapaciteFeedbackActivationMask_anyalliance
+    DisplayRangeColor      = D3DRGBA[135,178,196,255]
+    DisplayRangeThickness  = 0.80
+    DisplayRadius             = False
+    DisplayRadiusONColor      = D3DRGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = D3DRGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+        "Infanterie_tank_rider",
     ]
     Conditions = [
     ]

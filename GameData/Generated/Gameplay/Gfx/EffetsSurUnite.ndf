@@ -75,6 +75,21 @@ export UnitEffect_Ajoute_Tag_Hors_Transport is TEffectsPackDescriptor
 
     ]
 )
+export UnitEffect_Ajoute_Tag_Radio is TEffectsPackDescriptor
+(
+    DescriptorId       = GUID:{6a07f48e-b957-4408-9fc9-7e0ff2f7a008}
+    NameForDebug       = 'Ajoute_Tag_Radio'
+    EffectsDescriptors = [
+        // RaiseTag
+        TUnitEffectRaiseTagDescriptor
+        (
+            TagListToRaise = [
+                 "Radio",
+            ]
+        ),
+
+    ]
+)
 export UnitEffect_ArtInf_Cowering is TEffectsPackDescriptor
 (
     DescriptorId       = GUID:{acef86bc-48da-4d7b-bf25-c8d4616cca83}
@@ -2214,6 +2229,13 @@ export UnitEffect_Optiques_plus_33pourcent is TEffectsPackDescriptor
 
     ]
 )
+export UnitEffect_Placebo is TEffectsPackDescriptor
+(
+    DescriptorId       = GUID:{55ba9ab0-6a48-4495-9c5a-b8e57cf35172}
+    NameForDebug       = 'Placebo'
+    EffectsDescriptors = [
+    ]
+)
 export UnitEffect_Precision_plus_15 is TEffectsPackDescriptor
 (
     DescriptorId       = GUID:{88c04999-4e45-4aa7-b8ce-21fbc7b4683a}
@@ -2629,6 +2651,28 @@ export UnitEffect_Vehicule_Cowering is TEffectsPackDescriptor
 
     ]
 )
+export UnitEffect_artillery_leader is TEffectsPackDescriptor
+(
+    DescriptorId       = GUID:{5d1dd181-4e27-40d5-9086-a82c3b214aac}
+    NameForDebug       = 'artillery_leader'
+    EffectsDescriptors = [
+        // BonusDispersion
+        TUnitEffectIncreaseDispersionDescriptor
+        (
+            ModifierType       = ~/ModifierType_Pourcentage
+            BonusDispersion  = -25
+        ),
+
+        // RaiseTag
+        TUnitEffectRaiseTagDescriptor
+        (
+            TagListToRaise = [
+                 "Radio",
+            ]
+        ),
+
+    ]
+)
 export UnitEffect_capture_allie_solo is TEffectsPackDescriptor
 (
     DescriptorId       = GUID:{605f16f4-6933-4be6-9c7d-9155e26d0ff6}
@@ -2732,6 +2776,50 @@ export UnitEffect_donne_capacite_commandement_3 is TEffectsPackDescriptor
         TUnitEffectAddCapacityDescriptor
         (
             CapacityToAdd = [ ~/Capacite_Aura_Commandement_3 ]
+        ),
+
+    ]
+)
+export UnitEffect_security is TEffectsPackDescriptor
+(
+    DescriptorId       = GUID:{f1934c34-b06a-46d9-bfda-0f6fa7c5fb64}
+    NameForDebug       = 'security'
+    EffectsDescriptors = [
+        // BonusOpticalStrength
+        TUnitEffectIncreaseOpticalStrengthDescriptor
+        (
+            ModifierType         = ~/ModifierType_Additionnel
+            BonusOpticalStrength = 120
+        ),
+
+    ]
+)
+export UnitEffect_shock is TEffectsPackDescriptor
+(
+    DescriptorId       = GUID:{2bcea1cb-b163-49c9-942f-7a3e3a8861e5}
+    NameForDebug       = 'shock'
+    EffectsDescriptors = [
+        // BonusDamageTaken
+        TUnitEffectIncreaseDamageTakenDescriptor
+        (
+            ModifierType        = ~/ModifierType_Pourcentage
+            BonusDamage         = -20
+            DamageType          = EDamageType/Physical
+        ),
+
+    ]
+)
+export UnitEffect_tank_rider is TEffectsPackDescriptor
+(
+    DescriptorId       = GUID:{01a875c5-b218-4bbb-adfd-80e2b466f619}
+    NameForDebug       = 'tank_rider'
+    EffectsDescriptors = [
+        // BonusDamageTaken
+        TUnitEffectIncreaseDamageTakenDescriptor
+        (
+            ModifierType        = ~/ModifierType_Pourcentage
+            BonusDamage         = -20
+            DamageType          = EDamageType/Suppress
         ),
 
     ]

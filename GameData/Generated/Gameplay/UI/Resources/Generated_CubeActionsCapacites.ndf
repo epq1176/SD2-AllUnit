@@ -380,6 +380,24 @@ CubeAction_Capacity_Reddition is TCubeActionCapacityButtonInformationsDescriptor
     Descriptor                   = ~/Capacite_Reddition
 )
 
+CubeAction_Capacity_Shock is TCubeActionCapacityButtonInformationsDescriptor
+(
+    CubeActionName               = "CubeAction_Capacity_Shock"
+    CubeActionFunctionType       = ~/TacticCubeActionFunctionType/Orders
+    BackgroundTexture            = "Texture_Button_Capacity_Shock"
+    HoverSound                   = CubeActionButtonHasHoverSound ? CubeActionButtonHoverSound : nil
+    ClickSound                   = CubeActionButtonHasClickSound ? CubeActionButtonClickSound : nil
+    ButtonTextToken              = ""
+    HintDico                     = ~/LocalisationConstantes/dico_interface_ingame
+    HintTitleToken               = ""
+    HintBodyToken                = ""
+    HintExtendedToken            = ""
+    DependanciesToIgnore         =
+    [
+    ]
+    Descriptor                   = ~/Capacite_Shock
+)
+
 CubeAction_Capacity_Soutien_Allie_Proche is TCubeActionCapacityButtonInformationsDescriptor
 (
     CubeActionName               = "CubeAction_Capacity_Soutien_Allie_Proche"
@@ -525,5 +543,77 @@ CubeAction_Capacity_Tank_Dissimule is TCubeActionCapacityButtonInformationsDescr
     [
     ]
     Descriptor                   = ~/Capacite_Tank_Dissimule
+)
+
+CubeAction_Capacity_artillery_leader is TCubeActionCapacityButtonInformationsDescriptor
+(
+    CubeActionName               = "CubeAction_Capacity_artillery_leader"
+    CubeActionFunctionType       = ~/TacticCubeActionFunctionType/Orders
+    BackgroundTexture            = "Texture_Button_Capacity_artillery_leader"
+    HoverSound                   = CubeActionButtonHasHoverSound ? CubeActionButtonHoverSound : nil
+    ClickSound                   = CubeActionButtonHasClickSound ? CubeActionButtonClickSound : nil
+    ButtonTextToken              = ""
+    HintDico                     = ~/LocalisationConstantes/dico_interface_ingame
+    HintTitleToken               = ""
+    HintBodyToken                = ""
+    HintExtendedToken            = ""
+    DependanciesToIgnore         =
+    [
+    ]
+    Descriptor                   = ~/Capacite_artillery_leader
+)
+
+CubeAction_Capacity_bouclier_stress is TCubeActionCapacityButtonInformationsDescriptor
+(
+    CubeActionName               = "CubeAction_Capacity_bouclier_stress"
+    CubeActionFunctionType       = ~/TacticCubeActionFunctionType/Orders
+    BackgroundTexture            = "Texture_Button_Capacity_bouclier_stress"
+    HoverSound                   = CubeActionButtonHasHoverSound ? CubeActionButtonHoverSound : nil
+    ClickSound                   = CubeActionButtonHasClickSound ? CubeActionButtonClickSound : nil
+    ButtonTextToken              = ""
+    HintDico                     = ~/LocalisationConstantes/dico_interface_ingame
+    HintTitleToken               = ""
+    HintBodyToken                = ""
+    HintExtendedToken            = ""
+    DependanciesToIgnore         =
+    [
+    ]
+    Descriptor                   = ~/Capacite_bouclier_stress
+)
+
+CubeAction_Capacity_security is TCubeActionCapacityButtonInformationsDescriptor
+(
+    CubeActionName               = "CubeAction_Capacity_security"
+    CubeActionFunctionType       = ~/TacticCubeActionFunctionType/Orders
+    BackgroundTexture            = "Texture_Button_Capacity_security"
+    HoverSound                   = CubeActionButtonHasHoverSound ? CubeActionButtonHoverSound : nil
+    ClickSound                   = CubeActionButtonHasClickSound ? CubeActionButtonClickSound : nil
+    ButtonTextToken              = ""
+    HintDico                     = ~/LocalisationConstantes/dico_interface_ingame
+    HintTitleToken               = ""
+    HintBodyToken                = ""
+    HintExtendedToken            = ""
+    DependanciesToIgnore         =
+    [
+    ]
+    Descriptor                   = ~/Capacite_security
+)
+
+CubeAction_Capacity_tank_rider is TCubeActionCapacityButtonInformationsDescriptor
+(
+    CubeActionName               = "CubeAction_Capacity_tank_rider"
+    CubeActionFunctionType       = ~/TacticCubeActionFunctionType/Orders
+    BackgroundTexture            = "Texture_Button_Capacity_tank_rider"
+    HoverSound                   = CubeActionButtonHasHoverSound ? CubeActionButtonHoverSound : nil
+    ClickSound                   = CubeActionButtonHasClickSound ? CubeActionButtonClickSound : nil
+    ButtonTextToken              = ""
+    HintDico                     = ~/LocalisationConstantes/dico_interface_ingame
+    HintTitleToken               = ""
+    HintBodyToken                = ""
+    HintExtendedToken            = ""
+    DependanciesToIgnore         =
+    [
+    ]
+    Descriptor                   = ~/Capacite_tank_rider
 )
 

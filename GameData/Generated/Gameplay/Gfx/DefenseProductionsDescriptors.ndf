@@ -4918,6 +4918,129 @@ export Descriptor_Production_Bunker_HMG42_AK is TEntityDescriptor
 
     ]
 )
+export Descriptor_Production_Bunker_HMG42_BUL is TEntityDescriptor
+(
+    DescriptorId = GUID:{026ac40e-c0ca-48c8-8b6b-f39bba43c07f}
+    ClassNameForDebug = 'Bunker_HMG42_BUL'
+    Modules = [
+        // DefenseProduction
+        TModernWarfareProductionModuleDescriptor(
+            Factory                        = EDefaultFactories/Defense
+            ProductionTime                 = 0
+            ProductionRessourcesNeeded = MAP [
+                (~/Resource_CommandPoints, 5),
+            ]
+            DownPayment                    = ~/SystemeDAchatCoutantParDefaut
+            RaiseDynamicTagAtSpawn         = False
+        ),
+
+        // DefenseModule
+        TDefenseModuleDescriptor(
+            DefenseType                    = ~/EDefenseType/Bunker
+            Amount                         = 1
+            Angle                          = 0.00
+            Radius                         = 150.00 * Metre
+            ClearMeshesRadius              = 100.00 * Metre
+            PlacementConstraints           = [
+                ~/DefensePlacementConstraint_EnoughAvailableUnits,
+                ~/DefensePlacementConstraint_EnoughCurrency,
+                ~/DefensePlacementConstraint_IsInPlayableZone,
+                ~/DefensePlacementConstraint_IsInDeploymentZone,
+                ~/DefensePlacementConstraint_CheckAllowedTerrain,
+                ~/DefensePlacementConstraint_TerrainDrop,
+            ]
+            AppliedTerrain                 = ETerrainType/Bloqueur0
+            PatternName                    = 'Defense_Bunker_MG'
+            ExtremityPatternName           = ''
+        ),
+
+        // BunkerModuleExporter
+        TBunkerModuleDescriptor
+        (
+            BunkerDescriptor = ~/Descriptor_Unit_Bunker_HMG42_BUL
+        ),
+
+        // DefenseUIInfo
+        TDefenseUIModuleDescriptor
+        (
+            Name                           = 'Bunk_HMG42'
+            Vignette                       = 'Texture_Defense_Bunker_HMG42_BUL_vignette'
+            InfoPanelConfigurationToken    = 'Default'
+            TypeSpecificToken              = ''
+            CountryTexture                 = 'CommonTexture_MotherCountryFlag_BUL'
+            IdentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    'Texture_RTS_H_Bunker_HMG',
+                    'Texture_Non_identifiee_Defense'
+                ]
+            )
+            UnidentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    'Texture_RTS_H_Non_identifiee_Bunker',
+                    'Texture_Non_identifiee_Defense'
+                ]
+            )
+        ),
+
+        // StrategicData
+            TModuleSelector
+            (
+                Default = TStrategicDataModuleDescriptor
+                (
+                    UnitPowerValues = MAP [
+                        (EUnitPowerType/Assault, 8.0),
+                        (EUnitPowerType/Armored, 0.0),
+                        (EUnitPowerType/Artillery, 0.0),
+                        (EUnitPowerType/Aircraft, 0.0),
+                        (EUnitPowerType/AntiAirplane, 0.0),
+                        (EUnitPowerType/Evasion, 0.0),
+                     ]
+                    CompanyDissolutionTransferTo = [
+                        "Stab",
+                    ]
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/Undef
+                    Nationalite                      = ENationalite/Allied
+                    MotherCountry                    = 'BUL'
+                    TypeUnitFormation                = 'None'
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId=~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue=~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TTypeUnitModuleDescriptor
+                        (
+                            MotherCountry                    = 'BUL'
+                            Nationalite                      = ENationalite/Allied
+                            TypeUnitValue                    = ETypeUnit/Undef
+                        )
+                    )
+                ]
+            ),
+
+    ]
+)
 export Descriptor_Production_Bunker_HMG42_ROU is TEntityDescriptor
 (
     DescriptorId = GUID:{19c66df0-ae60-48d3-a26e-acd4a14b482f}

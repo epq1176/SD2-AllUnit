@@ -1,0 +1,22 @@
+export ModelFile_StuG_III_G_BUL is 'GameData:Assets\3D\Units\BUL\Char\Stug_III_G_BUL\StuG_III_G_BUL.Ase2NdfBin'
+
+Modele_StuG_III_G_BUL is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_StuG_III_G_BUL
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_StuG_III_G_BUL_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\BUL\Char\Stug_III_G_BUL_MID\StuG_III_G_BUL_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_StuG_III_G_BUL_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\BUL\Char\LODS\StuG_III_G_BUL_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

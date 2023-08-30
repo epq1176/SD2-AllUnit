@@ -1,0 +1,22 @@
+export ModelFile_Vickers_E_obs_BUL is 'GameData:Assets\3D\Units\BUL\Char\Vickers_E_obs_BUL\Vickers_E_obs_BUL.Ase2NdfBin'
+
+Modele_Vickers_E_obs_BUL is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Vickers_E_obs_BUL
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Vickers_E_obs_BUL_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\BUL\Char\Vickers_E_obs_BUL_MID\Vickers_E_obs_BUL_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Vickers_E_obs_BUL_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\BUL\Char\LODS\Vickers_E_obs_BUL_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

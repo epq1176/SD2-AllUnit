@@ -196,24 +196,11 @@ export MissileCarriage_F6F_5_Hellcat_F_Mk_II_x6_127mm_AP_UK is TMissileCarriageC
     MeshDescriptor = Modele_F6F_5_Hellcat_F_Mk_II_x6_127mm_AP_UK
     PylonSet       = PylonSet_F6F_5_Hellcat_F_Mk_II_x6_127mm_AP_UK
     WeaponInfos    = [
-        TMissileCarriageWeaponInfo //127mm HVAR AP Rocket x6
+        TMissileCarriageWeaponInfo //150mm RP3 HESAP Rocket x8
         (
             WeaponIndex = 2
             MissileType = eAGM
-            Count       = 1 * 6
-        ),
-    ]
-)
-export MissileCarriage_F6F_5_Hellcat_F_Mk_II_x6_127mm_HE_UK is TMissileCarriageConnoisseur
-(
-    MeshDescriptor = Modele_F6F_5_Hellcat_F_Mk_II_x6_127mm_HE_UK
-    PylonSet       = PylonSet_F6F_5_Hellcat_F_Mk_II_x6_127mm_HE_UK
-    WeaponInfos    = [
-        TMissileCarriageWeaponInfo //127mm HVAR HE Rocket x6
-        (
-            WeaponIndex = 2
-            MissileType = eAGM
-            Count       = 1 * 6
+            Count       = 1 * 8
         ),
     ]
 )
@@ -587,6 +574,20 @@ export MissileCarriage_He_111H_21_x2_1000_GER is TMissileCarriageConnoisseur
         ),
     ]
 )
+export MissileCarriage_Hellcat_I_Bomb110_UK is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_Hellcat_I_Bomb110_UK
+    PylonSet       = PylonSet_Hellcat_I_Bomb110_UK
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //Bomb AN M57 113kg x2
+        (
+            WeaponIndex = 3
+            MissileType = eAGM
+            MountingType = eMountingBomb
+            Count       = 1 * 2
+        ),
+    ]
+)
 export MissileCarriage_Hellcat_I_Bomb230_UK is TMissileCarriageConnoisseur
 (
     MeshDescriptor = Modele_Hellcat_I_Bomb230_UK
@@ -598,6 +599,46 @@ export MissileCarriage_Hellcat_I_Bomb230_UK is TMissileCarriageConnoisseur
             MissileType = eAGM
             MountingType = eMountingBomb
             Count       = 1 * 2
+        ),
+    ]
+)
+export MissileCarriage_Hellcat_I_Bomb450_UK is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_Hellcat_I_Bomb450_UK
+    PylonSet       = PylonSet_Hellcat_I_Bomb450_UK
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //Bomb AN M65 454kg x2
+        (
+            WeaponIndex = 3
+            MissileType = eAGM
+            MountingType = eMountingBomb
+            Count       = 1 * 2
+        ),
+    ]
+)
+export MissileCarriage_Hellcat_I_Rockets_AT_UK is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_Hellcat_I_Rockets_AT_UK
+    PylonSet       = PylonSet_Hellcat_I_Rockets_AT_UK
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //150mm RP3 HESAP Rocket x8
+        (
+            WeaponIndex = 2
+            MissileType = eAGM
+            Count       = 1 * 8
+        ),
+    ]
+)
+export MissileCarriage_Hellcat_I_Rockets_UK is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_Hellcat_I_Rockets_UK
+    PylonSet       = PylonSet_Hellcat_I_Rockets_UK
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //150mm RP3 HE Rocket x8
+        (
+            WeaponIndex = 2
+            MissileType = eAGM
+            Count       = 1 * 8
         ),
     ]
 )
@@ -1348,6 +1389,27 @@ export MissileCarriage_Ju_87D_5_x1_250_ROU is TMissileCarriageConnoisseur
         ),
     ]
 )
+export MissileCarriage_Ju_87D_5_x1_500_BUL is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_Ju_87D_5_x1_500_BUL
+    PylonSet       = PylonSet_Ju_87D_5_x1_500_BUL
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //Bomb SC 250kg x2
+        (
+            WeaponIndex = 3
+            MissileType = eAGM
+            MountingType = eMountingBomb
+            Count       = 1 * 2
+        ),
+        TMissileCarriageWeaponInfo //Bomb SC 500kg
+        (
+            WeaponIndex = 4
+            MissileType = eAGM
+            MountingType = eMountingBomb
+            Count       = 1 * 1
+        ),
+    ]
+)
 export MissileCarriage_Ju_87D_5_x1_500_GER is TMissileCarriageConnoisseur
 (
     MeshDescriptor = Modele_Ju_87D_5_x1_500_GER
@@ -1445,6 +1507,27 @@ export MissileCarriage_Ju_87D_5_x4_50_ROU is TMissileCarriageConnoisseur
             Count       = 1 * 4
         ),
         TMissileCarriageWeaponInfo //Bomb SC 500kg
+        (
+            WeaponIndex = 4
+            MissileType = eAGM
+            MountingType = eMountingBomb
+            Count       = 1 * 1
+        ),
+    ]
+)
+export MissileCarriage_Ju_87R2_x1_250_BUL is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_Ju_87R2_x1_250_BUL
+    PylonSet       = PylonSet_Ju_87R2_x1_250_BUL
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //Bomb SC 50kg x4
+        (
+            WeaponIndex = 3
+            MissileType = eAGM
+            MountingType = eMountingBomb
+            Count       = 1 * 4
+        ),
+        TMissileCarriageWeaponInfo //Bomb SC 250kg
         (
             WeaponIndex = 4
             MissileType = eAGM
@@ -1672,6 +1755,34 @@ export MissileCarriage_La_7_x2_50_SOV is TMissileCarriageConnoisseur
             MissileType = eAGM
             MountingType = eMountingBomb
             Count       = 1 * 2
+        ),
+    ]
+)
+export MissileCarriage_Letov_S328_BUL is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_Letov_S328_BUL
+    PylonSet       = PylonSet_Letov_S328_BUL
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //Bomb FAB100 100kg x4
+        (
+            WeaponIndex = 3
+            MissileType = eAGM
+            MountingType = eMountingBomb
+            Count       = 1 * 4
+        ),
+    ]
+)
+export MissileCarriage_Lysander_FR is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_Lysander_FR
+    PylonSet       = PylonSet_Lysander_FR
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //Bomb AN M41 9kg x12 Lysanders
+        (
+            WeaponIndex = 2
+            MissileType = eAGM
+            MountingType = eMountingBomb
+            Count       = 1 * 12
         ),
     ]
 )
@@ -2177,6 +2288,19 @@ export MissileCarriage_P47D_Thunderbolt_x10_HVAR_AP_US is TMissileCarriageConnoi
         ),
     ]
 )
+export MissileCarriage_P47D_Thunderbolt_x10_Rocket_HE_FR is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_P47D_Thunderbolt_x10_Rocket_HE_FR
+    PylonSet       = PylonSet_P47D_Thunderbolt_x10_Rocket_HE_FR
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //127mm HVAR HE Rocket x10
+        (
+            WeaponIndex = 2
+            MissileType = eAGM
+            Count       = 1 * 10
+        ),
+    ]
+)
 export MissileCarriage_P51D_110__Mustang_US is TMissileCarriageConnoisseur
 (
     MeshDescriptor = Modele_P51D_110__Mustang_US
@@ -2216,6 +2340,47 @@ export MissileCarriage_P51D_450__Mustang_US is TMissileCarriageConnoisseur
             MissileType = eAGM
             MountingType = eMountingBomb
             Count       = 1 * 2
+        ),
+    ]
+)
+export MissileCarriage_P61B_10_Black_Widow_Bomb_US is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_P61B_10_Black_Widow_Bomb_US
+    PylonSet       = PylonSet_P61B_10_Black_Widow_Bomb_US
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //Bomb AN M65 454kg x4
+        (
+            WeaponIndex = 3
+            MissileType = eAGM
+            MountingType = eMountingBomb
+            Count       = 1 * 4
+        ),
+    ]
+)
+export MissileCarriage_P61B_10_Black_Widow_Rocket_US is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_P61B_10_Black_Widow_Rocket_US
+    PylonSet       = PylonSet_P61B_10_Black_Widow_Rocket_US
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //127mm HVAR AP Rocket x6
+        (
+            WeaponIndex = 2
+            MissileType = eAGM
+            Count       = 1 * 6
+        ),
+    ]
+)
+export MissileCarriage_PZL_43A_BUL is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_PZL_43A_BUL
+    PylonSet       = PylonSet_PZL_43A_BUL
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //Bomb SC 50kg x4
+        (
+            WeaponIndex = 3
+            MissileType = eAGM
+            MountingType = eMountingBomb
+            Count       = 1 * 4
         ),
     ]
 )
@@ -2302,6 +2467,20 @@ export MissileCarriage_P_40N_Kittyhawk_x2_250_SOV is TMissileCarriageConnoisseur
         TMissileCarriageWeaponInfo //Bomb FAB250 250kg x2
         (
             WeaponIndex = 6
+            MissileType = eAGM
+            MountingType = eMountingBomb
+            Count       = 1 * 2
+        ),
+    ]
+)
+export MissileCarriage_P_47D_22_RE_Thunderbolt_x2_409_Napalm_FR is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_P_47D_22_RE_Thunderbolt_x2_409_Napalm_FR
+    PylonSet       = PylonSet_P_47D_22_RE_Thunderbolt_x2_409_Napalm_FR
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //Bomb Incendiary Bomb 108 US gallons 409kg x2
+        (
+            WeaponIndex = 4
             MissileType = eAGM
             MountingType = eMountingBomb
             Count       = 1 * 2
