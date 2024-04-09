@@ -205,6 +205,18 @@ export Texture_Button_Capacity_Malus_Suppress_AllTime_Highlight is TUIResourceTe
     CivMask  = CivMask/Common
     FileName = 'Assets\2D\Interface\Common\UnitsIcons\CommonMainMenu\default_H.png'
 )
+export Texture_Button_Capacity_Malus_Suppress_BattleWeary is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask = TypeMask/BuildMenu
+    CivMask  = CivMask/Common
+    FileName = 'Assets\2D\Interface\Common\UnitsIcons\CommonMainMenu\default.png'
+)
+export Texture_Button_Capacity_Malus_Suppress_BattleWeary_Highlight is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask = TypeMask/BuildMenu
+    CivMask  = CivMask/Common
+    FileName = 'Assets\2D\Interface\Common\UnitsIcons\CommonMainMenu\default_H.png'
+)
 export Texture_Button_Capacity_Malus_Suppress_Zone_Influence_Ennemie is TUIResourceTextureWithUsefulnessMask
 (
     TypeMask = TypeMask/BuildMenu
@@ -432,6 +444,7 @@ CapacityButtonTextureAdditionalBank is TBUCKToolAdditionalTextureBank
         ("Texture_Button_Capacity_Infanterie_Retraite_Auto", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Capacity_Infanterie_Retraite_Auto), ( ~/ComponentState/Highlighted, ~/Texture_Button_Capacity_Infanterie_Retraite_Auto_Highlight), ]),
         ("Texture_Button_Capacity_Infanterie_Retranchee", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Capacity_Infanterie_Retranchee), ( ~/ComponentState/Highlighted, ~/Texture_Button_Capacity_Infanterie_Retranchee_Highlight), ]),
         ("Texture_Button_Capacity_Malus_Suppress_AllTime", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Capacity_Malus_Suppress_AllTime), ( ~/ComponentState/Highlighted, ~/Texture_Button_Capacity_Malus_Suppress_AllTime_Highlight), ]),
+        ("Texture_Button_Capacity_Malus_Suppress_BattleWeary", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Capacity_Malus_Suppress_BattleWeary), ( ~/ComponentState/Highlighted, ~/Texture_Button_Capacity_Malus_Suppress_BattleWeary_Highlight), ]),
         ("Texture_Button_Capacity_Malus_Suppress_Zone_Influence_Ennemie", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Capacity_Malus_Suppress_Zone_Influence_Ennemie), ( ~/ComponentState/Highlighted, ~/Texture_Button_Capacity_Malus_Suppress_Zone_Influence_Ennemie_Highlight), ]),
         ("Texture_Button_Capacity_Menace_Ennemi_Proche", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Capacity_Menace_Ennemi_Proche), ( ~/ComponentState/Highlighted, ~/Texture_Button_Capacity_Menace_Ennemi_Proche_Highlight), ]),
         ("Texture_Button_Capacity_Ordre_Unload_NonArmes", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Capacity_Ordre_Unload_NonArmes), ( ~/ComponentState/Highlighted, ~/Texture_Button_Capacity_Ordre_Unload_NonArmes_Highlight), ]),

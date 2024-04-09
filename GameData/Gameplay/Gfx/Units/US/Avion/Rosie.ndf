@@ -1,0 +1,29 @@
+export ModelFile_Rosie is 'GameData:Assets\3D\Units\USA\Avion\Rosie\Rosie.Ase2NdfBin'
+
+Modele_Rosie is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Rosie
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Rosie_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Avion\Rosie_MID\Rosie_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Rosie_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Avion\LODS\Rosie_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Rosie_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Avion\Grasshopper\Grasshopper_train.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

@@ -4,36 +4,13 @@ Gfx_Spitfire_Mk_Vc_trop_GRE is TTimelyReceiverFactoryCarrier
     (
         RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
         Selector = SpecificAirplaneDepictionSelectorWithScale
-        DepictionSkins =
-        [
-            // Reprise de l'existant pour créer la skin par défaut
-            TSkinDescriptor(
-                SkinName = "default"
-                ChoiceTexture = "CommonTexture_Camo"
-                DepictionAlternatives = [
-                    DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_GRE ),
-                    DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_GRE_MID ),
-                    DepictionDescriptor_LOD_Low_NoTurret3( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_GRE_LOW ),
-                    DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_GRE ),
-                    DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_GRE_MID ),
-                    DepictionDescriptor_LOD_WreckedLow_NoTurret3( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_GRE_LOW ),
-        ]
-            ),
-
-            // nouvelle skin
-            TSkinDescriptor(
-                SkinName = "paid_dlc3"
-                DescriptorId = GUID:{afedff1e-d690-4372-b98e-f573007f2a95}
-                ChoiceTexture = "CommonTexture_Camo"
-                DepictionAlternatives = [
-                    DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_MITRALEXIS_Ace_GRE ),
-                    DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_MITRALEXIS_Ace_GRE_MID ),
-                    DepictionDescriptor_LOD_Low_NoTurret3( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_MITRALEXIS_Ace_GRE_LOW ),
-                    DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_MITRALEXIS_Ace_GRE ),
-                    DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_MITRALEXIS_Ace_GRE_MID ),
-                    DepictionDescriptor_LOD_WreckedLow_NoTurret3( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_MITRALEXIS_Ace_GRE_LOW ),
-                ]
-            ),
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_GRE ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_GRE_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret3( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_GRE_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_GRE ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_GRE_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret3( MeshDescriptor = Modele_Spitfire_Mk_Vc_trop_GRE_LOW ),
         ]
 
          Operators = Operators_Spitfire_Mk_Vc_trop_GRE

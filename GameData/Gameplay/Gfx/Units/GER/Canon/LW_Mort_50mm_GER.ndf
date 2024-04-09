@@ -1,0 +1,22 @@
+export ModelFile_LW_Mort_50mm_GER is 'GameData:Assets\3D\Units\GER\Canon\GrW_36\GrW_36.Ase2NdfBin'
+
+Modele_LW_Mort_50mm_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_LW_Mort_50mm_GER
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_LW_Mort_50mm_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\GrW_36_MID\GrW_36_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_LW_Mort_50mm_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Canon\LODS\GrW_36_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)

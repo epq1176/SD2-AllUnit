@@ -2926,6 +2926,98 @@ Gfx_FFI_Hotchkiss_13mm_Autogen is TTimelyReceiverFactoryCarrier
 )
 
 
+private Gfx_FFI_PaK_38_50mm_Servant_1 is TDepictionTemplate
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Servant( ModelFile = ModelFile_Servant_AT_FFI) ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Servant( ModelFile = ModelFile_Servant_AT_FFI_LOW) ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Servant( ModelFile = ModelFile_Servant_AT_FFI) ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Servant( ModelFile = ModelFile_Servant_AT_FFI_LOW) ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    Operators = DepictionOperator_Animation_Servant_Gauche
+)
+
+private Gfx_FFI_PaK_38_50mm_Servant_2 is TDepictionTemplate
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Servant( ModelFile = ModelFile_Servant_AT_FFI_Secondary) ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Servant( ModelFile = ModelFile_Servant_AT_FFI_Secondary_LOW) ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Servant( ModelFile = ModelFile_Servant_AT_FFI_Secondary) ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Servant( ModelFile = ModelFile_Servant_AT_FFI_Secondary_LOW) ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    Operators = DepictionOperator_Animation_Servant_Droite
+)
+
+private Gfx_FFI_PaK_38_50mm_Weapon_Autogen is TDepictionTemplate
+(
+    RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+    Selector = CommonDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_FFI_PaK_38_50mm ),
+        DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_FFI_PaK_38_50mm_MID ),
+        DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_FFI_PaK_38_50mm_LOW ),
+        DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_FFI_PaK_38_50mm ),
+        DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_FFI_PaK_38_50mm_MID ),
+        DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_FFI_PaK_38_50mm_LOW ),
+    ]
+
+    Operators = []
+        + DepictionOperatorNode_ResetUnit
+        + [ DepictionOperatorNode_Propulsion_Wheels_Canon ]
+        + [ template_DepictionOperator_Carriable_Canon_2Wheels ( ArmsSpreadAngleInDegrees = 22 ) ]
+        + [ DepictionOperator_TurretAim ( TurretNum = '1' MinYAngle = -0.174533 MaxYAngle = 0.436332 ) ]
+        + DepictionOperator_TurretRecoil_Canon
+
+    Actions = Weapons_FFI_PaK_38_50mm
+)
+
+private MeshDescriptor_Boites_FFI_PaK_38_50mm is TemplateMeshDescriptor_Canon( ModelFile = 'GameData:Assets\3D\Units\USA\Infanterie\GI\Boites.Ase2NdfBin' )
+
+// Dépiction de l'unité FFI_PaK_38_50mm
+Gfx_FFI_PaK_38_50mm_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        OverrideMeshBoundingBoxMin = [-500,-500,0]
+        OverrideMeshBoundingBoxMax = [ 500, 500,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = MeshDescriptor_Boites_FFI_PaK_38_50mm ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = MeshDescriptor_Boites_FFI_PaK_38_50mm ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = MeshDescriptor_Boites_FFI_PaK_38_50mm ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = MeshDescriptor_Boites_FFI_PaK_38_50mm ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = MeshDescriptor_Boites_FFI_PaK_38_50mm ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = MeshDescriptor_Boites_FFI_PaK_38_50mm ),
+        ]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+
+        NodeNamesForSelection = [
+            'servant_G',
+            'servant_D',
+            'Canon_AT',
+        ]
+
+        SubDepictions = [
+            TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_FFI_PaK_38_50mm_Servant_1 ),
+            TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_FFI_PaK_38_50mm_Servant_2 ),
+            TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_FFI_PaK_38_50mm_Weapon_Autogen ),
+        ]
+    )
+)
+
+
 private Gfx_FFI_PaK_40_75mm_Servant_1 is TDepictionTemplate
 (
     RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
@@ -8889,6 +8981,95 @@ Gfx_LW_Mort_120mm_HG_GR_Autogen is TTimelyReceiverFactoryCarrier
             TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_LW_Mort_120mm_HG_GR_Servant_1 ),
             TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_LW_Mort_120mm_HG_GR_Servant_2 ),
             TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_LW_Mort_120mm_HG_GR_Weapon_Autogen ),
+        ]
+    )
+)
+
+
+private Gfx_LW_Mort_80mm_GER_Servant_1 is TDepictionTemplate
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Servant( ModelFile = ModelFile_Servant_AT_GER_LW) ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Servant( ModelFile = ModelFile_Servant_AT_GER_LW_LOW) ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Servant( ModelFile = ModelFile_Servant_AT_GER_LW) ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Servant( ModelFile = ModelFile_Servant_AT_GER_LW_LOW) ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    Operators = DepictionOperator_Animation_ServantMortar_Gauche
+)
+
+private Gfx_LW_Mort_80mm_GER_Servant_2 is TDepictionTemplate
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = SpecificServantDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Servant( ModelFile = ModelFile_Servant_AT_GER_LW_Secondary) ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Servant( ModelFile = ModelFile_Servant_AT_GER_LW_Secondary_LOW) ),
+        DepictionDescriptor_LOD_Low_Empty       ( ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Servant( ModelFile = ModelFile_Servant_AT_GER_LW_Secondary) ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Servant( ModelFile = ModelFile_Servant_AT_GER_LW_Secondary_LOW) ),
+        DepictionDescriptor_LOD_WreckedLow_Empty( ),
+    ]
+
+    Operators = DepictionOperator_Animation_ServantMortar_Droite
+)
+
+private Gfx_LW_Mort_80mm_GER_Weapon_Autogen is TDepictionTemplate
+(
+    RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+    Selector = CommonDepictionSelector
+    DepictionAlternatives = [
+        DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_LW_Mort_80mm_GER ),
+        DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_LW_Mort_80mm_GER_MID ),
+        DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_LW_Mort_80mm_GER_LOW ),
+        DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_LW_Mort_80mm_GER ),
+        DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_LW_Mort_80mm_GER_MID ),
+        DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_LW_Mort_80mm_GER_LOW ),
+    ]
+
+    Operators = []
+        + DepictionOperatorNode_ResetUnit
+        + DepictionOperator_Carriable_Mortar
+
+    Actions = Weapons_LW_Mort_80mm_GER
+)
+
+private MeshDescriptor_Boites_LW_Mort_80mm_GER is TemplateMeshDescriptor_Canon( ModelFile = 'GameData:Assets\3D\Units\GER\Canon\GrW_34\Boites_GrW_34.Ase2NdfBin' )
+
+// Dépiction de l'unité LW_Mort_80mm_GER
+Gfx_LW_Mort_80mm_GER_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        OverrideMeshBoundingBoxMin = [-500,-500,0]
+        OverrideMeshBoundingBoxMax = [ 500, 500,200]
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = MeshDescriptor_Boites_LW_Mort_80mm_GER ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = MeshDescriptor_Boites_LW_Mort_80mm_GER ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = MeshDescriptor_Boites_LW_Mort_80mm_GER ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = MeshDescriptor_Boites_LW_Mort_80mm_GER ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = MeshDescriptor_Boites_LW_Mort_80mm_GER ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = MeshDescriptor_Boites_LW_Mort_80mm_GER ),
+        ]
+
+        Operators = [DepictionOperatorNode_Reset_Generic]
+
+        NodeNamesForSelection = [
+            'servant_G',
+            'servant_D',
+            'Canon_AT',
+        ]
+
+        SubDepictions = [
+            TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_LW_Mort_80mm_GER_Servant_1 ),
+            TSubDepiction( Anchor = 'servant_D' Depiction = Gfx_LW_Mort_80mm_GER_Servant_2 ),
+            TSubDepiction( Anchor = 'Canon_AT' Depiction = Gfx_LW_Mort_80mm_GER_Weapon_Autogen ),
         ]
     )
 )

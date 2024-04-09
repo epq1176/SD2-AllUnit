@@ -1,0 +1,22 @@
+export ModelFile_FT17_GER is 'GameData:Assets\3D\Units\GER\Char\FT17\FT17.Ase2NdfBin'
+
+Modele_FT17_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_FT17_GER
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_FT17_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\FT17_MID\FT17_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_FT17_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\FT17_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

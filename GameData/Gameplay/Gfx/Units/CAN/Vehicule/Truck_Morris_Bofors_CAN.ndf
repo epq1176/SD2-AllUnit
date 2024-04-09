@@ -1,0 +1,22 @@
+export ModelFile_Truck_Morris_Bofors_CAN is 'GameData:Assets\3D\Units\CAN\Vehicule\Truck_Morris_Bofors\Truck_Morris_Bofors.Ase2NdfBin'
+
+Modele_Truck_Morris_Bofors_CAN is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Truck_Morris_Bofors_CAN
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Truck_Morris_Bofors_CAN_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CAN\Vehicule\Truck_Morris_Bofors_MID\Truck_Morris_Bofors_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Truck_Morris_Bofors_CAN_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CAN\Vehicule\LODS\Truck_Morris_Bofors_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

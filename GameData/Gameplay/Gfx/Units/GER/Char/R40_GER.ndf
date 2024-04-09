@@ -1,0 +1,22 @@
+export ModelFile_R40_GER is 'GameData:Assets\3D\Units\GER\Char\R40\R40.Ase2NdfBin'
+
+Modele_R40_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_R40_GER
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_R40_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\R40_MID\R40_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_R40_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\R40_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

@@ -97,6 +97,39 @@ Gfx_Autoblinda_41_Autogen is TTimelyReceiverFactoryCarrier
         SubDepictions = []
     )
 )
+// Dépiction de l'unité B1_bis_FFI
+Gfx_B1_bis_FFI_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_B1_bis_FFI ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_B1_bis_FFI_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret4( MeshDescriptor = Modele_B1_bis_FFI_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_B1_bis_FFI ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_B1_bis_FFI_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret4( MeshDescriptor = Modele_B1_bis_FFI_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_B1_bis_FFI
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='3') ]
+
+        Actions = MAP []
+                + Weapons_B1_bis_FFI
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
 // Dépiction de l'unité B1_bis_Flamm_GER
 Gfx_B1_bis_Flamm_GER_Autogen is TTimelyReceiverFactoryCarrier
 (
@@ -1039,6 +1072,38 @@ Gfx_BT_7_GER_Autogen is TTimelyReceiverFactoryCarrier
 
         Actions = MAP []
                 + Weapons_BT_7_GER
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
+// Dépiction de l'unité BefPanzer_IV_Ramsch
+Gfx_BefPanzer_IV_Ramsch_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_BefPanzer_IV_Ramsch ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_BefPanzer_IV_Ramsch_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret34( MeshDescriptor = Modele_BefPanzer_IV_Ramsch_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_BefPanzer_IV_Ramsch ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_BefPanzer_IV_Ramsch_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret34( MeshDescriptor = Modele_BefPanzer_IV_Ramsch_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_BefPanzer_IV_Ramsch
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_BefPanzer_IV_Ramsch
                 + DepictionAction_StressLevel_2
                 + DepictionAction_MovementFX_Tracked
 
@@ -2685,6 +2750,102 @@ Gfx_Citroen_DCA_FR_Autogen is TTimelyReceiverFactoryCarrier
                       + [ SubDepiction_Driver(MeshDescriptorHigh = MeshDescriptor_Driver_FFI MeshDescriptorMid = MeshDescriptor_Driver_FFI_LOW) ]
     )
 )
+// Dépiction de l'unité Cromwell_Chantry_UK
+Gfx_Cromwell_Chantry_UK_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Cromwell_Chantry_UK ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Cromwell_Chantry_UK_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret34( MeshDescriptor = Modele_Cromwell_Chantry_UK_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Cromwell_Chantry_UK ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Cromwell_Chantry_UK_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret34( MeshDescriptor = Modele_Cromwell_Chantry_UK_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Cromwell_Chantry_UK
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_Cromwell_Chantry_UK
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
+// Dépiction de l'unité Cromwell_III_UK
+Gfx_Cromwell_III_UK_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Cromwell_III_UK ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Cromwell_III_UK_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret34( MeshDescriptor = Modele_Cromwell_III_UK_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Cromwell_III_UK ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Cromwell_III_UK_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret34( MeshDescriptor = Modele_Cromwell_III_UK_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Cromwell_III_UK
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_Cromwell_III_UK
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
+// Dépiction de l'unité Cromwell_IVOP_UK
+Gfx_Cromwell_IVOP_UK_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Cromwell_IVOP_UK ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Cromwell_IVOP_UK_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret34( MeshDescriptor = Modele_Cromwell_IVOP_UK_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Cromwell_IVOP_UK ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Cromwell_IVOP_UK_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret34( MeshDescriptor = Modele_Cromwell_IVOP_UK_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Cromwell_IVOP_UK
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_Cromwell_IVOP_UK
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
 // Dépiction de l'unité Cromwell_IV_Cmd_UK
 Gfx_Cromwell_IV_Cmd_UK_Autogen is TTimelyReceiverFactoryCarrier
 (
@@ -2711,6 +2872,38 @@ Gfx_Cromwell_IV_Cmd_UK_Autogen is TTimelyReceiverFactoryCarrier
 
         Actions = MAP []
                 + Weapons_Cromwell_IV_Cmd_UK
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
+// Dépiction de l'unité Cromwell_IV_KRIH
+Gfx_Cromwell_IV_KRIH_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Cromwell_IV_KRIH ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Cromwell_IV_KRIH_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret34( MeshDescriptor = Modele_Cromwell_IV_KRIH_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Cromwell_IV_KRIH ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Cromwell_IV_KRIH_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret34( MeshDescriptor = Modele_Cromwell_IV_KRIH_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Cromwell_IV_KRIH
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_Cromwell_IV_KRIH
                 + DepictionAction_StressLevel_2
                 + DepictionAction_MovementFX_Tracked
 
@@ -2749,6 +2942,38 @@ Gfx_Cromwell_IV_POL_Autogen is TTimelyReceiverFactoryCarrier
         SubDepictions = []
     )
 )
+// Dépiction de l'unité Cromwell_IV_UK
+Gfx_Cromwell_IV_UK_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Cromwell_IV_UK ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Cromwell_IV_UK_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret34( MeshDescriptor = Modele_Cromwell_IV_UK_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Cromwell_IV_UK ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Cromwell_IV_UK_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret34( MeshDescriptor = Modele_Cromwell_IV_UK_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Cromwell_IV_UK
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_Cromwell_IV_UK
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
 // Dépiction de l'unité Cromwell_VII_POL
 Gfx_Cromwell_VII_POL_Autogen is TTimelyReceiverFactoryCarrier
 (
@@ -2781,6 +3006,38 @@ Gfx_Cromwell_VII_POL_Autogen is TTimelyReceiverFactoryCarrier
         SubDepictions = []
     )
 )
+// Dépiction de l'unité Cromwell_VII_UK
+Gfx_Cromwell_VII_UK_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Cromwell_VII_UK ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Cromwell_VII_UK_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret34( MeshDescriptor = Modele_Cromwell_VII_UK_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Cromwell_VII_UK ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Cromwell_VII_UK_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret34( MeshDescriptor = Modele_Cromwell_VII_UK_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Cromwell_VII_UK
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_Cromwell_VII_UK
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
 // Dépiction de l'unité Cromwell_VI_POL
 Gfx_Cromwell_VI_POL_Autogen is TTimelyReceiverFactoryCarrier
 (
@@ -2807,6 +3064,38 @@ Gfx_Cromwell_VI_POL_Autogen is TTimelyReceiverFactoryCarrier
 
         Actions = MAP []
                 + Weapons_Cromwell_VI_POL
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
+// Dépiction de l'unité Cromwell_VI_UK
+Gfx_Cromwell_VI_UK_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Cromwell_VI_UK ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Cromwell_VI_UK_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret34( MeshDescriptor = Modele_Cromwell_VI_UK_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Cromwell_VI_UK ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Cromwell_VI_UK_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret34( MeshDescriptor = Modele_Cromwell_VI_UK_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Cromwell_VI_UK
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_Cromwell_VI_UK
                 + DepictionAction_StressLevel_2
                 + DepictionAction_MovementFX_Tracked
 
@@ -3562,6 +3851,134 @@ Gfx_Daimler_Scout_Car_POL_Autogen is TTimelyReceiverFactoryCarrier
         SubDepictions = []
     )
 )
+// Dépiction de l'unité FFI_Jagdpanzer_IV
+Gfx_FFI_Jagdpanzer_IV_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_FFI_Jagdpanzer_IV ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_FFI_Jagdpanzer_IV_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret3( MeshDescriptor = Modele_FFI_Jagdpanzer_IV_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_FFI_Jagdpanzer_IV ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_FFI_Jagdpanzer_IV_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret3( MeshDescriptor = Modele_FFI_Jagdpanzer_IV_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_FFI_Jagdpanzer_IV
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_FFI_Jagdpanzer_IV
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
+// Dépiction de l'unité FFI_Panhard
+Gfx_FFI_Panhard_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_FFI_Panhard ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_FFI_Panhard_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret4( MeshDescriptor = Modele_FFI_Panhard_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_FFI_Panhard ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_FFI_Panhard_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret4( MeshDescriptor = Modele_FFI_Panhard_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_FFI_Panhard
+                  + DepictionOperator_Chassis_Vehicle
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_FFI_Panhard
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Wheeled
+
+        SubDepictions = []
+    )
+)
+// Dépiction de l'unité FFI_Panzer_III_H
+Gfx_FFI_Panzer_III_H_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_FFI_Panzer_III_H ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_FFI_Panzer_III_H_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret34( MeshDescriptor = Modele_FFI_Panzer_III_H_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_FFI_Panzer_III_H ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_FFI_Panzer_III_H_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret34( MeshDescriptor = Modele_FFI_Panzer_III_H_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_FFI_Panzer_III_H
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_FFI_Panzer_III_H
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
+// Dépiction de l'unité FFI_Panzer_IV_H
+Gfx_FFI_Panzer_IV_H_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_FFI_Panzer_IV_H ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_FFI_Panzer_IV_H_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret34( MeshDescriptor = Modele_FFI_Panzer_IV_H_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_FFI_Panzer_IV_H ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_FFI_Panzer_IV_H_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret34( MeshDescriptor = Modele_FFI_Panzer_IV_H_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_FFI_Panzer_IV_H
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_FFI_Panzer_IV_H
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
 // Dépiction de l'unité FFI_SdKfz_250_1
 Gfx_FFI_SdKfz_250_1_Autogen is TTimelyReceiverFactoryCarrier
 (
@@ -3759,6 +4176,70 @@ Gfx_FFI_Traction_FAO_Autogen is TTimelyReceiverFactoryCarrier
 
         SubDepictions = []
                       + [ SubDepiction_Driver(MeshDescriptorHigh = MeshDescriptor_Driver_FFI MeshDescriptorMid = MeshDescriptor_Driver_FFI_LOW) ]
+    )
+)
+// Dépiction de l'unité FT17_GER
+Gfx_FT17_GER_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_FT17_GER ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_FT17_GER_MID ),
+            DepictionDescriptor_LOD_Low( MeshDescriptor = Modele_FT17_GER_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_FT17_GER ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_FT17_GER_MID ),
+            DepictionDescriptor_LOD_WreckedLow( MeshDescriptor = Modele_FT17_GER_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_FT17_GER
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_FT17_GER
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
+// Dépiction de l'unité FT31_GER
+Gfx_FT31_GER_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_FT31_GER ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_FT31_GER_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret1( MeshDescriptor = Modele_FT31_GER_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_FT31_GER ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_FT31_GER_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret1( MeshDescriptor = Modele_FT31_GER_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_FT31_GER
+                  + DepictionOperator_Chassis_SmallTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoilLightMachineGun(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_FT31_GER
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
     )
 )
 // Dépiction de l'unité Fiat_508_Lazik_POL
@@ -4027,6 +4508,41 @@ Gfx_FlakPz_Wirblewind_Autogen is TTimelyReceiverFactoryCarrier
         SubDepictions = []
     )
 )
+// Dépiction de l'unité Flakpanzer_Bren_GER
+Gfx_Flakpanzer_Bren_GER_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Flakpanzer_Bren_GER ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Flakpanzer_Bren_GER_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret13( MeshDescriptor = Modele_Flakpanzer_Bren_GER_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Flakpanzer_Bren_GER ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Flakpanzer_Bren_GER_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret13( MeshDescriptor = Modele_Flakpanzer_Bren_GER_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Flakpanzer_Bren_GER
+                  + DepictionOperator_Chassis_MediumTank_AutoCanon
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil_AutoCanon(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_Flakpanzer_Bren_GER
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+                      + [ SubDepiction_Driver(MeshDescriptorHigh = MeshDescriptor_Driver_GER MeshDescriptorMid = MeshDescriptor_Driver_GER_LOW) ]
+                      + [ SubDepiction_Tireur(MeshDescriptorHigh = MeshDescriptor_Driver_GER MeshDescriptorMid = MeshDescriptor_Driver_GER_LOW) ]
+                      + [ SubDepiction_Driver2(MeshDescriptorHigh = MeshDescriptor_Driver_GER MeshDescriptorMid = MeshDescriptor_Driver_GER_LOW) ]
+    )
+)
 // Dépiction de l'unité Ford_GPA
 Gfx_Ford_GPA_Autogen is TTimelyReceiverFactoryCarrier
 (
@@ -4131,6 +4647,40 @@ Gfx_Ford_GPA_MG_SOV_Autogen is TTimelyReceiverFactoryCarrier
         SubDepictions = []
                       + [ SubDepictionTowedUnit ]
                       + [ SubDepiction_Driver(MeshDescriptorHigh = MeshDescriptor_Driver_SOV MeshDescriptorMid = MeshDescriptor_Driver_SOV_LOW) ]
+    )
+)
+// Dépiction de l'unité Ford_GPA_OP
+Gfx_Ford_GPA_OP_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Ford_GPA_OP ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Ford_GPA_OP_MID ),
+            DepictionDescriptor_LOD_Low( MeshDescriptor = Modele_Ford_GPA_OP_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Ford_GPA_OP ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Ford_GPA_OP_MID ),
+            DepictionDescriptor_LOD_WreckedLow( MeshDescriptor = Modele_Ford_GPA_OP_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Ford_GPA_OP
+                  + DepictionOperator_Chassis_Vehicle
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + DepictionCosmeticMovementOperatorDesc_Amphibious
+
+        Actions = MAP []
+                + Weapons_Ford_GPA_OP
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Wheeled
+                + DepictionAction_FX_Amphibious_NoPropulsion
+
+        SubDepictions = []
+                      + [ SubDepiction_Driver(MeshDescriptorHigh = MeshDescriptor_Driver_US MeshDescriptorMid = MeshDescriptor_Driver_US_LOW) ]
     )
 )
 // Dépiction de l'unité Ford_GPA_SOV
@@ -4269,6 +4819,70 @@ Gfx_Grille_Autogen is TTimelyReceiverFactoryCarrier
         SubDepictions = []
     )
 )
+// Dépiction de l'unité H35_FFI
+Gfx_H35_FFI_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_H35_FFI ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_H35_FFI_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret4( MeshDescriptor = Modele_H35_FFI_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_H35_FFI ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_H35_FFI_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret4( MeshDescriptor = Modele_H35_FFI_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_H35_FFI
+                  + DepictionOperator_Chassis_SmallTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_H35_FFI
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
+// Dépiction de l'unité H35_GER
+Gfx_H35_GER_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_H35_GER ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_H35_GER_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret4( MeshDescriptor = Modele_H35_GER_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_H35_GER ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_H35_GER_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret4( MeshDescriptor = Modele_H35_GER_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_H35_GER
+                  + DepictionOperator_Chassis_SmallTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_H35_GER
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
 // Dépiction de l'unité H38_Beo_GER
 Gfx_H38_Beo_GER_Autogen is TTimelyReceiverFactoryCarrier
 (
@@ -4295,6 +4909,38 @@ Gfx_H38_Beo_GER_Autogen is TTimelyReceiverFactoryCarrier
 
         Actions = MAP []
                 + Weapons_H38_Beo_GER
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
+// Dépiction de l'unité H39_FFI
+Gfx_H39_FFI_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_H39_FFI ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_H39_FFI_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret4( MeshDescriptor = Modele_H39_FFI_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_H39_FFI ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_H39_FFI_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret4( MeshDescriptor = Modele_H39_FFI_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_H39_FFI
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_H39_FFI
                 + DepictionAction_StressLevel_2
                 + DepictionAction_MovementFX_Tracked
 
@@ -5176,6 +5822,41 @@ Gfx_Halftrack_M5A1_30_POL_Autogen is TTimelyReceiverFactoryCarrier
                       + [ SubDepictionTowedUnit ]
                       + SittingSoldierSubDepictions10
                       + [ SubDepiction_Driver(MeshDescriptorHigh = MeshDescriptor_Driver_POL MeshDescriptorMid = MeshDescriptor_Driver_POL_LOW) ]
+    )
+)
+// Dépiction de l'unité Halftrack_M5A1_30_Rats
+Gfx_Halftrack_M5A1_30_Rats_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Halftrack_M5A1_30_Rats ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Halftrack_M5A1_30_Rats_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret1( MeshDescriptor = Modele_Halftrack_M5A1_30_Rats_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Halftrack_M5A1_30_Rats ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Halftrack_M5A1_30_Rats_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret1( MeshDescriptor = Modele_Halftrack_M5A1_30_Rats_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Halftrack_M5A1_30_Rats
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoilLightMachineGun(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_Halftrack_M5A1_30_Rats
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+                      + [ SubDepictionTowedUnit ]
+                      + SittingSoldierSubDepictions10
+                      + [ SubDepiction_Driver(MeshDescriptorHigh = MeshDescriptor_Driver_UK MeshDescriptorMid = MeshDescriptor_Driver_UK_LOW) ]
     )
 )
 // Dépiction de l'unité Halftrack_M5A1_30_UK
@@ -6528,6 +7209,70 @@ Gfx_Jeep_FAO_152_SOV_Autogen is TTimelyReceiverFactoryCarrier
                       + [ SubDepiction_Driver(MeshDescriptorHigh = MeshDescriptor_Driver_SOV MeshDescriptorMid = MeshDescriptor_Driver_SOV_LOW) ]
     )
 )
+// Dépiction de l'unité Jeep_FAO_SAS
+Gfx_Jeep_FAO_SAS_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Jeep_FAO_SAS ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Jeep_FAO_SAS_MID ),
+            DepictionDescriptor_LOD_Low( MeshDescriptor = Modele_Jeep_FAO_SAS_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Jeep_FAO_SAS ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Jeep_FAO_SAS_MID ),
+            DepictionDescriptor_LOD_WreckedLow( MeshDescriptor = Modele_Jeep_FAO_SAS_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Jeep_FAO_SAS
+                  + DepictionOperator_Chassis_Vehicle
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+
+        Actions = MAP []
+                + Weapons_Jeep_FAO_SAS
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Wheeled
+
+        SubDepictions = []
+                      + [ SubDepiction_Driver(MeshDescriptorHigh = MeshDescriptor_Driver_SAS_FR MeshDescriptorMid = MeshDescriptor_Driver_SAS_FR_LOW) ]
+    )
+)
+// Dépiction de l'unité Jeep_FAO_SMOKE_SAS
+Gfx_Jeep_FAO_SMOKE_SAS_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Jeep_FAO_SMOKE_SAS ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Jeep_FAO_SMOKE_SAS_MID ),
+            DepictionDescriptor_LOD_Low( MeshDescriptor = Modele_Jeep_FAO_SMOKE_SAS_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Jeep_FAO_SMOKE_SAS ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Jeep_FAO_SMOKE_SAS_MID ),
+            DepictionDescriptor_LOD_WreckedLow( MeshDescriptor = Modele_Jeep_FAO_SMOKE_SAS_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Jeep_FAO_SMOKE_SAS
+                  + DepictionOperator_Chassis_Vehicle
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+
+        Actions = MAP []
+                + Weapons_Jeep_FAO_SMOKE_SAS
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Wheeled
+
+        SubDepictions = []
+                      + [ SubDepiction_Driver(MeshDescriptorHigh = MeshDescriptor_Driver_SAS_FR MeshDescriptorMid = MeshDescriptor_Driver_SAS_FR_LOW) ]
+    )
+)
 // Dépiction de l'unité Jeep_FR
 Gfx_Jeep_FR_Autogen is TTimelyReceiverFactoryCarrier
 (
@@ -7163,6 +7908,39 @@ Gfx_Jeep_Supply_UK_Autogen is TTimelyReceiverFactoryCarrier
                       + [ SubDepiction_Driver(MeshDescriptorHigh = MeshDescriptor_Driver_UK MeshDescriptorMid = MeshDescriptor_Driver_UK_LOW) ]
     )
 )
+// Dépiction de l'unité Jeep_Supply_US
+Gfx_Jeep_Supply_US_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Jeep_Supply_US ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Jeep_Supply_US_MID ),
+            DepictionDescriptor_LOD_Low( MeshDescriptor = Modele_Jeep_Supply_US_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Jeep_Supply_US ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Jeep_Supply_US_MID ),
+            DepictionDescriptor_LOD_WreckedLow( MeshDescriptor = Modele_Jeep_Supply_US_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Jeep_Supply_US
+                  + DepictionOperator_Chassis_Vehicle
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+
+        Actions = MAP []
+                + Weapons_Jeep_Supply_US
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Wheeled
+
+        SubDepictions = []
+                      + [ SubDepictionTowedUnit ]
+                      + [ SubDepiction_Driver(MeshDescriptorHigh = MeshDescriptor_Driver_US MeshDescriptorMid = MeshDescriptor_Driver_US_LOW) ]
+    )
+)
 // Dépiction de l'unité Jeep_UK
 Gfx_Jeep_UK_Autogen is TTimelyReceiverFactoryCarrier
 (
@@ -7264,6 +8042,40 @@ Gfx_Jeep_Vickers_Autogen is TTimelyReceiverFactoryCarrier
                       + [ SubDepictionTowedUnit ]
                       + [ SubDepiction_Driver(MeshDescriptorHigh = MeshDescriptor_Driver_UK MeshDescriptorMid = MeshDescriptor_Driver_UK_LOW) ]
                       + [ SubDepiction_Driver(MeshDescriptorHigh = MeshDescriptor_Driver_UK_para MeshDescriptorMid = MeshDescriptor_Driver_UK_para_LOW) ]
+    )
+)
+// Dépiction de l'unité Jeep_unarmed_SAS
+Gfx_Jeep_unarmed_SAS_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Jeep_unarmed_SAS ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Jeep_unarmed_SAS_MID ),
+            DepictionDescriptor_LOD_Low( MeshDescriptor = Modele_Jeep_unarmed_SAS_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Jeep_unarmed_SAS ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Jeep_unarmed_SAS_MID ),
+            DepictionDescriptor_LOD_WreckedLow( MeshDescriptor = Modele_Jeep_unarmed_SAS_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Jeep_unarmed_SAS
+                  + DepictionOperator_Chassis_Vehicle
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+
+        Actions = MAP []
+                + Weapons_Jeep_unarmed_SAS
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Wheeled
+
+        SubDepictions = []
+                      + [ SubDepictionTowedUnit ]
+                      + SittingSoldierSubDepictions2
+                      + [ SubDepiction_Driver(MeshDescriptorHigh = MeshDescriptor_Driver_SAS_FR MeshDescriptorMid = MeshDescriptor_Driver_SAS_FR_LOW) ]
     )
 )
 // Dépiction de l'unité KV_1A_GER
@@ -9095,6 +9907,38 @@ Gfx_M20_Scout_Car_US_Autogen is TTimelyReceiverFactoryCarrier
                       + [ SubDepictionTowedUnit ]
     )
 )
+// Dépiction de l'unité M30_Cargo_US
+Gfx_M30_Cargo_US_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_M30_Cargo_US ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_M30_Cargo_US_MID ),
+            DepictionDescriptor_LOD_Low( MeshDescriptor = Modele_M30_Cargo_US_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_M30_Cargo_US ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_M30_Cargo_US_MID ),
+            DepictionDescriptor_LOD_WreckedLow( MeshDescriptor = Modele_M30_Cargo_US_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_M30_Cargo_US
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+
+        Actions = MAP []
+                + Weapons_M30_Cargo_US
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+                      + [ SubDepictionTowedUnit ]
+    )
+)
 // Dépiction de l'unité M3_Command_Car_AWP
 Gfx_M3_Command_Car_AWP_Autogen is TTimelyReceiverFactoryCarrier
 (
@@ -9924,6 +10768,39 @@ Gfx_M4_105_US_Autogen is TTimelyReceiverFactoryCarrier
         SubDepictions = []
     )
 )
+// Dépiction de l'unité M4_75_Abe
+Gfx_M4_75_Abe_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_M4_75_Abe ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_M4_75_Abe_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret234( MeshDescriptor = Modele_M4_75_Abe_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_M4_75_Abe ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_M4_75_Abe_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret234( MeshDescriptor = Modele_M4_75_Abe_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_M4_75_Abe
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+                  + [ DepictionOperator_TurretRecoilLightMachineGun(TurretNum='2') ]
+
+        Actions = MAP []
+                + Weapons_M4_75_Abe
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
 // Dépiction de l'unité M4_High_Speed_Tractor_US
 Gfx_M4_High_Speed_Tractor_US_Autogen is TTimelyReceiverFactoryCarrier
 (
@@ -9957,6 +10834,42 @@ Gfx_M4_High_Speed_Tractor_US_Autogen is TTimelyReceiverFactoryCarrier
                       + [ SubDepictionTowedUnit ]
                       + SittingSoldierSubDepictions3
                       + [ SubDepiction_Driver(MeshDescriptorHigh = MeshDescriptor_Driver_US MeshDescriptorMid = MeshDescriptor_Driver_US_LOW) ]
+    )
+)
+// Dépiction de l'unité M7_DD
+Gfx_M7_DD_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_M7_DD ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_M7_DD_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret23( MeshDescriptor = Modele_M7_DD_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_M7_DD ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_M7_DD_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret23( MeshDescriptor = Modele_M7_DD_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_M7_DD
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+                  + [ DepictionOperator_TurretRecoilLightMachineGun(TurretNum='2') ]
+                  + [ DepictionOperator_TurretRecoilLightMachineGun(TurretNum='3') ]
+                  + DepictionCosmeticMovementOperatorDesc_Amphibious
+
+        Actions = MAP []
+                + Weapons_M7_DD
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+                + DepictionAction_FX_Amphibious_NoPropulsion
+
+        SubDepictions = []
     )
 )
 // Dépiction de l'unité M8_Greyhound_CMD_US
@@ -10647,6 +11560,7 @@ Gfx_NAG_Flak_Drilling_GER_Autogen is TTimelyReceiverFactoryCarrier
                 + DepictionAction_MovementFX_Wheeled
 
         SubDepictions = []
+                      + [ SubDepictionTowedUnit ]
                       + [ SubDepiction_Driver(MeshDescriptorHigh = MeshDescriptor_Driver_GER MeshDescriptorMid = MeshDescriptor_Driver_GER_LOW) ]
                       + [ SubDepiction_Tireur_Debout(MeshDescriptorHigh = MeshDescriptor_Driver_GER MeshDescriptorMid = MeshDescriptor_Driver_GER_LOW) ]
     )
@@ -11014,6 +11928,38 @@ Gfx_Opel_Blitz_Supply_Autogen is TTimelyReceiverFactoryCarrier
         SubDepictions = []
                       + [ SubDepictionTowedUnit ]
                       + [ SubDepiction_Driver(MeshDescriptorHigh = MeshDescriptor_Driver_GER MeshDescriptorMid = MeshDescriptor_Driver_GER_LOW) ]
+    )
+)
+// Dépiction de l'unité PT_34_SOV
+Gfx_PT_34_SOV_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_PT_34_SOV ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_PT_34_SOV_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret34( MeshDescriptor = Modele_PT_34_SOV_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_PT_34_SOV ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_PT_34_SOV_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret34( MeshDescriptor = Modele_PT_34_SOV_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_PT_34_SOV
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_PT_34_SOV
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
     )
 )
 // Dépiction de l'unité Panhard_178
@@ -11555,6 +12501,38 @@ Gfx_Panzer_38t_Bef_HON_Autogen is TTimelyReceiverFactoryCarrier
 
         Actions = MAP []
                 + Weapons_Panzer_38t_Bef_HON
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
+// Dépiction de l'unité Panzer_IC_GER
+Gfx_Panzer_IC_GER_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Panzer_IC_GER ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Panzer_IC_GER_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret4( MeshDescriptor = Modele_Panzer_IC_GER_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Panzer_IC_GER ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Panzer_IC_GER_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret4( MeshDescriptor = Modele_Panzer_IC_GER_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Panzer_IC_GER
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_Panzer_IC_GER
                 + DepictionAction_StressLevel_2
                 + DepictionAction_MovementFX_Tracked
 
@@ -13245,6 +14223,38 @@ Gfx_R35_GER_Autogen is TTimelyReceiverFactoryCarrier
         SubDepictions = []
     )
 )
+// Dépiction de l'unité R40_GER
+Gfx_R40_GER_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_R40_GER ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_R40_GER_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret4( MeshDescriptor = Modele_R40_GER_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_R40_GER ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_R40_GER_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret4( MeshDescriptor = Modele_R40_GER_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_R40_GER
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_R40_GER
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
 // Dépiction de l'unité RSO_GER
 Gfx_RSO_GER_Autogen is TTimelyReceiverFactoryCarrier
 (
@@ -14560,7 +15570,7 @@ Gfx_SdKfz_221_Autogen is TTimelyReceiverFactoryCarrier
         Actions = MAP []
                 + Weapons_SdKfz_221
                 + DepictionAction_StressLevel_2
-                + DepictionAction_MovementFX_Wheeled
+                + DepictionAction_MovementFX_Tracked
 
         SubDepictions = []
                       + [ SubDepictionTowedUnit ]
@@ -14593,7 +15603,7 @@ Gfx_SdKfz_221_sPzB41_Autogen is TTimelyReceiverFactoryCarrier
         Actions = MAP []
                 + Weapons_SdKfz_221_sPzB41
                 + DepictionAction_StressLevel_2
-                + DepictionAction_MovementFX_Wheeled
+                + DepictionAction_MovementFX_Tracked
 
         SubDepictions = []
                       + [ SubDepictionTowedUnit ]
@@ -14626,7 +15636,7 @@ Gfx_SdKfz_222_Autogen is TTimelyReceiverFactoryCarrier
         Actions = MAP []
                 + Weapons_SdKfz_222
                 + DepictionAction_StressLevel_2
-                + DepictionAction_MovementFX_Wheeled
+                + DepictionAction_MovementFX_Tracked
 
         SubDepictions = []
                       + [ SubDepictionTowedUnit ]
@@ -16145,6 +17155,38 @@ Gfx_Sexton_POL_Autogen is TTimelyReceiverFactoryCarrier
         SubDepictions = []
     )
 )
+// Dépiction de l'unité Sexton_UK
+Gfx_Sexton_UK_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Sexton_UK ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Sexton_UK_MID ),
+            DepictionDescriptor_LOD_Low( MeshDescriptor = Modele_Sexton_UK_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Sexton_UK ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Sexton_UK_MID ),
+            DepictionDescriptor_LOD_WreckedLow( MeshDescriptor = Modele_Sexton_UK_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Sexton_UK
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_Sexton_UK
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
 // Dépiction de l'unité Sherman_Calliope
 Gfx_Sherman_Calliope_Autogen is TTimelyReceiverFactoryCarrier
 (
@@ -16306,6 +17348,38 @@ Gfx_Sherman_Firefly_UK_Autogen is TTimelyReceiverFactoryCarrier
         SubDepictions = []
     )
 )
+// Dépiction de l'unité Sherman_Firefly_UK_ACE
+Gfx_Sherman_Firefly_UK_ACE_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Sherman_Firefly_UK_ACE ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Sherman_Firefly_UK_ACE_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret4( MeshDescriptor = Modele_Sherman_Firefly_UK_ACE_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Sherman_Firefly_UK_ACE ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Sherman_Firefly_UK_ACE_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret4( MeshDescriptor = Modele_Sherman_Firefly_UK_ACE_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Sherman_Firefly_UK_ACE
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_Sherman_Firefly_UK_ACE
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
 // Dépiction de l'unité Sherman_IC_Firefly_POL
 Gfx_Sherman_IC_Firefly_POL_Autogen is TTimelyReceiverFactoryCarrier
 (
@@ -16367,6 +17441,41 @@ Gfx_Sherman_Jumbo_Autogen is TTimelyReceiverFactoryCarrier
                 + Weapons_Sherman_Jumbo
                 + DepictionAction_StressLevel_2
                 + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
+// Dépiction de l'unité Sherman_M4A1DD_US
+Gfx_Sherman_M4A1DD_US_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Sherman_M4A1DD_US ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Sherman_M4A1DD_US_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret24( MeshDescriptor = Modele_Sherman_M4A1DD_US_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Sherman_M4A1DD_US ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Sherman_M4A1DD_US_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret24( MeshDescriptor = Modele_Sherman_M4A1DD_US_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Sherman_M4A1DD_US
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+                  + [ DepictionOperator_TurretRecoilLightMachineGun(TurretNum='2') ]
+                  + DepictionCosmeticMovementOperatorDesc_Amphibious
+
+        Actions = MAP []
+                + Weapons_Sherman_M4A1DD_US
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+                + DepictionAction_FX_Amphibious_NoPropulsion
 
         SubDepictions = []
     )
@@ -16734,6 +17843,39 @@ Gfx_Sherman_M4A2_Cmd_SOV_Autogen is TTimelyReceiverFactoryCarrier
         SubDepictions = []
     )
 )
+// Dépiction de l'unité Sherman_M4A2_Cmd_UK
+Gfx_Sherman_M4A2_Cmd_UK_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Sherman_M4A2_Cmd_UK ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Sherman_M4A2_Cmd_UK_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret234( MeshDescriptor = Modele_Sherman_M4A2_Cmd_UK_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Sherman_M4A2_Cmd_UK ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Sherman_M4A2_Cmd_UK_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret234( MeshDescriptor = Modele_Sherman_M4A2_Cmd_UK_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Sherman_M4A2_Cmd_UK
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+                  + [ DepictionOperator_TurretRecoilLightMachineGun(TurretNum='2') ]
+
+        Actions = MAP []
+                + Weapons_Sherman_M4A2_Cmd_UK
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
 // Dépiction de l'unité Sherman_M4A2_FR
 Gfx_Sherman_M4A2_FR_Autogen is TTimelyReceiverFactoryCarrier
 (
@@ -16827,6 +17969,39 @@ Gfx_Sherman_M4A2_SOV_Autogen is TTimelyReceiverFactoryCarrier
 
         Actions = MAP []
                 + Weapons_Sherman_M4A2_SOV
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
+// Dépiction de l'unité Sherman_M4A2_UK
+Gfx_Sherman_M4A2_UK_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Sherman_M4A2_UK ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Sherman_M4A2_UK_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret234( MeshDescriptor = Modele_Sherman_M4A2_UK_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Sherman_M4A2_UK ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Sherman_M4A2_UK_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret234( MeshDescriptor = Modele_Sherman_M4A2_UK_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Sherman_M4A2_UK
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+                  + [ DepictionOperator_TurretRecoilLightMachineGun(TurretNum='2') ]
+
+        Actions = MAP []
+                + Weapons_Sherman_M4A2_UK
                 + DepictionAction_StressLevel_2
                 + DepictionAction_MovementFX_Tracked
 
@@ -17235,6 +18410,39 @@ Gfx_Sherman_M4A4OP_POL_Autogen is TTimelyReceiverFactoryCarrier
         SubDepictions = []
     )
 )
+// Dépiction de l'unité Sherman_M4A4OP_UK
+Gfx_Sherman_M4A4OP_UK_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Sherman_M4A4OP_UK ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Sherman_M4A4OP_UK_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret234( MeshDescriptor = Modele_Sherman_M4A4OP_UK_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Sherman_M4A4OP_UK ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Sherman_M4A4OP_UK_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret234( MeshDescriptor = Modele_Sherman_M4A4OP_UK_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Sherman_M4A4OP_UK
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+                  + [ DepictionOperator_TurretRecoilLightMachineGun(TurretNum='2') ]
+
+        Actions = MAP []
+                + Weapons_Sherman_M4A4OP_UK
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
 // Dépiction de l'unité Sherman_M4A4_CAN
 Gfx_Sherman_M4A4_CAN_Autogen is TTimelyReceiverFactoryCarrier
 (
@@ -17394,6 +18602,39 @@ Gfx_Sherman_M4A4_POL_Autogen is TTimelyReceiverFactoryCarrier
 
         Actions = MAP []
                 + Weapons_Sherman_M4A4_POL
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
+// Dépiction de l'unité Sherman_M4A4_SAR_CAN
+Gfx_Sherman_M4A4_SAR_CAN_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Sherman_M4A4_SAR_CAN ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Sherman_M4A4_SAR_CAN_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret234( MeshDescriptor = Modele_Sherman_M4A4_SAR_CAN_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Sherman_M4A4_SAR_CAN ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Sherman_M4A4_SAR_CAN_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret234( MeshDescriptor = Modele_Sherman_M4A4_SAR_CAN_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Sherman_M4A4_SAR_CAN
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+                  + [ DepictionOperator_TurretRecoilLightMachineGun(TurretNum='2') ]
+
+        Actions = MAP []
+                + Weapons_Sherman_M4A4_SAR_CAN
                 + DepictionAction_StressLevel_2
                 + DepictionAction_MovementFX_Tracked
 
@@ -17923,6 +19164,39 @@ Gfx_Staghound_AA_CAN_Autogen is TTimelyReceiverFactoryCarrier
                       + [ SubDepiction_Tireur(MeshDescriptorHigh = MeshDescriptor_Driver_CAN MeshDescriptorMid = MeshDescriptor_Driver_CAN_LOW) ]
     )
 )
+// Dépiction de l'unité Staghound_AA_UK
+Gfx_Staghound_AA_UK_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Staghound_AA_UK ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Staghound_AA_UK_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret13( MeshDescriptor = Modele_Staghound_AA_UK_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Staghound_AA_UK ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Staghound_AA_UK_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret13( MeshDescriptor = Modele_Staghound_AA_UK_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Staghound_AA_UK
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoilLightMachineGun(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_Staghound_AA_UK
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Wheeled
+
+        SubDepictions = []
+                      + [ SubDepiction_Tireur(MeshDescriptorHigh = MeshDescriptor_Driver_UK MeshDescriptorMid = MeshDescriptor_Driver_UK_LOW) ]
+    )
+)
 // Dépiction de l'unité Staghound_CAN
 Gfx_Staghound_CAN_Autogen is TTimelyReceiverFactoryCarrier
 (
@@ -18013,6 +19287,38 @@ Gfx_Staghound_Support_CAN_Autogen is TTimelyReceiverFactoryCarrier
 
         Actions = MAP []
                 + Weapons_Staghound_Support_CAN
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Wheeled
+
+        SubDepictions = []
+    )
+)
+// Dépiction de l'unité Staghound_Support_UK
+Gfx_Staghound_Support_UK_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Staghound_Support_UK ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Staghound_Support_UK_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret34( MeshDescriptor = Modele_Staghound_Support_UK_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Staghound_Support_UK ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Staghound_Support_UK_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret34( MeshDescriptor = Modele_Staghound_Support_UK_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Staghound_Support_UK
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_Staghound_Support_UK
                 + DepictionAction_StressLevel_2
                 + DepictionAction_MovementFX_Wheeled
 
@@ -18532,6 +19838,39 @@ Gfx_Stuart_Command_CAN_Autogen is TTimelyReceiverFactoryCarrier
                       + [ SubDepictionTowedUnit ]
     )
 )
+// Dépiction de l'unité Stuart_Command_UK
+Gfx_Stuart_Command_UK_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Stuart_Command_UK ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Stuart_Command_UK_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret13( MeshDescriptor = Modele_Stuart_Command_UK_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Stuart_Command_UK ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Stuart_Command_UK_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret13( MeshDescriptor = Modele_Stuart_Command_UK_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Stuart_Command_UK
+                  + DepictionOperator_Chassis_SmallTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoilLightMachineGun(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_Stuart_Command_UK
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+                      + [ SubDepictionTowedUnit ]
+    )
+)
 // Dépiction de l'unité Stuart_III_Honey
 Gfx_Stuart_III_Honey_Autogen is TTimelyReceiverFactoryCarrier
 (
@@ -18919,6 +20258,38 @@ Gfx_Stuart_M5A1_SOV_Autogen is TTimelyReceiverFactoryCarrier
         SubDepictions = []
     )
 )
+// Dépiction de l'unité Stuart_M5A1_UK
+Gfx_Stuart_M5A1_UK_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Stuart_M5A1_UK ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Stuart_M5A1_UK_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret34( MeshDescriptor = Modele_Stuart_M5A1_UK_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Stuart_M5A1_UK ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Stuart_M5A1_UK_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret34( MeshDescriptor = Modele_Stuart_M5A1_UK_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Stuart_M5A1_UK
+                  + DepictionOperator_Chassis_HeavyTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_Stuart_M5A1_UK
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+    )
+)
 // Dépiction de l'unité Stuart_M5A1_US
 Gfx_Stuart_M5A1_US_Autogen is TTimelyReceiverFactoryCarrier
 (
@@ -18950,6 +20321,39 @@ Gfx_Stuart_M5A1_US_Autogen is TTimelyReceiverFactoryCarrier
                 + DepictionAction_MovementFX_Tracked
 
         SubDepictions = []
+    )
+)
+// Dépiction de l'unité Stuart_REME_UK
+Gfx_Stuart_REME_UK_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Stuart_REME_UK ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Stuart_REME_UK_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret13( MeshDescriptor = Modele_Stuart_REME_UK_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Stuart_REME_UK ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Stuart_REME_UK_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret13( MeshDescriptor = Modele_Stuart_REME_UK_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Stuart_REME_UK
+                  + DepictionOperator_Chassis_HeavyTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoilLightMachineGun(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_Stuart_REME_UK
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+                      + [ SubDepictionTowedUnit ]
     )
 )
 // Dépiction de l'unité Stuart_Recce_CAN
@@ -19016,6 +20420,39 @@ Gfx_Stuart_Recce_UK_Autogen is TTimelyReceiverFactoryCarrier
 
         SubDepictions = []
                       + [ SubDepictionTowedUnit ]
+    )
+)
+// Dépiction de l'unité Stuart_V_50_UK
+Gfx_Stuart_V_50_UK_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Stuart_V_50_UK ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Stuart_V_50_UK_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret234( MeshDescriptor = Modele_Stuart_V_50_UK_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Stuart_V_50_UK ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Stuart_V_50_UK_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret234( MeshDescriptor = Modele_Stuart_V_50_UK_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Stuart_V_50_UK
+                  + DepictionOperator_Chassis_SmallTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoil(TurretNum='1') ]
+                  + [ DepictionOperator_TurretRecoilLightMachineGun(TurretNum='2') ]
+
+        Actions = MAP []
+                + Weapons_Stuart_V_50_UK
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
     )
 )
 // Dépiction de l'unité Sturmtiger_GER
@@ -22680,6 +24117,39 @@ Gfx_WC52_FAO_76_SOV_Autogen is TTimelyReceiverFactoryCarrier
 
         SubDepictions = []
                       + [ SubDepiction_Driver(MeshDescriptorHigh = MeshDescriptor_Driver_SOV MeshDescriptorMid = MeshDescriptor_Driver_SOV_LOW) ]
+    )
+)
+// Dépiction de l'unité Wallaby
+Gfx_Wallaby_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Wallaby ),
+            DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_Wallaby_MID ),
+            DepictionDescriptor_LOD_Low_NoTurret13( MeshDescriptor = Modele_Wallaby_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Wallaby ),
+            DepictionDescriptor_LOD_WreckedMid( MeshDescriptor = Modele_Wallaby_MID ),
+            DepictionDescriptor_LOD_WreckedLow_NoTurret13( MeshDescriptor = Modele_Wallaby_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Wallaby
+                  + DepictionOperator_Chassis_MediumTank
+                  + [ DepictionCosmeticMovementOperatorDesc_Standard ]
+                  + [ DepictionOperatorNode_Propulsion_ContinuousTrack ]
+                  + [ DepictionOperatorNode_Propulsion_Wheels_Generic ]
+                  + [ DepictionOperator_TurretRecoilLightMachineGun(TurretNum='1') ]
+
+        Actions = MAP []
+                + Weapons_Wallaby
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Tracked
+
+        SubDepictions = []
+                      + [ SubDepictionTowedUnit ]
     )
 )
 // Dépiction de l'unité Wasp_IIc_CAN

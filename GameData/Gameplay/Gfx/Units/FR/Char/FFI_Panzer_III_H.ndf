@@ -1,0 +1,22 @@
+export ModelFile_FFI_Panzer_III_H is 'GameData:Assets\3D\Units\FR\Char\FFI_Panzer_III_H\FFI_Panzer_III_H.Ase2NdfBin'
+
+Modele_FFI_Panzer_III_H is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_FFI_Panzer_III_H
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_FFI_Panzer_III_H_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Char\FFI_Panzer_III_H_MID\FFI_Panzer_III_H_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_FFI_Panzer_III_H_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\FR\Char\LODS\FFI_Panzer_III_H_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

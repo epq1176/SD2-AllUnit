@@ -1,0 +1,23 @@
+export ModelFile_PzH_150mm_Lorraine_GER is 'GameData:Assets\3D\Units\GER\Char\SdKfz_135_1\SdKfz_135_1.Ase2NdfBin'
+
+Modele_PzH_150mm_Lorraine_GER is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_PzH_150mm_Lorraine_GER
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_PzH_150mm_Lorraine_GER_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\SdKfz_135_1_MID\SdKfz_135_1_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+
+Modele_PzH_150mm_Lorraine_GER_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\SdKfz_135_1_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite2
+    TypeMask = TypeMask/Char
+)
+

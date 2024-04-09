@@ -715,37 +715,6 @@ template Gfx_AB250
 )
 
 
-template TemplateMeshDescriptor_AB500 [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
-(
-    FileName = <ModelFile>
-    CivMask = <CivMask>
-    TypeMask = TypeMask/Infanterie
-)
-
-template Gfx_AB500
-[
-    Actions = [],
-    CivMask
-] is TDepictionTemplate
-(
-    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
-    Selector = $/GFX/Everything/SoldierWeaponSubDepictionSelector
-    DepictionAlternatives = [
-                DepictionDescriptor_LOD_InfantryHigh(
-                    MeshDescriptor = TemplateMeshDescriptor_AB500( ModelFile = ModelFile_AB500 CivMask = <CivMask> )
-                ),
-                DepictionDescriptor_LOD_InfantryMid(
-                    MeshDescriptor = TemplateMeshDescriptor_AB500( ModelFile = ModelFile_AB500 CivMask = <CivMask> )
-                ),
-                DepictionDescriptor_LOD_InfantryLow(
-                    MeshDescriptor = TemplateMeshDescriptor_AB500( ModelFile = ModelFile_AB500 CivMask = <CivMask> )
-                ),
-                DepictionDescriptor_LOD_InfantryNone
-            ]
-    Actions = <Actions>
-)
-
-
 template TemplateMeshDescriptor_AJ2 [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
 (
     FileName = <ModelFile>
@@ -1490,37 +1459,6 @@ template Gfx_G43
 )
 
 
-template TemplateMeshDescriptor_Carcano_1891 [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
-(
-    FileName = <ModelFile>
-    CivMask = <CivMask>
-    TypeMask = TypeMask/Infanterie
-)
-
-template Gfx_Carcano_1891
-[
-    Actions = [],
-    CivMask
-] is TDepictionTemplate
-(
-    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
-    Selector = $/GFX/Everything/SoldierWeaponSubDepictionSelector
-    DepictionAlternatives = [
-                DepictionDescriptor_LOD_InfantryHigh(
-                    MeshDescriptor = TemplateMeshDescriptor_Carcano_1891( ModelFile = ModelFile_Carcano_1891 CivMask = <CivMask> )
-                ),
-                DepictionDescriptor_LOD_InfantryMid(
-                    MeshDescriptor = TemplateMeshDescriptor_Carcano_1891( ModelFile = ModelFile_Carcano_1891 CivMask = <CivMask> )
-                ),
-                DepictionDescriptor_LOD_InfantryLow(
-                    MeshDescriptor = TemplateMeshDescriptor_Carcano_1891( ModelFile = ModelFile_Carcano_1891 CivMask = <CivMask> )
-                ),
-                DepictionDescriptor_LOD_InfantryNone
-            ]
-    Actions = <Actions>
-)
-
-
 template TemplateMeshDescriptor_Carcano_M91_Cavalleria [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
 (
     FileName = <ModelFile>
@@ -1552,6 +1490,37 @@ template Gfx_Carcano_M91_Cavalleria
 )
 
 
+template TemplateMeshDescriptor_Carcano_1891 [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = <CivMask>
+    TypeMask = TypeMask/Infanterie
+)
+
+template Gfx_Carcano_1891
+[
+    Actions = [],
+    CivMask
+] is TDepictionTemplate
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = $/GFX/Everything/SoldierWeaponSubDepictionSelector
+    DepictionAlternatives = [
+                DepictionDescriptor_LOD_InfantryHigh(
+                    MeshDescriptor = TemplateMeshDescriptor_Carcano_1891( ModelFile = ModelFile_Carcano_1891 CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryMid(
+                    MeshDescriptor = TemplateMeshDescriptor_Carcano_1891( ModelFile = ModelFile_Carcano_1891 CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryLow(
+                    MeshDescriptor = TemplateMeshDescriptor_Carcano_1891( ModelFile = ModelFile_Carcano_1891 CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryNone
+            ]
+    Actions = <Actions>
+)
+
+
 template TemplateMeshDescriptor_Carcano_M91_Scope [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
 (
     FileName = <ModelFile>
@@ -1576,37 +1545,6 @@ template Gfx_Carcano_M91_Scope
                 ),
                 DepictionDescriptor_LOD_InfantryLow(
                     MeshDescriptor = TemplateMeshDescriptor_Carcano_M91_Scope( ModelFile = ModelFile_Carcano_M91_Scope CivMask = <CivMask> )
-                ),
-                DepictionDescriptor_LOD_InfantryNone
-            ]
-    Actions = <Actions>
-)
-
-
-template TemplateMeshDescriptor_Colt1911 [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
-(
-    FileName = <ModelFile>
-    CivMask = <CivMask>
-    TypeMask = TypeMask/Infanterie
-)
-
-template Gfx_Colt1911
-[
-    Actions = [],
-    CivMask
-] is TDepictionTemplate
-(
-    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
-    Selector = $/GFX/Everything/SoldierWeaponSubDepictionSelector
-    DepictionAlternatives = [
-                DepictionDescriptor_LOD_InfantryHigh(
-                    MeshDescriptor = TemplateMeshDescriptor_Colt1911( ModelFile = ModelFile_Colt1911 CivMask = <CivMask> )
-                ),
-                DepictionDescriptor_LOD_InfantryMid(
-                    MeshDescriptor = TemplateMeshDescriptor_Colt1911( ModelFile = ModelFile_Colt1911 CivMask = <CivMask> )
-                ),
-                DepictionDescriptor_LOD_InfantryLow(
-                    MeshDescriptor = TemplateMeshDescriptor_Colt1911( ModelFile = ModelFile_Colt1911 CivMask = <CivMask> )
                 ),
                 DepictionDescriptor_LOD_InfantryNone
             ]
@@ -1769,37 +1707,6 @@ template Gfx_Mannlicher_Rifle
 )
 
 
-template TemplateMeshDescriptor_FEG_35M_scope [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
-(
-    FileName = <ModelFile>
-    CivMask = <CivMask>
-    TypeMask = TypeMask/Infanterie
-)
-
-template Gfx_FEG_35M_scope
-[
-    Actions = [],
-    CivMask
-] is TDepictionTemplate
-(
-    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
-    Selector = $/GFX/Everything/SoldierWeaponSubDepictionSelector
-    DepictionAlternatives = [
-                DepictionDescriptor_LOD_InfantryHigh(
-                    MeshDescriptor = TemplateMeshDescriptor_FEG_35M_scope( ModelFile = ModelFile_FEG_35M_scope CivMask = <CivMask> )
-                ),
-                DepictionDescriptor_LOD_InfantryMid(
-                    MeshDescriptor = TemplateMeshDescriptor_FEG_35M_scope( ModelFile = ModelFile_FEG_35M_scope CivMask = <CivMask> )
-                ),
-                DepictionDescriptor_LOD_InfantryLow(
-                    MeshDescriptor = TemplateMeshDescriptor_FEG_35M_scope( ModelFile = ModelFile_FEG_35M_scope CivMask = <CivMask> )
-                ),
-                DepictionDescriptor_LOD_InfantryNone
-            ]
-    Actions = <Actions>
-)
-
-
 template TemplateMeshDescriptor_FG42 [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
 (
     FileName = <ModelFile>
@@ -1917,37 +1824,6 @@ template Gfx_FNAB_43
                 ),
                 DepictionDescriptor_LOD_InfantryLow(
                     MeshDescriptor = TemplateMeshDescriptor_FNAB_43( ModelFile = ModelFile_FNAB_43 CivMask = <CivMask> )
-                ),
-                DepictionDescriptor_LOD_InfantryNone
-            ]
-    Actions = <Actions>
-)
-
-
-template TemplateMeshDescriptor_Pzfst30 [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
-(
-    FileName = <ModelFile>
-    CivMask = <CivMask>
-    TypeMask = TypeMask/Infanterie
-)
-
-template Gfx_Pzfst30
-[
-    Actions = [],
-    CivMask
-] is TDepictionTemplate
-(
-    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
-    Selector = $/GFX/Everything/SoldierWeaponSubDepictionSelector
-    DepictionAlternatives = [
-                DepictionDescriptor_LOD_InfantryHigh(
-                    MeshDescriptor = TemplateMeshDescriptor_Pzfst30( ModelFile = ModelFile_Pzfst30 CivMask = <CivMask> )
-                ),
-                DepictionDescriptor_LOD_InfantryMid(
-                    MeshDescriptor = TemplateMeshDescriptor_Pzfst30( ModelFile = ModelFile_Pzfst30 CivMask = <CivMask> )
-                ),
-                DepictionDescriptor_LOD_InfantryLow(
-                    MeshDescriptor = TemplateMeshDescriptor_Pzfst30( ModelFile = ModelFile_Pzfst30 CivMask = <CivMask> )
                 ),
                 DepictionDescriptor_LOD_InfantryNone
             ]
@@ -2110,37 +1986,6 @@ template Gfx_Johnson
 )
 
 
-template TemplateMeshDescriptor_Kar98k [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
-(
-    FileName = <ModelFile>
-    CivMask = <CivMask>
-    TypeMask = TypeMask/Infanterie
-)
-
-template Gfx_Kar98k
-[
-    Actions = [],
-    CivMask
-] is TDepictionTemplate
-(
-    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
-    Selector = $/GFX/Everything/SoldierWeaponSubDepictionSelector
-    DepictionAlternatives = [
-                DepictionDescriptor_LOD_InfantryHigh(
-                    MeshDescriptor = TemplateMeshDescriptor_Kar98k( ModelFile = ModelFile_Kar98k CivMask = <CivMask> )
-                ),
-                DepictionDescriptor_LOD_InfantryMid(
-                    MeshDescriptor = TemplateMeshDescriptor_Kar98k( ModelFile = ModelFile_Kar98k CivMask = <CivMask> )
-                ),
-                DepictionDescriptor_LOD_InfantryLow(
-                    MeshDescriptor = TemplateMeshDescriptor_Kar98k( ModelFile = ModelFile_Kar98k CivMask = <CivMask> )
-                ),
-                DepictionDescriptor_LOD_InfantryNone
-            ]
-    Actions = <Actions>
-)
-
-
 template TemplateMeshDescriptor_Kar98kScope [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
 (
     FileName = <ModelFile>
@@ -2165,6 +2010,37 @@ template Gfx_Kar98kScope
                 ),
                 DepictionDescriptor_LOD_InfantryLow(
                     MeshDescriptor = TemplateMeshDescriptor_Kar98kScope( ModelFile = ModelFile_Kar98kScope CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryNone
+            ]
+    Actions = <Actions>
+)
+
+
+template TemplateMeshDescriptor_Kar98k [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = <CivMask>
+    TypeMask = TypeMask/Infanterie
+)
+
+template Gfx_Kar98k
+[
+    Actions = [],
+    CivMask
+] is TDepictionTemplate
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = $/GFX/Everything/SoldierWeaponSubDepictionSelector
+    DepictionAlternatives = [
+                DepictionDescriptor_LOD_InfantryHigh(
+                    MeshDescriptor = TemplateMeshDescriptor_Kar98k( ModelFile = ModelFile_Kar98k CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryMid(
+                    MeshDescriptor = TemplateMeshDescriptor_Kar98k( ModelFile = ModelFile_Kar98k CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryLow(
+                    MeshDescriptor = TemplateMeshDescriptor_Kar98k( ModelFile = ModelFile_Kar98k CivMask = <CivMask> )
                 ),
                 DepictionDescriptor_LOD_InfantryNone
             ]
@@ -2761,6 +2637,37 @@ template Gfx_MAS_36
 )
 
 
+template TemplateMeshDescriptor_MAS_38 [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = <CivMask>
+    TypeMask = TypeMask/Infanterie
+)
+
+template Gfx_MAS_38
+[
+    Actions = [],
+    CivMask
+] is TDepictionTemplate
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = $/GFX/Everything/SoldierWeaponSubDepictionSelector
+    DepictionAlternatives = [
+                DepictionDescriptor_LOD_InfantryHigh(
+                    MeshDescriptor = TemplateMeshDescriptor_MAS_38( ModelFile = ModelFile_MAS_38 CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryMid(
+                    MeshDescriptor = TemplateMeshDescriptor_MAS_38( ModelFile = ModelFile_MAS_38 CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryLow(
+                    MeshDescriptor = TemplateMeshDescriptor_MAS_38( ModelFile = ModelFile_MAS_38 CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryNone
+            ]
+    Actions = <Actions>
+)
+
+
 template TemplateMeshDescriptor_ZB_30_LMG [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
 (
     FileName = <ModelFile>
@@ -3102,37 +3009,6 @@ template Gfx_PIAT
 )
 
 
-template TemplateMeshDescriptor_Polish_BAR [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
-(
-    FileName = <ModelFile>
-    CivMask = <CivMask>
-    TypeMask = TypeMask/Infanterie
-)
-
-template Gfx_Polish_BAR
-[
-    Actions = [],
-    CivMask
-] is TDepictionTemplate
-(
-    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
-    Selector = $/GFX/Everything/SoldierWeaponSubDepictionSelector
-    DepictionAlternatives = [
-                DepictionDescriptor_LOD_InfantryHigh(
-                    MeshDescriptor = TemplateMeshDescriptor_Polish_BAR( ModelFile = ModelFile_Polish_BAR CivMask = <CivMask> )
-                ),
-                DepictionDescriptor_LOD_InfantryMid(
-                    MeshDescriptor = TemplateMeshDescriptor_Polish_BAR( ModelFile = ModelFile_Polish_BAR CivMask = <CivMask> )
-                ),
-                DepictionDescriptor_LOD_InfantryLow(
-                    MeshDescriptor = TemplateMeshDescriptor_Polish_BAR( ModelFile = ModelFile_Polish_BAR CivMask = <CivMask> )
-                ),
-                DepictionDescriptor_LOD_InfantryNone
-            ]
-    Actions = <Actions>
-)
-
-
 template TemplateMeshDescriptor_ppsh43 [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
 (
     FileName = <ModelFile>
@@ -3195,6 +3071,37 @@ template Gfx_ppsh41
 )
 
 
+template TemplateMeshDescriptor_Pzfst30 [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = <CivMask>
+    TypeMask = TypeMask/Infanterie
+)
+
+template Gfx_Pzfst30
+[
+    Actions = [],
+    CivMask
+] is TDepictionTemplate
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = $/GFX/Everything/SoldierWeaponSubDepictionSelector
+    DepictionAlternatives = [
+                DepictionDescriptor_LOD_InfantryHigh(
+                    MeshDescriptor = TemplateMeshDescriptor_Pzfst30( ModelFile = ModelFile_Pzfst30 CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryMid(
+                    MeshDescriptor = TemplateMeshDescriptor_Pzfst30( ModelFile = ModelFile_Pzfst30 CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryLow(
+                    MeshDescriptor = TemplateMeshDescriptor_Pzfst30( ModelFile = ModelFile_Pzfst30 CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryNone
+            ]
+    Actions = <Actions>
+)
+
+
 template TemplateMeshDescriptor_Pzschrk [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
 (
     FileName = <ModelFile>
@@ -3219,6 +3126,37 @@ template Gfx_Pzschrk
                 ),
                 DepictionDescriptor_LOD_InfantryLow(
                     MeshDescriptor = TemplateMeshDescriptor_Pzschrk( ModelFile = ModelFile_Pzschrk CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryNone
+            ]
+    Actions = <Actions>
+)
+
+
+template TemplateMeshDescriptor_Polish_BAR [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = <CivMask>
+    TypeMask = TypeMask/Infanterie
+)
+
+template Gfx_Polish_BAR
+[
+    Actions = [],
+    CivMask
+] is TDepictionTemplate
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = $/GFX/Everything/SoldierWeaponSubDepictionSelector
+    DepictionAlternatives = [
+                DepictionDescriptor_LOD_InfantryHigh(
+                    MeshDescriptor = TemplateMeshDescriptor_Polish_BAR( ModelFile = ModelFile_Polish_BAR CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryMid(
+                    MeshDescriptor = TemplateMeshDescriptor_Polish_BAR( ModelFile = ModelFile_Polish_BAR CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryLow(
+                    MeshDescriptor = TemplateMeshDescriptor_Polish_BAR( ModelFile = ModelFile_Polish_BAR CivMask = <CivMask> )
                 ),
                 DepictionDescriptor_LOD_InfantryNone
             ]

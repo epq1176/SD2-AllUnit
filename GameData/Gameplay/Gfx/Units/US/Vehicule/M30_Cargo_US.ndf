@@ -1,0 +1,22 @@
+export ModelFile_M30_Cargo_US is 'GameData:Assets\3D\Units\USA\Char\M30_Cargo\M30_Cargo.Ase2NdfBin'
+
+Modele_M30_Cargo_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M30_Cargo_US
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_M30_Cargo_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Char\M30_Cargo_MID\M30_Cargo_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_M30_Cargo_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Char\LODS\M30_Cargo_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

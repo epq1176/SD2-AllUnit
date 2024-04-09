@@ -1,0 +1,22 @@
+export ModelFile_Cromwell_IVOP_UK is 'GameData:Assets\3D\Units\UK\Char\Cromwell_IV\Cromwell_IV_OP.Ase2NdfBin'
+
+export Modele_Cromwell_IVOP_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Cromwell_IVOP_UK
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Cromwell_IVOP_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\Cromwell_IV_MID\Cromwell_IV_OP_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Cromwell_IVOP_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\LODS\Cromwell_IV_OP_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

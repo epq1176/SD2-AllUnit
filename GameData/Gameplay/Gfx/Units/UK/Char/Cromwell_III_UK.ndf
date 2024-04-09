@@ -1,0 +1,22 @@
+export ModelFile_Cromwell_III_UK is 'GameData:Assets\3D\Units\UK\Char\Cromwell_III\Cromwell_III.Ase2NdfBin'
+
+export Modele_Cromwell_III_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Cromwell_III_UK
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Cromwell_III_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\Cromwell_III_MID\Cromwell_III_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Cromwell_III_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\LODS\Cromwell_III_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

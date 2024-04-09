@@ -5763,6 +5763,309 @@ export _2x3_Oarba_LD_2v2_DEST_CQC is TWargameMultiMapInfo
     ArgentInitialTable = ArgentInitialSetting
 )
 
+export _2x3_Valley_Of_Death_LD_3v3 is TWargameMultiMapInfo
+(
+    Description = "MAP_063"
+    NbMinPlayers = 1
+    NbMaxPlayers = 8
+    DefaultNbSlotsOpened = 6
+    RankedAvailability = [true, true, true, true]
+    DefaultArgentInitial = 750
+    DefaultDestructionScoreToReach = DestructionScoreToReachSetting
+    DefaultArgentInitialForIASkirmish = 750
+    DefaultDestructionScoreToReachForIASkirmish = DestructionScoreToReachForAISetting
+    ConquestPointsDefaultIndex = 1 //Indice dans ConquestPossibleScores de GDConstantes
+    GameModeAvailability = [GameMode/ConquestGameMode]
+    CombatRuleAvailability = [CombatRule/CaptureTheFlag]
+    MapAssociationByMode = MAP
+    [
+      (GameMode/CloseQuarterConquest, "_2x3_Valley_Of_Death_LD_3v3_CQC"),
+      (GameMode/BreakthroughConquest, "_2x3_Valley_Of_Death_LD_3v3_BKT"),
+    ]
+    MapAssociationByCombatRule = MAP
+    [
+      (CombatRule/Destruction, "_2x3_Valley_Of_Death_LD_3v3_DEST"),
+    ]
+
+    AlternativeMapNames = [
+      "_2x3_Valley_Of_Death_LD_3v3",
+    ]
+    ArgentInitialTable = ArgentInitialSetting
+)
+//
+export _2x3_Valley_Of_Death_LD_3v3_BKT is TWargameMultiMapInfo
+(
+    Description = "MAP_063"
+    //GUID = GUID:{290a839c-52e2-4c66-8a6b-f7ce1e9df5e3}
+    NbMinPlayers = 1
+    NbMaxPlayers = 8
+    DefaultNbSlotsOpened = 6
+    RankedAvailability = [true, true, true, true]
+    DefaultArgentInitial = 750
+    DefaultDestructionScoreToReach = DestructionScoreToReachSetting
+    DefaultArgentInitialForIASkirmish = 750
+    DefaultDestructionScoreToReachForIASkirmish = DestructionScoreToReachForAISetting
+    ConquestPointsDefaultIndex = 1 //Indice dans ConquestPossibleScores de GDConstantes
+    GameModeAvailability = [GameMode/BreakthroughConquest]
+    CombatRuleAvailability = [CombatRule/CaptureTheFlag]
+    MapAssociationByMode = MAP
+    [
+      (GameMode/ConquestGameMode, "_2x3_Valley_Of_Death_LD_3v3"),
+      (GameMode/CloseQuarterConquest, "_2x3_Valley_Of_Death_LD_3v3_CQC"),
+    ]
+    MapAssociationByCombatRule = MAP
+    [
+    ]
+
+    AlternativeMapNames = [
+      "_2x3_Valley_Of_Death_LD_3v3_BKT",
+    ]
+    ArgentInitialTable = ArgentInitialSetting
+)
+//
+export _2x3_Valley_Of_Death_LD_3v3_CQC is TWargameMultiMapInfo
+(
+    Description = "MAP_063"
+    //GUID = GUID:{5231c692-3b67-42a6-b14e-142859427a69}
+    NbMinPlayers = 1
+    NbMaxPlayers = 8
+    DefaultNbSlotsOpened = 6
+    RankedAvailability = [true, true, true, true]
+    DefaultArgentInitial = 750
+    DefaultDestructionScoreToReach = DestructionScoreToReachSetting
+    DefaultArgentInitialForIASkirmish = 750
+    DefaultDestructionScoreToReachForIASkirmish = DestructionScoreToReachForAISetting
+    ConquestPointsDefaultIndex = 1 //Indice dans ConquestPossibleScores de GDConstantes
+    GameModeAvailability = [GameMode/CloseQuarterConquest]
+    CombatRuleAvailability = [CombatRule/CaptureTheFlag]
+    MapAssociationByMode = MAP
+    [
+      (GameMode/ConquestGameMode, "_2x3_Valley_Of_Death_LD_3v3"),
+      (GameMode/BreakthroughConquest, "_2x3_Valley_Of_Death_LD_3v3_BKT"),
+    ]
+    MapAssociationByCombatRule = MAP
+    [
+      (CombatRule/Destruction, "_2x3_Valley_Of_Death_LD_3v3_DEST_CQC"),
+    ]
+
+    AlternativeMapNames = [
+      "_2x3_Valley_Of_Death_LD_3v3_CQC",
+    ]
+    ArgentInitialTable = ArgentInitialSetting
+)
+//
+export _2x3_Valley_Of_Death_LD_3v3_DEST is TWargameMultiMapInfo
+(
+    Description = "MAP_063"
+    //GUID = GUID:{77952f5c-2df3-4277-b542-8c2f13c9e270}
+    NbMinPlayers = 1
+    NbMaxPlayers = 8
+    DefaultNbSlotsOpened = 6
+    RankedAvailability = [true, true, true, true]
+    DefaultArgentInitial = 750
+    DefaultDestructionScoreToReach = DestructionScoreToReachSetting
+    DefaultArgentInitialForIASkirmish = 750
+    DefaultDestructionScoreToReachForIASkirmish = DestructionScoreToReachForAISetting
+    ConquestPointsDefaultIndex = 1 //Indice dans ConquestPossibleScores de GDConstantes
+    GameModeAvailability = [GameMode/ConquestGameMode]
+    CombatRuleAvailability = [CombatRule/Destruction]
+    MapAssociationByMode = MAP
+    [
+      (GameMode/CloseQuarterConquest, "_2x3_Valley_Of_Death_LD_3v3_DEST_CQC"),
+    ]
+    MapAssociationByCombatRule = MAP
+    [
+      (CombatRule/CaptureTheFlag, "_2x3_Valley_Of_Death_LD_3v3"),
+    ]
+
+    AlternativeMapNames = [
+      "_2x3_Valley_Of_Death_LD_3v3_DEST",
+    ]
+    ArgentInitialTable = ArgentInitialSetting
+)
+//
+export _2x3_Valley_Of_Death_LD_3v3_DEST_CQC is TWargameMultiMapInfo
+(
+    Description = "MAP_063"
+    //GUID = GUID:{b5e611fd-08d5-46a5-9c55-4d67054b92c0}
+    NbMinPlayers = 1
+    NbMaxPlayers = 8
+    DefaultNbSlotsOpened = 6
+    RankedAvailability = [true, true, true, true]
+    DefaultArgentInitial = 750
+    DefaultDestructionScoreToReach = DestructionScoreToReachSetting
+    DefaultArgentInitialForIASkirmish = 750
+    DefaultDestructionScoreToReachForIASkirmish = DestructionScoreToReachForAISetting
+    ConquestPointsDefaultIndex = 1 //Indice dans ConquestPossibleScores de GDConstantes
+    GameModeAvailability = [GameMode/CloseQuarterConquest]
+    CombatRuleAvailability = [CombatRule/Destruction]
+    MapAssociationByMode = MAP
+    [
+      (GameMode/ConquestGameMode, "_2x3_Valley_Of_Death_LD_3v3_DEST"),
+    ]
+    MapAssociationByCombatRule = MAP
+    [
+      (CombatRule/CaptureTheFlag, "_2x3_Valley_Of_Death_LD_3v3_CQC"),
+    ]
+
+    AlternativeMapNames = [
+      "_2x3_Valley_Of_Death_LD_3v3_DEST_CQC",
+    ]
+    ArgentInitialTable = ArgentInitialSetting
+)
+
+
+
+//Dukla pass
+export _4x2_Dukla_Pass_LD_4v4 is TWargameMultiMapInfo
+(
+    Description = "MAP_064"
+    NbMinPlayers = 1
+    NbMaxPlayers = 8
+    DefaultNbSlotsOpened = 8
+    RankedAvailability = [true, true, true, true]
+    DefaultArgentInitial = 750
+    DefaultDestructionScoreToReach = DestructionScoreToReachSetting
+    DefaultArgentInitialForIASkirmish = 750
+    DefaultDestructionScoreToReachForIASkirmish = DestructionScoreToReachForAISetting
+    ConquestPointsDefaultIndex = 1 //Indice dans ConquestPossibleScores de GDConstantes
+    GameModeAvailability = [GameMode/ConquestGameMode]
+    CombatRuleAvailability = [CombatRule/CaptureTheFlag]
+    MapAssociationByMode = MAP
+    [
+      (GameMode/CloseQuarterConquest, "_4x2_Dukla_Pass_LD_4v4_CQC"),
+      (GameMode/BreakthroughConquest, "_4x2_Dukla_Pass_LD_4v4_BKT"),
+    ]
+    MapAssociationByCombatRule = MAP
+    [
+      (CombatRule/Destruction, "_4x2_Dukla_Pass_LD_4v4_DEST"),
+    ]
+
+    AlternativeMapNames = [
+      "_4x2_Dukla_Pass_LD_4v4",
+    ]
+    ArgentInitialTable = ArgentInitialSetting
+)
+export _4x2_Dukla_Pass_LD_4v4_BKT is TWargameMultiMapInfo
+(
+    Description = "MAP_064"
+    //GUID = GUID:{290a839c-52e2-4c66-8a6b-f7ce1e9df5e3}
+    NbMinPlayers = 1
+    NbMaxPlayers = 8
+    DefaultNbSlotsOpened = 8
+    RankedAvailability = [true, true, true, true]
+    DefaultArgentInitial = 750
+    DefaultDestructionScoreToReach = DestructionScoreToReachSetting
+    DefaultArgentInitialForIASkirmish = 750
+    DefaultDestructionScoreToReachForIASkirmish = DestructionScoreToReachForAISetting
+    ConquestPointsDefaultIndex = 1 //Indice dans ConquestPossibleScores de GDConstantes
+    GameModeAvailability = [GameMode/BreakthroughConquest]
+    CombatRuleAvailability = [CombatRule/CaptureTheFlag]
+    MapAssociationByMode = MAP
+    [
+      (GameMode/ConquestGameMode, "_4x2_Dukla_Pass_LD_4v4"),
+      (GameMode/CloseQuarterConquest, "_4x2_Dukla_Pass_LD_4v4_CQC"),
+    ]
+    MapAssociationByCombatRule = MAP
+    [
+    ]
+
+    AlternativeMapNames = [
+      "_4x2_Dukla_Pass_LD_4v4_BKT",
+    ]
+    ArgentInitialTable = ArgentInitialSetting
+)
+//
+export _4x2_Dukla_Pass_LD_4v4_CQC is TWargameMultiMapInfo
+(
+    Description = "MAP_064"
+    //GUID = GUID:{5231c692-3b67-42a6-b14e-142859427a69}
+    NbMinPlayers = 1
+    NbMaxPlayers = 8
+    DefaultNbSlotsOpened = 8
+    RankedAvailability = [true, true, true, true]
+    DefaultArgentInitial = 750
+    DefaultDestructionScoreToReach = DestructionScoreToReachSetting
+    DefaultArgentInitialForIASkirmish = 750
+    DefaultDestructionScoreToReachForIASkirmish = DestructionScoreToReachForAISetting
+    ConquestPointsDefaultIndex = 1 //Indice dans ConquestPossibleScores de GDConstantes
+    GameModeAvailability = [GameMode/CloseQuarterConquest]
+    CombatRuleAvailability = [CombatRule/CaptureTheFlag]
+    MapAssociationByMode = MAP
+    [
+      (GameMode/ConquestGameMode, "_4x2_Dukla_Pass_LD_4v4"),
+      (GameMode/BreakthroughConquest, "_4x2_Dukla_Pass_LD_4v4_BKT"),
+    ]
+    MapAssociationByCombatRule = MAP
+    [
+      (CombatRule/Destruction, "_4x2_Dukla_Pass_LD_4v4_DEST_CQC"),
+    ]
+
+    AlternativeMapNames = [
+      "_4x2_Dukla_Pass_LD_4v4_CQC",
+    ]
+    ArgentInitialTable = ArgentInitialSetting
+)
+//
+export _4x2_Dukla_Pass_LD_4v4_DEST is TWargameMultiMapInfo
+(
+    Description = "MAP_064"
+    //GUID = GUID:{77952f5c-2df3-4277-b542-8c2f13c9e270}
+    NbMinPlayers = 1
+    NbMaxPlayers = 8
+    DefaultNbSlotsOpened = 8
+    RankedAvailability = [true, true, true, true]
+    DefaultArgentInitial = 750
+    DefaultDestructionScoreToReach = DestructionScoreToReachSetting
+    DefaultArgentInitialForIASkirmish = 750
+    DefaultDestructionScoreToReachForIASkirmish = DestructionScoreToReachForAISetting
+    ConquestPointsDefaultIndex = 1 //Indice dans ConquestPossibleScores de GDConstantes
+    GameModeAvailability = [GameMode/ConquestGameMode]
+    CombatRuleAvailability = [CombatRule/Destruction]
+    MapAssociationByMode = MAP
+    [
+      (GameMode/CloseQuarterConquest, "_4x2_Dukla_Pass_LD_4v4_DEST_CQC"),
+    ]
+    MapAssociationByCombatRule = MAP
+    [
+      (CombatRule/CaptureTheFlag, "_4x2_Dukla_Pass_LD_4v4"),
+    ]
+
+    AlternativeMapNames = [
+      "_4x2_Dukla_Pass_LD_4v4_DEST",
+    ]
+    ArgentInitialTable = ArgentInitialSetting
+)
+//
+export _4x2_Dukla_Pass_LD_4v4_DEST_CQC is TWargameMultiMapInfo
+(
+    Description = "MAP_064"
+    //GUID = GUID:{b5e611fd-08d5-46a5-9c55-4d67054b92c0}
+    NbMinPlayers = 1
+    NbMaxPlayers = 8
+    DefaultNbSlotsOpened = 8
+    RankedAvailability = [true, true, true, true]
+    DefaultArgentInitial = 750
+    DefaultDestructionScoreToReach = DestructionScoreToReachSetting
+    DefaultArgentInitialForIASkirmish = 750
+    DefaultDestructionScoreToReachForIASkirmish = DestructionScoreToReachForAISetting
+    ConquestPointsDefaultIndex = 1 //Indice dans ConquestPossibleScores de GDConstantes
+    GameModeAvailability = [GameMode/CloseQuarterConquest]
+    CombatRuleAvailability = [CombatRule/Destruction]
+    MapAssociationByMode = MAP
+    [
+      (GameMode/ConquestGameMode, "_4x2_Dukla_Pass_LD_4v4_DEST"),
+    ]
+    MapAssociationByCombatRule = MAP
+    [
+      (CombatRule/CaptureTheFlag, "_4x2_Dukla_Pass_LD_4v4_CQC"),
+    ]
+
+    AlternativeMapNames = [
+      "_4x2_Dukla_Pass_LD_4v4_DEST_CQC",
+    ]
+    ArgentInitialTable = ArgentInitialSetting
+)
 //#EndMaps
 
 // --------------------------------------------------------------------

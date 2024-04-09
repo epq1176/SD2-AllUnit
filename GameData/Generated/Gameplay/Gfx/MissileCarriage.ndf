@@ -32,6 +32,19 @@ export MissileCarriage_A20_C_Havoc_x20_50_SOV is TMissileCarriageConnoisseur
         ),
     ]
 )
+export MissileCarriage_A20_G_Havoc_rocket_US is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_A20_G_Havoc_rocket_US
+    PylonSet       = PylonSet_A20_G_Havoc_rocket_US
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //110mm Rocket x12
+        (
+            WeaponIndex = 5
+            MissileType = eAGM
+            Count       = 1 * 12
+        ),
+    ]
+)
 export MissileCarriage_Ar_196_A3_Obs138mm_GER is TMissileCarriageConnoisseur
 (
     MeshDescriptor = Modele_Ar_196_A3_Obs138mm_GER
@@ -201,6 +214,19 @@ export MissileCarriage_F6F_5_Hellcat_F_Mk_II_x6_127mm_AP_UK is TMissileCarriageC
             WeaponIndex = 2
             MissileType = eAGM
             Count       = 1 * 8
+        ),
+    ]
+)
+export MissileCarriage_FW_190_F8_PzSchreck_GER is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_FW_190_F8_PzSchreck_GER
+    PylonSet       = PylonSet_FW_190_F8_PzSchreck_GER
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //80mm Panzerblitz 1 AP Rocket x12
+        (
+            WeaponIndex = 3
+            MissileType = eAGM
+            Count       = 1 * 12
         ),
     ]
 )
@@ -3206,12 +3232,40 @@ export MissileCarriage_Su_2_M_82_x10_82mm_AP_SOV is TMissileCarriageConnoisseur
         ),
     ]
 )
+export MissileCarriage_Tempest_110_NZ is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_Tempest_110_NZ
+    PylonSet       = PylonSet_Tempest_110_NZ
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //Bomb AN M57 113kg x2
+        (
+            WeaponIndex = 3
+            MissileType = eAGM
+            MountingType = eMountingBomb
+            Count       = 1 * 2
+        ),
+    ]
+)
 export MissileCarriage_Tempest_110_UK is TMissileCarriageConnoisseur
 (
     MeshDescriptor = Modele_Tempest_110_UK
     PylonSet       = PylonSet_Tempest_110_UK
     WeaponInfos    = [
         TMissileCarriageWeaponInfo //Bomb AN M57 113kg x2
+        (
+            WeaponIndex = 3
+            MissileType = eAGM
+            MountingType = eMountingBomb
+            Count       = 1 * 2
+        ),
+    ]
+)
+export MissileCarriage_Tempest_230_NZ is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_Tempest_230_NZ
+    PylonSet       = PylonSet_Tempest_230_NZ
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //Bomb AN M64 227kg x2
         (
             WeaponIndex = 3
             MissileType = eAGM
@@ -3231,6 +3285,19 @@ export MissileCarriage_Tempest_230_UK is TMissileCarriageConnoisseur
             MissileType = eAGM
             MountingType = eMountingBomb
             Count       = 1 * 2
+        ),
+    ]
+)
+export MissileCarriage_Tempest_MK5_Rocket_NZ is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_Tempest_MK5_Rocket_NZ
+    PylonSet       = PylonSet_Tempest_MK5_Rocket_NZ
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //150mm RP3 HE Rocket x8
+        (
+            WeaponIndex = 2
+            MissileType = eAGM
+            Count       = 1 * 8
         ),
     ]
 )
@@ -3337,6 +3404,20 @@ export MissileCarriage_Typhoon_230_UK is TMissileCarriageConnoisseur
     PylonSet       = PylonSet_Typhoon_230_UK
     WeaponInfos    = [
         TMissileCarriageWeaponInfo //Bomb AN M64 227kg x2
+        (
+            WeaponIndex = 3
+            MissileType = eAGM
+            MountingType = eMountingBomb
+            Count       = 1 * 2
+        ),
+    ]
+)
+export MissileCarriage_Typhoon_450_CAN is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_Typhoon_450_CAN
+    PylonSet       = PylonSet_Typhoon_450_CAN
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //Bomb AN M65 454kg x2
         (
             WeaponIndex = 3
             MissileType = eAGM

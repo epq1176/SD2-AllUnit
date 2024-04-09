@@ -216,10 +216,10 @@ template WeaponPanelMainContainer
 
     Components =
     [
-        // Gauge + Calibre
-        WeaponPanelWeaponStatusGaugeAndCalibre(HasGauge = <HasGauge>),
         // Weapon Icon
         ~/WeaponPanelWeaponIcon,
+        // Gauge + Calibre
+        WeaponPanelWeaponStatusGaugeAndCalibre(HasGauge = <HasGauge>),
     ]
 )
 
@@ -422,15 +422,19 @@ private WeaponPanelWeaponIcon is BUCKTextureDescriptor
     ElementName = 'WeaponIcon'
     ComponentFrame = TUIFramePropertyRTTI
     (
-        MagnifiableWidthHeight = [132.0, 50.0]
-        MagnifiableOffset      = [0.0, 4.0]
+        RelativeWidthHeight = [1.0, 1.0]
+        MagnifiableWidthHeight = [0.0, -10.0]
         AlignementToFather     = [0.5, 0.0]
         AlignementToAnchor     = [0.5, 0.0]
     )
 
-    TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+    TextureFrame = TUIFramePropertyRTTI
+    (
+        AlignementToFather     = [0.5, 0.0]
+        AlignementToAnchor     = [0.5, 0.0]
+    )
 
-
+    ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
     ClipContent = true
 
     Components =
@@ -677,7 +681,6 @@ is BUCKSpecificButton
     BigBorderBackgroundColorToken = "Transparent" //(<IsSelection> ? "ButtonHUD/BigBorder" : "Transparent")
     BackgroundBlockColorToken  = (<IsSelection> ? "ButtonHUD/Background_gris" : "ButtonHUD/Background2")
 
-
     Components =
     [
         BUCKListDescriptor
@@ -714,6 +717,7 @@ is BUCKSpecificButton
                         ElementName = <ElementNameCalibre>
                         ComponentFrame = TUIFramePropertyRTTI
                         (
+                            MagnifiableWidthHeight = [130.0, 0.0]
                             AlignementToAnchor = [0.0, 0.5]
                             AlignementToFather = [0.0, 0.5]
                         )
@@ -727,11 +731,11 @@ is BUCKSpecificButton
 
                         TextStyle = "Default"
 
-                        HorizontalFitStyle = ~/FitStyle/FitToContent
+                        HorizontalFitStyle = ~/FitStyle/MinBetweenUserDefinedAndContent
                         VerticalFitStyle = ~/FitStyle/FitToContent
 
                         TypefaceToken = "Main"
-                        BigLineAction = ~/BigLineAction/CutByDots
+                        BigLineAction = ~/BigLineAction/ResizeFont
 
                         TextDico = ~/LocalisationConstantes/dico_interface_ingame
                         TextToken = <TextToken>

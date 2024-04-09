@@ -308,6 +308,24 @@ CubeAction_Capacity_Malus_Suppress_AllTime is TCubeActionCapacityButtonInformati
     Descriptor                   = ~/Capacite_Malus_Suppress_AllTime
 )
 
+CubeAction_Capacity_Malus_Suppress_BattleWeary is TCubeActionCapacityButtonInformationsDescriptor
+(
+    CubeActionName               = "CubeAction_Capacity_Malus_Suppress_BattleWeary"
+    CubeActionFunctionType       = ~/TacticCubeActionFunctionType/Orders
+    BackgroundTexture            = "Texture_Button_Capacity_Malus_Suppress_BattleWeary"
+    HoverSound                   = CubeActionButtonHasHoverSound ? CubeActionButtonHoverSound : nil
+    ClickSound                   = CubeActionButtonHasClickSound ? CubeActionButtonClickSound : nil
+    ButtonTextToken              = ""
+    HintDico                     = ~/LocalisationConstantes/dico_interface_ingame
+    HintTitleToken               = ""
+    HintBodyToken                = ""
+    HintExtendedToken            = ""
+    DependanciesToIgnore         =
+    [
+    ]
+    Descriptor                   = ~/Capacite_Malus_Suppress_BattleWeary
+)
+
 CubeAction_Capacity_Malus_Suppress_Zone_Influence_Ennemie is TCubeActionCapacityButtonInformationsDescriptor
 (
     CubeActionName               = "CubeAction_Capacity_Malus_Suppress_Zone_Influence_Ennemie"

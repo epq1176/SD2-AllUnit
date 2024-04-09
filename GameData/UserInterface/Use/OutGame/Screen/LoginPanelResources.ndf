@@ -161,18 +161,6 @@ private CreateAccountModalCreateButtonDescriptor is ConfirmButton
 // -------------------------------------------------------------------------------------------------
 // -------------------------------------------------------------------------------------------------
 
-private MigrateWargamingAccountModalButtonDescriptor is ConfirmButton
-(
-    ElementName = "MigrateButton"
-
-    TextToken = 'CP_MIGRATE'
-
-    //FocusMapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
-)
-
-// -------------------------------------------------------------------------------------------------
-// -------------------------------------------------------------------------------------------------
-
 private LoginModalCancelButtonDescriptor is CancelButton
 (
     ElementName = "CancelButton"
@@ -310,28 +298,6 @@ private CreateAccountModalWindowFrame is SpecificModaleWindowFrame
 
     ButtonList = [
         BUCKListElementDescriptor( ComponentDescriptor = ~/CreateAccountModalCreateButtonDescriptor ),
-        BUCKListElementDescriptor( ComponentDescriptor = ~/LoginModalCancelButtonDescriptor ),
-    ]
-)
-
-// -------------------------------------------------------------------------------------------------
-// -------------------------------------------------------------------------------------------------
-
-private MigrateWargamingAccountModalWindowFrame is SpecificModaleWindowFrame
-(
-    ComponentFrame = TUIFramePropertyRTTI
-    (
-        MagnifiableWidthHeight = [1000.0, 0.0]
-        AlignementToAnchor = [0.5, 0.5]
-        AlignementToFather = [0.5, 0.5]
-    )
-
-    ContentRelativeWidthHeight = [1.0, 0.0]
-    ContentFitStyle = ~/ContainerFitStyle/FitToContentVertically
-    TitleToken = 'TMIGWARGA'
-
-    ButtonList = [
-        BUCKListElementDescriptor( ComponentDescriptor = ~/MigrateWargamingAccountModalButtonDescriptor ),
         BUCKListElementDescriptor( ComponentDescriptor = ~/LoginModalCancelButtonDescriptor ),
     ]
 )
@@ -1504,7 +1470,6 @@ LoginResource is TUISpecificOutGameLoginResource
     RecoverLoginPanelContent = ~/UISpecificOutGameRecoverLoginViewDescriptor
     RecoverPasswordPanelContent = ~/UISpecificOutGameRecoverPasswordViewDescriptor
     CreateAccountPanelContent = ~/UISpecificOutGameCreateAccountViewDescriptor
-    MigrateWargamingAccountPanelContent = ~/UISpecificOutGameMigrateWargamingAccountViewDescriptor
 
     LoginPanelContent = ~/UISpecificOutGameLoginModaleViewDescriptor
     LoginModalFirstConnexionButton = ~/LoginModalFirstConnexionButtonDescriptor
@@ -1527,5 +1492,4 @@ LoginResource is TUISpecificOutGameLoginResource
     RecoverLoginModalDescriptor = ~/RecoverLoginModalWindowFrame
     ForgotPasswordModalDescriptor = ~/ForgotPasswordModalWindowFrame
     CreateAccountModalDescriptor = ~/CreateAccountModalWindowFrame
-    MigrateWargamingAccountModalDescriptor = ~/MigrateWargamingAccountModalWindowFrame
 )

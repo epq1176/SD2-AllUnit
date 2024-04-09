@@ -2444,8 +2444,6 @@ export Descriptor_Unit_127mm_UK is TEntityDescriptor
                     ShootModeToWeaponReference = MAP
                     [
                         (EOutMapArtilleryShootMode/Warning, (0, 0)),
-                        (EOutMapArtilleryShootMode/FireForEffect, (0, 1)),
-                        (EOutMapArtilleryShootMode/Barrage, (0, 2)),
                     ]
                 )
                 Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
@@ -5011,7 +5009,7 @@ export Descriptor_Unit_150mm_ROU is TEntityDescriptor
                 (
                     TypeUnitValue                    = ETypeUnit/ArtHowit
                     Nationalite                      = ENationalite/Axis
-                    MotherCountry                    = 'GER'
+                    MotherCountry                    = 'ROU'
                     AcknowUnitType                   = ~/TAcknowUnitType_OffMap
                     TypeUnitFormation                = 'None'
                 )
@@ -5026,7 +5024,7 @@ export Descriptor_Unit_150mm_ROU is TEntityDescriptor
                         )
                         Descriptor = TTypeUnitModuleDescriptor
                         (
-                            MotherCountry                    = 'GER'
+                            MotherCountry                    = 'ROU'
                             Nationalite                      = ENationalite/Axis
                             TypeUnitValue                    = ETypeUnit/ArtHowit
                         )
@@ -5219,7 +5217,7 @@ export Descriptor_Unit_150mm_ROU is TEntityDescriptor
                     TopViewTexture = 'Texture_Unit_TopView_150mm_ROU'
                     MenuIconTexture = 'Texture_MenuIcon_Arty_Off_Map_155mm'
                     ButtonTexture = 'Texture_Button_Unit_150mm_ROU'
-                    CountryTexture = 'CommonTexture_MotherCountryFlag_GER'
+                    CountryTexture = 'CommonTexture_MotherCountryFlag_ROU'
                     TypeStrategicCount = ETypeStrategicCount/NotCounted
                 )
                 Selection = [
@@ -5240,7 +5238,7 @@ export Descriptor_Unit_150mm_ROU is TEntityDescriptor
                             TopViewTexture = 'Texture_Unit_TopView_150mm_ROU'
                             MenuIconTexture = 'Texture_MenuIcon_Arty_Off_Map_155mm'
                             ButtonTexture = 'Texture_Button_Unit_150mm_ROU'
-                            CountryTexture = 'CommonTexture_MotherCountryFlag_GER'
+                            CountryTexture = 'CommonTexture_MotherCountryFlag_ROU'
                             TypeStrategicCount = ETypeStrategicCount/NotCounted
                         )
                     )
@@ -13477,6 +13475,256 @@ export Descriptor_Unit_356mm_UK is TEntityDescriptor
                             MenuIconTexture = 'Texture_MenuIcon_Arty_Off_Map_356mm'
                             ButtonTexture = 'Texture_Button_Unit_356mm_UK'
                             CountryTexture = 'CommonTexture_MotherCountryFlag_UK'
+                            TypeStrategicCount = ETypeStrategicCount/NotCounted
+                        )
+                    )
+                ]
+            ),
+
+    ]
+)
+export Descriptor_Unit_356mm_US is TEntityDescriptor
+(
+    DescriptorId       = GUID:{a68e58a9-4aa9-449a-9020-e67366615cf6}
+    ClassNameForDebug  = 'Unit_356mm_US'
+    Modules            = [
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/ArtHowit
+                    Nationalite                      = ENationalite/Allied
+                    MotherCountry                    = 'US'
+                    AcknowUnitType                   = ~/TAcknowUnitType_OffMap
+                    TypeUnitFormation                = 'None'
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId=~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue=~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TTypeUnitModuleDescriptor
+                        (
+                            MotherCountry                    = 'US'
+                            Nationalite                      = ENationalite/Allied
+                            TypeUnitValue                    = ETypeUnit/ArtHowit
+                        )
+                    )
+                ]
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+                TagSet = [
+                    "AllUnits",
+                    "Unite",
+                    "UNITE_356mm_US",
+                    "Artillerie_Hors_Carte",
+                ]
+            ),
+
+        // Flags
+            TFlagsModuleDescriptor
+            (
+                InitialFlagSet =
+                [
+                    Flag_Selectionnable,
+                    Flag_LdDetectable,
+                    Flag_Artillerie,
+                ]
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // WeaponManager
+        WeaponManager is
+            TModuleSelector
+            (
+                Default        = $/GFX/Everything/WeaponDescriptor_356mm_US
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // StateEngineCompany
+            TModuleSelector
+            (
+                Default        = TStateEngineCompanyModuleDescriptor
+                (
+                    InitialStateId = 'CompanyInit'
+                    StateEngineUpdateMode = WorldControllerAccess_InWorld
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // StateEngine
+            TModuleSelector
+            (
+                Default        = TStateEngineModuleDescriptor
+                (
+                    InitialStateId = 'UnitIdle'
+                    StateEngineUpdateMode = WorldControllerAccess_InWorld
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // Debug
+            ~/DebugModuleDescriptor,
+
+        // Selection
+            TModuleSelector
+            (
+                Default            = TSelectionModuleDescriptor
+                (
+                    IsSelectable       = True
+                    IsHighlightable    = False
+                    HasSelectionShader = False
+                    HasHighlightShader = True
+                    MultipleSelectionFilterPriorityDefault      = 0
+                    MultipleSelectionFilterPrioritySecondary    = 0
+                )
+                Selection = [ ~/NilDescriptorIfCadavre ]
+            ),
+
+        // CubeAction
+            TModuleSelector
+            (
+                Default        = TCubeActionModuleDescriptor
+                (
+                    CubeActionDescriptor = ~/CubeAction_Menu_Ordres_Arty_OffMap
+                )
+                Selection      = [
+                    ~/NilDescriptorIfCadavre
+                ]
+            ),
+
+        // Orderable
+            TModuleSelector
+            (
+                Default                   = TOrderableModuleDescriptor
+                (
+                    CanHoldPosition           = False
+                    CanMove                   = False
+                    CanBeHarvested            = False
+                    CanHarvest                = False
+                    CanChangeTransferTarget   = False
+                    CanSell                   = False
+                    CanBuild                  = False
+                    CanAttack                 = False
+                    CanStop                   = True
+                    CanFollowFormation        = False
+                    CanShoot                  = True
+                    CanMerge                  = False
+                    CanUnloadFromTransport    = False
+                    CanLand                   = False
+                    CanGoUp                   = False
+                    CanGoDown                 = False
+                    CanMoveAndAttack          = False
+                    CanSpread                 = False
+                    CanReverse                = False
+                    CanSupplyUnit             = False
+                    CanAskForSupply           = False
+                    CanGoGetSupply            = False
+                    CanEnterDistrict          = False
+                    CanAirplanePatrol         = False
+                    CanAirplaneAttack         = False
+                    CanLoadIntoTransport      = False
+                    CanLoadUnit               = False
+                    CanAirplaneTakeOff        = False
+                    CanAirplaneEvacuate       = False
+                    CanRefuelAirplane         = False
+                    CanRepairAirplane         = False
+                    CanRearmAirplane          = False
+                    CanAirplaneShoot          = False
+                    CanBombard                = False
+                    CanFortify                = True
+                    CanFortifyAntiAir         = True
+                    CanAIDefend               = True
+                    CanAIAiplaneAutoManage    = False
+                    CanAIAttack               = True
+                    CanAIManageArtillery      = False
+                    CanAIStop                 = True
+                    CanSmartHoldFire          = True
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // IAStrat
+            TModuleSelector
+            (
+                Default        = TIAStratModuleDescriptor
+                (
+                    DatabaseId = 1
+                    GameplayBehavior = EGameplayBehavior/Nothing
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // GroupableUnit
+            ~/GroupableUnitModuleSelector,
+
+        // LinkToObserver
+            TModuleSelector
+            (
+                Default = TLinkToObserverModuleDescriptor
+                (
+                    ShootModeToWeaponReference = MAP
+                    [
+                        (EOutMapArtilleryShootMode/Warning, (0, 0)),
+                        (EOutMapArtilleryShootMode/FireForEffect, (0, 1)),
+                        (EOutMapArtilleryShootMode/Barrage, (0, 2)),
+                    ]
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+            ),
+
+        // PackSignaux
+            ~/PackSignauxModuleSelector,
+
+        // UnitUI
+            TModuleSelector
+            (
+                Default = TUnitUIModuleDescriptor
+                (
+                    HintToken = 'ArtHowit'
+                    SpecialtiesList = [
+                    ]
+                    NameToken = 'OffMap356'
+                    InfoPanelConfigurationToken = 'Default'
+                    TypeSpecificToken = ''
+                    ShowInMenu = True
+                    IsAce = False
+                    GenerateName = true
+                    TopViewTexture = 'Texture_Unit_TopView_356mm_US'
+                    MenuIconTexture = 'Texture_MenuIcon_Arty_Off_Map_356mm'
+                    ButtonTexture = 'Texture_Button_Unit_356mm_US'
+                    CountryTexture = 'CommonTexture_MotherCountryFlag_US'
+                    TypeStrategicCount = ETypeStrategicCount/NotCounted
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId = ~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue = ~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TUnitUIModuleDescriptor
+                        (
+                            HintToken = 'ArtHowit'
+                            NameToken = 'OffMap356'
+                            InfoPanelConfigurationToken = 'Default'
+                            TypeSpecificToken = ''
+                            TopViewTexture = 'Texture_Unit_TopView_356mm_US'
+                            MenuIconTexture = 'Texture_MenuIcon_Arty_Off_Map_356mm'
+                            ButtonTexture = 'Texture_Button_Unit_356mm_US'
+                            CountryTexture = 'CommonTexture_MotherCountryFlag_US'
                             TypeStrategicCount = ETypeStrategicCount/NotCounted
                         )
                     )

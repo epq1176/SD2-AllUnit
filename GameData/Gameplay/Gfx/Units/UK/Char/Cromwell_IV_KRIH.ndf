@@ -1,0 +1,22 @@
+export ModelFile_Cromwell_IV_KRIH is 'GameData:Assets\3D\Units\UK\Char\Cromwell_V_KRIH\Cromwell_V_KRIH.Ase2NdfBin'
+
+export Modele_Cromwell_IV_KRIH is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Cromwell_IV_KRIH
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Cromwell_IV_KRIH_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\Cromwell_V_KRIH_MID\Cromwell_V_KRIH_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Cromwell_IV_KRIH_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\UK\Char\LODS\Cromwell_V_KRIH_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

@@ -1,0 +1,22 @@
+export ModelFile_Wallaby is 'GameData:Assets\3D\Units\CAN\Char\RAM_Wallaby\RAM_Wallaby.Ase2NdfBin'
+
+Modele_Wallaby is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Wallaby
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Wallaby_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CAN\Char\RAM_Wallaby_MID\RAM_Wallaby_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Wallaby_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CAN\Char\LODS\RAM_Wallaby_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
