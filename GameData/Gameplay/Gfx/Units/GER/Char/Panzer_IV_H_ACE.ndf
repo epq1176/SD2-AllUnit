@@ -1,0 +1,22 @@
+export ModelFile_Panzer_IV_H_ACE is 'GameData:Assets\3D\Units\GER\Char\Panzer_IV_H_Kretzschmar\Panzer_IV_H_Kretzschmar.Ase2NdfBin'
+
+Modele_Panzer_IV_H_ACE is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Panzer_IV_H_ACE
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_IV_H_ACE_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\Panzer_IV_H_Kretzschmar_MID\Panzer_IV_H_Kretzschmar_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_IV_H_ACE_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\GER\Char\LODS\Panzer_IV_H_Kretzschmar_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
