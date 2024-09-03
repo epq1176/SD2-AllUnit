@@ -2265,14 +2265,14 @@ template Gfx_LeeEnf
 )
 
 
-template TemplateMeshDescriptor_Kgun [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
+template TemplateMeshDescriptor_Lewis [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
 (
     FileName = <ModelFile>
     CivMask = <CivMask>
     TypeMask = TypeMask/Infanterie
 )
 
-template Gfx_Kgun
+template Gfx_Lewis
 [
     Actions = [],
     CivMask
@@ -2282,13 +2282,13 @@ template Gfx_Kgun
     Selector = $/GFX/Everything/SoldierWeaponSubDepictionSelector
     DepictionAlternatives = [
                 DepictionDescriptor_LOD_InfantryHigh(
-                    MeshDescriptor = TemplateMeshDescriptor_Kgun( ModelFile = ModelFile_Kgun CivMask = <CivMask> )
+                    MeshDescriptor = TemplateMeshDescriptor_Lewis( ModelFile = ModelFile_Lewis CivMask = <CivMask> )
                 ),
                 DepictionDescriptor_LOD_InfantryMid(
-                    MeshDescriptor = TemplateMeshDescriptor_Kgun( ModelFile = ModelFile_Kgun CivMask = <CivMask> )
+                    MeshDescriptor = TemplateMeshDescriptor_Lewis( ModelFile = ModelFile_Lewis CivMask = <CivMask> )
                 ),
                 DepictionDescriptor_LOD_InfantryLow(
-                    MeshDescriptor = TemplateMeshDescriptor_Kgun( ModelFile = ModelFile_Kgun CivMask = <CivMask> )
+                    MeshDescriptor = TemplateMeshDescriptor_Lewis( ModelFile = ModelFile_Lewis CivMask = <CivMask> )
                 ),
                 DepictionDescriptor_LOD_InfantryNone
             ]
@@ -3560,6 +3560,37 @@ template Gfx_UD_M42
                 ),
                 DepictionDescriptor_LOD_InfantryLow(
                     MeshDescriptor = TemplateMeshDescriptor_UD_M42( ModelFile = ModelFile_UD_M42 CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryNone
+            ]
+    Actions = <Actions>
+)
+
+
+template TemplateMeshDescriptor_Kgun [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = <CivMask>
+    TypeMask = TypeMask/Infanterie
+)
+
+template Gfx_Kgun
+[
+    Actions = [],
+    CivMask
+] is TDepictionTemplate
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = $/GFX/Everything/SoldierWeaponSubDepictionSelector
+    DepictionAlternatives = [
+                DepictionDescriptor_LOD_InfantryHigh(
+                    MeshDescriptor = TemplateMeshDescriptor_Kgun( ModelFile = ModelFile_Kgun CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryMid(
+                    MeshDescriptor = TemplateMeshDescriptor_Kgun( ModelFile = ModelFile_Kgun CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryLow(
+                    MeshDescriptor = TemplateMeshDescriptor_Kgun( ModelFile = ModelFile_Kgun CivMask = <CivMask> )
                 ),
                 DepictionDescriptor_LOD_InfantryNone
             ]

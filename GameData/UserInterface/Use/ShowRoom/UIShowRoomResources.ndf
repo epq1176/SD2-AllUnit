@@ -44,10 +44,10 @@ export ShowRoomResource is TUISpecificShowRoomResources
     ArmoryComponentDescriptor = ~/ArmoryBUCKComponentDescriptor
     DeckCreatorScreenComponentDescriptor = ~/DeckCreatorScreenBUCKComponentDescriptor
 
-    CountriesToShow = ["SOV","US","UK","FR","CAN","POL","BEL","NZ","GRE","EST","SA","YUG","ITA","BRZ","CZ","BUL", "GER","HON","FIN","ROU","LIT","CRO","RSI"]
+    CountriesToShow = ["SOV","US","UK","FR","CAN","POL","BEL","NZ","GRE","EST","SA","YUG","ITA","BRZ","CZ","BUL","NL","GER","HON","FIN","ROU","LIT","CRO","RSI"]
     AllianceToCountriesToShow = MAP [
         (ENationalite/Axis, ["GER","HON","FIN","ROU","LIT","CRO","RSI"]),
-        (ENationalite/Allied, ["SOV","UK","US","CAN","FR","POL","BEL","EST","NZ","GRE","ROU","SA","YUG","ITA","BRZ","CZ","BUL"])
+        (ENationalite/Allied, ["SOV","UK","US","CAN","FR","POL","BEL","EST","NZ","GRE","ROU","SA","YUG","ITA","BRZ","CZ","BUL","NL"])
     ]
     ArmoryCountryFilterButtonDescriptor = ~/ArmoryCountryFilterButtonDescriptor
     SpecificHidingViewDescriptor = ~/UISpecificHidingViewDescriptor

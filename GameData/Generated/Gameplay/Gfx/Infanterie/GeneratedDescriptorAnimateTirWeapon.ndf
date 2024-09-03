@@ -3877,6 +3877,18 @@ template FXInfantryWeapon_Sten_GER [ Anchor, ShotCountInitialValue ] is FXInfant
     ImpactPower            = 1.0
     ShotCountInitialValue  = <ShotCountInitialValue>
 )
+template FXInfantryWeapon_Sten_Mk5_x2 [ Anchor, ShotCountInitialValue ] is FXInfantry
+(
+    Anchor                 = <Anchor>
+    FX                     = FX_Full_Mitrailleuse_7mm
+    WithoutPhysics         = True
+    InitialSpeed           = 25000.0
+    FluidFriction          = 0.0
+    DirectFire             = False
+    Power                  = 2.
+    ImpactPower            = 1.0
+    ShotCountInitialValue  = <ShotCountInitialValue>
+)
 template FXInfantryWeapon_Sten_x2 [ Anchor, ShotCountInitialValue ] is FXInfantry
 (
     Anchor                 = <Anchor>

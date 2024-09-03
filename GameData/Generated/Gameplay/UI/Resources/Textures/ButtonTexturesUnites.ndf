@@ -3277,6 +3277,12 @@ export Texture_Button_Unit_Engineers_Arm_US is TUIResourceTextureWithUsefulnessM
     CivMask  = CivMask/Nationalite1
     FileName = 'Assets\2D\Interface\Common\UnitsIcons\EU\Engineers_Arm_US.png'
 )
+export Texture_Button_Unit_Engineers_Paratrooper_POL is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask = TypeMask/BuildMenu
+    CivMask  = CivMask/Nationalite1
+    FileName = 'Assets\2D\Interface\Common\UnitsIcons\EU\default.png'
+)
 export Texture_Button_Unit_Erkundungstruppe_GER is TUIResourceTextureWithUsefulnessMask
 (
     TypeMask = TypeMask/BuildMenu
@@ -7885,6 +7891,12 @@ export Texture_Button_Unit_Ldr_Voltigeur_FR is TUIResourceTextureWithUsefulnessM
     CivMask  = CivMask/Nationalite1
     FileName = 'Assets\2D\Interface\Common\UnitsIcons\EU\Ldr_Voltigeur_FR.png'
 )
+export Texture_Button_Unit_Leader_Paratrooper_POL is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask = TypeMask/BuildMenu
+    CivMask  = CivMask/Nationalite1
+    FileName = 'Assets\2D\Interface\Common\UnitsIcons\EU\default.png'
+)
 export Texture_Button_Unit_Legion_FR is TUIResourceTextureWithUsefulnessMask
 (
     TypeMask = TypeMask/BuildMenu
@@ -11773,6 +11785,18 @@ export Texture_Button_Unit_Rifle_Paratrooper_CAN is TUIResourceTextureWithUseful
     CivMask  = CivMask/Nationalite1
     FileName = 'Assets\2D\Interface\Common\UnitsIcons\EU\Pathfinder_UK.png'
 )
+export Texture_Button_Unit_Rifle_Paratrooper_PIAT_POL is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask = TypeMask/BuildMenu
+    CivMask  = CivMask/Nationalite1
+    FileName = 'Assets\2D\Interface\Common\UnitsIcons\EU\default.png'
+)
+export Texture_Button_Unit_Rifle_Paratrooper_POL is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask = TypeMask/BuildMenu
+    CivMask  = CivMask/Nationalite1
+    FileName = 'Assets\2D\Interface\Common\UnitsIcons\EU\default.png'
+)
 export Texture_Button_Unit_Rifle_Paratrooper_UK is TUIResourceTextureWithUsefulnessMask
 (
     TypeMask = TypeMask/BuildMenu
@@ -13542,12 +13566,6 @@ export Texture_Button_Unit_Sherman_M4A2_SOV is TUIResourceTextureWithUsefulnessM
     TypeMask = TypeMask/BuildMenu
     CivMask  = CivMask/Nationalite1
     FileName = 'Assets\2D\Interface\Common\UnitsIcons\EU\Sherman_M4A2_SOV.png'
-)
-export Texture_Button_Unit_Sherman_M4A2_UK is TUIResourceTextureWithUsefulnessMask
-(
-    TypeMask = TypeMask/BuildMenu
-    CivMask  = CivMask/Nationalite1
-    FileName = 'Assets\2D\Interface\Common\UnitsIcons\EU\Sherman_M4A2_UK.png'
 )
 export Texture_Button_Unit_Sherman_M4A3105_FR is TUIResourceTextureWithUsefulnessMask
 (
@@ -21724,6 +21742,7 @@ UnitButtonTextureAdditionalBank is TBUCKToolAdditionalTextureBank
         ("Texture_Button_Unit_Engineer_Leader_UK", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Engineer_Leader_UK), ]),
         ("Texture_Button_Unit_Engineers_AB_US", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Engineers_AB_US), ]),
         ("Texture_Button_Unit_Engineers_Arm_US", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Engineers_Arm_US), ]),
+        ("Texture_Button_Unit_Engineers_Paratrooper_POL", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Engineers_Paratrooper_POL), ]),
         ("Texture_Button_Unit_Erkundungstruppe_GER", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Erkundungstruppe_GER), ]),
         ("Texture_Button_Unit_Ersatz_FIN", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Ersatz_FIN), ]),
         ("Texture_Button_Unit_Ersatz_MG_GER", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Ersatz_MG_GER), ]),
@@ -22492,6 +22511,7 @@ UnitButtonTextureAdditionalBank is TBUCKToolAdditionalTextureBank
         ("Texture_Button_Unit_Ldr_FFI_FR", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Ldr_FFI_FR), ]),
         ("Texture_Button_Unit_Ldr_Spahis_FR", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Ldr_Spahis_FR), ]),
         ("Texture_Button_Unit_Ldr_Voltigeur_FR", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Ldr_Voltigeur_FR), ]),
+        ("Texture_Button_Unit_Leader_Paratrooper_POL", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Leader_Paratrooper_POL), ]),
         ("Texture_Button_Unit_Legion_FR", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Legion_FR), ]),
         ("Texture_Button_Unit_Legion_Ldr_FR", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Legion_Ldr_FR), ]),
         ("Texture_Button_Unit_Legion_Sapeurs_FR", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Legion_Sapeurs_FR), ]),
@@ -23140,6 +23160,8 @@ UnitButtonTextureAdditionalBank is TBUCKToolAdditionalTextureBank
         ("Texture_Button_Unit_Rifle_POL", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Rifle_POL), ]),
         ("Texture_Button_Unit_Rifle_Paratrooper_Bren_UK", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Rifle_Paratrooper_Bren_UK), ]),
         ("Texture_Button_Unit_Rifle_Paratrooper_CAN", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Rifle_Paratrooper_CAN), ]),
+        ("Texture_Button_Unit_Rifle_Paratrooper_PIAT_POL", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Rifle_Paratrooper_PIAT_POL), ]),
+        ("Texture_Button_Unit_Rifle_Paratrooper_POL", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Rifle_Paratrooper_POL), ]),
         ("Texture_Button_Unit_Rifle_Paratrooper_UK", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Rifle_Paratrooper_UK), ]),
         ("Texture_Button_Unit_Rifle_SW", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Rifle_SW), ]),
         ("Texture_Button_Unit_Rifle_UK", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Rifle_UK), ]),
@@ -23435,7 +23457,6 @@ UnitButtonTextureAdditionalBank is TBUCKToolAdditionalTextureBank
         ("Texture_Button_Unit_Sherman_M4A2_NZ", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Sherman_M4A2_NZ), ]),
         ("Texture_Button_Unit_Sherman_M4A2_POL", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Sherman_M4A2_POL), ]),
         ("Texture_Button_Unit_Sherman_M4A2_SOV", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Sherman_M4A2_SOV), ]),
-        ("Texture_Button_Unit_Sherman_M4A2_UK", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Sherman_M4A2_UK), ]),
         ("Texture_Button_Unit_Sherman_M4A3105_FR", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Sherman_M4A3105_FR), ]),
         ("Texture_Button_Unit_Sherman_M4A3105_US", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Sherman_M4A3105_US), ]),
         ("Texture_Button_Unit_Sherman_M4A375W_CMD_FR", MAP [( ~/ComponentState/Normal, ~/Texture_Button_Unit_Sherman_M4A375W_CMD_FR), ]),
