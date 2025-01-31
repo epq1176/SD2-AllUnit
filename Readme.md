@@ -8,4 +8,4 @@ SD2 All Unit Mod
 
 DLC units need DLC (probably, after all, I bought all)
 
-Attention: Due to Github's 100mb file limit, the UniteDescriptor.ndf was packaged as a .7z archive!
+Attention: Due to Github's 100mb file limit, the UniteDescriptor.ndf was packaged as archive!
