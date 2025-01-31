@@ -3412,6 +3412,37 @@ template Gfx_Sten
 )
 
 
+template TemplateMeshDescriptor_StenMkV [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
+(
+    FileName = <ModelFile>
+    CivMask = <CivMask>
+    TypeMask = TypeMask/Infanterie
+)
+
+template Gfx_StenMkV
+[
+    Actions = [],
+    CivMask
+] is TDepictionTemplate
+(
+    RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
+    Selector = $/GFX/Everything/SoldierWeaponSubDepictionSelector
+    DepictionAlternatives = [
+                DepictionDescriptor_LOD_InfantryHigh(
+                    MeshDescriptor = TemplateMeshDescriptor_StenMkV( ModelFile = ModelFile_StenMkV CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryMid(
+                    MeshDescriptor = TemplateMeshDescriptor_StenMkV( ModelFile = ModelFile_StenMkV CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryLow(
+                    MeshDescriptor = TemplateMeshDescriptor_StenMkV( ModelFile = ModelFile_StenMkV CivMask = <CivMask> )
+                ),
+                DepictionDescriptor_LOD_InfantryNone
+            ]
+    Actions = <Actions>
+)
+
+
 template TemplateMeshDescriptor_SturmPistole [ ModelFile , CivMask] is TResourceMultiMaterialMeshWithLod
 (
     FileName = <ModelFile>

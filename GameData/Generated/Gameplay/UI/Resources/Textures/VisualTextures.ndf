@@ -37,6 +37,10 @@ export Texture_Visual_Fi_156_Storch is TUIResourceTexture_Common
 (
     FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Visuals/Fi_156_Storch.png"
 )
+export Texture_Visual_Mustang_Mk3_POL is TUIResourceTexture_Common
+(
+    FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Visuals/Mustang_Mk3_POL.png"
+)
 export Texture_Visual_HS_129_B1 is TUIResourceTexture_Common
 (
     FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Visuals/HS_129_B1.png"
@@ -281,10 +285,6 @@ export Texture_Visual_Mustang_Mk3_230_POL is TUIResourceTexture_Common
 (
     FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Visuals/Mustang_Mk3_230_POL.png"
 )
-export Texture_Visual_Mustang_Mk3_POL is TUIResourceTexture_Common
-(
-    FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Visuals/Mustang_Mk3_POL.png"
-)
 export Texture_Visual_P38J_230_Lightning_US is TUIResourceTexture_Common
 (
     FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Visuals/P38J_230_Lightning_US.png"
@@ -433,6 +433,10 @@ export Texture_Visual_Typhoon_CAN is TUIResourceTexture_Common
 (
     FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Visuals/Typhoon_CAN.png"
 )
+export Texture_Visual_Typhoon_UK is TUIResourceTexture_Common
+(
+    FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Visuals/Typhoon_UK.png"
+)
 export Texture_Visual_Typhoon_Rocket_CAN is TUIResourceTexture_Common
 (
     FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Visuals/Typhoon_Rocket_CAN.png"
@@ -448,10 +452,6 @@ export Texture_Visual_Typhoon_Rocket_Heavy_UK is TUIResourceTexture_Common
 export Texture_Visual_Typhoon_Rocket_UK is TUIResourceTexture_Common
 (
     FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Visuals/Typhoon_Rocket_UK.png"
-)
-export Texture_Visual_Typhoon_UK is TUIResourceTexture_Common
-(
-    FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Visuals/Typhoon_UK.png"
 )
 export Texture_Visual_105mm_All_GER is TUIResourceTexture_Common
 (
@@ -517,6 +517,7 @@ UnitVisualAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_Visual_Marauder_B26B_10_mg", MAP [(~/ComponentState/Normal, ~/Texture_Visual_Marauder_B26B_10_mg)]),
         ("Texture_Visual_P47D_Thunderbolt_US", MAP [(~/ComponentState/Normal, ~/Texture_Visual_P47D_Thunderbolt_US)]),
         ("Texture_Visual_Fi_156_Storch", MAP [(~/ComponentState/Normal, ~/Texture_Visual_Fi_156_Storch)]),
+        ("Texture_Visual_Mustang_Mk3_POL", MAP [(~/ComponentState/Normal, ~/Texture_Visual_Mustang_Mk3_POL)]),
         ("Texture_Visual_HS_129_B1", MAP [(~/ComponentState/Normal, ~/Texture_Visual_HS_129_B1)]),
         ("Texture_Visual_Auster_CAN", MAP [(~/ComponentState/Normal, ~/Texture_Visual_Auster_CAN)]),
         ("Texture_Visual_Auster_POL", MAP [(~/ComponentState/Normal, ~/Texture_Visual_Auster_POL)]),
@@ -578,7 +579,6 @@ UnitVisualAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_Visual_Mosquito_Supply_UK", MAP [(~/ComponentState/Normal, ~/Texture_Visual_Mosquito_Supply_UK)]),
         ("Texture_Visual_Mustang_Mk3_110_POL", MAP [(~/ComponentState/Normal, ~/Texture_Visual_Mustang_Mk3_110_POL)]),
         ("Texture_Visual_Mustang_Mk3_230_POL", MAP [(~/ComponentState/Normal, ~/Texture_Visual_Mustang_Mk3_230_POL)]),
-        ("Texture_Visual_Mustang_Mk3_POL", MAP [(~/ComponentState/Normal, ~/Texture_Visual_Mustang_Mk3_POL)]),
         ("Texture_Visual_P38J_230_Lightning_US", MAP [(~/ComponentState/Normal, ~/Texture_Visual_P38J_230_Lightning_US)]),
         ("Texture_Visual_P38J_230_Lightning_FR", MAP [(~/ComponentState/Normal, ~/Texture_Visual_P38J_230_Lightning_FR)]),
         ("Texture_Visual_P38J_450_Lightning_FR", MAP [(~/ComponentState/Normal, ~/Texture_Visual_P38J_450_Lightning_FR)]),
@@ -616,11 +616,11 @@ UnitVisualAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_Visual_Typhoon_230_CAN", MAP [(~/ComponentState/Normal, ~/Texture_Visual_Typhoon_230_CAN)]),
         ("Texture_Visual_Typhoon_230_UK", MAP [(~/ComponentState/Normal, ~/Texture_Visual_Typhoon_230_UK)]),
         ("Texture_Visual_Typhoon_CAN", MAP [(~/ComponentState/Normal, ~/Texture_Visual_Typhoon_CAN)]),
+        ("Texture_Visual_Typhoon_UK", MAP [(~/ComponentState/Normal, ~/Texture_Visual_Typhoon_UK)]),
         ("Texture_Visual_Typhoon_Rocket_CAN", MAP [(~/ComponentState/Normal, ~/Texture_Visual_Typhoon_Rocket_CAN)]),
         ("Texture_Visual_Typhoon_Rocket_Heavy_CAN", MAP [(~/ComponentState/Normal, ~/Texture_Visual_Typhoon_Rocket_Heavy_CAN)]),
         ("Texture_Visual_Typhoon_Rocket_Heavy_UK", MAP [(~/ComponentState/Normal, ~/Texture_Visual_Typhoon_Rocket_Heavy_UK)]),
         ("Texture_Visual_Typhoon_Rocket_UK", MAP [(~/ComponentState/Normal, ~/Texture_Visual_Typhoon_Rocket_UK)]),
-        ("Texture_Visual_Typhoon_UK", MAP [(~/ComponentState/Normal, ~/Texture_Visual_Typhoon_UK)]),
         ("Texture_Visual_105mm_All_GER", MAP [(~/ComponentState/Normal, ~/Texture_Visual_105mm_All_GER)]),
         ("Texture_Visual_140mm_Battery", MAP [(~/ComponentState/Normal, ~/Texture_Visual_140mm_Battery)]),
         ("Texture_Visual_127mm_All_UK", MAP [(~/ComponentState/Normal, ~/Texture_Visual_127mm_All_UK)]),

@@ -5145,6 +5145,20 @@ Texture_RTS_H_A_20J_5_DO_Havoc_US is TUIResourceTextureWithUsefulnessMask
     FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\RTS\A_20J_5_DO_Havoc_US.png'
 )
 
+Texture_Plane_Fighter_Bomber is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask      = TypeMask/Common
+    CivMask       = CivMask/Common
+    FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\NATO\Plane_Fighter_Bomber.png'
+)
+
+Texture_RTS_H_USA_Multirole_P51B is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask      = TypeMask/Common
+    CivMask       = CivMask/Common
+    FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\RTS\USA_Multirole_P51B.png'
+)
+
 Texture_RTS_H_Ar_196_A3_GER is TUIResourceTextureWithUsefulnessMask
 (
     TypeMask      = TypeMask/Common
@@ -5411,13 +5425,6 @@ Texture_RTS_H_USA_Fighter_F6F_Hellcat is TUIResourceTextureWithUsefulnessMask
     FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\RTS\USA_Fighter_F6F_Hellcat.png'
 )
 
-Texture_Plane_Fighter_Bomber is TUIResourceTextureWithUsefulnessMask
-(
-    TypeMask      = TypeMask/Common
-    CivMask       = CivMask/Common
-    FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\NATO\Plane_Fighter_Bomber.png'
-)
-
 Texture_RTS_H_USA_Multirole_F6F_Hellcat is TUIResourceTextureWithUsefulnessMask
 (
     TypeMask      = TypeMask/Common
@@ -5444,6 +5451,13 @@ Texture_RTS_H_Fiat_G50_bis is TUIResourceTextureWithUsefulnessMask
     TypeMask      = TypeMask/Common
     CivMask       = CivMask/Common
     FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\RTS\Fiat_G50_bis.png'
+)
+
+Texture_RTS_H_Gloster_Gladiator_Mk_II is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask      = TypeMask/Common
+    CivMask       = CivMask/Common
+    FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\RTS\Gloster_Gladiator_Mk_II.png'
 )
 
 Texture_RTS_H_FIN_Fighter_Fokker is TUIResourceTextureWithUsefulnessMask
@@ -5500,13 +5514,6 @@ Texture_RTS_H_ITA_Fighter_G55 is TUIResourceTextureWithUsefulnessMask
     TypeMask      = TypeMask/Common
     CivMask       = CivMask/Common
     FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\RTS\ITA_Fighter_G55.png'
-)
-
-Texture_RTS_H_Gloster_Gladiator_Mk_II is TUIResourceTextureWithUsefulnessMask
-(
-    TypeMask      = TypeMask/Common
-    CivMask       = CivMask/Common
-    FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\RTS\Gloster_Gladiator_Mk_II.png'
 )
 
 Texture_RTS_H_Go_145 is TUIResourceTextureWithUsefulnessMask
@@ -5955,13 +5962,6 @@ Texture_RTS_H_UK_Grd_Att_Mosquito is TUIResourceTextureWithUsefulnessMask
     TypeMask      = TypeMask/Common
     CivMask       = CivMask/Common
     FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\RTS\UK_Grd_Att_Mosquito.png'
-)
-
-Texture_RTS_H_USA_Multirole_P51B is TUIResourceTextureWithUsefulnessMask
-(
-    TypeMask      = TypeMask/Common
-    CivMask       = CivMask/Common
-    FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\RTS\USA_Multirole_P51B.png'
 )
 
 Texture_RTS_H_USA_Fighter_P51B is TUIResourceTextureWithUsefulnessMask
@@ -7124,6 +7124,8 @@ NATORTSAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_RTS_H_SOV_Grd_Att_Rocket_Il", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_SOV_Grd_Att_Rocket_Il)]),
         ("Texture_RTS_H_AR_66_C_GER", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_AR_66_C_GER)]),
         ("Texture_RTS_H_A_20J_5_DO_Havoc_US", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_A_20J_5_DO_Havoc_US)]),
+        ("Texture_Plane_Fighter_Bomber", MAP [(~/ComponentState/Normal, ~/Texture_Plane_Fighter_Bomber)]),
+        ("Texture_RTS_H_USA_Multirole_P51B", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_USA_Multirole_P51B)]),
         ("Texture_RTS_H_Ar_196_A3_GER", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Ar_196_A3_GER)]),
         ("Texture_RTS_H_Ar_234_B2_GER", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Ar_234_B2_GER)]),
         ("Texture_RTS_H_GER_Bomber_Ar234", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_GER_Bomber_Ar234)]),
@@ -7162,11 +7164,11 @@ NATORTSAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_RTS_H_F5A_Lightning", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_F5A_Lightning)]),
         ("Texture_RTS_H_F6C_Mustang", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_F6C_Mustang)]),
         ("Texture_RTS_H_USA_Fighter_F6F_Hellcat", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_USA_Fighter_F6F_Hellcat)]),
-        ("Texture_Plane_Fighter_Bomber", MAP [(~/ComponentState/Normal, ~/Texture_Plane_Fighter_Bomber)]),
         ("Texture_RTS_H_USA_Multirole_F6F_Hellcat", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_USA_Multirole_F6F_Hellcat)]),
         ("Texture_RTS_H_GER_Multirole_Fw", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_GER_Multirole_Fw)]),
         ("Texture_RTS_H_Fi_156_Storch", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Fi_156_Storch)]),
         ("Texture_RTS_H_Fiat_G50_bis", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Fiat_G50_bis)]),
+        ("Texture_RTS_H_Gloster_Gladiator_Mk_II", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Gloster_Gladiator_Mk_II)]),
         ("Texture_RTS_H_FIN_Fighter_Fokker", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_FIN_Fighter_Fokker)]),
         ("Texture_RTS_H_Fw_189A_1_HON", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Fw_189A_1_HON)]),
         ("Texture_RTS_H_Fw_189A_2_GER", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Fw_189A_2_GER)]),
@@ -7175,7 +7177,6 @@ NATORTSAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_RTS_H_Fw_190_A5_U4", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Fw_190_A5_U4)]),
         ("Texture_RTS_H_SOV_Multirole_Yak", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_SOV_Multirole_Yak)]),
         ("Texture_RTS_H_ITA_Fighter_G55", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_ITA_Fighter_G55)]),
-        ("Texture_RTS_H_Gloster_Gladiator_Mk_II", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Gloster_Gladiator_Mk_II)]),
         ("Texture_RTS_H_Go_145", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Go_145)]),
         ("Texture_RTS_H_GER_Bomber_He", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_GER_Bomber_He)]),
         ("Texture_RTS_H_GER_Fighter_Me410", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_GER_Fighter_Me410)]),
@@ -7240,7 +7241,6 @@ NATORTSAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_RTS_H_UK_Fighter_Mosquito", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_UK_Fighter_Mosquito)]),
         ("Texture_RTS_H_Mosquito_PR_XVI", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Mosquito_PR_XVI)]),
         ("Texture_RTS_H_UK_Grd_Att_Mosquito", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_UK_Grd_Att_Mosquito)]),
-        ("Texture_RTS_H_USA_Multirole_P51B", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_USA_Multirole_P51B)]),
         ("Texture_RTS_H_USA_Fighter_P51B", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_USA_Fighter_P51B)]),
         ("Texture_RTS_H_USA_Multirole_P38", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_USA_Multirole_P38)]),
         ("Texture_RTS_H_USA_Fighter_P38", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_USA_Fighter_P38)]),

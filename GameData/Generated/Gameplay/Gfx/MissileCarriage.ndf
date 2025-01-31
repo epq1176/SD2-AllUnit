@@ -45,6 +45,20 @@ export MissileCarriage_A20_G_Havoc_rocket_US is TMissileCarriageConnoisseur
         ),
     ]
 )
+export MissileCarriage_A_36A_Apache_US is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_A_36A_Apache_US
+    PylonSet       = PylonSet_A_36A_Apache_US
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //Bomb AN M64 227kg x2
+        (
+            WeaponIndex = 6
+            MissileType = eAGM
+            MountingType = eMountingBomb
+            Count       = 1 * 2
+        ),
+    ]
+)
 export MissileCarriage_Ar_196_A3_Obs138mm_GER is TMissileCarriageConnoisseur
 (
     MeshDescriptor = Modele_Ar_196_A3_Obs138mm_GER
@@ -317,6 +331,20 @@ export MissileCarriage_Fw_190_F8_x12_80mm_AP_GER is TMissileCarriageConnoisseur
             WeaponIndex = 3
             MissileType = eAGM
             Count       = 1 * 12
+        ),
+    ]
+)
+export MissileCarriage_Fw_190_F8_x1_1000_GER is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_Fw_190_F8_x1_1000_GER
+    PylonSet       = PylonSet_Fw_190_F8_x1_1000_GER
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //Bomb SC 1000kg x1
+        (
+            WeaponIndex = 3
+            MissileType = eAGM
+            MountingType = eMountingBomb
+            Count       = 1 * 1
         ),
     ]
 )

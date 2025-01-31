@@ -86,6 +86,19 @@ SubGenerators_A20_G_Havoc_rocket_US is [
         ]
     )
 ]
+SubGenerators_A_36A_Apache_US is [
+    TMissileCarriageSubDepictionGenerator
+    (
+        MissileCarriageConnoisseur = MissileCarriage_A_36A_Apache_US
+        Pylons = PylonSet_A_36A_Apache_US
+        Missiles = [
+            TMissileCarriageSubDepictionMissileInfo( WeaponIndex = 6 MissileIndex = 1
+                Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Missile_ANM64 PhysicalProperty = "Tourelle6_MissileCount" MissileNumber = 0 )),
+            TMissileCarriageSubDepictionMissileInfo( WeaponIndex = 6 MissileIndex = 2
+                Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Missile_ANM64 PhysicalProperty = "Tourelle6_MissileCount" MissileNumber = 1 )),
+        ]
+    )
+]
 SubGenerators_Ar_196_A3_Obs138mm_GER is [
     TMissileCarriageSubDepictionGenerator
     (
@@ -416,6 +429,17 @@ SubGenerators_Fw_190_F8_x12_80mm_AP_GER is [
                 Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Rocket_PanzerBlitz_1 PhysicalProperty = "Tourelle3_MissileCount" MissileNumber = 10 )),
             TMissileCarriageSubDepictionMissileInfo( WeaponIndex = 3 MissileIndex = 12
                 Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Rocket_PanzerBlitz_1 PhysicalProperty = "Tourelle3_MissileCount" MissileNumber = 11 )),
+        ]
+    )
+]
+SubGenerators_Fw_190_F8_x1_1000_GER is [
+    TMissileCarriageSubDepictionGenerator
+    (
+        MissileCarriageConnoisseur = MissileCarriage_Fw_190_F8_x1_1000_GER
+        Pylons = PylonSet_Fw_190_F8_x1_1000_GER
+        Missiles = [
+            TMissileCarriageSubDepictionMissileInfo( WeaponIndex = 3 MissileIndex = 1
+                Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Missile_SC1000 PhysicalProperty = "Tourelle3_MissileCount" MissileNumber = 0 )),
         ]
     )
 ]

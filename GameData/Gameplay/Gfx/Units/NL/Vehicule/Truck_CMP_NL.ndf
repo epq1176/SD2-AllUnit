@@ -1,0 +1,22 @@
+export ModelFile_Truck_CMP_NL is 'GameData:Assets\3D\Units\NL\Vehicule\Truck_CMP_NL\CMP_NL.Ase2NdfBin'
+
+Modele_Truck_CMP_NL is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Truck_CMP_NL
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Truck_CMP_NL_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\NL\Vehicule\Truck_CMP_NL_MID\CMP_NL_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Truck_CMP_NL_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\NL\Vehicule\LODS\CMP_NL_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

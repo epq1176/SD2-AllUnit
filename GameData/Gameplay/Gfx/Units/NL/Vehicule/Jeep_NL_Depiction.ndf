@@ -1,0 +1,29 @@
+export Gfx_Jeep_NL is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Jeep_NL ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Jeep_NL_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_Jeep_NL_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Jeep_NL ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Jeep_NL_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_Jeep_NL_LOW ),
+        ]
+
+        Operators = Operators_Jeep_NL
+                  + DepictionOperator_Chassis_Vehicle
+                  + DepictionOperator_Propulsion_4Wheels_Jeep
+
+
+        Actions = Weapons_Jeep_NL
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Wheeled
+
+        SubDepictions = DepictionSubDepiction_Driver_NL
+                        + [ SubDepictionTowedUnit ]
+                        + SittingSoldierSubDepictions2
+    )
+)

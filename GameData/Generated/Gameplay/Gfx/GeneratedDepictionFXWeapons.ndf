@@ -11371,7 +11371,7 @@ template FXWeapon_Drillinge_151
     DirectFire             = False
     Power                  = EFXPower/Moyen
     ImpactPower            = 1.0
-    WaitBetweenShot        = 0.2
+    WaitBetweenShot        = 0.25
     TargetPositionPhysicalPropertyName   = 'TargetPositionTurret' + <TurretIndexAsString>
     FlyingTimeAndHitPhysicalPropertyName = 'FlyingTimeAndHit' + <TurretIndexAsString>
 )
@@ -11392,6 +11392,26 @@ template FXWeapon_Drillinge_151_AA
     Power                  = EFXPower/Moyen
     ImpactPower            = 1.0
     WaitBetweenShot        = 0.2
+    TargetPositionPhysicalPropertyName   = 'TargetPositionTurret' + <TurretIndexAsString>
+    FlyingTimeAndHitPhysicalPropertyName = 'FlyingTimeAndHit' + <TurretIndexAsString>
+)
+
+// Weapon 'Drillinge_151_AP' (type Mitrailleuse_Cal50)
+template FXWeapon_Drillinge_151_AP
+[
+    Anchor,
+    TurretIndexAsString,
+] is templateFXWeapon_ContinuousFX
+(
+    Anchor                 = <Anchor>
+    FX                     = FX_Full_Mitrailleuse_Cal50
+    WithoutPhysics         = True
+    InitialSpeed           = 50000.0
+    FluidFriction          = 0.0
+    DirectFire             = False
+    Power                  = EFXPower/Moyen
+    ImpactPower            = 1.0
+    WaitBetweenShot        = 0.25
     TargetPositionPhysicalPropertyName   = 'TargetPositionTurret' + <TurretIndexAsString>
     FlyingTimeAndHitPhysicalPropertyName = 'FlyingTimeAndHit' + <TurretIndexAsString>
 )
@@ -16431,7 +16451,7 @@ template FXWeapon_Howz_sFH_18_150mm_Direct
     DirectFire             = False
     Power                  = EFXPower/Moyen
     ImpactPower            = 1.0
-    WaitBetweenShot        = 15.0
+    WaitBetweenShot        = 12.0
     TargetPositionPhysicalPropertyName   = 'TargetPositionTurret' + <TurretIndexAsString>
     FlyingTimeAndHitPhysicalPropertyName = 'FlyingTimeAndHit' + <TurretIndexAsString>
 )
@@ -17892,6 +17912,66 @@ template FXWeapon_KwK_42L70_75mm_HE
     Power                  = EFXPower/Moyen
     ImpactPower            = 1.0
     WaitBetweenShot        = 9.0
+    TargetPositionPhysicalPropertyName   = 'TargetPositionTurret' + <TurretIndexAsString>
+    FlyingTimeAndHitPhysicalPropertyName = 'FlyingTimeAndHit' + <TurretIndexAsString>
+)
+
+// Weapon 'KwK 42L70 75mm casemate AP' (type Canon_moyen_AP)
+template FXWeapon_KwK_42L70_75mm_casemate_AP
+[
+    Anchor,
+    TurretIndexAsString,
+] is templateFXWeapon_InstantFX
+(
+    Anchor                 = <Anchor>
+    FX                     = FX_Full_Canon_moyen_AP
+    WithoutPhysics         = False
+    InitialSpeed           = 0.0
+    FluidFriction          = 0.0
+    DirectFire             = False
+    Power                  = EFXPower/Moyen
+    ImpactPower            = 1.0
+    WaitBetweenShot        = 7.5
+    TargetPositionPhysicalPropertyName   = 'TargetPositionTurret' + <TurretIndexAsString>
+    FlyingTimeAndHitPhysicalPropertyName = 'FlyingTimeAndHit' + <TurretIndexAsString>
+)
+
+// Weapon 'KwK 42L70 75mm casemate APCR' (type Canon_moyen_APCR)
+template FXWeapon_KwK_42L70_75mm_casemate_APCR
+[
+    Anchor,
+    TurretIndexAsString,
+] is templateFXWeapon_InstantFX
+(
+    Anchor                 = <Anchor>
+    FX                     = FX_Full_Canon_moyen_APCR
+    WithoutPhysics         = False
+    InitialSpeed           = 0.0
+    FluidFriction          = 0.0
+    DirectFire             = False
+    Power                  = EFXPower/Moyen
+    ImpactPower            = 1.0
+    WaitBetweenShot        = 7.5
+    TargetPositionPhysicalPropertyName   = 'TargetPositionTurret' + <TurretIndexAsString>
+    FlyingTimeAndHitPhysicalPropertyName = 'FlyingTimeAndHit' + <TurretIndexAsString>
+)
+
+// Weapon 'KwK 42L70 75mm casemate HE' (type Canon_moyen_HE)
+template FXWeapon_KwK_42L70_75mm_casemate_HE
+[
+    Anchor,
+    TurretIndexAsString,
+] is templateFXWeapon_InstantFX
+(
+    Anchor                 = <Anchor>
+    FX                     = FX_Full_Canon_moyen_HE
+    WithoutPhysics         = False
+    InitialSpeed           = 0.0
+    FluidFriction          = 0.0
+    DirectFire             = False
+    Power                  = EFXPower/Moyen
+    ImpactPower            = 1.0
+    WaitBetweenShot        = 7.5
     TargetPositionPhysicalPropertyName   = 'TargetPositionTurret' + <TurretIndexAsString>
     FlyingTimeAndHitPhysicalPropertyName = 'FlyingTimeAndHit' + <TurretIndexAsString>
 )
@@ -21911,7 +21991,7 @@ template FXWeapon_MK_103_30mm_AP_AirSol
     DirectFire             = False
     Power                  = EFXPower/Moyen
     ImpactPower            = 1.0
-    WaitBetweenShot        = 0.4
+    WaitBetweenShot        = 0.1
     TargetPositionPhysicalPropertyName   = 'TargetPositionTurret' + <TurretIndexAsString>
     FlyingTimeAndHitPhysicalPropertyName = 'FlyingTimeAndHit' + <TurretIndexAsString>
 )
@@ -24024,6 +24104,26 @@ template FXWeapon_Mosin_M27_x4
     FlyingTimeAndHitPhysicalPropertyName = 'FlyingTimeAndHit' + <TurretIndexAsString>
 )
 
+// Weapon 'Mosin M27_x8' (type Fusil_7mm)
+template FXWeapon_Mosin_M27_x8
+[
+    Anchor,
+    TurretIndexAsString,
+] is templateFXWeapon_InstantFX
+(
+    Anchor                 = <Anchor>
+    FX                     = FX_Full_Fusil_7mm
+    WithoutPhysics         = True
+    InitialSpeed           = 25000.0
+    FluidFriction          = 0.0
+    DirectFire             = False
+    Power                  = EFXPower/Moyen
+    ImpactPower            = 1.0
+    WaitBetweenShot        = 0.2
+    TargetPositionPhysicalPropertyName   = 'TargetPositionTurret' + <TurretIndexAsString>
+    FlyingTimeAndHitPhysicalPropertyName = 'FlyingTimeAndHit' + <TurretIndexAsString>
+)
+
 // Weapon 'Mosin M27_x9' (type Fusil_7mm)
 template FXWeapon_Mosin_M27_x9
 [
@@ -25406,6 +25506,26 @@ template FXWeapon_PPsh41
 
 // Weapon 'PPsh41_x10' (type Mitrailleuse_7mm)
 template FXWeapon_PPsh41_x10
+[
+    Anchor,
+    TurretIndexAsString,
+] is templateFXWeapon_InstantFX
+(
+    Anchor                 = <Anchor>
+    FX                     = FX_Full_Mitrailleuse_7mm
+    WithoutPhysics         = True
+    InitialSpeed           = 25000.0
+    FluidFriction          = 0.0
+    DirectFire             = False
+    Power                  = EFXPower/Moyen
+    ImpactPower            = 1.0
+    WaitBetweenShot        = 0.2
+    TargetPositionPhysicalPropertyName   = 'TargetPositionTurret' + <TurretIndexAsString>
+    FlyingTimeAndHitPhysicalPropertyName = 'FlyingTimeAndHit' + <TurretIndexAsString>
+)
+
+// Weapon 'PPsh41_x11' (type Mitrailleuse_7mm)
+template FXWeapon_PPsh41_x11
 [
     Anchor,
     TurretIndexAsString,
@@ -28264,6 +28384,86 @@ template FXWeapon_Sten_Mk5_x2
     FlyingTimeAndHitPhysicalPropertyName = 'FlyingTimeAndHit' + <TurretIndexAsString>
 )
 
+// Weapon 'Sten_Mk5_x3' (type Mitrailleuse_7mm)
+template FXWeapon_Sten_Mk5_x3
+[
+    Anchor,
+    TurretIndexAsString,
+] is templateFXWeapon_InstantFX
+(
+    Anchor                 = <Anchor>
+    FX                     = FX_Full_Mitrailleuse_7mm
+    WithoutPhysics         = True
+    InitialSpeed           = 25000.0
+    FluidFriction          = 0.0
+    DirectFire             = False
+    Power                  = EFXPower/Moyen
+    ImpactPower            = 1.0
+    WaitBetweenShot        = 0.2
+    TargetPositionPhysicalPropertyName   = 'TargetPositionTurret' + <TurretIndexAsString>
+    FlyingTimeAndHitPhysicalPropertyName = 'FlyingTimeAndHit' + <TurretIndexAsString>
+)
+
+// Weapon 'Sten_Mk5_x4' (type Mitrailleuse_7mm)
+template FXWeapon_Sten_Mk5_x4
+[
+    Anchor,
+    TurretIndexAsString,
+] is templateFXWeapon_InstantFX
+(
+    Anchor                 = <Anchor>
+    FX                     = FX_Full_Mitrailleuse_7mm
+    WithoutPhysics         = True
+    InitialSpeed           = 25000.0
+    FluidFriction          = 0.0
+    DirectFire             = False
+    Power                  = EFXPower/Moyen
+    ImpactPower            = 1.0
+    WaitBetweenShot        = 0.2
+    TargetPositionPhysicalPropertyName   = 'TargetPositionTurret' + <TurretIndexAsString>
+    FlyingTimeAndHitPhysicalPropertyName = 'FlyingTimeAndHit' + <TurretIndexAsString>
+)
+
+// Weapon 'Sten_Mk5_x5' (type Mitrailleuse_7mm)
+template FXWeapon_Sten_Mk5_x5
+[
+    Anchor,
+    TurretIndexAsString,
+] is templateFXWeapon_InstantFX
+(
+    Anchor                 = <Anchor>
+    FX                     = FX_Full_Mitrailleuse_7mm
+    WithoutPhysics         = True
+    InitialSpeed           = 25000.0
+    FluidFriction          = 0.0
+    DirectFire             = False
+    Power                  = EFXPower/Moyen
+    ImpactPower            = 1.0
+    WaitBetweenShot        = 0.2
+    TargetPositionPhysicalPropertyName   = 'TargetPositionTurret' + <TurretIndexAsString>
+    FlyingTimeAndHitPhysicalPropertyName = 'FlyingTimeAndHit' + <TurretIndexAsString>
+)
+
+// Weapon 'Sten_Mk5_x6' (type Mitrailleuse_7mm)
+template FXWeapon_Sten_Mk5_x6
+[
+    Anchor,
+    TurretIndexAsString,
+] is templateFXWeapon_InstantFX
+(
+    Anchor                 = <Anchor>
+    FX                     = FX_Full_Mitrailleuse_7mm
+    WithoutPhysics         = True
+    InitialSpeed           = 25000.0
+    FluidFriction          = 0.0
+    DirectFire             = False
+    Power                  = EFXPower/Moyen
+    ImpactPower            = 1.0
+    WaitBetweenShot        = 0.2
+    TargetPositionPhysicalPropertyName   = 'TargetPositionTurret' + <TurretIndexAsString>
+    FlyingTimeAndHitPhysicalPropertyName = 'FlyingTimeAndHit' + <TurretIndexAsString>
+)
+
 // Weapon 'Sten_x2' (type Mitrailleuse_7mm)
 template FXWeapon_Sten_x2
 [
@@ -28326,6 +28526,26 @@ template FXWeapon_Sten_x3
 
 // Weapon 'Sten_x4' (type Mitrailleuse_7mm)
 template FXWeapon_Sten_x4
+[
+    Anchor,
+    TurretIndexAsString,
+] is templateFXWeapon_InstantFX
+(
+    Anchor                 = <Anchor>
+    FX                     = FX_Full_Mitrailleuse_7mm
+    WithoutPhysics         = True
+    InitialSpeed           = 25000.0
+    FluidFriction          = 0.0
+    DirectFire             = False
+    Power                  = EFXPower/Moyen
+    ImpactPower            = 1.0
+    WaitBetweenShot        = 0.2
+    TargetPositionPhysicalPropertyName   = 'TargetPositionTurret' + <TurretIndexAsString>
+    FlyingTimeAndHitPhysicalPropertyName = 'FlyingTimeAndHit' + <TurretIndexAsString>
+)
+
+// Weapon 'Sten_x5' (type Mitrailleuse_7mm)
+template FXWeapon_Sten_x5
 [
     Anchor,
     TurretIndexAsString,

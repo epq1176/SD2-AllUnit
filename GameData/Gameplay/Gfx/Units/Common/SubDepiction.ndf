@@ -263,7 +263,30 @@ MeshDescriptor_Driver_NCM_SA_LOW is TResourceMultiMaterialMeshWithLod
     CivMask = CivMask/Nationalite1
     TypeMask = TypeMask/Infanterie
 )
-
+MeshDescriptor_Driver_NL is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\NL\Infanterie\PIB\Driver_NL.Ase2NdfBin'
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+MeshDescriptor_Driver_NL_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Infanterie\LODS\Driver_USA_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+MeshDescriptor_Tireur_NL is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\NL\Infanterie\PIB\Tireur_NL.Ase2NdfBin'
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
+MeshDescriptor_Tireur_NL_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\USA\Infanterie\LODS\Driver_USA_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite1
+    TypeMask = TypeMask/Infanterie
+)
 MeshDescriptor_Driver_US is TResourceMultiMaterialMeshWithLod
 (
     FileName = 'GameData:Assets\3D\Units\USA\Infanterie\GI\Driver_USA.Ase2NdfBin'
@@ -1440,6 +1463,7 @@ DepictionSubDepiction_Tireur_Moto_FucilieriCIL  is [ SubDepictionTireur_Moto_Fuc
 DepictionDriver_Natal_SA   is TemplateDepictionDriver( MeshDescriptorHigh = MeshDescriptor_Driver_Natal_SA MeshDescriptorMid = MeshDescriptor_Driver_Natal_SA_LOW )
 DepictionDriver_Art_SA   is TemplateDepictionDriver( MeshDescriptorHigh = MeshDescriptor_Tankiste_Art_SA MeshDescriptorMid = MeshDescriptor_Tankiste_Art_SA_LOW )
 DepictionDriver_NCM_SA   is TemplateDepictionDriver( MeshDescriptorHigh = MeshDescriptor_Driver_NCM_SA MeshDescriptorMid = MeshDescriptor_Driver_NCM_SA_LOW )
+DepictionDriver_NL   is TemplateDepictionDriver( MeshDescriptorHigh = MeshDescriptor_Driver_NL MeshDescriptorMid = MeshDescriptor_Driver_NL_LOW )
 DepictionDriver_US   is TemplateDepictionDriver( MeshDescriptorHigh = MeshDescriptor_Driver_US MeshDescriptorMid = MeshDescriptor_Driver_US_LOW )
 DepictionDriver_UK   is TemplateDepictionDriver( MeshDescriptorHigh = MeshDescriptor_Driver_UK MeshDescriptorMid = MeshDescriptor_Driver_UK_LOW )
 DepictionDriver_BEL   is TemplateDepictionDriver( MeshDescriptorHigh = MeshDescriptor_Driver_BEL MeshDescriptorMid = MeshDescriptor_Driver_BEL_LOW )
@@ -1499,6 +1523,7 @@ DepictionTireur_NZ  is TemplateDepictionTireur( MeshDescriptorHigh = MeshDescrip
 DepictionTireur_NZ_Maori  is TemplateDepictionTireur( MeshDescriptorHigh = MeshDescriptor_Driver_NZ_Maori MeshDescriptorMid = MeshDescriptor_Driver_NZ_Maori_LOW )
 DepictionTireur_CZ  is TemplateDepictionTireur( MeshDescriptorHigh = MeshDescriptor_Driver_CZ MeshDescriptorMid = MeshDescriptor_Driver_CZ_LOW )
 DepictionTireur_US  is TemplateDepictionTireur( MeshDescriptorHigh = MeshDescriptor_Driver_US MeshDescriptorMid = MeshDescriptor_Driver_US_LOW )
+DepictionTireur_NL  is TemplateDepictionTireur( MeshDescriptorHigh = MeshDescriptor_Tireur_NL MeshDescriptorMid = MeshDescriptor_Tireur_NL_LOW )
 DepictionTireur_SOV  is TemplateDepictionTireur( MeshDescriptorHigh = MeshDescriptor_Driver_SOV MeshDescriptorMid = MeshDescriptor_Driver_SOV_LOW )
 DepictionTireur_FIN  is TemplateDepictionTireur( MeshDescriptorHigh = MeshDescriptor_Driver_FIN MeshDescriptorMid = MeshDescriptor_Driver_FIN_LOW )
 DepictionTireur_AWP  is TemplateDepictionTireur( MeshDescriptorHigh = MeshDescriptor_Driver_AWP MeshDescriptorMid = MeshDescriptor_Driver_AWP_LOW )
@@ -1585,6 +1610,7 @@ SubDepictionDriver_3_GNR_Officer   is TSubDepiction( Anchor = 'Driver' Depiction
 SubDepictionDriver_Natal_SA   is TSubDepiction( Anchor = 'Driver' Depiction = DepictionDriver_Natal_SA )
 SubDepictionDriver_Art_SA   is TSubDepiction( Anchor = 'Driver' Depiction = DepictionDriver_Art_SA )
 SubDepictionDriver_NCM_SA   is TSubDepiction( Anchor = 'Driver' Depiction = DepictionDriver_NCM_SA )
+SubDepictionDriver_NL   is TSubDepiction( Anchor = 'Driver' Depiction = DepictionDriver_NL )
 SubDepictionDriver_US   is TSubDepiction( Anchor = 'Driver' Depiction = DepictionDriver_US )
 SubDepictionDriver_UK   is TSubDepiction( Anchor = 'Driver' Depiction = DepictionDriver_UK )
 SubDepictionDriver_BEL   is TSubDepiction( Anchor = 'Driver' Depiction = DepictionDriver_BEL )
@@ -1650,6 +1676,7 @@ SubDepictionTireur_NZ_Maori  is TSubDepiction( Anchor = 'Tireur' Depiction = Dep
 SubDepictionTireur_CZ  is TSubDepiction( Anchor = 'Tireur' Depiction = DepictionTireur_CZ )
 SubDepictionTireur_CAN  is TSubDepiction( Anchor = 'Tireur' Depiction = DepictionTireur_CAN )
 SubDepictionTireur2_CAN  is TSubDepiction( Anchor = 'Tireur_2' Depiction = DepictionTireur_CAN )
+SubDepictionTireur_NL  is TSubDepiction( Anchor = 'Tireur' Depiction = DepictionTireur_NL )
 SubDepictionTireur_US  is TSubDepiction( Anchor = 'Tireur' Depiction = DepictionTireur_US )
 SubDepictionTireur2_US  is TSubDepiction( Anchor = 'Tireur_2' Depiction = DepictionTireur_US )
 SubDepictionTireur_SOV  is TSubDepiction( Anchor = 'Tireur' Depiction = DepictionTireur_SOV )
@@ -1711,7 +1738,9 @@ DepictionSubDepiction_Driver_3_GNR_Officer   is [ SubDepictionDriver_3_GNR_Offic
 DepictionSubDepiction_Driver_Natal_SA   is [ SubDepictionDriver_Natal_SA ]
 DepictionSubDepiction_Driver_Art_SA   is [ SubDepictionDriver_Art_SA ]
 DepictionSubDepiction_Driver_NCM_SA   is [ SubDepictionDriver_NCM_SA ]
+DepictionSubDepiction_Driver_NL   is [ SubDepictionDriver_NL ]
 DepictionSubDepiction_Driver_US   is [ SubDepictionDriver_US ]
+DepictionSubDepiction_Tireur_NL  is [ SubDepictionTireur_NL ]
 DepictionSubDepiction_Tireur_US  is [ SubDepictionTireur_US ]
 DepictionSubDepiction_Tireur2_US  is [ SubDepictionTireur2_US ]
 DepictionSubDepiction_Tireur_SOV  is [ SubDepictionTireur_SOV ]

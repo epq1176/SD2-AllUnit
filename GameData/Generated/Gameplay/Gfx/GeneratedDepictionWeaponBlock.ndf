@@ -3646,6 +3646,20 @@ private Weapon_Canon_6pdr_Indian_UK_weapon2_slot1 is TCompositeHappening
     ]
 )
 
+// ------------------- Canon_6pdr_NL -------------------- //
+private Weapon_Canon_6pdr_NL_weapon1_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_Canon_QF_6pdr_AP
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_Canon_QF_6pdr_AP
+    ]
+)
+
 // ------------------- Canon_6pdr_NZ -------------------- //
 private Weapon_Canon_6pdr_NZ_weapon1_slot1 is TCompositeHappening
 (
@@ -9521,6 +9535,20 @@ private Weapon_Daimler_Lunx_CAN_weapon1_slot1 is TCompositeHappening
     ]
 )
 
+// ------------------ Daimler_Lynx_NL ------------------- //
+private Weapon_Daimler_Lynx_NL_weapon1_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_Bren_gun_vehicule
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_Bren_gun_vehicule
+    ]
+)
+
 // ------------------ Daimler_Lynx_NZ ------------------- //
 private Weapon_Daimler_Lynx_NZ_weapon1_slot1 is TCompositeHappening
 (
@@ -13747,6 +13775,44 @@ private Weapon_Halftrack_M3A1_50_reco_BRZ_weapon2_slot1 is TCompositeHappening
     ]
 )
 private Weapon_Halftrack_M3A1_50_reco_BRZ_weapon3_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_M2HB_12_7mm_vehicule_AA
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_M2HB_12_7mm_vehicule_AA
+    ]
+)
+
+// ------------- Halftrack_M3A1_50_reco_UK -------------- //
+private Weapon_Halftrack_M3A1_50_reco_UK_weapon1_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_M2HB_12_7mm_vehicule
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_M2HB_12_7mm_vehicule
+    ]
+)
+private Weapon_Halftrack_M3A1_50_reco_UK_weapon2_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_M2HB_12_7mm_vehicule_AP
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_M2HB_12_7mm_vehicule_AP
+    ]
+)
+private Weapon_Halftrack_M3A1_50_reco_UK_weapon3_slot1 is TCompositeHappening
 (
     SubHappenings =
     [
@@ -18962,6 +19028,44 @@ private Weapon_Howz_sFH_18_150mm_GER_weapon3_slot1 is TCompositeHappening
     ]
 )
 
+// --------------- Howz_sFH_18_150mm_SOV ---------------- //
+private Weapon_Howz_sFH_18_150mm_SOV_weapon1_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_Howz_sFH_18_150mm
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_Howz_sFH_18_150mm
+    ]
+)
+private Weapon_Howz_sFH_18_150mm_SOV_weapon2_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_Howz_sFH_18_150mm_SMOKE
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_Howz_sFH_18_150mm_SMOKE
+    ]
+)
+private Weapon_Howz_sFH_18_150mm_SOV_weapon3_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_Howz_sFH_18_150mm_Direct
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_Howz_sFH_18_150mm_Direct
+    ]
+)
+
 // ----------------- Howz_sIG_33_150mm ------------------ //
 private Weapon_Howz_sIG_33_150mm_weapon1_slot1 is TCompositeHappening
 (
@@ -19436,6 +19540,32 @@ private Weapon_Humberette_CZ_weapon1_slot1 is TCompositeHappening
     ]
 )
 private Weapon_Humberette_CZ_weapon2_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_Canon_Boys_14mm_AP_Recce
+        (
+            Anchor = 'Fx_tourelle2_tir_01'
+            TurretIndexAsString = '2'
+        ),
+        SFXWeapon_Canon_Boys_14mm_AP_Recce
+    ]
+)
+
+// ------------------- Humberette_NL -------------------- //
+private Weapon_Humberette_NL_weapon1_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_Bren_gun_vehicule
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_Bren_gun_vehicule
+    ]
+)
+private Weapon_Humberette_NL_weapon2_slot1 is TCompositeHappening
 (
     SubHappenings =
     [
@@ -20989,6 +21119,8 @@ private Weapon_Jeep_MMG_US_weapon1_slot1 is TCompositeHappening
         SFXWeapon_M1919_7_62mm_vehicule
     ]
 )
+
+// ---------------------- Jeep_NL ----------------------- //
 
 // ---------------------- Jeep_NZ ----------------------- //
 
@@ -30024,6 +30156,8 @@ private Weapon_Opel_Blitz_Flakvierling_weapon2_slot4 is FXWeapon_Flakvierling_38
 
 // ------------------- Opel_Blitz_LET ------------------- //
 
+// ------------------- Opel_Blitz_NL -------------------- //
+
 // ----------------- Opel_Blitz_Supply ------------------ //
 
 // --------------- Opel_Blitz_Supply_LET ---------------- //
@@ -33247,6 +33381,54 @@ private Weapon_Panzer_II_VK901_weapon4_slot1 is TCompositeHappening
             TurretIndexAsString = '4'
         ),
         SFXWeapon_MG34_Vehicule
+    ]
+)
+
+// ----------------- Panzer_IV_70A_GER ------------------ //
+private Weapon_Panzer_IV_70A_GER_weapon1_slot1 is FXWeapon_KwK_42L70_75mm_casemate_AP
+(
+    Anchor = 'Fx_tourelle1_tir_01'
+    TurretIndexAsString = '1'
+)
+private Weapon_Panzer_IV_70A_GER_weapon2_slot1 is FXWeapon_KwK_42L70_75mm_casemate_HE
+(
+    Anchor = 'Fx_tourelle1_tir_01'
+    TurretIndexAsString = '1'
+)
+private Weapon_Panzer_IV_70A_GER_weapon3_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_MG42_Vehicule
+        (
+            Anchor = 'Fx_tourelle3_tir_01'
+            TurretIndexAsString = '3'
+        ),
+        SFXWeapon_MG42_Vehicule
+    ]
+)
+
+// ----------------- Panzer_IV_70V_GER ------------------ //
+private Weapon_Panzer_IV_70V_GER_weapon1_slot1 is FXWeapon_KwK_42L70_75mm_casemate_AP
+(
+    Anchor = 'Fx_tourelle1_tir_01'
+    TurretIndexAsString = '1'
+)
+private Weapon_Panzer_IV_70V_GER_weapon2_slot1 is FXWeapon_KwK_42L70_75mm_casemate_HE
+(
+    Anchor = 'Fx_tourelle1_tir_01'
+    TurretIndexAsString = '1'
+)
+private Weapon_Panzer_IV_70V_GER_weapon3_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_MG42_Vehicule
+        (
+            Anchor = 'Fx_tourelle3_tir_01'
+            TurretIndexAsString = '3'
+        ),
+        SFXWeapon_MG42_Vehicule
     ]
 )
 
@@ -38686,6 +38868,82 @@ private Weapon_SdKfz_251_21_weapon2_slot3 is FXWeapon_Drillinge_151_AA
     Anchor = 'Fx_tourelle1_tir_03'
     TurretIndexAsString = '1'
 )
+private Weapon_SdKfz_251_21_weapon3_slot1 is FXWeapon_Drillinge_151_AP
+(
+    Anchor = 'Fx_tourelle1_tir_01'
+    TurretIndexAsString = '1'
+)
+private Weapon_SdKfz_251_21_weapon3_slot2 is FXWeapon_Drillinge_151_AP
+(
+    Anchor = 'Fx_tourelle1_tir_02'
+    TurretIndexAsString = '1'
+)
+private Weapon_SdKfz_251_21_weapon3_slot3 is FXWeapon_Drillinge_151_AP
+(
+    Anchor = 'Fx_tourelle1_tir_03'
+    TurretIndexAsString = '1'
+)
+
+// ----------------- SdKfz_251_21D_GER ------------------ //
+private Weapon_SdKfz_251_21D_GER_weapon1_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_Drillinge_151
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_Drillinge_151
+    ]
+)
+private Weapon_SdKfz_251_21D_GER_weapon1_slot2 is FXWeapon_Drillinge_151
+(
+    Anchor = 'Fx_tourelle1_tir_02'
+    TurretIndexAsString = '1'
+)
+private Weapon_SdKfz_251_21D_GER_weapon1_slot3 is FXWeapon_Drillinge_151
+(
+    Anchor = 'Fx_tourelle1_tir_03'
+    TurretIndexAsString = '1'
+)
+private Weapon_SdKfz_251_21D_GER_weapon2_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_Drillinge_151_AA
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_Drillinge_151_AA
+    ]
+)
+private Weapon_SdKfz_251_21D_GER_weapon2_slot2 is FXWeapon_Drillinge_151_AA
+(
+    Anchor = 'Fx_tourelle1_tir_02'
+    TurretIndexAsString = '1'
+)
+private Weapon_SdKfz_251_21D_GER_weapon2_slot3 is FXWeapon_Drillinge_151_AA
+(
+    Anchor = 'Fx_tourelle1_tir_03'
+    TurretIndexAsString = '1'
+)
+private Weapon_SdKfz_251_21D_GER_weapon3_slot1 is FXWeapon_Drillinge_151_AP
+(
+    Anchor = 'Fx_tourelle1_tir_01'
+    TurretIndexAsString = '1'
+)
+private Weapon_SdKfz_251_21D_GER_weapon3_slot2 is FXWeapon_Drillinge_151_AP
+(
+    Anchor = 'Fx_tourelle1_tir_02'
+    TurretIndexAsString = '1'
+)
+private Weapon_SdKfz_251_21D_GER_weapon3_slot3 is FXWeapon_Drillinge_151_AP
+(
+    Anchor = 'Fx_tourelle1_tir_03'
+    TurretIndexAsString = '1'
+)
 
 // -------------------- SdKfz_251_3 --------------------- //
 private Weapon_SdKfz_251_3_weapon1_slot1 is TCompositeHappening
@@ -39154,6 +39412,21 @@ private Weapon_Sdkfz_11_Drilling_GER_weapon2_slot2 is FXWeapon_Drillinge_151_AA
     TurretIndexAsString = '1'
 )
 private Weapon_Sdkfz_11_Drilling_GER_weapon2_slot3 is FXWeapon_Drillinge_151_AA
+(
+    Anchor = 'Fx_tourelle1_tir_03'
+    TurretIndexAsString = '1'
+)
+private Weapon_Sdkfz_11_Drilling_GER_weapon3_slot1 is FXWeapon_Drillinge_151_AP
+(
+    Anchor = 'Fx_tourelle1_tir_01'
+    TurretIndexAsString = '1'
+)
+private Weapon_Sdkfz_11_Drilling_GER_weapon3_slot2 is FXWeapon_Drillinge_151_AP
+(
+    Anchor = 'Fx_tourelle1_tir_02'
+    TurretIndexAsString = '1'
+)
+private Weapon_Sdkfz_11_Drilling_GER_weapon3_slot3 is FXWeapon_Drillinge_151_AP
 (
     Anchor = 'Fx_tourelle1_tir_03'
     TurretIndexAsString = '1'
@@ -41202,6 +41475,92 @@ private Weapon_Sherman_M4A2_CO_NZ_weapon7_slot1 is TCompositeHappening
     ]
 )
 
+// ----------------- Sherman_M4A2_CO_UK ----------------- //
+private Weapon_Sherman_M4A2_CO_UK_weapon1_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_Canon_M3_late_75mmL_AP
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_Canon_M3_late_75mmL_AP
+    ]
+)
+private Weapon_Sherman_M4A2_CO_UK_weapon2_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_Canon_M3_late_75mmL_HE
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_Canon_M3_late_75mmL_HE
+    ]
+)
+private Weapon_Sherman_M4A2_CO_UK_weapon3_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_M2HB_12_7mm_vehicule
+        (
+            Anchor = 'Fx_tourelle2_tir_01'
+            TurretIndexAsString = '2'
+        ),
+        SFXWeapon_M2HB_12_7mm_vehicule
+    ]
+)
+private Weapon_Sherman_M4A2_CO_UK_weapon4_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_M2HB_12_7mm_vehicule_AP
+        (
+            Anchor = 'Fx_tourelle2_tir_01'
+            TurretIndexAsString = '2'
+        ),
+        SFXWeapon_M2HB_12_7mm_vehicule_AP
+    ]
+)
+private Weapon_Sherman_M4A2_CO_UK_weapon5_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_M2HB_12_7mm_vehicule_AA
+        (
+            Anchor = 'Fx_tourelle2_tir_01'
+            TurretIndexAsString = '2'
+        ),
+        SFXWeapon_M2HB_12_7mm_vehicule_AA
+    ]
+)
+private Weapon_Sherman_M4A2_CO_UK_weapon6_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_M1919_7_62mm_vehicule_UIx2
+        (
+            Anchor = 'Fx_tourelle3_tir_01'
+            TurretIndexAsString = '3'
+        ),
+        SFXWeapon_M1919_7_62mm_vehicule_UIx2
+    ]
+)
+private Weapon_Sherman_M4A2_CO_UK_weapon7_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_M1919_7_62mm_vehicule
+        (
+            Anchor = 'Fx_tourelle4_tir_01'
+            TurretIndexAsString = '4'
+        ),
+        SFXWeapon_M1919_7_62mm_vehicule
+    ]
+)
+
 // ---------------- Sherman_M4A2_Cmd_CAN ---------------- //
 private Weapon_Sherman_M4A2_Cmd_CAN_weapon1_slot1 is TCompositeHappening
 (
@@ -42136,6 +42495,92 @@ private Weapon_Sherman_M4A2_SOV_weapon6_slot1 is TCompositeHappening
     ]
 )
 private Weapon_Sherman_M4A2_SOV_weapon7_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_M1919_7_62mm_vehicule
+        (
+            Anchor = 'Fx_tourelle4_tir_01'
+            TurretIndexAsString = '4'
+        ),
+        SFXWeapon_M1919_7_62mm_vehicule
+    ]
+)
+
+// ------------------ Sherman_M4A2_UK ------------------- //
+private Weapon_Sherman_M4A2_UK_weapon1_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_Canon_M3_late_75mmL_AP
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_Canon_M3_late_75mmL_AP
+    ]
+)
+private Weapon_Sherman_M4A2_UK_weapon2_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_Canon_M3_late_75mmL_HE
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_Canon_M3_late_75mmL_HE
+    ]
+)
+private Weapon_Sherman_M4A2_UK_weapon3_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_M2HB_12_7mm_vehicule
+        (
+            Anchor = 'Fx_tourelle2_tir_01'
+            TurretIndexAsString = '2'
+        ),
+        SFXWeapon_M2HB_12_7mm_vehicule
+    ]
+)
+private Weapon_Sherman_M4A2_UK_weapon4_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_M2HB_12_7mm_vehicule_AP
+        (
+            Anchor = 'Fx_tourelle2_tir_01'
+            TurretIndexAsString = '2'
+        ),
+        SFXWeapon_M2HB_12_7mm_vehicule_AP
+    ]
+)
+private Weapon_Sherman_M4A2_UK_weapon5_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_M2HB_12_7mm_vehicule_AA
+        (
+            Anchor = 'Fx_tourelle2_tir_01'
+            TurretIndexAsString = '2'
+        ),
+        SFXWeapon_M2HB_12_7mm_vehicule_AA
+    ]
+)
+private Weapon_Sherman_M4A2_UK_weapon6_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_M1919_7_62mm_vehicule_UIx2
+        (
+            Anchor = 'Fx_tourelle3_tir_01'
+            TurretIndexAsString = '3'
+        ),
+        SFXWeapon_M1919_7_62mm_vehicule_UIx2
+    ]
+)
+private Weapon_Sherman_M4A2_UK_weapon7_slot1 is TCompositeHappening
 (
     SubHappenings =
     [
@@ -46279,6 +46724,16 @@ private Weapon_Steyr_1500_Flakdrilling_GER_weapon2_slot1 is TCompositeHappening
     ]
 )
 private Weapon_Steyr_1500_Flakdrilling_GER_weapon2_slot2 is FXWeapon_Drillinge_151_AA
+(
+    Anchor = 'Fx_tourelle1_tir_02'
+    TurretIndexAsString = '1'
+)
+private Weapon_Steyr_1500_Flakdrilling_GER_weapon3_slot1 is FXWeapon_Drillinge_151_AP
+(
+    Anchor = 'Fx_tourelle1_tir_01'
+    TurretIndexAsString = '1'
+)
+private Weapon_Steyr_1500_Flakdrilling_GER_weapon3_slot2 is FXWeapon_Drillinge_151_AP
 (
     Anchor = 'Fx_tourelle1_tir_02'
     TurretIndexAsString = '1'
@@ -52212,6 +52667,8 @@ private Weapon_Toldi_I_HON_weapon2_slot2 is FXWeapon_Gebauer_40M_8mm_Vehicule
 
 // ----------------- Truck_Bedford_GRE ------------------ //
 
+// ------------------ Truck_Bedford_NL ------------------ //
+
 // ------------------ Truck_Bedford_NZ ------------------ //
 
 // ----------------- Truck_Bedford_POL ------------------ //
@@ -52237,6 +52694,8 @@ private Weapon_Toldi_I_HON_weapon2_slot2 is FXWeapon_Gebauer_40M_8mm_Vehicule
 // ------------------- Truck_CMP_BEL -------------------- //
 
 // ------------------- Truck_CMP_CAN -------------------- //
+
+// -------------------- Truck_CMP_NL -------------------- //
 
 // --------------- Truck_CMP_Polsten_BEL ---------------- //
 private Weapon_Truck_CMP_Polsten_BEL_weapon1_slot1 is TCompositeHappening
@@ -53563,8 +54022,6 @@ private Weapon_Truck_Studebaker_BM31_SOV_weapon1_slot8 is TCompositeHappening
 // ------------------- Truck_TL37_BUL ------------------- //
 
 // ------------------- Truck_TL37_ITA ------------------- //
-
-// ----------- Truck_V8_Ford_098T_supply_FIN ------------ //
 
 // ------------------- Truck_WC25_FR -------------------- //
 
@@ -56196,6 +56653,37 @@ private Weapon_A_20J_5_DO_Havoc_US_weapon4_slot1 is TCompositeHappening
     ]
 )
 
+// ------------------ A_36A_Apache_US ------------------- //
+private Weapon_A_36A_Apache_US_weapon1_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_M2_Browning_12_7mm_Wings_x4_AirAir
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_M2_Browning_12_7mm_Wings_x4_AirAir
+    ]
+)
+private Weapon_A_36A_Apache_US_weapon2_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_M2_Browning_12_7mm_Wings_x4_AirSol
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_M2_Browning_12_7mm_Wings_x4_AirSol
+    ]
+)
+private Weapon_A_36A_Apache_US_weapon3_slot1 is FXWeapon_Bomb_AN_M64_227kg_x2
+(
+    Anchor = 'Fx_tourelle6_tir_01'
+    TurretIndexAsString = '6'
+)
+
 // ------------------- Ar_196_A3_GER -------------------- //
 private Weapon_Ar_196_A3_GER_weapon1_slot1 is TCompositeHappening
 (
@@ -56725,6 +57213,54 @@ private Weapon_Avia_B534_BUL_weapon2_slot2 is FXWeapon_vz_30_7_92mm_x4_Nose_AirS
 (
     Anchor = 'Fx_tourelle1_tir_02'
     TurretIndexAsString = '1'
+)
+
+// -------------- B25C_Mitchell_x12_110_NL -------------- //
+private Weapon_B25C_Mitchell_x12_110_NL_weapon1_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_M2_Browning_12_7mm_Turret_AirAir
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_M2_Browning_12_7mm_Turret_AirAir
+    ]
+)
+private Weapon_B25C_Mitchell_x12_110_NL_weapon2_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_M2_Browning_12_7mm_Turret_x2_AirAir
+        (
+            Anchor = 'Fx_tourelle2_tir_01'
+            TurretIndexAsString = '2'
+        ),
+        SFXWeapon_M2_Browning_12_7mm_Turret_x2_AirAir
+    ]
+)
+private Weapon_B25C_Mitchell_x12_110_NL_weapon2_slot2 is FXWeapon_M2_Browning_12_7mm_Turret_x2_AirAir
+(
+    Anchor = 'Fx_tourelle2_tir_02'
+    TurretIndexAsString = '2'
+)
+private Weapon_B25C_Mitchell_x12_110_NL_weapon3_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_M2_Browning_12_7mm_Turret_x2_AirAir
+        (
+            Anchor = 'Fx_tourelle3_tir_01'
+            TurretIndexAsString = '3'
+        ),
+        SFXWeapon_M2_Browning_12_7mm_Turret_x2_AirAir
+    ]
+)
+private Weapon_B25C_Mitchell_x12_110_NL_weapon4_slot1 is FXWeapon_Bomb_AN_M57_113kg_x12
+(
+    Anchor = 'Fx_tourelle4_tir_01'
+    TurretIndexAsString = '4'
 )
 
 // -------------- B25C_Mitchell_x12_110_UK -------------- //
@@ -66686,6 +67222,32 @@ private Weapon_Fiat_G50_bis_FIN_weapon2_slot2 is FXWeapon_Breda_SAFAT_12_7mm_Nos
     TurretIndexAsString = '1'
 )
 
+// -------------------- Fokker_C_FIN -------------------- //
+private Weapon_Fokker_C_FIN_weapon1_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_Browning_303_7_7mm_x2_Nose_AirAir
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_Browning_303_7_7mm_x2_Nose_AirAir
+    ]
+)
+private Weapon_Fokker_C_FIN_weapon2_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_Browning_303_7_7mm_x2_Nose_AirSol
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_Browning_303_7_7mm_x2_Nose_AirSol
+    ]
+)
+
 // ----------------- Fokker_D_XXI_4_FIN ----------------- //
 private Weapon_Fokker_D_XXI_4_FIN_weapon1_slot1 is TCompositeHappening
 (
@@ -68220,6 +68782,81 @@ private Weapon_Fw_190_F8_x12_80mm_AP_GER_weapon5_slot1 is TCompositeHappening
         ),
         SFXWeapon_80mm_Panzerblitz_1_AP_Rocket_x12
     ]
+)
+
+// --------------- Fw_190_F8_x1_1000_GER ---------------- //
+private Weapon_Fw_190_F8_x1_1000_GER_weapon1_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_MG151_20mm_x2_Wings_AirAir
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_MG151_20mm_x2_Wings_AirAir
+    ]
+)
+private Weapon_Fw_190_F8_x1_1000_GER_weapon1_slot2 is FXWeapon_MG151_20mm_x2_Wings_AirAir
+(
+    Anchor = 'Fx_tourelle1_tir_02'
+    TurretIndexAsString = '1'
+)
+private Weapon_Fw_190_F8_x1_1000_GER_weapon2_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_MG151_20mm_x2_Wings_AirSol
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_MG151_20mm_x2_Wings_AirSol
+    ]
+)
+private Weapon_Fw_190_F8_x1_1000_GER_weapon2_slot2 is FXWeapon_MG151_20mm_x2_Wings_AirSol
+(
+    Anchor = 'Fx_tourelle1_tir_02'
+    TurretIndexAsString = '1'
+)
+private Weapon_Fw_190_F8_x1_1000_GER_weapon3_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_MG131_13mm_x2_Nose_AirAir
+        (
+            Anchor = 'Fx_tourelle2_tir_01'
+            TurretIndexAsString = '2'
+        ),
+        SFXWeapon_MG131_13mm_x2_Nose_AirAir
+    ]
+)
+private Weapon_Fw_190_F8_x1_1000_GER_weapon3_slot2 is FXWeapon_MG131_13mm_x2_Nose_AirAir
+(
+    Anchor = 'Fx_tourelle2_tir_02'
+    TurretIndexAsString = '2'
+)
+private Weapon_Fw_190_F8_x1_1000_GER_weapon4_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_MG131_13mm_x2_Nose_AirSol
+        (
+            Anchor = 'Fx_tourelle2_tir_01'
+            TurretIndexAsString = '2'
+        ),
+        SFXWeapon_MG131_13mm_x2_Nose_AirSol
+    ]
+)
+private Weapon_Fw_190_F8_x1_1000_GER_weapon4_slot2 is FXWeapon_MG131_13mm_x2_Nose_AirSol
+(
+    Anchor = 'Fx_tourelle2_tir_02'
+    TurretIndexAsString = '2'
+)
+private Weapon_Fw_190_F8_x1_1000_GER_weapon5_slot1 is FXWeapon_Bomb_SC_1000kg_x1
+(
+    Anchor = 'Fx_tourelle3_tir_01'
+    TurretIndexAsString = '3'
 )
 
 // ---------------- Fw_190_F8_x1_250_GER ---------------- //
@@ -91228,6 +91865,32 @@ private Weapon_Mosquito_Supply_UK_weapon5_slot1 is FXWeapon_Bomb_AN_M76_230kg_x4
     TurretIndexAsString = '3'
 )
 
+// ----------------- Mustang_I_reco_UK ------------------ //
+private Weapon_Mustang_I_reco_UK_weapon1_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_M2_Browning_12_7mm_Wings_x4_AirAir
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_M2_Browning_12_7mm_Wings_x4_AirAir
+    ]
+)
+private Weapon_Mustang_I_reco_UK_weapon2_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_M2_Browning_12_7mm_Wings_x4_AirSol
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_M2_Browning_12_7mm_Wings_x4_AirSol
+    ]
+)
+
 // ---------------- Mustang_Mk3_110_POL ----------------- //
 private Weapon_Mustang_Mk3_110_POL_weapon1_slot1 is TCompositeHappening
 (
@@ -107616,6 +108279,42 @@ private Weapon_Typhoon_CAN_weapon2_slot3 is FXWeapon_Hispano_II_20mm_x4_Wings_Ai
 private Weapon_Typhoon_CAN_weapon2_slot4 is FXWeapon_Hispano_II_20mm_x4_Wings_AirSol
 (
     Anchor = 'Fx_tourelle1_tir_04'
+    TurretIndexAsString = '1'
+)
+
+// ----------------- Typhoon_IB_reco_UK ----------------- //
+private Weapon_Typhoon_IB_reco_UK_weapon1_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_Hispano_II_20mm_x4_Wings_AirAir
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_Hispano_II_20mm_x4_Wings_AirAir
+    ]
+)
+private Weapon_Typhoon_IB_reco_UK_weapon1_slot2 is FXWeapon_Hispano_II_20mm_x4_Wings_AirAir
+(
+    Anchor = 'Fx_tourelle1_tir_02'
+    TurretIndexAsString = '1'
+)
+private Weapon_Typhoon_IB_reco_UK_weapon2_slot1 is TCompositeHappening
+(
+    SubHappenings =
+    [
+        FXWeapon_Hispano_II_20mm_x4_Wings_AirSol
+        (
+            Anchor = 'Fx_tourelle1_tir_01'
+            TurretIndexAsString = '1'
+        ),
+        SFXWeapon_Hispano_II_20mm_x4_Wings_AirSol
+    ]
+)
+private Weapon_Typhoon_IB_reco_UK_weapon2_slot2 is FXWeapon_Hispano_II_20mm_x4_Wings_AirSol
+(
+    Anchor = 'Fx_tourelle1_tir_02'
     TurretIndexAsString = '1'
 )
 

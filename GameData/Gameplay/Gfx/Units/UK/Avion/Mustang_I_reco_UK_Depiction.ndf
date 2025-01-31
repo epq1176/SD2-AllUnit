@@ -1,19 +1,19 @@
-export Gfx_Spitfire_Mk_XIV_NL is TTimelyReceiverFactoryCarrier
+export Gfx_Mustang_I_reco_UK is TTimelyReceiverFactoryCarrier
 (
     DepictionTemplate = TDepictionTemplate
     (
         RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
         Selector = SpecificAirplaneDepictionSelectorWithScale
         DepictionAlternatives = [
-            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Spitfire_Mk_XIV_NL ),
-            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Spitfire_Mk_XIV_NL_MID ),
-            DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_Spitfire_Mk_XIV_NL_LOW ),
-            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Spitfire_Mk_XIV_NL ),
-            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Spitfire_Mk_XIV_NL_MID ),
-            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_Spitfire_Mk_XIV_NL_LOW ),
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Mustang_I_reco_UK ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Mustang_I_reco_UK_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_Mustang_I_reco_UK_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Mustang_I_reco_UK ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Mustang_I_reco_UK_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_Mustang_I_reco_UK_LOW ),
         ]
 
-         Operators = Operators_Spitfire_Mk_XIV_NL
+         Operators = Operators_Mustang_I_reco_UK
                    + DepictionOperator_Airfoil_WingsAndStabilizersAirplane
                    + DepictionOperator_Propulsion_Single_Engine_Plane
                    + DepictionOperator_Airplane
@@ -21,11 +21,11 @@ export Gfx_Spitfire_Mk_XIV_NL is TTimelyReceiverFactoryCarrier
                   + DepictionOperator_Feedback_Degat_Level2
 
         Actions = //DepictionAction_MovementFX_SingleReactorAirplane
-                 Weapons_Spitfire_Mk_XIV_NL
+                 Weapons_Mustang_I_reco_UK
                 + DepictionAction_StressLevel_Avion_2
-                + MAP [ (['FX_Helice_1'], Template_DepictionAction_Rotor( PaleLength = 300 PaleCount = 4 SousMobile = "Bloc_Moteur_1" ))]
+                + MAP [ (['FX_Helice_1'], Template_DepictionAction_Rotor( PaleLength = 350 PaleCount = 4 SousMobile = "Bloc_Moteur_1" ))]
 
-    //SubDepictionGenerators = SubGenerators_Spitfire_Mk_XIV_NL
+    // SubDepictionGenerators = SubGenerators_Mustang_I_reco_UK
 
     SubDepictions = [
         TSubDepiction(
@@ -34,7 +34,7 @@ export Gfx_Spitfire_Mk_XIV_NL is TTimelyReceiverFactoryCarrier
                 RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
                 Selector = WarGameShowRoomDepictionSelector
                 DepictionAlternatives = [
-                    TDepictionDescriptor( SelectorId = 'high' MeshDescriptor = Modele_Spitfire_Mk_XIV_NL_train ),
+                    TDepictionDescriptor( SelectorId = 'high' MeshDescriptor = Modele_Mustang_I_reco_UK_train ),
                     TDepictionDescriptor( SelectorId = 'none' )
                 ]
             )

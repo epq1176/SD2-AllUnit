@@ -1,0 +1,22 @@
+export ModelFile_Daimler_Lynx_NL is 'GameData:Assets\3D\Units\NL\Vehicule\Lynx_NL\Lynx_NL.Ase2NdfBin'
+
+Modele_Daimler_Lynx_NL is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Daimler_Lynx_NL
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Daimler_Lynx_NL_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\NL\Vehicule\Lynx_NL_MID\Lynx_NL_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_Daimler_Lynx_NL_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\NL\Vehicule\LODS\Lynx_NL_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

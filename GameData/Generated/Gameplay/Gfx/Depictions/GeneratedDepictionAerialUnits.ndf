@@ -14547,6 +14547,56 @@ Gfx_Typhoon_CAN_Autogen is TTimelyReceiverFactoryCarrier
     )
 )
 
+// Train d'attérissage de l'unité Typhoon_IB_reco_UK.
+Gfx_Typhoon_IB_reco_UK_LandingGear is TSubDepiction
+(
+    Anchor = "Landing Gear"
+    Depiction = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = WarGameShowRoomDepictionSelector
+        DepictionAlternatives = [
+            TDepictionDescriptor( SelectorId = 'high' MeshDescriptor = Modele_Typhoon_IB_reco_UK_train ),
+            TDepictionDescriptor( SelectorId = 'none' )
+        ]
+    )
+)
+
+// Dépiction de l'unité Typhoon_IB_reco_UK
+Gfx_Typhoon_IB_reco_UK_Autogen is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificAirplaneDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Typhoon_IB_reco_UK ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Typhoon_IB_reco_UK_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_Typhoon_IB_reco_UK_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Typhoon_IB_reco_UK ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Typhoon_IB_reco_UK_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_Typhoon_IB_reco_UK_LOW ),
+        ]
+
+        Operators = []
+                  + Operators_Typhoon_IB_reco_UK
+                  + DepictionOperator_Airfoil_WingsAndStabilizersAirplane
+                  + DepictionOperator_Propulsion_Single_Engine_Plane
+                  + DepictionOperator_Airplane
+                  + DepictionOperator_Feedback_Degat_Level1
+                  + DepictionOperator_Feedback_Degat_Level2
+
+        Actions = MAP []
+                + Weapons_Typhoon_IB_reco_UK
+                + DepictionAction_StressLevel_Avion_2
+                + MAP [ (['FX_Helice_1'], Template_DepictionAction_Rotor( PaleLength = 350 PaleCount = 3 SousMobile = "Bloc_Moteur_1" ))]
+
+        SubDepictions = []
+                      + [ Gfx_Typhoon_IB_reco_UK_LandingGear ]
+                      + [ SubDepiction_Pilote1(MeshDescriptorHigh = MeshDescriptor_Pilote_UK MeshDescriptorMid = MeshDescriptor_Pilote_UK_LOW) ]
+    )
+)
+
 // Train d'attérissage de l'unité Typhoon_Rocket_CAN.
 Gfx_Typhoon_Rocket_CAN_LandingGear is TSubDepiction
 (
