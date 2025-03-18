@@ -1553,6 +1553,39 @@ Operators_BT_42_FIN is [
     ),
     DepictionOperatorNode_CropFlattening( Radius = 5 * Metre ),
 ]
+Operators_BT_5_reco_SOV is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_SD_tank_moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = -0.17453292519943295
+        MaxYAngle = 0.4363323129985824
+    ),
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle4'
+        ZAxisNode  = 'Tourelle_04'
+        ZAxisPhysicalPropertyName = 'tourelle4'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle4absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle4target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle4control'
+        MinZAngle = -0.008726646259971549
+        MaxZAngle = 0.008726646259971549
+        YAxisNode = 'Axe_Canon_04'
+        YAxisPhysicalPropertyName = 'tourelle4axe'
+        MinYAngle = -0.17453292519943295
+        MaxYAngle = 0.17453292519943295
+    ),
+    DepictionOperatorNode_CropFlattening( Radius = 5 * Metre ),
+]
 Operators_BT_7_GER is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_SD_tank_moteur,
@@ -3164,6 +3197,25 @@ Operators_Canon_KPUV_vz37_37mm_BUL is [
     ),
 ]
 Operators_Canon_ZIS2_57mmAT_AWP is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        MinZAngle = -0.13089969389957457
+        MaxZAngle = 0.13089969389957457
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = -0.17453292519943295
+        MaxYAngle = 0.5235987755982988
+    ),
+]
+Operators_Canon_ZIS2_57mmAT_CZ is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
     TCosmeticTurretOperatorDesc
@@ -6776,6 +6828,23 @@ Operators_DCA_37mm_GER is [
         MaxYAngle = 1.4835298641951802
     ),
 ]
+Operators_DCA_37mm_M1943_CZ is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = -0.17453292519943295
+        MaxYAngle = 1.4835298641951802
+    ),
+]
 Operators_DCA_37mm_SOV is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
@@ -6794,6 +6863,40 @@ Operators_DCA_37mm_SOV is [
     ),
 ]
 Operators_DCA_37mm_SOV_EstSOV is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = -0.17453292519943295
+        MaxYAngle = 1.4835298641951802
+    ),
+]
+Operators_DCA_75_46_GER is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = -0.17453292519943295
+        MaxYAngle = 1.4835298641951802
+    ),
+]
+Operators_DCA_75_46_RSI is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
     TCosmeticTurretOperatorDesc
@@ -9076,9 +9179,9 @@ Operators_Flakpanzer_Bren_GER is [
     ),
     DepictionOperatorNode_CropFlattening( Radius = 5 * Metre ),
 ]
-Operators_Flakvierling_20mm is [
+Operators_Flakpanzer_IVc_88mm_GER is [
     DepictionOperatorNode_Reset_Generic,
-    DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
+    DepictionOperatorNode_MotorSound_Gfx_SD_halftrack_moteur,
     TCosmeticTurretOperatorDesc
     (
         OperatorId = 'tourelle1'
@@ -9092,8 +9195,9 @@ Operators_Flakvierling_20mm is [
         MinYAngle = -0.17453292519943295
         MaxYAngle = 1.4835298641951802
     ),
+    DepictionOperatorNode_CropFlattening( Radius = 10 * Metre ),
 ]
-Operators_Flakvierling_20mm_CZ is [
+Operators_Flakvierling_20mm is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
     TCosmeticTurretOperatorDesc
@@ -9396,6 +9500,26 @@ Operators_Gornostrelki_Mort_82mm_SOV is [
     ),
 ]
 Operators_Grille is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_SD_tank_moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        MinZAngle = -0.13089969389957457
+        MaxZAngle = 0.13089969389957457
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = 0.0
+        MaxYAngle = 1.3089969389957472
+    ),
+    DepictionOperatorNode_CropFlattening( Radius = 30 * Metre ),
+]
+Operators_Grille_H_GER is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_SD_tank_moteur,
     TCosmeticTurretOperatorDesc
@@ -10141,6 +10265,25 @@ Operators_HMG_MG42 is [
     ),
 ]
 Operators_HMG_MG42_AK_bonne is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        MinZAngle = -1.0471975511965974
+        MaxZAngle = 1.0471975511965974
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = -1.5533430342749535
+        MaxYAngle = 1.5533430342749535
+    ),
+]
+Operators_HMG_MG42_CZ is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
     TCosmeticTurretOperatorDesc
@@ -11419,6 +11562,42 @@ Operators_Halftrack_M5A1_50_Rats_UK is [
     DepictionOperatorNode_CropFlattening( Radius = 10 * Metre ),
 ]
 Operators_Halftrack_M5_50_AWP is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_SD_halftrack_moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = -0.7853981633974483
+        MaxYAngle = 1.0471975511965976
+    ),
+    DepictionOperatorNode_CropFlattening( Radius = 10 * Metre ),
+]
+Operators_Halftrack_M5_50_CZ is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_SD_halftrack_moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = -0.7853981633974483
+        MaxYAngle = 1.0471975511965976
+    ),
+    DepictionOperatorNode_CropFlattening( Radius = 10 * Metre ),
+]
+Operators_Halftrack_M5_50_EstSOV is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_SD_halftrack_moteur,
     TCosmeticTurretOperatorDesc
@@ -13362,6 +13541,25 @@ Operators_Howz_Schneider_105mm_Mle1936_ROU is [
         MaxYAngle = 1.3089969389957472
     ),
 ]
+Operators_Howz_Schneider_105mm_Mle1936_SOV is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        MinZAngle = -0.13089969389957457
+        MaxZAngle = 0.13089969389957457
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = 0.0
+        MaxYAngle = 1.3089969389957472
+    ),
+]
 Operators_Howz_Schneider_105mm_ROU is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
@@ -13495,7 +13693,45 @@ Operators_Howz_Schneider_220mm_TR_GER is [
         MaxYAngle = 1.3089969389957472
     ),
 ]
+Operators_Howz_Schneider_M1909_30_152mm_CZ is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        MinZAngle = -0.08726646259971638
+        MaxZAngle = 0.08726646259971638
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = 0.0
+        MaxYAngle = 1.3089969389957472
+    ),
+]
 Operators_Howz_Skoda_100mm_1916_GER is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        MinZAngle = -0.13089969389957457
+        MaxZAngle = 0.13089969389957457
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = 0.0
+        MaxYAngle = 1.3089969389957472
+    ),
+]
+Operators_Howz_Skoda_100mm_CZ is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
     TCosmeticTurretOperatorDesc
@@ -13666,6 +13902,25 @@ Operators_Howz_Skoda_75mm_direct_GER is [
         MaxYAngle = 1.3089969389957472
     ),
 ]
+Operators_Howz_Skoda_vz25_150mm_CZ is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        MinZAngle = -0.13089969389957457
+        MaxZAngle = 0.13089969389957457
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = 0.0
+        MaxYAngle = 1.3089969389957472
+    ),
+]
 Operators_Howz_Skoda_vz30_76mm_GER is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
@@ -13759,6 +14014,25 @@ Operators_Howz_ZIS3_76mm_Art_US is [
         YAxisPhysicalPropertyName = 'tourelle1axe'
         MinYAngle = 0.0
         MaxYAngle = 1.3089969389957472
+    ),
+]
+Operators_Howz_ZIS3_76mm_CZ is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        MinZAngle = -0.13089969389957457
+        MaxZAngle = 0.13089969389957457
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = -0.17453292519943295
+        MaxYAngle = 0.8726646259971648
     ),
 ]
 Operators_Howz_ZIS3_76mm_SOV is [
@@ -13856,6 +14130,25 @@ Operators_Howz_leFH18M_105mm_FR is [
         MaxYAngle = 1.3089969389957472
     ),
 ]
+Operators_Howz_leFH18_105mm_CZ is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        MinZAngle = -0.13089969389957457
+        MaxZAngle = 0.13089969389957457
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = 0.0
+        MaxYAngle = 1.3089969389957472
+    ),
+]
 Operators_Howz_leFH18_105mm_FIN is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
@@ -13933,6 +14226,25 @@ Operators_Howz_leFH_14_19_100mm_ROU is [
     ),
 ]
 Operators_Howz_leIG_18_75mm is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        MinZAngle = -0.13089969389957457
+        MaxZAngle = 0.13089969389957457
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = 0.0
+        MaxYAngle = 1.3089969389957472
+    ),
+]
+Operators_Howz_leIG_18_75mm_CZ is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
     TCosmeticTurretOperatorDesc
@@ -14119,6 +14431,25 @@ Operators_Howz_ob1927_76mm_SOV_EstSOV is [
         YAxisNode = 'Axe_Canon_01'
         YAxisPhysicalPropertyName = 'tourelle1axe'
         MinYAngle = 0.0
+        MaxYAngle = 1.3089969389957472
+    ),
+]
+Operators_Howz_ob1943_76mm_CZ is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        MinZAngle = -0.13089969389957457
+        MaxZAngle = 0.13089969389957457
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = -0.17453292519943295
         MaxYAngle = 1.3089969389957472
     ),
 ]
@@ -15902,6 +16233,11 @@ Operators_Jeep_Vickers is [
     ),
     DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
 ]
+Operators_Jeep_red_CZ is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_VehiculeRoueMoyen_Moteur,
+    DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
+]
 Operators_Jeep_unarmed_SAS is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_VehiculeRoueMoyen_Moteur,
@@ -16621,6 +16957,26 @@ Operators_Komsomolets_HON is [
     ),
     DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
 ]
+Operators_Komsomolets_SOV is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_SD_tank_moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        MinZAngle = -0.5235987755982987
+        MaxZAngle = 0.5235987755982987
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = -0.2617993877991494
+        MaxYAngle = 0.5235987755982988
+    ),
+    DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
+]
 Operators_Konigstiger_Henshel is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_SD_tank_moteur,
@@ -16830,6 +17186,11 @@ Operators_Kubelwagen_CRO is [
     DepictionOperatorNode_MotorSound_Gfx_VehiculeRoueMoyen_Moteur,
     DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
 ]
+Operators_Kubelwagen_CZ is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_VehiculeRoueMoyen_Moteur,
+    DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
+]
 Operators_Kubelwagen_FFI is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_SD_jeep_moteur,
@@ -16906,6 +17267,26 @@ Operators_Kubelwagen_MG_AK is [
     DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
 ]
 Operators_Kubelwagen_MG_BUL is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_SD_jeep_moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        MinZAngle = -0.7853981633974483
+        MaxZAngle = 0.7853981633974483
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = -0.7853981633974483
+        MaxYAngle = 1.0471975511965976
+    ),
+    DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
+]
+Operators_Kubelwagen_MG_CZ is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_SD_jeep_moteur,
     TCosmeticTurretOperatorDesc
@@ -18248,6 +18629,11 @@ Operators_M3_Command_Car_CAN is [
     DepictionOperatorNode_MotorSound_Gfx_VehiculeRoueMoyen_Moteur,
     DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
 ]
+Operators_M3_Command_Car_CZ is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_VehiculeRoueMoyen_Moteur,
+    DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
+]
 Operators_M3_Command_Car_FR is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_VehiculeRoueMoyen_Moteur,
@@ -18488,6 +18874,26 @@ Operators_M3_Scout_Car_AWP is [
 Operators_M3_Scout_Car_CAN is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_VehiculeRoueMoyen_Moteur,
+    DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
+]
+Operators_M3_Scout_Car_CZ is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_VehiculeRoueMoyen_Moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        MinZAngle = -0.7853981633974483
+        MaxZAngle = 0.7853981633974483
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = -0.7853981633974483
+        MaxYAngle = 1.0471975511965976
+    ),
     DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
 ]
 Operators_M3_Scout_Car_EstSOV is [
@@ -19789,6 +20195,25 @@ Operators_MG_Maxim_SOV_EstSOV is [
         MaxYAngle = 1.5533430342749535
     ),
 ]
+Operators_MG_SG43_CZ is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        MinZAngle = -1.0471975511965974
+        MaxZAngle = 1.0471975511965974
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = -1.5533430342749535
+        MaxYAngle = 1.5533430342749535
+    ),
+]
 Operators_MG_SG43_SOV is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
@@ -20220,6 +20645,21 @@ Operators_Marder_I_H39_GER is [
         MinYAngle = -0.17453292519943295
         MaxYAngle = 0.4363323129985824
     ),
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle2'
+        ZAxisNode  = 'Tourelle_02'
+        ZAxisPhysicalPropertyName = 'tourelle2'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle2absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle2target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle2control'
+        MinZAngle = -0.7853981633974483
+        MaxZAngle = 0.7853981633974483
+        YAxisNode = 'Axe_Canon_02'
+        YAxisPhysicalPropertyName = 'tourelle2axe'
+        MinYAngle = -0.7853981633974483
+        MaxYAngle = 1.0471975511965976
+    ),
     DepictionOperatorNode_CropFlattening( Radius = 5 * Metre ),
 ]
 Operators_Matilda_II_SOV is [
@@ -20310,6 +20750,11 @@ Operators_Maultier_Vielfachwerfer is [
         MaxYAngle = 1.3089969389957472
     ),
     DepictionOperatorNode_CropFlattening( Radius = 10 * Metre ),
+]
+Operators_McCormick_TD14_FIN is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_VehiculeRoueMoyen_Moteur,
+    DepictionOperatorNode_CropFlattening( Radius = 5 * Metre ),
 ]
 Operators_MercedesBenz_G5_HON is [
     DepictionOperatorNode_Reset_Generic,
@@ -23235,6 +23680,25 @@ Operators_Pak_Puppchen is [
         MaxYAngle = 0.4363323129985824
     ),
 ]
+Operators_Pak_Puppchen_HON is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_Infanterie_Moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        MinZAngle = -0.13089969389957457
+        MaxZAngle = 0.13089969389957457
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = -0.17453292519943295
+        MaxYAngle = 0.4363323129985824
+    ),
+]
 Operators_Panhard_178 is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_VehiculeRoueMoyen_Moteur,
@@ -24132,6 +24596,39 @@ Operators_Panzer_38t_Bef_GER is [
     DepictionOperatorNode_CropFlattening( Radius = 5 * Metre ),
 ]
 Operators_Panzer_38t_Bef_HON is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_SD_tank_moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = -0.17453292519943295
+        MaxYAngle = 0.4363323129985824
+    ),
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle4'
+        ZAxisNode  = 'Tourelle_04'
+        ZAxisPhysicalPropertyName = 'tourelle4'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle4absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle4target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle4control'
+        MinZAngle = -0.008726646259971549
+        MaxZAngle = 0.008726646259971549
+        YAxisNode = 'Axe_Canon_04'
+        YAxisPhysicalPropertyName = 'tourelle4axe'
+        MinYAngle = -0.17453292519943295
+        MaxYAngle = 0.17453292519943295
+    ),
+    DepictionOperatorNode_CropFlattening( Radius = 5 * Metre ),
+]
+Operators_Panzer_38t_CMD_CZ is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_SD_tank_moteur,
     TCosmeticTurretOperatorDesc
@@ -26851,6 +27348,11 @@ Operators_Peugeot_DMA_FFI is [
     DepictionOperatorNode_MotorSound_Gfx_VehiculeRoueMoyen_Moteur,
     DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
 ]
+Operators_Praga_RV_CZ is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_VehiculeRoueMoyen_Moteur,
+    DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
+]
 Operators_Priest_CAN is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_SD_tank_moteur,
@@ -28107,6 +28609,26 @@ Operators_SU_85_AWP is [
     DepictionOperatorNode_CropFlattening( Radius = 5 * Metre ),
 ]
 Operators_SU_85_CMD_SOV is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_SD_tank_moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        MinZAngle = -0.13089969389957457
+        MaxZAngle = 0.13089969389957457
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = -0.17453292519943295
+        MaxYAngle = 0.4363323129985824
+    ),
+    DepictionOperatorNode_CropFlattening( Radius = 5 * Metre ),
+]
+Operators_SU_85_CZ is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_SD_tank_moteur,
     TCosmeticTurretOperatorDesc
@@ -31983,6 +32505,69 @@ Operators_Sherman_M4A2_UK is [
     ),
     DepictionOperatorNode_CropFlattening( Radius = 5 * Metre ),
 ]
+Operators_Sherman_M4A2_reco_SOV is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_SD_tank_moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = -0.17453292519943295
+        MaxYAngle = 0.4363323129985824
+    ),
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle2'
+        ZAxisNode  = 'Tourelle_02'
+        ZAxisPhysicalPropertyName = 'tourelle2'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle2absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle2target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle2control'
+        MinZAngle = -0.7853981633974483
+        MaxZAngle = 0.7853981633974483
+        YAxisNode = 'Axe_Canon_02'
+        YAxisPhysicalPropertyName = 'tourelle2axe'
+        MinYAngle = -0.7853981633974483
+        MaxYAngle = 1.0471975511965976
+    ),
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle3'
+        ZAxisNode  = 'Tourelle_03'
+        ZAxisPhysicalPropertyName = 'tourelle3'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle3absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle3target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle3control'
+        MinZAngle = -0.5235987755982987
+        MaxZAngle = 0.5235987755982987
+        YAxisNode = 'Axe_Canon_03'
+        YAxisPhysicalPropertyName = 'tourelle3axe'
+        MinYAngle = -0.2617993877991494
+        MaxYAngle = 0.5235987755982988
+    ),
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle4'
+        ZAxisNode  = 'Tourelle_04'
+        ZAxisPhysicalPropertyName = 'tourelle4'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle4absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle4target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle4control'
+        MinZAngle = -0.008726646259971549
+        MaxZAngle = 0.008726646259971549
+        YAxisNode = 'Axe_Canon_04'
+        YAxisPhysicalPropertyName = 'tourelle4axe'
+        MinYAngle = -0.17453292519943295
+        MaxYAngle = 0.17453292519943295
+    ),
+    DepictionOperatorNode_CropFlattening( Radius = 5 * Metre ),
+]
 Operators_Sherman_M4A3105_FR is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_SD_tank_moteur,
@@ -34400,6 +34985,11 @@ Operators_SideCar_HarleyD_AWP is [
     DepictionOperatorNode_MotorSound_Gfx_SD_moto_moteur,
     DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
 ]
+Operators_SideCar_HarleyD_CMD_CZ is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_SD_moto_moteur,
+    DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
+]
 Operators_SideCar_HarleyD_CMD_EstSOV is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_SD_moto_moteur,
@@ -34411,6 +35001,11 @@ Operators_SideCar_HarleyD_CMD_POL is [
     DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
 ]
 Operators_SideCar_HarleyD_CMD_SOV is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_SD_moto_moteur,
+    DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
+]
+Operators_SideCar_HarleyD_CZ is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_SD_moto_moteur,
     DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
@@ -36161,6 +36756,54 @@ Operators_Stuart_M3A1_SOV is [
     ),
     DepictionOperatorNode_CropFlattening( Radius = 5 * Metre ),
 ]
+Operators_Stuart_M3A1_tank_SOV is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_SD_tank_moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = -0.17453292519943295
+        MaxYAngle = 0.4363323129985824
+    ),
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle3'
+        ZAxisNode  = 'Tourelle_03'
+        ZAxisPhysicalPropertyName = 'tourelle3'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle3absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle3target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle3control'
+        MinZAngle = -0.5235987755982987
+        MaxZAngle = 0.5235987755982987
+        YAxisNode = 'Axe_Canon_03'
+        YAxisPhysicalPropertyName = 'tourelle3axe'
+        MinYAngle = -0.2617993877991494
+        MaxYAngle = 0.5235987755982988
+    ),
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle4'
+        ZAxisNode  = 'Tourelle_04'
+        ZAxisPhysicalPropertyName = 'tourelle4'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle4absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle4target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle4control'
+        MinZAngle = -0.008726646259971549
+        MaxZAngle = 0.008726646259971549
+        YAxisNode = 'Axe_Canon_04'
+        YAxisPhysicalPropertyName = 'tourelle4axe'
+        MinYAngle = -0.17453292519943295
+        MaxYAngle = 0.17453292519943295
+    ),
+    DepictionOperatorNode_CropFlattening( Radius = 5 * Metre ),
+]
 Operators_Stuart_M3A3_CAN is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_SD_tank_moteur,
@@ -37704,6 +38347,26 @@ Operators_Stuka_zu_Fuss_GER is [
     ),
     DepictionOperatorNode_CropFlattening( Radius = 10 * Metre ),
 ]
+Operators_Sturmpanzer_Bison_GER is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_SD_tank_moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        MinZAngle = -0.13089969389957457
+        MaxZAngle = 0.13089969389957457
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = 0.0
+        MaxYAngle = 1.3089969389957472
+    ),
+    DepictionOperatorNode_CropFlattening( Radius = 30 * Metre ),
+]
 Operators_Sturmtiger_GER is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_SD_tank_moteur,
@@ -39059,6 +39722,39 @@ Operators_T34_85_obr_43_CMD_SOV is [
     ),
     DepictionOperatorNode_CropFlattening( Radius = 5 * Metre ),
 ]
+Operators_T34_85_obr_43_CZ is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_SD_tank_moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = -0.17453292519943295
+        MaxYAngle = 0.4363323129985824
+    ),
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle3'
+        ZAxisNode  = 'Tourelle_03'
+        ZAxisPhysicalPropertyName = 'tourelle3'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle3absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle3target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle3control'
+        MinZAngle = -0.5235987755982987
+        MaxZAngle = 0.5235987755982987
+        YAxisNode = 'Axe_Canon_03'
+        YAxisPhysicalPropertyName = 'tourelle3axe'
+        MinYAngle = -0.2617993877991494
+        MaxYAngle = 0.5235987755982988
+    ),
+    DepictionOperatorNode_CropFlattening( Radius = 5 * Metre ),
+]
 Operators_T34_85_obr_43_Fu_GER is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_SD_tank_moteur,
@@ -39254,6 +39950,54 @@ Operators_T34_85_obr_43_reco_SOV is [
         YAxisPhysicalPropertyName = 'tourelle3axe'
         MinYAngle = -0.2617993877991494
         MaxYAngle = 0.5235987755982988
+    ),
+    DepictionOperatorNode_CropFlattening( Radius = 5 * Metre ),
+]
+Operators_T34_85_obr_44_CZ is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_SD_tank_moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = -0.17453292519943295
+        MaxYAngle = 0.4363323129985824
+    ),
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle3'
+        ZAxisNode  = 'Tourelle_03'
+        ZAxisPhysicalPropertyName = 'tourelle3'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle3absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle3target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle3control'
+        MinZAngle = -0.5235987755982987
+        MaxZAngle = 0.5235987755982987
+        YAxisNode = 'Axe_Canon_03'
+        YAxisPhysicalPropertyName = 'tourelle3axe'
+        MinYAngle = -0.2617993877991494
+        MaxYAngle = 0.5235987755982988
+    ),
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle4'
+        ZAxisNode  = 'Tourelle_04'
+        ZAxisPhysicalPropertyName = 'tourelle4'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle4absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle4target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle4control'
+        MinZAngle = -0.008726646259971549
+        MaxZAngle = 0.008726646259971549
+        YAxisNode = 'Axe_Canon_04'
+        YAxisPhysicalPropertyName = 'tourelle4axe'
+        MinYAngle = -0.017453292519943295
+        MaxYAngle = 0.017453292519943295
     ),
     DepictionOperatorNode_CropFlattening( Radius = 5 * Metre ),
 ]
@@ -39818,6 +40562,39 @@ Operators_TACAM_T60_ROU is [
     ),
     DepictionOperatorNode_CropFlattening( Radius = 5 * Metre ),
 ]
+Operators_Tatra_OA_vz30_CZ is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_SD_jeep_moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = -0.17453292519943295
+        MaxYAngle = 0.4363323129985824
+    ),
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle3'
+        ZAxisNode  = 'Tourelle_03'
+        ZAxisPhysicalPropertyName = 'tourelle3'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle3absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle3target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle3control'
+        MinZAngle = -0.5235987755982987
+        MaxZAngle = 0.5235987755982987
+        YAxisNode = 'Axe_Canon_03'
+        YAxisPhysicalPropertyName = 'tourelle3axe'
+        MinYAngle = -0.2617993877991494
+        MaxYAngle = 0.5235987755982988
+    ),
+    DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
+]
 Operators_Tatra_OA_vz30_ROU is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_SD_jeep_moteur,
@@ -39869,6 +40646,11 @@ Operators_Tatra_T93C_25mm_ROU is [
         MinYAngle = -0.17453292519943295
         MaxYAngle = 0.4363323129985824
     ),
+    DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
+]
+Operators_Tatra_T93C_CZ is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_VehiculeRoueMoyen_Moteur,
     DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
 ]
 Operators_Tatra_T93C_ROU is [
@@ -40413,6 +41195,39 @@ Operators_Tiger_P_Bef_GER is [
     DepictionOperatorNode_CropFlattening( Radius = 5 * Metre ),
 ]
 Operators_Toldi_IIA_HON is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_SD_tank_moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = -0.17453292519943295
+        MaxYAngle = 0.4363323129985824
+    ),
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle4'
+        ZAxisNode  = 'Tourelle_04'
+        ZAxisPhysicalPropertyName = 'tourelle4'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle4absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle4target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle4control'
+        MinZAngle = -0.008726646259971549
+        MaxZAngle = 0.008726646259971549
+        YAxisNode = 'Axe_Canon_04'
+        YAxisPhysicalPropertyName = 'tourelle4axe'
+        MinYAngle = -0.17453292519943295
+        MaxYAngle = 0.17453292519943295
+    ),
+    DepictionOperatorNode_CropFlattening( Radius = 5 * Metre ),
+]
+Operators_Toldi_III_HON is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_SD_tank_moteur,
     TCosmeticTurretOperatorDesc
@@ -41365,6 +42180,21 @@ Operators_Truck_TL37_ITA is [
     DepictionOperatorNode_MotorSound_Gfx_VehiculeRoueMoyen_Moteur,
     DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
 ]
+Operators_Truck_V8_Ford_098T_CZ is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_VehiculeRoueMoyen_Moteur,
+    DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
+]
+Operators_Truck_V8_Ford_098T_supply_CZ is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_VehiculeRoueMoyen_Moteur,
+    DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
+]
+Operators_Truck_V8_Ford_098T_supply_FIN is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_VehiculeRoueMoyen_Moteur,
+    DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
+]
 Operators_Truck_WC25_FR is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_VehiculeRoueMoyen_Moteur,
@@ -41398,6 +42228,11 @@ Operators_Truck_WC52_AA_FR is [
         MinYAngle = -0.7853981633974483
         MaxYAngle = 1.0471975511965976
     ),
+    DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
+]
+Operators_Truck_WC52_AWP is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_VehiculeRoueMoyen_Moteur,
     DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
 ]
 Operators_Truck_WC52_DSHK_EstSOV is [
@@ -41486,6 +42321,11 @@ Operators_Truck_ZIS12_bi25mm_SOV is [
         MinYAngle = -0.17453292519943295
         MaxYAngle = 1.4835298641951802
     ),
+    DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
+]
+Operators_Truck_ZIS5V_CZ is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_VehiculeRoueMoyen_Moteur,
     DepictionOperatorNode_CropFlattening( Radius = 15 * Metre ),
 ]
 Operators_Truck_ZIS5V_DSHK_AWP is [
@@ -42399,6 +43239,24 @@ Operators_Valentine_VII_SOV is [
     ),
     DepictionOperatorNode_CropFlattening( Radius = 5 * Metre ),
 ]
+Operators_Valentine_X_reco_SOV is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_SD_tank_moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle1'
+        ZAxisNode  = 'Tourelle_01'
+        ZAxisPhysicalPropertyName = 'tourelle1'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle1absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle1target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle1control'
+        YAxisNode = 'Axe_Canon_01'
+        YAxisPhysicalPropertyName = 'tourelle1axe'
+        MinYAngle = -0.17453292519943295
+        MaxYAngle = 0.4363323129985824
+    ),
+    DepictionOperatorNode_CropFlattening( Radius = 5 * Metre ),
+]
 Operators_Vickers_E_obs_BUL is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_SD_tank_moteur,
@@ -43168,6 +44026,10 @@ Operators_A_20J_5_DO_Havoc_US is [
         MinYAngle = -0.7853981633974483
         MaxYAngle = 0.08726646259971647
     ),
+]
+Operators_A_36A_Apache_2x_227_US is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_SD_avion_chasseur_moteur,
 ]
 Operators_A_36A_Apache_US is [
     DepictionOperatorNode_Reset_Generic,
@@ -48448,6 +49310,21 @@ Operators_Fiat_G50_bis_FIN is [
 Operators_Fokker_C_FIN is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_SD_avion_chasseur_moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle2'
+        ZAxisNode  = 'Tourelle_02'
+        ZAxisPhysicalPropertyName = 'tourelle2'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle2absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle2target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle2control'
+        MinZAngle = 2.356194490192345
+        MaxZAngle = -2.356194490192345
+        YAxisNode = 'Axe_Canon_02'
+        YAxisPhysicalPropertyName = 'tourelle2axe'
+        MinYAngle = -0.08726646259971647
+        MaxYAngle = 1.0471975511965976
+    ),
 ]
 Operators_Fokker_D_XXI_4_FIN is [
     DepictionOperatorNode_Reset_Generic,
@@ -51869,6 +52746,40 @@ Operators_IL_4_x2_500_SOV is [
         MaxYAngle = 0.08726646259971647
     ),
 ]
+Operators_Il_DB_3M_FIN is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_SD_avion_bombardier_moteur,
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle2'
+        ZAxisNode  = 'Tourelle_02'
+        ZAxisPhysicalPropertyName = 'tourelle2'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle2absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle2target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle2control'
+        MinZAngle = 1.5707963267948966
+        MaxZAngle = -1.5707963267948966
+        YAxisNode = 'Axe_Canon_02'
+        YAxisPhysicalPropertyName = 'tourelle2axe'
+        MinYAngle = -0.08726646259971647
+        MaxYAngle = 0.7853981633974483
+    ),
+    TCosmeticTurretOperatorDesc
+    (
+        OperatorId = 'tourelle3'
+        ZAxisNode  = 'Tourelle_03'
+        ZAxisPhysicalPropertyName = 'tourelle3'
+        ZAxisAbsolutePhysicalPropertyName = 'tourelle3absolute'
+        ZAxisHasTargetPhysicalPropertyName = 'tourelle3target'
+        GameplayAssumePitchYawControlPhysicalPropertyName = 'tourelle3control'
+        MinZAngle = 2.617993877991495
+        MaxZAngle = -2.6179938779914944
+        YAxisNode = 'Axe_Canon_03'
+        YAxisPhysicalPropertyName = 'tourelle3axe'
+        MinYAngle = -0.7853981633974483
+        MaxYAngle = 0.08726646259971647
+    ),
+]
 Operators_JRS_79_B1_ROU is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_SD_avion_bombardier_moteur,
@@ -54357,6 +55268,10 @@ Operators_KB_11_Fazan_2_BUL is [
         MaxYAngle = 1.4835298641951802
     ),
 ]
+Operators_Kl_35D_CZ is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_SD_avion_bombardier_moteur,
+]
 Operators_L2_Grasshopper_FR is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_SD_avion_reco_moteur,
@@ -54418,6 +55333,10 @@ Operators_La_5FN_KOZHEDUB_ACE is [
     DepictionOperatorNode_MotorSound_Gfx_SD_avion_chasseur_moteur,
 ]
 Operators_La_5FN_SOV is [
+    DepictionOperatorNode_Reset_Generic,
+    DepictionOperatorNode_MotorSound_Gfx_SD_avion_chasseur_moteur,
+]
+Operators_La_5FN_x2_100_SOV is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_SD_avion_chasseur_moteur,
 ]
@@ -58988,10 +59907,6 @@ Operators_Yak_9B_x2_100_SOV is [
     DepictionOperatorNode_MotorSound_Gfx_SD_avion_chasseur_moteur,
 ]
 Operators_Yak_9B_x4_100_SOV is [
-    DepictionOperatorNode_Reset_Generic,
-    DepictionOperatorNode_MotorSound_Gfx_SD_avion_chasseur_moteur,
-]
-Operators_Yak_9K_SOV is [
     DepictionOperatorNode_Reset_Generic,
     DepictionOperatorNode_MotorSound_Gfx_SD_avion_chasseur_moteur,
 ]

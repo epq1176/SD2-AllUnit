@@ -4537,6 +4537,18 @@ template FXInfantryWeapon_lMG81x2 [ Anchor, ShotCountInitialValue ] is FXInfantr
     ImpactPower            = 1.0
     ShotCountInitialValue  = <ShotCountInitialValue>
 )
+template FXInfantryWeapon_vz_24_rifles_x6 [ Anchor, ShotCountInitialValue ] is FXInfantry
+(
+    Anchor                 = <Anchor>
+    FX                     = FX_Full_Fusil_7mm
+    WithoutPhysics         = True
+    InitialSpeed           = 25000.0
+    FluidFriction          = 0.0
+    DirectFire             = False
+    Power                  = 2.
+    ImpactPower            = 1.0
+    ShotCountInitialValue  = <ShotCountInitialValue>
+)
 template FXInfantryWeapon_vz_24_rifles_x7 [ Anchor, ShotCountInitialValue ] is FXInfantry
 (
     Anchor                 = <Anchor>

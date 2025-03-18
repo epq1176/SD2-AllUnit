@@ -1,0 +1,28 @@
+export Gfx_Truck_V8_Ford_098T_supply_FIN is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+        Selector = SpecificDepictionSelectorWithScale
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = Modele_Truck_V8_Ford_098T_supply_FIN ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = Modele_Truck_V8_Ford_098T_supply_FIN_MID ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = Modele_Truck_V8_Ford_098T_supply_FIN_LOW ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = Modele_Truck_V8_Ford_098T_supply_FIN ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = Modele_Truck_V8_Ford_098T_supply_FIN_MID ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = Modele_Truck_V8_Ford_098T_supply_FIN_LOW ),
+        ]
+
+        Operators = Operators_Truck_V8_Ford_098T_supply_FIN
+                  + DepictionOperator_Chassis_MediumTank
+                  + DepictionOperator_Propulsion_6Wheels_Generic_MediumVehicleSound
+
+
+        Actions = Weapons_Truck_V8_Ford_098T_supply_FIN
+                + DepictionAction_StressLevel_2
+                + DepictionAction_MovementFX_Wheeled
+
+        SubDepictions = DepictionSubDepiction_Driver_US
+                        + [ SubDepictionTowedUnit ]
+    )
+)

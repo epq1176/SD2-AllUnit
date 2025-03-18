@@ -392,13 +392,6 @@ Texture_RTS_H_BA_20M_SOV is TUIResourceTextureWithUsefulnessMask
     FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\RTS\BA_20M_SOV.png'
 )
 
-Texture_RTS_H_SdKfz_222 is TUIResourceTextureWithUsefulnessMask
-(
-    TypeMask      = TypeMask/Common
-    CivMask       = CivMask/Common
-    FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\RTS\SdKfz_222.png'
-)
-
 Texture_RTS_H_BA_64B_SOV is TUIResourceTextureWithUsefulnessMask
 (
     TypeMask      = TypeMask/Common
@@ -999,6 +992,13 @@ Texture_RTS_H_Crusader_AA_Polsten_POL is TUIResourceTextureWithUsefulnessMask
     TypeMask      = TypeMask/Common
     CivMask       = CivMask/Common
     FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\RTS\Crusader_AA_Polsten_POL.png'
+)
+
+Texture_RTS_H_SdKfz_222 is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask      = TypeMask/Common
+    CivMask       = CivMask/Common
+    FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\RTS\SdKfz_222.png'
 )
 
 Texture_RTS_H_DCA_20mm_Breda_ITA is TUIResourceTextureWithUsefulnessMask
@@ -4459,18 +4459,18 @@ Texture_RTS_H_T34_85_obr_43_CMD_SOV is TUIResourceTextureWithUsefulnessMask
     FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\RTS\T34_85_obr_43_CMD_SOV.png'
 )
 
-Texture_RTS_H_T34_85_obr_43_GER is TUIResourceTextureWithUsefulnessMask
-(
-    TypeMask      = TypeMask/Common
-    CivMask       = CivMask/Common
-    FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\RTS\T34_85_obr_43_GER.png'
-)
-
 Texture_RTS_H_T34_85_obr_43_SOV is TUIResourceTextureWithUsefulnessMask
 (
     TypeMask      = TypeMask/Common
     CivMask       = CivMask/Common
     FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\RTS\T34_85_obr_43_SOV.png'
+)
+
+Texture_RTS_H_T34_85_obr_43_GER is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask      = TypeMask/Common
+    CivMask       = CivMask/Common
+    FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\RTS\T34_85_obr_43_GER.png'
 )
 
 Texture_RTS_H_T38M2_SOV is TUIResourceTextureWithUsefulnessMask
@@ -4634,18 +4634,18 @@ Texture_RTS_H_Toldi_IIA_HON is TUIResourceTextureWithUsefulnessMask
     FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\RTS\Toldi_IIA_HON.png'
 )
 
-Texture_RTS_H_Toldi_II_CMD_HON is TUIResourceTextureWithUsefulnessMask
-(
-    TypeMask      = TypeMask/Common
-    CivMask       = CivMask/Common
-    FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\RTS\Toldi_II_CMD_HON.png'
-)
-
 Texture_RTS_H_Toldi_II_HON is TUIResourceTextureWithUsefulnessMask
 (
     TypeMask      = TypeMask/Common
     CivMask       = CivMask/Common
     FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\RTS\Toldi_II_HON.png'
+)
+
+Texture_RTS_H_Toldi_II_CMD_HON is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask      = TypeMask/Common
+    CivMask       = CivMask/Common
+    FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\RTS\Toldi_II_CMD_HON.png'
 )
 
 Texture_RTS_H_Toldi_I_HON is TUIResourceTextureWithUsefulnessMask
@@ -4886,18 +4886,18 @@ Texture_RTS_H_Truck_WC52_US is TUIResourceTextureWithUsefulnessMask
     FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\RTS\Truck_WC52_US.png'
 )
 
-Texture_RTS_H_Truck_WC52_DSHK_SOV is TUIResourceTextureWithUsefulnessMask
-(
-    TypeMask      = TypeMask/Common
-    CivMask       = CivMask/Common
-    FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\RTS\Truck_WC52_DSHK_SOV.png'
-)
-
 Texture_RTS_H_Truck_WC52_SOV is TUIResourceTextureWithUsefulnessMask
 (
     TypeMask      = TypeMask/Common
     CivMask       = CivMask/Common
     FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\RTS\Truck_WC52_SOV.png'
+)
+
+Texture_RTS_H_Truck_WC52_DSHK_SOV is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask      = TypeMask/Common
+    CivMask       = CivMask/Common
+    FileName      = 'Assets\2D\Interface\UseInGame\LabelIcons\RTS\Truck_WC52_DSHK_SOV.png'
 )
 
 Texture_RTS_H_Truck_ZIS12_bi25mm_SOV is TUIResourceTextureWithUsefulnessMask
@@ -6445,7 +6445,6 @@ NATORTSAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_RTS_H_BA_10M_SOV", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_BA_10M_SOV)]),
         ("Texture_RTS_H_BA_10M_Carrier_SOV", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_BA_10M_Carrier_SOV)]),
         ("Texture_RTS_H_BA_20M_SOV", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_BA_20M_SOV)]),
-        ("Texture_RTS_H_SdKfz_222", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_SdKfz_222)]),
         ("Texture_RTS_H_BA_64B_SOV", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_BA_64B_SOV)]),
         ("Texture_Transport_Softskin", MAP [(~/ComponentState/Normal, ~/Texture_Transport_Softskin)]),
         ("Texture_RTS_H_Horch_108_GER", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Horch_108_GER)]),
@@ -6532,6 +6531,7 @@ NATORTSAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_RTS_H_Crusader_AA_Mk2_POL", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Crusader_AA_Mk2_POL)]),
         ("Texture_RTS_H_Crusader_AA_Mk2_UK", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Crusader_AA_Mk2_UK)]),
         ("Texture_RTS_H_Crusader_AA_Polsten_POL", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Crusader_AA_Polsten_POL)]),
+        ("Texture_RTS_H_SdKfz_222", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_SdKfz_222)]),
         ("Texture_RTS_H_DCA_20mm_Breda_ITA", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_DCA_20mm_Breda_ITA)]),
         ("Texture_RTS_H_DCA_25mm_GER", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_DCA_25mm_GER)]),
         ("Texture_AT_AA", MAP [(~/ComponentState/Normal, ~/Texture_AT_AA)]),
@@ -7026,8 +7026,8 @@ NATORTSAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_RTS_H_T34_85_obr_44_SOV", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_T34_85_obr_44_SOV)]),
         ("Texture_RTS_H_T34_85_obr_43_AWP", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_T34_85_obr_43_AWP)]),
         ("Texture_RTS_H_T34_85_obr_43_CMD_SOV", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_T34_85_obr_43_CMD_SOV)]),
-        ("Texture_RTS_H_T34_85_obr_43_GER", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_T34_85_obr_43_GER)]),
         ("Texture_RTS_H_T34_85_obr_43_SOV", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_T34_85_obr_43_SOV)]),
+        ("Texture_RTS_H_T34_85_obr_43_GER", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_T34_85_obr_43_GER)]),
         ("Texture_RTS_H_T38M2_SOV", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_T38M2_SOV)]),
         ("Texture_RTS_H_T50_FIN", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_T50_FIN)]),
         ("Texture_RTS_H_T60_GER", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_T60_GER)]),
@@ -7051,8 +7051,8 @@ NATORTSAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_RTS_H_Tiger_E_Bef", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Tiger_E_Bef)]),
         ("Texture_RTS_H_Tiger_P_Bef_GER", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Tiger_P_Bef_GER)]),
         ("Texture_RTS_H_Toldi_IIA_HON", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Toldi_IIA_HON)]),
-        ("Texture_RTS_H_Toldi_II_CMD_HON", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Toldi_II_CMD_HON)]),
         ("Texture_RTS_H_Toldi_II_HON", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Toldi_II_HON)]),
+        ("Texture_RTS_H_Toldi_II_CMD_HON", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Toldi_II_CMD_HON)]),
         ("Texture_RTS_H_Toldi_I_HON", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Toldi_I_HON)]),
         ("Texture_RTS_H_Truck_AEC_Matador_UK", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Truck_AEC_Matador_UK)]),
         ("Texture_RTS_H_Truck_Bedford_CAN", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Truck_Bedford_CAN)]),
@@ -7087,8 +7087,8 @@ NATORTSAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_RTS_H_Truck_WC25_FR", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Truck_WC25_FR)]),
         ("Texture_RTS_H_Truck_WC25_US", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Truck_WC25_US)]),
         ("Texture_RTS_H_Truck_WC52_US", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Truck_WC52_US)]),
-        ("Texture_RTS_H_Truck_WC52_DSHK_SOV", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Truck_WC52_DSHK_SOV)]),
         ("Texture_RTS_H_Truck_WC52_SOV", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Truck_WC52_SOV)]),
+        ("Texture_RTS_H_Truck_WC52_DSHK_SOV", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Truck_WC52_DSHK_SOV)]),
         ("Texture_RTS_H_Truck_ZIS12_bi25mm_SOV", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Truck_ZIS12_bi25mm_SOV)]),
         ("Texture_RTS_H_Truck_ZIS5V_SOV", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Truck_ZIS5V_SOV)]),
         ("Texture_RTS_H_Ttruck_Laffly_S35T_GER", MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_Ttruck_Laffly_S35T_GER)]),

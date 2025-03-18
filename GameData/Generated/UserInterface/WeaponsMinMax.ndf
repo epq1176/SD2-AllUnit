@@ -646,14 +646,14 @@ MinMaxValuesInterfaceHelper is TWeaponsMinMaxValuesInterfaceHelper
           (
                PhysicalDamages = TMinMaxValue (
                        Min = 1 // DCA 90L53 90mm HE
-                       Max = 5 // Flak 38 105mm AA
+                       Max = 8 // DCA 76L46 75mm AP
                )
                SuppressDamages = TMinMaxValue (
-                       Min = 137 // DCA 90L53 90mm HE
+                       Min = 84 // DCA 76L46 75mm AP
                        Max = 578 // Flak 38 105mm AA
                )
                SplashDamageRadius = TMinMaxValue (
-                       Min = 70 * Metre // Flak M36 75mm HE
+                       Min = 1 * Metre // DCA 76L46 75mm AP
                        Max = 210 * Metre // Flak 38 105mm AA
                )
                MaxRange = TMinMaxValue (
@@ -674,7 +674,7 @@ MinMaxValuesInterfaceHelper is TWeaponsMinMaxValuesInterfaceHelper
                )
                Accuracy = TMinMaxValue (
                        Min = 6 // DCA_M5_8_76mm_AA
-                       Max = 24 // Flak M36 75mm HE
+                       Max = 40 // DCA 76L46 75mm AP
                )
                RateOfFire = TMinMaxValue (
                        Min = 10 // Flak 36 88mm HE
@@ -683,6 +683,10 @@ MinMaxValuesInterfaceHelper is TWeaponsMinMaxValuesInterfaceHelper
                Range = TMinMaxValue (
                        Min = 0 // 28 39M 80mm AA
                        Max = 10000 // Flak M39 88mm HE
+               )
+               Penetration = TMinMaxValue (
+                       Min = 23 // DCA 76L46 75mm AP
+                       Max = 23 // DCA 76L46 75mm AP
               )
          )
        ),
