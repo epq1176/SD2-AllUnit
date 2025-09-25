@@ -313,14 +313,6 @@ SubGenerators_FW_190_F8_PzSchreck_GER is [
                 Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Rocket_PanzerBlitz_1 PhysicalProperty = "Tourelle3_MissileCount" MissileNumber = 6 )),
             TMissileCarriageSubDepictionMissileInfo( WeaponIndex = 3 MissileIndex = 8
                 Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Rocket_PanzerBlitz_1 PhysicalProperty = "Tourelle3_MissileCount" MissileNumber = 7 )),
-            TMissileCarriageSubDepictionMissileInfo( WeaponIndex = 3 MissileIndex = 9
-                Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Rocket_PanzerBlitz_1 PhysicalProperty = "Tourelle3_MissileCount" MissileNumber = 8 )),
-            TMissileCarriageSubDepictionMissileInfo( WeaponIndex = 3 MissileIndex = 10
-                Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Rocket_PanzerBlitz_1 PhysicalProperty = "Tourelle3_MissileCount" MissileNumber = 9 )),
-            TMissileCarriageSubDepictionMissileInfo( WeaponIndex = 3 MissileIndex = 11
-                Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Rocket_PanzerBlitz_1 PhysicalProperty = "Tourelle3_MissileCount" MissileNumber = 10 )),
-            TMissileCarriageSubDepictionMissileInfo( WeaponIndex = 3 MissileIndex = 12
-                Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Rocket_PanzerBlitz_1 PhysicalProperty = "Tourelle3_MissileCount" MissileNumber = 11 )),
         ]
     )
 ]
@@ -2130,6 +2122,19 @@ SubGenerators_LaGG3_66_6x_82mm_HE_SOV is [
         ]
     )
 ]
+SubGenerators_La_5FN_x2_100_CZ is [
+    TMissileCarriageSubDepictionGenerator
+    (
+        MissileCarriageConnoisseur = MissileCarriage_La_5FN_x2_100_CZ
+        Pylons = PylonSet_La_5FN_x2_100_CZ
+        Missiles = [
+            TMissileCarriageSubDepictionMissileInfo( WeaponIndex = 6 MissileIndex = 1
+                Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Missile_FAB100 PhysicalProperty = "Tourelle6_MissileCount" MissileNumber = 0 )),
+            TMissileCarriageSubDepictionMissileInfo( WeaponIndex = 6 MissileIndex = 2
+                Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Missile_FAB100 PhysicalProperty = "Tourelle6_MissileCount" MissileNumber = 1 )),
+        ]
+    )
+]
 SubGenerators_La_5FN_x2_100_SOV is [
     TMissileCarriageSubDepictionGenerator
     (
@@ -2182,6 +2187,19 @@ SubGenerators_La_7_x2_50_SOV is [
         ]
     )
 ]
+SubGenerators_Letov_S28_CZ is [
+    TMissileCarriageSubDepictionGenerator
+    (
+        MissileCarriageConnoisseur = MissileCarriage_Letov_S28_CZ
+        Pylons = PylonSet_Letov_S28_CZ
+        Missiles = [
+            TMissileCarriageSubDepictionMissileInfo( WeaponIndex = 3 MissileIndex = 1
+                Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Missile_SC250 PhysicalProperty = "Tourelle3_MissileCount" MissileNumber = 0 )),
+            TMissileCarriageSubDepictionMissileInfo( WeaponIndex = 3 MissileIndex = 2
+                Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Missile_SC250 PhysicalProperty = "Tourelle3_MissileCount" MissileNumber = 1 )),
+        ]
+    )
+]
 SubGenerators_Letov_S328_BUL is [
     TMissileCarriageSubDepictionGenerator
     (
@@ -2196,6 +2214,36 @@ SubGenerators_Letov_S328_BUL is [
                 Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Missile_FAB100 PhysicalProperty = "Tourelle3_MissileCount" MissileNumber = 2 )),
             TMissileCarriageSubDepictionMissileInfo( WeaponIndex = 3 MissileIndex = 4
                 Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Missile_FAB100 PhysicalProperty = "Tourelle3_MissileCount" MissileNumber = 3 )),
+        ]
+    )
+]
+SubGenerators_Li_2NB_x2_500_SOV is [
+    TMissileCarriageSubDepictionGenerator
+    (
+        MissileCarriageConnoisseur = MissileCarriage_Li_2NB_x2_500_SOV
+        Pylons = PylonSet_Li_2NB_x2_500_SOV
+        Missiles = [
+            TMissileCarriageSubDepictionMissileInfo( WeaponIndex = 6 MissileIndex = 1
+                Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Missile_FAB500 PhysicalProperty = "Tourelle6_MissileCount" MissileNumber = 0 )),
+            TMissileCarriageSubDepictionMissileInfo( WeaponIndex = 6 MissileIndex = 2
+                Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Missile_FAB500 PhysicalProperty = "Tourelle6_MissileCount" MissileNumber = 1 )),
+        ]
+    )
+]
+SubGenerators_Li_2NB_x4_250_SOV is [
+    TMissileCarriageSubDepictionGenerator
+    (
+        MissileCarriageConnoisseur = MissileCarriage_Li_2NB_x4_250_SOV
+        Pylons = PylonSet_Li_2NB_x4_250_SOV
+        Missiles = [
+            TMissileCarriageSubDepictionMissileInfo( WeaponIndex = 6 MissileIndex = 1
+                Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Missile_FAB250 PhysicalProperty = "Tourelle6_MissileCount" MissileNumber = 0 )),
+            TMissileCarriageSubDepictionMissileInfo( WeaponIndex = 6 MissileIndex = 2
+                Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Missile_FAB250 PhysicalProperty = "Tourelle6_MissileCount" MissileNumber = 1 )),
+            TMissileCarriageSubDepictionMissileInfo( WeaponIndex = 6 MissileIndex = 3
+                Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Missile_FAB250 PhysicalProperty = "Tourelle6_MissileCount" MissileNumber = 2 )),
+            TMissileCarriageSubDepictionMissileInfo( WeaponIndex = 6 MissileIndex = 4
+                Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Missile_FAB250 PhysicalProperty = "Tourelle6_MissileCount" MissileNumber = 3 )),
         ]
     )
 ]
@@ -2967,6 +3015,17 @@ SubGenerators_P_39N_Airacobra_x6_82mm_FRAG_SOV is [
                 Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Rocket_ROFS82 PhysicalProperty = "Tourelle4_MissileCount" MissileNumber = 4 )),
             TMissileCarriageSubDepictionMissileInfo( WeaponIndex = 4 MissileIndex = 6
                 Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Rocket_ROFS82 PhysicalProperty = "Tourelle4_MissileCount" MissileNumber = 5 )),
+        ]
+    )
+]
+SubGenerators_P_39Q_Airacobra_x1_250_SOV is [
+    TMissileCarriageSubDepictionGenerator
+    (
+        MissileCarriageConnoisseur = MissileCarriage_P_39Q_Airacobra_x1_250_SOV
+        Pylons = PylonSet_P_39Q_Airacobra_x1_250_SOV
+        Missiles = [
+            TMissileCarriageSubDepictionMissileInfo( WeaponIndex = 4 MissileIndex = 1
+                Depiction = TemplateDepictionMissile( ProjectileModelFile = ModelFile_Missile_FAB250 PhysicalProperty = "Tourelle4_MissileCount" MissileNumber = 0 )),
         ]
     )
 ]

@@ -1,0 +1,22 @@
+export ModelFile_T38M2_CMD_CZ is 'GameData:Assets\3D\Units\CZ\Char\T38_M2_CMD\T38_M2_CMD.Ase2NdfBin'
+
+Modele_T38M2_CMD_CZ is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_T38M2_CMD_CZ
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_T38M2_CMD_CZ_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CZ\Char\T38_M2_CMD_MID\T38_M2_CMD_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_T38M2_CMD_CZ_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CZ\Char\LODS\T38_M2_CMD_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

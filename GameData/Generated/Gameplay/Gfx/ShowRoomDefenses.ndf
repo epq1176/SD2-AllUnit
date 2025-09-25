@@ -309,6 +309,85 @@ export Descriptor_ShowRoomUnit_Bunker_ATR_AWP is TEntityDescriptor
 
     ]
 )
+export Descriptor_ShowRoomUnit_Bunker_ATR_CZ is TEntityDescriptor
+(
+    DescriptorId       = GUID:{9a5e85b6-4275-484c-abf9-395f6a556795}
+    ClassNameForDebug  = "ShowRoomUnit_Bunker_ATR_CZ"
+    Modules            = [
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurBatiment
+                Radius                     = ((100) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // ApparenceModelModule
+        ApparenceModel is TModuleSelector
+        (
+            Default        = TApparenceModelModuleDescriptor
+            (
+                PickableObject                        = True
+                HideInNoFow                           = False
+                CreateTimelyChannelOnlyOnFirstSight   = False
+                Depiction = TTimelyReceiverFactoryCarrier
+                (
+                    DepictionTemplate = nil
+                    ModifyLB                         = TemplateTimelyDescriptorBatimentWithLevelDesignPattern_OnlyLevelBuild
+                    (
+                        SceneryDescriptorName      = 'Defense_Bunker_ATR_PTRD41_SOV'
+                        LevelBuildDescriptor       = ~/DefenseUnitLevelBuildViewDescriptor
+                        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+                    )
+                )
+            )
+            Selection      =
+            [
+                TModuleSelectorFilter
+                (
+                    Condition  = TModuleSelectorCondition_ParamEquals_Integer(ParamId=~/Parameter_ModuleCreationSelectionFilter  ParamValue=~/ModuleCreationFilter_Ghost)
+                    Descriptor = TApparenceModelModuleDescriptor
+                    (
+                        PickableObject = True
+                        Depiction = TTimelyReceiverFactoryCarrier
+                        (
+                            DepictionTemplate = nil
+                            ModifyLB  = TemplateTimelyDescriptorBatimentWithLevelDesignPattern_OnlyLevelBuild
+                            (
+                                SceneryDescriptorName = 'Defense_Bunker_ATR_PTRD41_SOV'
+                                LevelBuildDescriptor  = ~/DefenseUnitLevelBuildViewDescriptor
+                                RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+                            )
+                        )
+                    )
+                ),
+                ~/NilDescriptorIfCadavre
+            ]
+        ),
+
+        // WeaponManager
+        WeaponManager is
+            TModuleSelector
+            (
+                Default        = $/GFX/Everything/WeaponDescriptor_Bunker_ATR_CZ
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+    ]
+)
 export Descriptor_ShowRoomUnit_Bunker_ATR_FIN is TEntityDescriptor
 (
     DescriptorId       = GUID:{6d712574-9f14-4f55-8483-a267a58f1cca}
@@ -862,6 +941,85 @@ export Descriptor_ShowRoomUnit_Bunker_AT_37mm_GER is TEntityDescriptor
 
     ]
 )
+export Descriptor_ShowRoomUnit_Bunker_AT_37mm_SLK_CZ is TEntityDescriptor
+(
+    DescriptorId       = GUID:{cf14eaa2-43e3-4213-a26b-ca98349e3fb1}
+    ClassNameForDebug  = "ShowRoomUnit_Bunker_AT_37mm_SLK_CZ"
+    Modules            = [
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurBatiment
+                Radius                     = ((100) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // ApparenceModelModule
+        ApparenceModel is TModuleSelector
+        (
+            Default        = TApparenceModelModuleDescriptor
+            (
+                PickableObject                        = True
+                HideInNoFow                           = False
+                CreateTimelyChannelOnlyOnFirstSight   = False
+                Depiction = TTimelyReceiverFactoryCarrier
+                (
+                    DepictionTemplate = nil
+                    ModifyLB                         = TemplateTimelyDescriptorBatimentWithLevelDesignPattern_OnlyLevelBuild
+                    (
+                        SceneryDescriptorName      = 'Defense_Bunker_AT_PaK_36'
+                        LevelBuildDescriptor       = ~/DefenseUnitLevelBuildViewDescriptor
+                        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+                    )
+                )
+            )
+            Selection      =
+            [
+                TModuleSelectorFilter
+                (
+                    Condition  = TModuleSelectorCondition_ParamEquals_Integer(ParamId=~/Parameter_ModuleCreationSelectionFilter  ParamValue=~/ModuleCreationFilter_Ghost)
+                    Descriptor = TApparenceModelModuleDescriptor
+                    (
+                        PickableObject = True
+                        Depiction = TTimelyReceiverFactoryCarrier
+                        (
+                            DepictionTemplate = nil
+                            ModifyLB  = TemplateTimelyDescriptorBatimentWithLevelDesignPattern_OnlyLevelBuild
+                            (
+                                SceneryDescriptorName = 'Defense_Bunker_AT_PaK_36'
+                                LevelBuildDescriptor  = ~/DefenseUnitLevelBuildViewDescriptor
+                                RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+                            )
+                        )
+                    )
+                ),
+                ~/NilDescriptorIfCadavre
+            ]
+        ),
+
+        // WeaponManager
+        WeaponManager is
+            TModuleSelector
+            (
+                Default        = $/GFX/Everything/WeaponDescriptor_Bunker_AT_37mm_SLK_CZ
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+    ]
+)
 export Descriptor_ShowRoomUnit_Bunker_AT_40mm_HON is TEntityDescriptor
 (
     DescriptorId       = GUID:{09d483b2-15ec-4632-a549-2008d6f2ee78}
@@ -1012,6 +1170,85 @@ export Descriptor_ShowRoomUnit_Bunker_AT_45mm_AWP is TEntityDescriptor
             TModuleSelector
             (
                 Default        = $/GFX/Everything/WeaponDescriptor_Bunker_AT_45mm_AWP
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+    ]
+)
+export Descriptor_ShowRoomUnit_Bunker_AT_45mm_CZ is TEntityDescriptor
+(
+    DescriptorId       = GUID:{cf1ff17d-51e1-4afe-b779-7d5af7604d72}
+    ClassNameForDebug  = "ShowRoomUnit_Bunker_AT_45mm_CZ"
+    Modules            = [
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurBatiment
+                Radius                     = ((100) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // ApparenceModelModule
+        ApparenceModel is TModuleSelector
+        (
+            Default        = TApparenceModelModuleDescriptor
+            (
+                PickableObject                        = True
+                HideInNoFow                           = False
+                CreateTimelyChannelOnlyOnFirstSight   = False
+                Depiction = TTimelyReceiverFactoryCarrier
+                (
+                    DepictionTemplate = nil
+                    ModifyLB                         = TemplateTimelyDescriptorBatimentWithLevelDesignPattern_OnlyLevelBuild
+                    (
+                        SceneryDescriptorName      = 'Defense_Bunker_AT_obr_42_SOV'
+                        LevelBuildDescriptor       = ~/DefenseUnitLevelBuildViewDescriptor
+                        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+                    )
+                )
+            )
+            Selection      =
+            [
+                TModuleSelectorFilter
+                (
+                    Condition  = TModuleSelectorCondition_ParamEquals_Integer(ParamId=~/Parameter_ModuleCreationSelectionFilter  ParamValue=~/ModuleCreationFilter_Ghost)
+                    Descriptor = TApparenceModelModuleDescriptor
+                    (
+                        PickableObject = True
+                        Depiction = TTimelyReceiverFactoryCarrier
+                        (
+                            DepictionTemplate = nil
+                            ModifyLB  = TemplateTimelyDescriptorBatimentWithLevelDesignPattern_OnlyLevelBuild
+                            (
+                                SceneryDescriptorName = 'Defense_Bunker_AT_obr_42_SOV'
+                                LevelBuildDescriptor  = ~/DefenseUnitLevelBuildViewDescriptor
+                                RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+                            )
+                        )
+                    )
+                ),
+                ~/NilDescriptorIfCadavre
+            ]
+        ),
+
+        // WeaponManager
+        WeaponManager is
+            TModuleSelector
+            (
+                Default        = $/GFX/Everything/WeaponDescriptor_Bunker_AT_45mm_CZ
                 Selection      = [~/NilDescriptorIfGhostOrCadavre]
             ),
 
@@ -2521,6 +2758,85 @@ export Descriptor_ShowRoomUnit_Bunker_AT_75mm_RSI is TEntityDescriptor
 
     ]
 )
+export Descriptor_ShowRoomUnit_Bunker_AT_75mm_SLK_CZ is TEntityDescriptor
+(
+    DescriptorId       = GUID:{08108762-1083-4db8-907e-a5a67e0a4658}
+    ClassNameForDebug  = "ShowRoomUnit_Bunker_AT_75mm_SLK_CZ"
+    Modules            = [
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurBatiment
+                Radius                     = ((100) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // ApparenceModelModule
+        ApparenceModel is TModuleSelector
+        (
+            Default        = TApparenceModelModuleDescriptor
+            (
+                PickableObject                        = True
+                HideInNoFow                           = False
+                CreateTimelyChannelOnlyOnFirstSight   = False
+                Depiction = TTimelyReceiverFactoryCarrier
+                (
+                    DepictionTemplate = nil
+                    ModifyLB                         = TemplateTimelyDescriptorBatimentWithLevelDesignPattern_OnlyLevelBuild
+                    (
+                        SceneryDescriptorName      = 'Defense_Bunker_AT_PaK_40'
+                        LevelBuildDescriptor       = ~/DefenseUnitLevelBuildViewDescriptor
+                        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+                    )
+                )
+            )
+            Selection      =
+            [
+                TModuleSelectorFilter
+                (
+                    Condition  = TModuleSelectorCondition_ParamEquals_Integer(ParamId=~/Parameter_ModuleCreationSelectionFilter  ParamValue=~/ModuleCreationFilter_Ghost)
+                    Descriptor = TApparenceModelModuleDescriptor
+                    (
+                        PickableObject = True
+                        Depiction = TTimelyReceiverFactoryCarrier
+                        (
+                            DepictionTemplate = nil
+                            ModifyLB  = TemplateTimelyDescriptorBatimentWithLevelDesignPattern_OnlyLevelBuild
+                            (
+                                SceneryDescriptorName = 'Defense_Bunker_AT_PaK_40'
+                                LevelBuildDescriptor  = ~/DefenseUnitLevelBuildViewDescriptor
+                                RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+                            )
+                        )
+                    )
+                ),
+                ~/NilDescriptorIfCadavre
+            ]
+        ),
+
+        // WeaponManager
+        WeaponManager is
+            TModuleSelector
+            (
+                Default        = $/GFX/Everything/WeaponDescriptor_Bunker_AT_75mm_SLK_CZ
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+    ]
+)
 export Descriptor_ShowRoomUnit_Bunker_AT_75mm_YUG is TEntityDescriptor
 (
     DescriptorId       = GUID:{b504a41f-969f-47ef-bf14-92a19beae706}
@@ -2592,6 +2908,85 @@ export Descriptor_ShowRoomUnit_Bunker_AT_75mm_YUG is TEntityDescriptor
             TModuleSelector
             (
                 Default        = $/GFX/Everything/WeaponDescriptor_Bunker_AT_75mm_YUG
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+    ]
+)
+export Descriptor_ShowRoomUnit_Bunker_AT_76mm_CZ is TEntityDescriptor
+(
+    DescriptorId       = GUID:{ea7cba26-cc5d-42f7-8ffd-1cf54781c6e4}
+    ClassNameForDebug  = "ShowRoomUnit_Bunker_AT_76mm_CZ"
+    Modules            = [
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurBatiment
+                Radius                     = ((100) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // ApparenceModelModule
+        ApparenceModel is TModuleSelector
+        (
+            Default        = TApparenceModelModuleDescriptor
+            (
+                PickableObject                        = True
+                HideInNoFow                           = False
+                CreateTimelyChannelOnlyOnFirstSight   = False
+                Depiction = TTimelyReceiverFactoryCarrier
+                (
+                    DepictionTemplate = nil
+                    ModifyLB                         = TemplateTimelyDescriptorBatimentWithLevelDesignPattern_OnlyLevelBuild
+                    (
+                        SceneryDescriptorName      = 'Defense_Bunker_AT_ZIS3_SOV'
+                        LevelBuildDescriptor       = ~/DefenseUnitLevelBuildViewDescriptor
+                        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+                    )
+                )
+            )
+            Selection      =
+            [
+                TModuleSelectorFilter
+                (
+                    Condition  = TModuleSelectorCondition_ParamEquals_Integer(ParamId=~/Parameter_ModuleCreationSelectionFilter  ParamValue=~/ModuleCreationFilter_Ghost)
+                    Descriptor = TApparenceModelModuleDescriptor
+                    (
+                        PickableObject = True
+                        Depiction = TTimelyReceiverFactoryCarrier
+                        (
+                            DepictionTemplate = nil
+                            ModifyLB  = TemplateTimelyDescriptorBatimentWithLevelDesignPattern_OnlyLevelBuild
+                            (
+                                SceneryDescriptorName = 'Defense_Bunker_AT_ZIS3_SOV'
+                                LevelBuildDescriptor  = ~/DefenseUnitLevelBuildViewDescriptor
+                                RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+                            )
+                        )
+                    )
+                ),
+                ~/NilDescriptorIfCadavre
+            ]
+        ),
+
+        // WeaponManager
+        WeaponManager is
+            TModuleSelector
+            (
+                Default        = $/GFX/Everything/WeaponDescriptor_Bunker_AT_76mm_CZ
                 Selection      = [~/NilDescriptorIfGhostOrCadavre]
             ),
 
@@ -4259,6 +4654,85 @@ export Descriptor_ShowRoomUnit_Bunker_MG_POL is TEntityDescriptor
 
     ]
 )
+export Descriptor_ShowRoomUnit_Bunker_MG_SLK_CZ is TEntityDescriptor
+(
+    DescriptorId       = GUID:{d4800bde-8c1a-4715-b51f-791fcf14dd72}
+    ClassNameForDebug  = "ShowRoomUnit_Bunker_MG_SLK_CZ"
+    Modules            = [
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurBatiment
+                Radius                     = ((100) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // ApparenceModelModule
+        ApparenceModel is TModuleSelector
+        (
+            Default        = TApparenceModelModuleDescriptor
+            (
+                PickableObject                        = True
+                HideInNoFow                           = False
+                CreateTimelyChannelOnlyOnFirstSight   = False
+                Depiction = TTimelyReceiverFactoryCarrier
+                (
+                    DepictionTemplate = nil
+                    ModifyLB                         = TemplateTimelyDescriptorBatimentWithLevelDesignPattern_OnlyLevelBuild
+                    (
+                        SceneryDescriptorName      = 'Defense_Bunker_MG_Schwarloze_HON'
+                        LevelBuildDescriptor       = ~/DefenseUnitLevelBuildViewDescriptor
+                        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+                    )
+                )
+            )
+            Selection      =
+            [
+                TModuleSelectorFilter
+                (
+                    Condition  = TModuleSelectorCondition_ParamEquals_Integer(ParamId=~/Parameter_ModuleCreationSelectionFilter  ParamValue=~/ModuleCreationFilter_Ghost)
+                    Descriptor = TApparenceModelModuleDescriptor
+                    (
+                        PickableObject = True
+                        Depiction = TTimelyReceiverFactoryCarrier
+                        (
+                            DepictionTemplate = nil
+                            ModifyLB  = TemplateTimelyDescriptorBatimentWithLevelDesignPattern_OnlyLevelBuild
+                            (
+                                SceneryDescriptorName = 'Defense_Bunker_MG_Schwarloze_HON'
+                                LevelBuildDescriptor  = ~/DefenseUnitLevelBuildViewDescriptor
+                                RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+                            )
+                        )
+                    )
+                ),
+                ~/NilDescriptorIfCadavre
+            ]
+        ),
+
+        // WeaponManager
+        WeaponManager is
+            TModuleSelector
+            (
+                Default        = $/GFX/Everything/WeaponDescriptor_Bunker_MG_SLK_CZ
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+    ]
+)
 export Descriptor_ShowRoomUnit_Bunker_MG_UK is TEntityDescriptor
 (
     DescriptorId       = GUID:{bce5c363-6b06-48de-bfb3-92ea47f60e22}
@@ -4567,6 +5041,85 @@ export Descriptor_ShowRoomUnit_Bunker_Maxim_AWP is TEntityDescriptor
             TModuleSelector
             (
                 Default        = $/GFX/Everything/WeaponDescriptor_Bunker_Maxim_AWP
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+    ]
+)
+export Descriptor_ShowRoomUnit_Bunker_Maxim_CZ is TEntityDescriptor
+(
+    DescriptorId       = GUID:{abeccabc-79c8-4daf-97ec-cf14e976ad30}
+    ClassNameForDebug  = "ShowRoomUnit_Bunker_Maxim_CZ"
+    Modules            = [
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurBatiment
+                Radius                     = ((100) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // ApparenceModelModule
+        ApparenceModel is TModuleSelector
+        (
+            Default        = TApparenceModelModuleDescriptor
+            (
+                PickableObject                        = True
+                HideInNoFow                           = False
+                CreateTimelyChannelOnlyOnFirstSight   = False
+                Depiction = TTimelyReceiverFactoryCarrier
+                (
+                    DepictionTemplate = nil
+                    ModifyLB                         = TemplateTimelyDescriptorBatimentWithLevelDesignPattern_OnlyLevelBuild
+                    (
+                        SceneryDescriptorName      = 'Defense_Bunker_MG_Maxim_SOV'
+                        LevelBuildDescriptor       = ~/DefenseUnitLevelBuildViewDescriptor
+                        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+                    )
+                )
+            )
+            Selection      =
+            [
+                TModuleSelectorFilter
+                (
+                    Condition  = TModuleSelectorCondition_ParamEquals_Integer(ParamId=~/Parameter_ModuleCreationSelectionFilter  ParamValue=~/ModuleCreationFilter_Ghost)
+                    Descriptor = TApparenceModelModuleDescriptor
+                    (
+                        PickableObject = True
+                        Depiction = TTimelyReceiverFactoryCarrier
+                        (
+                            DepictionTemplate = nil
+                            ModifyLB  = TemplateTimelyDescriptorBatimentWithLevelDesignPattern_OnlyLevelBuild
+                            (
+                                SceneryDescriptorName = 'Defense_Bunker_MG_Maxim_SOV'
+                                LevelBuildDescriptor  = ~/DefenseUnitLevelBuildViewDescriptor
+                                RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+                            )
+                        )
+                    )
+                ),
+                ~/NilDescriptorIfCadavre
+            ]
+        ),
+
+        // WeaponManager
+        WeaponManager is
+            TModuleSelector
+            (
+                Default        = $/GFX/Everything/WeaponDescriptor_Bunker_Maxim_CZ
                 Selection      = [~/NilDescriptorIfGhostOrCadavre]
             ),
 
@@ -5041,6 +5594,85 @@ export Descriptor_ShowRoomUnit_Bunker_PaK_50mm_RSI is TEntityDescriptor
             TModuleSelector
             (
                 Default        = $/GFX/Everything/WeaponDescriptor_Bunker_PaK_50mm_RSI
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+    ]
+)
+export Descriptor_ShowRoomUnit_Bunker_PaK_50mm_SLK_CZ is TEntityDescriptor
+(
+    DescriptorId       = GUID:{3f1711d9-654d-4392-ae85-74ccf17b170f}
+    ClassNameForDebug  = "ShowRoomUnit_Bunker_PaK_50mm_SLK_CZ"
+    Modules            = [
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurBatiment
+                Radius                     = ((100) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // ApparenceModelModule
+        ApparenceModel is TModuleSelector
+        (
+            Default        = TApparenceModelModuleDescriptor
+            (
+                PickableObject                        = True
+                HideInNoFow                           = False
+                CreateTimelyChannelOnlyOnFirstSight   = False
+                Depiction = TTimelyReceiverFactoryCarrier
+                (
+                    DepictionTemplate = nil
+                    ModifyLB                         = TemplateTimelyDescriptorBatimentWithLevelDesignPattern_OnlyLevelBuild
+                    (
+                        SceneryDescriptorName      = 'Defense_Bunker_AT'
+                        LevelBuildDescriptor       = ~/DefenseUnitLevelBuildViewDescriptor
+                        RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+                    )
+                )
+            )
+            Selection      =
+            [
+                TModuleSelectorFilter
+                (
+                    Condition  = TModuleSelectorCondition_ParamEquals_Integer(ParamId=~/Parameter_ModuleCreationSelectionFilter  ParamValue=~/ModuleCreationFilter_Ghost)
+                    Descriptor = TApparenceModelModuleDescriptor
+                    (
+                        PickableObject = True
+                        Depiction = TTimelyReceiverFactoryCarrier
+                        (
+                            DepictionTemplate = nil
+                            ModifyLB  = TemplateTimelyDescriptorBatimentWithLevelDesignPattern_OnlyLevelBuild
+                            (
+                                SceneryDescriptorName = 'Defense_Bunker_AT'
+                                LevelBuildDescriptor  = ~/DefenseUnitLevelBuildViewDescriptor
+                                RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
+                            )
+                        )
+                    )
+                ),
+                ~/NilDescriptorIfCadavre
+            ]
+        ),
+
+        // WeaponManager
+        WeaponManager is
+            TModuleSelector
+            (
+                Default        = $/GFX/Everything/WeaponDescriptor_Bunker_PaK_50mm_SLK_CZ
                 Selection      = [~/NilDescriptorIfGhostOrCadavre]
             ),
 

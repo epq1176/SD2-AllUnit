@@ -1501,6 +1501,256 @@ export Descriptor_Unit_105mm_HUN is TEntityDescriptor
 
     ]
 )
+export Descriptor_Unit_105mm_SLK_CZ is TEntityDescriptor
+(
+    DescriptorId       = GUID:{5664813b-072c-4d70-bcef-25b94b8dd6af}
+    ClassNameForDebug  = 'Unit_105mm_SLK_CZ'
+    Modules            = [
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/ArtHowit
+                    Nationalite                      = ENationalite/Axis
+                    MotherCountry                    = 'CZ'
+                    AcknowUnitType                   = ~/TAcknowUnitType_OffMap
+                    TypeUnitFormation                = 'None'
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId=~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue=~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TTypeUnitModuleDescriptor
+                        (
+                            MotherCountry                    = 'CZ'
+                            Nationalite                      = ENationalite/Axis
+                            TypeUnitValue                    = ETypeUnit/ArtHowit
+                        )
+                    )
+                ]
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+                TagSet = [
+                    "AllUnits",
+                    "Unite",
+                    "UNITE_105mm_SLK_CZ",
+                    "Artillerie_Hors_Carte",
+                ]
+            ),
+
+        // Flags
+            TFlagsModuleDescriptor
+            (
+                InitialFlagSet =
+                [
+                    Flag_Selectionnable,
+                    Flag_LdDetectable,
+                    Flag_Artillerie,
+                ]
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // WeaponManager
+        WeaponManager is
+            TModuleSelector
+            (
+                Default        = $/GFX/Everything/WeaponDescriptor_105mm_SLK_CZ
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // StateEngineCompany
+            TModuleSelector
+            (
+                Default        = TStateEngineCompanyModuleDescriptor
+                (
+                    InitialStateId = 'CompanyInit'
+                    StateEngineUpdateMode = WorldControllerAccess_InWorld
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // StateEngine
+            TModuleSelector
+            (
+                Default        = TStateEngineModuleDescriptor
+                (
+                    InitialStateId = 'UnitIdle'
+                    StateEngineUpdateMode = WorldControllerAccess_InWorld
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // Debug
+            ~/DebugModuleDescriptor,
+
+        // Selection
+            TModuleSelector
+            (
+                Default            = TSelectionModuleDescriptor
+                (
+                    IsSelectable       = True
+                    IsHighlightable    = False
+                    HasSelectionShader = False
+                    HasHighlightShader = True
+                    MultipleSelectionFilterPriorityDefault      = 0
+                    MultipleSelectionFilterPrioritySecondary    = 0
+                )
+                Selection = [ ~/NilDescriptorIfCadavre ]
+            ),
+
+        // CubeAction
+            TModuleSelector
+            (
+                Default        = TCubeActionModuleDescriptor
+                (
+                    CubeActionDescriptor = ~/CubeAction_Menu_Ordres_Arty_OffMap
+                )
+                Selection      = [
+                    ~/NilDescriptorIfCadavre
+                ]
+            ),
+
+        // Orderable
+            TModuleSelector
+            (
+                Default                   = TOrderableModuleDescriptor
+                (
+                    CanHoldPosition           = False
+                    CanMove                   = False
+                    CanBeHarvested            = False
+                    CanHarvest                = False
+                    CanChangeTransferTarget   = False
+                    CanSell                   = False
+                    CanBuild                  = False
+                    CanAttack                 = False
+                    CanStop                   = True
+                    CanFollowFormation        = False
+                    CanShoot                  = True
+                    CanMerge                  = False
+                    CanUnloadFromTransport    = False
+                    CanLand                   = False
+                    CanGoUp                   = False
+                    CanGoDown                 = False
+                    CanMoveAndAttack          = False
+                    CanSpread                 = False
+                    CanReverse                = False
+                    CanSupplyUnit             = False
+                    CanAskForSupply           = False
+                    CanGoGetSupply            = False
+                    CanEnterDistrict          = False
+                    CanAirplanePatrol         = False
+                    CanAirplaneAttack         = False
+                    CanLoadIntoTransport      = False
+                    CanLoadUnit               = False
+                    CanAirplaneTakeOff        = False
+                    CanAirplaneEvacuate       = False
+                    CanRefuelAirplane         = False
+                    CanRepairAirplane         = False
+                    CanRearmAirplane          = False
+                    CanAirplaneShoot          = False
+                    CanBombard                = False
+                    CanFortify                = True
+                    CanFortifyAntiAir         = True
+                    CanAIDefend               = True
+                    CanAIAiplaneAutoManage    = False
+                    CanAIAttack               = True
+                    CanAIManageArtillery      = False
+                    CanAIStop                 = True
+                    CanSmartHoldFire          = True
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // IAStrat
+            TModuleSelector
+            (
+                Default        = TIAStratModuleDescriptor
+                (
+                    DatabaseId = 1
+                    GameplayBehavior = EGameplayBehavior/Nothing
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // GroupableUnit
+            ~/GroupableUnitModuleSelector,
+
+        // LinkToObserver
+            TModuleSelector
+            (
+                Default = TLinkToObserverModuleDescriptor
+                (
+                    ShootModeToWeaponReference = MAP
+                    [
+                        (EOutMapArtilleryShootMode/Warning, (0, 0)),
+                        (EOutMapArtilleryShootMode/FireForEffect, (0, 1)),
+                        (EOutMapArtilleryShootMode/Barrage, (0, 2)),
+                    ]
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+            ),
+
+        // PackSignaux
+            ~/PackSignauxModuleSelector,
+
+        // UnitUI
+            TModuleSelector
+            (
+                Default = TUnitUIModuleDescriptor
+                (
+                    HintToken = 'ArtHowit'
+                    SpecialtiesList = [
+                    ]
+                    NameToken = 'HYOYNIBTYJ'
+                    InfoPanelConfigurationToken = 'Default'
+                    TypeSpecificToken = ''
+                    ShowInMenu = True
+                    IsAce = False
+                    GenerateName = true
+                    TopViewTexture = 'Texture_Unit_TopView_105mm_SLK_CZ'
+                    MenuIconTexture = 'Texture_MenuIcon_Arty_Off_Map_105mm_GER'
+                    ButtonTexture = 'Texture_Button_Unit_105mm_SLK_CZ'
+                    CountryTexture = 'CommonTexture_MotherCountryFlag_CZ'
+                    TypeStrategicCount = ETypeStrategicCount/NotCounted
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId = ~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue = ~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TUnitUIModuleDescriptor
+                        (
+                            HintToken = 'ArtHowit'
+                            NameToken = 'HYOYNIBTYJ'
+                            InfoPanelConfigurationToken = 'Default'
+                            TypeSpecificToken = ''
+                            TopViewTexture = 'Texture_Unit_TopView_105mm_SLK_CZ'
+                            MenuIconTexture = 'Texture_MenuIcon_Arty_Off_Map_105mm_GER'
+                            ButtonTexture = 'Texture_Button_Unit_105mm_SLK_CZ'
+                            CountryTexture = 'CommonTexture_MotherCountryFlag_CZ'
+                            TypeStrategicCount = ETypeStrategicCount/NotCounted
+                        )
+                    )
+                ]
+            ),
+
+    ]
+)
 export Descriptor_Unit_105mm_US is TEntityDescriptor
 (
     DescriptorId       = GUID:{0dc01759-7522-4bc0-855e-ecbec8c96ca3}
@@ -5239,6 +5489,256 @@ export Descriptor_Unit_150mm_ROU is TEntityDescriptor
                             MenuIconTexture = 'Texture_MenuIcon_Arty_Off_Map_155mm'
                             ButtonTexture = 'Texture_Button_Unit_150mm_ROU'
                             CountryTexture = 'CommonTexture_MotherCountryFlag_ROU'
+                            TypeStrategicCount = ETypeStrategicCount/NotCounted
+                        )
+                    )
+                ]
+            ),
+
+    ]
+)
+export Descriptor_Unit_150mm_SLK_CZ is TEntityDescriptor
+(
+    DescriptorId       = GUID:{4e48a312-9b31-4832-823c-7b969518582c}
+    ClassNameForDebug  = 'Unit_150mm_SLK_CZ'
+    Modules            = [
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/ArtHowit
+                    Nationalite                      = ENationalite/Axis
+                    MotherCountry                    = 'CZ'
+                    AcknowUnitType                   = ~/TAcknowUnitType_OffMap
+                    TypeUnitFormation                = 'None'
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId=~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue=~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TTypeUnitModuleDescriptor
+                        (
+                            MotherCountry                    = 'CZ'
+                            Nationalite                      = ENationalite/Axis
+                            TypeUnitValue                    = ETypeUnit/ArtHowit
+                        )
+                    )
+                ]
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+                TagSet = [
+                    "AllUnits",
+                    "Unite",
+                    "UNITE_150mm_SLK_CZ",
+                    "Artillerie_Hors_Carte",
+                ]
+            ),
+
+        // Flags
+            TFlagsModuleDescriptor
+            (
+                InitialFlagSet =
+                [
+                    Flag_Selectionnable,
+                    Flag_LdDetectable,
+                    Flag_Artillerie,
+                ]
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // WeaponManager
+        WeaponManager is
+            TModuleSelector
+            (
+                Default        = $/GFX/Everything/WeaponDescriptor_150mm_SLK_CZ
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // StateEngineCompany
+            TModuleSelector
+            (
+                Default        = TStateEngineCompanyModuleDescriptor
+                (
+                    InitialStateId = 'CompanyInit'
+                    StateEngineUpdateMode = WorldControllerAccess_InWorld
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // StateEngine
+            TModuleSelector
+            (
+                Default        = TStateEngineModuleDescriptor
+                (
+                    InitialStateId = 'UnitIdle'
+                    StateEngineUpdateMode = WorldControllerAccess_InWorld
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // Debug
+            ~/DebugModuleDescriptor,
+
+        // Selection
+            TModuleSelector
+            (
+                Default            = TSelectionModuleDescriptor
+                (
+                    IsSelectable       = True
+                    IsHighlightable    = False
+                    HasSelectionShader = False
+                    HasHighlightShader = True
+                    MultipleSelectionFilterPriorityDefault      = 0
+                    MultipleSelectionFilterPrioritySecondary    = 0
+                )
+                Selection = [ ~/NilDescriptorIfCadavre ]
+            ),
+
+        // CubeAction
+            TModuleSelector
+            (
+                Default        = TCubeActionModuleDescriptor
+                (
+                    CubeActionDescriptor = ~/CubeAction_Menu_Ordres_Arty_OffMap
+                )
+                Selection      = [
+                    ~/NilDescriptorIfCadavre
+                ]
+            ),
+
+        // Orderable
+            TModuleSelector
+            (
+                Default                   = TOrderableModuleDescriptor
+                (
+                    CanHoldPosition           = False
+                    CanMove                   = False
+                    CanBeHarvested            = False
+                    CanHarvest                = False
+                    CanChangeTransferTarget   = False
+                    CanSell                   = False
+                    CanBuild                  = False
+                    CanAttack                 = False
+                    CanStop                   = True
+                    CanFollowFormation        = False
+                    CanShoot                  = True
+                    CanMerge                  = False
+                    CanUnloadFromTransport    = False
+                    CanLand                   = False
+                    CanGoUp                   = False
+                    CanGoDown                 = False
+                    CanMoveAndAttack          = False
+                    CanSpread                 = False
+                    CanReverse                = False
+                    CanSupplyUnit             = False
+                    CanAskForSupply           = False
+                    CanGoGetSupply            = False
+                    CanEnterDistrict          = False
+                    CanAirplanePatrol         = False
+                    CanAirplaneAttack         = False
+                    CanLoadIntoTransport      = False
+                    CanLoadUnit               = False
+                    CanAirplaneTakeOff        = False
+                    CanAirplaneEvacuate       = False
+                    CanRefuelAirplane         = False
+                    CanRepairAirplane         = False
+                    CanRearmAirplane          = False
+                    CanAirplaneShoot          = False
+                    CanBombard                = False
+                    CanFortify                = True
+                    CanFortifyAntiAir         = True
+                    CanAIDefend               = True
+                    CanAIAiplaneAutoManage    = False
+                    CanAIAttack               = True
+                    CanAIManageArtillery      = False
+                    CanAIStop                 = True
+                    CanSmartHoldFire          = True
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // IAStrat
+            TModuleSelector
+            (
+                Default        = TIAStratModuleDescriptor
+                (
+                    DatabaseId = 1
+                    GameplayBehavior = EGameplayBehavior/Nothing
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // GroupableUnit
+            ~/GroupableUnitModuleSelector,
+
+        // LinkToObserver
+            TModuleSelector
+            (
+                Default = TLinkToObserverModuleDescriptor
+                (
+                    ShootModeToWeaponReference = MAP
+                    [
+                        (EOutMapArtilleryShootMode/Warning, (0, 0)),
+                        (EOutMapArtilleryShootMode/FireForEffect, (0, 1)),
+                        (EOutMapArtilleryShootMode/Barrage, (0, 2)),
+                    ]
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+            ),
+
+        // PackSignaux
+            ~/PackSignauxModuleSelector,
+
+        // UnitUI
+            TModuleSelector
+            (
+                Default = TUnitUIModuleDescriptor
+                (
+                    HintToken = 'ArtHowit'
+                    SpecialtiesList = [
+                    ]
+                    NameToken = 'HHZMZRKJOG'
+                    InfoPanelConfigurationToken = 'Default'
+                    TypeSpecificToken = ''
+                    ShowInMenu = True
+                    IsAce = False
+                    GenerateName = true
+                    TopViewTexture = 'Texture_Unit_TopView_150mm_SLK_CZ'
+                    MenuIconTexture = 'Texture_MenuIcon_Arty_Off_Map_155mm'
+                    ButtonTexture = 'Texture_Button_Unit_150mm_SLK_CZ'
+                    CountryTexture = 'CommonTexture_MotherCountryFlag_CZ'
+                    TypeStrategicCount = ETypeStrategicCount/NotCounted
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId = ~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue = ~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TUnitUIModuleDescriptor
+                        (
+                            HintToken = 'ArtHowit'
+                            NameToken = 'HHZMZRKJOG'
+                            InfoPanelConfigurationToken = 'Default'
+                            TypeSpecificToken = ''
+                            TopViewTexture = 'Texture_Unit_TopView_150mm_SLK_CZ'
+                            MenuIconTexture = 'Texture_MenuIcon_Arty_Off_Map_155mm'
+                            ButtonTexture = 'Texture_Button_Unit_150mm_SLK_CZ'
+                            CountryTexture = 'CommonTexture_MotherCountryFlag_CZ'
                             TypeStrategicCount = ETypeStrategicCount/NotCounted
                         )
                     )

@@ -5,18 +5,18 @@ template TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ [ ModelFile ] is TResou
     TypeMask = TypeMask/Infanterie
 )
 
-// ModelFile_Boites_Howz_sFH_18_150mm_GER is 'GameData:Assets\3D\Units\GER\Canon\Howz_sFH_18_150mm_GER\Boites_Howz_Skoda_vz25_150mm_CZ.Ase2NdfBin'
+ModelFile_Boites_Howz_Skoda_vz25_150mm_CZ is 'GameData:Assets\3D\Units\CZ\Canon\Howz_Skoda_vz25_150mm\Boites_Howz_Skoda_vz25_150mm.Ase2NdfBin'
 
 Gfx_Howz_Skoda_vz25_150mm_CZ_1 is TDepictionTemplate //servant gauche
 (
     RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
     Selector = SpecificServantDepictionSelector
     DepictionAlternatives = [
-        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Jaeger_FIN)  ),
-        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Jaeger_FIN_LOW)  ),
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Scout_SLK_CZ_1)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Scout_SLK_CZ_1_LOW)  ),
         DepictionDescriptor_LOD_Low_Empty       ( ),
-        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Jaeger_FIN)  ),
-        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Jaeger_FIN_LOW)  ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Scout_SLK_CZ_1)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Scout_SLK_CZ_1_LOW)  ),
         DepictionDescriptor_LOD_WreckedLow_Empty( ),
     ]
 
@@ -29,11 +29,11 @@ Gfx_Howz_Skoda_vz25_150mm_CZ_2 is TDepictionTemplate //servant droite
     RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
     Selector = SpecificServantDepictionSelector
     DepictionAlternatives = [
-        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Jaeger_FIN_1)  ),
-        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Jaeger_FIN_1_LOW)  ),
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Scout_SLK_CZ_Secondary)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Scout_SLK_CZ_Secondary_LOW)  ),
         DepictionDescriptor_LOD_Low_Empty       ( ),
-        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Jaeger_FIN_1)  ),
-        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Jaeger_FIN_1_LOW)  ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Scout_SLK_CZ_Secondary)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Scout_SLK_CZ_Secondary_LOW)  ),
         DepictionDescriptor_LOD_WreckedLow_Empty( ),
     ]
 
@@ -86,7 +86,7 @@ Gfx_Howz_Skoda_vz25_150mm_CZ_Weapon is TDepictionTemplate //arme
         Operators = //DepictionOperator_SkeletalAnimation_Canon_ZIS2_57mmAT_SOV +
             DepictionOperatorNode_ResetUnit +
             DepictionOperatorNode_Propulsion_2Wheels_Canon +
-            DepictionOperator_Carriable_Canon +
+            DepictionOperator_Carriable_Canon_NoArms +
             DepictionOperator_TurretAim_Canon +
             DepictionOperator_TurretRecoil_Canon
         Actions = Weapons_Howz_Skoda_vz25_150mm_CZ
@@ -105,12 +105,12 @@ Gfx_Howz_Skoda_vz25_150mm_CZ is TTimelyReceiverFactoryCarrier
         RenderStyleProviderDescriptor = ~/DefaultRenderStyleProvider
         Selector = SpecificDepictionSelectorWithScale
         DepictionAlternatives = [
-            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Boites_Howz_sFH_18_150mm_GER) ),
-            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Boites_Howz_sFH_18_150mm_GER) ),
-            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Boites_Howz_sFH_18_150mm_GER) ),
-            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Boites_Howz_sFH_18_150mm_GER) ),
-            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Boites_Howz_sFH_18_150mm_GER) ),
-            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Boites_Howz_sFH_18_150mm_GER) ),
+            DepictionDescriptor_LOD_High       ( MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Boites_Howz_Skoda_vz25_150mm_CZ) ),
+            DepictionDescriptor_LOD_Mid        ( MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Boites_Howz_Skoda_vz25_150mm_CZ) ),
+            DepictionDescriptor_LOD_Low        ( MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Boites_Howz_Skoda_vz25_150mm_CZ) ),
+            DepictionDescriptor_LOD_WreckedHigh( MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Boites_Howz_Skoda_vz25_150mm_CZ) ),
+            DepictionDescriptor_LOD_WreckedMid ( MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Boites_Howz_Skoda_vz25_150mm_CZ) ),
+            DepictionDescriptor_LOD_WreckedLow ( MeshDescriptor = TemplateMeshDescriptor_Howz_Skoda_vz25_150mm_CZ( ModelFile = ModelFile_Boites_Howz_Skoda_vz25_150mm_CZ) ),
         ]
         NodeNamesForSelection = [ 'Canon_AT', 'servant_G' , 'servant_D']
         SubDepictions = [SubDepiction_Servant_1_Howz_Skoda_vz25_150mm_CZ,

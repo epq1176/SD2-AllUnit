@@ -1,4 +1,4 @@
-export SpecificDefaultSupplyRange is 2500.0 * Metre //250m in game //utilisé par le halo également
+export SpecificDefaultSupplyRange is 1250.0 * Metre //250m in game //utilisé par le halo également
 export StandardSupply is TSupplyDescriptor
 (
     // Rayon par défaut de la zone de ravitaillement, cette valeur est utilisée si
@@ -24,14 +24,7 @@ export StandardSupply is TSupplyDescriptor
 
     // Types de mouvement dont la vie est suppliable. Liste des valeurs dans UnitMovingType.ndf
     HealthSuppliableMovingTypes = [
-        EUnitMovingType/Infantry,
-        EUnitMovingType/InfantryAmphibious,
-        EUnitMovingType/Track,
-        EUnitMovingType/TrackAmphibious,
-        EUnitMovingType/AllTerrainWheelAmphibious,
-        EUnitMovingType/HalfTrack,
-        EUnitMovingType/AllTerrainWheel,
-        EUnitMovingType/Wheel,
+        //EUnitMovingType/Track
     ]
     // Point de vie ravitaillés par seconde
     HealthSupplyBySecond = 0.3 //0.00001

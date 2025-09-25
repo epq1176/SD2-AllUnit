@@ -613,6 +613,210 @@ export Descriptor_ProductionCadavre_Bunker_ATR_AWP is TEntityDescriptor
 
     ]
 )
+export Descriptor_ProductionCadavre_Bunker_ATR_CZ is TEntityDescriptor
+(
+    DescriptorId = GUID:{df3409bc-77fa-4648-8abb-7f092b589d03}
+    ClassNameForDebug = 'CadavreBunker_ATR_CZ'
+    Modules = [
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/Undef
+                    MotherCountry                    = 'CZ'
+                )
+                Selection = [ ~/NilDescriptorIfCadavre ]
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+                TagSet = [
+                    "Standard",
+                ]
+            ),
+
+        // Flags
+            TFlagsModuleDescriptor
+            (
+                InitialFlagSet =
+                [
+                    Flag_Detectable,
+                    Flag_Selectionnable,
+                    Flag_Batiment,
+                    Flag_Highlightable,
+                    Flag_Target,
+                    Flag_Blessable,
+                ]
+            ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = False
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurBatiment
+                Radius                     = ((100) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Cadavre
+            TCadavreModuleDescriptor
+            (
+                ExplodeAtEnd = False
+                KillAsVehicule = False
+                KillAsInfanterie = False
+                KillAsHelico = False
+                KillAsAirplane = False
+                KillAsBatiment = True
+                FollowVisibilityRules = False
+                CadavreDuration = 10*3600
+                DisappearanceDuration = ($/GFX/Everything/CadavreDurationApresFeu_Batiment - 5)
+                CadavreFireDuration = $/GFX/Everything/CadavrePeriodEnFeu_Batiment
+                FxBinderStartCrashing = ""
+                FxBinderOnCrash = ""
+                FxBinderBurning = ""
+                FadingDuration = 6
+                DamageRatio = 1.
+                DeathExplosionAmmo = nil
+                SecondaryDeathExplosionAmmo = nil
+                InvulnerablePeriod = $/GFX/Everything/CadavreInvulnerablePeriode
+                ModuleDescriptorsToSteal =
+                [
+                   $/GFX/Everything/Descriptor_Unit_Bunker_ATR_CZ/ApparenceModel,
+                ]
+            ),
+            $/GFX/Everything/Descriptor_Unit_Bunker_ATR_CZ/ApparenceModel,
+
+        // Label
+        TModuleSelector
+        (
+            Default        = TWargameLabelModuleDescriptor
+            (
+                IsBuilding           = False
+                IsCommandementUnit   = False
+                UnitName             = 'MDPUCCRWHG'
+                HintToken            = 'Bunker'
+                IdentifiedTexture    = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+                (
+                    CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                    Alterator = $/GUIOption/IconType
+                    Values =
+                    [
+                        "Texture_RTS_H_Bunker_AT",
+                        "Texture_Non_identifiee_Defense",
+                    ]
+                )
+                UnidentifiedTexture  = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+                (
+                    CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                    Alterator = $/GUIOption/IconType
+                    Values =
+                    [
+                        "Texture_RTS_H_Non_identifiee_Bunker",
+                        "Texture_Non_identifiee_Defense",
+                    ]
+                )
+                PositionHeightOffset = 1000.0
+                PlatingValue         = 0
+                APValue              = 0
+                APValueBazooka       = False
+                NbSoldiers           = 0
+                IsParachutist        = False
+            )
+            Selection      = [  ]
+        ),
+
+        // Debug
+            ~/DebugModuleDescriptor,
+
+        // IAStrat
+            TModuleSelector
+            (
+                Default        = TIAStratModuleDescriptor
+                (
+                    DatabaseId = 2
+                    GameplayBehavior = EGameplayBehavior/Nothing
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // VisibilityModule
+        TModuleSelector
+        (
+            Default        = TVisibilityModuleDescriptor
+            (
+                AutoRevealType                  = EAutoRevealType/AutoRevealAllies
+                UnitConcealmentBonus            = 0.0
+                VisionUnitType                  = EVisionUnitType/AlwaysOnGround
+                VisionObstructionType           = EVisionObstructionType/Vehicle
+                GroundDissimulationModifierType = EGroundDissumulationModifierType/Ground
+            )
+            Selection = []
+        ),
+
+        // PackSignaux
+            ~/PackSignauxModuleSelector,
+
+        // UnitUI
+            TModuleSelector
+            (
+                Default = TUnitUIModuleDescriptor
+                (
+                    HintToken = 'Bunker'
+                    SpecialtiesList = [
+                    ]
+                    NameToken = 'MDPUCCRWHG'
+                    InfoPanelConfigurationToken = 'Default'
+                    TypeSpecificToken = ''
+                    ShowInMenu = True
+                    IsAce = False
+                    GenerateName = true
+                    TopViewTexture = 'Texture_Unit_TopView_Bunker_ATR_CZ'
+                    MenuIconTexture = 'Texture_RTS_H_Bunker_AT'
+                    ButtonTexture = 'Texture_Button_Unit_Bunker_ATR_CZ'
+                    CountryTexture = 'CommonTexture_MotherCountryFlag_CZ'
+                    TypeStrategicCount = ETypeStrategicCount/NotCounted
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId = ~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue = ~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TUnitUIModuleDescriptor
+                        (
+                            HintToken = 'Bunker'
+                            NameToken = 'MDPUCCRWHG'
+                            InfoPanelConfigurationToken = 'Default'
+                            TypeSpecificToken = ''
+                            TopViewTexture = 'Texture_Unit_TopView_Bunker_ATR_CZ'
+                            MenuIconTexture = 'Texture_RTS_H_Bunker_AT'
+                            ButtonTexture = 'Texture_Button_Unit_Bunker_ATR_CZ'
+                            CountryTexture = 'CommonTexture_MotherCountryFlag_CZ'
+                            TypeStrategicCount = ETypeStrategicCount/NotCounted
+                        )
+                    )
+                ]
+            ),
+
+    ]
+)
 export Descriptor_ProductionCadavre_Bunker_ATR_FIN is TEntityDescriptor
 (
     DescriptorId = GUID:{24a76d50-107e-4b7e-a80e-181ed7357680}
@@ -2041,6 +2245,210 @@ export Descriptor_ProductionCadavre_Bunker_AT_37mm_GER is TEntityDescriptor
 
     ]
 )
+export Descriptor_ProductionCadavre_Bunker_AT_37mm_SLK_CZ is TEntityDescriptor
+(
+    DescriptorId = GUID:{90c8c224-ec16-4168-92f0-615559291ad2}
+    ClassNameForDebug = 'CadavreBunker_AT_37mm_SLK_CZ'
+    Modules = [
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/Undef
+                    MotherCountry                    = 'CZ'
+                )
+                Selection = [ ~/NilDescriptorIfCadavre ]
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+                TagSet = [
+                    "Standard",
+                ]
+            ),
+
+        // Flags
+            TFlagsModuleDescriptor
+            (
+                InitialFlagSet =
+                [
+                    Flag_Detectable,
+                    Flag_Selectionnable,
+                    Flag_Batiment,
+                    Flag_Highlightable,
+                    Flag_Target,
+                    Flag_Blessable,
+                ]
+            ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = False
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurBatiment
+                Radius                     = ((100) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Cadavre
+            TCadavreModuleDescriptor
+            (
+                ExplodeAtEnd = False
+                KillAsVehicule = False
+                KillAsInfanterie = False
+                KillAsHelico = False
+                KillAsAirplane = False
+                KillAsBatiment = True
+                FollowVisibilityRules = False
+                CadavreDuration = 10*3600
+                DisappearanceDuration = ($/GFX/Everything/CadavreDurationApresFeu_Batiment - 5)
+                CadavreFireDuration = $/GFX/Everything/CadavrePeriodEnFeu_Batiment
+                FxBinderStartCrashing = ""
+                FxBinderOnCrash = ""
+                FxBinderBurning = ""
+                FadingDuration = 6
+                DamageRatio = 1.
+                DeathExplosionAmmo = nil
+                SecondaryDeathExplosionAmmo = nil
+                InvulnerablePeriod = $/GFX/Everything/CadavreInvulnerablePeriode
+                ModuleDescriptorsToSteal =
+                [
+                   $/GFX/Everything/Descriptor_Unit_Bunker_AT_37mm_SLK_CZ/ApparenceModel,
+                ]
+            ),
+            $/GFX/Everything/Descriptor_Unit_Bunker_AT_37mm_SLK_CZ/ApparenceModel,
+
+        // Label
+        TModuleSelector
+        (
+            Default        = TWargameLabelModuleDescriptor
+            (
+                IsBuilding           = False
+                IsCommandementUnit   = False
+                UnitName             = 'AXQAVNSTJB'
+                HintToken            = 'Bunker'
+                IdentifiedTexture    = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+                (
+                    CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                    Alterator = $/GUIOption/IconType
+                    Values =
+                    [
+                        "Texture_RTS_H_Bunker_AT",
+                        "Texture_Non_identifiee_Defense",
+                    ]
+                )
+                UnidentifiedTexture  = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+                (
+                    CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                    Alterator = $/GUIOption/IconType
+                    Values =
+                    [
+                        "Texture_RTS_H_Non_identifiee_Bunker",
+                        "Texture_Non_identifiee_Defense",
+                    ]
+                )
+                PositionHeightOffset = 1000.0
+                PlatingValue         = 0
+                APValue              = 0
+                APValueBazooka       = False
+                NbSoldiers           = 0
+                IsParachutist        = False
+            )
+            Selection      = [  ]
+        ),
+
+        // Debug
+            ~/DebugModuleDescriptor,
+
+        // IAStrat
+            TModuleSelector
+            (
+                Default        = TIAStratModuleDescriptor
+                (
+                    DatabaseId = 2
+                    GameplayBehavior = EGameplayBehavior/Nothing
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // VisibilityModule
+        TModuleSelector
+        (
+            Default        = TVisibilityModuleDescriptor
+            (
+                AutoRevealType                  = EAutoRevealType/AutoRevealAllies
+                UnitConcealmentBonus            = 0.0
+                VisionUnitType                  = EVisionUnitType/AlwaysOnGround
+                VisionObstructionType           = EVisionObstructionType/Vehicle
+                GroundDissimulationModifierType = EGroundDissumulationModifierType/Ground
+            )
+            Selection = []
+        ),
+
+        // PackSignaux
+            ~/PackSignauxModuleSelector,
+
+        // UnitUI
+            TModuleSelector
+            (
+                Default = TUnitUIModuleDescriptor
+                (
+                    HintToken = 'Bunker'
+                    SpecialtiesList = [
+                    ]
+                    NameToken = 'AXQAVNSTJB'
+                    InfoPanelConfigurationToken = 'Default'
+                    TypeSpecificToken = ''
+                    ShowInMenu = True
+                    IsAce = False
+                    GenerateName = true
+                    TopViewTexture = 'Texture_Unit_TopView_Bunker_AT_37mm_SLK_CZ'
+                    MenuIconTexture = 'Texture_RTS_H_Bunker_AT'
+                    ButtonTexture = 'Texture_Button_Unit_Bunker_AT_37mm_SLK_CZ'
+                    CountryTexture = 'CommonTexture_MotherCountryFlag_CZ'
+                    TypeStrategicCount = ETypeStrategicCount/NotCounted
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId = ~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue = ~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TUnitUIModuleDescriptor
+                        (
+                            HintToken = 'Bunker'
+                            NameToken = 'AXQAVNSTJB'
+                            InfoPanelConfigurationToken = 'Default'
+                            TypeSpecificToken = ''
+                            TopViewTexture = 'Texture_Unit_TopView_Bunker_AT_37mm_SLK_CZ'
+                            MenuIconTexture = 'Texture_RTS_H_Bunker_AT'
+                            ButtonTexture = 'Texture_Button_Unit_Bunker_AT_37mm_SLK_CZ'
+                            CountryTexture = 'CommonTexture_MotherCountryFlag_CZ'
+                            TypeStrategicCount = ETypeStrategicCount/NotCounted
+                        )
+                    )
+                ]
+            ),
+
+    ]
+)
 export Descriptor_ProductionCadavre_Bunker_AT_40mm_HON is TEntityDescriptor
 (
     DescriptorId = GUID:{0f6cd747-3969-40ab-a840-f469932b39a4}
@@ -2441,6 +2849,210 @@ export Descriptor_ProductionCadavre_Bunker_AT_45mm_AWP is TEntityDescriptor
                             MenuIconTexture = 'Texture_RTS_H_Bunker_AT'
                             ButtonTexture = 'Texture_Button_Unit_Bunker_AT_45mm_AWP'
                             CountryTexture = 'CommonTexture_MotherCountryFlag_POL'
+                            TypeStrategicCount = ETypeStrategicCount/NotCounted
+                        )
+                    )
+                ]
+            ),
+
+    ]
+)
+export Descriptor_ProductionCadavre_Bunker_AT_45mm_CZ is TEntityDescriptor
+(
+    DescriptorId = GUID:{87507319-7336-4f6f-b15c-4ae64b947172}
+    ClassNameForDebug = 'CadavreBunker_AT_45mm_CZ'
+    Modules = [
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/Undef
+                    MotherCountry                    = 'CZ'
+                )
+                Selection = [ ~/NilDescriptorIfCadavre ]
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+                TagSet = [
+                    "Standard",
+                ]
+            ),
+
+        // Flags
+            TFlagsModuleDescriptor
+            (
+                InitialFlagSet =
+                [
+                    Flag_Detectable,
+                    Flag_Selectionnable,
+                    Flag_Batiment,
+                    Flag_Highlightable,
+                    Flag_Target,
+                    Flag_Blessable,
+                ]
+            ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = False
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurBatiment
+                Radius                     = ((100) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Cadavre
+            TCadavreModuleDescriptor
+            (
+                ExplodeAtEnd = False
+                KillAsVehicule = False
+                KillAsInfanterie = False
+                KillAsHelico = False
+                KillAsAirplane = False
+                KillAsBatiment = True
+                FollowVisibilityRules = False
+                CadavreDuration = 10*3600
+                DisappearanceDuration = ($/GFX/Everything/CadavreDurationApresFeu_Batiment - 5)
+                CadavreFireDuration = $/GFX/Everything/CadavrePeriodEnFeu_Batiment
+                FxBinderStartCrashing = ""
+                FxBinderOnCrash = ""
+                FxBinderBurning = ""
+                FadingDuration = 6
+                DamageRatio = 1.
+                DeathExplosionAmmo = nil
+                SecondaryDeathExplosionAmmo = nil
+                InvulnerablePeriod = $/GFX/Everything/CadavreInvulnerablePeriode
+                ModuleDescriptorsToSteal =
+                [
+                   $/GFX/Everything/Descriptor_Unit_Bunker_AT_45mm_CZ/ApparenceModel,
+                ]
+            ),
+            $/GFX/Everything/Descriptor_Unit_Bunker_AT_45mm_CZ/ApparenceModel,
+
+        // Label
+        TModuleSelector
+        (
+            Default        = TWargameLabelModuleDescriptor
+            (
+                IsBuilding           = False
+                IsCommandementUnit   = False
+                UnitName             = 'Bunk_45SOV'
+                HintToken            = 'Bunker'
+                IdentifiedTexture    = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+                (
+                    CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                    Alterator = $/GUIOption/IconType
+                    Values =
+                    [
+                        "Texture_RTS_H_Bunker_AT",
+                        "Texture_Non_identifiee_Defense",
+                    ]
+                )
+                UnidentifiedTexture  = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+                (
+                    CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                    Alterator = $/GUIOption/IconType
+                    Values =
+                    [
+                        "Texture_RTS_H_Non_identifiee_Bunker",
+                        "Texture_Non_identifiee_Defense",
+                    ]
+                )
+                PositionHeightOffset = 1000.0
+                PlatingValue         = 0
+                APValue              = 0
+                APValueBazooka       = False
+                NbSoldiers           = 0
+                IsParachutist        = False
+            )
+            Selection      = [  ]
+        ),
+
+        // Debug
+            ~/DebugModuleDescriptor,
+
+        // IAStrat
+            TModuleSelector
+            (
+                Default        = TIAStratModuleDescriptor
+                (
+                    DatabaseId = 2
+                    GameplayBehavior = EGameplayBehavior/Nothing
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // VisibilityModule
+        TModuleSelector
+        (
+            Default        = TVisibilityModuleDescriptor
+            (
+                AutoRevealType                  = EAutoRevealType/AutoRevealAllies
+                UnitConcealmentBonus            = 0.0
+                VisionUnitType                  = EVisionUnitType/AlwaysOnGround
+                VisionObstructionType           = EVisionObstructionType/Vehicle
+                GroundDissimulationModifierType = EGroundDissumulationModifierType/Ground
+            )
+            Selection = []
+        ),
+
+        // PackSignaux
+            ~/PackSignauxModuleSelector,
+
+        // UnitUI
+            TModuleSelector
+            (
+                Default = TUnitUIModuleDescriptor
+                (
+                    HintToken = 'Bunker'
+                    SpecialtiesList = [
+                    ]
+                    NameToken = 'Bunk_45SOV'
+                    InfoPanelConfigurationToken = 'Default'
+                    TypeSpecificToken = ''
+                    ShowInMenu = True
+                    IsAce = False
+                    GenerateName = true
+                    TopViewTexture = 'Texture_Unit_TopView_Bunker_AT_45mm_CZ'
+                    MenuIconTexture = 'Texture_RTS_H_Bunker_AT'
+                    ButtonTexture = 'Texture_Button_Unit_Bunker_AT_45mm_CZ'
+                    CountryTexture = 'CommonTexture_MotherCountryFlag_CZ'
+                    TypeStrategicCount = ETypeStrategicCount/NotCounted
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId = ~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue = ~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TUnitUIModuleDescriptor
+                        (
+                            HintToken = 'Bunker'
+                            NameToken = 'Bunk_45SOV'
+                            InfoPanelConfigurationToken = 'Default'
+                            TypeSpecificToken = ''
+                            TopViewTexture = 'Texture_Unit_TopView_Bunker_AT_45mm_CZ'
+                            MenuIconTexture = 'Texture_RTS_H_Bunker_AT'
+                            ButtonTexture = 'Texture_Button_Unit_Bunker_AT_45mm_CZ'
+                            CountryTexture = 'CommonTexture_MotherCountryFlag_CZ'
                             TypeStrategicCount = ETypeStrategicCount/NotCounted
                         )
                     )
@@ -6325,6 +6937,210 @@ export Descriptor_ProductionCadavre_Bunker_AT_75mm_RSI is TEntityDescriptor
 
     ]
 )
+export Descriptor_ProductionCadavre_Bunker_AT_75mm_SLK_CZ is TEntityDescriptor
+(
+    DescriptorId = GUID:{0114057d-ff12-4a04-982a-4ecef8f6dd40}
+    ClassNameForDebug = 'CadavreBunker_AT_75mm_SLK_CZ'
+    Modules = [
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/Undef
+                    MotherCountry                    = 'CZ'
+                )
+                Selection = [ ~/NilDescriptorIfCadavre ]
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+                TagSet = [
+                    "Standard",
+                ]
+            ),
+
+        // Flags
+            TFlagsModuleDescriptor
+            (
+                InitialFlagSet =
+                [
+                    Flag_Detectable,
+                    Flag_Selectionnable,
+                    Flag_Batiment,
+                    Flag_Highlightable,
+                    Flag_Target,
+                    Flag_Blessable,
+                ]
+            ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = False
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurBatiment
+                Radius                     = ((100) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Cadavre
+            TCadavreModuleDescriptor
+            (
+                ExplodeAtEnd = False
+                KillAsVehicule = False
+                KillAsInfanterie = False
+                KillAsHelico = False
+                KillAsAirplane = False
+                KillAsBatiment = True
+                FollowVisibilityRules = False
+                CadavreDuration = 10*3600
+                DisappearanceDuration = ($/GFX/Everything/CadavreDurationApresFeu_Batiment - 5)
+                CadavreFireDuration = $/GFX/Everything/CadavrePeriodEnFeu_Batiment
+                FxBinderStartCrashing = ""
+                FxBinderOnCrash = ""
+                FxBinderBurning = ""
+                FadingDuration = 6
+                DamageRatio = 1.
+                DeathExplosionAmmo = nil
+                SecondaryDeathExplosionAmmo = nil
+                InvulnerablePeriod = $/GFX/Everything/CadavreInvulnerablePeriode
+                ModuleDescriptorsToSteal =
+                [
+                   $/GFX/Everything/Descriptor_Unit_Bunker_AT_75mm_SLK_CZ/ApparenceModel,
+                ]
+            ),
+            $/GFX/Everything/Descriptor_Unit_Bunker_AT_75mm_SLK_CZ/ApparenceModel,
+
+        // Label
+        TModuleSelector
+        (
+            Default        = TWargameLabelModuleDescriptor
+            (
+                IsBuilding           = False
+                IsCommandementUnit   = False
+                UnitName             = 'JLHUHFZCGH'
+                HintToken            = 'Bunker'
+                IdentifiedTexture    = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+                (
+                    CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                    Alterator = $/GUIOption/IconType
+                    Values =
+                    [
+                        "Texture_RTS_H_Bunker_AT",
+                        "Texture_Non_identifiee_Defense",
+                    ]
+                )
+                UnidentifiedTexture  = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+                (
+                    CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                    Alterator = $/GUIOption/IconType
+                    Values =
+                    [
+                        "Texture_RTS_H_Non_identifiee_Bunker",
+                        "Texture_Non_identifiee_Defense",
+                    ]
+                )
+                PositionHeightOffset = 1000.0
+                PlatingValue         = 0
+                APValue              = 0
+                APValueBazooka       = False
+                NbSoldiers           = 0
+                IsParachutist        = False
+            )
+            Selection      = [  ]
+        ),
+
+        // Debug
+            ~/DebugModuleDescriptor,
+
+        // IAStrat
+            TModuleSelector
+            (
+                Default        = TIAStratModuleDescriptor
+                (
+                    DatabaseId = 2
+                    GameplayBehavior = EGameplayBehavior/Nothing
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // VisibilityModule
+        TModuleSelector
+        (
+            Default        = TVisibilityModuleDescriptor
+            (
+                AutoRevealType                  = EAutoRevealType/AutoRevealAllies
+                UnitConcealmentBonus            = 0.0
+                VisionUnitType                  = EVisionUnitType/AlwaysOnGround
+                VisionObstructionType           = EVisionObstructionType/Vehicle
+                GroundDissimulationModifierType = EGroundDissumulationModifierType/Ground
+            )
+            Selection = []
+        ),
+
+        // PackSignaux
+            ~/PackSignauxModuleSelector,
+
+        // UnitUI
+            TModuleSelector
+            (
+                Default = TUnitUIModuleDescriptor
+                (
+                    HintToken = 'Bunker'
+                    SpecialtiesList = [
+                    ]
+                    NameToken = 'JLHUHFZCGH'
+                    InfoPanelConfigurationToken = 'Default'
+                    TypeSpecificToken = ''
+                    ShowInMenu = True
+                    IsAce = False
+                    GenerateName = true
+                    TopViewTexture = 'Texture_Unit_TopView_Bunker_AT_75mm_SLK_CZ'
+                    MenuIconTexture = 'Texture_RTS_H_Bunker_AT'
+                    ButtonTexture = 'Texture_Button_Unit_Bunker_AT_75mm_SLK_CZ'
+                    CountryTexture = 'CommonTexture_MotherCountryFlag_CZ'
+                    TypeStrategicCount = ETypeStrategicCount/NotCounted
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId = ~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue = ~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TUnitUIModuleDescriptor
+                        (
+                            HintToken = 'Bunker'
+                            NameToken = 'JLHUHFZCGH'
+                            InfoPanelConfigurationToken = 'Default'
+                            TypeSpecificToken = ''
+                            TopViewTexture = 'Texture_Unit_TopView_Bunker_AT_75mm_SLK_CZ'
+                            MenuIconTexture = 'Texture_RTS_H_Bunker_AT'
+                            ButtonTexture = 'Texture_Button_Unit_Bunker_AT_75mm_SLK_CZ'
+                            CountryTexture = 'CommonTexture_MotherCountryFlag_CZ'
+                            TypeStrategicCount = ETypeStrategicCount/NotCounted
+                        )
+                    )
+                ]
+            ),
+
+    ]
+)
 export Descriptor_ProductionCadavre_Bunker_AT_75mm_YUG is TEntityDescriptor
 (
     DescriptorId = GUID:{71a36c71-2fa4-4510-9b16-82fb396ec9df}
@@ -6521,6 +7337,210 @@ export Descriptor_ProductionCadavre_Bunker_AT_75mm_YUG is TEntityDescriptor
                             MenuIconTexture = 'Texture_RTS_H_Bunker_AT'
                             ButtonTexture = 'Texture_Button_Unit_Bunker_AT_75mm_YUG'
                             CountryTexture = 'CommonTexture_MotherCountryFlag_YUG'
+                            TypeStrategicCount = ETypeStrategicCount/NotCounted
+                        )
+                    )
+                ]
+            ),
+
+    ]
+)
+export Descriptor_ProductionCadavre_Bunker_AT_76mm_CZ is TEntityDescriptor
+(
+    DescriptorId = GUID:{c75178aa-7f91-4f68-8235-62987519b4d4}
+    ClassNameForDebug = 'CadavreBunker_AT_76mm_CZ'
+    Modules = [
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/Undef
+                    MotherCountry                    = 'CZ'
+                )
+                Selection = [ ~/NilDescriptorIfCadavre ]
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+                TagSet = [
+                    "Standard",
+                ]
+            ),
+
+        // Flags
+            TFlagsModuleDescriptor
+            (
+                InitialFlagSet =
+                [
+                    Flag_Detectable,
+                    Flag_Selectionnable,
+                    Flag_Batiment,
+                    Flag_Highlightable,
+                    Flag_Target,
+                    Flag_Blessable,
+                ]
+            ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = False
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurBatiment
+                Radius                     = ((100) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Cadavre
+            TCadavreModuleDescriptor
+            (
+                ExplodeAtEnd = False
+                KillAsVehicule = False
+                KillAsInfanterie = False
+                KillAsHelico = False
+                KillAsAirplane = False
+                KillAsBatiment = True
+                FollowVisibilityRules = False
+                CadavreDuration = 10*3600
+                DisappearanceDuration = ($/GFX/Everything/CadavreDurationApresFeu_Batiment - 5)
+                CadavreFireDuration = $/GFX/Everything/CadavrePeriodEnFeu_Batiment
+                FxBinderStartCrashing = ""
+                FxBinderOnCrash = ""
+                FxBinderBurning = ""
+                FadingDuration = 6
+                DamageRatio = 1.
+                DeathExplosionAmmo = nil
+                SecondaryDeathExplosionAmmo = nil
+                InvulnerablePeriod = $/GFX/Everything/CadavreInvulnerablePeriode
+                ModuleDescriptorsToSteal =
+                [
+                   $/GFX/Everything/Descriptor_Unit_Bunker_AT_76mm_CZ/ApparenceModel,
+                ]
+            ),
+            $/GFX/Everything/Descriptor_Unit_Bunker_AT_76mm_CZ/ApparenceModel,
+
+        // Label
+        TModuleSelector
+        (
+            Default        = TWargameLabelModuleDescriptor
+            (
+                IsBuilding           = False
+                IsCommandementUnit   = False
+                UnitName             = 'AIVQTWLUVM'
+                HintToken            = 'Bunker'
+                IdentifiedTexture    = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+                (
+                    CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                    Alterator = $/GUIOption/IconType
+                    Values =
+                    [
+                        "Texture_RTS_H_Bunker_AT",
+                        "Texture_Non_identifiee_Defense",
+                    ]
+                )
+                UnidentifiedTexture  = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+                (
+                    CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                    Alterator = $/GUIOption/IconType
+                    Values =
+                    [
+                        "Texture_RTS_H_Non_identifiee_Bunker",
+                        "Texture_Non_identifiee_Defense",
+                    ]
+                )
+                PositionHeightOffset = 1000.0
+                PlatingValue         = 0
+                APValue              = 0
+                APValueBazooka       = False
+                NbSoldiers           = 0
+                IsParachutist        = False
+            )
+            Selection      = [  ]
+        ),
+
+        // Debug
+            ~/DebugModuleDescriptor,
+
+        // IAStrat
+            TModuleSelector
+            (
+                Default        = TIAStratModuleDescriptor
+                (
+                    DatabaseId = 2
+                    GameplayBehavior = EGameplayBehavior/Nothing
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // VisibilityModule
+        TModuleSelector
+        (
+            Default        = TVisibilityModuleDescriptor
+            (
+                AutoRevealType                  = EAutoRevealType/AutoRevealAllies
+                UnitConcealmentBonus            = 0.0
+                VisionUnitType                  = EVisionUnitType/AlwaysOnGround
+                VisionObstructionType           = EVisionObstructionType/Vehicle
+                GroundDissimulationModifierType = EGroundDissumulationModifierType/Ground
+            )
+            Selection = []
+        ),
+
+        // PackSignaux
+            ~/PackSignauxModuleSelector,
+
+        // UnitUI
+            TModuleSelector
+            (
+                Default = TUnitUIModuleDescriptor
+                (
+                    HintToken = 'Bunker'
+                    SpecialtiesList = [
+                    ]
+                    NameToken = 'AIVQTWLUVM'
+                    InfoPanelConfigurationToken = 'Default'
+                    TypeSpecificToken = ''
+                    ShowInMenu = True
+                    IsAce = False
+                    GenerateName = true
+                    TopViewTexture = 'Texture_Unit_TopView_Bunker_AT_76mm_CZ'
+                    MenuIconTexture = 'Texture_RTS_H_Bunker_AT'
+                    ButtonTexture = 'Texture_Button_Unit_Bunker_AT_76mm_CZ'
+                    CountryTexture = 'CommonTexture_MotherCountryFlag_CZ'
+                    TypeStrategicCount = ETypeStrategicCount/NotCounted
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId = ~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue = ~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TUnitUIModuleDescriptor
+                        (
+                            HintToken = 'Bunker'
+                            NameToken = 'AIVQTWLUVM'
+                            InfoPanelConfigurationToken = 'Default'
+                            TypeSpecificToken = ''
+                            TopViewTexture = 'Texture_Unit_TopView_Bunker_AT_76mm_CZ'
+                            MenuIconTexture = 'Texture_RTS_H_Bunker_AT'
+                            ButtonTexture = 'Texture_Button_Unit_Bunker_AT_76mm_CZ'
+                            CountryTexture = 'CommonTexture_MotherCountryFlag_CZ'
                             TypeStrategicCount = ETypeStrategicCount/NotCounted
                         )
                     )
@@ -10813,6 +11833,210 @@ export Descriptor_ProductionCadavre_Bunker_MG_POL is TEntityDescriptor
 
     ]
 )
+export Descriptor_ProductionCadavre_Bunker_MG_SLK_CZ is TEntityDescriptor
+(
+    DescriptorId = GUID:{f5ea3299-5f25-4c14-813d-48745ac6a488}
+    ClassNameForDebug = 'CadavreBunker_MG_SLK_CZ'
+    Modules = [
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/Undef
+                    MotherCountry                    = 'CZ'
+                )
+                Selection = [ ~/NilDescriptorIfCadavre ]
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+                TagSet = [
+                    "Standard",
+                ]
+            ),
+
+        // Flags
+            TFlagsModuleDescriptor
+            (
+                InitialFlagSet =
+                [
+                    Flag_Detectable,
+                    Flag_Selectionnable,
+                    Flag_Batiment,
+                    Flag_Highlightable,
+                    Flag_Target,
+                    Flag_Blessable,
+                ]
+            ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = False
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurBatiment
+                Radius                     = ((100) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Cadavre
+            TCadavreModuleDescriptor
+            (
+                ExplodeAtEnd = False
+                KillAsVehicule = False
+                KillAsInfanterie = False
+                KillAsHelico = False
+                KillAsAirplane = False
+                KillAsBatiment = True
+                FollowVisibilityRules = False
+                CadavreDuration = 10*3600
+                DisappearanceDuration = ($/GFX/Everything/CadavreDurationApresFeu_Batiment - 5)
+                CadavreFireDuration = $/GFX/Everything/CadavrePeriodEnFeu_Batiment
+                FxBinderStartCrashing = ""
+                FxBinderOnCrash = ""
+                FxBinderBurning = ""
+                FadingDuration = 6
+                DamageRatio = 1.
+                DeathExplosionAmmo = nil
+                SecondaryDeathExplosionAmmo = nil
+                InvulnerablePeriod = $/GFX/Everything/CadavreInvulnerablePeriode
+                ModuleDescriptorsToSteal =
+                [
+                   $/GFX/Everything/Descriptor_Unit_Bunker_MG_SLK_CZ/ApparenceModel,
+                ]
+            ),
+            $/GFX/Everything/Descriptor_Unit_Bunker_MG_SLK_CZ/ApparenceModel,
+
+        // Label
+        TModuleSelector
+        (
+            Default        = TWargameLabelModuleDescriptor
+            (
+                IsBuilding           = False
+                IsCommandementUnit   = False
+                UnitName             = 'UDNTNLHGMD'
+                HintToken            = 'Bunker'
+                IdentifiedTexture    = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+                (
+                    CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                    Alterator = $/GUIOption/IconType
+                    Values =
+                    [
+                        "Texture_RTS_H_Bunker_HMG",
+                        "Texture_Non_identifiee_Defense",
+                    ]
+                )
+                UnidentifiedTexture  = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+                (
+                    CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                    Alterator = $/GUIOption/IconType
+                    Values =
+                    [
+                        "Texture_RTS_H_Non_identifiee_Bunker",
+                        "Texture_Non_identifiee_Defense",
+                    ]
+                )
+                PositionHeightOffset = 1000.0
+                PlatingValue         = 0
+                APValue              = 0
+                APValueBazooka       = False
+                NbSoldiers           = 0
+                IsParachutist        = False
+            )
+            Selection      = [  ]
+        ),
+
+        // Debug
+            ~/DebugModuleDescriptor,
+
+        // IAStrat
+            TModuleSelector
+            (
+                Default        = TIAStratModuleDescriptor
+                (
+                    DatabaseId = 2
+                    GameplayBehavior = EGameplayBehavior/Nothing
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // VisibilityModule
+        TModuleSelector
+        (
+            Default        = TVisibilityModuleDescriptor
+            (
+                AutoRevealType                  = EAutoRevealType/AutoRevealAllies
+                UnitConcealmentBonus            = 0.0
+                VisionUnitType                  = EVisionUnitType/AlwaysOnGround
+                VisionObstructionType           = EVisionObstructionType/Vehicle
+                GroundDissimulationModifierType = EGroundDissumulationModifierType/Ground
+            )
+            Selection = []
+        ),
+
+        // PackSignaux
+            ~/PackSignauxModuleSelector,
+
+        // UnitUI
+            TModuleSelector
+            (
+                Default = TUnitUIModuleDescriptor
+                (
+                    HintToken = 'Bunker'
+                    SpecialtiesList = [
+                    ]
+                    NameToken = 'UDNTNLHGMD'
+                    InfoPanelConfigurationToken = 'Default'
+                    TypeSpecificToken = ''
+                    ShowInMenu = True
+                    IsAce = False
+                    GenerateName = true
+                    TopViewTexture = 'Texture_Unit_TopView_Bunker_MG_SLK_CZ'
+                    MenuIconTexture = 'Texture_RTS_H_Bunker_HMG'
+                    ButtonTexture = 'Texture_Button_Unit_Bunker_MG_SLK_CZ'
+                    CountryTexture = 'CommonTexture_MotherCountryFlag_CZ'
+                    TypeStrategicCount = ETypeStrategicCount/NotCounted
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId = ~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue = ~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TUnitUIModuleDescriptor
+                        (
+                            HintToken = 'Bunker'
+                            NameToken = 'UDNTNLHGMD'
+                            InfoPanelConfigurationToken = 'Default'
+                            TypeSpecificToken = ''
+                            TopViewTexture = 'Texture_Unit_TopView_Bunker_MG_SLK_CZ'
+                            MenuIconTexture = 'Texture_RTS_H_Bunker_HMG'
+                            ButtonTexture = 'Texture_Button_Unit_Bunker_MG_SLK_CZ'
+                            CountryTexture = 'CommonTexture_MotherCountryFlag_CZ'
+                            TypeStrategicCount = ETypeStrategicCount/NotCounted
+                        )
+                    )
+                ]
+            ),
+
+    ]
+)
 export Descriptor_ProductionCadavre_Bunker_MG_UK is TEntityDescriptor
 (
     DescriptorId = GUID:{48f60658-3f7a-4b2e-b8d7-4a9ca0e2a766}
@@ -11621,6 +12845,210 @@ export Descriptor_ProductionCadavre_Bunker_Maxim_AWP is TEntityDescriptor
                             MenuIconTexture = 'Texture_RTS_H_Bunker_HMG'
                             ButtonTexture = 'Texture_Button_Unit_Bunker_Maxim_AWP'
                             CountryTexture = 'CommonTexture_MotherCountryFlag_POL'
+                            TypeStrategicCount = ETypeStrategicCount/NotCounted
+                        )
+                    )
+                ]
+            ),
+
+    ]
+)
+export Descriptor_ProductionCadavre_Bunker_Maxim_CZ is TEntityDescriptor
+(
+    DescriptorId = GUID:{e1e981e8-5706-4964-80b8-fae1a8a41529}
+    ClassNameForDebug = 'CadavreBunker_Maxim_CZ'
+    Modules = [
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/Undef
+                    MotherCountry                    = 'CZ'
+                )
+                Selection = [ ~/NilDescriptorIfCadavre ]
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+                TagSet = [
+                    "Standard",
+                ]
+            ),
+
+        // Flags
+            TFlagsModuleDescriptor
+            (
+                InitialFlagSet =
+                [
+                    Flag_Detectable,
+                    Flag_Selectionnable,
+                    Flag_Batiment,
+                    Flag_Highlightable,
+                    Flag_Target,
+                    Flag_Blessable,
+                ]
+            ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = False
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurBatiment
+                Radius                     = ((100) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Cadavre
+            TCadavreModuleDescriptor
+            (
+                ExplodeAtEnd = False
+                KillAsVehicule = False
+                KillAsInfanterie = False
+                KillAsHelico = False
+                KillAsAirplane = False
+                KillAsBatiment = True
+                FollowVisibilityRules = False
+                CadavreDuration = 10*3600
+                DisappearanceDuration = ($/GFX/Everything/CadavreDurationApresFeu_Batiment - 5)
+                CadavreFireDuration = $/GFX/Everything/CadavrePeriodEnFeu_Batiment
+                FxBinderStartCrashing = ""
+                FxBinderOnCrash = ""
+                FxBinderBurning = ""
+                FadingDuration = 6
+                DamageRatio = 1.
+                DeathExplosionAmmo = nil
+                SecondaryDeathExplosionAmmo = nil
+                InvulnerablePeriod = $/GFX/Everything/CadavreInvulnerablePeriode
+                ModuleDescriptorsToSteal =
+                [
+                   $/GFX/Everything/Descriptor_Unit_Bunker_Maxim_CZ/ApparenceModel,
+                ]
+            ),
+            $/GFX/Everything/Descriptor_Unit_Bunker_Maxim_CZ/ApparenceModel,
+
+        // Label
+        TModuleSelector
+        (
+            Default        = TWargameLabelModuleDescriptor
+            (
+                IsBuilding           = False
+                IsCommandementUnit   = False
+                UnitName             = 'QQDOPGCDJQ'
+                HintToken            = 'Bunker'
+                IdentifiedTexture    = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+                (
+                    CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                    Alterator = $/GUIOption/IconType
+                    Values =
+                    [
+                        "Texture_RTS_H_Bunker_HMG",
+                        "Texture_Non_identifiee_Defense",
+                    ]
+                )
+                UnidentifiedTexture  = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+                (
+                    CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                    Alterator = $/GUIOption/IconType
+                    Values =
+                    [
+                        "Texture_RTS_H_Non_identifiee_Bunker",
+                        "Texture_Non_identifiee_Defense",
+                    ]
+                )
+                PositionHeightOffset = 1000.0
+                PlatingValue         = 0
+                APValue              = 0
+                APValueBazooka       = False
+                NbSoldiers           = 0
+                IsParachutist        = False
+            )
+            Selection      = [  ]
+        ),
+
+        // Debug
+            ~/DebugModuleDescriptor,
+
+        // IAStrat
+            TModuleSelector
+            (
+                Default        = TIAStratModuleDescriptor
+                (
+                    DatabaseId = 2
+                    GameplayBehavior = EGameplayBehavior/Nothing
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // VisibilityModule
+        TModuleSelector
+        (
+            Default        = TVisibilityModuleDescriptor
+            (
+                AutoRevealType                  = EAutoRevealType/AutoRevealAllies
+                UnitConcealmentBonus            = 0.0
+                VisionUnitType                  = EVisionUnitType/AlwaysOnGround
+                VisionObstructionType           = EVisionObstructionType/Vehicle
+                GroundDissimulationModifierType = EGroundDissumulationModifierType/Ground
+            )
+            Selection = []
+        ),
+
+        // PackSignaux
+            ~/PackSignauxModuleSelector,
+
+        // UnitUI
+            TModuleSelector
+            (
+                Default = TUnitUIModuleDescriptor
+                (
+                    HintToken = 'Bunker'
+                    SpecialtiesList = [
+                    ]
+                    NameToken = 'QQDOPGCDJQ'
+                    InfoPanelConfigurationToken = 'Default'
+                    TypeSpecificToken = ''
+                    ShowInMenu = True
+                    IsAce = False
+                    GenerateName = true
+                    TopViewTexture = 'Texture_Unit_TopView_Bunker_Maxim_CZ'
+                    MenuIconTexture = 'Texture_RTS_H_Bunker_HMG'
+                    ButtonTexture = 'Texture_Button_Unit_Bunker_Maxim_CZ'
+                    CountryTexture = 'CommonTexture_MotherCountryFlag_CZ'
+                    TypeStrategicCount = ETypeStrategicCount/NotCounted
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId = ~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue = ~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TUnitUIModuleDescriptor
+                        (
+                            HintToken = 'Bunker'
+                            NameToken = 'QQDOPGCDJQ'
+                            InfoPanelConfigurationToken = 'Default'
+                            TypeSpecificToken = ''
+                            TopViewTexture = 'Texture_Unit_TopView_Bunker_Maxim_CZ'
+                            MenuIconTexture = 'Texture_RTS_H_Bunker_HMG'
+                            ButtonTexture = 'Texture_Button_Unit_Bunker_Maxim_CZ'
+                            CountryTexture = 'CommonTexture_MotherCountryFlag_CZ'
                             TypeStrategicCount = ETypeStrategicCount/NotCounted
                         )
                     )
@@ -12845,6 +14273,210 @@ export Descriptor_ProductionCadavre_Bunker_PaK_50mm_RSI is TEntityDescriptor
                             MenuIconTexture = 'Texture_RTS_H_Bunker_AT'
                             ButtonTexture = 'Texture_Button_Unit_Bunker_PaK_50mm_RSI'
                             CountryTexture = 'CommonTexture_MotherCountryFlag_RSI'
+                            TypeStrategicCount = ETypeStrategicCount/NotCounted
+                        )
+                    )
+                ]
+            ),
+
+    ]
+)
+export Descriptor_ProductionCadavre_Bunker_PaK_50mm_SLK_CZ is TEntityDescriptor
+(
+    DescriptorId = GUID:{e0f7b378-8a1a-4ae1-8886-50d08c7b869b}
+    ClassNameForDebug = 'CadavreBunker_PaK_50mm_SLK_CZ'
+    Modules = [
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/Undef
+                    MotherCountry                    = 'CZ'
+                )
+                Selection = [ ~/NilDescriptorIfCadavre ]
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+                TagSet = [
+                    "Standard",
+                ]
+            ),
+
+        // Flags
+            TFlagsModuleDescriptor
+            (
+                InitialFlagSet =
+                [
+                    Flag_Detectable,
+                    Flag_Selectionnable,
+                    Flag_Batiment,
+                    Flag_Highlightable,
+                    Flag_Target,
+                    Flag_Blessable,
+                ]
+            ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                MustUpdateZoneIndice       = False
+                ClampInWorld               = False
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurBatiment
+                Radius                     = ((100) * Metre)
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                CameraFollower             = nil
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Cadavre
+            TCadavreModuleDescriptor
+            (
+                ExplodeAtEnd = False
+                KillAsVehicule = False
+                KillAsInfanterie = False
+                KillAsHelico = False
+                KillAsAirplane = False
+                KillAsBatiment = True
+                FollowVisibilityRules = False
+                CadavreDuration = 10*3600
+                DisappearanceDuration = ($/GFX/Everything/CadavreDurationApresFeu_Batiment - 5)
+                CadavreFireDuration = $/GFX/Everything/CadavrePeriodEnFeu_Batiment
+                FxBinderStartCrashing = ""
+                FxBinderOnCrash = ""
+                FxBinderBurning = ""
+                FadingDuration = 6
+                DamageRatio = 1.
+                DeathExplosionAmmo = nil
+                SecondaryDeathExplosionAmmo = nil
+                InvulnerablePeriod = $/GFX/Everything/CadavreInvulnerablePeriode
+                ModuleDescriptorsToSteal =
+                [
+                   $/GFX/Everything/Descriptor_Unit_Bunker_PaK_50mm_SLK_CZ/ApparenceModel,
+                ]
+            ),
+            $/GFX/Everything/Descriptor_Unit_Bunker_PaK_50mm_SLK_CZ/ApparenceModel,
+
+        // Label
+        TModuleSelector
+        (
+            Default        = TWargameLabelModuleDescriptor
+            (
+                IsBuilding           = False
+                IsCommandementUnit   = False
+                UnitName             = 'UTSTMCRTAX'
+                HintToken            = 'Bunker'
+                IdentifiedTexture    = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+                (
+                    CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                    Alterator = $/GUIOption/IconType
+                    Values =
+                    [
+                        "Texture_RTS_H_Bunker_AT",
+                        "Texture_Non_identifiee_Defense",
+                    ]
+                )
+                UnidentifiedTexture  = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+                (
+                    CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                    Alterator = $/GUIOption/IconType
+                    Values =
+                    [
+                        "Texture_RTS_H_Non_identifiee_Bunker",
+                        "Texture_Non_identifiee_Defense",
+                    ]
+                )
+                PositionHeightOffset = 1000.0
+                PlatingValue         = 0
+                APValue              = 0
+                APValueBazooka       = False
+                NbSoldiers           = 0
+                IsParachutist        = False
+            )
+            Selection      = [  ]
+        ),
+
+        // Debug
+            ~/DebugModuleDescriptor,
+
+        // IAStrat
+            TModuleSelector
+            (
+                Default        = TIAStratModuleDescriptor
+                (
+                    DatabaseId = 2
+                    GameplayBehavior = EGameplayBehavior/Nothing
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // VisibilityModule
+        TModuleSelector
+        (
+            Default        = TVisibilityModuleDescriptor
+            (
+                AutoRevealType                  = EAutoRevealType/AutoRevealAllies
+                UnitConcealmentBonus            = 0.0
+                VisionUnitType                  = EVisionUnitType/AlwaysOnGround
+                VisionObstructionType           = EVisionObstructionType/Vehicle
+                GroundDissimulationModifierType = EGroundDissumulationModifierType/Ground
+            )
+            Selection = []
+        ),
+
+        // PackSignaux
+            ~/PackSignauxModuleSelector,
+
+        // UnitUI
+            TModuleSelector
+            (
+                Default = TUnitUIModuleDescriptor
+                (
+                    HintToken = 'Bunker'
+                    SpecialtiesList = [
+                    ]
+                    NameToken = 'UTSTMCRTAX'
+                    InfoPanelConfigurationToken = 'Default'
+                    TypeSpecificToken = ''
+                    ShowInMenu = True
+                    IsAce = False
+                    GenerateName = true
+                    TopViewTexture = 'Texture_Unit_TopView_Bunker_PaK_50mm_SLK_CZ'
+                    MenuIconTexture = 'Texture_RTS_H_Bunker_AT'
+                    ButtonTexture = 'Texture_Button_Unit_Bunker_PaK_50mm_SLK_CZ'
+                    CountryTexture = 'CommonTexture_MotherCountryFlag_CZ'
+                    TypeStrategicCount = ETypeStrategicCount/NotCounted
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId = ~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue = ~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TUnitUIModuleDescriptor
+                        (
+                            HintToken = 'Bunker'
+                            NameToken = 'UTSTMCRTAX'
+                            InfoPanelConfigurationToken = 'Default'
+                            TypeSpecificToken = ''
+                            TopViewTexture = 'Texture_Unit_TopView_Bunker_PaK_50mm_SLK_CZ'
+                            MenuIconTexture = 'Texture_RTS_H_Bunker_AT'
+                            ButtonTexture = 'Texture_Button_Unit_Bunker_PaK_50mm_SLK_CZ'
+                            CountryTexture = 'CommonTexture_MotherCountryFlag_CZ'
                             TypeStrategicCount = ETypeStrategicCount/NotCounted
                         )
                     )

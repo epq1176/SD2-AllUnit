@@ -236,11 +236,11 @@ export MissileCarriage_FW_190_F8_PzSchreck_GER is TMissileCarriageConnoisseur
     MeshDescriptor = Modele_FW_190_F8_PzSchreck_GER
     PylonSet       = PylonSet_FW_190_F8_PzSchreck_GER
     WeaponInfos    = [
-        TMissileCarriageWeaponInfo //80mm Panzerblitz 1 AP Rocket x12
+        TMissileCarriageWeaponInfo //88mm Rocket AP x8 Buchsenrohr
         (
             WeaponIndex = 3
             MissileType = eAGM
-            Count       = 1 * 12
+            Count       = 4 * 2
         ),
     ]
 )
@@ -1784,6 +1784,20 @@ export MissileCarriage_LaGG3_66_6x_82mm_HE_SOV is TMissileCarriageConnoisseur
         ),
     ]
 )
+export MissileCarriage_La_5FN_x2_100_CZ is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_La_5FN_x2_100_CZ
+    PylonSet       = PylonSet_La_5FN_x2_100_CZ
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //Bomb FAB100 100kg x2
+        (
+            WeaponIndex = 6
+            MissileType = eAGM
+            MountingType = eMountingBomb
+            Count       = 1 * 2
+        ),
+    ]
+)
 export MissileCarriage_La_5FN_x2_100_SOV is TMissileCarriageConnoisseur
 (
     MeshDescriptor = Modele_La_5FN_x2_100_SOV
@@ -1840,6 +1854,20 @@ export MissileCarriage_La_7_x2_50_SOV is TMissileCarriageConnoisseur
         ),
     ]
 )
+export MissileCarriage_Letov_S28_CZ is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_Letov_S28_CZ
+    PylonSet       = PylonSet_Letov_S28_CZ
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //Bomb SC 250kg x2
+        (
+            WeaponIndex = 3
+            MissileType = eAGM
+            MountingType = eMountingBomb
+            Count       = 1 * 2
+        ),
+    ]
+)
 export MissileCarriage_Letov_S328_BUL is TMissileCarriageConnoisseur
 (
     MeshDescriptor = Modele_Letov_S328_BUL
@@ -1848,6 +1876,34 @@ export MissileCarriage_Letov_S328_BUL is TMissileCarriageConnoisseur
         TMissileCarriageWeaponInfo //Bomb FAB100 100kg x4
         (
             WeaponIndex = 3
+            MissileType = eAGM
+            MountingType = eMountingBomb
+            Count       = 1 * 4
+        ),
+    ]
+)
+export MissileCarriage_Li_2NB_x2_500_SOV is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_Li_2NB_x2_500_SOV
+    PylonSet       = PylonSet_Li_2NB_x2_500_SOV
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //Bomb FAB500 500kg x2
+        (
+            WeaponIndex = 6
+            MissileType = eAGM
+            MountingType = eMountingBomb
+            Count       = 1 * 2
+        ),
+    ]
+)
+export MissileCarriage_Li_2NB_x4_250_SOV is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_Li_2NB_x4_250_SOV
+    PylonSet       = PylonSet_Li_2NB_x4_250_SOV
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //Bomb FAB250 250kg x4
+        (
+            WeaponIndex = 6
             MissileType = eAGM
             MountingType = eMountingBomb
             Count       = 1 * 4
@@ -2476,6 +2532,20 @@ export MissileCarriage_P_39N_Airacobra_x6_82mm_FRAG_SOV is TMissileCarriageConno
             WeaponIndex = 4
             MissileType = eAGM
             Count       = 1 * 6
+        ),
+    ]
+)
+export MissileCarriage_P_39Q_Airacobra_x1_250_SOV is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = Modele_P_39Q_Airacobra_x1_250_SOV
+    PylonSet       = PylonSet_P_39Q_Airacobra_x1_250_SOV
+    WeaponInfos    = [
+        TMissileCarriageWeaponInfo //Bomb FAB250 250kg
+        (
+            WeaponIndex = 4
+            MissileType = eAGM
+            MountingType = eMountingBomb
+            Count       = 1 * 1
         ),
     ]
 )
