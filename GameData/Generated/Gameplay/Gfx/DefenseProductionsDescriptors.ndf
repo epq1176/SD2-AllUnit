@@ -490,6 +490,129 @@ export Descriptor_Production_Bunker_ATR_AWP is TEntityDescriptor
 
     ]
 )
+export Descriptor_Production_Bunker_ATR_CZ is TEntityDescriptor
+(
+    DescriptorId = GUID:{2caebbb3-d9ab-488b-8309-c66228622fcb}
+    ClassNameForDebug = 'Bunker_ATR_CZ'
+    Modules = [
+        // DefenseProduction
+        TModernWarfareProductionModuleDescriptor(
+            Factory                        = EDefaultFactories/Defense
+            ProductionTime                 = 0
+            ProductionRessourcesNeeded = MAP [
+                (~/Resource_CommandPoints, 5),
+            ]
+            DownPayment                    = ~/SystemeDAchatCoutantParDefaut
+            RaiseDynamicTagAtSpawn         = False
+        ),
+
+        // DefenseModule
+        TDefenseModuleDescriptor(
+            DefenseType                    = ~/EDefenseType/Bunker
+            Amount                         = 1
+            Angle                          = 0.00
+            Radius                         = 150.00 * Metre
+            ClearMeshesRadius              = 100.00 * Metre
+            PlacementConstraints           = [
+                ~/DefensePlacementConstraint_EnoughAvailableUnits,
+                ~/DefensePlacementConstraint_EnoughCurrency,
+                ~/DefensePlacementConstraint_IsInPlayableZone,
+                ~/DefensePlacementConstraint_IsInDeploymentZone,
+                ~/DefensePlacementConstraint_CheckAllowedTerrain,
+                ~/DefensePlacementConstraint_TerrainDrop,
+            ]
+            AppliedTerrain                 = ETerrainType/Bloqueur0
+            PatternName                    = 'Defense_Bunker_ATR_PTRD41_SOV'
+            ExtremityPatternName           = ''
+        ),
+
+        // BunkerModuleExporter
+        TBunkerModuleDescriptor
+        (
+            BunkerDescriptor = ~/Descriptor_Unit_Bunker_ATR_CZ
+        ),
+
+        // DefenseUIInfo
+        TDefenseUIModuleDescriptor
+        (
+            Name                           = 'Bunk_ATRSO'
+            Vignette                       = 'Texture_Defense_Bunker_ATR_CZ_vignette'
+            InfoPanelConfigurationToken    = 'Default'
+            TypeSpecificToken              = ''
+            CountryTexture                 = 'CommonTexture_MotherCountryFlag_CZ'
+            IdentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    'Texture_RTS_H_Bunker_AT',
+                    'Texture_Non_identifiee_Defense'
+                ]
+            )
+            UnidentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    'Texture_RTS_H_Non_identifiee_Bunker',
+                    'Texture_Non_identifiee_Defense'
+                ]
+            )
+        ),
+
+        // StrategicData
+            TModuleSelector
+            (
+                Default = TStrategicDataModuleDescriptor
+                (
+                    UnitPowerValues = MAP [
+                        (EUnitPowerType/Assault, 0.0),
+                        (EUnitPowerType/Armored, 3.0),
+                        (EUnitPowerType/Artillery, 0.0),
+                        (EUnitPowerType/Aircraft, 0.0),
+                        (EUnitPowerType/AntiAirplane, 0.0),
+                        (EUnitPowerType/Evasion, 0.0),
+                     ]
+                    CompanyDissolutionTransferTo = [
+                        "Stab",
+                    ]
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/Undef
+                    Nationalite                      = ENationalite/Allied
+                    MotherCountry                    = 'CZ'
+                    TypeUnitFormation                = 'None'
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId=~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue=~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TTypeUnitModuleDescriptor
+                        (
+                            MotherCountry                    = 'CZ'
+                            Nationalite                      = ENationalite/Allied
+                            TypeUnitValue                    = ETypeUnit/Undef
+                        )
+                    )
+                ]
+            ),
+
+    ]
+)
 export Descriptor_Production_Bunker_ATR_FIN is TEntityDescriptor
 (
     DescriptorId = GUID:{1c039d47-5a3b-4723-bcaa-bb4f433b35e1}
@@ -1351,6 +1474,129 @@ export Descriptor_Production_Bunker_AT_37mm_GER is TEntityDescriptor
 
     ]
 )
+export Descriptor_Production_Bunker_AT_37mm_SLK_CZ is TEntityDescriptor
+(
+    DescriptorId = GUID:{4b991454-bf55-4735-8940-c4b671e2bfb7}
+    ClassNameForDebug = 'Bunker_AT_37mm_SLK_CZ'
+    Modules = [
+        // DefenseProduction
+        TModernWarfareProductionModuleDescriptor(
+            Factory                        = EDefaultFactories/Defense
+            ProductionTime                 = 0
+            ProductionRessourcesNeeded = MAP [
+                (~/Resource_CommandPoints, 25),
+            ]
+            DownPayment                    = ~/SystemeDAchatCoutantParDefaut
+            RaiseDynamicTagAtSpawn         = False
+        ),
+
+        // DefenseModule
+        TDefenseModuleDescriptor(
+            DefenseType                    = ~/EDefenseType/Bunker
+            Amount                         = 1
+            Angle                          = 0.00
+            Radius                         = 150.00 * Metre
+            ClearMeshesRadius              = 100.00 * Metre
+            PlacementConstraints           = [
+                ~/DefensePlacementConstraint_EnoughAvailableUnits,
+                ~/DefensePlacementConstraint_EnoughCurrency,
+                ~/DefensePlacementConstraint_IsInPlayableZone,
+                ~/DefensePlacementConstraint_IsInDeploymentZone,
+                ~/DefensePlacementConstraint_CheckAllowedTerrain,
+                ~/DefensePlacementConstraint_TerrainDrop,
+            ]
+            AppliedTerrain                 = ETerrainType/Bloqueur0
+            PatternName                    = 'Defense_Bunker_AT_PaK_36'
+            ExtremityPatternName           = ''
+        ),
+
+        // BunkerModuleExporter
+        TBunkerModuleDescriptor
+        (
+            BunkerDescriptor = ~/Descriptor_Unit_Bunker_AT_37mm_SLK_CZ
+        ),
+
+        // DefenseUIInfo
+        TDefenseUIModuleDescriptor
+        (
+            Name                           = 'Bunk_PaK36'
+            Vignette                       = 'Texture_Defense_Bunker_AT_37mm_SLK_CZ_vignette'
+            InfoPanelConfigurationToken    = 'Default'
+            TypeSpecificToken              = ''
+            CountryTexture                 = 'CommonTexture_MotherCountryFlag_CZ'
+            IdentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    'Texture_RTS_H_Bunker_AT',
+                    'Texture_Non_identifiee_Defense'
+                ]
+            )
+            UnidentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    'Texture_RTS_H_Non_identifiee_Bunker',
+                    'Texture_Non_identifiee_Defense'
+                ]
+            )
+        ),
+
+        // StrategicData
+            TModuleSelector
+            (
+                Default = TStrategicDataModuleDescriptor
+                (
+                    UnitPowerValues = MAP [
+                        (EUnitPowerType/Assault, 0.0),
+                        (EUnitPowerType/Armored, 4.0),
+                        (EUnitPowerType/Artillery, 0.0),
+                        (EUnitPowerType/Aircraft, 0.0),
+                        (EUnitPowerType/AntiAirplane, 0.0),
+                        (EUnitPowerType/Evasion, 0.0),
+                     ]
+                    CompanyDissolutionTransferTo = [
+                        "Stab",
+                    ]
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/Undef
+                    Nationalite                      = ENationalite/Allied
+                    MotherCountry                    = 'CZ'
+                    TypeUnitFormation                = 'None'
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId=~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue=~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TTypeUnitModuleDescriptor
+                        (
+                            MotherCountry                    = 'CZ'
+                            Nationalite                      = ENationalite/Allied
+                            TypeUnitValue                    = ETypeUnit/Undef
+                        )
+                    )
+                ]
+            ),
+
+    ]
+)
 export Descriptor_Production_Bunker_AT_40mm_HON is TEntityDescriptor
 (
     DescriptorId = GUID:{e24c9803-f7ba-46a1-8440-8fc05d3b0919}
@@ -1589,6 +1835,129 @@ export Descriptor_Production_Bunker_AT_45mm_AWP is TEntityDescriptor
                         (
                             MotherCountry                    = 'POL'
                             Nationalite                      = ENationalite/Axis
+                            TypeUnitValue                    = ETypeUnit/Undef
+                        )
+                    )
+                ]
+            ),
+
+    ]
+)
+export Descriptor_Production_Bunker_AT_45mm_CZ is TEntityDescriptor
+(
+    DescriptorId = GUID:{e495acc8-f603-453e-aa3e-e6526eeaaaf4}
+    ClassNameForDebug = 'Bunker_AT_45mm_CZ'
+    Modules = [
+        // DefenseProduction
+        TModernWarfareProductionModuleDescriptor(
+            Factory                        = EDefaultFactories/Defense
+            ProductionTime                 = 0
+            ProductionRessourcesNeeded = MAP [
+                (~/Resource_CommandPoints, 25),
+            ]
+            DownPayment                    = ~/SystemeDAchatCoutantParDefaut
+            RaiseDynamicTagAtSpawn         = False
+        ),
+
+        // DefenseModule
+        TDefenseModuleDescriptor(
+            DefenseType                    = ~/EDefenseType/Bunker
+            Amount                         = 1
+            Angle                          = 0.00
+            Radius                         = 150.00 * Metre
+            ClearMeshesRadius              = 100.00 * Metre
+            PlacementConstraints           = [
+                ~/DefensePlacementConstraint_EnoughAvailableUnits,
+                ~/DefensePlacementConstraint_EnoughCurrency,
+                ~/DefensePlacementConstraint_IsInPlayableZone,
+                ~/DefensePlacementConstraint_IsInDeploymentZone,
+                ~/DefensePlacementConstraint_CheckAllowedTerrain,
+                ~/DefensePlacementConstraint_TerrainDrop,
+            ]
+            AppliedTerrain                 = ETerrainType/Bloqueur0
+            PatternName                    = 'Defense_Bunker_AT_obr_42_SOV'
+            ExtremityPatternName           = ''
+        ),
+
+        // BunkerModuleExporter
+        TBunkerModuleDescriptor
+        (
+            BunkerDescriptor = ~/Descriptor_Unit_Bunker_AT_45mm_CZ
+        ),
+
+        // DefenseUIInfo
+        TDefenseUIModuleDescriptor
+        (
+            Name                           = 'Bunk_45SOV'
+            Vignette                       = 'Texture_Defense_Bunker_AT_45mm_CZ_vignette'
+            InfoPanelConfigurationToken    = 'Default'
+            TypeSpecificToken              = ''
+            CountryTexture                 = 'CommonTexture_MotherCountryFlag_CZ'
+            IdentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    'Texture_RTS_H_Bunker_AT',
+                    'Texture_Non_identifiee_Defense'
+                ]
+            )
+            UnidentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    'Texture_RTS_H_Non_identifiee_Bunker',
+                    'Texture_Non_identifiee_Defense'
+                ]
+            )
+        ),
+
+        // StrategicData
+            TModuleSelector
+            (
+                Default = TStrategicDataModuleDescriptor
+                (
+                    UnitPowerValues = MAP [
+                        (EUnitPowerType/Assault, 0.0),
+                        (EUnitPowerType/Armored, 5.0),
+                        (EUnitPowerType/Artillery, 0.0),
+                        (EUnitPowerType/Aircraft, 0.0),
+                        (EUnitPowerType/AntiAirplane, 0.0),
+                        (EUnitPowerType/Evasion, 0.0),
+                     ]
+                    CompanyDissolutionTransferTo = [
+                        "Stab",
+                    ]
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/Undef
+                    Nationalite                      = ENationalite/Allied
+                    MotherCountry                    = 'CZ'
+                    TypeUnitFormation                = 'None'
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId=~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue=~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TTypeUnitModuleDescriptor
+                        (
+                            MotherCountry                    = 'CZ'
+                            Nationalite                      = ENationalite/Allied
                             TypeUnitValue                    = ETypeUnit/Undef
                         )
                     )
@@ -3934,6 +4303,129 @@ export Descriptor_Production_Bunker_AT_75mm_RSI is TEntityDescriptor
 
     ]
 )
+export Descriptor_Production_Bunker_AT_75mm_SLK_CZ is TEntityDescriptor
+(
+    DescriptorId = GUID:{b0242867-feac-4ff7-8b79-a5969f158f95}
+    ClassNameForDebug = 'Bunker_AT_75mm_SLK_CZ'
+    Modules = [
+        // DefenseProduction
+        TModernWarfareProductionModuleDescriptor(
+            Factory                        = EDefaultFactories/Defense
+            ProductionTime                 = 0
+            ProductionRessourcesNeeded = MAP [
+                (~/Resource_CommandPoints, 50),
+            ]
+            DownPayment                    = ~/SystemeDAchatCoutantParDefaut
+            RaiseDynamicTagAtSpawn         = False
+        ),
+
+        // DefenseModule
+        TDefenseModuleDescriptor(
+            DefenseType                    = ~/EDefenseType/Bunker
+            Amount                         = 1
+            Angle                          = 0.00
+            Radius                         = 150.00 * Metre
+            ClearMeshesRadius              = 100.00 * Metre
+            PlacementConstraints           = [
+                ~/DefensePlacementConstraint_EnoughAvailableUnits,
+                ~/DefensePlacementConstraint_EnoughCurrency,
+                ~/DefensePlacementConstraint_IsInPlayableZone,
+                ~/DefensePlacementConstraint_IsInDeploymentZone,
+                ~/DefensePlacementConstraint_CheckAllowedTerrain,
+                ~/DefensePlacementConstraint_TerrainDrop,
+            ]
+            AppliedTerrain                 = ETerrainType/Bloqueur0
+            PatternName                    = 'Defense_Bunker_AT_PaK_40'
+            ExtremityPatternName           = ''
+        ),
+
+        // BunkerModuleExporter
+        TBunkerModuleDescriptor
+        (
+            BunkerDescriptor = ~/Descriptor_Unit_Bunker_AT_75mm_SLK_CZ
+        ),
+
+        // DefenseUIInfo
+        TDefenseUIModuleDescriptor
+        (
+            Name                           = 'Bunk_PaK40'
+            Vignette                       = 'Texture_Defense_Bunker_AT_75mm_SLK_CZ_vignette'
+            InfoPanelConfigurationToken    = 'Default'
+            TypeSpecificToken              = ''
+            CountryTexture                 = 'CommonTexture_MotherCountryFlag_CZ'
+            IdentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    'Texture_RTS_H_Bunker_AT',
+                    'Texture_Non_identifiee_Defense'
+                ]
+            )
+            UnidentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    'Texture_RTS_H_Non_identifiee_Bunker',
+                    'Texture_Non_identifiee_Defense'
+                ]
+            )
+        ),
+
+        // StrategicData
+            TModuleSelector
+            (
+                Default = TStrategicDataModuleDescriptor
+                (
+                    UnitPowerValues = MAP [
+                        (EUnitPowerType/Assault, 0.0),
+                        (EUnitPowerType/Armored, 8.0),
+                        (EUnitPowerType/Artillery, 0.0),
+                        (EUnitPowerType/Aircraft, 0.0),
+                        (EUnitPowerType/AntiAirplane, 0.0),
+                        (EUnitPowerType/Evasion, 0.0),
+                     ]
+                    CompanyDissolutionTransferTo = [
+                        "Stab",
+                    ]
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/Undef
+                    Nationalite                      = ENationalite/Allied
+                    MotherCountry                    = 'CZ'
+                    TypeUnitFormation                = 'None'
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId=~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue=~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TTypeUnitModuleDescriptor
+                        (
+                            MotherCountry                    = 'CZ'
+                            Nationalite                      = ENationalite/Allied
+                            TypeUnitValue                    = ETypeUnit/Undef
+                        )
+                    )
+                ]
+            ),
+
+    ]
+)
 export Descriptor_Production_Bunker_AT_75mm_YUG is TEntityDescriptor
 (
     DescriptorId = GUID:{9fee90dd-09a0-43ab-9dac-ee312a2d2e55}
@@ -4048,6 +4540,129 @@ export Descriptor_Production_Bunker_AT_75mm_YUG is TEntityDescriptor
                         Descriptor = TTypeUnitModuleDescriptor
                         (
                             MotherCountry                    = 'YUG'
+                            Nationalite                      = ENationalite/Allied
+                            TypeUnitValue                    = ETypeUnit/Undef
+                        )
+                    )
+                ]
+            ),
+
+    ]
+)
+export Descriptor_Production_Bunker_AT_76mm_CZ is TEntityDescriptor
+(
+    DescriptorId = GUID:{e8e0d679-85f9-48a2-a33e-6ea5d2eb1612}
+    ClassNameForDebug = 'Bunker_AT_76mm_CZ'
+    Modules = [
+        // DefenseProduction
+        TModernWarfareProductionModuleDescriptor(
+            Factory                        = EDefaultFactories/Defense
+            ProductionTime                 = 0
+            ProductionRessourcesNeeded = MAP [
+                (~/Resource_CommandPoints, 30),
+            ]
+            DownPayment                    = ~/SystemeDAchatCoutantParDefaut
+            RaiseDynamicTagAtSpawn         = False
+        ),
+
+        // DefenseModule
+        TDefenseModuleDescriptor(
+            DefenseType                    = ~/EDefenseType/Bunker
+            Amount                         = 1
+            Angle                          = 0.00
+            Radius                         = 150.00 * Metre
+            ClearMeshesRadius              = 100.00 * Metre
+            PlacementConstraints           = [
+                ~/DefensePlacementConstraint_EnoughAvailableUnits,
+                ~/DefensePlacementConstraint_EnoughCurrency,
+                ~/DefensePlacementConstraint_IsInPlayableZone,
+                ~/DefensePlacementConstraint_IsInDeploymentZone,
+                ~/DefensePlacementConstraint_CheckAllowedTerrain,
+                ~/DefensePlacementConstraint_TerrainDrop,
+            ]
+            AppliedTerrain                 = ETerrainType/Bloqueur0
+            PatternName                    = 'Defense_Bunker_AT_ZIS3_SOV'
+            ExtremityPatternName           = ''
+        ),
+
+        // BunkerModuleExporter
+        TBunkerModuleDescriptor
+        (
+            BunkerDescriptor = ~/Descriptor_Unit_Bunker_AT_76mm_CZ
+        ),
+
+        // DefenseUIInfo
+        TDefenseUIModuleDescriptor
+        (
+            Name                           = 'Bunk_76SOV'
+            Vignette                       = 'Texture_Defense_Bunker_AT_76mm_CZ_vignette'
+            InfoPanelConfigurationToken    = 'Default'
+            TypeSpecificToken              = ''
+            CountryTexture                 = 'CommonTexture_MotherCountryFlag_CZ'
+            IdentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    'Texture_RTS_H_Bunker_AT',
+                    'Texture_Non_identifiee_Defense'
+                ]
+            )
+            UnidentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    'Texture_RTS_H_Non_identifiee_Bunker',
+                    'Texture_Non_identifiee_Defense'
+                ]
+            )
+        ),
+
+        // StrategicData
+            TModuleSelector
+            (
+                Default = TStrategicDataModuleDescriptor
+                (
+                    UnitPowerValues = MAP [
+                        (EUnitPowerType/Assault, 0.0),
+                        (EUnitPowerType/Armored, 6.0),
+                        (EUnitPowerType/Artillery, 0.0),
+                        (EUnitPowerType/Aircraft, 0.0),
+                        (EUnitPowerType/AntiAirplane, 0.0),
+                        (EUnitPowerType/Evasion, 0.0),
+                     ]
+                    CompanyDissolutionTransferTo = [
+                        "Stab",
+                    ]
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/Undef
+                    Nationalite                      = ENationalite/Allied
+                    MotherCountry                    = 'CZ'
+                    TypeUnitFormation                = 'None'
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId=~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue=~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TTypeUnitModuleDescriptor
+                        (
+                            MotherCountry                    = 'CZ'
                             Nationalite                      = ENationalite/Allied
                             TypeUnitValue                    = ETypeUnit/Undef
                         )
@@ -6640,6 +7255,129 @@ export Descriptor_Production_Bunker_MG_POL is TEntityDescriptor
 
     ]
 )
+export Descriptor_Production_Bunker_MG_SLK_CZ is TEntityDescriptor
+(
+    DescriptorId = GUID:{593796df-a635-4aaa-ab0d-25054288e71d}
+    ClassNameForDebug = 'Bunker_MG_SLK_CZ'
+    Modules = [
+        // DefenseProduction
+        TModernWarfareProductionModuleDescriptor(
+            Factory                        = EDefaultFactories/Defense
+            ProductionTime                 = 0
+            ProductionRessourcesNeeded = MAP [
+                (~/Resource_CommandPoints, 5),
+            ]
+            DownPayment                    = ~/SystemeDAchatCoutantParDefaut
+            RaiseDynamicTagAtSpawn         = False
+        ),
+
+        // DefenseModule
+        TDefenseModuleDescriptor(
+            DefenseType                    = ~/EDefenseType/Bunker
+            Amount                         = 1
+            Angle                          = 0.00
+            Radius                         = 150.00 * Metre
+            ClearMeshesRadius              = 100.00 * Metre
+            PlacementConstraints           = [
+                ~/DefensePlacementConstraint_EnoughAvailableUnits,
+                ~/DefensePlacementConstraint_EnoughCurrency,
+                ~/DefensePlacementConstraint_IsInPlayableZone,
+                ~/DefensePlacementConstraint_IsInDeploymentZone,
+                ~/DefensePlacementConstraint_CheckAllowedTerrain,
+                ~/DefensePlacementConstraint_TerrainDrop,
+            ]
+            AppliedTerrain                 = ETerrainType/Bloqueur0
+            PatternName                    = 'Defense_Bunker_MG_Schwarloze_HON'
+            ExtremityPatternName           = ''
+        ),
+
+        // BunkerModuleExporter
+        TBunkerModuleDescriptor
+        (
+            BunkerDescriptor = ~/Descriptor_Unit_Bunker_MG_SLK_CZ
+        ),
+
+        // DefenseUIInfo
+        TDefenseUIModuleDescriptor
+        (
+            Name                           = 'Bunk_Schwz'
+            Vignette                       = 'Texture_Defense_Bunker_MG_SLK_CZ_vignette'
+            InfoPanelConfigurationToken    = 'Default'
+            TypeSpecificToken              = ''
+            CountryTexture                 = 'CommonTexture_MotherCountryFlag_CZ'
+            IdentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    'Texture_RTS_H_Bunker_HMG',
+                    'Texture_Non_identifiee_Defense'
+                ]
+            )
+            UnidentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    'Texture_RTS_H_Non_identifiee_Bunker',
+                    'Texture_Non_identifiee_Defense'
+                ]
+            )
+        ),
+
+        // StrategicData
+            TModuleSelector
+            (
+                Default = TStrategicDataModuleDescriptor
+                (
+                    UnitPowerValues = MAP [
+                        (EUnitPowerType/Assault, 8.0),
+                        (EUnitPowerType/Armored, 0.0),
+                        (EUnitPowerType/Artillery, 0.0),
+                        (EUnitPowerType/Aircraft, 0.0),
+                        (EUnitPowerType/AntiAirplane, 0.0),
+                        (EUnitPowerType/Evasion, 0.0),
+                     ]
+                    CompanyDissolutionTransferTo = [
+                        "Stab",
+                    ]
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/Undef
+                    Nationalite                      = ENationalite/Allied
+                    MotherCountry                    = 'CZ'
+                    TypeUnitFormation                = 'None'
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId=~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue=~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TTypeUnitModuleDescriptor
+                        (
+                            MotherCountry                    = 'CZ'
+                            Nationalite                      = ENationalite/Allied
+                            TypeUnitValue                    = ETypeUnit/Undef
+                        )
+                    )
+                ]
+            ),
+
+    ]
+)
 export Descriptor_Production_Bunker_MG_UK is TEntityDescriptor
 (
     DescriptorId = GUID:{eda2a224-934c-49b4-836f-9a8d2bbe2d79}
@@ -7124,6 +7862,129 @@ export Descriptor_Production_Bunker_Maxim_AWP is TEntityDescriptor
                         (
                             MotherCountry                    = 'POL'
                             Nationalite                      = ENationalite/Axis
+                            TypeUnitValue                    = ETypeUnit/Undef
+                        )
+                    )
+                ]
+            ),
+
+    ]
+)
+export Descriptor_Production_Bunker_Maxim_CZ is TEntityDescriptor
+(
+    DescriptorId = GUID:{fad850f9-8b53-4104-b718-2a88d02e5af8}
+    ClassNameForDebug = 'Bunker_Maxim_CZ'
+    Modules = [
+        // DefenseProduction
+        TModernWarfareProductionModuleDescriptor(
+            Factory                        = EDefaultFactories/Defense
+            ProductionTime                 = 0
+            ProductionRessourcesNeeded = MAP [
+                (~/Resource_CommandPoints, 5),
+            ]
+            DownPayment                    = ~/SystemeDAchatCoutantParDefaut
+            RaiseDynamicTagAtSpawn         = False
+        ),
+
+        // DefenseModule
+        TDefenseModuleDescriptor(
+            DefenseType                    = ~/EDefenseType/Bunker
+            Amount                         = 1
+            Angle                          = 0.00
+            Radius                         = 150.00 * Metre
+            ClearMeshesRadius              = 100.00 * Metre
+            PlacementConstraints           = [
+                ~/DefensePlacementConstraint_EnoughAvailableUnits,
+                ~/DefensePlacementConstraint_EnoughCurrency,
+                ~/DefensePlacementConstraint_IsInPlayableZone,
+                ~/DefensePlacementConstraint_IsInDeploymentZone,
+                ~/DefensePlacementConstraint_CheckAllowedTerrain,
+                ~/DefensePlacementConstraint_TerrainDrop,
+            ]
+            AppliedTerrain                 = ETerrainType/Bloqueur0
+            PatternName                    = 'Defense_Bunker_MG_Maxim_SOV'
+            ExtremityPatternName           = ''
+        ),
+
+        // BunkerModuleExporter
+        TBunkerModuleDescriptor
+        (
+            BunkerDescriptor = ~/Descriptor_Unit_Bunker_Maxim_CZ
+        ),
+
+        // DefenseUIInfo
+        TDefenseUIModuleDescriptor
+        (
+            Name                           = 'Bunk_Maxim'
+            Vignette                       = 'Texture_Defense_Bunker_Maxim_CZ_vignette'
+            InfoPanelConfigurationToken    = 'Default'
+            TypeSpecificToken              = ''
+            CountryTexture                 = 'CommonTexture_MotherCountryFlag_CZ'
+            IdentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    'Texture_RTS_H_Bunker_HMG',
+                    'Texture_Non_identifiee_Defense'
+                ]
+            )
+            UnidentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    'Texture_RTS_H_Non_identifiee_Bunker',
+                    'Texture_Non_identifiee_Defense'
+                ]
+            )
+        ),
+
+        // StrategicData
+            TModuleSelector
+            (
+                Default = TStrategicDataModuleDescriptor
+                (
+                    UnitPowerValues = MAP [
+                        (EUnitPowerType/Assault, 8.0),
+                        (EUnitPowerType/Armored, 0.0),
+                        (EUnitPowerType/Artillery, 0.0),
+                        (EUnitPowerType/Aircraft, 0.0),
+                        (EUnitPowerType/AntiAirplane, 0.0),
+                        (EUnitPowerType/Evasion, 0.0),
+                     ]
+                    CompanyDissolutionTransferTo = [
+                        "Stab",
+                    ]
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/Undef
+                    Nationalite                      = ENationalite/Allied
+                    MotherCountry                    = 'CZ'
+                    TypeUnitFormation                = 'None'
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId=~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue=~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TTypeUnitModuleDescriptor
+                        (
+                            MotherCountry                    = 'CZ'
+                            Nationalite                      = ENationalite/Allied
                             TypeUnitValue                    = ETypeUnit/Undef
                         )
                     )
@@ -7862,6 +8723,129 @@ export Descriptor_Production_Bunker_PaK_50mm_RSI is TEntityDescriptor
                         (
                             MotherCountry                    = 'RSI'
                             Nationalite                      = ENationalite/Axis
+                            TypeUnitValue                    = ETypeUnit/Undef
+                        )
+                    )
+                ]
+            ),
+
+    ]
+)
+export Descriptor_Production_Bunker_PaK_50mm_SLK_CZ is TEntityDescriptor
+(
+    DescriptorId = GUID:{57d9a1e5-633d-4cb2-b194-7eec121787ff}
+    ClassNameForDebug = 'Bunker_PaK_50mm_SLK_CZ'
+    Modules = [
+        // DefenseProduction
+        TModernWarfareProductionModuleDescriptor(
+            Factory                        = EDefaultFactories/Defense
+            ProductionTime                 = 0
+            ProductionRessourcesNeeded = MAP [
+                (~/Resource_CommandPoints, 30),
+            ]
+            DownPayment                    = ~/SystemeDAchatCoutantParDefaut
+            RaiseDynamicTagAtSpawn         = False
+        ),
+
+        // DefenseModule
+        TDefenseModuleDescriptor(
+            DefenseType                    = ~/EDefenseType/Bunker
+            Amount                         = 1
+            Angle                          = 0.00
+            Radius                         = 150.00 * Metre
+            ClearMeshesRadius              = 100.00 * Metre
+            PlacementConstraints           = [
+                ~/DefensePlacementConstraint_EnoughAvailableUnits,
+                ~/DefensePlacementConstraint_EnoughCurrency,
+                ~/DefensePlacementConstraint_IsInPlayableZone,
+                ~/DefensePlacementConstraint_IsInDeploymentZone,
+                ~/DefensePlacementConstraint_CheckAllowedTerrain,
+                ~/DefensePlacementConstraint_TerrainDrop,
+            ]
+            AppliedTerrain                 = ETerrainType/Bloqueur0
+            PatternName                    = 'Defense_Bunker_AT'
+            ExtremityPatternName           = ''
+        ),
+
+        // BunkerModuleExporter
+        TBunkerModuleDescriptor
+        (
+            BunkerDescriptor = ~/Descriptor_Unit_Bunker_PaK_50mm_SLK_CZ
+        ),
+
+        // DefenseUIInfo
+        TDefenseUIModuleDescriptor
+        (
+            Name                           = 'Bunk_PaK38'
+            Vignette                       = 'Texture_Defense_Bunker_PaK_50mm_SLK_CZ_vignette'
+            InfoPanelConfigurationToken    = 'Default'
+            TypeSpecificToken              = ''
+            CountryTexture                 = 'CommonTexture_MotherCountryFlag_CZ'
+            IdentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    'Texture_RTS_H_Bunker_AT',
+                    'Texture_Non_identifiee_Defense'
+                ]
+            )
+            UnidentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    'Texture_RTS_H_Non_identifiee_Bunker',
+                    'Texture_Non_identifiee_Defense'
+                ]
+            )
+        ),
+
+        // StrategicData
+            TModuleSelector
+            (
+                Default = TStrategicDataModuleDescriptor
+                (
+                    UnitPowerValues = MAP [
+                        (EUnitPowerType/Assault, 0.0),
+                        (EUnitPowerType/Armored, 5.0),
+                        (EUnitPowerType/Artillery, 0.0),
+                        (EUnitPowerType/Aircraft, 0.0),
+                        (EUnitPowerType/AntiAirplane, 0.0),
+                        (EUnitPowerType/Evasion, 0.0),
+                     ]
+                    CompanyDissolutionTransferTo = [
+                        "Stab",
+                    ]
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+             ),
+
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/Undef
+                    Nationalite                      = ENationalite/Allied
+                    MotherCountry                    = 'CZ'
+                    TypeUnitFormation                = 'None'
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilter
+                    (
+                        Condition  = TModuleSelectorCondition_ParamEquals_Integer
+                        (
+                            ParamId=~/Parameter_ModuleCreationSelectionFilter
+                            ParamValue=~/ModuleCreationFilter_Ghost
+                        )
+                        Descriptor = TTypeUnitModuleDescriptor
+                        (
+                            MotherCountry                    = 'CZ'
+                            Nationalite                      = ENationalite/Allied
                             TypeUnitValue                    = ETypeUnit/Undef
                         )
                     )

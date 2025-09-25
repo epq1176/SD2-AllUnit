@@ -15,7 +15,7 @@ export Gfx_Kl_35D_CZ is TTimelyReceiverFactoryCarrier
 
          Operators = Operators_Kl_35D_CZ
                    + DepictionOperator_Airfoil_WingsAndStabilizersAirplane
-                   + DepictionOperator_Propulsion_Double_Engine_Plane
+                   + DepictionOperator_Propulsion_Single_Engine_Plane
                    + DepictionOperator_Airplane
                    + DepictionOperator_Feedback_Degat_Level1
                    + DepictionOperator_Feedback_Degat_Level2
@@ -24,7 +24,7 @@ export Gfx_Kl_35D_CZ is TTimelyReceiverFactoryCarrier
                 Weapons_Kl_35D_CZ
                 + DepictionAction_StressLevel_Avion_2
                 + MAP [ (['FX_Helice_1'], Template_DepictionAction_Rotor( PaleLength = 280 PaleCount = 2 SousMobile = "Bloc_Moteur_1" ))]
-                + MAP [ (['FX_Helice_2'], Template_DepictionAction_Rotor( PaleLength = 280 PaleCount = 2 SousMobile = "Bloc_Moteur_2" ))]
+                // + MAP [ (['FX_Helice_2'], Template_DepictionAction_Rotor( PaleLength = 280 PaleCount = 2 SousMobile = "Bloc_Moteur_2" ))]
 
         // SubDepictionGenerators = SubGenerators_Kl_35D_CZ
 

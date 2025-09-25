@@ -1,0 +1,22 @@
+export ModelFile_Turan_1_SOV is 'GameData:Assets\3D\Units\SOV\Char\Turan_1\Turan_1.Ase2NdfBin'
+
+Modele_Turan_1_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Turan_1_SOV
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Turan_1_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\Turan_1_MID\Turan_1_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Turan_1_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\LODS\Turan_1_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

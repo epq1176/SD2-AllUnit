@@ -5,18 +5,18 @@ template TemplateMeshDescriptor_DCA_37mm_M1943_CZ [ ModelFile ] is TResourceMult
     TypeMask = TypeMask/Infanterie
 )
 
-export ModelFile_Boites_DCA_37mm_M1943_CZ is 'GameData:Assets\3D\Units\SOV\Canon\DCA_37mm_SOV\Boites_DCA_37mm_M1943_CZ.Ase2NdfBin'
+// export ModelFile_Boites_DCA_37mm_M1943_CZ is 'GameData:Assets\3D\Units\SOV\Canon\DCA_37mm_SOV\Boites_DCA_37mm_M1943_CZ.Ase2NdfBin'
 
 Gfx_DCA_37mm_M1943_CZ_1 is TDepictionTemplate //servant gauche
 (
     RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
     Selector = SpecificServantDepictionSelector
     DepictionAlternatives = [
-        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_DCA_37mm_M1943_CZ( ModelFile = ModelFile_Servant_AT_SOV)  ),
-        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_DCA_37mm_M1943_CZ( ModelFile = ModelFile_Servant_AT_SOV_LOW)  ),
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_DCA_37mm_M1943_CZ( ModelFile = ModelFile_Servant_StrelkiCZ_female)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_DCA_37mm_M1943_CZ( ModelFile = ModelFile_Servant_StrelkiCZ_female_LOW)  ),
         DepictionDescriptor_LOD_Low_Empty       ( ),
-        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_DCA_37mm_M1943_CZ( ModelFile = ModelFile_Servant_AT_SOV)  ),
-        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_DCA_37mm_M1943_CZ( ModelFile = ModelFile_Servant_AT_SOV_LOW)  ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_DCA_37mm_M1943_CZ( ModelFile = ModelFile_Servant_StrelkiCZ_female)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_DCA_37mm_M1943_CZ( ModelFile = ModelFile_Servant_StrelkiCZ_female_LOW)  ),
         DepictionDescriptor_LOD_WreckedLow_Empty( ),
     ]
 
@@ -29,11 +29,11 @@ Gfx_DCA_37mm_M1943_CZ_2 is TDepictionTemplate //servant droite
     RenderStyleProviderDescriptor = ~/DefaultInfantryRenderStyleProvider
     Selector = SpecificServantDepictionSelector
     DepictionAlternatives = [
-        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_DCA_37mm_M1943_CZ( ModelFile = ModelFile_Servant_AT_SOV_Secondary)  ),
-        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_DCA_37mm_M1943_CZ( ModelFile = ModelFile_Servant_AT_SOV_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_High            (  MeshDescriptor = TemplateMeshDescriptor_DCA_37mm_M1943_CZ( ModelFile = ModelFile_Strelki_ATR_CZ_1)  ),
+        DepictionDescriptor_LOD_Mid             (  MeshDescriptor = TemplateMeshDescriptor_DCA_37mm_M1943_CZ( ModelFile = ModelFile_Strelki_ATR_CZ_1_LOW)  ),
         DepictionDescriptor_LOD_Low_Empty       ( ),
-        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_DCA_37mm_M1943_CZ( ModelFile = ModelFile_Servant_AT_SOV_Secondary)  ),
-        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_DCA_37mm_M1943_CZ( ModelFile = ModelFile_Servant_AT_SOV_Secondary_LOW)  ),
+        DepictionDescriptor_LOD_WreckedHigh     (  MeshDescriptor = TemplateMeshDescriptor_DCA_37mm_M1943_CZ( ModelFile = ModelFile_Strelki_ATR_CZ_1)  ),
+        DepictionDescriptor_LOD_WreckedMid      (  MeshDescriptor = TemplateMeshDescriptor_DCA_37mm_M1943_CZ( ModelFile = ModelFile_Strelki_ATR_CZ_1_LOW)  ),
         DepictionDescriptor_LOD_WreckedLow_Empty( ),
     ]
 
@@ -67,7 +67,7 @@ Gfx_DCA_37mm_M1943_CZ_2 is TDepictionTemplate //servant droite
     // ]
 // )
 
-DepictionOperator_SkeletalAnimation_DCA_37mm_M1943_CZ is [Template_DepictionOperator_SkeletalAnimation_With_Tree_TEST(AnimationTree = DCA_37mm_GER_Anim_Tree)]
+// DepictionOperator_SkeletalAnimation_DCA_37mm_M1943_CZ is [Template_DepictionOperator_SkeletalAnimation_With_Tree_TEST(AnimationTree = DCA_37mm_GER_Anim_Tree)]
 
 Gfx_DCA_37mm_M1943_CZ_Weapon is TDepictionTemplate //arme
     (
@@ -84,16 +84,24 @@ Gfx_DCA_37mm_M1943_CZ_Weapon is TDepictionTemplate //arme
 
         SubDepictions = []
 
-        Operators = Operators_DCA_37mm_GER
-                  + DepictionOperator_SkeletalAnimation_DCA_37mm_M1943_CZ //à activer après avoir mis la colonne "Animated" à "oui" dans l'ods. Bien mettre cette ligne en deuxieme position pour continuer a avoir les anims procedurales en meme temps !
-                  // + DepictionOperator_Chassis_MediumTank
-                  // + DepictionOperator_Propulsion_ContinuousTrack_MediumTank
-                  // + DepictionOperator_Propulsion_2Wheels_Generic
-                  + [DepictionOperator_TurretRecoil_AutoCanon( TurretNum = '1' )]
-
+        Operators =
+            DepictionOperatorNode_ResetUnit +
+            DepictionOperatorNode_Propulsion_2Wheels_Canon +
+            DepictionOperator_Carriable_Canon_4wheels +
+            DepictionOperator_TurretAim_Canon +
+            DepictionOperator_TurretRecoil_Canon
         Actions = Weapons_DCA_37mm_M1943_CZ
-                + DepictionAction_StressLevel_2
-                + DepictionAction_MovementFX_Wheeled
+
+        // Operators = Operators_DCA_37mm_GER
+        //           + DepictionOperator_SkeletalAnimation_DCA_37mm_M1943_CZ //à activer après avoir mis la colonne "Animated" à "oui" dans l'ods. Bien mettre cette ligne en deuxieme position pour continuer a avoir les anims procedurales en meme temps !
+        //           // + DepictionOperator_Chassis_MediumTank
+        //           // + DepictionOperator_Propulsion_ContinuousTrack_MediumTank
+        //           // + DepictionOperator_Propulsion_2Wheels_Generic
+        //           // + [DepictionOperator_TurretRecoil_AutoCanon( TurretNum = '1' )]
+
+        // Actions = Weapons_DCA_37mm_M1943_CZ
+        //         + DepictionAction_StressLevel_2
+        //         + DepictionAction_MovementFX_Wheeled
     )
 
 SubDepiction_Servant_1_DCA_37mm_M1943_CZ is TSubDepiction( Anchor = 'servant_G' Depiction = Gfx_DCA_37mm_M1943_CZ_1 )

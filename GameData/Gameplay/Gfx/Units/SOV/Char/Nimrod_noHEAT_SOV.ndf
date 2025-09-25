@@ -1,0 +1,22 @@
+export ModelFile_Nimrod_noHEAT_SOV is 'GameData:Assets\3D\Units\SOV\Char\Nimrod\Nimrod.Ase2NdfBin'
+
+Modele_Nimrod_noHEAT_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Nimrod_noHEAT_SOV
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Nimrod_noHEAT_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\Nimrod_MID\Nimrod_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Nimrod_noHEAT_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\LODS\Nimrod_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

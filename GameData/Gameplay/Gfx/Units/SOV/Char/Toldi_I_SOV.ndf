@@ -1,0 +1,22 @@
+export ModelFile_Toldi_I_SOV is 'GameData:Assets\3D\Units\SOV\Char\Toldi_I\Toldi_I.Ase2NdfBin'
+
+Modele_Toldi_I_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Toldi_I_SOV
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Toldi_I_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\Toldi_I_MID\Toldi_I_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Toldi_I_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\SOV\Char\LODS\Toldi_I_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

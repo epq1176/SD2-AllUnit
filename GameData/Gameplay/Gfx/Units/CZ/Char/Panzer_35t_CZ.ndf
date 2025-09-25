@@ -1,0 +1,22 @@
+export ModelFile_Panzer_35t_CZ is 'GameData:Assets\3D\Units\CZ\Char\Panzer_35t\Panzer_35t.Ase2NdfBin'
+
+Modele_Panzer_35t_CZ is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Panzer_35t_CZ
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_35t_CZ_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CZ\Char\Panzer_35t_MID\Panzer_35t_MID.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)
+
+Modele_Panzer_35t_CZ_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CZ\Char\LODS\Panzer_35t_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Nationalite1
+    TypeMask = TypeMask/Char
+)

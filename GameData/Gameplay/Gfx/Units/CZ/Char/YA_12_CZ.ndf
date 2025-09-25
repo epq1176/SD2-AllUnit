@@ -1,0 +1,22 @@
+export ModelFile_YA_12_CZ is 'GameData:Assets\3D\Units\CZ\Char\YA_12\YA_12.Ase2NdfBin'
+
+Modele_YA_12_CZ is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_YA_12_CZ
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_YA_12_CZ_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CZ\Char\YA_12_MID\YA_12_MID.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)
+
+Modele_YA_12_CZ_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets\3D\Units\CZ\Char\LODS\YA_12_LOW.Ase2NdfBin'
+    CivMask = CivMask/Nationalite2
+    TypeMask = TypeMask/Vehicule
+)

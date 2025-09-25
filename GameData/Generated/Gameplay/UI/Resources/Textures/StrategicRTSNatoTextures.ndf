@@ -168,18 +168,18 @@ Texture_STRATEGIC_RTS_H_HQ_armored is TUIResourceTextureWithUsefulnessMask
     FileName      = 'Assets\2D\Interface\UseStrategic\LabelIcons\RTS\HQ_armored.png'
 )
 
-Texture_STRATEGIC_AT is TUIResourceTextureWithUsefulnessMask
+Texture_STRATEGIC_SP_AT is TUIResourceTextureWithUsefulnessMask
 (
     TypeMask      = TypeMask/Common
     CivMask       = CivMask/Common
-    FileName      = 'Assets\2D\Interface\UseStrategic\LabelIcons\NATO\AT.png'
+    FileName      = 'Assets\2D\Interface\UseStrategic\LabelIcons\NATO\SP_AT.png'
 )
 
-Texture_STRATEGIC_RTS_H_AT is TUIResourceTextureWithUsefulnessMask
+Texture_STRATEGIC_RTS_H_SP_AT is TUIResourceTextureWithUsefulnessMask
 (
     TypeMask      = TypeMask/Common
     CivMask       = CivMask/Common
-    FileName      = 'Assets\2D\Interface\UseStrategic\LabelIcons\RTS\AT.png'
+    FileName      = 'Assets\2D\Interface\UseStrategic\LabelIcons\RTS\SP_AT.png'
 )
 
 Texture_STRATEGIC_Armor is TUIResourceTextureWithUsefulnessMask
@@ -238,20 +238,6 @@ Texture_STRATEGIC_RTS_H_AT_AA is TUIResourceTextureWithUsefulnessMask
     FileName      = 'Assets\2D\Interface\UseStrategic\LabelIcons\RTS\AT_AA.png'
 )
 
-Texture_STRATEGIC_SP_AT is TUIResourceTextureWithUsefulnessMask
-(
-    TypeMask      = TypeMask/Common
-    CivMask       = CivMask/Common
-    FileName      = 'Assets\2D\Interface\UseStrategic\LabelIcons\NATO\SP_AT.png'
-)
-
-Texture_STRATEGIC_RTS_H_SP_AT is TUIResourceTextureWithUsefulnessMask
-(
-    TypeMask      = TypeMask/Common
-    CivMask       = CivMask/Common
-    FileName      = 'Assets\2D\Interface\UseStrategic\LabelIcons\RTS\SP_AT.png'
-)
-
 Texture_STRATEGIC_Genie is TUIResourceTextureWithUsefulnessMask
 (
     TypeMask      = TypeMask/Common
@@ -306,6 +292,20 @@ Texture_STRATEGIC_RTS_H_Armored_Infantry is TUIResourceTextureWithUsefulnessMask
     TypeMask      = TypeMask/Common
     CivMask       = CivMask/Common
     FileName      = 'Assets\2D\Interface\UseStrategic\LabelIcons\RTS\Armored_Infantry.png'
+)
+
+Texture_STRATEGIC_AT is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask      = TypeMask/Common
+    CivMask       = CivMask/Common
+    FileName      = 'Assets\2D\Interface\UseStrategic\LabelIcons\NATO\AT.png'
+)
+
+Texture_STRATEGIC_RTS_H_AT is TUIResourceTextureWithUsefulnessMask
+(
+    TypeMask      = TypeMask/Common
+    CivMask       = CivMask/Common
+    FileName      = 'Assets\2D\Interface\UseStrategic\LabelIcons\RTS\AT.png'
 )
 
 Texture_STRATEGIC_AA is TUIResourceTextureWithUsefulnessMask
@@ -421,8 +421,8 @@ STRATEGIC_NATORTSAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_STRATEGIC_RTS_H_Reco_Infantry", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_RTS_H_Reco_Infantry)]),
         ("Texture_STRATEGIC_HQ_armored", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_HQ_armored)]),
         ("Texture_STRATEGIC_RTS_H_HQ_armored", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_RTS_H_HQ_armored)]),
-        ("Texture_STRATEGIC_AT", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_AT)]),
-        ("Texture_STRATEGIC_RTS_H_AT", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_RTS_H_AT)]),
+        ("Texture_STRATEGIC_SP_AT", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_SP_AT)]),
+        ("Texture_STRATEGIC_RTS_H_SP_AT", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_RTS_H_SP_AT)]),
         ("Texture_STRATEGIC_Armor", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_Armor)]),
         ("Texture_STRATEGIC_RTS_H_Armor", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_RTS_H_Armor)]),
         ("Texture_STRATEGIC_security", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_security)]),
@@ -431,8 +431,6 @@ STRATEGIC_NATORTSAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_STRATEGIC_RTS_H_Transport_Softskin", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_RTS_H_Transport_Softskin)]),
         ("Texture_STRATEGIC_AT_AA", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_AT_AA)]),
         ("Texture_STRATEGIC_RTS_H_AT_AA", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_RTS_H_AT_AA)]),
-        ("Texture_STRATEGIC_SP_AT", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_SP_AT)]),
-        ("Texture_STRATEGIC_RTS_H_SP_AT", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_RTS_H_SP_AT)]),
         ("Texture_STRATEGIC_Genie", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_Genie)]),
         ("Texture_STRATEGIC_RTS_H_Genie", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_RTS_H_Genie)]),
         ("Texture_STRATEGIC_reco_armored", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_reco_armored)]),
@@ -441,6 +439,8 @@ STRATEGIC_NATORTSAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_STRATEGIC_RTS_H_SP_Artillery", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_RTS_H_SP_Artillery)]),
         ("Texture_STRATEGIC_Armored_Infantry", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_Armored_Infantry)]),
         ("Texture_STRATEGIC_RTS_H_Armored_Infantry", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_RTS_H_Armored_Infantry)]),
+        ("Texture_STRATEGIC_AT", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_AT)]),
+        ("Texture_STRATEGIC_RTS_H_AT", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_RTS_H_AT)]),
         ("Texture_STRATEGIC_AA", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_AA)]),
         ("Texture_STRATEGIC_RTS_H_AA", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_RTS_H_AA)]),
         ("Texture_STRATEGIC_Reco_moto", MAP [(~/ComponentState/Normal, ~/Texture_STRATEGIC_Reco_moto)]),
